@@ -1,0 +1,323 @@
+@prefix org:     <http://www.w3.org/ns/org#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix eu:      <http://data.europa.eu/m8g/> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix person:  <http://www.w3.org/ns/person#> .
+@prefix rov:     <http://www.w3.org/ns/regorg#> .
+@prefix locn:    <http://www.w3.org/ns/locn#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix cpsv:    <http://purl.org/vocab/cpsv#> .
+
+<http://data.vlaanderen.be/ns/adres>
+      a       owl:Ontology ;
+      vann:preferredNamespaceUri
+              "http://data.vlaanderen.be/ns/adres" .
+
+<http://data.vlaanderen.be/ns/adres#Adres>
+      a       owl:Class ;
+      rdfs:comment "Informatie die toelaat om op een gestructureerde en unieke manier te verwijzen naar een 'gebouw', een 'gebouweenheid', een 'ligplaats', een 'standplaats' of een 'perceel' in België."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "Belgisch Adres"@nl .
+
+<http://data.vlaanderen.be/ns/adres#Adres.status>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Adres> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "status"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/adres#Adreslocator>
+      a       owl:Class ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "Adreslocator"@nl .
+
+<http://data.vlaanderen.be/ns/adres#AdresseerbaarObject>
+      a       owl:Class ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "Adresseerbaar Object"@nl .
+
+<http://data.vlaanderen.be/ns/adres#Adresuitbreiding>
+      a       owl:Class ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "Adresuitbreiding"@nl .
+
+<http://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain locn:Address ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "busnummer"@nl ;
+      rdfs:range rdfs:Literal ;
+      rdfs:subPropertyOf locn:locatorDesignator .
+
+<http://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain locn:Address ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "huisnummer"@nl ;
+      rdfs:range rdfs:Literal ;
+      rdfs:subPropertyOf locn:locatorDesignator .
+
+<http://data.vlaanderen.be/ns/adres#Gemeentenaam>
+      a       owl:Class ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "Gemeentenaam"@nl .
+
+<http://data.vlaanderen.be/ns/adres#Locatieaanduiding>
+      a       owl:Class ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "Locatieaanduiding"@nl .
+
+<http://data.vlaanderen.be/ns/adres#Locatieaanduiding.aanduiding>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Locatieaanduiding> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "aanduiding"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/adres#Locatieaanduiding.type>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Locatieaanduiding> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "type"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/adres#Locatienaam>
+      a       owl:Class ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "Locatienaam"@nl .
+
+<http://data.vlaanderen.be/ns/adres#Locatienaam.type>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Locatienaam> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "type"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/adres#Postinfo>
+      a       owl:Class ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "Postinfo"@nl .
+
+<http://data.vlaanderen.be/ns/adres#Straatnaam>
+      a       owl:Class ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "Straatnaam"@nl .
+
+<http://data.vlaanderen.be/ns/adres#Straatnaam.status>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Straatnaam> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "status"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/adres#aanduiding>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Adreslocator> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "aanduiding"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/adres#Locatieaanduiding> .
+
+<http://data.vlaanderen.be/ns/adres#adreslocator>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Adresuitbreiding> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "locator"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/adres#Adreslocator> .
+
+<http://data.vlaanderen.be/ns/adres#busnummer>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Adres> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "busnummer"@nl ;
+      rdfs:range rdfs:Literal .
+
+<http://data.vlaanderen.be/ns/adres#gemeentenaam>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain locn:Address ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "gemeentenaam"@nl ;
+      rdfs:range rdfs:Literal ;
+      rdfs:subPropertyOf locn:postName .
+
+<http://data.vlaanderen.be/ns/adres#heeftGemeentenaam>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Adres> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "heeft gemeentenaam"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/adres#Gemeentenaam> .
+
+<http://data.vlaanderen.be/ns/adres#heeftPostinfo>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Adres> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "heeft postinfo"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/adres#Postinfo> .
+
+<http://data.vlaanderen.be/ns/adres#heeftStraatnaam>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Adres> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "heeft straatnaam"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/adres#Straatnaam> .
+
+<http://data.vlaanderen.be/ns/adres#homoniemToevoeging>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Straatnaam> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "homoniem toevoeging"@nl ;
+      rdfs:range rdfs:Literal .
+
+<http://data.vlaanderen.be/ns/adres#huisnummer>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Adres> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "huisnummer"@nl ;
+      rdfs:range rdfs:Literal .
+
+<http://data.vlaanderen.be/ns/adres#isToegekendAan>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Adres> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "is toegekend aan"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/adres#AdresseerbaarObject> .
+
+<http://data.vlaanderen.be/ns/adres#isVerrijktMet>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Adres> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "is verrijkt met"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/adres#Adresuitbreiding> .
+
+<http://data.vlaanderen.be/ns/adres#land>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain locn:Address ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "land"@nl ;
+      rdfs:range rdfs:Literal ;
+      rdfs:subPropertyOf locn:adminUnitL1 .
+
+<http://data.vlaanderen.be/ns/adres#niveau>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Adreslocator> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "niveau"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/adres#officieelToegekend>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Adres> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "niet officieel"@nl ;
+      rdfs:range xsd:boolean .
+
+<http://data.vlaanderen.be/ns/adres#positie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Adres> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "positie"@nl ;
+      rdfs:range locn:Geometry ;
+      rdfs:subPropertyOf locn:geometry .
+
+<http://data.vlaanderen.be/ns/adres#postcode>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Postinfo> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "postcode"@nl ;
+      rdfs:range rdfs:Literal .
+
+<http://data.vlaanderen.be/ns/adres#postnaam>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Postinfo> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "postnaam"@nl ;
+      rdfs:range rdf:langString .
+
+<http://data.vlaanderen.be/ns/adres#verwijstNaar>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain locn:Address ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "verwijst naar"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/adres#Adres> .
+
+<http://data.vlaanderen.be/ns/adres#volledigAdres>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/adres#Adresuitbreiding> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
+      rdfs:label "volledig adres"@nl ;
+      rdfs:range rdfs:Literal .
+
+rdfs:label
+      rdfs:label "gemeentenaam"@nl .
+
+locn:Address
+      rdfs:label "Adres Voorstelling"@nl .
+
+locn:addressArea
+      rdfs:label "adresgebied"@nl .
+
+locn:adminUnitL1
+      rdfs:label "administratieve eenheid niveau 1"@nl .
+
+locn:adminUnitL2
+      rdfs:label "administratieve eenheid niveau 2"@nl .
+
+locn:fullAddress
+      rdfs:label "volledig adres"@nl .
+
+locn:locatorDesignator
+      rdfs:label "locatieaanduiding"@nl .
+
+locn:locatorName
+      rdfs:label "locatienaam"@nl .
+
+locn:poBox
+      rdfs:label "postbus"@nl .
+
+locn:postCode
+      rdfs:label "postcode"@nl .
+
+locn:postName
+      rdfs:label "postnaam"@nl .
+
+locn:thoroughfare
+      rdfs:label "straatnaam"@nl .
+
+<http://www.w3.org/ns/prov#wasAttributedTo>
+      rdfs:label "toegeschreven aan"@nl .
