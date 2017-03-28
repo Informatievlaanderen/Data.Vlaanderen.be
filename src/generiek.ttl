@@ -1,0 +1,236 @@
+@prefix org:     <http://www.w3.org/ns/org#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix eu:      <http://data.europa.eu/m8g/> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix person:  <http://www.w3.org/ns/person#> .
+@prefix rov:     <http://www.w3.org/ns/regorg#> .
+@prefix locn:    <http://www.w3.org/ns/locn#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix cpsv:    <http://purl.org/vocab/cpsv#> .
+
+<http://data.europa.eu/eli/ontology#language>
+      rdfs:label "taal"@nl .
+
+eu:subject
+      rdfs:label "onderwerp"@nl .
+
+eu:territorialApplication
+      rdfs:label "territoriale toepassing"@nl .
+
+<http://data.vlaanderen.be/ns/generiek>
+      a       owl:Ontology ;
+      vann:preferredNamespaceUri
+              "http://data.vlaanderen.be/ns/generiek" .
+
+<http://data.vlaanderen.be/ns/generiek#Bewerkingstype>
+      a       owl:Class ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "TODO"@nl ;
+      owl:oneOf () .
+
+<http://data.vlaanderen.be/ns/generiek#begin>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://purl.org/dc/terms/PeriodOfTime> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "begin"@nl ;
+      rdfs:range rdfs:Literal ;
+      vann:usageNote "Zie bv Time and date & Recurring and partial dates van https://www.w3.org/TR/rdf11-concepts/#h3_xsd-datatypes"@nl .
+
+<http://data.vlaanderen.be/ns/generiek#bewerking>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://www.w3.org/ns/prov#Activity> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "type"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/generiek#Bewerkingstype> ;
+      rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/type> .
+
+<http://data.vlaanderen.be/ns/generiek#default>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain locn:Geometry ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "TODO"@nl ;
+      rdfs:range xsd:boolean .
+
+<http://data.vlaanderen.be/ns/generiek#einde>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://purl.org/dc/terms/PeriodOfTime> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "einde"@nl ;
+      rdfs:range rdfs:Literal ;
+      vann:usageNote "Zie bv Time and date & Recurring and partial dates van https://www.w3.org/TR/rdf11-concepts/#h3_xsd-datatypes"@nl .
+
+<http://data.vlaanderen.be/ns/generiek#methode>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain locn:Geometry ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "TODO"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/generiek#plaats>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Plaatsnaam waarmee de Jurisdictie kan worden aangeduid."@nl ;
+      rdfs:domain <http://purl.org/dc/terms/Jurisdiction> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "Plaats"@nl ;
+      rdfs:range rdf:langString ;
+      vann:usageNote "Bv de naam van een land."@nl .
+
+<http://data.vlaanderen.be/ns/generiek#specificatie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain locn:Geometry ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "TODO"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/generiek#string>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain rdfs:Literal ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "TODO"@nl ;
+      rdfs:range rdfs:Literal .
+
+<http://data.vlaanderen.be/ns/generiek#type>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain rdfs:Literal ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "TODO"@nl ;
+      rdfs:range xsd:anyURI .
+
+<http://purl.org/dc/terms/Jurisdiction>
+      rdfs:comment "Het gebied waarover de rechtsmacht van een overheid zich uitstrekt."@nl ;
+      rdfs:label "Jurisdictie"@nl .
+
+<http://purl.org/dc/terms/PeriodOfTime>
+      rdfs:label "TijdsInterval"@nl .
+
+<http://purl.org/dc/terms/creator>
+      rdfs:label "maker"@nl .
+
+<http://purl.org/dc/terms/description>
+      rdfs:label "beschrijving"@nl .
+
+<http://purl.org/dc/terms/issued>
+      rdfs:label "uitgegeven"@nl .
+
+<http://purl.org/dc/terms/relation>
+      rdfs:label "relatie"@nl .
+
+<http://purl.org/dc/terms/title>
+      rdfs:label "titel"@nl .
+
+<http://purl.org/dc/terms/type>
+      rdfs:label "type"@nl .
+
+cpsv:FormalFramework
+      rdfs:label "Formeel Kader"@nl .
+
+<http://ww.w3.org/2006/vcard/ns#honorific-prefix>
+      rdfs:label "aanschrijfprefix"@nl .
+
+<http://www.opengis.net/ont/geosparql#asGML>
+      rdfs:label "als GML"@nl .
+
+<http://www.opengis.net/ont/geosparql#asWKT>
+      rdfs:label "als WKT"@nl .
+
+rdfs:Resource
+      rdfs:label "Resource"@nl .
+
+<http://www.w3.org/2003/01/geo/wgs84_pos#Point>
+      rdfs:label "Punt"@nl .
+
+<http://www.w3.org/2003/01/geo/wgs84_post#lat>
+      rdfs:label "latitude"@nl .
+
+<http://www.w3.org/2003/01/geo/wgs84_post#long>
+      rdfs:label "longitude"@nl .
+
+skos:Concept
+      rdfs:label "Concept"@nl , "concept"@nl .
+
+skos:notation
+      rdfs:label "notatie"@nl .
+
+<http://www.w3.org/ns/adms#Identifier>
+      rdfs:label "Identificator"@nl .
+
+<http://www.w3.org/ns/adms#identifier>
+      rdfs:label "identificator"@nl .
+
+<http://www.w3.org/ns/adms#schemaAgency>
+      rdfs:label "schema agentschap"@nl .
+
+<http://www.w3.org/ns/adms#status>
+      rdfs:label "status"@nl .
+
+locn:Geometry
+      rdfs:label "Geometrie"@nl .
+
+locn:address
+      rdfs:label "adres"@nl .
+
+<http://www.w3.org/ns/prov#Activity>
+      rdfs:label "Activiteit"@nl .
+
+<http://www.w3.org/ns/prov#Agent>
+      rdfs:label "agent"@nl .
+
+<http://www.w3.org/ns/prov#Entity>
+      rdfs:label "Entiteit"@nl .
+
+<http://www.w3.org/ns/prov#Generation>
+      rdfs:label "Generatie"@nl .
+
+<http://www.w3.org/ns/prov#Invalidation>
+      rdfs:label "Invalidatie"@nl .
+
+<http://www.w3.org/ns/prov#activity>
+      rdfs:label "activiteit"@nl .
+
+<http://www.w3.org/ns/prov#atTime>
+      rdfs:label "op tijdstip"@nl .
+
+<http://www.w3.org/ns/prov#wasAssociatedWith>
+      rdfs:label "was geassocieerd met"@nl .
+
+<http://xmlns.com/foaf/0.1/Document>
+      rdfs:label "Document"@nl .
+
+<http://xmlns.com/foaf/0.1/isPrimaryTopicOf>
+      rdfs:label "is primair onderwerp van"@nl .
+
+<http://xmlns.com/foaf/0.1/name>
+      rdfs:label "naam"@nl .
+
+<http://xmlns.com/foaf/0.1/page>
+      rdfs:label "pagina"@nl .
+
+<https://schema.org/ContactPoint>
+      rdfs:label "Contactpunt"@nl .
+
+<https://schema.org/email>
+      rdfs:label "email"@nl .
+
+<https://schema.org/faxNumber>
+      rdfs:label "faxnummer"@nl .
+
+<https://schema.org/hoursAvailable>
+      rdfs:label "uren beschikbaarheid"@nl .
+
+<https://schema.org/openingHours>
+      rdfs:label "openingsuren"@nl .
+
+<https://schema.org/telephone>
+      rdfs:label "telefoon"@nl .
