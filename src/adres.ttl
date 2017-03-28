@@ -1,3 +1,4 @@
+@prefix schema:  <https://schema.org/> .
 @prefix org:     <http://www.w3.org/ns/org#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
@@ -7,15 +8,18 @@
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix person:  <http://www.w3.org/ns/person#> .
 @prefix rov:     <http://www.w3.org/ns/regorg#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
 @prefix locn:    <http://www.w3.org/ns/locn#> .
 @prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
 @prefix cpsv:    <http://purl.org/vocab/cpsv#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 
 <http://data.vlaanderen.be/ns/adres>
       a       owl:Ontology ;
-      rdfs:label "Adres"@nl , "Address"@en ;
-      dcterms:title "Adres"@nl , "Address"@en ;
+      rdfs:label "Adres"@nl ;
+      dcterms:issued "2017-03-31"^^xsd:date ;
+      dcterms:title "Adres"@nl ;
       vann:preferredNamespaceUri
               "http://data.vlaanderen.be/ns/adres" .
 
@@ -322,5 +326,5 @@ locn:postName
 locn:thoroughfare
       rdfs:label "straatnaam"@nl .
 
-<http://www.w3.org/ns/prov#wasAttributedTo>
+prov:wasAttributedTo
       rdfs:label "toegeschreven aan"@nl .

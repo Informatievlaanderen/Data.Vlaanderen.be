@@ -1,3 +1,4 @@
+@prefix schema:  <https://schema.org/> .
 @prefix org:     <http://www.w3.org/ns/org#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
@@ -7,10 +8,12 @@
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix person:  <http://www.w3.org/ns/person#> .
 @prefix rov:     <http://www.w3.org/ns/regorg#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
 @prefix locn:    <http://www.w3.org/ns/locn#> .
 @prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
 @prefix cpsv:    <http://purl.org/vocab/cpsv#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 
 eu:BusinessEvent
       rdfs:label "Bedrijfsgebeurtenis"@nl .
@@ -89,30 +92,31 @@ eu:value
 
 <http://data.vlaanderen.be/ns/dienst>
       a       owl:Ontology ;
-      rdfs:label "Dienst"@nl , "Public Service"@en ;
-      dcterms:title "Dienst"@nl , "Public Service"@en ;
+      rdfs:label "Dienst"@nl ;
+      dcterms:issued "2017-03-31"^^xsd:date ;
+      dcterms:title "Dienst"@nl ;
       vann:preferredNamespaceUri
               "http://data.vlaanderen.be/ns/dienst" .
 
-<http://purl.org/dc/terms/description>
+dcterms:description
       rdfs:label "beschrijving"@nl .
 
-<http://purl.org/dc/terms/language>
+dcterms:language
       rdfs:label "taal"@nl .
 
-<http://purl.org/dc/terms/relation>
+dcterms:relation
       rdfs:label "relatie"@nl .
 
-<http://purl.org/dc/terms/requires>
+dcterms:requires
       rdfs:label "vereist"@nl .
 
-<http://purl.org/dc/terms/spatial>
+dcterms:spatial
       rdfs:label "ruimtelijke dekking"@nl .
 
-<http://purl.org/dc/terms/title>
+dcterms:title
       rdfs:label "titel"@nl , "Titel"@nl .
 
-<http://purl.org/dc/terms/type>
+dcterms:type
       rdfs:label "type"@nl .
 
 cpsv:PublicService
@@ -139,11 +143,29 @@ cpsv:produces
 <http://www.w3.org/ns/dcat#keyword>
       rdfs:label "trefwoord"@nl .
 
-<http://xmlns.com/foaf/0.1/page>
+foaf:page
       rdfs:label "pagina"@nl .
 
-<https://schema.org/hoursAvailable>
+schema:OpeningHoursSpecification
+      rdfs:label "Openingsurenspecificatie"@nl .
+
+schema:closes
+      rdfs:label "sluit"@nl .
+
+schema:dayOfWeek
+      rdfs:label "dag van week"@nl .
+
+schema:hoursAvailable
       rdfs:label "uren beschikbaarheid"@nl .
 
-<https://schema.org/openingHours>
+schema:openingHours
       rdfs:label "openingsuren"@nl .
+
+schema:opens
+      rdfs:label "opent"@nl .
+
+schema:validFrom
+      rdfs:label "geldig van"@nl .
+
+schema:validThrough
+      rdfs:label "geldig tot"@nl .

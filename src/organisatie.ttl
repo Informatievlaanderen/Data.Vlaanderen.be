@@ -1,3 +1,4 @@
+@prefix schema:  <https://schema.org/> .
 @prefix org:     <http://www.w3.org/ns/org#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
@@ -7,10 +8,12 @@
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix person:  <http://www.w3.org/ns/person#> .
 @prefix rov:     <http://www.w3.org/ns/regorg#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
 @prefix locn:    <http://www.w3.org/ns/locn#> .
 @prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
 @prefix cpsv:    <http://purl.org/vocab/cpsv#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 
 eu:FoundationEvent
       rdfs:label "Oprichting"@nl .
@@ -23,8 +26,9 @@ eu:hasFormalFramework
 
 <http://data.vlaanderen.be/ns/organisatie>
       a       owl:Ontology ;
-      rdfs:label "Organisatie"@nl , "Organisation"@en ;
-      dcterms:title "Organisatie"@nl , "Organisation"@en ;
+      rdfs:label "Organisatie"@nl ;
+      dcterms:issued "2017-03-31"^^xsd:date ;
+      dcterms:title "Organisatie"@nl ;
       vann:preferredNamespaceUri
               "http://data.vlaanderen.be/ns/organisatie" .
 
@@ -40,56 +44,7 @@ eu:hasFormalFramework
       rdfs:comment "TODO"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
       rdfs:label "Hoedanigheid"@nl ;
-      rdfs:subClassOf <http://purl.org/dc/terms/Agent> , org:Post .
-
-<http://data.vlaanderen.be/ns/organisatie#OrganisatieActiviteit>
-      a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
-      rdfs:label "TODO"@nl ;
-      owl:oneOf () .
-
-<http://data.vlaanderen.be/ns/organisatie#OrganisatieClassificatie>
-      a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
-      rdfs:label "TODO"@nl ;
-      owl:oneOf () .
-
-<http://data.vlaanderen.be/ns/organisatie#OrganisatieStatus>
-      a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
-      rdfs:label "TODO"@nl ;
-      owl:oneOf () .
-
-<http://data.vlaanderen.be/ns/organisatie#OrganisatieType>
-      a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
-      rdfs:label "TODO"@nl ;
-      owl:oneOf () .
-
-<http://data.vlaanderen.be/ns/organisatie#Rechtspersoonlijkheidtype>
-      a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
-      rdfs:label "TODO"@nl ;
-      owl:oneOf ([] []) .
-
-<http://data.vlaanderen.be/ns/organisatie#Rechtstoestandtype>
-      a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
-      rdfs:label "TODO"@nl ;
-      owl:oneOf () .
-
-<http://data.vlaanderen.be/ns/organisatie#Rechtsvormtype>
-      a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
-      rdfs:label "TODO"@nl ;
-      owl:oneOf () .
+      rdfs:subClassOf dcterms:Agent , org:Post .
 
 <http://data.vlaanderen.be/ns/organisatie#Splitsing>
       a       owl:Class ;
@@ -126,7 +81,7 @@ eu:hasFormalFramework
       rdfs:domain <http://data.vlaanderen.be/ns/organisatie#Hoedanigheid> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
       rdfs:label "contactinfo"@nl ;
-      rdfs:range <https://schema.org/ContactPoint> .
+      rdfs:range schema:ContactPoint .
 
 <http://data.vlaanderen.be/ns/organisatie#rechtspersoonlijkheid>
       a       owl:ObjectProperty ;
@@ -134,9 +89,9 @@ eu:hasFormalFramework
       rdfs:domain rov:RegisteredOrganization ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
       rdfs:label "rechtspersoonlijkheid"@nl ;
-      rdfs:range <http://data.vlaanderen.be/ns/organisatie#Rechtspersoonlijkheidtype> ;
+      rdfs:range skos:Concept ;
       rdfs:subPropertyOf rov:orgType ;
-      vann:usageNote "NOTE"@nl .
+      vann:usageNote "Een rechtspersoon is een juridische constructie die een Organisatie dezelfde rechtspersoonlijkheid geeft als een natuurlijk persoon (kan bv ook schulden hebben, contracten afsluiten, aangeklaagd worden etc). Vb privaatrechterlijke rechtspersonen: vennootschappen, vzw's etc.; vb publiekrechterlijke rechtspersonen: steden, gemeenten etc. Een feitelijke vereniging is in principe geen rechtspersoon."@nl .
 
 <http://data.vlaanderen.be/ns/organisatie#rechtstoestand>
       a       owl:ObjectProperty ;
@@ -144,7 +99,7 @@ eu:hasFormalFramework
       rdfs:domain rov:RegisteredOrganization ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
       rdfs:label "rechtstoestand"@nl ;
-      rdfs:range <http://data.vlaanderen.be/ns/organisatie#Rechtstoestandtype> ;
+      rdfs:range skos:Concept ;
       rdfs:subPropertyOf rov:orgStatus ;
       vann:usageNote "Stemt overeen met rechtstoestand, bvb Normale toestand, Gerechtelijk akkoord, Opening faillissement etc."@nl .
 
@@ -154,7 +109,7 @@ eu:hasFormalFramework
       rdfs:domain rov:RegisteredOrganization ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
       rdfs:label "rechtsvorm"@nl ;
-      rdfs:range <http://data.vlaanderen.be/ns/organisatie#Rechtsvormtype> ;
+      rdfs:range skos:Concept ;
       rdfs:subPropertyOf rov:orgType ;
       vann:usageNote "Bvb NV, VZW, Stad/Gemeente, OCMW etc."@nl .
 
@@ -166,13 +121,13 @@ eu:hasFormalFramework
       rdfs:label "reden stopzetting"@nl ;
       rdfs:range skos:Concept .
 
-<http://purl.org/dc/terms/date>
+dcterms:date
       rdfs:label "datum"@nl .
 
-<http://purl.org/dc/terms/description>
+dcterms:description
       rdfs:label "beschrijving"@nl .
 
-<http://purl.org/dc/terms/spatial>
+dcterms:spatial
       rdfs:label "spatiaal"@nl .
 
 <http://schema.org/contactPoint>
@@ -313,11 +268,8 @@ rov:orgType
 rov:registration
       rdfs:label "organisatieregistratie"@nl .
 
-<http://xmlns.com/foaf/0.1/homepage>
+foaf:homepage
       rdfs:label "Homepage"@nl .
 
-<https://www.w3.org/TR/vocab-org/#org:Role>
+<https://www.w3.org/ns/org#Role>
       rdfs:label "Rol"@nl .
-
-<https://www.w3.org/ns/org#reportsTo>
-      rdfs:label "rapporteert aan"@nl .
