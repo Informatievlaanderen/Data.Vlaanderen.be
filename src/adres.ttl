@@ -1,4 +1,4 @@
-@prefix schema:  <https://schema.org/> .
+@prefix schema:  <http://schema.org/> .
 @prefix org:     <http://www.w3.org/ns/org#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
@@ -17,9 +17,9 @@
 
 <http://data.vlaanderen.be/ns/adres>
       a       owl:Ontology ;
-      rdfs:label "Adres"@nl ;
+      rdfs:label "Adres"@nl , "Address"@en ;
       dcterms:issued "2017-03-31"^^xsd:date ;
-      dcterms:title "Adres"@nl ;
+      dcterms:title "Adres"@nl , "Address"@en ;
       vann:preferredNamespaceUri
               "http://data.vlaanderen.be/ns/adres" .
 
@@ -255,7 +255,7 @@
       rdfs:domain <http://data.vlaanderen.be/ns/adres#Adres> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
       rdfs:label "positie"@nl ;
-      rdfs:range locn:Geometry ;
+      rdfs:range <http://data.vlaanderen.be/ns/generiek#GeografischePositie> ;
       rdfs:subPropertyOf locn:geometry .
 
 <http://data.vlaanderen.be/ns/adres#postcode>

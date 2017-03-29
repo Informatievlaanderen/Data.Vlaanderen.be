@@ -1,4 +1,4 @@
-@prefix schema:  <https://schema.org/> .
+@prefix schema:  <http://schema.org/> .
 @prefix org:     <http://www.w3.org/ns/org#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
@@ -15,11 +15,14 @@
 @prefix cpsv:    <http://purl.org/vocab/cpsv#> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 
+<http:///www.w3.org/ns/person#residency>
+      rdfs:label "inwonerschap"@nl .
+
 <http://data.vlaanderen.be/ns/persoon>
       a       owl:Ontology ;
-      rdfs:label "Persoon"@nl ;
+      rdfs:label "Person"@en , "Persoon"@nl ;
       dcterms:issued "2017-03-31"^^xsd:date ;
-      dcterms:title "Persoon"@nl ;
+      dcterms:title "Person"@en , "Persoon"@nl ;
       vann:preferredNamespaceUri
               "http://data.vlaanderen.be/ns/persoon" .
 
@@ -409,7 +412,7 @@
       rdfs:range rdfs:Literal ;
       rdfs:subPropertyOf foaf:name .
 
-<http://schema.org/contactPoint>
+schema:contactPoint
       rdfs:label "contactpunt"@nl .
 
 person:Person
@@ -417,6 +420,9 @@ person:Person
 
 person:birthName
       rdfs:label "geboortenaam"@nl .
+
+person:citizenship
+      rdfs:label "staatsburgerschap"@nl .
 
 person:patronymicName
       rdfs:label "patroniem"@nl .

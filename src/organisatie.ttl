@@ -1,4 +1,4 @@
-@prefix schema:  <https://schema.org/> .
+@prefix schema:  <http://schema.org/> .
 @prefix org:     <http://www.w3.org/ns/org#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
@@ -26,9 +26,9 @@ eu:hasFormalFramework
 
 <http://data.vlaanderen.be/ns/organisatie>
       a       owl:Ontology ;
-      rdfs:label "Organisatie"@nl ;
+      rdfs:label "Organisatie"@nl , "Organisation"@en ;
       dcterms:issued "2017-03-31"^^xsd:date ;
-      dcterms:title "Organisatie"@nl ;
+      dcterms:title "Organisatie"@nl , "Organisation"@en ;
       vann:preferredNamespaceUri
               "http://data.vlaanderen.be/ns/organisatie" .
 
@@ -81,7 +81,7 @@ eu:hasFormalFramework
       rdfs:domain <http://data.vlaanderen.be/ns/organisatie#Hoedanigheid> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
       rdfs:label "contactinfo"@nl ;
-      rdfs:range schema:ContactPoint .
+      rdfs:range <https://schema.org/ContactPoint> .
 
 <http://data.vlaanderen.be/ns/organisatie#rechtspersoonlijkheid>
       a       owl:ObjectProperty ;
@@ -130,10 +130,10 @@ dcterms:description
 dcterms:spatial
       rdfs:label "spatiaal"@nl .
 
-<http://schema.org/contactPoint>
+schema:contactPoint
       rdfs:label "contactpunt"@nl .
 
-<http://schema.org/logo>
+schema:logo
       rdfs:label "logo"@nl .
 
 skos:altLabel
@@ -165,6 +165,9 @@ org:Post
 
 org:Site
       rdfs:label "Vestiging"@nl .
+
+org:basedAt
+      rdfs:label "heeft standplaats"@nl .
 
 org:changedBy
       rdfs:label "veranderd door"@nl .
