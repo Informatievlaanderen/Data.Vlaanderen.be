@@ -47,7 +47,7 @@
                         
                         <dt>Laatste aanpassing</dt>
 
-                        <dd>2017-03-28
+                        <dd>2017-03-29
                         </dd>
                         
 
@@ -179,7 +179,7 @@
 
 
                         
-                        <dt>Redacteurs</dt>
+                        <dt>Editors</dt>
                         
                         
                         <dd inlist="" rel="bibo:editor" class="p-author h-card vcard">
@@ -223,8 +223,8 @@
             <div class="grid">
                 <div class="col--9-12 col--1-1--s">
                 <div class="introduction typography">
-                            <p>Dit document beschrijft een <strong>applicatie-profiel</strong> voor <strong>Adres</strong>, in dit geval <strong>Adresregister AP</strong>.
-                            Een applicatie-profiel is een specificatie die bestaande termen hergebruikt van verschillende basis-standaarden
+                            <p>Dit document beschrijft een <strong>applicatieprofiel</strong> voor <strong>Adres</strong>, in dit geval <strong>Adresregister AP</strong>.
+                            Een applicatieprofiel is een specificatie die bestaande termen hergebruikt van verschillende basis-standaarden
                             en daar meer specificiteit aan toevoegt.
                             Daarbij wordt het gebruik van de termen toegelicht voor de uitwisseling van Vlaamse overheidsinformatie.
                             Het AP beantwoord de vraag over hoe het corresponderende domeinmodel in de praktijk kan toegepast worden.
@@ -239,14 +239,37 @@
       <div class="region region--no-space-top">
           <div class="layout layout--normal">
             <h2 class="h2">Licentie en aansprakelijkheid</h2>
-            <div class="grid">
-              <div class="col--9-12 col--1-1--s typography">
-                    <div><p><span xmlns:dct="http://purl.org/dc/terms/" rel="dct:type" property="dct:title" href="http://purl.org/dc/dcmitype/Text">Deze specificatie</span> van <a xmlns:cc="http://creativecommons.org/ns#" rel="cc:attributionURL" property="cc:attributionName" href="http://vlaanderen.be/informatievlaanderen">Informatie Vlaanderen</a> is gepubliceerd onder de <a href="https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html" rel="license">"Modellicentie Gratis Hergebruik - v1.0"</a>.<br /></p>
-                    </div>
-              </div>
-            </div>
+            <p><span xmlns:dct="http://purl.org/dc/terms/" rel="dct:type" property="dct:title" href="http://purl.org/dc/dcmitype/Text">Deze specificatie</span> van <a xmlns:cc="http://creativecommons.org/ns#" rel="cc:attributionURL" property="cc:attributionName" href="http://vlaanderen.be/informatievlaanderen">Informatie Vlaanderen</a> is gepubliceerd onder de <a href="https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html" rel="license">"Modellicentie Gratis Hergebruik - v1.0"</a>.</p>
           </div>
       </div>
+      <div class="region region--no-space-top">
+        <div class="layout layout--normal">
+        <div class="grid">
+        <div class="col--9-12 col--1-1--s typography">
+        <h2 class="h2" id="conformance" aria-level="1" role="heading"><span class="secno">2. </span>Conformantie</h2>
+
+        <p>Een applicatieprofiel is een specificatie voor gegevensuitwisseling dat bijkomende beperkingen introduceert voor het toepassen van vocabularia.
+        Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
+        <p>
+        <ul>
+        <li>verfijning van de terminologie (klassen en eigenschappen) consistent met de semantiek uit de betreffende specificaties met een welbepaald gebruik als doel;</li>
+        <li>externe terminologie (klassen en eigenschappen) gebruikt voor nieuwe/extra termen die niet in de bestaande vocabularia voorkomen.</li>
+        </ul>
+        </p>
+        <p>Om conform te zijn met dit applicatieprofiel, MOET een implementatie:</p>
+        <p>
+        <ul>
+        <li>Voor elke klasse steeds de eigenschappen bevatten die als minimum kardinaliteit 1 hebben.</li>
+        <li>Niet meer dan 1 instantie bevatten van eigenschappen die 1 als maximum kardinaliteit hebben.</li>
+        <li>De terminologie (klassen en eigenschappen) gebruiken op een manier die consistent is met haar semantiek (definitie, gebruik, domein en bereik).</li>
+        <li>Geen terminologie van andere gecontroleerde vocabularia gebruiken dan diegene die gedefinieerd wordt in dit applicatieprofiel.</li>
+        <li>Mag uitgebreid worden met klassen en eigenschappen van andere datamodellen (vocabularia) die niet overlappen met terminologie uit dit applicatieprofiel.</li>
+        </ul>
+        </p>
+        </div>
+        </div>
+    </div>
+    </div>
       <div class="region region--no-space-top">
           <div class="layout layout--normal">
             <h2 class="h2">Overzicht</h2>
@@ -292,7 +315,7 @@
       </div>
       <div class="region region--no-space-top">
           <div class="layout layout--normal">
-            <img src="/cms/ap/adres.jpg" />
+            <img src="/cms/ap/adres/adres.jpg" />
           </div>
       </div>
       
@@ -306,7 +329,8 @@
                     <div><p></p></div>
                     
                     
-                    <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: busnummer, huisnummer, officieelToegekend, positie, Adres.status, heeftPostinfo, isVerrijktMet, heeftStraatnaam, heeftGemeentenaam, isToegekendAan, wasAttributedTo.</p></div>
+                    
+                    <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: busnummer, huisnummer, officieelToegekend, positie, Adres.status, heeftPostinfo, heeftGemeentenaam, isToegekendAan, wasAttributedTo, heeftStraatnaam, isVerrijktMet.</p></div>
                     </div>
                     <div class="u-table-overflow">
                         <table class="data-table">
@@ -328,7 +352,7 @@
                           <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#busnummer">
                             <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/adres#busnummer" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#busnummer" data-placement="right">busnummer</a></code></td>
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -388,31 +412,7 @@
                           <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#heeftPostinfo">
                             <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/adres#heeftPostinfo" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#heeftPostinfo" data-placement="right">heeft postinfo</a></code></td>
                             <td><a href="http://data.vlaanderen.be/ns/adres#Postinfo" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#Postinfo" data-placement="right">Postinfo</a></td>
-                            <td> ... </td>
-                            <td property="rdfs:comment">TODO</td>
-                            <td property="vann:usageNote"></td>
-                            <td></td>
-                          </tr>
-                          
-                          
-                          
-                          
-                          <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#isVerrijktMet">
-                            <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/adres#isVerrijktMet" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#isVerrijktMet" data-placement="right">is verrijkt met</a></code></td>
-                            <td><a href="http://data.vlaanderen.be/ns/adres#Adresuitbreiding" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#Adresuitbreiding" data-placement="right">Adresuitbreiding</a></td>
-                            <td> ... </td>
-                            <td property="rdfs:comment">TODO</td>
-                            <td property="vann:usageNote"></td>
-                            <td></td>
-                          </tr>
-                          
-                          
-                          
-                          
-                          <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#heeftStraatnaam">
-                            <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/adres#heeftStraatnaam" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#heeftStraatnaam" data-placement="right">heeft straatnaam</a></code></td>
-                            <td><a href="http://data.vlaanderen.be/ns/adres#Straatnaam" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#Straatnaam" data-placement="right">Straatnaam</a></td>
-                            <td> ... </td>
+                            <td>1 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -424,7 +424,7 @@
                           <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#heeftGemeentenaam">
                             <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/adres#heeftGemeentenaam" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#heeftGemeentenaam" data-placement="right">heeft gemeentenaam</a></code></td>
                             <td><a href="http://data.vlaanderen.be/ns/adres#Gemeentenaam" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#Gemeentenaam" data-placement="right">Gemeentenaam</a></td>
-                            <td> ... </td>
+                            <td>1 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -436,7 +436,7 @@
                           <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#isToegekendAan">
                             <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/adres#isToegekendAan" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#isToegekendAan" data-placement="right">is toegekend aan</a></code></td>
                             <td><a href="http://data.vlaanderen.be/ns/adres#AdresseerbaarObject" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#AdresseerbaarObject" data-placement="right">AdresseerbaarObject</a></td>
-                            <td> ... </td>
+                            <td>0 ... *</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -448,7 +448,31 @@
                           <tr typeof="rdfs:Property" resource="http://www.w3.org/ns/prov#wasAttributedTo">
                             <td><code property="rdfs:label"><a href="http://www.w3.org/ns/prov#wasAttributedTo" data-toggle="tooltip" data-content="http://www.w3.org/ns/prov#wasAttributedTo" data-placement="right">toegeschreven aan</a></code></td>
                             <td><a href="http://purl.org/dc/terms/Agent" data-toggle="tooltip" data-content="http://purl.org/dc/terms/Agent" data-placement="right">Agent</a></td>
-                            <td> ... </td>
+                            <td>1 ... 1</td>
+                            <td property="rdfs:comment">TODO</td>
+                            <td property="vann:usageNote"></td>
+                            <td></td>
+                          </tr>
+                          
+                          
+                          
+                          
+                          <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#heeftStraatnaam">
+                            <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/adres#heeftStraatnaam" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#heeftStraatnaam" data-placement="right">heeft straatnaam</a></code></td>
+                            <td><a href="http://data.vlaanderen.be/ns/adres#Straatnaam" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#Straatnaam" data-placement="right">Straatnaam</a></td>
+                            <td>1 ... 1</td>
+                            <td property="rdfs:comment">TODO</td>
+                            <td property="vann:usageNote"></td>
+                            <td></td>
+                          </tr>
+                          
+                          
+                          
+                          
+                          <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#isVerrijktMet">
+                            <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/adres#isVerrijktMet" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#isVerrijktMet" data-placement="right">is verrijkt met</a></code></td>
+                            <td><a href="http://data.vlaanderen.be/ns/adres#Adresuitbreiding" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#Adresuitbreiding" data-placement="right">Adresuitbreiding</a></td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -457,6 +481,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -471,6 +496,7 @@
                     <div class="region region--no-space-top">
                     <div><p>TODO</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: aanduiding, label, niveau.</p></div>
@@ -495,7 +521,7 @@
                           <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#aanduiding">
                             <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/adres#aanduiding" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#aanduiding" data-placement="right">aanduiding</a></code></td>
                             <td><a href="http://data.vlaanderen.be/ns/adres#Locatieaanduiding" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#Locatieaanduiding" data-placement="right">Locatieaanduiding</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... *</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -507,7 +533,7 @@
                           <tr typeof="rdfs:Property" resource="https://www.w3.org/2000/01/rdf-schema#label">
                             <td><code property="rdfs:label"><a href="https://www.w3.org/2000/01/rdf-schema#label" data-toggle="tooltip" data-content="https://www.w3.org/2000/01/rdf-schema#label" data-placement="right">TODO</a></code></td>
                             <td><a href="http://data.vlaanderen.be/ns/adres#Locatienaam" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#Locatienaam" data-placement="right">Locatienaam</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... *</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -528,6 +554,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -542,6 +569,7 @@
                     <div class="region region--no-space-top">
                     <div><p>TODO</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: adreslocator, volledigAdres.</p></div>
@@ -566,7 +594,7 @@
                           <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#adreslocator">
                             <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/adres#adreslocator" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#adreslocator" data-placement="right">locator</a></code></td>
                             <td><a href="http://data.vlaanderen.be/ns/adres#Adreslocator" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#Adreslocator" data-placement="right">Adreslocator</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... *</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -578,7 +606,7 @@
                           <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#volledigAdres">
                             <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/adres#volledigAdres" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#volledigAdres" data-placement="right">volledig adres</a></code></td>
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... *</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -587,6 +615,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -601,6 +630,7 @@
                     <div class="region region--no-space-top">
                     <div><p>TODO</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: adminUnitL1, adminUnitL2, addressArea, Adresvoorstelling.busnummer, gemeentenaam, Adresvoorstelling.huisnummer, land, locatorDesignator, locatorName, poBox, postCode, postName, thoroughfare, fullAddress, verwijstNaar.</p></div>
@@ -625,7 +655,7 @@
                           <tr typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#adminUnitL1">
                             <td><code property="rdfs:label"><a href="http://www.w3.org/ns/locn#adminUnitL1" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#adminUnitL1" data-placement="right">administratieve eenheid niveau 1</a></code></td>
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -637,7 +667,7 @@
                           <tr typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#adminUnitL2">
                             <td><code property="rdfs:label"><a href="http://www.w3.org/ns/locn#adminUnitL2" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#adminUnitL2" data-placement="right">administratieve eenheid niveau 2</a></code></td>
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -649,7 +679,7 @@
                           <tr typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#addressArea">
                             <td><code property="rdfs:label"><a href="http://www.w3.org/ns/locn#addressArea" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#addressArea" data-placement="right">adresgebied</a></code></td>
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -661,7 +691,7 @@
                           <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer">
                             <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer" data-placement="right">busnummer</a></code></td>
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -673,7 +703,7 @@
                           <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#gemeentenaam">
                             <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/adres#gemeentenaam" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#gemeentenaam" data-placement="right">gemeentenaam</a></code></td>
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -685,7 +715,7 @@
                           <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer">
                             <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer" data-placement="right">huisnummer</a></code></td>
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -697,7 +727,7 @@
                           <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#land">
                             <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/adres#land" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#land" data-placement="right">land</a></code></td>
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -709,7 +739,7 @@
                           <tr typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#locatorDesignator">
                             <td><code property="rdfs:label"><a href="http://www.w3.org/ns/locn#locatorDesignator" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#locatorDesignator" data-placement="right">locatieaanduiding</a></code></td>
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -719,9 +749,9 @@
                           
                           
                           <tr typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#locatorName">
-                            <td><code property="rdfs:label"><a href="http://www.w3.org/ns/locn#locatorName" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#locatorName" data-placement="right">locatienaam</a></code></td>
+                            <td><code property="rdfs:label"><a href="http://www.w3.org/ns/locn#locatorName" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#locatorName" data-placement="right">Locatienaam</a></code></td>
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -733,7 +763,7 @@
                           <tr typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#poBox">
                             <td><code property="rdfs:label"><a href="http://www.w3.org/ns/locn#poBox" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#poBox" data-placement="right">postbus</a></code></td>
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -745,7 +775,7 @@
                           <tr typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#postCode">
                             <td><code property="rdfs:label"><a href="http://www.w3.org/ns/locn#postCode" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#postCode" data-placement="right">postcode</a></code></td>
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -757,7 +787,7 @@
                           <tr typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#postName">
                             <td><code property="rdfs:label"><a href="http://www.w3.org/ns/locn#postName" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#postName" data-placement="right">postnaam</a></code></td>
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -769,7 +799,7 @@
                           <tr typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#thoroughfare">
                             <td><code property="rdfs:label"><a href="http://www.w3.org/ns/locn#thoroughfare" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#thoroughfare" data-placement="right">straatnaam</a></code></td>
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -781,7 +811,7 @@
                           <tr typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#fullAddress">
                             <td><code property="rdfs:label"><a href="http://www.w3.org/ns/locn#fullAddress" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#fullAddress" data-placement="right">volledig adres</a></code></td>
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -802,6 +832,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -816,6 +847,7 @@
                     <div class="region region--no-space-top">
                     <div><p>TODO</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: adres, bouwjaar, geldigheidsperiode, geometrie, bestaatUit.</p></div>
@@ -875,7 +907,7 @@
                           
                           <tr typeof="rdfs:Property" resource="http://fixme.com#geometrie">
                             <td><code property="rdfs:label"><a href="http://fixme.com#geometrie" data-toggle="tooltip" data-content="http://fixme.com#geometrie" data-placement="right">TODO</a></code></td>
-                            <td><a href="http://www.w3.org/ns/locn#Geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#Geometry" data-placement="right">Geometrie</a></td>
+                            <td><a href="http://data.vlaanderen.be/ns/generiek#Geometrie" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#Geometrie" data-placement="right">Geometrie</a></td>
                             <td>1 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
@@ -888,7 +920,7 @@
                           <tr typeof="rdfs:Property" resource="http://fixme.com#bestaatUit">
                             <td><code property="rdfs:label"><a href="http://fixme.com#bestaatUit" data-toggle="tooltip" data-content="http://fixme.com#bestaatUit" data-placement="right">TODO</a></code></td>
                             <td><a href="http://fixme.com#Gebouweenheid" data-toggle="tooltip" data-content="http://fixme.com#Gebouweenheid" data-placement="right">Gebouweenheid</a></td>
-                            <td> ... </td>
+                            <td>0 ... *</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -897,6 +929,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -911,6 +944,7 @@
                     <div class="region region--no-space-top">
                     <div><p>TODO</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: adres, functie, geldigheidsperiode, geometrie.</p></div>
@@ -970,7 +1004,7 @@
                           
                           <tr typeof="rdfs:Property" resource="http://fixme.com#geometrie">
                             <td><code property="rdfs:label"><a href="http://fixme.com#geometrie" data-toggle="tooltip" data-content="http://fixme.com#geometrie" data-placement="right">TODO</a></code></td>
-                            <td><a href="http://www.w3.org/ns/locn#Geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#Geometry" data-placement="right">Geometrie</a></td>
+                            <td><a href="http://data.vlaanderen.be/ns/generiek#Geometrie" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#Geometrie" data-placement="right">Geometrie</a></td>
                             <td>1 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
@@ -980,6 +1014,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -994,6 +1029,7 @@
                     <div class="region region--no-space-top">
                     <div><p>TODO</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: label.</p></div>
@@ -1018,7 +1054,7 @@
                           <tr typeof="rdfs:Property" resource="http://www.w3.org/2000/01/rdf-schema#label">
                             <td><code property="rdfs:label"><a href="http://www.w3.org/2000/01/rdf-schema#label" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#label" data-placement="right">gemeentenaam</a></code></td>
                             <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">GeografischeNaam</a></td>
-                            <td>1 ... 1</td>
+                            <td>1 ... *</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -1027,6 +1063,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -1043,7 +1080,8 @@
                     <div><p></p></div>
                     
                     
-                    <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: default, geometry, methode, specificatie.</p></div>
+                    
+                    <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: default, geometrie, methode, specificatie.</p></div>
                     </div>
                     <div class="u-table-overflow">
                         <table class="data-table">
@@ -1074,9 +1112,9 @@
                           
                           
                           
-                          <tr typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#geometry">
-                            <td><code property="rdfs:label"><a href="http://www.w3.org/ns/locn#geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#geometry" data-placement="right">TODO</a></code></td>
-                            <td><a href="http://www.w3.org/ns/locn#Geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#Geometry" data-placement="right">Geometrie</a></td>
+                          <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/generiek#geometrie">
+                            <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/generiek#geometrie" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#geometrie" data-placement="right">TODO</a></code></td>
+                            <td><a href="http://data.vlaanderen.be/ns/generiek#Geometrie" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#Geometrie" data-placement="right">Geometrie</a></td>
                             <td>1 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
@@ -1089,7 +1127,7 @@
                           <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/generiek#methode">
                             <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/generiek#methode" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#methode" data-placement="right">TODO</a></code></td>
                             <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">GeometrieMethodeWaarde</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote">Zie http://inspire.ec.europa.eu/codelist/GeometryMethodValue.</td>
                             <td></td>
@@ -1101,7 +1139,7 @@
                           <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/generiek#specificatie">
                             <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/generiek#specificatie" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#specificatie" data-placement="right">TODO</a></code></td>
                             <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">GeometrieSpecificatieWaarde</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote">Zie http://inspire.ec.europa.eu/codelist/GeometrySpecificationValue.</td>
                             <td></td>
@@ -1110,6 +1148,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -1124,6 +1163,7 @@
                     <div class="region region--no-space-top">
                     <div><p>TODO</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: Locatieaanduiding.aanduiding, Locatieaanduiding.type.</p></div>
@@ -1169,6 +1209,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -1183,6 +1224,7 @@
                     <div class="region region--no-space-top">
                     <div><p>TODO</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: label, Locatienaam.type.</p></div>
@@ -1207,7 +1249,7 @@
                           <tr typeof="rdfs:Property" resource="https://www.w3.org/2000/01/rdf-schema#label">
                             <td><code property="rdfs:label"><a href="https://www.w3.org/2000/01/rdf-schema#label" data-toggle="tooltip" data-content="https://www.w3.org/2000/01/rdf-schema#label" data-placement="right">TODO</a></code></td>
                             <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">GeografischeNaam</a></td>
-                            <td>1 ... 1</td>
+                            <td>1 ... *</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -1228,6 +1270,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -1242,6 +1285,7 @@
                     <div class="region region--no-space-top">
                     <div><p>TODO</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: Adres, Geldigheidsperiode, Geometrie.</p></div>
@@ -1289,7 +1333,7 @@
                           
                           <tr typeof="rdfs:Property" resource="http://fixme.com#Geometrie">
                             <td><code property="rdfs:label"><a href="http://fixme.com#Geometrie" data-toggle="tooltip" data-content="http://fixme.com#Geometrie" data-placement="right">TODO</a></code></td>
-                            <td><a href="http://www.w3.org/ns/locn#Geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#Geometry" data-placement="right">Geometrie</a></td>
+                            <td><a href="http://data.vlaanderen.be/ns/generiek#Geometrie" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#Geometrie" data-placement="right">Geometrie</a></td>
                             <td>1 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
@@ -1299,6 +1343,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -1313,6 +1358,7 @@
                     <div class="region region--no-space-top">
                     <div><p>TODO</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: postcode, postnaam.</p></div>
@@ -1349,7 +1395,7 @@
                           <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#postnaam">
                             <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/adres#postnaam" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#postnaam" data-placement="right">postnaam</a></code></td>
                             <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">GeografischeNaam</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... *</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -1358,6 +1404,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -1372,6 +1419,7 @@
                     <div class="region region--no-space-top">
                     <div><p>TODO</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: homoniemToevoeging, Straatnaam.status, label, wasAttributedTo.</p></div>
@@ -1396,7 +1444,7 @@
                           <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#homoniemToevoeging">
                             <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/adres#homoniemToevoeging" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#homoniemToevoeging" data-placement="right">homoniem toevoeging</a></code></td>
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
-                            <td>1 ... 1</td>
+                            <td>0 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -1420,7 +1468,7 @@
                           <tr typeof="rdfs:Property" resource="https://www.w3.org/2000/01/rdf-schema#label">
                             <td><code property="rdfs:label"><a href="https://www.w3.org/2000/01/rdf-schema#label" data-toggle="tooltip" data-content="https://www.w3.org/2000/01/rdf-schema#label" data-placement="right">TODO</a></code></td>
                             <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">GeografischeNaam</a></td>
-                            <td>1 ... 1</td>
+                            <td>1 ... *</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -1432,7 +1480,7 @@
                           <tr typeof="rdfs:Property" resource="http://www.w3.org/ns/prov#wasAttributedTo">
                             <td><code property="rdfs:label"><a href="http://www.w3.org/ns/prov#wasAttributedTo" data-toggle="tooltip" data-content="http://www.w3.org/ns/prov#wasAttributedTo" data-placement="right">toegeschreven aan</a></code></td>
                             <td><a href="http://purl.org/dc/terms/Agent" data-toggle="tooltip" data-content="http://purl.org/dc/terms/Agent" data-placement="right">Agent</a></td>
-                            <td> ... </td>
+                            <td>1 ... 1</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -1441,6 +1489,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -1463,6 +1512,10 @@
     <style>
       @media screen {  /* hide from IE3 */
         a[href]:hover { background: #ffa }
+      }
+
+      p {
+        text-align: justify;
       }
 
       tr:nth-child(even) td     { background-color:#eee; }

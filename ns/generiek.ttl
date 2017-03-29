@@ -10,6 +10,7 @@
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix person: <http://www.w3.org/ns/person#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rec: <http://www.w3.org/2001/02pd/rec54#> .
@@ -42,15 +43,15 @@ eu:territorialApplication rdfs:label "territoriale toepassing"@nl .
 <http://data.vlaanderen.be/ns/generiek#bewerking> a owl:ObjectProperty ;
     rdfs:label "type"@nl ;
     rdfs:comment "TODO"@nl ;
-    rdfs:domain <http://www.w3.org/ns/prov#Activity> ;
+    rdfs:domain prov:Activity ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
-    rdfs:range <http://data.vlaanderen.be/ns/generiek#Bewerkingstype> ;
+    rdfs:range skos:Concept ;
     rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/type> .
 
 <http://data.vlaanderen.be/ns/generiek#default> a owl:DatatypeProperty ;
-    rdfs:label "TODO"@nl ;
+    rdfs:label "default"@nl ;
     rdfs:comment "TODO"@nl ;
-    rdfs:domain locn:Geometry ;
+    rdfs:domain <http://data.vlaanderen.be/ns/generiek#GeografischePositie> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
     rdfs:range xsd:boolean .
 
@@ -62,10 +63,18 @@ eu:territorialApplication rdfs:label "territoriale toepassing"@nl .
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
     rdfs:range rdfs:Literal .
 
-<http://data.vlaanderen.be/ns/generiek#methode> a owl:ObjectProperty ;
-    rdfs:label "TODO"@nl ;
+<http://data.vlaanderen.be/ns/generiek#handeldeInOpdrachtVan> a owl:ObjectProperty ;
+    rdfs:label "handelde in opdracht van"@nl ;
     rdfs:comment "TODO"@nl ;
-    rdfs:domain locn:Geometry ;
+    rdfs:domain prov:Agent ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+    rdfs:range org:Organization ;
+    rdfs:subPropertyOf prov:actedOnBehalfOf .
+
+<http://data.vlaanderen.be/ns/generiek#methode> a owl:ObjectProperty ;
+    rdfs:label "methode"@nl ;
+    rdfs:comment "TODO"@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/generiek#GeografischePositie> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
     rdfs:range skos:Concept .
 
@@ -78,25 +87,11 @@ eu:territorialApplication rdfs:label "territoriale toepassing"@nl .
     rdfs:range rdf:langString .
 
 <http://data.vlaanderen.be/ns/generiek#specificatie> a owl:ObjectProperty ;
-    rdfs:label "TODO"@nl ;
+    rdfs:label "specificatie"@nl ;
     rdfs:comment "TODO"@nl ;
-    rdfs:domain locn:Geometry ;
+    rdfs:domain <http://data.vlaanderen.be/ns/generiek#GeografischePositie> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
     rdfs:range skos:Concept .
-
-<http://data.vlaanderen.be/ns/generiek#string> a owl:DatatypeProperty ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain rdfs:Literal ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
-    rdfs:range rdfs:Literal .
-
-<http://data.vlaanderen.be/ns/generiek#type> a owl:DatatypeProperty ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain rdfs:Literal ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
-    rdfs:range xsd:anyURI .
 
 dcterms:creator rdfs:label "maker"@nl .
 
@@ -120,6 +115,8 @@ gsp:asWKT rdfs:label "als WKT"@nl .
 
 rdfs:Resource rdfs:label "Resource"@nl .
 
+rdfs:label rdfs:label "label"@nl .
+
 geo:Point rdfs:label "Punt"@nl .
 
 <http://www.w3.org/2003/01/geo/wgs84_post#lat> rdfs:label "latitude"@nl .
@@ -136,21 +133,23 @@ skos:notation rdfs:label "notatie"@nl .
 
 <http://www.w3.org/ns/adms#status> rdfs:label "status"@nl .
 
+locn:Geometry rdfs:label "Geometrie"@nl .
+
 locn:address rdfs:label "adres"@nl .
 
-<http://www.w3.org/ns/prov#Agent> rdfs:label "agent"@nl .
+locn:geometry rdfs:label "geometrie"@nl .
 
-<http://www.w3.org/ns/prov#Entity> rdfs:label "Entiteit"@nl .
+prov:Entity rdfs:label "Entiteit"@nl .
 
-<http://www.w3.org/ns/prov#Generation> rdfs:label "Generatie"@nl .
+prov:Generation rdfs:label "Generatie"@nl .
 
-<http://www.w3.org/ns/prov#Invalidation> rdfs:label "Invalidatie"@nl .
+prov:Invalidation rdfs:label "Invalidatie"@nl .
 
-<http://www.w3.org/ns/prov#activity> rdfs:label "activiteit"@nl .
+prov:activity rdfs:label "activiteit"@nl .
 
-<http://www.w3.org/ns/prov#atTime> rdfs:label "op tijdstip"@nl .
+prov:atTime rdfs:label "op tijdstip"@nl .
 
-<http://www.w3.org/ns/prov#wasAssociatedWith> rdfs:label "was geassocieerd met"@nl .
+prov:wasAssociatedWith rdfs:label "was geassocieerd met"@nl .
 
 foaf:Document rdfs:label "Document"@nl .
 
@@ -172,27 +171,25 @@ foaf:page rdfs:label "pagina"@nl .
 
 <https://schema.org/telephone> rdfs:label "telefoon"@nl .
 
-<http://data.vlaanderen.be/ns/generiek#Bewerkingstype> a owl:Class ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
-    owl:oneOf () .
+dcterms:Jurisdiction rdfs:label "Jurisdictie"@nl .
 
-dcterms:Jurisdiction rdfs:label "Jurisdictie"@nl ;
-    rdfs:comment "Het gebied waarover de rechtsmacht van een overheid zich uitstrekt."@nl .
+prov:Activity rdfs:label "Activiteit"@nl .
 
-<http://www.w3.org/ns/prov#Activity> rdfs:label "Activiteit"@nl .
+prov:Agent rdfs:label "Agent"@nl .
 
 dcterms:PeriodOfTime rdfs:label "TijdsInterval"@nl .
 
-skos:Concept rdfs:label "Concept"@nl,
-        "concept"@nl .
+<http://data.vlaanderen.be/ns/generiek#GeografischePositie> a owl:Class ;
+    rdfs:label "GeografischePositie"@nl ;
+    rdfs:comment "TODO"@nl ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> .
 
-locn:Geometry rdfs:label "Geometrie"@nl .
+skos:Concept rdfs:label "Concept"@nl .
 
 <http://data.vlaanderen.be/ns/generiek> a owl:Ontology ;
     rdfs:label "Generic"@en,
         "Generiek"@nl ;
+    dcterms:issued "2017-03-31"^^xsd:date ;
     dcterms:mediator [ foaf:homepage <https://overheid.vlaanderen.be/producten-diensten/OSLO2> ;
             foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
             foaf:name "OSLO Werkgroepen" ] ;
@@ -209,48 +206,20 @@ locn:Geometry rdfs:label "Geometrie"@nl .
             foaf:name "Mannens, Erik" ] ;
     foaf:maker [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
                     foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:raf.buyle@agiv.be> ;
-            foaf:name "Buyle, Raf" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:katrien.desmet@kb.vlaanderen.be> ;
-            foaf:name "De Smet, Katrien" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:dries.beheydt@agiv.be> ;
-            foaf:name "Beheydt, Dries" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:an.taelemans@kb.vlaanderen.be> ;
-            foaf:name "Taelemans, An" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:dorien.bauwens@bz.vlaanderen.be> ;
-            foaf:name "Bauwens, Dorien" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
             foaf:mbox <mailto:Siegfried.Vanlishout@agiv.be> ;
             foaf:name "Van Lishout, Ziggy" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:quincy.oeyen@bz.vlaanderen.be> ;
+            foaf:name "Oeyen, Quincy" ],
         [ schema:affiliation [ foaf:homepage <http://stad.gent> ;
                     foaf:name "Stad Gent" ] ;
             foaf:mbox <mailto:Thimo.Thoeye@stad.gent> ;
             foaf:name "Thoeye, Thimo" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:henk.vanderstraeten@bz.vlaanderen.be> ;
-            foaf:name "Vanderstraeten, Henk" ],
         [ schema:affiliation [ foaf:homepage <http://cipalschaubroeck.be> ;
                     foaf:name "Cipal Schaubroeck" ] ;
             foaf:mbox <mailto:willem.vanhoecke@cipalschaubroeck.be> ;
             foaf:name "Van Hoecke, Willem" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:bjorn.devidts@agiv.be> ;
-            foaf:name "De Vidts, Björn" ],
-        [ schema:affiliation [ foaf:homepage <https://www.lne.be/> ;
-                    foaf:name "LNE" ] ;
-            foaf:mbox <mailto:geert.vanhaute@lne.vlaanderen.be> ;
-            foaf:name "Van Haute, Geert" ],
         [ schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
                     foaf:name "imec - UGent" ] ;
             foaf:mbox <mailto:dieter.depaepe@ugent.be> ;
@@ -261,10 +230,38 @@ locn:Geometry rdfs:label "Geometrie"@nl .
             foaf:name "D'haenens, Thomas" ],
         [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
                     foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:quincy.oeyen@bz.vlaanderen.be> ;
-            foaf:name "Oeyen, Quincy" ],
+            foaf:mbox <mailto:dorien.bauwens@bz.vlaanderen.be> ;
+            foaf:name "Bauwens, Dorien" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:katrien.desmet@kb.vlaanderen.be> ;
+            foaf:name "De Smet, Katrien" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:bjorn.devidts@agiv.be> ;
+            foaf:name "De Vidts, Björn" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:an.taelemans@kb.vlaanderen.be> ;
+            foaf:name "Taelemans, An" ],
         [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
                     foaf:name "Informatie Vlaanderen" ] ;
             foaf:mbox <mailto:Geert.Thijs@agiv.be> ;
-            foaf:name "Thijs, Geert" ] .
+            foaf:name "Thijs, Geert" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:henk.vanderstraeten@bz.vlaanderen.be> ;
+            foaf:name "Vanderstraeten, Henk" ],
+        [ schema:affiliation [ foaf:homepage <https://www.lne.be/> ;
+                    foaf:name "LNE" ] ;
+            foaf:mbox <mailto:geert.vanhaute@lne.vlaanderen.be> ;
+            foaf:name "Van Haute, Geert" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:dries.beheydt@agiv.be> ;
+            foaf:name "Beheydt, Dries" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:raf.buyle@agiv.be> ;
+            foaf:name "Buyle, Raf" ] .
 

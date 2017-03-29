@@ -10,6 +10,7 @@
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix person: <http://www.w3.org/ns/person#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rec: <http://www.w3.org/2001/02pd/rec54#> .
@@ -181,7 +182,7 @@
     rdfs:comment "TODO"@nl ;
     rdfs:domain <http://data.vlaanderen.be/ns/adres#Adres> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/adres> ;
-    rdfs:range locn:Geometry ;
+    rdfs:range <http://data.vlaanderen.be/ns/generiek#GeografischePositie> ;
     rdfs:subPropertyOf locn:geometry .
 
 <http://data.vlaanderen.be/ns/adres#postcode> a owl:DatatypeProperty ;
@@ -228,7 +229,7 @@ locn:postCode rdfs:label "postcode"@nl .
 
 locn:thoroughfare rdfs:label "straatnaam"@nl .
 
-<http://www.w3.org/ns/prov#wasAttributedTo> rdfs:label "toegeschreven aan"@nl .
+prov:wasAttributedTo rdfs:label "toegeschreven aan"@nl .
 
 <http://data.vlaanderen.be/ns/adres#AdresseerbaarObject> a owl:Class ;
     rdfs:label "Adresseerbaar Object"@nl ;
@@ -286,6 +287,7 @@ locn:Address rdfs:label "Adres Voorstelling"@nl .
 <http://data.vlaanderen.be/ns/adres> a owl:Ontology ;
     rdfs:label "Address"@en,
         "Adres"@nl ;
+    dcterms:issued "2017-03-31"^^xsd:date ;
     dcterms:mediator [ foaf:homepage <https://overheid.vlaanderen.be/producten-diensten/OSLO2> ;
             foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
             foaf:name "OSLO Werkgroepen" ] ;
@@ -300,44 +302,44 @@ locn:Address rdfs:label "Adres Voorstelling"@nl .
                     foaf:name "imec - UGent" ] ;
             foaf:mbox <mailto:laurens.devocht@ugent.be> ;
             foaf:name "De Vocht, Laurens" ] ;
-    foaf:maker [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:Geert.Thijs@agiv.be> ;
-            foaf:name "Thijs, Geert" ],
-        [ schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
-                    foaf:name "imec - UGent" ] ;
-            foaf:mbox <mailto:dieter.depaepe@ugent.be> ;
-            foaf:name "De Paepe, Dieter" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:raf.buyle@agiv.be> ;
-            foaf:name "Buyle, Raf" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:dries.beheydt@agiv.be> ;
-            foaf:name "Beheydt, Dries" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:Siegfried.Vanlishout@agiv.be> ;
-            foaf:name "Van Lishout, Ziggy" ],
-        [ schema:affiliation [ foaf:homepage <http://proxml.be> ;
+    foaf:maker [ schema:affiliation [ foaf:homepage <http://proxml.be> ;
                     foaf:name "ProXML" ] ;
             foaf:mbox <mailto:paul@proxml.be> ;
             foaf:name "Hermans, Paul" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:Geert.Thijs@agiv.be> ;
+            foaf:name "Thijs, Geert" ],
         [ schema:affiliation [ foaf:homepage <http://tenforce.com> ;
                     foaf:name "Tenforce" ] ;
             foaf:mbox <mailto:Bert.Van.Nuffelen@tenforce.com> ;
             foaf:name "Van Nuffelen, Bert" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:ruben.capiau@agiv.be> ;
-            foaf:name "Capiau, Ruben" ],
         [ schema:affiliation [ foaf:homepage <https://www.lne.be/> ;
                     foaf:name "LNE" ] ;
             foaf:mbox <mailto:geert.vanhaute@lne.vlaanderen.be> ;
             foaf:name "Van Haute, Geert" ],
         [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
                     foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:ruben.capiau@agiv.be> ;
+            foaf:name "Capiau, Ruben" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:raf.buyle@agiv.be> ;
+            foaf:name "Buyle, Raf" ],
+        [ schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
+                    foaf:name "imec - UGent" ] ;
+            foaf:mbox <mailto:dieter.depaepe@ugent.be> ;
+            foaf:name "De Paepe, Dieter" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:Siegfried.Vanlishout@agiv.be> ;
+            foaf:name "Van Lishout, Ziggy" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
             foaf:mbox <mailto:bjorn.devidts@agiv.be> ;
-            foaf:name "De Vidts, Björn" ] .
+            foaf:name "De Vidts, Björn" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:dries.beheydt@agiv.be> ;
+            foaf:name "Beheydt, Dries" ] .
 

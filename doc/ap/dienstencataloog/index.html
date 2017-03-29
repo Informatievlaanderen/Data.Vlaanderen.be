@@ -47,7 +47,7 @@
                         
                         <dt>Laatste aanpassing</dt>
 
-                        <dd>2017-03-28
+                        <dd>2017-03-29
                         </dd>
                         
 
@@ -239,7 +239,7 @@
 
 
                         
-                        <dt>Redacteurs</dt>
+                        <dt>Editors</dt>
                         
                         
                         <dd inlist="" rel="bibo:editor" class="p-author h-card vcard">
@@ -283,8 +283,8 @@
             <div class="grid">
                 <div class="col--9-12 col--1-1--s">
                 <div class="introduction typography">
-                            <p>Dit document beschrijft een <strong>applicatie-profiel</strong> voor <strong>Dienst</strong>, in dit geval <strong>Dienstencataloog AP</strong>.
-                            Een applicatie-profiel is een specificatie die bestaande termen hergebruikt van verschillende basis-standaarden
+                            <p>Dit document beschrijft een <strong>applicatieprofiel</strong> voor <strong>Dienst</strong>, in dit geval <strong>Dienstencataloog AP</strong>.
+                            Een applicatieprofiel is een specificatie die bestaande termen hergebruikt van verschillende basis-standaarden
                             en daar meer specificiteit aan toevoegt.
                             Daarbij wordt het gebruik van de termen toegelicht voor de uitwisseling van Vlaamse overheidsinformatie.
                             Het AP beantwoord de vraag over hoe het corresponderende domeinmodel in de praktijk kan toegepast worden.
@@ -299,14 +299,37 @@
       <div class="region region--no-space-top">
           <div class="layout layout--normal">
             <h2 class="h2">Licentie en aansprakelijkheid</h2>
-            <div class="grid">
-              <div class="col--9-12 col--1-1--s typography">
-                    <div><p><span xmlns:dct="http://purl.org/dc/terms/" rel="dct:type" property="dct:title" href="http://purl.org/dc/dcmitype/Text">Deze specificatie</span> van <a xmlns:cc="http://creativecommons.org/ns#" rel="cc:attributionURL" property="cc:attributionName" href="http://vlaanderen.be/informatievlaanderen">Informatie Vlaanderen</a> is gepubliceerd onder de <a href="https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html" rel="license">"Modellicentie Gratis Hergebruik - v1.0"</a>.<br /></p>
-                    </div>
-              </div>
-            </div>
+            <p><span xmlns:dct="http://purl.org/dc/terms/" rel="dct:type" property="dct:title" href="http://purl.org/dc/dcmitype/Text">Deze specificatie</span> van <a xmlns:cc="http://creativecommons.org/ns#" rel="cc:attributionURL" property="cc:attributionName" href="http://vlaanderen.be/informatievlaanderen">Informatie Vlaanderen</a> is gepubliceerd onder de <a href="https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html" rel="license">"Modellicentie Gratis Hergebruik - v1.0"</a>.</p>
           </div>
       </div>
+      <div class="region region--no-space-top">
+        <div class="layout layout--normal">
+        <div class="grid">
+        <div class="col--9-12 col--1-1--s typography">
+        <h2 class="h2" id="conformance" aria-level="1" role="heading"><span class="secno">2. </span>Conformantie</h2>
+
+        <p>Een applicatieprofiel is een specificatie voor gegevensuitwisseling dat bijkomende beperkingen introduceert voor het toepassen van vocabularia.
+        Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
+        <p>
+        <ul>
+        <li>verfijning van de terminologie (klassen en eigenschappen) consistent met de semantiek uit de betreffende specificaties met een welbepaald gebruik als doel;</li>
+        <li>externe terminologie (klassen en eigenschappen) gebruikt voor nieuwe/extra termen die niet in de bestaande vocabularia voorkomen.</li>
+        </ul>
+        </p>
+        <p>Om conform te zijn met dit applicatieprofiel, MOET een implementatie:</p>
+        <p>
+        <ul>
+        <li>Voor elke klasse steeds de eigenschappen bevatten die als minimum kardinaliteit 1 hebben.</li>
+        <li>Niet meer dan 1 instantie bevatten van eigenschappen die 1 als maximum kardinaliteit hebben.</li>
+        <li>De terminologie (klassen en eigenschappen) gebruiken op een manier die consistent is met haar semantiek (definitie, gebruik, domein en bereik).</li>
+        <li>Geen terminologie van andere gecontroleerde vocabularia gebruiken dan diegene die gedefinieerd wordt in dit applicatieprofiel.</li>
+        <li>Mag uitgebreid worden met klassen en eigenschappen van andere datamodellen (vocabularia) die niet overlappen met terminologie uit dit applicatieprofiel.</li>
+        </ul>
+        </p>
+        </div>
+        </div>
+    </div>
+    </div>
       <div class="region region--no-space-top">
           <div class="layout layout--normal">
             <h2 class="h2">Overzicht</h2>
@@ -319,6 +342,8 @@
                             
                             
                             <a href="#Agent">Agent</a> |
+                            
+                            <a href="#Agent (in de rol van serviceprovider)">Agent (in de rol van serviceprovider)</a> |
                             
                             <a href="#Bewijs">Bewijs</a> |
                             
@@ -356,7 +381,7 @@
       </div>
       <div class="region region--no-space-top">
           <div class="layout layout--normal">
-            <img src="/cms/ap/dienst.jpg" />
+            <img src="/cms/ap/dienst/dienst.jpg" />
           </div>
       </div>
       
@@ -369,8 +394,24 @@
                     <div><p>TODO</p></div>
                     <div><p></p></div>
                     
+                    </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      
+      <div class="region region--no-space-top">
+          <div class="layout layout--normal">
+            <h2 class="h2" id="Agent (in de rol van serviceprovider)">Agent (in de rol van serviceprovider)</h2>
+            <div class="grid">
+              <div class="col--9-12 col--1-1--s typography">
+                    <div class="region region--no-space-top">
+                    <div><p>TODO</p></div>
+                    <div><p></p></div>
                     
-                    <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: hasAddress, title, heeftParticiperende.</p></div>
+                    
+                    
+                    <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: hasAddress, title, playsRole.</p></div>
                     </div>
                     <div class="u-table-overflow">
                         <table class="data-table">
@@ -413,8 +454,8 @@
                           
                           
                           
-                          <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/dienst#heeftParticiperende">
-                            <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/dienst#heeftParticiperende" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/dienst#heeftParticiperende" data-placement="right">TODO</a></code></td>
+                          <tr typeof="rdfs:Property" resource="http://data.europa.eu/m8g/playsRole">
+                            <td><code property="rdfs:label"><a href="http://data.europa.eu/m8g/playsRole" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/playsRole" data-placement="right">speelt rol</a></code></td>
                             <td><a href="http://data.europa.eu/m8g/Participation" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/Participation" data-placement="right">Participatie</a></td>
                             <td> ... </td>
                             <td property="rdfs:comment">TODO</td>
@@ -425,6 +466,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -439,6 +481,7 @@
                     <div class="region region--no-space-top">
                     <div><p>Elk stuk waarmee kan worden aangetoond dat men aan een CriteriumVereiste voldoet.</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: description, page, title, language, type.</p></div>
@@ -520,6 +563,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -534,6 +578,7 @@
                     <div class="region region--no-space-top">
                     <div><p>TODO</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: honorific-prefix, address, hoursAvailable, name, email, faxNumber, openingHours, telephone, page.</p></div>
@@ -663,6 +708,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -677,6 +723,7 @@
                     <div class="region region--no-space-top">
                     <div><p>Criterium dat toelaat te bepalen of een gebruiker recht heeft op een dienstverlening of deze mag gebruiken.</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: title, type.</p></div>
@@ -722,6 +769,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -736,6 +784,7 @@
                     <div class="region region--no-space-top">
                     <div><p>TODO</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: description, title, subject, status, language, territorialApplication, type.</p></div>
@@ -841,6 +890,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -855,6 +905,7 @@
                     <div class="region region--no-space-top">
                     <div><p>Gebeurtenis die leidt tot,gebruik maakt van of gerelateerd is met een Publieke Dienstverlening.</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: description, title, type, relation.</p></div>
@@ -924,6 +975,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -938,6 +990,7 @@
                     <div class="region region--no-space-top">
                     <div><p>Kanaal waarlangs een Agent kan interageren met een Publieke Dienstverlening.</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: hoursAvailable, openingHours, type, hasInput.</p></div>
@@ -964,7 +1017,7 @@
                             <td><a href="https://schema.org/OpeningHoursSpecification" data-toggle="tooltip" data-content="https://schema.org/OpeningHoursSpecification" data-placement="right">OpeningsurenSpecificatie</a></td>
                             <td>0 ... 1</td>
                             <td property="rdfs:comment">Periode waarin de Publieke Dienstverlening beschikbaar is via het Kanaal.</td>
-                            <td property="vann:usageNote">NOTE</td>
+                            <td property="vann:usageNote">Bv startdatum zonder einddatum voor dienstverlening die nog actief is of een aanduiding van het seizoen waarin de dienstverlening wordt aangeboden. Een ingevulde einddatum geeft aan wanneer de dienstverlening werd be&#235;indigd. Begin- en einddatum volgens ISO8601 syntax.</td>
                             <td></td>
                           </tr>
                           
@@ -976,7 +1029,7 @@
                             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">String</a></td>
                             <td>0 ... *</td>
                             <td property="rdfs:comment">Uren waarbinnen de Publieke Dienstverlening beschikbaar is via het Kanaal.</td>
-                            <td property="vann:usageNote">NOTE</td>
+                            <td property="vann:usageNote">Syntax volgens schema.org voor openingsuren. Bv als een dienstverlening telefonisch bereikbaar is tussen 8 en 20u maandag tot zaterdag and tussen 8 en 18u op zondag wordt dit gecodeerd als Ma-za 08:00-20:00, zo 08:00-18:00.</td>
                             <td></td>
                           </tr>
                           
@@ -1007,6 +1060,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -1021,6 +1075,7 @@
                     <div class="region region--no-space-top">
                     <div><p>Deel vd kost verbonden aan de uitvoering van de Dienstverlening te betalen door de gebruiker.</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: description, currency, value, ifAccessedThrough, isDefinedBy.</p></div>
@@ -1102,6 +1157,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -1116,6 +1172,7 @@
                     <div class="region region--no-space-top">
                     <div><p>TODO</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: dayOfWeek, validThrough, validFrom, closes, opens.</p></div>
@@ -1197,6 +1254,7 @@
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -1211,6 +1269,7 @@
                     <div class="region region--no-space-top">
                     <div><p>Een aantal mensen georganiseerd in een gemeenschap of andere sociale, commerci&#235;le of politieke structuur. De groep heeft een gemeenschappelijk doel of bestaanreden die de individuele leden ervan overstijgt en kan handelen als Agent. Een organisatie heeft dikwijls een hi&#235;rarchische structuur.</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: altLabel, classification, notation, purpose, isTeBereikenOp, prefLabel.</p></div>
@@ -1305,6 +1364,7 @@ die toelaat de Organisatie te contacteren.</td>
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -1319,6 +1379,7 @@ die toelaat de Organisatie te contacteren.</td>
                     <div class="region region--no-space-top">
                     <div><p>Resultaat van een Publieke Dienstverlening. Officieel document of ander artefact van de bevoegde instantie (Publieke Organisatie) dat een Agent</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: description, title, type.</p></div>
@@ -1376,6 +1437,7 @@ die toelaat de Organisatie te contacteren.</td>
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -1392,7 +1454,8 @@ die toelaat de Organisatie te contacteren.</td>
                     <div><p></p></div>
                     
                     
-                    <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: description, role, heeftParticiperende, playsRole.</p></div>
+                    
+                    <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: description, role.</p></div>
                     </div>
                     <div class="u-table-overflow">
                         <table class="data-table">
@@ -1433,32 +1496,9 @@ die toelaat de Organisatie te contacteren.</td>
                           </tr>
                           
                           
-                          
-                          
-                          <tr typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/dienst#heeftParticiperende">
-                            <td><code property="rdfs:label"><a href="http://data.vlaanderen.be/ns/dienst#heeftParticiperende" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/dienst#heeftParticiperende" data-placement="right">TODO</a></code></td>
-                            <td><a href="http://purl.org/vocab/cpsv#PublicService" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#PublicService" data-placement="right">PubliekeDienstverlening</a></td>
-                            <td>0 ... *</td>
-                            <td property="rdfs:comment">TODO</td>
-                            <td property="vann:usageNote"></td>
-                            <td></td>
-                          </tr>
-                          
-                          
-                          
-                          
-                          <tr typeof="rdfs:Property" resource="http://data.europa.eu/m8g/playsRole">
-                            <td><code property="rdfs:label"><a href="http://data.europa.eu/m8g/playsRole" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/playsRole" data-placement="right">speelt rol</a></code></td>
-                            <td><a href="http://purl.org/dc/terms/Agent" data-toggle="tooltip" data-content="http://purl.org/dc/terms/Agent" data-placement="right">Agent</a></td>
-                            <td>0 ... *</td>
-                            <td property="rdfs:comment">TODO</td>
-                            <td property="vann:usageNote"></td>
-                            <td></td>
-                          </tr>
-                          
-                          
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -1475,7 +1515,8 @@ die toelaat de Organisatie te contacteren.</td>
                     <div><p></p></div>
                     
                     
-                    <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: description, hasContactPoint, hasCost, title, sector, status, language, spatial, keyword, type, processingTime, hasInput, follows, hasCriterion, relation, requires, hasChannel, hasParticipation, hasFormalFramework, produces, serviceProvider, hasCompetentAuthority, isGroupedBy.</p></div>
+                    
+                    <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: description, hasContactPoint, hasCost, title, sector, status, language, spatial, keyword, type, processingTime, relation, requires, follows, isGroupedBy, hasParticipation, hasFormalFramework, hasInput, hasChannel, serviceProvider, hasCompetentAuthority, hasCriterion, produces.</p></div>
                     </div>
                     <div class="u-table-overflow">
                         <table class="data-table">
@@ -1626,42 +1667,6 @@ die toelaat de Organisatie te contacteren.</td>
                           
                           
                           
-                          <tr typeof="rdfs:Property" resource="http://purl.org/vocab/cpsv#hasInput">
-                            <td><code property="rdfs:label"><a href="http://purl.org/vocab/cpsv#hasInput" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#hasInput" data-placement="right">heeft input</a></code></td>
-                            <td><a href="http://data.europa.eu/m8g/Evidence" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/Evidence" data-placement="right">Bewijs</a></td>
-                            <td>0 ... *</td>
-                            <td property="rdfs:comment">Bewijsstuk dat moeten voorgelegd worden om de Publieke Dienstverlening te kunnen gebruiken.</td>
-                            <td property="vann:usageNote">Als de bewijsstukken afhangen het kanaal waarmee met de Publieke Dienstverlening wordt ge&#239;nterageerd gebruiken we de associatie Kanaal-vereistAlsInput-Bewijs.</td>
-                            <td></td>
-                          </tr>
-                          
-                          
-                          
-                          
-                          <tr typeof="rdfs:Property" resource="http://purl.org/vocab/cpsv#follows">
-                            <td><code property="rdfs:label"><a href="http://purl.org/vocab/cpsv#follows" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#follows" data-placement="right">volgt</a></code></td>
-                            <td><a href="http://purl.org/vocab/cpsv#Rule" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#Rule" data-placement="right">Richtlijn</a></td>
-                            <td>0 ... *</td>
-                            <td property="rdfs:comment">De Richtlijn die de werking van de Publieke Dienstverlening stuurt.</td>
-                            <td property="vann:usageNote">Typisch implementeert een Richtlijn het beleid van een Publieke Organisatie.</td>
-                            <td></td>
-                          </tr>
-                          
-                          
-                          
-                          
-                          <tr typeof="rdfs:Property" resource="http://data.europa.eu/m8g/hasCriterion">
-                            <td><code property="rdfs:label"><a href="http://data.europa.eu/m8g/hasCriterion" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/hasCriterion" data-placement="right">heeft criterium</a></code></td>
-                            <td><a href="http://data.europa.eu/m8g/CriterionRequirement" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/CriterionRequirement" data-placement="right">CriteriumVereiste</a></td>
-                            <td>0 ... *</td>
-                            <td property="rdfs:comment">Criterium waaraan de gebruiker moet voldoen om recht te hebben op een dienstverlening of om een dienstverlening te mogen gebruiken.</td>
-                            <td property="vann:usageNote">Bvb inwoner van de gemeente, meer dan 18 jaar etc.</td>
-                            <td></td>
-                          </tr>
-                          
-                          
-                          
-                          
                           <tr typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
                             <td><code property="rdfs:label"><a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">relatie</a></code></td>
                             <td><a href="http://purl.org/vocab/cpsv#PublicService" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#PublicService" data-placement="right">PubliekeDienstverlening</a></td>
@@ -1686,12 +1691,24 @@ die toelaat de Organisatie te contacteren.</td>
                           
                           
                           
-                          <tr typeof="rdfs:Property" resource="http://data.europa.eu/m8g/hasChannel">
-                            <td><code property="rdfs:label"><a href="http://data.europa.eu/m8g/hasChannel" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/hasChannel" data-placement="right">heeft kanaal</a></code></td>
-                            <td><a href="http://data.europa.eu/m8g/Channel" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/Channel" data-placement="right">Kanaal</a></td>
+                          <tr typeof="rdfs:Property" resource="http://purl.org/vocab/cpsv#follows">
+                            <td><code property="rdfs:label"><a href="http://purl.org/vocab/cpsv#follows" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#follows" data-placement="right">volgt</a></code></td>
+                            <td><a href="http://purl.org/vocab/cpsv#Rule" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#Rule" data-placement="right">Richtlijn</a></td>
                             <td>0 ... *</td>
-                            <td property="rdfs:comment">Kanaal waarlangs een Agent interageert met een Publieke Dienstverlening.</td>
-                            <td property="vann:usageNote">Bv kantoor, telefoon, website</td>
+                            <td property="rdfs:comment">De Richtlijn die de werking van de Publieke Dienstverlening stuurt.</td>
+                            <td property="vann:usageNote">Typisch implementeert een Richtlijn het beleid van een Publieke Organisatie.</td>
+                            <td></td>
+                          </tr>
+                          
+                          
+                          
+                          
+                          <tr typeof="rdfs:Property" resource="http://data.europa.eu/m8g/isGroupedBy">
+                            <td><code property="rdfs:label"><a href="http://data.europa.eu/m8g/isGroupedBy" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/isGroupedBy" data-placement="right">is gegroepeerd volgens</a></code></td>
+                            <td><a href="http://data.europa.eu/m8g/Event" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/Event" data-placement="right">Gebeurtenis</a></td>
+                            <td>0 ... *</td>
+                            <td property="rdfs:comment">Gebeurtenis waarop de Publieke Dienstverlening betrekking heeft.</td>
+                            <td property="vann:usageNote">Laat toe om in de dienstencataloog de Publieke Dienstverlening te klasseren volgens het type gebeurtenis waarvoor ze een oplossing biedt bv op het portaal waarop de cataloog geraadpleegd wordt.</td>
                             <td></td>
                           </tr>
                           
@@ -1722,12 +1739,24 @@ die toelaat de Organisatie te contacteren.</td>
                           
                           
                           
-                          <tr typeof="rdfs:Property" resource="http://purl.org/vocab/cpsv#produces">
-                            <td><code property="rdfs:label"><a href="http://purl.org/vocab/cpsv#produces" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#produces" data-placement="right">produceert</a></code></td>
-                            <td><a href="http://data.europa.eu/m8g/Output" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/Output" data-placement="right">Output</a></td>
+                          <tr typeof="rdfs:Property" resource="http://purl.org/vocab/cpsv#hasInput">
+                            <td><code property="rdfs:label"><a href="http://purl.org/vocab/cpsv#hasInput" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#hasInput" data-placement="right">heeft input</a></code></td>
+                            <td><a href="http://data.europa.eu/m8g/Evidence" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/Evidence" data-placement="right">Bewijs</a></td>
                             <td>0 ... *</td>
-                            <td property="rdfs:comment">Het werkelijke resultaat van de uitvoering vd Publieke Dienstverlening.</td>
-                            <td property="vann:usageNote">Bvb een erkenning, financieel voordeel, code, fysiek object</td>
+                            <td property="rdfs:comment">Bewijsstuk dat moeten voorgelegd worden om de Publieke Dienstverlening te kunnen gebruiken.</td>
+                            <td property="vann:usageNote">Als de bewijsstukken afhangen het kanaal waarmee met de Publieke Dienstverlening wordt ge&#239;nterageerd gebruiken we de associatie Kanaal-vereistAlsInput-Bewijs.</td>
+                            <td></td>
+                          </tr>
+                          
+                          
+                          
+                          
+                          <tr typeof="rdfs:Property" resource="http://data.europa.eu/m8g/hasChannel">
+                            <td><code property="rdfs:label"><a href="http://data.europa.eu/m8g/hasChannel" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/hasChannel" data-placement="right">heeft kanaal</a></code></td>
+                            <td><a href="http://data.europa.eu/m8g/Channel" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/Channel" data-placement="right">Kanaal</a></td>
+                            <td>0 ... *</td>
+                            <td property="rdfs:comment">Kanaal waarlangs een Agent interageert met een Publieke Dienstverlening.</td>
+                            <td property="vann:usageNote">Bv kantoor, telefoon, website</td>
                             <td></td>
                           </tr>
                           
@@ -1751,25 +1780,38 @@ die toelaat de Organisatie te contacteren.</td>
                             <td><a href="http://data.europa.eu/m8g/PublicOrganisation" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/PublicOrganisation" data-placement="right">PubliekeOrganisatie</a></td>
                             <td>1 ... 1</td>
                             <td property="rdfs:comment">Publieke Organisatie die verantwoordelijk is voor het aanbieden en beheren van de Publieke dienstverlening.</td>
-                            <td property="vann:usageNote">NOTE</td>
+                            <td property="vann:usageNote">Of de Publieke Organisatie zelf de dienstverlening aanbiedt of deze uitbesteedt is irrelevant. De Publieke Organisatie verantwoordelijk voor het aanbieden en beheren van de dienstverlening wordt ook wel de Bevoegde Instantie genoemd en wordt in Europese Richtlijn 2006/123/EC gedefinieerd als volgt: "elk orgaan of autoriteit dat in een lidstaat en toezichthoudende of regelgevende rol vervult ten aanzien van dienstenactiviteiten, met name bestuurlijke instanties, met inbegrip van rechterlijke instanties die als zodanig optreden, beroepsorden en de beroepsverenigingen en -organisaties of andere beroepsorganisaties die in de uitoefening van hun juridisch autonome bevoegdheden de toegang tot of de uitoefening van dienstenactiviteiten collectief reguleren".</td>
                             <td></td>
                           </tr>
                           
                           
                           
                           
-                          <tr typeof="rdfs:Property" resource="http://data.europa.eu/m8g/isGroupedBy">
-                            <td><code property="rdfs:label"><a href="http://data.europa.eu/m8g/isGroupedBy" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/isGroupedBy" data-placement="right">is gegroepeerd volgens</a></code></td>
-                            <td><a href="http://data.europa.eu/m8g/Event" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/Event" data-placement="right">Gebeurtenis</a></td>
+                          <tr typeof="rdfs:Property" resource="http://data.europa.eu/m8g/hasCriterion">
+                            <td><code property="rdfs:label"><a href="http://data.europa.eu/m8g/hasCriterion" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/hasCriterion" data-placement="right">heeft criterium</a></code></td>
+                            <td><a href="http://data.europa.eu/m8g/CriterionRequirement" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/CriterionRequirement" data-placement="right">CriteriumVereiste</a></td>
                             <td>0 ... *</td>
-                            <td property="rdfs:comment">Gebeurtenis waarop de Publieke Dienstverlening betrekking heeft.</td>
-                            <td property="vann:usageNote">Laat toe om in de dienstencataloog de Publieke Dienstverlening te klasseren volgens het type gebeurtenis waarvoor ze een oplossing biedt bv op het portaal waarop de cataloog geraadpleegd wordt.</td>
+                            <td property="rdfs:comment">Criterium waaraan de gebruiker moet voldoen om recht te hebben op een dienstverlening of om een dienstverlening te mogen gebruiken.</td>
+                            <td property="vann:usageNote">Bvb inwoner van de gemeente, meer dan 18 jaar etc.</td>
+                            <td></td>
+                          </tr>
+                          
+                          
+                          
+                          
+                          <tr typeof="rdfs:Property" resource="http://purl.org/vocab/cpsv#produces">
+                            <td><code property="rdfs:label"><a href="http://purl.org/vocab/cpsv#produces" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#produces" data-placement="right">produceert</a></code></td>
+                            <td><a href="http://data.europa.eu/m8g/Output" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/Output" data-placement="right">Output</a></td>
+                            <td>0 ... *</td>
+                            <td property="rdfs:comment">Het werkelijke resultaat van de uitvoering vd Publieke Dienstverlening.</td>
+                            <td property="vann:usageNote">Bvb een erkenning, financieel voordeel, code, fysiek object</td>
                             <td></td>
                           </tr>
                           
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -1784,6 +1826,7 @@ die toelaat de Organisatie te contacteren.</td>
                     <div class="region region--no-space-top">
                     <div><p>Een Organisatie die volgens een wettelijk kader behoort tot de publieke sector,ongeacht het bestuursniveau waarop dat kader van kracht is.</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: description, homepage, logo, spatial.</p></div>
@@ -1853,6 +1896,7 @@ die toelaat de Organisatie te contacteren.</td>
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -1867,6 +1911,7 @@ die toelaat de Organisatie te contacteren.</td>
                     <div class="region region--no-space-top">
                     <div><p>Vertegenwoordigt de regels,richtlijnen of procedures gevolgd door de Publieke Dienstverlening.</p></div>
                     <div><p></p></div>
+                    
                     
                     
                     <div><p>Voor deze entiteit zijn de volgende attributen gedefinieerd: description, title, language, implements.</p></div>
@@ -1936,6 +1981,7 @@ die toelaat de Organisatie te contacteren.</td>
                           
                           </tbody>
                         </table>
+                        
                     </div>
               </div>
             </div>
@@ -1958,6 +2004,10 @@ die toelaat de Organisatie te contacteren.</td>
     <style>
       @media screen {  /* hide from IE3 */
         a[href]:hover { background: #ffa }
+      }
+
+      p {
+        text-align: justify;
       }
 
       tr:nth-child(even) td     { background-color:#eee; }

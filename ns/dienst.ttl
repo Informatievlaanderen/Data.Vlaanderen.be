@@ -10,6 +10,7 @@
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix person: <http://www.w3.org/ns/person#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rec: <http://www.w3.org/2001/02pd/rec54#> .
@@ -65,6 +66,8 @@ eu:isDefinedBy rdfs:label "is gedefinieerd door"@nl .
 
 eu:isGroupedBy rdfs:label "is gegroepeerd volgens"@nl .
 
+eu:ownedBy rdfs:label "eigendom van"@nl .
+
 eu:playsRole rdfs:label "speelt rol"@nl .
 
 eu:processingTime rdfs:label "verwerkingstijd"@nl .
@@ -73,29 +76,64 @@ eu:role rdfs:label "rol"@nl .
 
 eu:sector rdfs:label "sector"@nl .
 
+eu:serviceProvider rdfs:label "dienstverlener"@nl .
+
 eu:value rdfs:label "waarde"@nl .
 
 <http://data.vlaanderen.be/ns/dienst> a owl:Ontology ;
-    rdfs:label "Public Service"@en,
+    rdfs:label "Service"@en,
         "Dienst"@nl ;
+    dcterms:issued "2017-03-31"^^xsd:date ;
     dcterms:mediator [ foaf:homepage <https://overheid.vlaanderen.be/producten-diensten/OSLO2> ;
             foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
             foaf:name "OSLO Werkgroepen" ] ;
-    dcterms:title "Public Service"@en,
+    dcterms:title "Service"@en,
         "Dienst"@nl ;
     vann:preferredNamespaceUri "http://data.vlaanderen.be/ns/dienst" ;
     rec:editor [ schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
                     foaf:name "imec - UGent" ] ;
-            foaf:mbox <mailto:laurens.devocht@ugent.be> ;
-            foaf:name "De Vocht, Laurens" ],
+            foaf:mbox <mailto:erik.mannens@ugent.be> ;
+            foaf:name "Mannens, Erik" ],
         [ schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
                     foaf:name "imec - UGent" ] ;
-            foaf:mbox <mailto:erik.mannens@ugent.be> ;
-            foaf:name "Mannens, Erik" ] ;
+            foaf:mbox <mailto:laurens.devocht@ugent.be> ;
+            foaf:name "De Vocht, Laurens" ] ;
     foaf:maker [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:raf.buyle@agiv.be> ;
+            foaf:name "Buyle, Raf" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
                     foaf:name "Informatie Vlaanderen" ] ;
             foaf:mbox <mailto:dries.beheydt@agiv.be> ;
             foaf:name "Beheydt, Dries" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:bjorn.devidts@agiv.be> ;
+            foaf:name "De Vidts, Björn" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:dorien.bauwens@bz.vlaanderen.be> ;
+            foaf:name "Bauwens, Dorien" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:katrien.desmet@kb.vlaanderen.be> ;
+            foaf:name "De Smet, Katrien" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:thomas.dhaenens@bz.vlaanderen.be> ;
+            foaf:name "D'haenens, Thomas" ],
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:Geert.Thijs@agiv.be> ;
+            foaf:name "Thijs, Geert" ],
+        [ schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
+                    foaf:name "imec - UGent" ] ;
+            foaf:mbox <mailto:dieter.depaepe@ugent.be> ;
+            foaf:name "De Paepe, Dieter" ],
+        [ schema:affiliation [ foaf:homepage <http://stad.gent> ;
+                    foaf:name "Stad Gent" ] ;
+            foaf:mbox <mailto:Thimo.Thoeye@stad.gent> ;
+            foaf:name "Thoeye, Thimo" ],
         [ schema:affiliation [ foaf:homepage <https://www.lne.be/> ;
                     foaf:name "LNE" ] ;
             foaf:mbox <mailto:geert.vanhaute@lne.vlaanderen.be> ;
@@ -104,10 +142,10 @@ eu:value rdfs:label "waarde"@nl .
                     foaf:name "Cipal Schaubroeck" ] ;
             foaf:mbox <mailto:willem.vanhoecke@cipalschaubroeck.be> ;
             foaf:name "Van Hoecke, Willem" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
                     foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:Geert.Thijs@agiv.be> ;
-            foaf:name "Thijs, Geert" ],
+            foaf:mbox <mailto:henk.vanderstraeten@bz.vlaanderen.be> ;
+            foaf:name "Vanderstraeten, Henk" ],
         [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
                     foaf:name "Informatie Vlaanderen" ] ;
             foaf:mbox <mailto:an.taelemans@kb.vlaanderen.be> ;
@@ -119,39 +157,7 @@ eu:value rdfs:label "waarde"@nl .
         [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
                     foaf:name "Informatie Vlaanderen" ] ;
             foaf:mbox <mailto:Siegfried.Vanlishout@agiv.be> ;
-            foaf:name "Van Lishout, Ziggy" ],
-        [ schema:affiliation [ foaf:homepage <http://stad.gent> ;
-                    foaf:name "Stad Gent" ] ;
-            foaf:mbox <mailto:Thimo.Thoeye@stad.gent> ;
-            foaf:name "Thoeye, Thimo" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:thomas.dhaenens@bz.vlaanderen.be> ;
-            foaf:name "D'haenens, Thomas" ],
-        [ schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
-                    foaf:name "imec - UGent" ] ;
-            foaf:mbox <mailto:dieter.depaepe@ugent.be> ;
-            foaf:name "De Paepe, Dieter" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:henk.vanderstraeten@bz.vlaanderen.be> ;
-            foaf:name "Vanderstraeten, Henk" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:katrien.desmet@kb.vlaanderen.be> ;
-            foaf:name "De Smet, Katrien" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:raf.buyle@agiv.be> ;
-            foaf:name "Buyle, Raf" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:dorien.bauwens@bz.vlaanderen.be> ;
-            foaf:name "Bauwens, Dorien" ],
-        [ schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:bjorn.devidts@agiv.be> ;
-            foaf:name "De Vidts, Björn" ] .
+            foaf:name "Van Lishout, Ziggy" ] .
 
 dcterms:description rdfs:label "beschrijving"@nl .
 
@@ -186,7 +192,19 @@ dcat:keyword rdfs:label "trefwoord"@nl .
 
 foaf:page rdfs:label "pagina"@nl .
 
+<https://schema.org/OpeningHoursSpecification> rdfs:label "Openingsurenspecificatie"@nl .
+
+<https://schema.org/closes> rdfs:label "sluit"@nl .
+
+<https://schema.org/dayOfWeek> rdfs:label "dag van week"@nl .
+
 <https://schema.org/hoursAvailable> rdfs:label "uren beschikbaarheid"@nl .
 
 <https://schema.org/openingHours> rdfs:label "openingsuren"@nl .
+
+<https://schema.org/opens> rdfs:label "opent"@nl .
+
+<https://schema.org/validFrom> rdfs:label "geldig van"@nl .
+
+<https://schema.org/validThrough> rdfs:label "geldig tot"@nl .
 

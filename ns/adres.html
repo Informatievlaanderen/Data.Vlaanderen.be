@@ -38,11 +38,13 @@
                     <h1 class="h1 title p-name" property="dcterms:title" id="title">Adres</h1>
                     
                     
+                    <h2 class="h2" content="2017-03-31" datatype="xsd:dateTime" property="dcterms:issued" id="draft-2017-03-31">Uitgegeven op <time datetime="2017-03-31" class="dt-published">2017-03-31</time></h2>
+                    
                     <dl>
                         
                         <dt>Laatste aanpassing</dt>
 
-                        <dd>2017-03-28
+                        <dd>2017-03-29
                         </dd>
                         
 
@@ -200,7 +202,7 @@
 
 
                         
-                        <dt>Redacteurs</dt>
+                        <dt>Editors</dt>
                         
                         
                         <dd inlist="" rel="bibo:editor" class="p-author h-card vcard">
@@ -305,7 +307,7 @@
     <h2 class="h2" id="conformance" aria-level="1" role="heading"><span class="secno">2. </span>Conformantie</h2>
 
     <p>Een uitwisseling van gegevens, hoe deze uitwisseling ook gebeurt, is conform aan dit vocabularium wanneer
-    het de terminologie (klassen en eigenschappen) gebruikt op een manier die consistent is met de semantiek zoals opgesteld in deze specificatie (domein, bereik, definitie en gebruik)
+    het de terminologie (klassen en eigenschappen) gebruikt op een manier die consistent is met de semantiek zoals opgesteld in de nieuwste versie van de specificatie (domein, bereik, definitie en gebruik)
     en het geen terminologie gebruikt uit andere vocabularia als alternatief voor de voorgestelde terminologie opgenomen in dit vocabularium.</p>
 
     </section>
@@ -339,6 +341,7 @@
     <p><a href="http://visualdataweb.de/webvowl/#iri=http://data.vlaanderen.be/ns/adres">Verken het vocabularium</a></p>
     </div>
 
+    
     <div class="region region--no-space-top">
     <h3 class="h3">Klassen</h3>
     
@@ -368,6 +371,7 @@
     </p>
     </div>
     </div>
+    
 
     <div class="region region--no-space-top">
     <h3 class="h3">Eigenschappen</h3>
@@ -377,9 +381,15 @@
     <p>
         |
         
+        <a href="#http://data.vlaanderen.be/ns/adres#aanduiding" rel="property">aanduiding (Adreslocator)</a> |
+        
         <a href="#http://data.vlaanderen.be/ns/adres#Locatieaanduiding.aanduiding" rel="property">aanduiding (Locatieaanduiding)</a> |
         
-        <a href="#http://data.vlaanderen.be/ns/adres#aanduiding" rel="property">aanduiding (Adreslocator)</a> |
+        <a href="#http://data.vlaanderen.be/ns/adres#busnummer" rel="property">busnummer (Belgisch Adres)</a> |
+        
+        <a href="#http://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer" rel="property">busnummer (Adres Voorstelling)</a> |
+        
+        <a href="#http://data.vlaanderen.be/ns/adres#gemeentenaam" rel="property">gemeentenaam (Adres Voorstelling)</a> |
         
         <a href="#http://data.vlaanderen.be/ns/adres#heeftGemeentenaam" rel="property">heeft gemeentenaam (Belgisch Adres)</a> |
         
@@ -387,15 +397,29 @@
         
         <a href="#http://data.vlaanderen.be/ns/adres#heeftStraatnaam" rel="property">heeft straatnaam (Belgisch Adres)</a> |
         
+        <a href="#http://data.vlaanderen.be/ns/adres#homoniemToevoeging" rel="property">homoniem toevoeging (Straatnaam)</a> |
+        
+        <a href="#http://data.vlaanderen.be/ns/adres#huisnummer" rel="property">huisnummer (Belgisch Adres)</a> |
+        
+        <a href="#http://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer" rel="property">huisnummer (Adres Voorstelling)</a> |
+        
         <a href="#http://data.vlaanderen.be/ns/adres#isToegekendAan" rel="property">is toegekend aan (Belgisch Adres)</a> |
         
         <a href="#http://data.vlaanderen.be/ns/adres#isVerrijktMet" rel="property">is verrijkt met (Belgisch Adres)</a> |
         
+        <a href="#http://data.vlaanderen.be/ns/adres#land" rel="property">land (Adres Voorstelling)</a> |
+        
         <a href="#http://data.vlaanderen.be/ns/adres#adreslocator" rel="property">locator (Adresuitbreiding)</a> |
+        
+        <a href="#http://data.vlaanderen.be/ns/adres#officieelToegekend" rel="property">niet officieel (Belgisch Adres)</a> |
         
         <a href="#http://data.vlaanderen.be/ns/adres#niveau" rel="property">niveau (Adreslocator)</a> |
         
         <a href="#http://data.vlaanderen.be/ns/adres#positie" rel="property">positie (Belgisch Adres)</a> |
+        
+        <a href="#http://data.vlaanderen.be/ns/adres#postcode" rel="property">postcode (Postinfo)</a> |
+        
+        <a href="#http://data.vlaanderen.be/ns/adres#postnaam" rel="property">postnaam (Postinfo)</a> |
         
         <a href="#http://data.vlaanderen.be/ns/adres#Adres.status" rel="property">status (Belgisch Adres)</a> |
         
@@ -406,6 +430,8 @@
         <a href="#http://data.vlaanderen.be/ns/adres#Locatienaam.type" rel="property">type (Locatienaam)</a> |
         
         <a href="#http://data.vlaanderen.be/ns/adres#verwijstNaar" rel="property">verwijst naar (Adres Voorstelling)</a> |
+        
+        <a href="#http://data.vlaanderen.be/ns/adres#volledigAdres" rel="property">volledig adres (Adresuitbreiding)</a> |
         
     </p>
     </div>
@@ -422,6 +448,7 @@
     <section typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter" id="classes">
 
     <h2 class="h2" id="classes" aria-level="1" role="heading"><span class="secno">4. </span>Klassen</h2>
+    
     <div class="region region--no-space-top">
     <p>Deze sectie geeft een formele definitie aan elke klasse.</p>
     </div>
@@ -643,10 +670,11 @@
       </table>
       </div>
       
-
+    
     </section>
 
     </div>
+
     </div>
 
     <div class="region region--no-space-top">
@@ -662,6 +690,42 @@
 
     
     
+    
+    <div class="region region--no-space-top">
+    <h3 class="h3" id="http://data.vlaanderen.be/ns/adres#aanduiding">Eigenschap <em>aanduiding</em></h3>
+
+    <table class="definition">
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Eigenschap</td>
+          </tr>
+          
+          <tr>
+            <th>URI</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#aanduiding</code></td>
+          </tr>
+          
+          <tr>
+            <th>Domein</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#Adreslocator</code></td>
+          </tr>
+          
+          
+          <tr>
+            <th>Bereik</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#Locatieaanduiding</code></td>
+          </tr>
+          
+          <tr>
+            <th>Definitie</th>
+            <td>TODO</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+      
     
     <div class="region region--no-space-top">
     <h3 class="h3" id="http://data.vlaanderen.be/ns/adres#Locatieaanduiding.aanduiding">Eigenschap <em>aanduiding</em></h3>
@@ -700,7 +764,7 @@
       
     
     <div class="region region--no-space-top">
-    <h3 class="h3" id="http://data.vlaanderen.be/ns/adres#aanduiding">Eigenschap <em>aanduiding</em></h3>
+    <h3 class="h3" id="http://data.vlaanderen.be/ns/adres#busnummer">Eigenschap <em>busnummer</em></h3>
 
     <table class="definition">
         <tbody>
@@ -711,18 +775,90 @@
           
           <tr>
             <th>URI</th>
-            <td><code>http://data.vlaanderen.be/ns/adres#aanduiding</code></td>
+            <td><code>http://data.vlaanderen.be/ns/adres#busnummer</code></td>
           </tr>
           
           <tr>
             <th>Domein</th>
-            <td><code>http://data.vlaanderen.be/ns/adres#Adreslocator</code></td>
+            <td><code>http://data.vlaanderen.be/ns/adres#Adres</code></td>
           </tr>
           
           
           <tr>
             <th>Bereik</th>
-            <td><code>http://data.vlaanderen.be/ns/adres#Locatieaanduiding</code></td>
+            <td><code>http://www.w3.org/2000/01/rdf-schema#Literal</code></td>
+          </tr>
+          
+          <tr>
+            <th>Definitie</th>
+            <td>TODO</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+      
+    
+    <div class="region region--no-space-top">
+    <h3 class="h3" id="http://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer">Eigenschap <em>busnummer</em></h3>
+
+    <table class="definition">
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Eigenschap</td>
+          </tr>
+          
+          <tr>
+            <th>URI</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer</code></td>
+          </tr>
+          
+          <tr>
+            <th>Domein</th>
+            <td><code>http://www.w3.org/ns/locn#Address</code></td>
+          </tr>
+          
+          
+          <tr>
+            <th>Bereik</th>
+            <td><code>http://www.w3.org/2000/01/rdf-schema#Literal</code></td>
+          </tr>
+          
+          <tr>
+            <th>Definitie</th>
+            <td>TODO</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+      
+    
+    <div class="region region--no-space-top">
+    <h3 class="h3" id="http://data.vlaanderen.be/ns/adres#gemeentenaam">Eigenschap <em>gemeentenaam</em></h3>
+
+    <table class="definition">
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Eigenschap</td>
+          </tr>
+          
+          <tr>
+            <th>URI</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#gemeentenaam</code></td>
+          </tr>
+          
+          <tr>
+            <th>Domein</th>
+            <td><code>http://www.w3.org/ns/locn#Address</code></td>
+          </tr>
+          
+          
+          <tr>
+            <th>Bereik</th>
+            <td><code>http://www.w3.org/2000/01/rdf-schema#Literal</code></td>
           </tr>
           
           <tr>
@@ -844,6 +980,114 @@
       
     
     <div class="region region--no-space-top">
+    <h3 class="h3" id="http://data.vlaanderen.be/ns/adres#homoniemToevoeging">Eigenschap <em>homoniem toevoeging</em></h3>
+
+    <table class="definition">
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Eigenschap</td>
+          </tr>
+          
+          <tr>
+            <th>URI</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#homoniemToevoeging</code></td>
+          </tr>
+          
+          <tr>
+            <th>Domein</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#Straatnaam</code></td>
+          </tr>
+          
+          
+          <tr>
+            <th>Bereik</th>
+            <td><code>http://www.w3.org/2000/01/rdf-schema#Literal</code></td>
+          </tr>
+          
+          <tr>
+            <th>Definitie</th>
+            <td>TODO</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+      
+    
+    <div class="region region--no-space-top">
+    <h3 class="h3" id="http://data.vlaanderen.be/ns/adres#huisnummer">Eigenschap <em>huisnummer</em></h3>
+
+    <table class="definition">
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Eigenschap</td>
+          </tr>
+          
+          <tr>
+            <th>URI</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#huisnummer</code></td>
+          </tr>
+          
+          <tr>
+            <th>Domein</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#Adres</code></td>
+          </tr>
+          
+          
+          <tr>
+            <th>Bereik</th>
+            <td><code>http://www.w3.org/2000/01/rdf-schema#Literal</code></td>
+          </tr>
+          
+          <tr>
+            <th>Definitie</th>
+            <td>TODO</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+      
+    
+    <div class="region region--no-space-top">
+    <h3 class="h3" id="http://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer">Eigenschap <em>huisnummer</em></h3>
+
+    <table class="definition">
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Eigenschap</td>
+          </tr>
+          
+          <tr>
+            <th>URI</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer</code></td>
+          </tr>
+          
+          <tr>
+            <th>Domein</th>
+            <td><code>http://www.w3.org/ns/locn#Address</code></td>
+          </tr>
+          
+          
+          <tr>
+            <th>Bereik</th>
+            <td><code>http://www.w3.org/2000/01/rdf-schema#Literal</code></td>
+          </tr>
+          
+          <tr>
+            <th>Definitie</th>
+            <td>TODO</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+      
+    
+    <div class="region region--no-space-top">
     <h3 class="h3" id="http://data.vlaanderen.be/ns/adres#isToegekendAan">Eigenschap <em>is toegekend aan</em></h3>
 
     <table class="definition">
@@ -916,6 +1160,42 @@
       
     
     <div class="region region--no-space-top">
+    <h3 class="h3" id="http://data.vlaanderen.be/ns/adres#land">Eigenschap <em>land</em></h3>
+
+    <table class="definition">
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Eigenschap</td>
+          </tr>
+          
+          <tr>
+            <th>URI</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#land</code></td>
+          </tr>
+          
+          <tr>
+            <th>Domein</th>
+            <td><code>http://www.w3.org/ns/locn#Address</code></td>
+          </tr>
+          
+          
+          <tr>
+            <th>Bereik</th>
+            <td><code>http://www.w3.org/2000/01/rdf-schema#Literal</code></td>
+          </tr>
+          
+          <tr>
+            <th>Definitie</th>
+            <td>TODO</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+      
+    
+    <div class="region region--no-space-top">
     <h3 class="h3" id="http://data.vlaanderen.be/ns/adres#adreslocator">Eigenschap <em>locator</em></h3>
 
     <table class="definition">
@@ -939,6 +1219,42 @@
           <tr>
             <th>Bereik</th>
             <td><code>http://data.vlaanderen.be/ns/adres#Adreslocator</code></td>
+          </tr>
+          
+          <tr>
+            <th>Definitie</th>
+            <td>TODO</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+      
+    
+    <div class="region region--no-space-top">
+    <h3 class="h3" id="http://data.vlaanderen.be/ns/adres#officieelToegekend">Eigenschap <em>niet officieel</em></h3>
+
+    <table class="definition">
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Eigenschap</td>
+          </tr>
+          
+          <tr>
+            <th>URI</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#officieelToegekend</code></td>
+          </tr>
+          
+          <tr>
+            <th>Domein</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#Adres</code></td>
+          </tr>
+          
+          
+          <tr>
+            <th>Bereik</th>
+            <td><code>http://www.w3.org/2001/XMLSchema#boolean</code></td>
           </tr>
           
           <tr>
@@ -1010,7 +1326,79 @@
           
           <tr>
             <th>Bereik</th>
-            <td><code>http://www.w3.org/ns/locn#Geometry</code></td>
+            <td><code>http://data.vlaanderen.be/ns/generiek#GeografischePositie</code></td>
+          </tr>
+          
+          <tr>
+            <th>Definitie</th>
+            <td>TODO</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+      
+    
+    <div class="region region--no-space-top">
+    <h3 class="h3" id="http://data.vlaanderen.be/ns/adres#postcode">Eigenschap <em>postcode</em></h3>
+
+    <table class="definition">
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Eigenschap</td>
+          </tr>
+          
+          <tr>
+            <th>URI</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#postcode</code></td>
+          </tr>
+          
+          <tr>
+            <th>Domein</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#Postinfo</code></td>
+          </tr>
+          
+          
+          <tr>
+            <th>Bereik</th>
+            <td><code>http://www.w3.org/2000/01/rdf-schema#Literal</code></td>
+          </tr>
+          
+          <tr>
+            <th>Definitie</th>
+            <td>TODO</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+      
+    
+    <div class="region region--no-space-top">
+    <h3 class="h3" id="http://data.vlaanderen.be/ns/adres#postnaam">Eigenschap <em>postnaam</em></h3>
+
+    <table class="definition">
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Eigenschap</td>
+          </tr>
+          
+          <tr>
+            <th>URI</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#postnaam</code></td>
+          </tr>
+          
+          <tr>
+            <th>Domein</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#Postinfo</code></td>
+          </tr>
+          
+          
+          <tr>
+            <th>Bereik</th>
+            <td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#langString</code></td>
           </tr>
           
           <tr>
@@ -1191,6 +1579,42 @@
           <tr>
             <th>Bereik</th>
             <td><code>http://data.vlaanderen.be/ns/adres#Adres</code></td>
+          </tr>
+          
+          <tr>
+            <th>Definitie</th>
+            <td>TODO</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+      
+    
+    <div class="region region--no-space-top">
+    <h3 class="h3" id="http://data.vlaanderen.be/ns/adres#volledigAdres">Eigenschap <em>volledig adres</em></h3>
+
+    <table class="definition">
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Eigenschap</td>
+          </tr>
+          
+          <tr>
+            <th>URI</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#volledigAdres</code></td>
+          </tr>
+          
+          <tr>
+            <th>Domein</th>
+            <td><code>http://data.vlaanderen.be/ns/adres#Adresuitbreiding</code></td>
+          </tr>
+          
+          
+          <tr>
+            <th>Bereik</th>
+            <td><code>http://www.w3.org/2000/01/rdf-schema#Literal</code></td>
           </tr>
           
           <tr>
