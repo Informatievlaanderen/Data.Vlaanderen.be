@@ -1,5 +1,5 @@
-virtualenv -p python3 specgen
 cd $(dirname $(readlink -f $0))
+virtualenv -p python3 specgen
 cd specgen
 . bin/activate
 git clone https://github.com/InformatieVlaanderen/OSLO-SpecificationGenerator.git
