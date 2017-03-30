@@ -5,6 +5,8 @@ echo "$(dirname $(readlink -f $0))"
 cd $(dirname $(readlink -f $0))/specgen
 . bin/activate
 
+cd $(dirname $(readlink -f $0))/..
+
 # Adres
 
 echo "Adres"
