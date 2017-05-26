@@ -1,0 +1,245 @@
+@prefix corevoc:  <http://data.europa.eu/m8g/> .
+@prefix org:     <https://www.w3.org/ns/org#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix oa:      <http://www.w3.org/ns/oa#> .
+@prefix as:      <https://www.w3.org/ns/activitystreams#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcmi:    <http://purl.org/dc/dcmitype/> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix locn:    <http://www.w3.org/ns/locn#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+
+<http://data.vlaanderen.be/ns/melding>
+      a       owl:Ontology ;
+      dcterms:title "Melding"@nl ;
+      vann:preferredNamespaceUri
+              "http://data.vlaanderen.be/ns/melding" .
+
+<http://data.vlaanderen.be/ns/melding#Eigenschap>
+      a       owl:Class ;
+      rdfs:comment "De klasse voor het beschrijven van de eigenschappen waaruit een dataset bestaat."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "Eigenschap"@nl ;
+      rdfs:subClassOf "http://www.w3.org/ns/prov#Entity"@en , "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"@en .
+
+<http://data.vlaanderen.be/ns/melding#Melding>
+      a       owl:Class ;
+      rdfs:comment "De klasse voor digitale annotaties voor het melden van feedback op data en reële wereld objecten."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "Melding"@nl ;
+      owl:equivalentClass "http://www.w3.org/ns/oa#Annotation"@en .
+
+<http://data.vlaanderen.be/ns/melding#MeldingBody>
+      a       owl:Class ;
+      rdfs:comment "De body van de Melding,deze omvat relevante informatie voor de verdere afhandeling van de melding."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "Melding Body"@nl ;
+      rdfs:subClassOf "https://www.w3.org/ns/activitystreams#Object"@en .
+
+<http://data.vlaanderen.be/ns/melding#Meldingsapplicatie>
+      a       owl:Class ;
+      rdfs:comment "De applicatie langswaar de Melding werd ontvangen door het systeem."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "Meldingsapplicatie"@nl ;
+      owl:oneOf () .
+
+<http://data.vlaanderen.be/ns/melding#Meldingsobject>
+      a       owl:Class ;
+      rdfs:comment "Het Meldingsobject identificeert een resource,een specifiek deel van een resource,een bepaalde representatie van een resource of een combinatie hiervan welke gebruikt wordt binnen de Melding."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "Meldingsobject"@nl .
+
+<http://data.vlaanderen.be/ns/melding#Meldingstype>
+      a       owl:Class ;
+      rdfs:comment "Meldingstype wordt gebruikt om vast te leggen wat de motivatie was van de gebruiker om de Melding te creëeren of het bijvoegen van de body of het doelwit van de Melding. Meldingstype kan gebruikt worden om de Melding te categoriseren."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "Meldingstype"@nl ;
+      rdfs:subClassOf "http://www.w3.org/ns/oa#Motivation"@en ;
+      owl:oneOf () .
+
+<http://data.vlaanderen.be/ns/melding#Rol>
+      a       owl:Class ;
+      rdfs:comment "De Rol die een Agent speelt in met betrekking tot de Melding."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "Rol"@nl ;
+      owl:oneOf (<http://data.vlaanderen.be/ns/melding/Rol/Indiener> <http://data.vlaanderen.be/ns/melding/Rol/Belanghebbende> <http://data.vlaanderen.be/ns/melding/Rol/Behandelaar> <http://data.vlaanderen.be/ns/melding/Rol/Validator>) .
+
+<http://data.vlaanderen.be/ns/melding#Status>
+      a       owl:Class ;
+      rdfs:comment "De Status van de Melding in het verwerkingsproces op een bepaald tijdstip."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "Status"@nl .
+
+<http://data.vlaanderen.be/ns/melding#StatusType>
+      a       owl:Class ;
+      rdfs:comment "Status Type wordt gebruikt voor de taxonomie van verschillende mogelijk fases in een Status."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "Status Type"@nl ;
+      owl:oneOf () .
+
+<http://data.vlaanderen.be/ns/melding#attribuut>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Een eigenschap die door de dataset beschreven wordt."@nl ;
+      rdfs:domain dcmi:Dataset ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "attribuut"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/melding#Eigenschap> ;
+      rdfs:subPropertyOf <http://rdfs.org/ns/void#property> .
+
+<http://data.vlaanderen.be/ns/melding#gerelateerdeBody>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De body van de Melding die betrekking heeft op het Meldingsobject."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/melding#Meldingsobject> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "gerelateerdeBody"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/melding#MeldingBody> .
+
+<http://data.vlaanderen.be/ns/melding#heeftStatus>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De Status verbonden aan de Melding."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/melding#Melding> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "heeftStatus"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/melding#Status> .
+
+<http://data.vlaanderen.be/ns/melding#meldingsapplicatie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De applicatie dat de Melding creëerde."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/melding#Melding> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "meldingsapplicatie"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/melding#Meldingsapplicatie> ;
+      rdfs:subPropertyOf as:generator .
+
+<http://data.vlaanderen.be/ns/melding#meldingsorganisatie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De organisatie die verantwoordelijk is voor de applicatie die werd gebruikt voor de creatie van de melding."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/melding#Melding> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "meldingsorganisatie"@nl ;
+      rdfs:range <http://fixme.com#Organisatie> ;
+      rdfs:subPropertyOf as:generator .
+
+<http://data.vlaanderen.be/ns/melding#statusType>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het type van de Status."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/melding#Status> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "status type"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/melding#StatusType> .
+
+<http://data.vlaanderen.be/ns/melding#statusdatum>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "De datum van een Status."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/melding#Status> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "statusdatum"@nl ;
+      rdfs:range xsd:dateTime .
+
+<http://data.vlaanderen.be/ns/melding#statuswijzigingDoor>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De Agent die deze status heeft geactiveerd. "@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/melding#Status> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "statuswijziging door"@nl ;
+      rdfs:range <http://fixme.com#Agent> .
+
+<http://data.vlaanderen.be/ns/melding#statuswijzigingObject>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Geeft aan welk(e) meldingsobject(en) door de status werden aangeraakt of behandeld."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/melding#Status> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "statuswijziging object"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/melding#Meldingsobject> ;
+      rdfs:subPropertyOf prov:used .
+
+<http://data.vlaanderen.be/ns/melding#url>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Een doorverwijzing naar een webpagina over deze Melding."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/melding#Melding> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "url"@nl ;
+      rdfs:range rdfs:Literal .
+
+<http://data.vlaanderen.be/ns/melding/Rol/Behandelaar>
+      a       <http://data.vlaanderen.be/ns/melding#Rol> ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "TODO"@nl .
+
+<http://data.vlaanderen.be/ns/melding/Rol/Belanghebbende>
+      a       <http://data.vlaanderen.be/ns/melding#Rol> ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "TODO"@nl .
+
+<http://data.vlaanderen.be/ns/melding/Rol/Indiener>
+      a       <http://data.vlaanderen.be/ns/melding#Rol> ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "TODO"@nl .
+
+<http://data.vlaanderen.be/ns/melding/Rol/Validator>
+      a       <http://data.vlaanderen.be/ns/melding#Rol> ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "TODO"@nl .
+
+corevoc:hasParticipation
+      rdfs:label "heeft participerende"@nl .
+
+corevoc:playsRole
+      rdfs:label "speelt rol"@nl .
+
+corevoc:role
+      rdfs:label "rol"@nl .
+
+dcmi:Dataset
+      rdfs:label "Dataset"@nl .
+
+dcterms:description
+      rdfs:label "beschrijving"@nl .
+
+dcterms:title
+      rdfs:label "titel"@nl .
+
+rdf:value
+      rdfs:label "waarde"@nl .
+
+rdfs:label
+      rdfs:label "label"@nl .
+
+locn:geometry
+      rdfs:label "geometrie"@nl .
+
+oa:TimeState
+      rdfs:label "TijdToestand"@nl .
+
+oa:hasBody
+      rdfs:label "heeft body"@nl .
+
+oa:hasSource
+      rdfs:label "heeftBron"@nl .
+
+oa:hasState
+      rdfs:label "heeft toestand"@nl .
+
+oa:hasTarget
+      rdfs:label "heeft doelwit"@nl .
+
+oa:motivatedBy
+      rdfs:comment "De relatie tussen de Melding en het Meldingstype dat gebruikt worden om de melding te categoriseren."@nl ;
+      rdfs:label "meldingstype"@nl .
+
+oa:sourceDate
+      rdfs:label "datum vaststelling"@nl .
+
+as:attachment
+      rdfs:label "extra informatie"@nl .
+
+as:summary
+      rdfs:label "samenvatting"@nl .
