@@ -12,12 +12,19 @@
 @prefix locn:    <http://www.w3.org/ns/locn#> .
 @prefix vann:    <http://purl.org/vocab/vann/> .
 @prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix hydra:    https://www.w3.org/ns/hydra/core .
 
 <http://data.vlaanderen.be/ns/melding>
       a       owl:Ontology ;
       dcterms:title "Melding"@nl ;
       vann:preferredNamespaceUri
               "http://data.vlaanderen.be/ns/melding" .
+
+<http://data.vlaanderen.be/ns/melding#CodelijstWaarde>
+      a       owl:Class ;
+      rdfs:comment "De waarde uit een codelijst."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "Codelijst Waarde"@nl ;
 
 <http://data.vlaanderen.be/ns/melding#Eigenschap>
       a       owl:Class ;
@@ -89,6 +96,14 @@
       rdfs:label "attribuut"@nl ;
       rdfs:range <http://data.vlaanderen.be/ns/melding#Eigenschap> ;
       rdfs:subPropertyOf <http://rdfs.org/ns/void#property> .
+
+<http://data.vlaanderen.be/ns/melding#codelijst>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Associeert de Eigenschap met mogelijk codelijst waarden die voor de Eigenschap gebruikt kunnen worden."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/melding#Eigenschap> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/melding> ;
+      rdfs:label "codelijst"@nl ;
+      rdfs:range rdfs:Literal .
 
 <http://data.vlaanderen.be/ns/melding#gerelateerdeBody>
       a       owl:ObjectProperty ;
@@ -243,3 +258,6 @@ as:attachment
 
 as:summary
       rdfs:label "samenvatting"@nl .
+
+hydra:required
+      rdfs:label "verplicht"@nl .
