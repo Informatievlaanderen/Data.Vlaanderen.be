@@ -14,7 +14,7 @@ echo "Adres"
 python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --csv $(dirname $(readlink -f $0))/../src/stakeholders_latest.csv --contributors --target Adres --output $(dirname $(readlink -f $0))/../src/stakeholders_latest.rdf
 python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --rdf $(dirname $(readlink -f $0))/../src/adres.ttl --rdf_contributor $(dirname $(readlink -f $0))/../src/stakeholders_latest.rdf --merge --output $(dirname $(readlink -f $0))/../ns/adres.ttl
 python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --rdf $(dirname $(readlink -f $0))/../ns/adres.ttl --output $(dirname $(readlink -f $0))/../ns/adres.html --schema vocabularynl
-python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --csv $(dirname $(readlink -f $0))/../src/'Adresregister AP.tsv' --csv_contributor $(dirname $(readlink -f $0))/../src/stakeholders_latest.csv --ap --output $(dirname $(readlink -f $0))/../doc/ap/adres/index.html
+python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --csv $(dirname $(readlink -f $0))/../src/'Adresregister AP.tsv' --csv_contributor $(dirname $(readlink -f $0))/../src/stakeholders_latest.csv --ap --output $(dirname $(readlink -f $0))/../doc/ap/adresregister/index.html
 
 # Generiek
 
