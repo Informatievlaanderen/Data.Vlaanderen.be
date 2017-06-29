@@ -292,6 +292,8 @@
         
         <a href="#Meldingsobject" rel="class">Meldingsobject</a> |
         
+        <a href="#MeldingsobjectAttribuut" rel="class">MeldingsobjectAttribuut</a> |
+        
         <a href="#Meldingstype" rel="class">Meldingstype</a> |
         
         <a href="#Rol" rel="class">Rol</a> |
@@ -316,17 +318,25 @@
         
         <a href="#statuswijzigingObject" rel="property">Statuswijziging Object (Status)</a> |
         
-        <a href="#attribuut" rel="property">attribuut (Dataset)</a> |
+        <a href="#attribuut" rel="property">attribuut</a> |
+        
+        <a href="#bereik" rel="property">bereik</a> |
         
         <a href="#codelijst" rel="property">codelijst</a> |
         
+        <a href="#eigenschap" rel="property">eigenschap</a> |
+        
         <a href="#gerelateerdeBody" rel="property">gerelateerdeBody (Meldingsobject)</a> |
         
-        <a href="#heeftStatus" rel="property">heeftStatus (Melding)</a> |
+        <a href="#heeftStatus" rel="property">heeft status </a> |
+        
+        <a href="#huidigeWaarde" rel="property">huidige waarde</a> |
         
         <a href="#meldingsapplicatie" rel="property">meldingsapplicatie (Melding)</a> |
         
         <a href="#meldingsorganisatie" rel="property">meldingsorganisatie (Melding)</a> |
+        
+        <a href="#regex" rel="property">regex</a> |
         
         <a href="#statusType" rel="property">status type (Status)</a> |
         
@@ -335,6 +345,8 @@
         <a href="#statuswijzigingDoor" rel="property">statuswijziging door (Status)</a> |
         
         <a href="#url" rel="property">url (Melding)</a> |
+        
+        <a href="#voorgesteldeWaarde" rel="property">voorgestelde waarde</a> |
         
     </p>
     </div>
@@ -505,6 +517,30 @@
       
     
     <div class="region region--no-space-top">
+    <h3 class="h3" id="#MeldingsobjectAttribuut">Klasse <em>Meldingsobject Attribuut</em></h3>
+
+    <table class="definition">
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Klasse</td>
+          </tr>
+          
+          <tr>
+            <th>URI</th>
+            <td><code>http://data.vlaanderen.be/ns/melding#MeldingsobjectAttribuut</code></td>
+          </tr>
+          <tr>
+            <th>Definitie</th>
+            <td>Beschrijft een attribuut van het Meldingsobject.</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+      
+    
+    <div class="region region--no-space-top">
     <h3 class="h3" id="#Meldingstype">Klasse <em>Meldingstype</em></h3>
 
     <table class="definition">
@@ -649,7 +685,7 @@
           
           <tr>
             <th>Definitie</th>
-            <td>TODO</td>
+            <td>Geeft aan welk(e) meldingsobject(en) door de status werden aangeraakt of behandeld.</td>
           </tr>
           
         </tbody>
@@ -670,22 +706,47 @@
           <tr>
             <th>URI</th>
             <td><code>http://data.vlaanderen.be/ns/melding#attribuut</code></td>
+          </tr>  
+          
+          <tr>
+            <th>Definitie</th>
+            <td>Refereert naar een eigenschap die het object beschrijft.</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+      
+    
+    <div class="region region--no-space-top">
+    <h3 class="h3" id="#attribuut">Eigenschap <em>bereik</em></h3>
+
+    <table class="definition">
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Eigenschap</td>
+          </tr>
+          
+          <tr>
+            <th>URI</th>
+            <td><code>http://data.vlaanderen.be/ns/melding#bereik</code></td>
+          </tr>  
+          
+          <tr>
+            <th>Definitie</th>
+            <td>Geeft de verwachte waarde aan van de Eigenschap in de vorm van een Datatype.</td>
           </tr>
           
           <tr>
             <th>Domein</th>
-            <td><code>http://purl.org/dc/dcmitype/Dataset</code></td>
+            <td><code>http://data.vlaanderen.be/ns/melding#Eigenschap</code></td>
           </tr>
           
           
           <tr>
             <th>Bereik</th>
-            <td><code>http://data.vlaanderen.be/ns/melding#Eigenschap</code></td>
-          </tr>
-          
-          <tr>
-            <th>Definitie</th>
-            <td>Een eigenschap die door de dataset beschreven wordt.</td>
+            <td><code>http://www.w3.org/2000/01/rdf-schema#Datatype</code></td>
           </tr>
           
         </tbody>
@@ -722,6 +783,42 @@
           <tr>
             <th>Definitie</th>
             <td>Associeert de Eigenschap met mogelijk codelijst waarden die voor de Eigenschap gebruikt kunnen worden.</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+      
+    
+    <div class="region region--no-space-top">
+    <h3 class="h3" id="#eigenschap">Eigenschap <em>eigenschap</em></h3>
+
+    <table class="definition">
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Eigenschap</td>
+          </tr>
+          
+          <tr>
+            <th>URI</th>
+            <td><code>http://data.vlaanderen.be/ns/melding#eigenschap</code></td>
+          </tr>
+          
+          <tr>
+            <th>Domein</th>
+            <td><code>http://data.vlaanderen.be/ns/melding#MeldingsobjectAttribuut</code></td>
+          </tr>
+          
+          
+          <tr>
+            <th>Bereik</th>
+            <td><code>http://data.vlaanderen.be/ns/melding#Eigenschap</code></td>
+          </tr>
+          
+          <tr>
+            <th>Definitie</th>
+            <td>Verwijst naar de Eigenschap die deel uitmaakt van een bepaalde Dataset.</td>
           </tr>
           
         </tbody>
@@ -802,6 +899,42 @@
       
     
     <div class="region region--no-space-top">
+    <h3 class="h3" id="#huidigeWaarde">Eigenschap <em>huidige waarde</em></h3>
+
+    <table class="definition">
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Eigenschap</td>
+          </tr>
+          
+          <tr>
+            <th>URI</th>
+            <td><code>http://data.vlaanderen.be/ns/melding#huidigeWaarde</code></td>
+          </tr>
+          
+          <tr>
+            <th>Domein</th>
+            <td><code>http://data.vlaanderen.be/ns/melding#MeldingsobjectAttribuut</code></td>
+          </tr>
+          
+          
+          <tr>
+            <th>Bereik</th>
+            <td><code>http://www.w3.org/2000/01/rdf-schema#Literal</code></td>
+          </tr>
+          
+          <tr>
+            <th>Definitie</th>
+            <td>De huidige waarde van een Eigenschap.</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+      
+    
+    <div class="region region--no-space-top">
     <h3 class="h3" id="#meldingsapplicatie">Eigenschap <em>meldingsapplicatie</em></h3>
 
     <table class="definition">
@@ -860,12 +993,48 @@
           
           <tr>
             <th>Bereik</th>
-            <td><code>http://fixme.com#Organisatie</code></td>
+            <td><code>http://www.w3.org/ns/org#Organization</code></td>
           </tr>
           
           <tr>
             <th>Definitie</th>
             <td>De organisatie die verantwoordelijk is voor de applicatie die werd gebruikt voor de creatie van de melding.</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+      
+    
+    <div class="region region--no-space-top">
+    <h3 class="h3" id="#statusType">Eigenschap <em>regex</em></h3>
+
+    <table class="definition">
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Eigenschap</td>
+          </tr>
+          
+          <tr>
+            <th>URI</th>
+            <td><code>http://data.vlaanderen.be/ns/melding#regex</code></td>
+          </tr>
+          
+          <tr>
+            <th>Domein</th>
+            <td><code>http://data.vlaanderen.be/ns/melding#Eigenschap</code></td>
+          </tr>
+          
+          
+          <tr>
+            <th>Bereik</th>
+            <td><code>http://www.w3.org/2000/01/rdf-schema#Literal</code></td>
+          </tr>
+          
+          <tr>
+            <th>Definitie</th>
+            <td>Een regular expression om na te gaan of een waarde voldoet aan een bepaald patroon.</td>
           </tr>
           
         </tbody>
@@ -901,7 +1070,7 @@
           
           <tr>
             <th>Definitie</th>
-            <td>TODO</td>
+            <td>Het type van de Status.</td>
           </tr>
           
         </tbody>
@@ -968,7 +1137,7 @@
           
           <tr>
             <th>Bereik</th>
-            <td><code>http://fixme.com#Agent</code></td>
+            <td><code>http://purl.org/dc/terms/Agent</code></td>
           </tr>
           
           <tr>
@@ -1010,6 +1179,42 @@
           <tr>
             <th>Definitie</th>
             <td>Een doorverwijzing naar een webpagina over deze Melding.</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      </div>
+      
+    
+    <div class="region region--no-space-top">
+    <h3 class="h3" id="#voorgesteldeWaarde">Eigenschap <em>voorgestelde waarde</em></h3>
+
+    <table class="definition">
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Eigenschap</td>
+          </tr>
+          
+          <tr>
+            <th>URI</th>
+            <td><code>http://data.vlaanderen.be/ns/melding#voorgesteldeWaarde</code></td>
+          </tr>
+          
+          <tr>
+            <th>Domein</th>
+            <td><code>http://data.vlaanderen.be/ns/melding#MeldingsobjectAttribuut</code></td>
+          </tr>
+          
+          
+          <tr>
+            <th>Bereik</th>
+            <td><code>http://www.w3.org/2000/01/rdf-schema#Literal</code></td>
+          </tr>
+          
+          <tr>
+            <th>Definitie</th>
+            <td>De voorgestelde waarde van een Eigenschap.</td>
           </tr>
           
         </tbody>
