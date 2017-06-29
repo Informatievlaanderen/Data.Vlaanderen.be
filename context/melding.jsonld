@@ -1,20 +1,35 @@
 {
 	"@context":
 	{
-		"Participatie":"http://data.europa.eu/m8g/Participation",
-		"Eigenschap":"http://data.vlaanderen.be/ns/melding#Eigenschap",
 		"Agent":"http://purl.org/dc/terms/Agent",
+		"CodelijstWaarde": "http://data.vlaanderen.be/ns/melding#CodelijstWaarde",
+		"Eigenschap":"http://data.vlaanderen.be/ns/melding#Eigenschap",
 		"Dataset":"http://purl.org/dc/dcmitype/Dataset",
-		"TijdToestand":"http://www.w3.org/ns/oa#TimeState",
-		"Meldingsobject":"http://data.vlaanderen.be/ns/melding#Meldingsobject",
-		"Status":"http://data.vlaanderen.be/ns/melding#Status",
 		"Melding":"http://data.vlaanderen.be/ns/melding#Melding",
+		"Meldingsobject":"http://data.vlaanderen.be/ns/melding#Meldingsobject",
+		"MeldingsobjectAttribuut":"http://data.vlaanderen.be/ns/melding#MeldingsobjectAttribuut",
+		"Participatie":"http://data.europa.eu/m8g/Participation",
+		"Status":"http://data.vlaanderen.be/ns/melding#Status",
+		"TijdToestand":"http://www.w3.org/ns/oa#TimeState",
 
 
 		"attribuut":{
 			"@id":"http://data.vlaanderen.be/ns/melding#attribuut",
 			"@type":"http://data.vlaanderen.be/ns/melding#Eigenschap",
 			"@container":"@set"
+		},
+		"bereik":{
+			"@id":"http://data.vlaanderen.be/ns/melding#bereik",
+			"@type":"http://www.w3.org/2000/01/rdf-schema#Datatype",
+		},
+		"codelijst":{
+			"@id":"http://data.vlaanderen.be/ns/melding#codelijst",
+			"@type":"http://data.vlaanderen.be/ns/melding#CodelijstWaarde",
+			"@container":"@set"
+		},
+		"eigenschap":{
+			"@id":"http://data.vlaanderen.be/ns/melding#eigenschap",
+			"@type":"http://data.vlaanderen.be/ns/melding#Eigenschap",
 		},
 		"gerelateerdeBody":{
 			"@id":"http://data.vlaanderen.be/ns/melding#gerelateerdeBody",
@@ -56,7 +71,6 @@
 			"@id":"http://data.europa.eu/m8g/playsRole",
 			"@type":"http://data.europa.eu/m8g/Participation"
 		},
-
 
 		"extraInformatie":{
 			"@id":"https://www.w3.org/ns/activitystreams#attachment",
@@ -143,6 +157,22 @@
 		"url":{
 			"@id":"http://data.vlaanderen.be/ns/melding#url",
 			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+		},
+		"regex":{
+			"@id":"http://data.vlaanderen.be/ns/melding#regex",
+			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+		},
+		"huidigeWaarde":{
+			"@id":"http://data.vlaanderen.be/ns/melding#huidigeWaarde",
+			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+		},
+		"voorgesteldeWaarde":{
+			"@id":"http://data.vlaanderen.be/ns/melding#voorgesteldeWaarde",
+			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+		},
+		"werdToegewezenAan": {
+			"@id": "http://www.w3.org/ns/prov#wasAttributedTo",
+			"@type": "@id"
 		}
 	}
 }
