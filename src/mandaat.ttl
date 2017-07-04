@@ -1,0 +1,290 @@
+@prefix schema:  <http://schema.org/> .
+@prefix eli:     <http://data.europa.eu/eli/ontology#> .
+@prefix org:     <http://www.w3.org/ns/org#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix eu:      <http://data.europa.eu/m8g/> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix person:  <http://www.w3.org/ns/person#> .
+@prefix rov:     <http://www.w3.org/ns/regorg#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix locn:    <http://www.w3.org/ns/locn#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix cpsv:    <http://purl.org/vocab/cpsv#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+
+<http://data.vlaanderen.be/ns/mandaat>
+      a       owl:Ontology ;
+      rdfs:label "Mandate"@en , "Mandaat"@nl ;
+      dcterms:issued "2017-07-14"^^xsd:date ;
+      dcterms:title "Mandate"@en , "Mandaat"@nl ;
+      vann:preferredNamespaceUri
+              "http://data.vlaanderen.be/ns/mandaat" .
+
+<http://data.vlaanderen.be/ns/mandaat#Bestuurseenheid>
+      a       owl:Class ;
+      rdfs:comment "Publieke, bestuurlijke organisatie verbonden aan een territoriaal omschreven gebied met bepaalde verantwoordelijkheden waarbinnen het bestuurshandelingen kan stellen."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "Bestuurseenheid"@nl ;
+      rdfs:subClassOf eu:PublicOrganisation .
+
+<http://data.vlaanderen.be/ns/mandaat#Bestuursorgaan>
+      a       owl:Class ;
+      rdfs:comment "Een formeel orgaan van een rechtspersoon dat bevoegd is om rechtshandelingen te stellen."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "Bestuursorgaan"@nl ;
+      rdfs:subClassOf org:Organization .
+
+<http://data.vlaanderen.be/ns/mandaat#FormeelKaderAanstelling>
+      a       owl:Class ;
+      rdfs:comment "Het geheel van regelgeving, rechtshandelingen en beleidskeuzes waardoor de invulling van een of meerdere mandaten door een persoon vanaf een bepaalde datum (tijdelijk) start."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "Formeel Kader Aanstelling"@nl ;
+      rdfs:subClassOf eli:LegalExpression , cpsv:FormalFramework .
+
+<http://data.vlaanderen.be/ns/mandaat#FormeelKaderBeeindiging>
+      a       owl:Class ;
+      rdfs:comment "Het geheel van regelgeving, rechtshandelingen en beleidskeuzes waardoor de invulling van een of meerdere mandaten door een persoon vanaf een bepaalde datum (tijdelijk) beëindigd worden."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "Formeel Kader Beëindiging"@nl ;
+      rdfs:subClassOf eli:LegalExpression , cpsv:FormalFramework .
+
+<http://data.vlaanderen.be/ns/mandaat#Fractie>
+      a       owl:Class ;
+      rdfs:comment "Een fractie is een deel van een rechtstreeks verkozen volksvertegenwoordigend orgaan waarvan de leden op inhoudelijk en logistiek vlak willen samenwerken. Het formeel kader bepaalt wie samen een fractie kan vormen, doorgaans bestaat ze uit volksvertegenwoordigers die tot dezelfde politieke partij of stroming behoren."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "Fractie"@nl ;
+      rdfs:subClassOf org:Organization .
+
+<http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst>
+      a       owl:Class ;
+      rdfs:comment "Lijst met kandidaten."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "Kandidatenlijst"@nl .
+
+<http://data.vlaanderen.be/ns/mandaat#Mandaat>
+      a       owl:Class ;
+      rdfs:comment "De bevoegdheid om gedurende een bepaalde periode een bestuursorgaan te vormen of er deel van uit te maken;"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "Mandaat"@nl ;
+      rdfs:subClassOf org:Post .
+
+<http://data.vlaanderen.be/ns/mandaat#Mandataris>
+      a       owl:Class ;
+      rdfs:comment "Een persoon in zijn rol als houder van een mandaat."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "Mandataris"@nl ;
+      rdfs:subClassOf foaf:Agent .
+
+<http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing>
+      a       owl:Class ;
+      rdfs:comment "De uitvoering van een formele procedure waarbij stemgerechtigde burgers bepalen aan welke persoon een mandaat kan worden toegekend."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "Rechtstreekse Verkiezing"@nl ;
+      rdfs:subClassOf prov:Activity .
+
+<http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat>
+      a       owl:Class ;
+      rdfs:comment "Individuele verkiezingsuitslag van een kandidaat."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "Verkiezingsresultaat"@nl .
+
+<http://data.vlaanderen.be/ns/mandaat#aantalNaamstemmen>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Het aantal stemmen dat is uitgebracht op de kandidaat bij de verkiezing, zonder de lijststemmen in rekening te brengen."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "aantal naamstemmen"@nl ;
+      rdfs:range xsd:int .
+
+<http://data.vlaanderen.be/ns/mandaat#behoortTot>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De verkiezing waar de lijst onderdeel van is."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "behoort tot"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing> .
+
+<http://data.vlaanderen.be/ns/mandaat#bekrachtigdAanstellingVan>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De mandataris wiens aanstelling is bekrachtigd."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#FormeelKaderAanstelling> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "bekrachtigd aanstelling van"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> .
+
+<http://data.vlaanderen.be/ns/mandaat#bekrachtigdOntslagVan>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De mandataris wiens ontslag is bekrachtigd."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#FormeelKaderBeeindiging> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "bekrachtigd ontslag van"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> .
+
+<http://data.vlaanderen.be/ns/mandaat#bestuurt>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De bestuurseenheid die door het orgaan bestuurt wordt."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Bestuursorgaan> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "bestuurt"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/mandaat#Bestuurseenheid> .
+
+<http://data.vlaanderen.be/ns/mandaat#bevoegdheid>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Een bevoegdheid van de mandataris."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "bevoegdheid"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/mandaat#datum>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Datum dat de verkiezingen plaatsvonden."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "datum"@nl ;
+      rdfs:range xsd:date ;
+      rdfs:subPropertyOf dcterms:date .
+
+<http://data.vlaanderen.be/ns/mandaat#effect>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Persoonlijk gevolg voor de kandidaat dat vastlegt of de kandidaat al dan niet kan deelnemen aan het bestuurorgaan."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "effect"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/mandaat#einde>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Tijdstip wanneer de mandataris het mandaat niet langer opneemt."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "einde"@nl ;
+      rdfs:range xsd:dateTime .
+
+<http://data.vlaanderen.be/ns/mandaat#heeftKandidaat>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Een persoon die deel uitmaakt van de lijst."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "heeft kandidaat"@nl ;
+      rdfs:range person:Person .
+
+<http://data.vlaanderen.be/ns/mandaat#isAangesteldAls>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Een mandatarisrol eigen aan de persoon."@nl ;
+      rdfs:domain person:Person ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "is aangesteld als"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> .
+
+<http://data.vlaanderen.be/ns/mandaat#isAangesteldDoor>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het formeel kader dat heeft geleid tot de aanstelling van de mandataris."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "is aangesteld door"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/mandaat#FormeelKaderAanstelling> .
+
+<http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De persoon die mandatarisrol vervult."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "is bestuurlijke alias van"@nl ;
+      rdfs:range person:Person .
+
+<http://data.vlaanderen.be/ns/mandaat#isOntslagenDoor>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het formeel kader dat heeft geleid tot het ontslag van de mandataris."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "is ontslagen door"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/mandaat#FormeelKaderBeeindiging> .
+
+<http://data.vlaanderen.be/ns/mandaat#isResultaatVan>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De persoon horende bij het resultaat."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "is resultaat van"@nl ;
+      rdfs:range person:Person .
+
+<http://data.vlaanderen.be/ns/mandaat#isResultaatVoor>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De lijst waarop het resultaat betrekking heeft."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "is resultaat voor"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst> .
+
+<http://data.vlaanderen.be/ns/mandaat#lijstnummer>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Het volgnummer van de lijst."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "lijstnummer"@nl ;
+      rdfs:range xsd:int .
+
+<http://data.vlaanderen.be/ns/mandaat#lijsttype>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het type van de lijst."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "lijsttype"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/mandaat#plaatsRangorde>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "De positie in de volgorde op de lijst van effectief verkozenen of op de lijst van opvolgers, op basis van het aantal naamstemmen van de kandidaat plus het aantal overgedragen lijststemmen."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "plaats rangorde"@nl ;
+      rdfs:range xsd:int .
+
+<http://data.vlaanderen.be/ns/mandaat#rangorde>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Rangorde van de mandataris."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "rangorde"@nl ;
+      rdfs:range xsd:int .
+
+<http://data.vlaanderen.be/ns/mandaat#start>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Tijdstip wanneer de mandataris het mandaat opneemt."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "start"@nl ;
+      rdfs:range xsd:dateTime .
+
+<http://data.vlaanderen.be/ns/mandaat#status>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De status van de mandataris."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "status"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/mandaat#steltSamen>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het orgaan waarvan de samenstelling wordt bepaald door de verkiezing."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+      rdfs:label "stelt samen"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/mandaat#Bestuursorgaan> .
+
+org:hasMember
+      rdfs:label "heeft lid"@nl .
+
+org:holds
+      rdfs:label "bekleedt"@nl .
+
+org:memberOf
+      rdfs:label "lid van"@nl .
+
+org:role
+      rdfs:label "rol"@nl .
