@@ -163,7 +163,8 @@
       rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
       rdfs:label "einde"@nl ;
-      rdfs:range xsd:dateTime .
+      rdfs:range xsd:dateTime ;
+      rdfs:subPropertyOf <http://data.vlaanderen.be/ns/mandaat#specialisatieEinde> .
 
 <http://data.vlaanderen.be/ns/mandaat#heeftKandidaat>
       a       owl:ObjectProperty ;
@@ -179,7 +180,8 @@
       rdfs:domain person:Person ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
       rdfs:label "is aangesteld als"@nl ;
-      rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> .
+      rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+      rdfs:subPropertyOf prov:generalizationOf .
 
 <http://data.vlaanderen.be/ns/mandaat#isAangesteldDoor>
       a       owl:ObjectProperty ;
@@ -195,7 +197,8 @@
       rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
       rdfs:label "is bestuurlijke alias van"@nl ;
-      rdfs:range person:Person .
+      rdfs:range person:Person ;
+      rdfs:subPropertyOf prov:specializationOf .
 
 <http://data.vlaanderen.be/ns/mandaat#isOntslagenDoor>
       a       owl:ObjectProperty ;
@@ -251,7 +254,7 @@
       rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
       rdfs:label "rangorde"@nl ;
-      rdfs:range xsd:int .
+      rdfs:range rdf:langString .
 
 <http://data.vlaanderen.be/ns/mandaat#start>
       a       owl:DatatypeProperty ;
@@ -259,7 +262,8 @@
       rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
       rdfs:label "start"@nl ;
-      rdfs:range xsd:dateTime .
+      rdfs:range xsd:dateTime ;
+      rdfs:subPropertyOf <http://data.vlaanderen.be/ns/mandaat#specialisatieStart> .
 
 <http://data.vlaanderen.be/ns/mandaat#status>
       a       owl:ObjectProperty ;
