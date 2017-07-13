@@ -26,6 +26,7 @@ eli:number
       a       owl:Ontology ;
       rdfs:label "Besluit"@nl , "Decision"@en ;
       dcterms:issued "2017-07-14"^^xsd:date ;
+      dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
       dcterms:title "Besluit"@nl , "Decision"@en ;
       vann:preferredNamespaceUri
               "http://data.vlaanderen.be/ns/besluit" .
@@ -56,7 +57,7 @@ eli:number
       rdfs:comment "De uitvoering van de acties om een agendapunt te verwerken tijdens een zitting."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "Behandeling van Agendapunt"@nl ;
-      rdfs:subClassOf <http://data.vlaanderen.be/ns/besluit#Vergaderingsactiviteit> .
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit> .
 
 <http://data.vlaanderen.be/ns/besluit#Besluit>
       a       owl:Class ;
@@ -73,11 +74,11 @@ eli:number
       rdfs:label "Stemming"@nl ;
       rdfs:subClassOf prov:Activity .
 
-<http://data.vlaanderen.be/ns/besluit#Vergaderingsactiviteit>
+<http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit>
       a       owl:Class ;
-      rdfs:comment "Een vergadering of onderdeel ervan."@nl ;
+      rdfs:comment "Een vergadering of fase ervan."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
-      rdfs:label "Vergaderingsactiviteit"@nl ;
+      rdfs:label "Vergaderactiviteit"@nl ;
       rdfs:subClassOf prov:Activity .
 
 <http://data.vlaanderen.be/ns/besluit#Zitting>
@@ -85,7 +86,16 @@ eli:number
       rdfs:comment "Een geformaliseerde samenkomst van de leden van een bestuurorgaan met het doel om de aangelegenheden te regelen waarvoor het bevoegd is."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "Zitting"@nl ;
-      rdfs:subClassOf <http://data.vlaanderen.be/ns/besluit#Vergaderingsactiviteit> .
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit> .
+
+<http://data.vlaanderen.be/ns/besluit#aangebrachtNa>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het agendapunt dat op de agenda direct dit punt voorafging."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Agendapunt> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
+      rdfs:label "aangebracht na"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/besluit#Agendapunt> ;
+      rdfs:subPropertyOf dcterms:relation .
 
 <http://data.vlaanderen.be/ns/besluit#behandelt>
       a       owl:ObjectProperty ;
@@ -95,9 +105,18 @@ eli:number
       rdfs:label "behandelt"@nl ;
       rdfs:range <http://data.vlaanderen.be/ns/besluit#Agendapunt> .
 
+<http://data.vlaanderen.be/ns/besluit#gebeurtNa>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Verwijzing naar de voorgaande behandeling binnen dezelfde zitting. Laat toe om de volgorde van de behandelingen op te bouwen."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
+      rdfs:label "gebeurt na"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt> ;
+      rdfs:subPropertyOf dcterms:relation .
+
 <http://data.vlaanderen.be/ns/besluit#geheim>
       a       owl:DatatypeProperty ;
-      rdfs:comment "Of de stemming geheim was (er wordt niet bekend gemaakt wie op wat heeft gestemd)."@nl ;
+      rdfs:comment "Of de stemming geheim was. Bij een geheime stemming wordt niet individueel bekend gemaakt wie op wat heeft gestemd."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Stemming> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "geheim"@nl ;
@@ -114,7 +133,7 @@ eli:number
 <http://data.vlaanderen.be/ns/besluit#heeftAanwezige>
       a       owl:ObjectProperty ;
       rdfs:comment "Een mandataris die aanwezig was tijdens een deel van de activiteit."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Vergaderingsactiviteit> ;
+      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "heeft aanwezige"@nl ;
       rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
@@ -123,7 +142,7 @@ eli:number
 <http://data.vlaanderen.be/ns/besluit#heeftAanwezigeBijStart>
       a       owl:ObjectProperty ;
       rdfs:comment "Een mandataris die aanwezig was bij de start van de activiteit."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Vergaderingsactiviteit> ;
+      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "heeft aanwezige bij start"@nl ;
       rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
@@ -132,7 +151,7 @@ eli:number
 <http://data.vlaanderen.be/ns/besluit#heeftContinuAanwezige>
       a       owl:ObjectProperty ;
       rdfs:comment "Een mandataris die aanwezig was gedurende de gehele activiteit."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Vergaderingsactiviteit> ;
+      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "heeft continu aanwezige"@nl ;
       rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
@@ -157,7 +176,7 @@ eli:number
 
 <http://data.vlaanderen.be/ns/besluit#heeftOntwerpBesluit>
       a       owl:ObjectProperty ;
-      rdfs:comment "Een (mogelijks onvolledig) ontwerp voor het besluit dat uit dit agendapunt zou voortkomen."@nl ;
+      rdfs:comment "Een (mogelijks nog aan te vullen) ontwerp voor het besluit dat uit dit agendapunt zou voortkomen."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Agendapunt> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "heeft ontwerp besluit"@nl ;
@@ -166,7 +185,7 @@ eli:number
 <http://data.vlaanderen.be/ns/besluit#heeftSecretaris>
       a       owl:ObjectProperty ;
       rdfs:comment "De mandataris die de rol als secretaris heeft gedurende de activiteit."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Vergaderingsactiviteit> ;
+      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "heeft secretaris"@nl ;
       rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
@@ -199,7 +218,7 @@ eli:number
 
 <http://data.vlaanderen.be/ns/besluit#heeftTegenstander>
       a       owl:ObjectProperty ;
-      rdfs:comment "Mandataris die tegen het onderwerp van de stemming is."@nl ;
+      rdfs:comment "Mandataris die tegen het onderwerp van de stemming heeft gestemd."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Stemming> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "heeft tegenstander"@nl ;
@@ -208,7 +227,7 @@ eli:number
 
 <http://data.vlaanderen.be/ns/besluit#heeftVoorstander>
       a       owl:ObjectProperty ;
-      rdfs:comment "Mandataris die voorstander is van het onderwerp van de stemming."@nl ;
+      rdfs:comment "Mandataris die als voorstander heeft gestemd op het onderwerp van de stemming."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Stemming> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "heeft voorstander"@nl ;
@@ -218,7 +237,7 @@ eli:number
 <http://data.vlaanderen.be/ns/besluit#heeftVoorzitter>
       a       owl:ObjectProperty ;
       rdfs:comment "De mandataris die de rol als voorzitter heeft gedurende de activiteit."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Vergaderingsactiviteit> ;
+      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "heeft voorzitter"@nl ;
       rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
@@ -250,20 +269,20 @@ eli:number
       rdfs:range <http://data.vlaanderen.be/ns/mandaat#Bestuursorgaan> ;
       rdfs:subPropertyOf prov:wasStartedBy .
 
-<http://data.vlaanderen.be/ns/besluit#isGenomenDoor>
-      a       owl:ObjectProperty ;
-      rdfs:comment "Het bestuurorgaan dat de beslissing vervat in het besluit heeft gemaakt."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Besluit> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
-      rdfs:label "is genomen door"@nl ;
-      rdfs:range <http://data.vlaanderen.be/ns/mandaat#Bestuursorgaan> .
-
 <http://data.vlaanderen.be/ns/besluit#motivering>
       a       owl:DatatypeProperty ;
       rdfs:comment "Beschrijving van de motivering achter de beslissing die wordt uitgedrukt in het besluit."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Besluit> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "motivering"@nl ;
+      rdfs:range rdf:langString .
+
+<http://data.vlaanderen.be/ns/besluit#onderwerp>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "De beschrijving van het onderwerp waarover de stemming gaat."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Stemming> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
+      rdfs:label "onderwerp"@nl ;
       rdfs:range rdf:langString .
 
 <http://data.vlaanderen.be/ns/besluit#openbaar>
@@ -285,21 +304,6 @@ eli:number
 dcterms:description
       rdfs:label "beschrijving"@nl .
 
-dcterms:hasPart
-      rdfs:label "heeft deel"@nl .
-
-dcterms:isPartOf
-      rdfs:label "is deel van"@nl .
-
-dcterms:references
-      rdfs:label "verwijst"@nl .
-
-dcterms:replaces
-      rdfs:label "vervangt"@nl .
-
-dcterms:subject
-      rdfs:label "onderwerp"@nl .
-
 dcterms:title
       rdfs:label "titel"@nl .
 
@@ -311,6 +315,3 @@ prov:endedAtTime
 
 prov:startedAtTime
       rdfs:label "gestart op tijdstip"@nl .
-
-prov:wasGeneratedBy
-      rdfs:label "is gegenereerd door"@nl .
