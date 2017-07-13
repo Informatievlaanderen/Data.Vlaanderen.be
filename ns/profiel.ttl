@@ -1,0 +1,216 @@
+@prefix corevoc: <http://data.europa.eu/m8g/> .
+@prefix org:     <https://www.w3.org/ns/org#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix adms:    <http://www.w3.org/ns/adms#> .
+@prefix oa:      <http://www.w3.org/ns/oa#> .
+@prefix as:      <https://www.w3.org/ns/activitystreams#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcmi:    <http://purl.org/dc/dcmitype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix locn:    <http://www.w3.org/ns/locn#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix vcard:   <http://ww.w3.org/2006/vcard/ns#> .
+@prefix schema:  <http://schema.org/> .
+
+<http://data.vlaanderen.be/ns/profiel>
+      a       owl:Ontology ;
+      rdfs:label "Profiel"@nl , "Profile"@en ;
+      dcterms:title "Profiel"@nl , "Profile"@en ;
+      vann:preferredNamespaceUri
+              "http://data.vlaanderen.be/ns/profiel" .
+
+<http://data.vlaanderen.be/ns/profiel#thema>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Thema's van de Vlaamse Overheid waar de Persoon interesse in heeft."@nl ;
+      rdfs:domain <http://www.w3.org/ns/person#Person> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/profiel> ;
+      rdfs:label "thema"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/profiel#Bankgegevens>
+      a       owl:Class ;
+      rdfs:comment "De Bankgegevens van een Persoon."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/profiel> ;
+      rdfs:label "Bankgegevens"@nl .
+
+<http://data.vlaanderen.be/ns/profiel#Taal>
+      a       owl:Class ;
+      rdfs:comment "Beschrijving van de taal."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/profiel> ;
+      rdfs:label "Taal"@nl .
+
+<http://data.vlaanderen.be/ns/profiel#adellijkeTitel>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "De adelijke titel van de Persoon."@nl ;
+      rdfs:domain <http://www.w3.org/ns/person#Person> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/profiel> ;
+      rdfs:label "adelijke titel"@nl ;
+      rdfs:range rdfs:Literal .
+
+<http://data.vlaanderen.be/ns/profiel#gebruikteVoornaam>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://www.w3.org/ns/person#Person> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/profiel> ;
+      rdfs:label "gebruikte voornaam"@nl ;
+      rdfs:range rdfs:Literal ;
+      rdfs:subPropertyOf foaf:givenName .
+
+<http://data.vlaanderen.be/ns/profiel#gemeentenaam>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain locn:Address ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/profiel> ;
+      rdfs:label "gemeentenaam"@nl ;
+      rdfs:range rdfs:Literal ;
+      rdfs:subPropertyOf locn:postName .
+
+<http://data.vlaanderen.be/ns/profiel#geslacht>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het feit of men een man of een vrouw is."@nl ;
+      rdfs:domain <http://www.w3.org/ns/person#Person> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/profiel> ;
+      rdfs:label "geslacht"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/profiel#land>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain locn:Address ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/profiel> ;
+      rdfs:label "land"@nl ;
+      rdfs:range rdfs:Literal ;
+      rdfs:subPropertyOf locn:adminUnitL1 .
+
+<http://data.vlaanderen.be/ns/profiel#registratie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Identificatiecode vd persoon ih register."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/persoon#GeregistreerdPersoon> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/profiel> ;
+      rdfs:label "registratie"@nl ;
+      rdfs:range <http://www.w3.org/ns/adms#Identifier> ;
+      rdfs:subPropertyOf <http://www.w3.org/ns/adms#Identifier> .
+
+<http://data.vlaanderen.be/ns/profiel#rekeningnummer>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Het rekeningnummer van de Persoon."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/profiel#Bankgegevens> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/profiel> ;
+      rdfs:label "rekeningnummer"@nl ;
+      rdfs:range rdfs:Literal .
+
+<http://data.vlaanderen.be/ns/profiel#swiftcode>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "De SWIFT code geassocieerd met het rekeningnummer."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/profiel#Bankgegevens> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/profiel> ;
+      rdfs:label "SWIFT code"@nl ;
+      rdfs:range rdfs:Literal .
+
+<http://data.vlaanderen.be/ns/profiel#type>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Aard vd Burgerlijke Staat."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/persoon#BurgerlijkeStaat> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/profiel> ;
+      rdfs:label "type"@nl ;
+      rdfs:range skos:Concept ;
+      rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/type> .
+
+
+dcterms:Agent
+      rdfs:label "Agent"@nl .
+
+dcterms:type
+      rdfs:label "type"@nl .
+
+schema:ContactPoint
+      rdfs:label "Contactpunt"@nl .
+
+schema:contactPoint
+      rdfs:label "contactpunt"@nl .
+
+schema:email
+      rdfs:label "email"@nl .
+
+schema:faxNumber
+      rdfs:label "faxnummer"@nl .
+
+schema:hoursAvailable
+      rdfs:label "beschikbaarheid"@nl .
+
+schema:telephone
+      rdfs:label "telefoon"@nl .
+
+vcard:honorific-prefix
+      rdfs:label "aanschrijfprefix"@nl .
+
+rdf:value
+      rdfs:label "string"@nl .
+
+rdfs:Literal
+      rdfs:label "Getypeerde String"@nl .
+
+vcard:language
+      rdfs:label "taal"@nl .
+
+adms:status
+      rdfs:label "status"@nl .
+
+locn:Address
+      rdfs:label "Adresvoorstelling"@nl .
+
+locn:address
+      rdfs:label "adres"@nl .
+
+locn:addressArea
+      rdfs:label "adresgebied"@nl .
+
+locn:adminUnitL1
+      rdfs:label "administratieve eenheid niveau 1"@nl .
+
+locn:adminUnitL2
+      rdfs:label "administratieve eenheid niveau 2"@nl .
+
+locn:fullAddress
+      rdfs:label "volledig adres"@nl .
+
+locn:locatorDesignator
+      rdfs:label "locatieaanduiding"@nl .
+
+locn:locatorName
+      rdfs:label "Locatienaam"@nl .
+
+locn:poBox
+      rdfs:label "postbus"@nl .
+
+locn:postCode
+      rdfs:label "postcode"@nl .
+
+locn:postName
+      rdfs:label "postnaam"@nl .
+
+locn:thoroughfare
+      rdfs:label "straatnaam"@nl .
+
+foaf:PersonalProfileDocument
+      rdfs:label "Persoonlijk Profiel Document"@nl .
+
+foaf:familyName
+      rdfs:label "familienaam"@nl .
+
+foaf:givenName
+      rdfs:label "voornaam"@nl .
+
+foaf:maker
+      rdfs:label "maker"@nl .
+
+foaf:name
+      rdfs:label "alternatieve naam"@nl , "naam"@nl .
+
+foaf:page
+      rdfs:label "pagina"@nl .
