@@ -67,19 +67,33 @@
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
     rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> .
 
+<http://data.vlaanderen.be/ns/mandaat#beleidsdomein> a owl:ObjectProperty ;
+    rdfs:label "beleidsdomein"@nl ;
+    rdfs:comment "Het thema of beleidsdomein dat toegewezen is aan een mandataris."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+    rdfs:range skos:Concept .
+
 <http://data.vlaanderen.be/ns/mandaat#bestuurt> a owl:ObjectProperty ;
     rdfs:label "bestuurt"@nl ;
-    rdfs:comment "De bestuurseenheid die door het orgaan bestuurt wordt."@nl ;
+    rdfs:comment "De bestuurseenheid die door het orgaan bestuurd wordt."@nl ;
     rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Bestuursorgaan> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
     rdfs:range <http://data.vlaanderen.be/ns/mandaat#Bestuurseenheid> .
 
-<http://data.vlaanderen.be/ns/mandaat#bevoegdheid> a owl:ObjectProperty ;
-    rdfs:label "bevoegdheid"@nl ;
-    rdfs:comment "Een bevoegdheid van de mandataris."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+<http://data.vlaanderen.be/ns/mandaat#bindingEinde> a owl:DatatypeProperty ;
+    rdfs:label "binding einde"@nl ;
+    rdfs:comment "Het einde (inclusief) van de periode waarover de tijdsgebonden entiteit gedefinieerd is."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/mandaat#TijdsgebondenEntiteit> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
-    rdfs:range skos:Concept .
+    rdfs:range rdfs:Literal .
+
+<http://data.vlaanderen.be/ns/mandaat#bindingStart> a owl:DatatypeProperty ;
+    rdfs:label "binding start"@nl ;
+    rdfs:comment "De start van de periode waarover de tijdsgebonden entiteit gedefinieerd is."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/mandaat#TijdsgebondenEntiteit> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+    rdfs:range rdfs:Literal .
 
 <http://data.vlaanderen.be/ns/mandaat#datum> a owl:DatatypeProperty ;
     rdfs:label "datum"@nl ;
@@ -91,7 +105,8 @@
 
 <http://data.vlaanderen.be/ns/mandaat#effect> a owl:ObjectProperty ;
     rdfs:label "effect"@nl ;
-    rdfs:comment "Persoonlijk gevolg voor de kandidaat dat vastlegt of de kandidaat al dan niet kan deelnemen aan het bestuurorgaan."@nl ;
+    vann:usageNote "Voorbeelden: niet verkozen, effectief, opvolger"@nl ;
+    rdfs:comment "Persoonlijk gevolg van de uitslag voor de kandidaat dat vastlegt of de kandidaat al dan niet kan deelnemen aan het bestuurorgaan."@nl ;
     rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
     rdfs:range skos:Concept .
@@ -136,7 +151,7 @@
 
 <http://data.vlaanderen.be/ns/mandaat#isOntslagenDoor> a owl:ObjectProperty ;
     rdfs:label "is ontslagen door"@nl ;
-    rdfs:comment "Het formeel kader dat heeft geleid tot het ontslag van de mandataris."@nl ;
+    rdfs:comment "Het formeel kader dat het ontslag van de mandataris vastlegt."@nl ;
     rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
     rdfs:range <http://data.vlaanderen.be/ns/mandaat#FormeelKaderBeeindiging> .
@@ -154,6 +169,22 @@
     rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
     rdfs:range <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst> .
+
+<http://data.vlaanderen.be/ns/mandaat#isTijdelijkVervangenDoor> a owl:ObjectProperty ;
+    rdfs:label "is tijdelijk vervangen door"@nl ;
+    vann:usageNote "De periode van vervanging komt overeen met de start-/einddatum van de opname van het mandaat van de vervanger."@nl ;
+    rdfs:comment "Duidt een mandataris aan die tijdelijk de uitvoering van het mandaat heeft overgenomen."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+    rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> .
+
+<http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> a owl:ObjectProperty ;
+    rdfs:label "is tijdspecialisatie van"@nl ;
+    rdfs:comment "Duidt de bron entiteit aan waarvan deze entiteit een tijdsgebonden specialisatie is. De specialisatie stelt de bron voor gedurende een bepaalde periode van zijn levensloop."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/mandaat#TijdsgebondenEntiteit> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+    rdfs:range prov:Entity ;
+    rdfs:subPropertyOf prov:specializationOf .
 
 <http://data.vlaanderen.be/ns/mandaat#lijstnummer> a owl:DatatypeProperty ;
     rdfs:label "lijstnummer"@nl ;
@@ -178,7 +209,7 @@
 
 <http://data.vlaanderen.be/ns/mandaat#rangorde> a owl:DatatypeProperty ;
     rdfs:label "rangorde"@nl ;
-    rdfs:comment "Rangorde van de mandataris."@nl ;
+    rdfs:comment "De aanduiding van de positie binnen de machtsorde van het bestuursorgaan waarin de mandataris zetelt."@nl ;
     rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
     rdfs:range rdf:langString .
@@ -193,7 +224,8 @@
 
 <http://data.vlaanderen.be/ns/mandaat#status> a owl:ObjectProperty ;
     rdfs:label "status"@nl ;
-    rdfs:comment "De status van de mandataris."@nl ;
+    vann:usageNote "Voorbeelden: effectief, verhinderd, beeindigd, waarnemend."@nl ;
+    rdfs:comment "De gesteldheid van de mandataris."@nl ;
     rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
     rdfs:range skos:Concept .
@@ -204,12 +236,6 @@
     rdfs:domain <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
     rdfs:range <http://data.vlaanderen.be/ns/mandaat#Bestuursorgaan> .
-
-org:hasMember rdfs:label "heeft lid"@nl .
-
-org:holds rdfs:label "bekleedt"@nl .
-
-org:memberOf rdfs:label "lid van"@nl .
 
 org:role rdfs:label "rol"@nl .
 
@@ -229,14 +255,14 @@ org:role rdfs:label "rol"@nl .
     rdfs:label "Formeel Kader Aanstelling"@nl ;
     rdfs:comment "Het geheel van regelgeving, rechtshandelingen en beleidskeuzes waardoor de invulling van een of meerdere mandaten door een persoon vanaf een bepaalde datum (tijdelijk) start."@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
-    rdfs:subClassOf eli:LegalExpression,
+    rdfs:subClassOf eli:LegalResource,
         cpsv:FormalFramework .
 
 <http://data.vlaanderen.be/ns/mandaat#FormeelKaderBeeindiging> a owl:Class ;
     rdfs:label "Formeel Kader Beëindiging"@nl ;
     rdfs:comment "Het geheel van regelgeving, rechtshandelingen en beleidskeuzes waardoor de invulling van een of meerdere mandaten door een persoon vanaf een bepaalde datum (tijdelijk) beëindigd worden."@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
-    rdfs:subClassOf eli:LegalExpression,
+    rdfs:subClassOf eli:LegalResource,
         cpsv:FormalFramework .
 
 <http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing> a owl:Class ;
@@ -244,6 +270,12 @@ org:role rdfs:label "rol"@nl .
     rdfs:comment "De uitvoering van een formele procedure waarbij stemgerechtigde burgers bepalen aan welke persoon een mandaat kan worden toegekend."@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
     rdfs:subClassOf prov:Activity .
+
+<http://data.vlaanderen.be/ns/mandaat#TijdsgebondenEntiteit> a owl:Class ;
+    rdfs:label "Tijdsgebonden Entiteit"@nl ;
+    rdfs:comment "Stelt een entiteit voor gedurende een specifieke periode van zijn levensduur."@nl ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/mandaat> ;
+    rdfs:subClassOf prov:Entity .
 
 <http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst> a owl:Class ;
     rdfs:label "Kandidatenlijst"@nl ;
@@ -265,46 +297,47 @@ org:role rdfs:label "rol"@nl .
     rdfs:label "Mandate"@en,
         "Mandaat"@nl ;
     dcterms:issued "2017-07-14"^^xsd:date ;
-    dcterms:mediator [ foaf:homepage <https://overheid.vlaanderen.be/producten-diensten/OSLO2> ;
+    dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
+    dcterms:mediator [ foaf:homepage <https://data.vlaanderen.be> ;
             foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
-            foaf:name "OSLO Werkgroepen" ] ;
+            foaf:name "Data Vlaanderen" ] ;
     dcterms:title "Mandate"@en,
         "Mandaat"@nl ;
     vann:preferredNamespaceUri "http://data.vlaanderen.be/ns/mandaat" ;
     rec:editor [ schema:affiliation [ foaf:homepage <file:///home/ldevocht/Documents/git/OSLO-Vocabularia/src/stakeholders_lblod.rdf> ;
                     foaf:name "imec-MICT-UGent" ] ;
+            foaf:mbox <mailto:mathias.vancompernolle@ugent.be> ;
+            foaf:name "Van Compernolle, Mathias" ],
+        [ schema:affiliation [ foaf:homepage <file:///home/ldevocht/Documents/git/OSLO-Vocabularia/src/stakeholders_lblod.rdf> ;
+                    foaf:name "imec-MICT-UGent" ] ;
             foaf:mbox <mailto:fie.vandamme@ugent.be> ;
             foaf:name "Vandamme, Fie" ],
-        [ schema:affiliation [ foaf:homepage <file:///home/ldevocht/Documents/git/OSLO-Vocabularia/src/stakeholders_lblod.rdf> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:mbox <mailto:raf.buyle@agiv.be> ;
-            foaf:name "Buyle, Raf" ],
-        [ schema:affiliation [ foaf:homepage <file:///home/ldevocht/Documents/git/OSLO-Vocabularia/src/stakeholders_lblod.rdf> ;
-                    foaf:name "imec-IDLab-UGent" ] ;
-            foaf:mbox <mailto:laurens.devocht@ugent.be> ;
-            foaf:name "De Vocht, Laurens" ],
         [ schema:affiliation [ foaf:homepage <file:///home/ldevocht/Documents/git/OSLO-Vocabularia/src/stakeholders_lblod.rdf> ;
                     foaf:name "imec-IDLab-UGent" ] ;
             foaf:mbox <mailto:erik.mannens@ugent.be> ;
             foaf:name "Mannens, Erik" ],
         [ schema:affiliation [ foaf:homepage <file:///home/ldevocht/Documents/git/OSLO-Vocabularia/src/stakeholders_lblod.rdf> ;
-                    foaf:name "Imec" ] ;
-            foaf:mbox <mailto:mathias.vancompernolle@ugent.be> ;
-            foaf:name "Van Compernolle, Mathias" ] ;
-    foaf:maker [ schema:affiliation [ foaf:homepage <file:///home/ldevocht/Documents/git/OSLO-Vocabularia/src/stakeholders_lblod.rdf> ;
-                    foaf:name "ABB" ] ;
-            foaf:mbox <mailto:heidi.godderis@kb.vlaanderen.be> ;
-            foaf:name "Godderis, Heidi" ],
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:mbox <mailto:raf.buyle@kb.vlaanderen.be> ;
+            foaf:name "Buyle, Raf" ],
         [ schema:affiliation [ foaf:homepage <file:///home/ldevocht/Documents/git/OSLO-Vocabularia/src/stakeholders_lblod.rdf> ;
-                    foaf:name "ABB" ] ;
+                    foaf:name "imec-IDLab-UGent" ] ;
+            foaf:mbox <mailto:laurens.devocht@ugent.be> ;
+            foaf:name "De Vocht, Laurens" ] ;
+    foaf:maker [ schema:affiliation [ foaf:homepage <file:///home/ldevocht/Documents/git/OSLO-Vocabularia/src/stakeholders_lblod.rdf> ;
+                    foaf:name "Agentschap Binnenlands Bestuur" ] ;
             foaf:mbox <mailto:veronique.volders@bz.vlaanderen.be> ;
             foaf:name "Volders, Veronique" ],
+        [ schema:affiliation [ foaf:homepage <file:///home/ldevocht/Documents/git/OSLO-Vocabularia/src/stakeholders_lblod.rdf> ;
+                    foaf:name "Agentschap Binnenlands Bestuur" ] ;
+            foaf:mbox <mailto:katrien.desmet@kb.vlaanderen.be> ;
+            foaf:name "De Smet, Katrien" ],
         [ schema:affiliation [ foaf:homepage <file:///home/ldevocht/Documents/git/OSLO-Vocabularia/src/stakeholders_lblod.rdf> ;
                     foaf:name "imec-IDLab-UGent" ] ;
             foaf:mbox <mailto:dieter.depaepe@ugent.be> ;
             foaf:name "De Paepe, Dieter" ],
         [ schema:affiliation [ foaf:homepage <file:///home/ldevocht/Documents/git/OSLO-Vocabularia/src/stakeholders_lblod.rdf> ;
-                    foaf:name "ABB" ] ;
-            foaf:mbox <mailto:katrien.desmet@kb.vlaanderen.be> ;
-            foaf:name "De Smet, Katrien" ] .
+                    foaf:name "Agentschap Binnenlands Bestuur" ] ;
+            foaf:mbox <mailto:heidi.godderis@kb.vlaanderen.be> ;
+            foaf:name "Godderis, Heidi" ] .
 
