@@ -16,16 +16,22 @@
 @prefix cpsv:    <http://purl.org/vocab/cpsv#> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 
+eli:date_publication
+      rdfs:label "datum publicatie"@nl .
+
 eli:description
       rdfs:label "beschrijving"@nl .
 
 eli:number
       rdfs:label "nummer"@nl .
 
+eli:title_short
+      rdfs:label "korte titel"@nl .
+
 <http://data.vlaanderen.be/ns/besluit>
       a       owl:Ontology ;
       rdfs:label "Besluit"@nl , "Decision"@en ;
-      dcterms:issued "2017-07-14"^^xsd:date ;
+      dcterms:issued "2017-08-17"^^xsd:date ;
       dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
       dcterms:title "Besluit"@nl , "Decision"@en ;
       vann:preferredNamespaceUri
@@ -72,7 +78,7 @@ eli:number
       rdfs:comment "Geformaliseerde handeling waarbij de stemgerechtigde leden van een bestuursorgaan hun keuze te kennen geven."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "Stemming"@nl ;
-      rdfs:subClassOf prov:Activity .
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit> .
 
 <http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit>
       a       owl:Class ;
@@ -132,29 +138,20 @@ eli:number
 
 <http://data.vlaanderen.be/ns/besluit#heeftAanwezige>
       a       owl:ObjectProperty ;
-      rdfs:comment "Een mandataris die aanwezig was tijdens een deel van de activiteit."@nl ;
+      rdfs:comment "Een agent die aanwezig was tijdens een deel van de activiteit waar hij een zekere verantwoordelijkheid had."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "heeft aanwezige"@nl ;
-      rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+      rdfs:range foaf:Agent ;
       rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant> , prov:wasAssociatedWith .
 
 <http://data.vlaanderen.be/ns/besluit#heeftAanwezigeBijStart>
       a       owl:ObjectProperty ;
-      rdfs:comment "Een mandataris die aanwezig was bij de start van de activiteit."@nl ;
+      rdfs:comment "Een agent die aanwezig was bij de start van de activiteit waar hij een zekere verantwoordelijkheid had."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "heeft aanwezige bij start"@nl ;
-      rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
-      rdfs:subPropertyOf <http://data.vlaanderen.be/ns/besluit#heeftAanwezige> .
-
-<http://data.vlaanderen.be/ns/besluit#heeftContinuAanwezige>
-      a       owl:ObjectProperty ;
-      rdfs:comment "Een mandataris die aanwezig was gedurende de gehele activiteit."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
-      rdfs:label "heeft continu aanwezige"@nl ;
-      rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+      rdfs:range foaf:Agent ;
       rdfs:subPropertyOf <http://data.vlaanderen.be/ns/besluit#heeftAanwezige> .
 
 <http://data.vlaanderen.be/ns/besluit#heeftNotulen>
@@ -190,14 +187,6 @@ eli:number
       rdfs:label "heeft secretaris"@nl ;
       rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
       rdfs:subPropertyOf <http://data.vlaanderen.be/ns/besluit#heeftAanwezige> .
-
-<http://data.vlaanderen.be/ns/besluit#heeftStemgerechtigde>
-      a       owl:ObjectProperty ;
-      rdfs:comment "Een mandataris die het recht om deel te nemen aan de stemming."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Stemming> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
-      rdfs:label "heeft stemgerechtigde"@nl ;
-      rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> .
 
 <http://data.vlaanderen.be/ns/besluit#heeftStemmer>
       a       owl:ObjectProperty ;
