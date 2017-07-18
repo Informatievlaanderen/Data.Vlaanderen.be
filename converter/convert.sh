@@ -14,14 +14,14 @@ echo "Besluit"
 python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --csv $(dirname $(readlink -f $0))/../src/stakeholders_lblod.csv --contributors --target Besluit --output $(dirname $(readlink -f $0))/../src/stakeholders_lblod.rdf
 python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --rdf $(dirname $(readlink -f $0))/../src/besluit.ttl --rdf_contributor $(dirname $(readlink -f $0))/../src/stakeholders_lblod.rdf --merge --output $(dirname $(readlink -f $0))/../ns/besluit.ttl
 python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --rdf $(dirname $(readlink -f $0))/../ns/besluit.ttl --output $(dirname $(readlink -f $0))/../ns/besluit.html --schema vocabularynl
-python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --csv $(dirname $(readlink -f $0))/../src/'Besluit Basis AP.tsv' --csv_contributor $(dirname $(readlink -f $0))/../src/stakeholders_lblod.csv --ap --output $(dirname $(readlink -f $0))/../doc/ap/besluit/index.html
+python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --csv $(dirname $(readlink -f $0))/../src/'Besluit Publicatie AP.tsv' --csv_contributor $(dirname $(readlink -f $0))/../src/stakeholders_lblod.csv --ap --output $(dirname $(readlink -f $0))/../doc/ap/besluit/index.html
 
 echo "Mandaat"
 
 python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --csv $(dirname $(readlink -f $0))/../src/stakeholders_lblod.csv --contributors --target Mandaat --output $(dirname $(readlink -f $0))/../src/stakeholders_lblod.rdf
 python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --rdf $(dirname $(readlink -f $0))/../src/mandaat.ttl --rdf_contributor $(dirname $(readlink -f $0))/../src/stakeholders_lblod.rdf --merge --output $(dirname $(readlink -f $0))/../ns/mandaat.ttl
 python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --rdf $(dirname $(readlink -f $0))/../ns/mandaat.ttl --output $(dirname $(readlink -f $0))/../ns/mandaat.html --schema vocabularynl
-python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --csv $(dirname $(readlink -f $0))/../src/'Mandaat Basis AP.tsv' --csv_contributor $(dirname $(readlink -f $0))/../src/stakeholders_lblod.csv --ap --output $(dirname $(readlink -f $0))/../doc/ap/mandaat/index.html
+python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --csv $(dirname $(readlink -f $0))/../src/'Mandatendatabank AP.tsv' --csv_contributor $(dirname $(readlink -f $0))/../src/stakeholders_lblod.csv --ap --output $(dirname $(readlink -f $0))/../doc/ap/mandatendatabank/index.html
 
 # Adres
 
