@@ -47,7 +47,7 @@
                         
                         <dt>Laatste aanpassing</dt>
 
-                        <dd>2017-07-13
+                        <dd>2017-08-09
                         </dd>
                         
 
@@ -699,6 +699,21 @@ die toelaat de Persoon te contacteren.</td>
   }
 ],
 "isTeBereikenOp": {
+  "adres": [
+    {
+      "straatnaam": "Naamesestraat",
+      "huisnummer": "51",
+      "gemeentenaam": "Leuven",
+      "land": "België",
+      "type": "verzendadres"
+    },{
+      "straatnaam": "Lubbeekstraat",
+      "huisnummer": "20",
+      "gemeentenaam": "Lubbeek",
+      "land": "België",
+      "type": "verblijfadres"
+    }
+  ],
   "email": ["jan.jansens@gmail.com", "j.jansens@outlook.com"],
   "telefoon": ["0488010101", "0488020202"]
 }
@@ -881,7 +896,7 @@ die toelaat de Persoon te contacteren.</td>
 "@id": "https://data.vlaanderen.be/id/persoon/00000014182",
 "heeftVerblijfplaats": [
   {
-    "@type": "Domicilie"
+    "@type": "Domicilie",
     "verblijfsadres": {
       "straatnaam": "Lubbeekstraat",
       "huisnummer": "20",
@@ -1226,7 +1241,7 @@ die toelaat de Persoon te contacteren.</td>
 "@id": "https://data.vlaanderen.be/id/persoon/00000014182",
 "heeftVerblijfplaats": [
   {
-    "@type": "Domicilie"
+    "@type": "Domicilie",
     "verblijfsadres": {
       "straatnaam": "Lubbeekstraat",
       "huisnummer": "20",
@@ -1305,7 +1320,7 @@ die toelaat de Persoon te contacteren.</td>
                             </code>
                             </td>
                             <td><a href="http://www.w3.org/ns/locn#Address" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#Address" data-placement="right">Adresvoorstelling</a></td>
-                            <td>0 .. 1</td>
+                            <td>0 .. *</td>
                             <td property="rdfs:comment">TODO</td>
                             <td property="vann:usageNote"></td>
                             <td></td>
@@ -1414,26 +1429,6 @@ die toelaat de Persoon te contacteren.</td>
                           
                           
                           
-                          <tr typeof="rdfs:Property" resource="http://purl.org/dc/terms/type">
-                            <td>
-                            <code property="rdfs:label">
-                                <a href="http://purl.org/dc/terms/type" data-toggle="tooltip" data-content="http://purl.org/dc/terms/type" data-placement="right">
-                                
-                                type
-                                
-                                </a>
-                            </code>
-                            </td>
-                            <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">ContactInfoType</a></td>
-                            <td>1 .. 1</td>
-                            <td property="rdfs:comment">Het type ContactInfo.</td>
-                            <td property="vann:usageNote"></td>
-                            <td></td>
-                          </tr>
-                          
-                          
-                          
-                          
                           <tr typeof="rdfs:Property" resource="http://xmlns.com/foaf/0.1/page">
                             <td>
                             <code property="rdfs:label">
@@ -1465,17 +1460,38 @@ die toelaat de Persoon te contacteren.</td>
 "isTeBereikenOp": {
   "email": ["jan.jansens@gmail.com", "j.jansens@outlook.com"],
   "telefoon": ["0488010101", "0488020202"]
-  "adres": {
-    "straatnaam": "Lubbeekstraat",
-    "huisnummer": "20",
-    "gemeentenaam": "Lubbeek",
-    "land": "België"
-  },
-  "aanschrijfvorm": "De heer"
 }
 </pre>
                       </div>
-                    </div>                   
+                    </div> 
+                    <div class="example">
+                        <span>Voorbeeld JSON-LD:</span>
+                        <div style="background:#efefef">
+                          <pre class="prettyprint">
+"@id": "https://data.vlaanderen.be/id/persoon/00000014182", 
+"@type": "Persoon",
+"isTeBereikenOp": {
+  "adres": [
+    {
+      "straatnaam": "Naamesestraat",
+      "huisnummer": "51",
+      "gemeentenaam": "Leuven",
+      "land": "België",
+      "type": "verzendadres"
+    },{
+      "straatnaam": "Lubbeekstraat",
+      "huisnummer": "20",
+      "gemeentenaam": "Lubbeek",
+      "land": "België",
+      "type": "verblijfadres"
+    }
+  ],
+  "email": ["jan.jansens@gmail.com", "j.jansens@outlook.com"],
+  "telefoon": ["0488010101", "0488020202"]
+}
+</pre>
+                      </div>
+                    </div>                
               </div>
             </div>
           </div>
