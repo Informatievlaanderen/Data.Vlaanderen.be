@@ -20,8 +20,8 @@ echo "Mandaat"
 
 python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --csv $(dirname $(readlink -f $0))/../src/stakeholders_lblod.csv --contributors --target Mandaat --output $(dirname $(readlink -f $0))/../src/stakeholders_lblod.rdf
 python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --rdf $(dirname $(readlink -f $0))/../src/mandaat.ttl --rdf_contributor $(dirname $(readlink -f $0))/../src/stakeholders_lblod.rdf --merge --output $(dirname $(readlink -f $0))/../ns/mandaat.ttl
-python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --rdf $(dirname $(readlink -f $0))/../ns/mandaat.ttl --output $(dirname $(readlink -f $0))/../ns/mandaat.html --schema vocabularynl
-python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --csv $(dirname $(readlink -f $0))/../src/'Mandatendatabank AP.tsv' --csv_contributor $(dirname $(readlink -f $0))/../src/stakeholders_lblod.csv --ap --output $(dirname $(readlink -f $0))/../doc/ap/mandatendatabank/index.html
+python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --rdf $(dirname $(readlink -f $0))/../ns/mandaat.ttl --output $(dirname $(readlink -f $0))/../ns/mandaat.html --schema_local $(dirname $(readlink -f $0))/../templates/lblod_vocabularynl
+python3 $(dirname $(readlink -f $0))/specgen/OSLO-SpecificationGenerator/bin/generate_vocabulary.py --csv $(dirname $(readlink -f $0))/../src/'Mandatendatabank AP.tsv' --csv_contributor $(dirname $(readlink -f $0))/../src/stakeholders_lblod.csv --ap --schema_local $(dirname $(readlink -f $0))/../templates/lblod_ap --output $(dirname $(readlink -f $0))/../doc/ap/mandatendatabank/index.html
 
 # Adres
 
