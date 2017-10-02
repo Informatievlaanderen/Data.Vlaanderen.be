@@ -17,15 +17,19 @@
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 
 eli:date_publication
+      a       rdf:Property ;
       rdfs:label "datum publicatie"@nl .
 
 eli:description
+      a       rdf:Property ;
       rdfs:label "beschrijving"@nl .
 
 eli:number
+      a       rdf:Property ;
       rdfs:label "nummer"@nl .
 
 eli:title_short
+      a       rdf:Property ;
       rdfs:label "korte titel"@nl .
 
 <http://data.vlaanderen.be/ns/besluit>
@@ -71,7 +75,14 @@ eli:title_short
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "Besluit"@nl ;
       rdfs:subClassOf eli:LegalExpression , cpsv:FormalFramework ;
-      vann:usageNote "Hieronder vallen zowel beschikkingen (rechtshandelingen met een individueel karakter zoals het toekennnen van een subsidie) als besluiten van algemene strekking (beslissingen van algemene reglementaire strekking die niet gericht zijn op een individu maar op een groep, zoals de verkeersregels)."@nl .
+      vann:usageNote "Hieronder vallen zowel individuele besluiten (rechtshandelingen met een individueel karakter zoals het toekennnen van een subsidie) als besluiten van algemene strekking (beslissingen van algemene reglementaire strekking die niet gericht zijn op een individu maar op een groep, zoals de verkeersregels)."@nl .
+
+<http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>
+      a       owl:Class ;
+      rdfs:comment "Een formeel orgaan van een rechtspersoon dat bevoegd is om rechtshandelingen te stellen."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
+      rdfs:label "Bestuursorgaan"@nl ;
+      rdfs:subClassOf org:Organization .
 
 <http://data.vlaanderen.be/ns/besluit#Stemming>
       a       owl:Class ;
@@ -103,17 +114,42 @@ eli:title_short
       rdfs:range <http://data.vlaanderen.be/ns/besluit#Agendapunt> ;
       rdfs:subPropertyOf dcterms:relation .
 
+<http://data.vlaanderen.be/ns/besluit#aantalOnthouders>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Het aantal stemmers dat als onthouding heeft gestemd."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Stemming> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
+      rdfs:label "aantal onthouders"@nl ;
+      rdfs:range xsd:integer .
+
+<http://data.vlaanderen.be/ns/besluit#aantalTegenstanders>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Het aantal stemmers dat als tegenstander heeft gestemd."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Stemming> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
+      rdfs:label "aantal tegenstanders"@nl ;
+      rdfs:range xsd:integer .
+
+<http://data.vlaanderen.be/ns/besluit#aantalVoorstanders>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Het aantal stemmers dat als voorstander heeft gestemd."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Stemming> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
+      rdfs:label "aantal voorstanders"@nl ;
+      rdfs:range xsd:integer .
+
 <http://data.vlaanderen.be/ns/besluit#behandelt>
       a       owl:ObjectProperty ;
       rdfs:comment "Een formeel vastgelegd punt van de zitting."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Zitting> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "behandelt"@nl ;
-      rdfs:range <http://data.vlaanderen.be/ns/besluit#Agendapunt> .
+      rdfs:range <http://data.vlaanderen.be/ns/besluit#Agendapunt> ;
+      vann:usageNote "Ook punten die kunnen ingepland worden (voorafgaand aan de zitting) en er eventueel weer af gehaald worden, vallen hieronder."@nl .
 
 <http://data.vlaanderen.be/ns/besluit#gebeurtNa>
       a       owl:ObjectProperty ;
-      rdfs:comment "Verwijzing naar de voorgaande behandeling binnen dezelfde zitting. Laat toe om de volgorde van de behandelingen op te bouwen."@nl ;
+      rdfs:comment "Verwijzing naar het voorgaand behandeld agendapunt binnen dezelfde zitting. Laat toe om de volgorde van de behandelingen op te bouwen."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "gebeurt na"@nl ;
@@ -122,7 +158,7 @@ eli:title_short
 
 <http://data.vlaanderen.be/ns/besluit#geheim>
       a       owl:DatatypeProperty ;
-      rdfs:comment "Of de stemming geheim was. Bij een geheime stemming wordt niet individueel bekend gemaakt wie op wat heeft gestemd."@nl ;
+      rdfs:comment "Geeft aan of de stemming geheim was. Bij een geheime stemming wordt niet individueel bekend gemaakt wie op wat heeft gestemd."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Stemming> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "geheim"@nl ;
@@ -130,15 +166,31 @@ eli:title_short
 
 <http://data.vlaanderen.be/ns/besluit#geplandOpenbaar>
       a       owl:DatatypeProperty ;
-      rdfs:comment "Of het agendapunt al dan niet bedoeld is om openbaar te bespreken."@nl ;
+      rdfs:comment "Geeft aan of het agendapunt al dan niet bedoeld is om openbaar te bespreken."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Agendapunt> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "gepland openbaar"@nl ;
       rdfs:range xsd:boolean .
 
+<http://data.vlaanderen.be/ns/besluit#geplandeStart>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Het tijdstip waarop de activiteit gepland is om te beginnen."@nl ;
+      rdfs:domain prov:Activity ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
+      rdfs:label "geplande start"@nl ;
+      rdfs:range xsd:dateTime .
+
+<http://data.vlaanderen.be/ns/besluit#gevolg>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Het gevolg van de stemming."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Stemming> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
+      rdfs:label "gevolg"@nl ;
+      rdfs:range rdf:langString .
+
 <http://data.vlaanderen.be/ns/besluit#heeftAanwezige>
       a       owl:ObjectProperty ;
-      rdfs:comment "Een agent die aanwezig was tijdens een deel van de activiteit waar hij een zekere verantwoordelijkheid had."@nl ;
+      rdfs:comment "Een agent (bvb: mandataris) die aanwezig was tijdens een deel van de activiteit waar hij een zekere verantwoordelijkheid had."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "heeft aanwezige"@nl ;
@@ -156,7 +208,7 @@ eli:title_short
 
 <http://data.vlaanderen.be/ns/besluit#heeftNotulen>
       a       owl:ObjectProperty ;
-      rdfs:comment "De formele, volledige notulen van de zitting."@nl ;
+      rdfs:comment "De formele notulen van de zitting."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Zitting> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "heeft notulen"@nl ;
@@ -164,24 +216,24 @@ eli:title_short
 
 <http://data.vlaanderen.be/ns/besluit#heeftOnthouder>
       a       owl:ObjectProperty ;
-      rdfs:comment "Mandataris die heeft deelgenomen aan de stemming met een onthouding."@nl ;
+      rdfs:comment "Mandataris die als onthouder heeft gestemd op het onderwerp van de stemming."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Stemming> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "heeft onthouder"@nl ;
       rdfs:range <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
       rdfs:subPropertyOf <http://data.vlaanderen.be/ns/besluit#heeftStemmer> .
 
-<http://data.vlaanderen.be/ns/besluit#heeftOntwerpBesluit>
+<http://data.vlaanderen.be/ns/besluit#heeftOntwerpbesluit>
       a       owl:ObjectProperty ;
-      rdfs:comment "Een (mogelijks nog aan te vullen) ontwerp voor het besluit dat uit dit agendapunt zou voortkomen."@nl ;
+      rdfs:comment "Een (mogelijks nog aan te vullen of aan te passen) ontwerp voor het besluit dat uit dit agendapunt zou voortkomen."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Agendapunt> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
-      rdfs:label "heeft ontwerp besluit"@nl ;
+      rdfs:label "heeft ontwerpbesluit"@nl ;
       rdfs:range foaf:Document .
 
 <http://data.vlaanderen.be/ns/besluit#heeftSecretaris>
       a       owl:ObjectProperty ;
-      rdfs:comment "De mandataris die de rol als secretaris heeft gedurende de activiteit."@nl ;
+      rdfs:comment "De mandataris die de rol van secretaris heeft gedurende de activiteit."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "heeft secretaris"@nl ;
@@ -207,7 +259,7 @@ eli:title_short
 
 <http://data.vlaanderen.be/ns/besluit#heeftTegenstander>
       a       owl:ObjectProperty ;
-      rdfs:comment "Mandataris die tegen het onderwerp van de stemming heeft gestemd."@nl ;
+      rdfs:comment "Mandataris die als tegenstander heeft gestemd op het onderwerp van de stemming."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Stemming> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "heeft tegenstander"@nl ;
@@ -239,28 +291,28 @@ eli:title_short
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "heeft zittingsverslag"@nl ;
       rdfs:range foaf:Document ;
-      vann:usageNote "Bijvoorbeeld een audio- of video-opname."@nl .
+      vann:usageNote "Bijvoorbeeld een transcript of audio- of video-opname."@nl .
 
 <http://data.vlaanderen.be/ns/besluit#houdtZitting>
       a       owl:ObjectProperty ;
       rdfs:comment "Een zitting gehouden of gepland door het bestuurorgaan."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/mandaat#Bestuursorgaan> ;
+      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "houdt zitting"@nl ;
       rdfs:range <http://data.vlaanderen.be/ns/besluit#Zitting> .
 
 <http://data.vlaanderen.be/ns/besluit#isGehoudenDoor>
       a       owl:ObjectProperty ;
-      rdfs:comment "Duidt het orgaan aan van welke de zitting is gehouden."@nl ;
+      rdfs:comment "Duidt aan door welk orgaan de zitting is gehouden."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Zitting> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "is gehouden door"@nl ;
-      rdfs:range <http://data.vlaanderen.be/ns/mandaat#Bestuursorgaan> ;
+      rdfs:range <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
       rdfs:subPropertyOf prov:wasStartedBy .
 
 <http://data.vlaanderen.be/ns/besluit#motivering>
       a       owl:DatatypeProperty ;
-      rdfs:comment "Beschrijving van de motivering achter de beslissing die wordt uitgedrukt in het besluit."@nl ;
+      rdfs:comment "Beschrijving van de juridische en feitelijke motivering achter de beslissing die wordt uitgedrukt in het besluit."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#Besluit> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "motivering"@nl ;
@@ -276,31 +328,34 @@ eli:title_short
 
 <http://data.vlaanderen.be/ns/besluit#openbaar>
       a       owl:DatatypeProperty ;
-      rdfs:comment "Of de bespreking effectief openbaar verlopen is."@nl ;
+      rdfs:comment "Geeft aan of de bespreking effectief openbaar verlopen is."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
       rdfs:label "openbaar"@nl ;
       rdfs:range xsd:boolean .
 
-<http://data.vlaanderen.be/ns/besluit#resultaat>
-      a       owl:DatatypeProperty ;
-      rdfs:comment "De uitslag van de stemming."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/besluit#Stemming> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
-      rdfs:label "resultaat"@nl ;
-      rdfs:range rdf:langString .
-
 dcterms:description
+      a       rdf:Property ;
       rdfs:label "beschrijving"@nl .
 
 dcterms:title
+      a       rdf:Property ;
       rdfs:label "titel"@nl .
 
+skos:prefLabel
+      a       rdf:Property .
+
+org:classification
+      a       rdf:Property .
+
 prov:atLocation
+      a       rdf:Property ;
       rdfs:label "op locatie"@nl .
 
 prov:endedAtTime
+      a       rdf:Property ;
       rdfs:label "geëindigd op tijdstip"@nl .
 
 prov:startedAtTime
+      a       rdf:Property ;
       rdfs:label "gestart op tijdstip"@nl .
