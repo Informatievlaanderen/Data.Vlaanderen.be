@@ -105,6 +105,15 @@ eli:title_short a rdf:Property ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
     rdfs:range <http://data.vlaanderen.be/ns/besluit#Agendapunt> .
 
+<http://data.vlaanderen.be/ns/besluit#bestuurt> a owl:ObjectProperty ;
+    rdfs:label "runs"@en,
+        "bestuurt"@nl ;
+    rdfs:comment "The administrative unit ran by the body."@en,
+        "De bestuurseenheid die door het orgaan bestuurd wordt."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
+    rdfs:range <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> .
+
 <http://data.vlaanderen.be/ns/besluit#gebeurtNa> a owl:ObjectProperty ;
     rdfs:label "takes place after"@en,
         "gebeurt na"@nl ;
@@ -154,7 +163,7 @@ eli:title_short a rdf:Property ;
 <http://data.vlaanderen.be/ns/besluit#heeftAanwezigeBijStart> a owl:ObjectProperty ;
     rdfs:label "has present at start"@en,
         "heeft aanwezige bij start"@nl ;
-    rdfs:comment "An agent that was present at the start of the activity where he had a certain responsability."@en,
+    rdfs:comment "An agent that was present at the start of the activity where he had a certain responsibility."@en,
         "Een agent die aanwezig was bij de start van de activiteit waar hij een zekere verantwoordelijkheid had."@nl ;
     rdfs:domain <http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
@@ -173,7 +182,7 @@ eli:title_short a rdf:Property ;
 <http://data.vlaanderen.be/ns/besluit#heeftOnthouder> a owl:ObjectProperty ;
     rdfs:label "has abstainer"@en,
         "heeft onthouder"@nl ;
-    rdfs:comment "Mandatary that voted with an abstain on the topic of the vote."@en,
+    rdfs:comment "Mandatary that abstained their vote on the topic of the vote."@en,
         "Mandataris die als onthouder heeft gestemd op het onderwerp van de stemming."@nl ;
     rdfs:domain <http://data.vlaanderen.be/ns/besluit#Stemming> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
@@ -295,6 +304,16 @@ eli:title_short a rdf:Property ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
     rdfs:range xsd:boolean .
 
+<http://data.vlaanderen.be/ns/besluit#werkingsgebied> a owl:ObjectProperty ;
+    rdfs:label "governance area"@en,
+        "werkingsgebied"@nl ;
+    rdfs:comment "Geographical area where the administrative unit has certain responsibilities in which it can perform acts of governance."@en,
+        "Geografische gebied waarbinnen de bestuurseenheid bepaalde verantwoordelijkheden heeft waarbinnen het bestuurshandelingen kan stellen."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
+    rdfs:range prov:Location ;
+    rdfs:subPropertyOf dcterms:spatial .
+
 dcterms:description a rdf:Property ;
     rdfs:label "beschrijving"@nl .
 
@@ -325,6 +344,14 @@ prov:startedAtTime a rdf:Property ;
     rdfs:subClassOf eli:LegalExpression,
         cpsv:FormalFramework .
 
+<http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> a owl:Class ;
+    rdfs:label "Administrative Unit"@en,
+        "Bestuurseenheid"@nl ;
+    rdfs:comment "Public, governing organization associated with a territorially defined area and with certain domains in which it can govern."@en,
+        "Publieke, bestuurlijke organisatie verbonden aan een territoriaal omschreven gebied met bepaalde verantwoordelijkheden waarbinnen het bestuurshandelingen kan stellen."@nl ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
+    rdfs:subClassOf eu:PublicOrganisation .
+
 <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> a owl:Class ;
     rdfs:label "Governing Body"@en,
         "Bestuursorgaan"@nl ;
@@ -336,7 +363,7 @@ prov:startedAtTime a rdf:Property ;
 <http://data.vlaanderen.be/ns/besluit#heeftAanwezige> a owl:ObjectProperty ;
     rdfs:label "has present"@en,
         "heeft aanwezige"@nl ;
-    rdfs:comment "An agent (eg: mandatary) who was present during (a part of) the activity where he had a certain responsibility."@en,
+    rdfs:comment "An agent (e.g.: mandatary) who was present during (a part of) the activity where he had a certain responsibility."@en,
         "Een agent (bvb: mandataris) die aanwezig was tijdens (een deel van) de activiteit waar hij een zekere verantwoordelijkheid had."@nl ;
     rdfs:domain <http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
@@ -358,7 +385,7 @@ prov:startedAtTime a rdf:Property ;
 <http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt> a owl:Class ;
     rdfs:label "Agenda Item Handling"@en,
         "Behandeling van Agendapunt"@nl ;
-    rdfs:comment "The execution of the actions to process an angeda item during a meeting."@en,
+    rdfs:comment "The execution of the actions to process an agenda item during a meeting."@en,
         "De uitvoering van de acties om een agendapunt te verwerken tijdens een zitting."@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/besluit> ;
     rdfs:subClassOf <http://data.vlaanderen.be/ns/besluit#Vergaderactiviteit> .
@@ -398,70 +425,45 @@ prov:startedAtTime a rdf:Property ;
     rdfs:label "Resolution"@en,
         "Besluit"@nl ;
     dcterms:contributor [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://binnenland.vlaanderen.be> ;
-                    foaf:name "ABB" ] ;
-            foaf:firstName "Geert" ;
-            foaf:lastName "Van Campenhout" ],
+            schema:affiliation [ foaf:homepage <http://msi.nl> ;
+                    foaf:name "iBabs BV" ] ;
+            foaf:firstName "Niels" ;
+            foaf:lastName "Manshanden" ],
         [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://www.kaprijke.be> ;
-                    foaf:name "Kaprijke" ] ;
-            foaf:firstName "Kristel" ;
-            foaf:lastName "Brusselle" ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://www.niel.be> ;
-                    foaf:name "Niel" ] ;
-            foaf:firstName "Eric" ;
-            foaf:lastName "Vermeiren" ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://www.cipalschaubroeck.be> ;
-                    foaf:name "Cipal Schaubroeck" ] ;
-            foaf:firstName "Reynder" ;
-            foaf:lastName "Bierens" ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://www.maldegem.be> ;
-                    foaf:name "Maldegem" ] ;
-            foaf:firstName "Heidi" ;
-            foaf:lastName "Van Deynse" ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://www.cevi.be> ;
-                    foaf:name "CEVI" ] ;
-            foaf:firstName "Micheline" ;
-            foaf:lastName "Van Bogaert" ],
+            schema:affiliation [ foaf:homepage <http://www.remmicom.be> ;
+                    foaf:name "Remmicom" ] ;
+            foaf:firstName "Jef" ;
+            foaf:lastName "Peeters" ],
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://www.vlaamsparlement.be> ;
                     foaf:name "Vlaams Parlement" ] ;
             foaf:firstName "Luc" ;
             foaf:lastName "Vanpaemel" ],
         [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://msi.nl> ;
-                    foaf:name "iBabs BV" ] ;
-            foaf:firstName "Niels" ;
-            foaf:lastName "Manshanden" ],
+            schema:affiliation [ foaf:homepage <http://www.raadvanstate.be/> ;
+                    foaf:name "Raad Van State" ] ;
+            foaf:firstName "Wouter" ;
+            foaf:lastName "De Cock" ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://stad.Antwerpen.be> ;
+                    foaf:name "Antwerpen" ] ;
+            foaf:firstName "Melissa" ;
+            foaf:lastName "Merckx" ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://www.cipalschaubroeck.be> ;
+                    foaf:name "Cipal Schaubroeck" ] ;
+            foaf:firstName "Reynder" ;
+            foaf:lastName "Bierens" ],
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://www.herzele.be> ;
                     foaf:name "Herzele" ] ;
-            foaf:firstName "Anja" ;
-            foaf:lastName "Cosijns" ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://lier.be> ;
-                    foaf:name "Lier" ] ;
-            foaf:firstName "Danny" ;
-            foaf:lastName "Dewelde" ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://www.herzele.be> ;
-                    foaf:name "Herzele" ] ;
-            foaf:firstName "Miranda" ;
-            foaf:lastName "Van Bockstaele" ],
+            foaf:firstName "Daniël" ;
+            foaf:lastName "Adriaens" ],
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://www.vlaamsparlement.be> ;
                     foaf:name "Vlaams Parlement" ] ;
             foaf:firstName "Renée" ;
             foaf:lastName "Cambré" ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://www.remmicom.be> ;
-                    foaf:name "Remmicom" ] ;
-            foaf:firstName "Jef" ;
-            foaf:lastName "Peeters" ],
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://Aalst.be> ;
                     foaf:name "Stad Aalst" ] ;
@@ -473,65 +475,90 @@ prov:startedAtTime a rdf:Property ;
             foaf:firstName "Katrien" ;
             foaf:lastName "Behiels" ],
         [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://www.raadvanstate.be/> ;
-                    foaf:name "Raad Van State" ] ;
-            foaf:firstName "Wouter" ;
-            foaf:lastName "De Cock" ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://stad.gent> ;
-                    foaf:name "Stad Gent" ] ;
-            foaf:firstName "Ines" ;
-            foaf:lastName "Acke" ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://stad.antwerpen.be> ;
-                    foaf:name "Antwerpen" ] ;
-            foaf:firstName "Lynn" ;
-            foaf:lastName "Lodewyckx" ],
+            schema:affiliation [ foaf:homepage <http://Aalst.be> ;
+                    foaf:name "Stad Aalst" ] ;
+            foaf:firstName "Sophie" ;
+            foaf:lastName "Podevyn" ],
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://stad.gent> ;
                     foaf:name "Stad Gent" ] ;
             foaf:firstName "Sylvie" ;
             foaf:lastName "Roos" ],
         [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://www.herzele.be> ;
-                    foaf:name "Herzele" ] ;
-            foaf:firstName "Marijke" ;
-            foaf:lastName "Versteels" ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://www.vlaamsparlement.be> ;
-                    foaf:name "Vlaams parlement" ] ;
-            foaf:firstName "Tom" ;
-            foaf:lastName "Cocquyt" ],
+            schema:affiliation [ foaf:homepage <http://www.v-ict-or.be> ;
+                    foaf:name "V-ICT-OR" ] ;
+            foaf:firstName "Johan" ;
+            foaf:lastName "Van der Waal" ],
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://www.cipalschaubroeck.be> ;
                     foaf:name "Cipal Schaubroeck" ] ;
             foaf:firstName "Jonas" ;
             foaf:lastName "Tamsyn" ],
         [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://Aalst.be> ;
-                    foaf:name "Stad Aalst" ] ;
-            foaf:firstName "Sophie" ;
-            foaf:lastName "Podevyn" ],
+            schema:affiliation [ foaf:homepage <http://stad.antwerpen.be> ;
+                    foaf:name "Antwerpen" ] ;
+            foaf:firstName "Lynn" ;
+            foaf:lastName "Lodewyckx" ],
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://www.herzele.be> ;
                     foaf:name "Herzele" ] ;
-            foaf:firstName "Daniël" ;
-            foaf:lastName "Adriaens" ],
+            foaf:firstName "Marijke" ;
+            foaf:lastName "Versteels" ],
         [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://www.v-ict-or.be> ;
-                    foaf:name "V-ICT-OR" ] ;
-            foaf:firstName "Johan" ;
-            foaf:lastName "Van der Waal" ],
+            schema:affiliation [ foaf:homepage <http://www.herzele.be> ;
+                    foaf:name "Herzele" ] ;
+            foaf:firstName "Anja" ;
+            foaf:lastName "Cosijns" ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://www.vlaamsparlement.be> ;
+                    foaf:name "Vlaams parlement" ] ;
+            foaf:firstName "Tom" ;
+            foaf:lastName "Cocquyt" ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://www.niel.be> ;
+                    foaf:name "Niel" ] ;
+            foaf:firstName "Eric" ;
+            foaf:lastName "Vermeiren" ],
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://www.vvsg.be> ;
                     foaf:name "VVSG" ] ;
             foaf:firstName "Marian" ;
             foaf:lastName "Verbeek" ],
         [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://stad.Antwerpen.be> ;
-                    foaf:name "Antwerpen" ] ;
-            foaf:firstName "Melissa" ;
-            foaf:lastName "Merckx" ] ;
+            schema:affiliation [ foaf:homepage <http://stad.gent> ;
+                    foaf:name "Stad Gent" ] ;
+            foaf:firstName "Ines" ;
+            foaf:lastName "Acke" ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://www.maldegem.be> ;
+                    foaf:name "Maldegem" ] ;
+            foaf:firstName "Heidi" ;
+            foaf:lastName "Van Deynse" ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://www.cevi.be> ;
+                    foaf:name "CEVI" ] ;
+            foaf:firstName "Micheline" ;
+            foaf:lastName "Van Bogaert" ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://binnenland.vlaanderen.be> ;
+                    foaf:name "ABB" ] ;
+            foaf:firstName "Geert" ;
+            foaf:lastName "Van Campenhout" ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://www.herzele.be> ;
+                    foaf:name "Herzele" ] ;
+            foaf:firstName "Miranda" ;
+            foaf:lastName "Van Bockstaele" ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://www.kaprijke.be> ;
+                    foaf:name "Kaprijke" ] ;
+            foaf:firstName "Kristel" ;
+            foaf:lastName "Brusselle" ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://lier.be> ;
+                    foaf:name "Lier" ] ;
+            foaf:firstName "Danny" ;
+            foaf:lastName "Dewelde" ] ;
     dcterms:issued "2017-10-11"^^xsd:date ;
     dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
     dcterms:mediator [ foaf:homepage <https://data.vlaanderen.be> ;
@@ -543,6 +570,24 @@ prov:startedAtTime a rdf:Property ;
     rec:editor [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
                     foaf:name "imec-IDLab-UGent" ] ;
+            foaf:firstName "Laurens" ;
+            foaf:lastName "De Vocht" ;
+            foaf:mbox <mailto:laurens.devocht@ugent.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://www.ugent.be/ps/communicatiewetenschappen/mict> ;
+                    foaf:name "imec-MICT-UGent" ] ;
+            foaf:firstName "Mathias" ;
+            foaf:lastName "Van Compernolle" ;
+            foaf:mbox <mailto:mathias.vancompernolle@ugent.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Raf" ;
+            foaf:lastName "Buyle" ;
+            foaf:mbox <mailto:raf.buyle@kb.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
+                    foaf:name "imec-IDLab-UGent" ] ;
             foaf:firstName "Erik" ;
             foaf:lastName "Mannens" ;
             foaf:mbox <mailto:erik.mannens@ugent.be> ],
@@ -551,25 +596,7 @@ prov:startedAtTime a rdf:Property ;
                     foaf:name "imec-MICT-UGent" ] ;
             foaf:firstName "Fie" ;
             foaf:lastName "Vandamme" ;
-            foaf:mbox <mailto:fie.vandamme@ugent.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <https://www.ugent.be/ps/communicatiewetenschappen/mict> ;
-                    foaf:name "imec-MICT-UGent" ] ;
-            foaf:firstName "Mathias" ;
-            foaf:lastName "Van Compernolle" ;
-            foaf:mbox <mailto:mathias.vancompernolle@ugent.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
-                    foaf:name "imec-IDLab-UGent" ] ;
-            foaf:firstName "Laurens" ;
-            foaf:lastName "De Vocht" ;
-            foaf:mbox <mailto:laurens.devocht@ugent.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Raf" ;
-            foaf:lastName "Buyle" ;
-            foaf:mbox <mailto:raf.buyle@kb.vlaanderen.be> ] ;
+            foaf:mbox <mailto:fie.vandamme@ugent.be> ] ;
     foaf:maker [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
                     foaf:name "imec-IDLab-UGent" ] ;
@@ -579,15 +606,15 @@ prov:startedAtTime a rdf:Property ;
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://binnenland.vlaanderen.be/> ;
                     foaf:name "Agentschap Binnenlands Bestuur" ] ;
-            foaf:firstName "Veronique" ;
-            foaf:lastName "Volders" ;
-            foaf:mbox <mailto:veronique.volders@bz.vlaanderen.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://binnenland.vlaanderen.be/> ;
-                    foaf:name "Agentschap Binnenlands Bestuur" ] ;
             foaf:firstName "Heidi" ;
             foaf:lastName "Godderis" ;
             foaf:mbox <mailto:heidi.godderis@bz.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://binnenland.vlaanderen.be/> ;
+                    foaf:name "Agentschap Binnenlands Bestuur" ] ;
+            foaf:firstName "Veronique" ;
+            foaf:lastName "Volders" ;
+            foaf:mbox <mailto:veronique.volders@bz.vlaanderen.be> ],
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://binnenland.vlaanderen.be/> ;
                     foaf:name "Agentschap Binnenlands Bestuur" ] ;

@@ -565,6 +565,8 @@
                                     
                                         <li><a href="http://data.europa.eu/eli/ontology">http://data.europa.eu/eli/ontology</a></li>
                                     
+                                        <li><a href="http://data.europa.eu/m8g">http://data.europa.eu/m8g</a></li>
+                                    
                                         <li><a href="http://data.vlaanderen.be/ns/besluit">http://data.vlaanderen.be/ns/besluit</a></li>
                                     
                                         <li><a href="http://purl.org/dc/terms">http://purl.org/dc/terms</a></li>
@@ -601,6 +603,8 @@
                                             
                                             <a href="#Besluit" rel="class">Besluit</a> |
                                             
+                                            <a href="#Bestuurseenheid" rel="class">Bestuurseenheid</a> |
+                                            
                                             <a href="#Bestuursorgaan" rel="class">Bestuursorgaan</a> |
                                             
                                             <a href="#Stemming" rel="class">Stemming</a> |
@@ -632,6 +636,8 @@
                                             <a href="#aantalVoorstanders" rel="property">aantal voorstanders (Stemming)</a> |
                                             
                                             <a href="#behandelt" rel="property">behandelt (Zitting)</a> |
+                                            
+                                            <a href="#bestuurt" rel="property">bestuurt (Bestuursorgaan)</a> |
                                             
                                             <a href="#gebeurtNa" rel="property">gebeurt na (Behandeling van Agendapunt)</a> |
                                             
@@ -678,6 +684,8 @@
                                             <a href="#openbaar" rel="property">openbaar (Behandeling van Agendapunt)</a> |
                                             
                                             <a href="#Agendapunt.type" rel="property">type (Agendapunt)</a> |
+                                            
+                                            <a href="#werkingsgebied" rel="property">werkingsgebied (Bestuurseenheid)</a> |
                                             
                                         </p>
                                     </div>
@@ -740,9 +748,9 @@
 											<td><ul>
 											
 											
-                                              <li><code>http://data.europa.eu/eli/ontology#LegalExpression</code></li>
-											
                                               <li><code>http://purl.org/vocab/cpsv#FormalFramework</code></li>
+											
+                                              <li><code>http://data.europa.eu/eli/ontology#LegalExpression</code></li>
 											
                                             </ul></td>
 										  </tr>
@@ -827,6 +835,40 @@
                                               <p>Gebruik</p>
                                             </th>
                                             <td>Hieronder vallen zowel individuele besluiten (rechtshandelingen met een individueel karakter zoals het toekennnen van een subsidie) als besluiten van algemene strekking (beslissingen van algemene reglementaire strekking die niet gericht zijn op een individu maar op een groep, zoals de verkeersregels).</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="Bestuurseenheid">Klasse <em>Bestuurseenheid</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Klasse</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/besluit#Bestuurseenheid</code></td>
+                                          </tr>
+                                          
+										  <tr>
+                                            <th>Specialisatie van</th>
+											<td><ul>
+											
+											
+                                              <li><code>http://data.europa.eu/m8g/PublicOrganisation</code></li>
+											
+                                            </ul></td>
+										  </tr>
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>Publieke, bestuurlijke organisatie verbonden aan een territoriaal omschreven gebied met bepaalde verantwoordelijkheden waarbinnen het bestuurshandelingen kan stellen.</td>
                                           </tr>
                                           
                                         </tbody>
@@ -1175,6 +1217,42 @@
                                           <tr>
                                             <th>Gebruik</th>
                                             <td>Ook punten die kunnen ingepland worden (voorafgaand aan de zitting) en er eventueel weer af gehaald worden, vallen hieronder.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="bestuurt">Eigenschap <em>bestuurt</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Eigenschap</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/besluit#bestuurt</code></td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Domein</th>
+                                            <td><code>http://data.vlaanderen.be/ns/besluit#Bestuursorgaan</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Bereik</th>
+                                            <td><code>http://data.vlaanderen.be/ns/besluit#Bestuurseenheid</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>De bestuurseenheid die door het orgaan bestuurd wordt.</td>
                                           </tr>
                                           
                                         </tbody>
@@ -1661,9 +1739,9 @@
 											<td><ul>
 											
 											
-                                              <li><code>http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant</code></li>
-											
                                               <li><code>http://www.w3.org/ns/prov#wasAssociatedWith</code></li>
+											
+                                              <li><code>http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant</code></li>
 											
                                             </ul></td>
 										  </tr>
@@ -2112,6 +2190,52 @@
                                           <tr>
                                             <th>Definitie</th>
                                             <td>Type van het agendapunt.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="werkingsgebied">Eigenschap <em>werkingsgebied</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Eigenschap</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/besluit#werkingsgebied</code></td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Domein</th>
+                                            <td><code>http://data.vlaanderen.be/ns/besluit#Bestuurseenheid</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Bereik</th>
+                                            <td><code>http://www.w3.org/ns/prov#Location</code></td>
+                                          </tr>
+                                          
+                                          
+										  <tr>
+                                            <th>Specialisatie van</th>
+											<td><ul>
+											
+											
+                                              <li><code>http://purl.org/dc/terms/spatial</code></li>
+											
+                                            </ul></td>
+										  </tr>
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>Geografische gebied waarbinnen de bestuurseenheid bepaalde verantwoordelijkheden heeft waarbinnen het bestuurshandelingen kan stellen.</td>
                                           </tr>
                                           
                                         </tbody>
