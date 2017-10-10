@@ -9,7 +9,8 @@ models['besluit'] = {
     'stakeholders_csv_column': 'Besluit',
     'source_voc': 'besluit.ttl',
     'source_ap': 'Besluit Publicatie AP.tsv',
-    'template_voc': 'vocabularynlv2.j2',
+    'template_voc': 'ABB-besluit-voc.j2',
+	'template_ap': 'ABB-besluit-ap.j2',
 	'title_ap': 'Besluit Publicatie AP',
     'target_ap': 'besluit-publicatie'
 }
@@ -18,7 +19,8 @@ models['mandaat'] = {
     'stakeholders_csv_column': 'Mandaat',
     'source_voc': 'mandaat.ttl',
     'source_ap': 'Mandatendatabank AP.tsv',
-    'template_voc': 'vocabularynlv2.j2',
+    'template_voc': 'ABB-mandaat-voc.j2',
+	'template_ap': 'ABB-mandaat-ap.j2',
 	'title_ap': 'Mandatendatabank AP',
     'target_ap': 'mandatendatabank'
 }
@@ -28,6 +30,7 @@ models['dienst'] = {
     'source_voc': 'dienst.ttl',
     'source_ap': 'Dienstencataloog AP.tsv',
     'template_voc': 'vocabularynlv2.j2',
+	'template_ap': 'ap.j2',
 	'title_ap': 'Dienstencataloog AP',
     'target_ap': 'dienstencataloog'
 }
@@ -86,6 +89,7 @@ subprocess.run(['python', script,
                 '--csv', './../src/' + model['source_ap'],
                 '--csv_contributor', './../src/' + model['stakeholders_csv'],
 				'--csv_contributor_role_column', model['stakeholders_csv_column'],
+				'--schema', model['template_ap'],
                 '--output', './../doc/ap/%s/index.html' % model['target_ap']
                 ])
 
