@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:as="https://www.w3.org/ns/activitystreams#"
+   xmlns:corevoc="http://data.europa.eu/m8g/"
+   xmlns:dcmi="http://purl.org/dc/dcmitype/"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:locn="http://www.w3.org/ns/locn#"
+   xmlns:oa="http://www.w3.org/ns/oa#"
+   xmlns:org="https://www.w3.org/ns/org#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:prov="http://www.w3.org/ns/prov#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+   xmlns:vann="http://purl.org/vocab/vann/"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="http://data.vlaanderen.be/ns/adres">
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-03-31</dcterms:issued>
+    <dcterms:title xml:lang="nl">Adres</dcterms:title>
+    <vann:preferredNamespaceUri>http://data.vlaanderen.be/ns/adres</vann:preferredNamespaceUri>
+  </owl:Ontology>
+  <owl:Class rdf:about="http://data.vlaanderen.be/ns/adres#Adres">
+    <rdfs:comment xml:lang="nl">Informatie die toelaat om op een gestructureerde en unieke manier te verwijzen naar een gebouweenheid, een ligplaats, een standplaats of een perceel op basis van een gemeentenaam, een straatnaam, een huisnummer en eventueel een busnummer en een postcode.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">Belgisch Adres</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/adres#Adres.status">
+    <rdfs:comment xml:lang="nl">Actuele toestand van het adres.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Adres"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">status</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://data.vlaanderen.be/ns/adres#Adreslocator">
+    <rdfs:comment xml:lang="nl">Postinfocomponent van het adres.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">Adreslocator</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://data.vlaanderen.be/ns/adres#AdresseerbaarObject">
+    <rdfs:comment xml:lang="nl">Het niveau waarnaar de locator verwijst.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">Adresseerbaar Object</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://data.vlaanderen.be/ns/adres#Adresuitbreiding">
+    <rdfs:comment xml:lang="nl">Bijkomende gegevens mbt het adres.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">Adresuitbreiding</rdfs:label>
+  </owl:Class>
+  <owl:DatatypeProperty rdf:about="http://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer">
+    <rdfs:comment xml:lang="nl">Officieel toegekende alfanumerieke code die wordt toegevoegd aan het huisnummer om meerdere gebouweenheden, standplaatsen, ligplaatsen of percelen te onderscheiden die eenzelfde huisnummer hebben.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/locn#Address"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">busnummer</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/locn#locatorDesignator"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer">
+    <rdfs:comment xml:lang="nl">Alfanumerieke code officieel toegekend aan gebouweenheden, ligplaatsen, standplaatsen of percelen.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/locn#Address"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">huisnummer</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/locn#locatorDesignator"/>
+  </owl:DatatypeProperty>
+  <owl:Class rdf:about="http://data.vlaanderen.be/ns/adres#Gemeentenaam">
+    <rdfs:comment xml:lang="nl">Adrescomponent die verwijst naar de naam ve gemeente, ttz het kleinste administratieve deel van het Belgisch grondgebied waarvan de grenzen enkel door de wetgever kunnen worden gewijzigd.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">Gemeentenaam</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://data.vlaanderen.be/ns/adres#Locatieaanduiding">
+    <rdfs:comment xml:lang="nl">Alfanumerieke code die een adreslocator uniek identificeert binnen de straat, administratieve eenheid etc.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">Locatieaanduiding</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/adres#Locatieaanduiding.aanduiding">
+    <rdfs:comment xml:lang="nl">Alfanumerieke code waarmee het identificerend deel van een adreslocator wordt aangeduid.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Locatieaanduiding"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">aanduiding</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/adres#Locatieaanduiding.type">
+    <rdfs:comment xml:lang="nl">Aard vd locatieaanduiding.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Locatieaanduiding"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">type</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://data.vlaanderen.be/ns/adres#Locatienaam">
+    <rdfs:comment xml:lang="nl">Naam of omschrijving vh het geografisch object dat een adreslocator aanduidt.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">Locatienaam</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/adres#Locatienaam.type">
+    <rdfs:comment xml:lang="nl">Aard vh geografisch object.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Locatienaam"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">type</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://data.vlaanderen.be/ns/adres#Postinfo">
+    <rdfs:comment xml:lang="nl">Adrescomponent die verwijst naar informatie toegekend door de aanbieder van de universele postdienst voor de identificatie van een groepering van adressen in een geografisch gebied voor postale doeleinden.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">Postinfo</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://data.vlaanderen.be/ns/adres#Straatnaam">
+    <rdfs:comment xml:lang="nl">Adrescomponent met de naam die officieel werd toegekend aan een straat (baan, doorgang, plein) of aan een gehucht en waaraan adressen kunnen zijn gekoppeld.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">Straatnaam</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/adres#Straatnaam.status">
+    <rdfs:comment xml:lang="nl">Actuele toestand van de straatnaam.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Straatnaam"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">status</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/adres#aanduiding">
+    <rdfs:comment xml:lang="nl">Straatnaamcomponent van het adres.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Adreslocator"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">aanduiding</rdfs:label>
+    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/adres#Locatieaanduiding"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/adres#adreslocator">
+    <rdfs:comment xml:lang="nl">Bijkomende adreslocator.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Adresuitbreiding"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">locator</rdfs:label>
+    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/adres#Adreslocator"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://data.vlaanderen.be/ns/adres#busnummer">
+    <rdfs:comment xml:lang="nl">Officieel toegekende alfanumerieke code die wordt toegevoegd aan het huisnummer om meerdere gebouweenheden, standplaatsen, ligplaatsen of percelen te onderscheiden die eenzelfde huisnummer hebben.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Adres"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">busnummer</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://data.vlaanderen.be/ns/adres#gemeentenaam">
+    <rdfs:comment xml:lang="nl">Gemeentenaam vh adres.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/locn#Address"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">gemeentenaam</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/locn#postName"/>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/adres#heeftGemeentenaam">
+    <rdfs:comment xml:lang="nl">Gemeentenaamcomponent van het adres.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Adres"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">heeft gemeentenaam</rdfs:label>
+    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/adres#Gemeentenaam"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/adres#heeftPostinfo">
+    <rdfs:comment xml:lang="nl">Naam of omschrijving vh het geografisch object dat de locator aanduidt.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Adres"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">heeft postinfo</rdfs:label>
+    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/adres#Postinfo"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/adres#heeftStraatnaam">
+    <rdfs:comment xml:lang="nl">Geografisch object dat met een adres kan worden geïdentificeerd.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Adres"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">heeft straatnaam</rdfs:label>
+    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/adres#Straatnaam"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://data.vlaanderen.be/ns/adres#homoniemToevoeging">
+    <rdfs:comment xml:lang="nl">Toevoeging om dubbele straatnamen (straatnamen met dezelfde naam maar andere ligging in de gemeente en eigen adressen) van elkaar te onderscheiden.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Straatnaam"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">homoniem toevoeging</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://data.vlaanderen.be/ns/adres#huisnummer">
+    <rdfs:comment xml:lang="nl">Alfanumerieke code officieel toegekend aan gebouweenheden, ligplaatsen, standplaatsen of percelen.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Adres"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">huisnummer</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/adres#isToegekendAan">
+    <rdfs:comment xml:lang="nl">Verwijzing naar een adresuitbreiding. </rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Adres"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">is toegekend aan</rdfs:label>
+    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/adres#AdresseerbaarObject"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/adres#isVerrijktMet">
+    <rdfs:comment xml:lang="nl">Agent die het adres heeft toegekend.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Adres"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">is verrijkt met</rdfs:label>
+    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/adres#Adresuitbreiding"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://data.vlaanderen.be/ns/adres#land">
+    <rdfs:comment xml:lang="nl">Land waarin het adres gelegen is.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/locn#Address"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">land</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/locn#adminUnitL1"/>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/adres#niveau">
+    <rdfs:comment xml:lang="nl">Alfanumerieke code die de locator uniek identificeert binnen de straat, administratieve eenheid etc.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Adreslocator"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">niveau</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://data.vlaanderen.be/ns/adres#officieelToegekend">
+    <rdfs:comment xml:lang="nl">Geeft aan of het adres officieel door de adresbeheerder is toegekend.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Adres"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">niet officieel</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <rdf:Property rdf:about="http://data.vlaanderen.be/ns/adres#positie">
+    <rdfs:comment xml:lang="nl">Positie van een karakeristiek punt dat de positie van het adres vertegenwoordigt volgens een bepaalde specificatie en inclusief informatie over de herkomst van de positie.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Adres"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">positie</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/locn#geometry"/>
+  </rdf:Property>
+  <owl:DatatypeProperty rdf:about="http://data.vlaanderen.be/ns/adres#postcode">
+    <rdfs:comment xml:lang="nl">Code waarmee het geografisch gebied dat de adressen voor postale doeleinden groepeert aanduidt.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Postinfo"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">postcode</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </owl:DatatypeProperty>
+  <rdf:Property rdf:about="http://data.vlaanderen.be/ns/adres#postnaam">
+    <rdfs:comment xml:lang="nl">Naam waarmee het geografisch gebied dat de adressen voor postale doeleinden groepeert kan worden aangeduid.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Postinfo"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">postnaam</rdfs:label>
+  </rdf:Property>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/adres#verwijstNaar">
+    <rdfs:comment xml:lang="nl">Adres waarvan de adresvoorstelling is afgeleid.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/locn#Address"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">verwijst naar</rdfs:label>
+    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/adres#Adres"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://data.vlaanderen.be/ns/adres#volledigAdres">
+    <rdfs:comment xml:lang="nl">Het complete adres in één string, al dan niet geformatteerd.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/adres#Adresuitbreiding"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/adres"/>
+    <rdfs:label xml:lang="nl">volledig adres</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </owl:DatatypeProperty>
+  <rdf:Description rdf:about="http://www.w3.org/2000/01/rdf-schema#label">
+    <rdfs:comment xml:lang="nl">Naam vd gemeente.</rdfs:comment>
+    <rdfs:label xml:lang="nl">gemeentenaam</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#Concept">
+    <rdfs:comment xml:lang="nl">Aard vd locatieaanduiding.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Aard vd locatienaam.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Mate waarin het adres of de adrescomponent geldig is.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Niveau vd adreslocator.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/locn#Address">
+    <rdfs:comment xml:lang="nl">Meer leesbare voorstelling met enkel de basisgegevens van het adres, bedoeld voor het gebruik van een adres als attribuut van een ander object.</rdfs:comment>
+    <rdfs:label xml:lang="nl">Adres Voorstelling</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/locn#addressArea">
+    <rdfs:comment xml:lang="nl">Naam ve geografisch gebied of plaats die een aantal adresseerbare objecten groepeert om deze te adresseren zonder dat het gebied of de plaats een administratieve eenheid is</rdfs:comment>
+    <rdfs:label xml:lang="nl">adresgebied</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/locn#adminUnitL1">
+    <rdfs:comment xml:lang="nl">Hoogste Administratieve eenheid vh adres, doorgaans een land.</rdfs:comment>
+    <rdfs:label xml:lang="nl">administratieve eenheid niveau 1</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/locn#adminUnitL2">
+    <rdfs:comment xml:lang="nl">De regio vh adres, doorgaans een provincie of deelstaat of gelijkaardig gebied dat typisch meerdere plaatsen omvat.</rdfs:comment>
+    <rdfs:label xml:lang="nl">administratieve eenheid niveau 2</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/locn#fullAddress">
+    <rdfs:comment xml:lang="nl">Het complete adres in één string, al dan niet geformatteerd.</rdfs:comment>
+    <rdfs:label xml:lang="nl">volledig adres</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/locn#locatorDesignator">
+    <rdfs:comment xml:lang="nl">Alfanumerieke code die de adreslocator uniek identificeert binnen de straat, administratieve eenheid etc.</rdfs:comment>
+    <rdfs:label xml:lang="nl">locatieaanduiding</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/locn#locatorName">
+    <rdfs:comment xml:lang="nl">Naam of omschrijving vh het geografisch object dat de adreslocator aanduidt.</rdfs:comment>
+    <rdfs:label xml:lang="nl">locatienaam</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/locn#poBox">
+    <rdfs:comment xml:lang="nl">Postbusnummer in een postkantoor.</rdfs:comment>
+    <rdfs:label xml:lang="nl">postbus</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/locn#postCode">
+    <rdfs:comment xml:lang="nl">Code waarmee het geografisch gebied dat adressen voor postale doeleinden groepeert wordt aangeduid.</rdfs:comment>
+    <rdfs:label xml:lang="nl">postcode</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/locn#postName">
+    <rdfs:comment xml:lang="nl">Naam waarmee het geografisch gebied dat adressen voor postale doeleinden groepeert wordt aangeduid.</rdfs:comment>
+    <rdfs:label xml:lang="nl">postnaam</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/locn#thoroughfare">
+    <rdfs:comment xml:lang="nl">Straatnaam vh adres.</rdfs:comment>
+    <rdfs:label xml:lang="nl">straatnaam</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.w3.org/2000/01/rdf-schema#label">
+    <rdfs:comment xml:lang="nl">Menselijk leesbare aanduiding of naam die een gebruiker of applicatie toelaat om het adres te onderscheiden van naburige adressen in de straat, de administratieve eenheid etc waarin het adres ligt.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Naam vd straat.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Naam vh geografisch object.</rdfs:comment>
+  </rdf:Description>
+</rdf:RDF>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:as="https://www.w3.org/ns/activitystreams#"
+   xmlns:corevoc="http://data.europa.eu/m8g/"
+   xmlns:dcmi="http://purl.org/dc/dcmitype/"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:locn="http://www.w3.org/ns/locn#"
+   xmlns:oa="http://www.w3.org/ns/oa#"
+   xmlns:org="https://www.w3.org/ns/org#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:prov="http://www.w3.org/ns/prov#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+   xmlns:vann="http://purl.org/vocab/vann/"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <rdf:Description rdf:about="http://data.europa.eu/m8g/FoundationEvent">
+    <rdfs:comment xml:lang="nl">Gebeurtenis waarbij een organisatie is opgericht.</rdfs:comment>
+    <rdfs:label xml:lang="nl">Oprichting</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/m8g/PublicOrganisation">
+    <rdfs:comment xml:lang="nl">Een Organisatie die volgens een wettelijk kader behoort tot de publieke sector,ongeacht het bestuursniveau waarop dat kader van kracht is.</rdfs:comment>
+    <rdfs:label xml:lang="nl">Publieke Organisatie</rdfs:label>
+  </rdf:Description>
+  <owl:Ontology rdf:about="http://data.vlaanderen.be/ns/organisatie">
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-03-31</dcterms:issued>
+    <dcterms:title xml:lang="nl">Organisatie</dcterms:title>
+    <vann:preferredNamespaceUri>http://data.vlaanderen.be/ns/organisatie</vann:preferredNamespaceUri>
+  </owl:Ontology>
+  <owl:Class rdf:about="http://data.vlaanderen.be/ns/organisatie#Fusie">
+    <rdfs:comment xml:lang="nl">Gebeurtenis waarbij twee organisaties samen een nieuwe organisatie vormen.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/organisatie"/>
+    <rdfs:label xml:lang="nl">Fusie</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/org#ChangeEvent"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://data.vlaanderen.be/ns/organisatie#Hoedanigheid">
+    <rdfs:comment xml:lang="nl">Agent met een positie.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/organisatie"/>
+    <rdfs:label xml:lang="nl">Hoedanigheid</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/org#Post"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://data.vlaanderen.be/ns/organisatie#Splitsing">
+    <rdfs:comment xml:lang="nl">Gebeurtenis waarbij uit één organisatie twee organisaties worden gevormd.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/organisatie"/>
+    <rdfs:label xml:lang="nl">Splitsing</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/org#ChangeEvent"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://data.vlaanderen.be/ns/organisatie#Stopzetting">
+    <rdfs:comment xml:lang="nl">Gebeurtenis waarbij een organisatie is stopgezet.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/organisatie"/>
+    <rdfs:label xml:lang="nl">Stopzetting</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/org#ChangeEvent"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://data.vlaanderen.be/ns/organisatie#Vervanging">
+    <rdfs:comment xml:lang="nl">Gebeurtenis waarbij een organisatie wordt vervangen door een andere.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/organisatie"/>
+    <rdfs:label xml:lang="nl">Vervanging</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/org#ChangeEvent"/>
+  </owl:Class>
+  <rdf:Property rdf:about="http://data.vlaanderen.be/ns/organisatie#isTeBereikenOp">
+    <rdfs:comment xml:lang="nl">Informatie zoals email, telefoon die toelaat de hoedanigheid te contacteren.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/organisatie#Hoedanigheid"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/organisatie"/>
+    <rdfs:label xml:lang="nl">contactinfo</rdfs:label>
+  </rdf:Property>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/organisatie#rechtspersoonlijkheid">
+    <rdfs:comment xml:lang="nl">Geeft aan of de rechtspersoonlijkheid van de geregistreerde organisatie deze is van een natuurlijk persoon of van een rechtspersoon. </rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/organisatie"/>
+    <rdfs:label xml:lang="nl">rechtspersoonlijkheid</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/regorg#orgType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/organisatie#rechtstoestand">
+    <rdfs:comment xml:lang="nl">Status van de geregistreerde organisatie.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/organisatie"/>
+    <rdfs:label xml:lang="nl">rechtstoestand</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/regorg#orgStatus"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/organisatie#rechtsvorm">
+    <rdfs:comment xml:lang="nl">Juridisch statuut van de geregistreerde organisatie.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/regorg#RegisteredOrganization"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/organisatie"/>
+    <rdfs:label xml:lang="nl">rechtsvorm</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/regorg#orgType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/organisatie#redenStopzetting">
+    <rdfs:comment xml:lang="nl">Reden waarom de organisatie is stopgezet.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/organisatie#Stopzetting"/>
+    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/organisatie"/>
+    <rdfs:label xml:lang="nl">reden stopzetting</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:ObjectProperty>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/date">
+    <rdfs:comment xml:lang="nl">Datum waarop de gebeurtenis plaatsvond.</rdfs:comment>
+    <rdfs:label xml:lang="nl">datum</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
+    <rdfs:comment xml:lang="nl">Beschrijving van de publieke organisatie.</rdfs:comment>
+    <rdfs:label xml:lang="nl">beschrijving</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/spatial">
+    <rdfs:comment xml:lang="nl">Administratief gebied dat de Publieke Organisatie dekt.</rdfs:comment>
+    <rdfs:label xml:lang="nl">spatiaal</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://schema.org/contactPoint">
+    <rdfs:comment xml:lang="nl">Informatie zoals email, telefoon die toelaat de Organisatie te contacteren.</rdfs:comment>
+    <rdfs:label xml:lang="nl">contactpunt</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://schema.org/logo">
+    <rdfs:comment xml:lang="nl">Verwijzing naar het logo vd publieke organisatie.</rdfs:comment>
+    <rdfs:label xml:lang="nl">logo</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#Concept">
+    <rdfs:comment xml:lang="nl">Aard vd rechtspersoonlijkheid.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Juridisch statuut van een geregistreerde organisatie.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Rangschikking van een organisatie in een classificatiesysteem.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Reden waarom een organisatie is stopgezet.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Soort organisatie.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Status van een geregistreerde organisatie.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Toestand ve organisatie.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Type activiteit die door een organisatie wordt uitgeoefend.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#altLabel">
+    <rdfs:comment xml:lang="nl">Andere naam waaronder de organisatie bekend is.</rdfs:comment>
+    <rdfs:label xml:lang="nl">alternatieve label</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel">
+    <rdfs:comment xml:lang="nl">Naam waarmee de organisatie bij voorkeur wordt aangeduid.</rdfs:comment>
+    <rdfs:label xml:lang="nl">voorkeurslabel</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#ChangeEvent">
+    <rdfs:comment xml:lang="nl">Gebeurtenis waardoor een organisatie een belangrijke wijziging ondergaat zoals een fusie of een herstructurering.</rdfs:comment>
+    <rdfs:label xml:lang="nl">Veranderingsgebeurtenis</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#FormalOrganization">
+    <rdfs:comment xml:lang="nl">Een erkende organisatie, erkend in brede zin of  meer specifiek in juridische zin met bijbehorende rechten en plichten.</rdfs:comment>
+    <rdfs:label xml:lang="nl">Formele Organisatie</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#Membership">
+    <rdfs:comment xml:lang="nl">Geeft de kenmerken weer vh lidmaatschap van een agent van een organisatie.</rdfs:comment>
+    <rdfs:label xml:lang="nl">Lidmaatschap</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#Organization">
+    <rdfs:comment xml:lang="nl">Een aantal mensen georganiseerd in een gemeenschap of andere sociale, commerciële of politieke structuur. De groep heeft een gemeenschappelijk doel of bestaanreden die de individuele leden ervan overstijgt en kan handelen als agent. Een organisatie heeft dikwijls een hiërarchische structuur.</rdfs:comment>
+    <rdfs:label xml:lang="nl">Organisatie</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#OrganizationalCollaboration">
+    <rdfs:comment xml:lang="nl">Samenwerking tussen twee of meer organisaties bv ihkv een project.</rdfs:comment>
+    <rdfs:label xml:lang="nl">Organisationele Samenwerking</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#OrganizationalUnit">
+    <rdfs:comment xml:lang="nl">Een organisatie zoals een afdeling of dienst die deel uitmaakt van de grotere organisatie en zijn bestaansreden daaraan ontleent. Heeft geen juridische status op zich.</rdfs:comment>
+    <rdfs:label xml:lang="nl">Organisationele Eenheid</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#Post">
+    <rdfs:comment xml:lang="nl">Functie binnen een organisatie, kan bestaan los vd persoon of personen die ze invult.</rdfs:comment>
+    <rdfs:label xml:lang="nl">Functie</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#Role">
+    <rdfs:comment xml:lang="nl">Rol die een agent kan vervullen binnen een organisatie.</rdfs:comment>
+    <rdfs:label xml:lang="nl">Rol</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#Site">
+    <rdfs:comment xml:lang="nl">Een kantoor of ander pand waar een organisatie gevestigd is. Organisaties kunnen over meerdere vestigingen verspreid zijn en vestigingen kunnen op meerdere locaties slaan.</rdfs:comment>
+    <rdfs:label xml:lang="nl">Vestiging</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#changedBy">
+    <rdfs:comment xml:lang="nl">Verwijst naar het veranderingsmoment dat deze organisatie heeft veranderd.</rdfs:comment>
+    <rdfs:label xml:lang="nl">veranderd door</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#classification">
+    <rdfs:comment xml:lang="nl">Rangschikking van de organisatie in een classificatiesysteem.</rdfs:comment>
+    <rdfs:label xml:lang="nl">classificatie</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#hasPost">
+    <rdfs:comment xml:lang="nl">Verwijst naar een positie in de organisatie.</rdfs:comment>
+    <rdfs:label xml:lang="nl">heeft positie</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#hasPrimarySite">
+    <rdfs:comment xml:lang="nl">Verwijst naar de belangrijkste vestiging van de organisatie, niet noodzakelijk het formele hoofdkwartier maar wel de vestiging waarop de organisatie standaard kan worden gecontacteerd.</rdfs:comment>
+    <rdfs:label xml:lang="nl">heeft primaire vestiging</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#hasRegisteredSite">
+    <rdfs:comment xml:lang="nl">Verwijst naar de wettelijk geregistreerde vestiging van de organisatie. Is voor een formele organisatie doorgaans verplicht.</rdfs:comment>
+    <rdfs:label xml:lang="nl">heeft geregistreerde vestiging</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#hasSite">
+    <rdfs:comment xml:lang="nl">Verwijst naar een plek waar de organisatie op een of andere manier, desnoods indirect, aanwezig is.</rdfs:comment>
+    <rdfs:label xml:lang="nl">heeft vestiging</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#hasSubOrganization">
+    <rdfs:comment xml:lang="nl">Organisatie die dochter of onderdeel is van de organisatie.</rdfs:comment>
+    <rdfs:label xml:lang="nl">heeft suborganisatie</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#hasUnit">
+    <rdfs:comment xml:lang="nl">Verwijst naar een organisatie-eenheid die deel uitmaakt van de organisatie, bv een afdeling.</rdfs:comment>
+    <rdfs:label xml:lang="nl">heeft eenheid</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#linkedTo">
+    <rdfs:comment xml:lang="nl">Niet nader bepaalde relatie met een andere organisatie.</rdfs:comment>
+    <rdfs:label xml:lang="nl">gelinkt met</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#memberDuring">
+    <rdfs:comment xml:lang="nl">Periode waarin de agent lid was vd organisatie.</rdfs:comment>
+    <rdfs:label xml:lang="nl">lid gedurende</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#originalOrganization">
+    <rdfs:comment xml:lang="nl">Organisatie voor deze de verandering onderging.</rdfs:comment>
+    <rdfs:label xml:lang="nl">originele organisatie</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#postIn">
+    <rdfs:comment xml:lang="nl">Organisatie waar de positie bestaat.</rdfs:comment>
+    <rdfs:label xml:lang="nl">positie bij</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#purpose">
+    <rdfs:comment xml:lang="nl">Bestaansreden vd organisatie.</rdfs:comment>
+    <rdfs:label xml:lang="nl">doel</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#reportsTo">
+    <rdfs:comment xml:lang="nl">Verwijst naar de positie waaraan een positie verantwoording aflegt.</rdfs:comment>
+    <rdfs:label xml:lang="nl">rapporteert aan</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#resultedFrom">
+    <rdfs:comment xml:lang="nl">Verwijst naar het veranderingsmoment dat tot de huidige organisatie heeft geleid.</rdfs:comment>
+    <rdfs:label xml:lang="nl">geresulteerd van</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#resultingOrganization">
+    <rdfs:comment xml:lang="nl">Organisatie die uit de verandering voortkwam.</rdfs:comment>
+    <rdfs:label xml:lang="nl">resulterende organisatie</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#role">
+    <rdfs:comment xml:lang="nl">Geeft de aard weer vd functie.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Rol die de agent vervult als lid van de organisatie.</rdfs:comment>
+    <rdfs:label xml:lang="nl">rol</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#siteAddress">
+    <rdfs:comment xml:lang="nl">Adres vd vestiging.</rdfs:comment>
+    <rdfs:label xml:lang="nl">vestigingsadres</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#subOrganizationOf">
+    <rdfs:comment xml:lang="nl">Organisatie die deze organisatie omvat.</rdfs:comment>
+    <rdfs:label xml:lang="nl">suborganisatie van</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/org#unitOf">
+    <rdfs:comment xml:lang="nl">Organisatie waarvan de organisatie-eenheid deel uitmaakt.</rdfs:comment>
+    <rdfs:label xml:lang="nl">eenheid van</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/regorg#RegisteredOrganization">
+    <rdfs:comment xml:lang="nl">Organisatie met een juridisch statuut vastgelegd door registratie. Vergelijk met een formele organisatie waarbij dit statuut ook op een andere manier verkregen kan zijn.</rdfs:comment>
+    <rdfs:label xml:lang="nl">Geregistreerde Organisatie</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/regorg#legalName">
+    <rdfs:comment xml:lang="nl">Wettelijk geregistreerde naam vd organisatie.</rdfs:comment>
+    <rdfs:label xml:lang="nl">wettelijke naam</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/regorg#orgActivity">
+    <rdfs:comment xml:lang="nl">Type activiteit die door de organisatie wordt uitgeoefend.</rdfs:comment>
+    <rdfs:label xml:lang="nl">organisatieactiviteit</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/regorg#orgStatus">
+    <rdfs:comment xml:lang="nl">Toestand vd organisatie.</rdfs:comment>
+    <rdfs:label xml:lang="nl">organisatiestatus</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/regorg#orgType">
+    <rdfs:comment xml:lang="nl">Soort organisatie.</rdfs:comment>
+    <rdfs:label xml:lang="nl">organisatietype</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/regorg#registration">
+    <rdfs:comment xml:lang="nl">Identificator dat de organisatie verkreeg bij registratie.</rdfs:comment>
+    <rdfs:label xml:lang="nl">organisatieregistratie</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/homepage">
+    <rdfs:comment xml:lang="nl">Adres vd homepage van de website vd Publieke Organisatie.</rdfs:comment>
+    <rdfs:label xml:lang="nl">Homepage</rdfs:label>
+  </rdf:Description>
+</rdf:RDF>
