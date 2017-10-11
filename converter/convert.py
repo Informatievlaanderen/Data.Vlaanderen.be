@@ -78,7 +78,7 @@ print('Generating vocabulary documentation.')
 subprocess.run(['python', script,
                 '--rdf', './../ns/' + model['source_voc'],
 				'--schema', model['template_voc'],
-                '--output', './../ns/%s.html' % model_name
+                '--output', './../ns/%s/index.html' % model_name
                 ])
 
 # Generate documentation for AP
