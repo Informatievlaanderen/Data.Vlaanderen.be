@@ -90,7 +90,7 @@ subprocess.run(['python', script,
                 '--csv_contributor', './../src/' + model['stakeholders_csv'],
 				'--csv_contributor_role_column', model['stakeholders_csv_column'],
 				'--schema', model['template_ap'],
-                '--output', './../doc/ap/%s/index.html' % model['target_ap']
+                '--output', './../doc/applicatieprofiel/%s/index.html' % model['target_ap']
                 ])
 
 print('Done!')
