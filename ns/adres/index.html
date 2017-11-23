@@ -244,17 +244,17 @@
                                 
 <p>
 Een adres is in de eerste plaats een op zichzelf staand object met een eigen identificator en levensloop. Dat geldt ook voor adrescomponenten zoals straatnaam en gemeentenaam. Het adresobject dat zo ontstaat noemen we een gestructureerd adres. Het is het adres zoals het wordt beheerd in adresregisters.
-</p><br /><p>
+</p><p>
 In tweede orde is een adres een attribuut, bv. het adres van een gebouw of een adreslabel op kaart. Het is in dat geval niet nodig om het adres te structureren, een opsomming van zijn componenten (eventueel herleid tot &#233;&#233;n string) volstaat. Voor binnenlandse adressen verwijst deze zgn. adresvoorstelling naar het overeenstemmend gestructureerd adres uit het offici&#235;le adresregister.
- </p><br /><p>
+ </p><p>
 Het OSLO-Adres vocabularium voegt termen toe aan bestaande RDF-vocabularia zodat gestructureerde adressen kunnen worden uitgewisseld. Een Europese standaard voor dergelijke adressen bestaat (<a href="http://inspire.ec.europa.eu/documents/Data_Specifications/INSPIRE_DataSpecification_AD_v3.0.pdf">INSPIRE-Address</a>) maar heeft momenteel nog geen RDF-vocabularium. Bovendien is deze standaard bedoeld om om het even welk Europees adres te beschrijven, hij is m.a.w. te generiek voor uitwisseling van Belgische adressen. We zorgden er echter voor dat OSLO-Adres perfect mapt op INSPIRE-Address.
- </p><br /><p>
+ </p><p>
 Voor Adresvoorstelling werd door ISA al <a href="https://www.w3.org/ns/locn">een RDF-definitie</a> uitgewerkt, gebaseerd op de het datatype AddressRepresentation van INSPIRE. OSLO-Adres voegt daar enkele subproperties (specialisaties van ISA definities) aan toe die specifiek zijn voor Belgische adressen (bv. busnummer). Misleidend is wel dat ISA deze adresvoorstelling Address noemt.
- </p><br /><p>
+ </p><p>
 Een adres in OSLO-Adres laat enkel toe om Belgische gestructureerde adressen uit te wisselen. Voor buitenlandse adressen moet het datatype Adresvoorstelling worden gebruikt (wat impliceert dat buitenlandse adressen hoogstens het attribuut van een ander gegeven kunnen zijn).
- </p><br /><p>
+ </p><p>
 Bijzondere adressen zoals postbussen kunnen als adresvoorstelling gemodelleerd te worden of als uitbreiding van een bestaand officieel gestructureerd adres (entiteit Adresuitbreiding). Er wordt in het tweede geval van uitgegaan dat met deze speciale adressen altijd een officieel gestructureerd adres overeenkomt.
-</p><br /><p>
+</p><p>
 Aanvullend op de INSPIRE-adresspecificatie modelleert OSLO-Adres ook de toekenning van adressen aan zogenaamde adresseerbare objecten, d.w.z. de objecten op het terrein waaraan de adressen officieel door de adresbeheerder zijn gekoppeld. Ook kan worden vermeld wie het adres of de straatnaam officieel heeft opgevoerd (typisch de adresbeheerder).
 </p>
 
@@ -269,7 +269,7 @@ Aanvullend op de INSPIRE-adresspecificatie modelleert OSLO-Adres ook de toekenni
 
                                 <p>Een lijst van de recentste vocabularia is terug te vinden op <a href="http://data.vlaanderen.be/ns">http://data.vlaanderen.be/ns</a></p><br />
 
-                                <p>Dit document is een offici&#235;le specificatie van een vocabularium en biedt een gedeeld begrippenkader voor bepaalde concepten. Deze specificatie dient om de definitie, gebruik, domein en bereik van de RDF termen binnen dit domein te verduidelijken. De termen gedefinieerd in dit vocabularium zijn persistent en zullen bijgevolg nooit verdwijnen, noch zullen de definities veranderen behalve dan om een bestaande definitie verder te verduidelijken. Termen kunnen echter wel als verouderd worden bestempeld en vervangen worden in nieuwere versies van deze specificatie.</p><br />
+                                <p>Dit document is een offici&#235;le specificatie van een vocabularium en biedt een gedeeld begrippenkader voor bepaalde concepten. Deze specificatie dient om de definitie, gebruik, domein en bereik van de RDF termen binnen dit domein te verduidelijken. De termen gedefinieerd in dit vocabularium zijn persistent en zullen bijgevolg nooit verdwijnen, noch zullen de definities veranderen behalve dan om een bestaande definitie verder te verduidelijken. Termen kunnen echter wel als verouderd worden bestempeld en vervangen worden in nieuwere versies van deze specificatie.</p>
 
                                 
                                 <br />   
@@ -407,9 +407,9 @@ Aanvullend op de INSPIRE-adresspecificatie modelleert OSLO-Adres ook de toekenni
                                             
                                             <a href="#Straatnaam.status" rel="property">status (Straatnaam)</a> |
                                             
-                                            <a href="#Locatieaanduiding.type" rel="property">type (Locatieaanduiding)</a> |
-                                            
                                             <a href="#Locatienaam.type" rel="property">type (Locatienaam)</a> |
+                                            
+                                            <a href="#Locatieaanduiding.type" rel="property">type (Locatieaanduiding)</a> |
                                             
                                             <a href="#verwijstNaar" rel="property">verwijst naar (Adresvoorstelling)</a> |
                                             
@@ -1607,42 +1607,6 @@ Aanvullend op de INSPIRE-adresspecificatie modelleert OSLO-Adres ook de toekenni
                                 
                                 
                                 <div class="region region--no-space-top">
-                                    <h3 class="h3" id="Locatieaanduiding.type">Eigenschap <em>type</em></h3>
-                                    <table class="definition">
-                                        <tbody>
-                                          <tr>
-                                            <th>Type</th>
-                                            <td>Eigenschap</td>
-                                          </tr>
-                                          
-                                          <tr>
-                                            <th>URI</th>
-                                            <td><code>http://data.vlaanderen.be/ns/adres#Locatieaanduiding.type</code></td>
-                                          </tr>
-                                          
-                                          <tr>
-                                            <th>Domein</th>
-                                            <td><code>http://data.vlaanderen.be/ns/adres#Locatieaanduiding</code></td>
-                                          </tr>
-                                          
-                                          
-                                          <tr>
-                                            <th>Bereik</th>
-                                            <td><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
-                                          </tr>
-                                          
-                                          
-                                          <tr>
-                                            <th>Definitie</th>
-                                            <td>Aard vd locatieaanduiding.</td>
-                                          </tr>
-                                          
-                                        </tbody>
-                                    </table>
-                                </div>
-                                
-                                
-                                <div class="region region--no-space-top">
                                     <h3 class="h3" id="Locatienaam.type">Eigenschap <em>type</em></h3>
                                     <table class="definition">
                                         <tbody>
@@ -1671,6 +1635,42 @@ Aanvullend op de INSPIRE-adresspecificatie modelleert OSLO-Adres ook de toekenni
                                           <tr>
                                             <th>Definitie</th>
                                             <td>Aard vh geografisch object.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="Locatieaanduiding.type">Eigenschap <em>type</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Eigenschap</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/adres#Locatieaanduiding.type</code></td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Domein</th>
+                                            <td><code>http://data.vlaanderen.be/ns/adres#Locatieaanduiding</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Bereik</th>
+                                            <td><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>Aard vd locatieaanduiding.</td>
                                           </tr>
                                           
                                         </tbody>

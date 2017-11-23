@@ -22,17 +22,9 @@
 		"OrganisatieEenheid":"http://www.w3.org/ns/org#OrganizationalUnit",
 		"Organisatie":"http://www.w3.org/ns/org#Organization",
 
-		"wordtIngevuldDoor":{
-			"@id":"http://www.w3.org/ns/org#heldBy",
-			"@type":"http://purl.org/dc/terms/Agent"
-		},
-		"isEenheidVan":{
-			"@id":"http://www.w3.org/ns/org#unitOf",
-			"@type":"http://www.w3.org/ns/org#Organization"
-		},
-		"heeftGeregistreerdeOrganisatie":{
-			"@id":"http://www.w3.org/ns/regorg#hasRegisteredOrganization",
-			"@type":"http://www.w3.org/ns/regorg#RegisteredOrganization",
+		"heeft":{
+			"@id":"http://www.w3.org/ns/org#hasPost",
+			"@type":"http://www.w3.org/ns/org#Post",
 			"@container":"@set"
 		},
 		"heeftOorspronkelijkeOrganisatie":{
@@ -40,9 +32,73 @@
 			"@type":"http://www.w3.org/ns/org#Organization",
 			"@container":"@set"
 		},
+		"isVeranderdDoor":{
+			"@id":"http://www.w3.org/ns/org#changedBy",
+			"@type":"http://www.w3.org/ns/org#ChangeEvent",
+			"@container":"@set"
+		},
+		"isGeassocieerdMet":{
+			"@id":"http://www.w3.org/ns/org#linkedTo",
+			"@type":"http://www.w3.org/ns/org#Organization",
+			"@container":"@set"
+		},
+		"heeftSuborganisatie":{
+			"@id":"http://www.w3.org/ns/org#hasSubOrganization",
+			"@type":"http://www.w3.org/ns/org#Organization",
+			"@container":"@set"
+		},
+		"rapporteertAan":{
+			"@id":"http://www.w3.org/ns/org#reportsTo",
+			"@type":"http://www.w3.org/ns/org#Post",
+			"@container":"@set"
+		},
+		"heeftGeregistreerdeOrganisatie":{
+			"@id":"http://www.w3.org/ns/regorg#hasRegisteredOrganization",
+			"@type":"http://www.w3.org/ns/regorg#RegisteredOrganization",
+			"@container":"@set"
+		},
+		"isHoofdVan":{
+			"@id":"http://www.w3.org/ns/org#headOf",
+			"@type":"http://www.w3.org/ns/org#Organization",
+			"@container":"@set"
+		},
+		"isSuborganisatieVan":{
+			"@id":"http://www.w3.org/ns/org#subOrganizationOf",
+			"@type":"http://www.w3.org/ns/org#Organization",
+			"@container":"@set"
+		},
+		"heeftVestiging":{
+			"@id":"http://www.w3.org/ns/org#hasSite",
+			"@type":"http://www.w3.org/ns/org#Site",
+			"@container":"@set"
+		},
+		"heeftPrimaireVestiging":{
+			"@id":"http://www.w3.org/ns/org#hasPrimarySite",
+			"@type":"http://www.w3.org/ns/org#Site",
+			"@container":"@set"
+		},
+		"bestaatUit":{
+			"@id":"http://data.vlaanderen.be/ns/organisatie#bestaatUit",
+			"@type":"http://data.vlaanderen.be/ns/adres#AdresseerbaarObject",
+			"@container":"@set"
+		},
 		"heeftEenheid":{
 			"@id":"http://www.w3.org/ns/org#hasUnit",
 			"@type":"http://www.w3.org/ns/org#OrganizationalUnit",
+			"@container":"@set"
+		},
+		"wordtIngevuldDoor":{
+			"@id":"http://www.w3.org/ns/org#heldBy",
+			"@type":"http://purl.org/dc/terms/Agent"
+		},
+		"heeftGeregistreerdeVestiging":{
+			"@id":"http://www.w3.org/ns/org#hasRegisteredSite",
+			"@type":"http://www.w3.org/ns/org#Site",
+			"@container":"@set"
+		},
+		"houdt":{
+			"@id":"http://www.w3.org/ns/org#holds",
+			"@type":"http://www.w3.org/ns/org#Post",
 			"@container":"@set"
 		},
 		"isPositieIn":{
@@ -50,7 +106,32 @@
 			"@type":"http://www.w3.org/ns/org#Organization",
 			"@container":"@set"
 		},
+		"isHetResultaatVan":{
+			"@id":"http://www.w3.org/ns/org#resultedFrom",
+			"@type":"http://www.w3.org/ns/org#ChangeEvent",
+			"@container":"@set"
+		},
 		"isLidVan":{
+			"@id":"http://www.w3.org/ns/org#memberOf",
+			"@type":"http://www.w3.org/ns/org#Organization",
+			"@container":"@set"
+		},
+		"heeftStandplaats":{
+			"@id":"http://www.w3.org/ns/org#basedAt",
+			"@type":"http://www.w3.org/ns/org#Site",
+			"@container":"@set"
+		},
+		"heeftResulterendeOrganisatie":{
+			"@id":"http://www.w3.org/ns/org#resultingOrganization",
+			"@type":"http://www.w3.org/ns/org#Organization",
+			"@container":"@set"
+		},
+		"vindtPlaatsBinnen":{
+			"@id":"http://data.europa.eu/m8g/hasFormalFramework",
+			"@type":"http://purl.org/vocab/cpsv#FormalFramework",
+			"@container":"@set"
+		},
+		"Agent.isLidVan":{
 			"@id":"http://www.w3.org/ns/org#hasMembership",
 			"@type":"http://www.w3.org/ns/org#Membership"
 		},
@@ -64,90 +145,9 @@
 			"@type":"http://www.w3.org/ns/org#Organization",
 			"@container":"@set"
 		},
-		"heeftPrimaireVestiging":{
-			"@id":"http://www.w3.org/ns/org#hasPrimarySite",
-			"@type":"http://www.w3.org/ns/org#Site",
-			"@container":"@set"
-		},
-		"heeftSuborganisatie":{
-			"@id":"http://www.w3.org/ns/org#hasSubOrganization",
-			"@type":"http://www.w3.org/ns/org#Organization",
-			"@container":"@set"
-		},
-		"isGeassocieerdMet":{
-			"@id":"http://www.w3.org/ns/org#linkedTo",
-			"@type":"http://www.w3.org/ns/org#Organization",
-			"@container":"@set"
-		},
-		"isSuborganisatieVan":{
-			"@id":"http://www.w3.org/ns/org#subOrganizationOf",
-			"@type":"http://www.w3.org/ns/org#Organization",
-			"@container":"@set"
-		},
-		"bestaatUit":{
-			"@id":"http://data.vlaanderen.be/ns/organisatie#bestaatUit",
-			"@type":"http://data.vlaanderen.be/ns/adres#AdresseerbaarObject",
-			"@container":"@set"
-		},
-		"heeftVestiging":{
-			"@id":"http://www.w3.org/ns/org#hasSite",
-			"@type":"http://www.w3.org/ns/org#Site",
-			"@container":"@set"
-		},
-		"isVeranderdDoor":{
-			"@id":"http://www.w3.org/ns/org#changedBy",
-			"@type":"http://www.w3.org/ns/org#ChangeEvent",
-			"@container":"@set"
-		},
-		"rapporteertAan":{
-			"@id":"http://www.w3.org/ns/org#reportsTo",
-			"@type":"http://www.w3.org/ns/org#Post",
-			"@container":"@set"
-		},
-		"heeftResulterendeOrganisatie":{
-			"@id":"http://www.w3.org/ns/org#resultingOrganization",
-			"@type":"http://www.w3.org/ns/org#Organization",
-			"@container":"@set"
-		},
-		"isHetResultaatVan":{
-			"@id":"http://www.w3.org/ns/org#resultedFrom",
-			"@type":"http://www.w3.org/ns/org#ChangeEvent",
-			"@container":"@set"
-		},
-		"Agent.isLidVan":{
-			"@id":"http://www.w3.org/ns/org#memberOf",
-			"@type":"http://www.w3.org/ns/org#Organization",
-			"@container":"@set"
-		},
-		"vindtPlaatsBinnen":{
-			"@id":"http://data.europa.eu/m8g/hasFormalFramework",
-			"@type":"http://purl.org/vocab/cpsv#FormalFramework",
-			"@container":"@set"
-		},
-		"isHoofdVan":{
-			"@id":"http://www.w3.org/ns/org#headOf",
-			"@type":"http://www.w3.org/ns/org#Organization",
-			"@container":"@set"
-		},
-		"houdt":{
-			"@id":"http://www.w3.org/ns/org#holds",
-			"@type":"http://www.w3.org/ns/org#Post",
-			"@container":"@set"
-		},
-		"heeft":{
-			"@id":"http://www.w3.org/ns/org#hasPost",
-			"@type":"http://www.w3.org/ns/org#Post",
-			"@container":"@set"
-		},
-		"heeftGeregistreerdeVestiging":{
-			"@id":"http://www.w3.org/ns/org#hasRegisteredSite",
-			"@type":"http://www.w3.org/ns/org#Site",
-			"@container":"@set"
-		},
-		"heeftStandplaats":{
-			"@id":"http://www.w3.org/ns/org#basedAt",
-			"@type":"http://www.w3.org/ns/org#Site",
-			"@container":"@set"
+		"isEenheidVan":{
+			"@id":"http://www.w3.org/ns/org#unitOf",
+			"@type":"http://www.w3.org/ns/org#Organization"
 		},
 		"contactinfo":{
 			"@id":"http://data.vlaanderen.be/ns/organisatie#contactinfo",

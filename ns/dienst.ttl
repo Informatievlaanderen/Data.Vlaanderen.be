@@ -1,232 +1,298 @@
-@prefix schema:  <http://schema.org/> .
-@prefix org:     <http://www.w3.org/ns/org#> .
-@prefix owl:     <http://www.w3.org/2002/07/owl#> .
-@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
-@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
-@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix eu:      <http://data.europa.eu/m8g/> .
-@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix person:  <http://www.w3.org/ns/person#> .
-@prefix rov:     <http://www.w3.org/ns/regorg#> .
-@prefix dcterms:  <http://purl.org/dc/terms/> .
-@prefix locn:    <http://www.w3.org/ns/locn#> .
-@prefix vann:    <http://purl.org/vocab/vann/> .
-@prefix prov:    <http://www.w3.org/ns/prov#> .
-@prefix cpsv:    <http://purl.org/vocab/cpsv#> .
-@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix cpsv: <http://purl.org/vocab/cpsv#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix eu: <http://data.europa.eu/m8g/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix gsp: <http://www.opengis.net/ont/geosparql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix person: <http://www.w3.org/ns/person#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rec: <http://www.w3.org/2001/02pd/rec54#> .
+@prefix rov: <http://www.w3.org/ns/regorg#> .
+@prefix schema: <http://schema.org/> .
+@prefix sf: <http://www.opengis.net/ont/sf#> .
+@prefix sioc: <http://rdfs.org/sioc/ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix wdrs: <http://www.w3.org/2007/05/powder-s#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-eu:BusinessEvent
-      a       rdfs:Class ;
-      rdfs:label "Bedrijfsgebeurtenis"@nl .
+eu:BusinessEvent a rdfs:Class ;
+    rdfs:label "Bedrijfsgebeurtenis"@nl .
 
-eu:Channel
-      a       rdfs:Class ;
-      rdfs:label "Kanaal"@nl .
+eu:Channel a rdfs:Class ;
+    rdfs:label "Kanaal"@nl .
 
-eu:Cost
-      a       rdfs:Class ;
-      rdfs:label "Kost"@nl .
+eu:Cost a rdfs:Class ;
+    rdfs:label "Kost"@nl .
 
-eu:CriterionRequirement
-      a       rdfs:Class ;
-      rdfs:label "Criteriumvereiste"@nl .
+eu:CriterionRequirement a rdfs:Class ;
+    rdfs:label "Criteriumvereiste"@nl .
 
-eu:Event
-      a       rdfs:Class ;
-      rdfs:label "Gebeurtenis"@nl .
+eu:Event a rdfs:Class ;
+    rdfs:label "Gebeurtenis"@nl .
 
-eu:Evidence
-      a       rdfs:Class ;
-      rdfs:label "Bewijs"@nl .
+eu:Evidence a rdfs:Class ;
+    rdfs:label "Bewijs"@nl .
 
-eu:LifeEvent
-      a       rdfs:Class ;
-      rdfs:label "Levensgebeurtenis"@nl .
+eu:LifeEvent a rdfs:Class ;
+    rdfs:label "Levensgebeurtenis"@nl .
 
-eu:Output
-      a       rdfs:Class ;
-      rdfs:label "Output"@nl .
+eu:Output a rdfs:Class ;
+    rdfs:label "Output"@nl .
 
-eu:Participation
-      a       rdfs:Class ;
-      rdfs:label "Participatie"@nl .
+eu:Participation a rdfs:Class ;
+    rdfs:label "Participatie"@nl .
 
-eu:currency
-      a       rdf:Property ;
-      rdfs:label "valuta"@nl .
+cpsv:PublicService a rdfs:Class ;
+    rdfs:label "Publieke Dienstverlening"@nl .
 
-eu:hasChannel
-      a       rdf:Property ;
-      rdfs:label "heeft kanaal"@nl .
+cpsv:Rule a rdfs:Class ;
+    rdfs:label "Richtlijn"@nl .
 
-eu:hasCompetentAuthority
-      a       rdf:Property ;
-      rdfs:label "heeft verantwoordelijke autoriteit"@nl .
+schema:OpeningHoursSpecification a rdfs:Class ;
+    rdfs:label "Openingsurenspecificatie"@nl .
 
-eu:hasContactPoint
-      a       rdf:Property ;
-      rdfs:label "heeft contactpunt"@nl .
+skos:Concept a rdfs:Class .
 
-eu:hasCost
-      a       rdf:Property ;
-      rdfs:label "heeft kost"@nl .
+eu:currency a rdf:Property ;
+    rdfs:label "valuta"@nl .
 
-eu:hasCriterion
-      a       rdf:Property ;
-      rdfs:label "heeft criterium"@nl .
+eu:hasChannel a rdf:Property ;
+    rdfs:label "heeft kanaal"@nl .
 
-eu:hasFormalFramework
-      a       rdf:Property ;
-      rdfs:label "heeft formeel kader"@nl .
+eu:hasCompetentAuthority a rdf:Property ;
+    rdfs:label "heeft verantwoordelijke autoriteit"@nl .
 
-eu:hasParticipation
-      a       rdf:Property ;
-      rdfs:comment "Participatie (van een agent) aan de publieke dienstverlening."@nl ;
-      rdfs:label "heeft participatie"@nl .
+eu:hasContactPoint a rdf:Property ;
+    rdfs:label "heeft contactpunt"@nl .
 
-eu:ifAccessedThrough
-      a       rdf:Property ;
-      rdfs:label "indien benaderd via"@nl .
+eu:hasCost a rdf:Property ;
+    rdfs:label "heeft kost"@nl .
 
-eu:isDefinedBy
-      a       rdf:Property ;
-      rdfs:label "is gedefinieerd door"@nl .
+eu:hasCriterion a rdf:Property ;
+    rdfs:label "heeft criterium"@nl .
 
-eu:isGroupedBy
-      a       rdf:Property ;
-      rdfs:label "is gegroepeerd volgens"@nl .
+eu:hasFormalFramework a rdf:Property ;
+    rdfs:label "heeft formeel kader"@nl .
 
-eu:ownedBy
-      a       rdf:Property ;
-      rdfs:label "eigendom van"@nl .
+eu:hasParticipation a rdf:Property ;
+    rdfs:label "heeft participatie"@nl ;
+    rdfs:comment "Participatie (van een agent) aan de publieke dienstverlening."@nl .
 
-eu:playsRole
-      a       rdf:Property ;
-      rdfs:label "speelt rol"@nl .
+eu:ifAccessedThrough a rdf:Property ;
+    rdfs:label "indien benaderd via"@nl .
 
-eu:processingTime
-      a       rdf:Property ;
-      rdfs:label "verwerkingstijd"@nl .
+eu:isDefinedBy a rdf:Property ;
+    rdfs:label "is gedefinieerd door"@nl .
 
-eu:role
-      a       rdf:Property ;
-      rdfs:label "rol"@nl .
+eu:isGroupedBy a rdf:Property ;
+    rdfs:label "is gegroepeerd volgens"@nl .
 
-eu:sector
-      a       rdf:Property ;
-      rdfs:label "sector"@nl .
+eu:ownedBy a rdf:Property ;
+    rdfs:label "eigendom van"@nl .
 
-eu:serviceProvider
-      a       rdf:Property ;
-      rdfs:label "dienstverlener"@nl .
+eu:playsRole a rdf:Property ;
+    rdfs:label "speelt rol"@nl .
 
-eu:value
-      a       rdf:Property ;
-      rdfs:label "waarde"@nl .
+eu:processingTime a rdf:Property ;
+    rdfs:label "verwerkingstijd"@nl .
 
-<http://data.vlaanderen.be/ns/dienst>
-      a       owl:Ontology ;
-      rdfs:label "Service"@en , "Dienst"@nl ;
-      dcterms:issued "2017-03-31"^^xsd:date ;
-      dcterms:title "Service"@en , "Dienst"@nl ;
-      vann:preferredNamespaceUri
-              "http://data.vlaanderen.be/ns/dienst" .
+eu:role a rdf:Property ;
+    rdfs:label "rol"@nl .
 
-dcterms:description
-      a       rdf:Property ;
-      rdfs:label "beschrijving"@nl .
+eu:sector a rdf:Property ;
+    rdfs:label "sector"@nl .
 
-dcterms:language
-      a       rdf:Property ;
-      rdfs:label "taal"@nl .
+eu:serviceProvider a rdf:Property ;
+    rdfs:label "dienstverlener"@nl .
 
-dcterms:relation
-      a       rdf:Property ;
-      rdfs:label "relatie"@nl .
+eu:value a rdf:Property ;
+    rdfs:label "waarde"@nl .
 
-dcterms:requires
-      a       rdf:Property ;
-      rdfs:label "vereist"@nl .
+<http://data.vlaanderen.be/ns/dienst> a owl:Ontology ;
+    rdfs:label "Service"@en,
+        "Dienst"@nl ;
+    dcterms:issued "2017-03-31"^^xsd:date ;
+    dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
+    dcterms:mediator [ foaf:homepage <https://data.vlaanderen.be> ;
+            foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
+            foaf:name "Data Vlaanderen" ] ;
+    dcterms:title "Service"@en,
+        "Dienst"@nl ;
+    vann:preferredNamespaceUri "http://data.vlaanderen.be/ns/dienst" ;
+    rec:editor [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
+                    foaf:name "imec - UGent" ] ;
+            foaf:firstName "Erik" ;
+            foaf:lastName "Mannens" ;
+            foaf:mbox <mailto:erik.mannens@ugent.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
+                    foaf:name "imec - UGent" ] ;
+            foaf:firstName "Laurens" ;
+            foaf:lastName "De Vocht" ;
+            foaf:mbox <mailto:laurens.devocht@ugent.be> ] ;
+    foaf:maker [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Henk" ;
+            foaf:lastName "Vanderstraeten" ;
+            foaf:mbox <mailto:henk.vanderstraeten@bz.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Dries" ;
+            foaf:lastName "Beheydt" ;
+            foaf:mbox <mailto:dries.beheydt@kb.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://www.lne.be/> ;
+                    foaf:name "LNE" ] ;
+            foaf:firstName "Geert" ;
+            foaf:lastName "Van Haute" ;
+            foaf:mbox <mailto:geert.vanhaute@lne.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://stad.gent> ;
+                    foaf:name "Stad Gent" ] ;
+            foaf:firstName "Thimo" ;
+            foaf:lastName "Thoeye" ;
+            foaf:mbox <mailto:Thimo.Thoeye@stad.gent> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Quincy" ;
+            foaf:lastName "Oeyen" ;
+            foaf:mbox <mailto:quincy.oeyen@bz.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Raf" ;
+            foaf:lastName "Buyle" ;
+            foaf:mbox <mailto:raf.buyle@kb.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Björn" ;
+            foaf:lastName "De Vidts" ;
+            foaf:mbox <mailto:bjorn.devidts@kb.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://cipalschaubroeck.be> ;
+                    foaf:name "Cipal Schaubroeck" ] ;
+            foaf:firstName "Willem" ;
+            foaf:lastName "Van Hoecke" ;
+            foaf:mbox <mailto:willem.vanhoecke@cipalschaubroeck.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "An" ;
+            foaf:lastName "Taelemans" ;
+            foaf:mbox <mailto:an.taelemans@kb.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Katrien" ;
+            foaf:lastName "De Smet" ;
+            foaf:mbox <mailto:katrien.desmet@kb.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Dorien" ;
+            foaf:lastName "Bauwens" ;
+            foaf:mbox <mailto:dorien.bauwens@bz.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
+                    foaf:name "imec - UGent" ] ;
+            foaf:firstName "Dieter" ;
+            foaf:lastName "De Paepe" ;
+            foaf:mbox <mailto:dieter.depaepe@ugent.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Ziggy" ;
+            foaf:lastName "Vanlishout" ;
+            foaf:mbox <mailto:Siegfried.Vanlishout@kb.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Geert" ;
+            foaf:lastName "Thijs" ;
+            foaf:mbox <mailto:Geert.Thijs@kb.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Thomas" ;
+            foaf:lastName "D'haenens" ;
+            foaf:mbox <mailto:thomas.dhaenens@bz.vlaanderen.be> ] .
 
-dcterms:spatial
-      a       rdf:Property ;
-      rdfs:label "ruimtelijke dekking"@nl .
+dcterms:description a rdf:Property ;
+    rdfs:label "beschrijving"@nl .
 
-dcterms:title
-      a       rdf:Property ;
-      rdfs:label "titel"@nl .
+dcterms:language a rdf:Property ;
+    rdfs:label "taal"@nl .
 
-dcterms:type
-      a       rdf:Property ;
-      rdfs:label "type"@nl .
+dcterms:relation a rdf:Property ;
+    rdfs:label "relatie"@nl .
 
-cpsv:PublicService
-      a       rdfs:Class ;
-      rdfs:label "Publieke Dienstverlening"@nl .
+dcterms:requires a rdf:Property ;
+    rdfs:label "vereist"@nl .
 
-cpsv:Rule
-      a       rdfs:Class ;
-      rdfs:label "Richtlijn"@nl .
+dcterms:spatial a rdf:Property ;
+    rdfs:label "ruimtelijke dekking"@nl .
 
-cpsv:follows
-      a       rdf:Property ;
-      rdfs:label "volgt"@nl .
+dcterms:title a rdf:Property ;
+    rdfs:label "titel"@nl .
 
-cpsv:hasInput
-      a       rdf:Property ;
-      rdfs:label "heeft input"@nl .
+dcterms:type a rdf:Property ;
+    rdfs:label "type"@nl .
 
-cpsv:implements
-      a       rdf:Property ;
-      rdfs:label "implementeert"@nl .
+cpsv:follows a rdf:Property ;
+    rdfs:label "volgt"@nl .
 
-cpsv:produces
-      a       rdf:Property ;
-      rdfs:label "produceert"@nl .
+cpsv:hasInput a rdf:Property ;
+    rdfs:label "heeft input"@nl .
 
-schema:OpeningHoursSpecification
-      a       rdfs:Class ;
-      rdfs:label "Openingsurenspecificatie"@nl .
+cpsv:implements a rdf:Property ;
+    rdfs:label "implementeert"@nl .
 
-schema:closes
-      a       rdf:Property ;
-      rdfs:label "sluit"@nl .
+cpsv:produces a rdf:Property ;
+    rdfs:label "produceert"@nl .
 
-schema:dayOfWeek
-      a       rdf:Property ;
-      rdfs:label "dag van week"@nl .
+schema:closes a rdf:Property ;
+    rdfs:label "sluit"@nl .
 
-schema:hoursAvailable
-      a       rdf:Property ;
-      rdfs:label "uren beschikbaarheid"@nl .
+schema:dayOfWeek a rdf:Property ;
+    rdfs:label "dag van week"@nl .
 
-schema:openingHours
-      a       rdf:Property ;
-      rdfs:label "openingsuren"@nl .
+schema:hoursAvailable a rdf:Property ;
+    rdfs:label "uren beschikbaarheid"@nl .
 
-schema:opens
-      a       rdf:Property ;
-      rdfs:label "opent"@nl .
+schema:openingHours a rdf:Property ;
+    rdfs:label "openingsuren"@nl .
 
-schema:validFrom
-      a       rdf:Property ;
-      rdfs:label "geldig van"@nl .
+schema:opens a rdf:Property ;
+    rdfs:label "opent"@nl .
 
-schema:validThrough
-      a       rdf:Property ;
-      rdfs:label "geldig tot"@nl .
+schema:validFrom a rdf:Property ;
+    rdfs:label "geldig van"@nl .
 
-skos:Concept
-      a       rdfs:Class .
+schema:validThrough a rdf:Property ;
+    rdfs:label "geldig tot"@nl .
 
-<http://www.w3.org/ns/adms#status>
-      a       rdf:Property ;
-      rdfs:label "status"@nl .
+<http://www.w3.org/ns/adms#status> a rdf:Property ;
+    rdfs:label "status"@nl .
 
-<http://www.w3.org/ns/dcat#keyword>
-      a       rdf:Property ;
-      rdfs:label "trefwoord"@nl .
+dcat:keyword a rdf:Property ;
+    rdfs:label "trefwoord"@nl .
 
-foaf:page
-      a       rdf:Property ;
-      rdfs:label "pagina"@nl .
+foaf:page a rdf:Property ;
+    rdfs:label "pagina"@nl .
+
