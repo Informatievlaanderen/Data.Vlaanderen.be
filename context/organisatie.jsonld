@@ -22,28 +22,46 @@
 		"OrganisatieEenheid":"http://www.w3.org/ns/org#OrganizationalUnit",
 		"Organisatie":"http://www.w3.org/ns/org#Organization",
 
-		"heeftGeregistreerdeVestiging":{
-			"@id":"http://www.w3.org/ns/org#hasRegisteredSite",
-			"@type":"http://www.w3.org/ns/org#Site",
-			"@container":"@set"
-		},
 		"wordtIngevuldDoor":{
 			"@id":"http://www.w3.org/ns/org#heldBy",
 			"@type":"http://purl.org/dc/terms/Agent"
+		},
+		"isEenheidVan":{
+			"@id":"http://www.w3.org/ns/org#unitOf",
+			"@type":"http://www.w3.org/ns/org#Organization"
+		},
+		"heeftGeregistreerdeOrganisatie":{
+			"@id":"http://www.w3.org/ns/regorg#hasRegisteredOrganization",
+			"@type":"http://www.w3.org/ns/regorg#RegisteredOrganization",
+			"@container":"@set"
 		},
 		"heeftOorspronkelijkeOrganisatie":{
 			"@id":"http://www.w3.org/ns/org#originalOrganization",
 			"@type":"http://www.w3.org/ns/org#Organization",
 			"@container":"@set"
 		},
-		"isVeranderdDoor":{
-			"@id":"http://www.w3.org/ns/org#changedBy",
-			"@type":"http://www.w3.org/ns/org#ChangeEvent",
+		"heeftEenheid":{
+			"@id":"http://www.w3.org/ns/org#hasUnit",
+			"@type":"http://www.w3.org/ns/org#OrganizationalUnit",
 			"@container":"@set"
 		},
-		"vindtPlaatsBinnen":{
-			"@id":"http://data.europa.eu/m8g/hasFormalFramework",
-			"@type":"http://purl.org/vocab/cpsv#FormalFramework",
+		"isPositieIn":{
+			"@id":"http://www.w3.org/ns/org#postIn",
+			"@type":"http://www.w3.org/ns/org#Organization",
+			"@container":"@set"
+		},
+		"isLidVan":{
+			"@id":"http://www.w3.org/ns/org#hasMembership",
+			"@type":"http://www.w3.org/ns/org#Membership"
+		},
+		"Lidmaatschap.isLidVan":{
+			"@id":"http://www.w3.org/ns/org#member",
+			"@type":"http://purl.org/dc/terms/Agent",
+			"@container":"@set"
+		},
+		"Lidmaatschap.isLidVan":{
+			"@id":"http://www.w3.org/ns/org#organization",
+			"@type":"http://www.w3.org/ns/org#Organization",
 			"@container":"@set"
 		},
 		"heeftPrimaireVestiging":{
@@ -51,13 +69,13 @@
 			"@type":"http://www.w3.org/ns/org#Site",
 			"@container":"@set"
 		},
-		"heeftStandplaats":{
-			"@id":"http://www.w3.org/ns/org#basedAt",
-			"@type":"http://www.w3.org/ns/org#Site",
+		"heeftSuborganisatie":{
+			"@id":"http://www.w3.org/ns/org#hasSubOrganization",
+			"@type":"http://www.w3.org/ns/org#Organization",
 			"@container":"@set"
 		},
-		"isHoofdVan":{
-			"@id":"http://www.w3.org/ns/org#headOf",
+		"isGeassocieerdMet":{
+			"@id":"http://www.w3.org/ns/org#linkedTo",
 			"@type":"http://www.w3.org/ns/org#Organization",
 			"@container":"@set"
 		},
@@ -66,56 +84,23 @@
 			"@type":"http://www.w3.org/ns/org#Organization",
 			"@container":"@set"
 		},
-		"heeftSuborganisatie":{
-			"@id":"http://www.w3.org/ns/org#hasSubOrganization",
-			"@type":"http://www.w3.org/ns/org#Organization",
-			"@container":"@set"
-		},
-		"isLidVan":{
-			"@id":"http://www.w3.org/ns/org#hasMembership",
-			"@type":"http://www.w3.org/ns/org#Membership"
-		},
-		"houdt":{
-			"@id":"http://www.w3.org/ns/org#holds",
-			"@type":"http://www.w3.org/ns/org#Post",
-			"@container":"@set"
-		},
 		"bestaatUit":{
 			"@id":"http://data.vlaanderen.be/ns/organisatie#bestaatUit",
 			"@type":"http://data.vlaanderen.be/ns/adres#AdresseerbaarObject",
 			"@container":"@set"
 		},
-		"isGeassocieerdMet":{
-			"@id":"http://www.w3.org/ns/org#linkedTo",
-			"@type":"http://www.w3.org/ns/org#Organization",
+		"heeftVestiging":{
+			"@id":"http://www.w3.org/ns/org#hasSite",
+			"@type":"http://www.w3.org/ns/org#Site",
 			"@container":"@set"
 		},
-		"isPositieIn":{
-			"@id":"http://www.w3.org/ns/org#postIn",
-			"@type":"http://www.w3.org/ns/org#Organization",
+		"isVeranderdDoor":{
+			"@id":"http://www.w3.org/ns/org#changedBy",
+			"@type":"http://www.w3.org/ns/org#ChangeEvent",
 			"@container":"@set"
 		},
 		"rapporteertAan":{
 			"@id":"http://www.w3.org/ns/org#reportsTo",
-			"@type":"http://www.w3.org/ns/org#Post",
-			"@container":"@set"
-		},
-		"heeftGeregistreerdeOrganisatie":{
-			"@id":"http://www.w3.org/ns/regorg#hasRegisteredOrganization",
-			"@type":"http://www.w3.org/ns/regorg#RegisteredOrganization",
-			"@container":"@set"
-		},
-		"isHetResultaatVan":{
-			"@id":"http://www.w3.org/ns/org#resultedFrom",
-			"@type":"http://www.w3.org/ns/org#ChangeEvent",
-			"@container":"@set"
-		},
-		"isEenheidVan":{
-			"@id":"http://www.w3.org/ns/org#unitOf",
-			"@type":"http://www.w3.org/ns/org#Organization"
-		},
-		"heeft":{
-			"@id":"http://www.w3.org/ns/org#hasPost",
 			"@type":"http://www.w3.org/ns/org#Post",
 			"@container":"@set"
 		},
@@ -124,19 +109,50 @@
 			"@type":"http://www.w3.org/ns/org#Organization",
 			"@container":"@set"
 		},
-		"heeftVestiging":{
-			"@id":"http://www.w3.org/ns/org#hasSite",
+		"isHetResultaatVan":{
+			"@id":"http://www.w3.org/ns/org#resultedFrom",
+			"@type":"http://www.w3.org/ns/org#ChangeEvent",
+			"@container":"@set"
+		},
+		"Agent.isLidVan":{
+			"@id":"http://www.w3.org/ns/org#memberOf",
+			"@type":"http://www.w3.org/ns/org#Organization",
+			"@container":"@set"
+		},
+		"vindtPlaatsBinnen":{
+			"@id":"http://data.europa.eu/m8g/hasFormalFramework",
+			"@type":"http://purl.org/vocab/cpsv#FormalFramework",
+			"@container":"@set"
+		},
+		"isHoofdVan":{
+			"@id":"http://www.w3.org/ns/org#headOf",
+			"@type":"http://www.w3.org/ns/org#Organization",
+			"@container":"@set"
+		},
+		"houdt":{
+			"@id":"http://www.w3.org/ns/org#holds",
+			"@type":"http://www.w3.org/ns/org#Post",
+			"@container":"@set"
+		},
+		"heeft":{
+			"@id":"http://www.w3.org/ns/org#hasPost",
+			"@type":"http://www.w3.org/ns/org#Post",
+			"@container":"@set"
+		},
+		"heeftGeregistreerdeVestiging":{
+			"@id":"http://www.w3.org/ns/org#hasRegisteredSite",
 			"@type":"http://www.w3.org/ns/org#Site",
 			"@container":"@set"
 		},
-		"heeftEenheid":{
-			"@id":"http://www.w3.org/ns/org#hasUnit",
-			"@type":"http://www.w3.org/ns/org#OrganizationalUnit",
+		"heeftStandplaats":{
+			"@id":"http://www.w3.org/ns/org#basedAt",
+			"@type":"http://www.w3.org/ns/org#Site",
 			"@container":"@set"
 		},
-		"isTeBereikenOp":{
-			"@id":"http://data.vlaanderen.be/ns/organisatie#isTeBereikenOp",
-			"@type":"http://schema.org/ContactPoint"
+		"contactinfo":{
+			"@id":"http://data.vlaanderen.be/ns/organisatie#contactinfo",
+			"@type":"http://schema.org/ContactPoint",
+			"@container":"@set"
 		},
 		"rol":{
 			"@id":"http://www.w3.org/ns/org#role",
@@ -144,39 +160,39 @@
 		},
 		"aanschrijfvorm":{
 			"@id":"http://ww.w3.org/2006/vcard/ns#honorific-prefix",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
-		},
-		"adres":{
-			"@id":"http://www.w3.org/ns/locn#address",
-			"@type":"http://www.w3.org/ns/locn#Address"
-		},
-		"beschikbaarheid":{
-			"@id":"http://schema.org/hoursAvailable",
-			"@type":"https://schema.org/OpeningHoursSpecification"
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
 		},
 		"contactnaam":{
 			"@id":"http://xmlns.com/foaf/0.1/name",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
 		"email":{
 			"@id":"http://schema.org/email",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
+		},
+		"telefoon":{
+			"@id":"http://schema.org/telephone",
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
 		"fax":{
 			"@id":"http://schema.org/faxNumber",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
+		},
+		"website":{
+			"@id":"http://xmlns.com/foaf/0.1/page",
+			"@type":"http://www.w3.org/2001/XMLSchema#anyURI"
 		},
 		"openingsuren":{
 			"@id":"http://schema.org/openingHours",
 			"@type":"https://schema.org/OpeningHoursSpecification"
 		},
-		"telefoon":{
-			"@id":"http://schema.org/telephone",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+		"beschikbaarheid":{
+			"@id":"http://schema.org/hoursAvailable",
+			"@type":"https://schema.org/OpeningHoursSpecification"
 		},
-		"website":{
-			"@id":"http://xmlns.com/foaf/0.1/page",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Resource"
+		"adres":{
+			"@id":"http://www.w3.org/ns/locn#address",
+			"@type":"http://www.w3.org/ns/locn#Address"
 		},
 		"redenStopzetting":{
 			"@id":"http://data.vlaanderen.be/ns/organisatie#redenStopzetting",
@@ -187,29 +203,29 @@
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
 			"@container":"@set"
 		},
-		"rechtspersoonlijkheid":{
-			"@id":"http://data.vlaanderen.be/ns/organisatie#rechtspersoonlijkheid",
-			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
-		},
-		"rechtstoestand":{
-			"@id":"http://data.vlaanderen.be/ns/organisatie#rechtstoestand",
-			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
-		},
-		"rechtsvorm":{
-			"@id":"http://data.vlaanderen.be/ns/organisatie#rechtsvorm",
-			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
-		},
 		"registratie":{
 			"@id":"http://www.w3.org/ns/regorg#registration",
 			"@type":"http://www.w3.org/ns/adms#Identifier"
 		},
 		"wettelijkeNaam":{
 			"@id":"http://www.w3.org/ns/regorg#legalName",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+		},
+		"rechtsvorm":{
+			"@id":"http://data.vlaanderen.be/ns/organisatie#rechtsvorm",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
+		},
+		"rechtstoestand":{
+			"@id":"http://data.vlaanderen.be/ns/organisatie#rechtstoestand",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
+		},
+		"rechtspersoonlijkheid":{
+			"@id":"http://data.vlaanderen.be/ns/organisatie#rechtspersoonlijkheid",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
 		},
 		"datum":{
 			"@id":"http://purl.org/dc/terms/date",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":""
 		},
 		"vestigingsAdres":{
 			"@id":"http://www.w3.org/ns/org#siteAddress",
@@ -219,40 +235,44 @@
 			"@id":"http://www.w3.org/ns/org#memberDuring",
 			"@type":"http://purl.org/dc/terms/PeriodOfTime"
 		},
-		"activiteit":{
-			"@id":"http://www.w3.org/ns/regorg#orgActivity",
-			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
-		},
-		"alternatieveNaam":{
-			"@id":"http://www.w3.org/2004/02/skos/core#altLabel",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal",
-			"@container":"@set"
-		},
 		"beschrijving":{
 			"@id":"http://purl.org/dc/terms/description",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+		},
+		"doel":{
+			"@id":"http://www.w3.org/ns/org#purpose",
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+			"@container":"@set"
 		},
 		"classificatie":{
 			"@id":"http://www.w3.org/ns/org#classification",
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
 			"@container":"@set"
 		},
-		"doel":{
-			"@id":"http://www.w3.org/ns/org#purpose",
-			"@type":"",
-			"@container":"@set"
-		},
 		"homepage":{
 			"@id":"http://xmlns.com/foaf/0.1/homepage",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
+		},
+		"voorkeursNaam":{
+			"@id":"http://www.w3.org/2004/02/skos/core#prefLabel",
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+		},
+		"alternatieveNaam":{
+			"@id":"http://www.w3.org/2004/02/skos/core#altLabel",
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+			"@container":"@set"
 		},
 		"logo":{
 			"@id":"http://schema.org/logo",
 			"@type":""
 		},
-		"status":{
-			"@id":"http://www.w3.org/ns/regorg#orgStatus",
-			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
+		"activiteit":{
+			"@id":"http://www.w3.org/ns/regorg#orgActivity",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
+		},
+		"Organisatie.contactinfo":{
+			"@id":"http://schema.org/contactPoint",
+			"@type":"http://schema.org/ContactPoint",
 			"@container":"@set"
 		},
 		"type":{
@@ -260,9 +280,10 @@
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
 			"@container":"@set"
 		},
-		"voorkeursNaam":{
-			"@id":"http://www.w3.org/2004/02/skos/core#prefLabel",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+		"status":{
+			"@id":"http://www.w3.org/ns/regorg#orgStatus",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
+			"@container":"@set"
 		}
 	}
 }

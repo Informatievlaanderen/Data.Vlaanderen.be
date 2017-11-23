@@ -16,12 +16,15 @@
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 
 <http://data.europa.eu/eli/ontology#language>
+      a       rdf:Property ;
       rdfs:label "taal"@nl .
 
 eu:subject
+      a       rdf:Property ;
       rdfs:label "onderwerp"@nl .
 
 eu:territorialApplication
+      a       rdf:Property ;
       rdfs:label "territoriale toepassing"@nl .
 
 <http://data.vlaanderen.be/ns/generiek>
@@ -34,44 +37,47 @@ eu:territorialApplication
 
 <http://data.vlaanderen.be/ns/generiek#GeografischePositie>
       a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
+      rdfs:comment "Geografische positie aangegeven dmv een punt."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
-      rdfs:label "GeografischePositie"@nl .
+      rdfs:label "Geografische Positie"@nl ;
+      vann:usageNote " "@nl .
 
 <http://data.vlaanderen.be/ns/generiek#begin>
       a       owl:DatatypeProperty ;
-      rdfs:comment "TODO"@nl ;
+      rdfs:comment "Moment waarop het tijdsinterval begint."@nl ;
       rdfs:domain dcterms:PeriodOfTime ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
       rdfs:label "begin"@nl ;
       rdfs:range rdfs:Literal ;
-      vann:usageNote "Zie bv Time and date & Recurring and partial dates van https://www.w3.org/TR/rdf11-concepts/#h3_xsd-datatypes"@nl .
+      vann:usageNote " "@nl .
 
 <http://data.vlaanderen.be/ns/generiek#bewerking>
       a       owl:ObjectProperty ;
-      rdfs:comment "TODO"@nl ;
+      rdfs:comment "Aard vd bewerking die ihkv de activiteit op de entiteit is uitgevoerd."@nl ;
       rdfs:domain prov:Activity ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
-      rdfs:label "type"@nl ;
+      rdfs:label "bewerking"@nl ;
       rdfs:range skos:Concept ;
-      rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/type> .
+      rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/type> ;
+      vann:usageNote "Bvb \"correctie\" als de entiteit een record is en bvb gegenereerd werd om het voorgaand record ve object te verbeteren."@nl .
 
 <http://data.vlaanderen.be/ns/generiek#default>
       a       owl:DatatypeProperty ;
-      rdfs:comment "TODO"@nl ;
+      rdfs:comment "Geeft aan of de positie een default positie is."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/generiek#GeografischePositie> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
       rdfs:label "default"@nl ;
-      rdfs:range xsd:boolean .
+      rdfs:range xsd:boolean ;
+      vann:usageNote "Hieronder wordt de positie verstaan die per default moet worden gebruikt als het object meerdere posities heeft."@nl .
 
 <http://data.vlaanderen.be/ns/generiek#einde>
       a       owl:DatatypeProperty ;
-      rdfs:comment "TODO"@nl ;
+      rdfs:comment "Moment waarop het tijdsinterval eindigt."@nl ;
       rdfs:domain dcterms:PeriodOfTime ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
       rdfs:label "einde"@nl ;
       rdfs:range rdfs:Literal ;
-      vann:usageNote "Zie bv Time and date & Recurring and partial dates van https://www.w3.org/TR/rdf11-concepts/#h3_xsd-datatypes"@nl .
+      vann:usageNote " "@nl .
 
 <http://data.vlaanderen.be/ns/generiek#handeldeInOpdrachtVan>
       a       owl:ObjectProperty ;
@@ -84,157 +90,225 @@ eu:territorialApplication
 
 <http://data.vlaanderen.be/ns/generiek#methode>
       a       owl:ObjectProperty ;
-      rdfs:comment "TODO"@nl ;
+      rdfs:comment "De manier waarop het punt werd bepaald."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/generiek#GeografischePositie> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
       rdfs:label "methode"@nl ;
-      rdfs:range skos:Concept .
+      rdfs:range skos:Concept ;
+      vann:usageNote "Bvb positie afgeleid ve bestaand object (bvb door berekening vd centroïde)."@nl .
 
 <http://data.vlaanderen.be/ns/generiek#plaats>
       a       owl:DatatypeProperty ;
       rdfs:comment "Plaatsnaam waarmee de Jurisdictie kan worden aangeduid."@nl ;
       rdfs:domain dcterms:Jurisdiction ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
-      rdfs:label "Plaats"@nl ;
+      rdfs:label "plaats"@nl ;
       rdfs:range rdf:langString ;
-      vann:usageNote "Bv de naam van een land."@nl .
+      vann:usageNote "Bv de naam ve land."@nl .
 
 <http://data.vlaanderen.be/ns/generiek#specificatie>
       a       owl:ObjectProperty ;
-      rdfs:comment "TODO"@nl ;
+      rdfs:comment "Het type object op basis waarvan het punt werd bepaald."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/generiek#GeografischePositie> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
       rdfs:label "specificatie"@nl ;
-      rdfs:range skos:Concept .
+      rdfs:range skos:Concept ;
+      vann:usageNote "Bvb perceel, gebouw..."@nl .
+
+dcterms:Agent
+      a       rdfs:Class ;
+      rdfs:label "Agent"@nl .
 
 dcterms:Jurisdiction
+      a       rdfs:Class ;
       rdfs:label "Jurisdictie"@nl .
 
 dcterms:PeriodOfTime
+      a       rdfs:Class ;
       rdfs:label "TijdsInterval"@nl .
 
 dcterms:creator
+      a       rdf:Property ;
       rdfs:label "maker"@nl .
 
 dcterms:description
+      a       rdf:Property ;
       rdfs:label "beschrijving"@nl .
 
 dcterms:issued
+      a       rdf:Property ;
       rdfs:label "uitgegeven"@nl .
 
 dcterms:relation
+      a       rdf:Property ;
       rdfs:label "relatie"@nl .
 
 dcterms:title
+      a       rdf:Property ;
       rdfs:label "titel"@nl .
 
 dcterms:type
+      a       rdf:Property ;
       rdfs:label "type"@nl .
 
 cpsv:FormalFramework
+      a       rdfs:Class ;
       rdfs:label "Formeel Kader"@nl .
 
 schema:ContactPoint
+      a       rdfs:Class ;
       rdfs:label "Contactpunt"@nl .
 
 schema:email
+      a       rdf:Property ;
       rdfs:label "email"@nl .
 
 schema:faxNumber
+      a       rdf:Property ;
       rdfs:label "faxnummer"@nl .
 
 schema:hoursAvailable
+      a       rdf:Property ;
       rdfs:label "uren beschikbaarheid"@nl .
 
 schema:openingHours
+      a       rdf:Property ;
       rdfs:label "openingsuren"@nl .
 
 schema:telephone
+      a       rdf:Property ;
       rdfs:label "telefoon"@nl .
 
 <http://ww.w3.org/2006/vcard/ns#honorific-prefix>
+      a       rdf:Property ;
       rdfs:label "aanschrijfprefix"@nl .
 
 <http://www.opengis.net/ont/geosparql#asGML>
+      a       rdf:Property ;
       rdfs:label "als GML"@nl .
 
 <http://www.opengis.net/ont/geosparql#asWKT>
+      a       rdf:Property ;
       rdfs:label "als WKT"@nl .
 
+rdf:langString
+      a       rdfs:Class .
+
+rdfs:Literal
+      a       rdfs:Class .
+
 rdfs:Resource
+      a       rdfs:Class ;
       rdfs:label "Resource"@nl .
 
 rdfs:label
+      a       rdf:Property ;
       rdfs:label "label"@nl .
 
 <http://www.w3.org/2003/01/geo/wgs84_pos#Point>
+      a       rdfs:Class ;
       rdfs:label "Punt"@nl .
 
 <http://www.w3.org/2003/01/geo/wgs84_pos#lat>
+      a       rdf:Property ;
       rdfs:label "latitude"@nl .
 
 <http://www.w3.org/2003/01/geo/wgs84_pos#long>
+      a       rdf:Property ;
       rdfs:label "longitude"@nl .
 
 skos:Concept
-      rdfs:label "Concept"@nl .
+      a       rdfs:Class ;
+      rdfs:comment "TODO"@nl .
 
 skos:notation
+      a       rdf:Property ;
       rdfs:label "notatie"@nl .
 
 <http://www.w3.org/ns/adms#Identifier>
+      a       rdfs:Class ;
       rdfs:label "Identificator"@nl .
 
 <http://www.w3.org/ns/adms#identifier>
+      a       rdf:Property ;
       rdfs:label "identificator"@nl .
 
 <http://www.w3.org/ns/adms#schemaAgency>
+      a       rdf:Property ;
       rdfs:label "schema agentschap"@nl .
 
 <http://www.w3.org/ns/adms#status>
+      a       rdf:Property ;
       rdfs:label "status"@nl .
 
 locn:Geometry
+      a       rdfs:Class ;
       rdfs:label "Geometrie"@nl .
 
 locn:address
+      a       rdf:Property ;
       rdfs:label "adres"@nl .
 
 locn:geometry
+      a       rdf:Property ;
       rdfs:label "geometrie"@nl .
 
 prov:Activity
+      a       rdfs:Class ;
       rdfs:label "Activiteit"@nl .
 
 prov:Agent
+      a       rdfs:Class ;
       rdfs:label "Agent"@nl .
 
 prov:Entity
+      a       rdfs:Class ;
       rdfs:label "Entiteit"@nl .
 
 prov:Generation
+      a       rdfs:Class ;
       rdfs:label "Generatie"@nl .
 
 prov:Invalidation
+      a       rdfs:Class ;
       rdfs:label "Invalidatie"@nl .
 
 prov:activity
+      a       rdf:Property ;
       rdfs:label "activiteit"@nl .
 
 prov:atTime
+      a       rdf:Property ;
       rdfs:label "op tijdstip"@nl .
 
+prov:qualifiedGeneration
+      a       rdf:Property ;
+      rdfs:label "gekwalificeerde generatie"@nl .
+
+prov:qualifiedInvalidation
+      a       rdf:Property ;
+      rdfs:label "gekwalificeerde invalidatie"@nl .
+
+prov:used
+      a       rdf:Property ;
+      rdfs:label "gebruikt"@nl .
+
 prov:wasAssociatedWith
+      a       rdf:Property ;
       rdfs:label "was geassocieerd met"@nl .
 
 foaf:Document
+      a       rdfs:Class ;
       rdfs:label "Document"@nl .
 
 foaf:isPrimaryTopicOf
+      a       rdf:Property ;
       rdfs:label "is primair onderwerp van"@nl .
 
 foaf:name
+      a       rdf:Property ;
       rdfs:label "naam"@nl .
 
 foaf:page
+      a       rdf:Property ;
       rdfs:label "pagina"@nl .

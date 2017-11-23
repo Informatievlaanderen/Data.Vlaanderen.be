@@ -16,12 +16,15 @@
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 
 eu:FoundationEvent
-      rdfs:label "Oprichting"@nl .
+      a       rdfs:Class ;
+      rdfs:label "Oprichtingsgebeurtenis"@nl .
 
 eu:PublicOrganisation
+      a       rdfs:Class ;
       rdfs:label "Publieke Organisatie"@nl .
 
 eu:hasFormalFramework
+      a       rdf:Property ;
       rdfs:label "heeft formeel kader"@nl .
 
 <http://data.vlaanderen.be/ns/organisatie>
@@ -34,245 +37,312 @@ eu:hasFormalFramework
 
 <http://data.vlaanderen.be/ns/organisatie#Fusie>
       a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
+      rdfs:comment "Gebeurtenis waarbij twee organisaties samen een nieuwe organisatie vormen."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
       rdfs:label "Fusie"@nl ;
-      rdfs:subClassOf org:ChangeEvent .
+      rdfs:subClassOf org:ChangeEvent ;
+      vann:usageNote " "@nl .
 
 <http://data.vlaanderen.be/ns/organisatie#Hoedanigheid>
       a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
+      rdfs:comment "Agent met een positie."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
       rdfs:label "Hoedanigheid"@nl ;
-      rdfs:subClassOf dcterms:Agent , org:Post .
+      rdfs:subClassOf dcterms:Agent , org:Post ;
+      vann:usageNote "Laat een punctie toe om te handelen,bv ihkv een dienstverlening (bv diversiteitsplan wordt opgemaakt door diversiteitsambtenaar)."@nl .
 
 <http://data.vlaanderen.be/ns/organisatie#Splitsing>
       a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
+      rdfs:comment "Gebeurtenis waarbij uit één organisatie twee organisaties worden gevormd."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
       rdfs:label "Splitsing"@nl ;
-      rdfs:subClassOf org:ChangeEvent .
+      rdfs:subClassOf org:ChangeEvent ;
+      vann:usageNote " "@nl .
 
 <http://data.vlaanderen.be/ns/organisatie#Stopzetting>
       a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
+      rdfs:comment "Gebeurtenis waarbij een organisatie is stopgezet."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
       rdfs:label "Stopzetting"@nl ;
-      rdfs:subClassOf org:ChangeEvent .
+      rdfs:subClassOf org:ChangeEvent ;
+      vann:usageNote " "@nl .
 
 <http://data.vlaanderen.be/ns/organisatie#Vervanging>
       a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
+      rdfs:comment "Gebeurtenis waarbij een organisatie wordt vervangen door een andere."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
       rdfs:label "Vervanging"@nl ;
-      rdfs:subClassOf org:ChangeEvent .
+      rdfs:subClassOf org:ChangeEvent ;
+      vann:usageNote "Bvb doorstart ve bedrijf na technisch faillissement."@nl .
 
 <http://data.vlaanderen.be/ns/organisatie#bestaatUit>
       a       owl:ObjectProperty ;
-      rdfs:comment "TODO"@nl ;
+      rdfs:comment "Adresseerbaar object dat met de vestiging overeenstemt."@nl ;
       rdfs:domain org:Site ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
       rdfs:label "bestaat uit"@nl ;
-      rdfs:range <http://data.vlaanderen.be/ns/adres#AdresseerbaarObject> .
+      rdfs:range <http://data.vlaanderen.be/ns/adres#AdresseerbaarObject> ;
+      vann:usageNote " "@nl .
 
-<http://data.vlaanderen.be/ns/organisatie#isTeBereikenOp>
+<http://data.vlaanderen.be/ns/organisatie#contactinfo>
       a       owl:ObjectProperty ;
-      rdfs:comment "Informatie zoals email, telefoon... die toelaat de Hoedanigheid te contacteren."@nl ;
+      rdfs:comment "Informatie zoals email, telefoon die toelaat de hoedanigheid te contacteren."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/organisatie#Hoedanigheid> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
       rdfs:label "contactinfo"@nl ;
-      rdfs:range schema:ContactPoint .
+      rdfs:range schema:ContactPoint ;
+      vann:usageNote " "@nl .
 
 <http://data.vlaanderen.be/ns/organisatie#rechtspersoonlijkheid>
       a       owl:ObjectProperty ;
-      rdfs:comment "Geeft aan of de rechtspersoonlijkheid van de Geregistreerde Organisatie deze is van een natuurlijk persoon of van een rechtspersoon. "@nl ;
+      rdfs:comment "Geeft aan of de rechtspersoonlijkheid van de geregistreerde organisatie deze is van een natuurlijk persoon of van een rechtspersoon. "@nl ;
       rdfs:domain rov:RegisteredOrganization ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
       rdfs:label "rechtspersoonlijkheid"@nl ;
       rdfs:range skos:Concept ;
       rdfs:subPropertyOf rov:orgType ;
-      vann:usageNote "Een rechtspersoon is een juridische constructie die een Organisatie dezelfde rechtspersoonlijkheid geeft als een natuurlijk persoon (kan bv ook schulden hebben, contracten afsluiten, aangeklaagd worden etc). Vb privaatrechterlijke rechtspersonen: vennootschappen, vzw's etc.; vb publiekrechterlijke rechtspersonen: steden, gemeenten etc. Een feitelijke vereniging is in principe geen rechtspersoon."@nl .
+      vann:usageNote "Een rechtspersoon is een juridische constructie die een organisatie dezelfde rechtspersoonlijkheid geeft als een natuurlijk persoon (kan bv ook schulden hebben, contracten afsluiten, aangeklaagd worden etc). Vb privaatrechterlijke rechtspersonen: vennootschappen, vzw's etc.; vb publiekrechterlijke rechtspersonen: steden, gemeenten etc. Een feitelijke vereniging is in principe geen rechtspersoon maar wordt als ze geregistreerd is id KBO toch als dusdanig geklasseerd."@nl .
 
 <http://data.vlaanderen.be/ns/organisatie#rechtstoestand>
       a       owl:ObjectProperty ;
-      rdfs:comment "Status van de Geregistreerde Organisatie."@nl ;
+      rdfs:comment "Status van de geregistreerde organisatie."@nl ;
       rdfs:domain rov:RegisteredOrganization ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
       rdfs:label "rechtstoestand"@nl ;
       rdfs:range skos:Concept ;
       rdfs:subPropertyOf rov:orgStatus ;
-      vann:usageNote "Stemt overeen met rechtstoestand, bvb Normale toestand, Gerechtelijk akkoord, Opening faillissement etc."@nl .
+      vann:usageNote "Stemt in de KBO overeen met rechtstoestand, bvb normale toestand, gerechtelijk akkoord, opening faillissement etc."@nl .
 
 <http://data.vlaanderen.be/ns/organisatie#rechtsvorm>
       a       owl:ObjectProperty ;
-      rdfs:comment "Juridisch statuut van de Geregistreerde Organisatie."@nl ;
+      rdfs:comment "Juridisch statuut van de geregistreerde organisatie."@nl ;
       rdfs:domain rov:RegisteredOrganization ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
       rdfs:label "rechtsvorm"@nl ;
       rdfs:range skos:Concept ;
       rdfs:subPropertyOf rov:orgType ;
-      vann:usageNote "Bvb NV, VZW, Stad/Gemeente, OCMW etc."@nl .
+      vann:usageNote "Stemt in de KBO overeen met rechtsvorm, bvb NV, VZW, Stad/Gemeente, OCMW etc."@nl .
 
 <http://data.vlaanderen.be/ns/organisatie#redenStopzetting>
       a       owl:ObjectProperty ;
-      rdfs:comment "Reden waarom de Organisatie is stopgezet."@nl ;
+      rdfs:comment "Reden waarom de organisatie is stopgezet."@nl ;
       rdfs:domain <http://data.vlaanderen.be/ns/organisatie#Stopzetting> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/organisatie> ;
       rdfs:label "reden stopzetting"@nl ;
-      rdfs:range skos:Concept .
+      rdfs:range skos:Concept ;
+      vann:usageNote "Bvb pensionering, faillissement"@nl .
 
 dcterms:date
+      a       rdf:Property ;
       rdfs:label "datum"@nl .
 
 dcterms:description
+      a       rdf:Property ;
       rdfs:label "beschrijving"@nl .
 
 dcterms:spatial
-      rdfs:label "spatiaal"@nl .
+      a       rdf:Property ;
+      rdfs:label "ruimtelijk"@nl .
 
 schema:contactPoint
+      a       rdf:Property ;
       rdfs:label "contactpunt"@nl .
 
 schema:logo
+      a       rdf:Property ;
       rdfs:label "logo"@nl .
 
+skos:Concept
+      a       rdfs:Class .
+
 skos:altLabel
+      a       rdf:Property ;
       rdfs:label "alternatieve label"@nl .
 
 skos:prefLabel
+      a       rdf:Property ;
       rdfs:label "voorkeurslabel"@nl .
 
 org:ChangeEvent
+      a       rdfs:Class ;
       rdfs:label "Veranderingsgebeurtenis"@nl .
 
 org:FormalOrganization
+      a       rdfs:Class ;
       rdfs:label "Formele Organisatie"@nl .
 
 org:Membership
+      a       rdfs:Class ;
       rdfs:label "Lidmaatschap"@nl .
 
 org:Organization
+      a       rdfs:Class ;
       rdfs:label "Organisatie"@nl .
 
 org:OrganizationalCollaboration
-      rdfs:label "Organisationele Samenwerking"@nl .
+      a       rdfs:Class ;
+      rdfs:label "Samenwerking van Organisaties"@nl .
 
 org:OrganizationalUnit
-      rdfs:label "Organisationele Eenheid"@nl .
+      a       rdfs:Class ;
+      rdfs:label "Organisatie-eenheid"@nl .
 
 org:Post
-      rdfs:label "Functie"@nl .
+      a       rdfs:Class ;
+      rdfs:label "Positie"@nl .
 
 org:Role
+      a       rdfs:Class ;
       rdfs:label "Rol"@nl .
 
 org:Site
+      a       rdfs:Class ;
       rdfs:label "Vestiging"@nl .
 
 org:basedAt
+      a       rdf:Property ;
       rdfs:label "heeft standplaats"@nl .
 
 org:changedBy
+      a       rdf:Property ;
       rdfs:label "veranderd door"@nl .
 
 org:classification
+      a       rdf:Property ;
       rdfs:label "classificatie"@nl .
 
 org:hasMembership
+      a       rdf:Property ;
+      rdfs:comment "Lidmaatschap van een agent (van een organisatie)."@nl ;
       rdfs:label "heeft"@nl .
 
 org:hasPost
+      a       rdf:Property ;
       rdfs:label "heeft positie"@nl .
 
 org:hasPrimarySite
+      a       rdf:Property ;
       rdfs:label "heeft primaire vestiging"@nl .
 
 org:hasRegisteredSite
+      a       rdf:Property ;
       rdfs:label "heeft geregistreerde vestiging"@nl .
 
 org:hasSite
+      a       rdf:Property ;
       rdfs:label "heeft vestiging"@nl .
 
 org:hasSubOrganization
+      a       rdf:Property ;
       rdfs:label "heeft suborganisatie"@nl .
 
 org:hasUnit
+      a       rdf:Property ;
       rdfs:label "heeft eenheid"@nl .
 
 org:headOf
+      a       rdf:Property ;
       rdfs:label "hoofd van"@nl .
 
 org:heldBy
+      a       rdf:Property ;
       rdfs:label "ingevuld door"@nl .
 
 org:holds
+      a       rdf:Property ;
       rdfs:label "houdt"@nl .
 
 org:linkedTo
+      a       rdf:Property ;
       rdfs:label "gelinkt met"@nl .
 
 org:member
+      a       rdf:Property ;
+      rdfs:comment "Agent die lid is (van een organisatie)."@nl ;
       rdfs:label "lid"@nl .
 
 org:memberDuring
+      a       rdf:Property ;
       rdfs:label "lid gedurende"@nl .
 
 org:memberOf
+      a       rdf:Property ;
       rdfs:label "lid van"@nl .
 
 org:organization
+      a       rdf:Property ;
+      rdfs:comment "Organisatie waarop het lidmaatschap (van een agent) betrekking heeft."@nl ;
       rdfs:label "is lidmaatschap bij"@nl .
 
 org:originalOrganization
+      a       rdf:Property ;
       rdfs:label "originele organisatie"@nl .
 
 org:postIn
+      a       rdf:Property ;
       rdfs:label "positie bij"@nl .
 
 org:purpose
+      a       rdf:Property ;
       rdfs:label "doel"@nl .
 
 org:reportsTo
+      a       rdf:Property ;
       rdfs:label "rapporteert aan"@nl .
 
 org:resultedFrom
-      rdfs:label "geresulteerd van"@nl .
+      a       rdf:Property ;
+      rdfs:label "gevolg van"@nl .
 
 org:resultingOrganization
+      a       rdf:Property ;
       rdfs:label "resulterende organisatie"@nl .
 
 org:role
+      a       rdf:Property ;
       rdfs:label "rol"@nl .
 
 org:siteAddress
+      a       rdf:Property ;
       rdfs:label "vestigingsadres"@nl .
 
 org:subOrganizationOf
+      a       rdf:Property ;
       rdfs:label "suborganisatie van"@nl .
 
 org:unitOf
+      a       rdf:Property ;
       rdfs:label "eenheid van"@nl .
 
 rov:RegisteredOrganization
+      a       rdfs:Class ;
       rdfs:label "Geregistreerde Organisatie"@nl .
 
 rov:hasRegisteredOrganization
+      a       rdf:Property ;
+      rdfs:comment "Verwijst naar de geregistreerde organisatie waarmee de agent geassocieerd is."@nl ;
       rdfs:label "heeft geregistreerde organisatie"@nl .
 
 rov:legalName
+      a       rdf:Property ;
       rdfs:label "wettelijke naam"@nl .
 
 rov:orgActivity
+      a       rdf:Property ;
       rdfs:label "organisatieactiviteit"@nl .
 
 rov:orgStatus
+      a       rdf:Property ;
       rdfs:label "organisatiestatus"@nl .
 
 rov:orgType
+      a       rdf:Property ;
       rdfs:label "organisatietype"@nl .
 
 rov:registration
-      rdfs:label "organisatieregistratie"@nl .
+      a       rdf:Property ;
+      rdfs:label "registratie"@nl .
 
 foaf:homepage
-      rdfs:label "Homepage"@nl .
+      a       rdf:Property ;
+      rdfs:label "homepage"@nl .

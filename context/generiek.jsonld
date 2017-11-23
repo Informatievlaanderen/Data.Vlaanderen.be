@@ -10,14 +10,14 @@
 		"Persoon":"http://www.w3.org/ns/person#Person",
 		"Agent":"http://purl.org/dc/terms/Agent",
 
-		"wordtBeschrevenDoor":{
-			"@id":"http://xmlns.com/foaf/0.1/isPrimaryTopicOf",
-			"@type":"http://xmlns.com/foaf/0.1/Document",
-			"@container":"@set"
-		},
 		"isGerelateerdAan":{
 			"@id":"http://purl.org/dc/terms/relation",
 			"@type":"http://purl.org/vocab/cpsv#FormalFramework",
+			"@container":"@set"
+		},
+		"wordtBeschrevenDoor":{
+			"@id":"http://xmlns.com/foaf/0.1/isPrimaryTopicOf",
+			"@type":"http://xmlns.com/foaf/0.1/Document",
 			"@container":"@set"
 		},
 		"handeldeInOpdrachtVan":{
@@ -27,31 +27,31 @@
 		},
 		"begin":{
 			"@id":"http://data.vlaanderen.be/ns/generiek#begin",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
 		},
 		"einde":{
 			"@id":"http://data.vlaanderen.be/ns/generiek#einde",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
 		},
 		"label":{
 			"@id":"http://www.w3.org/2000/01/rdf-schema#label",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
-		},
-		"activiteit":{
-			"@id":"http://www.w3.org/ns/prov#activity",
-			"@type":"http://www.w3.org/ns/prov#Activity"
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
 		"tijdstip":{
 			"@id":"http://www.w3.org/ns/prov#atTime",
 			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
 		},
+		"activiteit":{
+			"@id":"http://www.w3.org/ns/prov#activity",
+			"@type":"http://www.w3.org/ns/prov#Activity"
+		},
 		"plaats":{
 			"@id":"http://data.vlaanderen.be/ns/generiek#plaats",
 			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
 		},
-		"naam":{
-			"@id":"http://www.w3.org/2000/01/rdf-schema#label",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+		"operator":{
+			"@id":"http://www.w3.org/ns/prov#wasAssociatedWith",
+			"@type":"http://www.w3.org/ns/prov#Agent"
 		},
 		"applicatie":{
 			"@id":"http://www.w3.org/ns/prov#used",
@@ -61,37 +61,29 @@
 			"@id":"http://data.vlaanderen.be/ns/generiek#bewerking",
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
 		},
-		"operator":{
-			"@id":"http://www.w3.org/ns/prov#wasAssociatedWith",
-			"@type":"http://www.w3.org/ns/prov#Agent"
-		},
 		"wgs84Latitude":{
 			"@id":"http://www.w3.org/2003/01/geo/wgs84_pos#lat",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/2001/XMLSchema#double"
 		},
 		"wgs84Longitude":{
 			"@id":"http://www.w3.org/2003/01/geo/wgs84_pos#long",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
-		},
-		"string":{
-			"@id":"http://data.vlaanderen.be/ns/generiek#string",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
-		},
-		"type":{
-			"@id":"http://data.vlaanderen.be/ns/generiek#type",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Resource"
-		},
-		"gml":{
-			"@id":"http://www.opengis.net/ont/geosparql#asGML",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/2001/XMLSchema#double"
 		},
 		"wkt":{
 			"@id":"http://www.opengis.net/ont/geosparql#asWKT",
 			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
 		},
+		"gml":{
+			"@id":"http://www.opengis.net/ont/geosparql#asGML",
+			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+		},
 		"default":{
 			"@id":"http://data.vlaanderen.be/ns/generiek#default",
 			"@type":"http://www.w3.org/2001/XMLSchema#boolean"
+		},
+		"specificatie":{
+			"@id":"http://data.vlaanderen.be/ns/generiek#specificatie",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
 		},
 		"geometrie":{
 			"@id":"http://www.w3.org/ns/locn#geometry",
@@ -99,10 +91,6 @@
 		},
 		"methode":{
 			"@id":"http://data.vlaanderen.be/ns/generiek#methode",
-			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
-		},
-		"specificatie":{
-			"@id":"http://data.vlaanderen.be/ns/generiek#specificatie",
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
 		},
 		"generatie":{
@@ -119,46 +107,50 @@
 		},
 		"aanschrijfvorm":{
 			"@id":"http://ww.w3.org/2006/vcard/ns#honorific-prefix",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
-		},
-		"adres":{
-			"@id":"http://www.w3.org/ns/locn#address",
-			"@type":"http://www.w3.org/ns/locn#Address"
-		},
-		"beschikbaarheid":{
-			"@id":"http://schema.org/hoursAvailable",
-			"@type":"https://schema.org/OpeningHoursSpecification"
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
 		},
 		"contactnaam":{
 			"@id":"http://xmlns.com/foaf/0.1/name",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
 		"email":{
 			"@id":"http://schema.org/email",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
+		},
+		"telefoon":{
+			"@id":"http://schema.org/telephone",
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
 		"fax":{
 			"@id":"http://schema.org/faxNumber",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
+		},
+		"website":{
+			"@id":"http://xmlns.com/foaf/0.1/page",
+			"@type":"http://www.w3.org/2001/XMLSchema#anyURI"
 		},
 		"openingsuren":{
 			"@id":"http://schema.org/openingHours",
 			"@type":"https://schema.org/OpeningHoursSpecification"
 		},
-		"telefoon":{
-			"@id":"http://schema.org/telephone",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+		"beschikbaarheid":{
+			"@id":"http://schema.org/hoursAvailable",
+			"@type":"https://schema.org/OpeningHoursSpecification"
 		},
-		"website":{
-			"@id":"http://xmlns.com/foaf/0.1/page",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Resource"
+		"adres":{
+			"@id":"http://www.w3.org/ns/locn#address",
+			"@type":"http://www.w3.org/ns/locn#Address"
+		},
+		"naam":{
+			"@id":"http://purl.org/dc/terms/title",
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
 		},
 		"beschrijving":{
 			"@id":"http://purl.org/dc/terms/description",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
 		},
-		"onderwerp":{
-			"@id":"http://data.europa.eu/m8g/subject",
+		"taal":{
+			"@id":"http://data.europa.eu/eli/ontology#language",
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
 			"@container":"@set"
 		},
@@ -166,8 +158,8 @@
 			"@id":"http://www.w3.org/ns/adms#status",
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
 		},
-		"taal":{
-			"@id":"http://data.europa.eu/eli/ontology#language",
+		"onderwerp":{
+			"@id":"http://data.europa.eu/m8g/subject",
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
 			"@container":"@set"
 		},
@@ -176,13 +168,22 @@
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
 			"@container":"@set"
 		},
+		"type":{
+			"@id":"http://purl.org/dc/terms/type",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
+			"@container":"@set"
+		},
+		"Identificator.identificator":{
+			"@id":"http://www.w3.org/2004/02/skos/core#notation",
+			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+		},
 		"toegekendDoor":{
 			"@id":"http://purl.org/dc/terms/creator",
 			"@type":"http://purl.org/dc/terms/Agent"
 		},
 		"toegekendDoorString":{
 			"@id":"http://www.w3.org/ns/adms#schemaAgency",
-			"@type":"http://purl.org/dc/terms/Agent"
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
 		"toegekendOp":{
 			"@id":"http://purl.org/dc/terms/issued",
