@@ -17,6 +17,26 @@
 		"Gebeurtenis":"http://data.europa.eu/m8g/Event",
 		"PubliekeDienstverlening":"http://purl.org/vocab/cpsv#PublicService",
 
+		"teConsumerenVia":{
+			"@id":"http://data.europa.eu/m8g/hasChannel",
+			"@type":"http://data.europa.eu/m8g/Channel",
+			"@container":"@set"
+		},
+		"aangebodenBinnen":{
+			"@id":"http://data.europa.eu/m8g/hasFormalFramework",
+			"@type":"http://purl.org/vocab/cpsv#FormalFramework",
+			"@container":"@set"
+		},
+		"volgt":{
+			"@id":"http://purl.org/vocab/cpsv#follows",
+			"@type":"http://purl.org/vocab/cpsv#Rule",
+			"@container":"@set"
+		},
+		"isGedefinieerdDoor":{
+			"@id":"http://data.europa.eu/m8g/isDefinedBy",
+			"@type":"http://data.europa.eu/m8g/PublicOrganisation",
+			"@container":"@set"
+		},
 		"isBezitVan":{
 			"@id":"http://data.europa.eu/m8g/ownedBy",
 			"@type":"http://purl.org/dc/terms/Agent",
@@ -27,14 +47,9 @@
 			"@type":"http://purl.org/vocab/cpsv#FormalFramework",
 			"@container":"@set"
 		},
-		"teConsumerenVia":{
-			"@id":"http://data.europa.eu/m8g/hasChannel",
-			"@type":"http://data.europa.eu/m8g/Channel",
-			"@container":"@set"
-		},
-		"heeftVerantwoordelijke":{
-			"@id":"http://data.europa.eu/m8g/hasCompetentAuthority",
-			"@type":"http://data.europa.eu/m8g/PublicOrganisation"
+		"indienBenaderdVia":{
+			"@id":"http://data.europa.eu/m8g/ifAccessedThrough",
+			"@type":"http://data.europa.eu/m8g/Channel"
 		},
 		"vereist":{
 			"@id":"http://purl.org/dc/terms/requires",
@@ -51,24 +66,9 @@
 			"@type":"http://data.europa.eu/m8g/Event",
 			"@container":"@set"
 		},
-		"isGedefinieerdDoor":{
-			"@id":"http://data.europa.eu/m8g/isDefinedBy",
-			"@type":"http://data.europa.eu/m8g/PublicOrganisation",
-			"@container":"@set"
-		},
-		"aangebodenBinnen":{
-			"@id":"http://data.europa.eu/m8g/hasFormalFramework",
-			"@type":"http://purl.org/vocab/cpsv#FormalFramework",
-			"@container":"@set"
-		},
-		"volgt":{
-			"@id":"http://purl.org/vocab/cpsv#follows",
-			"@type":"http://purl.org/vocab/cpsv#Rule",
-			"@container":"@set"
-		},
-		"implementeert":{
-			"@id":"http://purl.org/vocab/cpsv#implements",
-			"@type":"http://purl.org/vocab/cpsv#FormalFramework",
+		"produceert":{
+			"@id":"http://purl.org/vocab/cpsv#produces",
+			"@type":"http://data.europa.eu/m8g/Output",
 			"@container":"@set"
 		},
 		"vereistAlsInput":{
@@ -76,14 +76,14 @@
 			"@type":"http://data.europa.eu/m8g/Evidence",
 			"@container":"@set"
 		},
-		"produceert":{
-			"@id":"http://purl.org/vocab/cpsv#produces",
-			"@type":"http://data.europa.eu/m8g/Output",
+		"heeftCriterium":{
+			"@id":"http://data.europa.eu/m8g/hasCriterion",
+			"@type":"http://data.europa.eu/m8g/CriterionRequirement",
 			"@container":"@set"
 		},
-		"indienBenaderdVia":{
-			"@id":"http://data.europa.eu/m8g/ifAccessedThrough",
-			"@type":"http://data.europa.eu/m8g/Channel"
+		"heeftVerantwoordelijke":{
+			"@id":"http://data.europa.eu/m8g/hasCompetentAuthority",
+			"@type":"http://data.europa.eu/m8g/PublicOrganisation"
 		},
 		"heeftParticiperende":{
 			"@id":"http://data.europa.eu/m8g/hasParticipation",
@@ -93,9 +93,9 @@
 			"@id":"http://data.europa.eu/m8g/playsRole",
 			"@type":"http://data.europa.eu/m8g/Participation"
 		},
-		"heeftCriterium":{
-			"@id":"http://data.europa.eu/m8g/hasCriterion",
-			"@type":"http://data.europa.eu/m8g/CriterionRequirement",
+		"implementeert":{
+			"@id":"http://purl.org/vocab/cpsv#implements",
+			"@type":"http://purl.org/vocab/cpsv#FormalFramework",
 			"@container":"@set"
 		},
 		"naam":{
