@@ -16,6 +16,38 @@
 @prefix cpsv:    <http://purl.org/vocab/cpsv#> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 
+eli:LegalExpression
+      a       rdfs:Class ;
+      rdfs:label "Legale Verschijningsvorm"@nl .
+
+eli:LegalResource
+      a       rdfs:Class ;
+      rdfs:label "Rechtsgrond"@nl .
+
+eli:LegalResourceSubdivision
+      a       rdfs:Class ;
+      rdfs:label "Rechtsgrond Onderdeel"@nl .
+
+eli:changed_by
+      a       rdf:Property ;
+      rdfs:label "veranderd door"@nl .
+
+eli:changes
+      a       rdf:Property ;
+      rdfs:label "verandert"@nl .
+
+eli:cites
+      a       rdf:Property ;
+      rdfs:label "citeert"@nl .
+
+eli:corrected_by
+      a       rdf:Property ;
+      rdfs:label "gecorrigeerd door"@nl .
+
+eli:corrects
+      a       rdf:Property ;
+      rdfs:label "corrigeert"@nl .
+
 eli:date_publication
       a       rdf:Property ;
       rdfs:label "datum publicatie"@nl .
@@ -24,9 +56,25 @@ eli:description
       a       rdf:Property ;
       rdfs:label "beschrijving"@nl .
 
+eli:has_part
+      a       rdf:Property ;
+      rdfs:label "heeft deel"@nl .
+
+eli:is_part_of
+      a       rdf:Property ;
+      rdfs:label "is deel van"@nl .
+
 eli:number
       a       rdf:Property ;
       rdfs:label "nummer"@nl .
+
+eli:passed_by
+      a       rdf:Property ;
+      rdfs:label "aangenomen door"@nl .
+
+eli:realizes
+      a       rdf:Property ;
+      rdfs:label "realiseert"@nl .
 
 eli:title_short
       a       rdf:Property ;
@@ -362,15 +410,25 @@ dcterms:description
       a       rdf:Property ;
       rdfs:label "beschrijving"@nl .
 
+dcterms:references
+      a       rdf:Property ;
+      rdfs:label "verwijst"@nl .
+
+dcterms:subject
+      a       rdf:Property ;
+      rdfs:label "onderwerp"@nl .
+
 dcterms:title
       a       rdf:Property ;
       rdfs:label "titel"@nl .
 
 skos:prefLabel
-      a       rdf:Property .
+      a       rdf:Property ;
+      rdfs:label "voorkeurslabel"@nl .
 
 org:classification
-      a       rdf:Property .
+      a       rdf:Property ;
+      rdfs:label "classificatie"@nl .
 
 prov:atLocation
       a       rdf:Property ;
@@ -380,6 +438,14 @@ prov:endedAtTime
       a       rdf:Property ;
       rdfs:label "geëindigd op tijdstip"@nl .
 
+prov:generated
+      a       rdf:Property ;
+      rdfs:label "heeft gegenereerd"@nl .
+
 prov:startedAtTime
       a       rdf:Property ;
       rdfs:label "gestart op tijdstip"@nl .
+
+prov:wasGeneratedBy
+      a       rdf:Property ;
+      rdfs:label "is gegenereerd door"@nl .

@@ -17,8 +17,13 @@
 		"Gebeurtenis":"http://data.europa.eu/m8g/Event",
 		"PubliekeDienstverlening":"http://purl.org/vocab/cpsv#PublicService",
 
-		"aangebodenBinnen":{
-			"@id":"http://data.europa.eu/m8g/hasFormalFramework",
+		"isBezitVan":{
+			"@id":"http://data.europa.eu/m8g/ownedBy",
+			"@type":"http://purl.org/dc/terms/Agent",
+			"@container":"@set"
+		},
+		"isGerelateerdAan":{
+			"@id":"http://purl.org/dc/terms/relation",
 			"@type":"http://purl.org/vocab/cpsv#FormalFramework",
 			"@container":"@set"
 		},
@@ -27,9 +32,13 @@
 			"@type":"http://data.europa.eu/m8g/Channel",
 			"@container":"@set"
 		},
-		"wordtBepaaldDoor":{
-			"@id":"http://data.europa.eu/m8g/isDefinedBy",
-			"@type":"http://data.europa.eu/m8g/PublicOrganisation",
+		"heeftVerantwoordelijke":{
+			"@id":"http://data.europa.eu/m8g/hasCompetentAuthority",
+			"@type":"http://data.europa.eu/m8g/PublicOrganisation"
+		},
+		"vereist":{
+			"@id":"http://purl.org/dc/terms/requires",
+			"@type":"http://purl.org/vocab/cpsv#PublicService",
 			"@container":"@set"
 		},
 		"wordtUitgevoerdDoor":{
@@ -37,28 +46,19 @@
 			"@type":"http://purl.org/dc/terms/Agent",
 			"@container":"@set"
 		},
-		"vereistAlsInput":{
-			"@id":"http://purl.org/vocab/cpsv#hasInput",
-			"@type":"http://data.europa.eu/m8g/Evidence",
+		"isGegroepeerdVolgens":{
+			"@id":"http://data.europa.eu/m8g/isGroupedBy",
+			"@type":"http://data.europa.eu/m8g/Event",
 			"@container":"@set"
 		},
-		"vereist":{
-			"@id":"http://purl.org/dc/terms/requires",
-			"@type":"http://purl.org/vocab/cpsv#PublicService",
+		"isGedefinieerdDoor":{
+			"@id":"http://data.europa.eu/m8g/isDefinedBy",
+			"@type":"http://data.europa.eu/m8g/PublicOrganisation",
 			"@container":"@set"
 		},
-		"produceert":{
-			"@id":"http://purl.org/vocab/cpsv#produces",
-			"@type":"http://data.europa.eu/m8g/Output",
-			"@container":"@set"
-		},
-		"heeftParticiperende":{
-			"@id":"http://data.europa.eu/m8g/hasParticipation",
-			"@type":"http://data.europa.eu/m8g/Participation"
-		},
-		"isBezitVan":{
-			"@id":"http://data.europa.eu/m8g/ownedBy",
-			"@type":"http://purl.org/dc/terms/Agent",
+		"aangebodenBinnen":{
+			"@id":"http://data.europa.eu/m8g/hasFormalFramework",
+			"@type":"http://purl.org/vocab/cpsv#FormalFramework",
 			"@container":"@set"
 		},
 		"volgt":{
@@ -66,78 +66,82 @@
 			"@type":"http://purl.org/vocab/cpsv#Rule",
 			"@container":"@set"
 		},
-		"heeftCriterium":{
-			"@id":"http://data.europa.eu/m8g/hasCriterion",
-			"@type":"http://data.europa.eu/m8g/CriterionRequirement",
-			"@container":"@set"
-		},
 		"implementeert":{
 			"@id":"http://purl.org/vocab/cpsv#implements",
 			"@type":"http://purl.org/vocab/cpsv#FormalFramework",
 			"@container":"@set"
 		},
-		"isGerelateerdMet":{
-			"@id":"http://purl.org/dc/terms/relation",
-			"@type":"http://purl.org/vocab/cpsv#PublicService",
+		"vereistAlsInput":{
+			"@id":"http://purl.org/vocab/cpsv#hasInput",
+			"@type":"http://data.europa.eu/m8g/Evidence",
 			"@container":"@set"
 		},
-		"heeftVerantwoordelijke":{
-			"@id":"http://data.europa.eu/m8g/hasCompetentAuthority",
-			"@type":"http://data.europa.eu/m8g/PublicOrganisation"
+		"produceert":{
+			"@id":"http://purl.org/vocab/cpsv#produces",
+			"@type":"http://data.europa.eu/m8g/Output",
+			"@container":"@set"
 		},
-		"indienConsumptieVia":{
+		"indienBenaderdVia":{
 			"@id":"http://data.europa.eu/m8g/ifAccessedThrough",
 			"@type":"http://data.europa.eu/m8g/Channel"
 		},
-		"isGegroepeerdVolgens":{
-			"@id":"http://data.europa.eu/m8g/isGroupedBy",
-			"@type":"http://data.europa.eu/m8g/Event",
+		"heeftParticiperende":{
+			"@id":"http://data.europa.eu/m8g/hasParticipation",
+			"@type":"http://data.europa.eu/m8g/Participation"
+		},
+		"Agent.heeftParticiperende":{
+			"@id":"http://data.europa.eu/m8g/playsRole",
+			"@type":"http://data.europa.eu/m8g/Participation"
+		},
+		"heeftCriterium":{
+			"@id":"http://data.europa.eu/m8g/hasCriterion",
+			"@type":"http://data.europa.eu/m8g/CriterionRequirement",
 			"@container":"@set"
+		},
+		"naam":{
+			"@id":"http://purl.org/dc/terms/title",
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
 		"adres":{
 			"@id":"http://data.europa.eu/m8g/hasAddress",
 			"@type":"http://www.w3.org/ns/locn#Address"
 		},
-		"naam":{
-			"@id":"http://purl.org/dc/terms/title",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
-		},
-		"dagVanDeWeek":{
-			"@id":"http://schema.org/dayOfWeek",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Resource"
-		},
-		"geldigTot":{
-			"@id":"http://schema.org/validThrough",
-			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
-		},
-		"geldigVan":{
-			"@id":"http://schema.org/validFrom",
-			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
+		"open":{
+			"@id":"http://schema.org/opens",
+			"@type":"http://www.w3.org/2001/XMLSchema#time"
 		},
 		"gesloten":{
 			"@id":"http://schema.org/closes",
 			"@type":"http://www.w3.org/2001/XMLSchema#time"
 		},
-		"open":{
-			"@id":"http://schema.org/opens",
-			"@type":"http://www.w3.org/2001/XMLSchema#time"
+		"dagVanDeWeek":{
+			"@id":"http://schema.org/dayOfWeek",
+			"@type":"http://www.w3.org/2001/XMLSchema#anyURI"
+		},
+		"geldigVan":{
+			"@id":"http://schema.org/validFrom",
+			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
+		},
+		"geldigTot":{
+			"@id":"http://schema.org/validThrough",
+			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
 		},
 		"beschrijving":{
 			"@id":"http://purl.org/dc/terms/description",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
 		},
-		"onderwerp":{
-			"@id":"http://data.europa.eu/m8g/subject",
-			"@type":"http://data.vlaanderen.be/ns/generiek#Eurovoc",
+		"taal":{
+			"@id":"http://data.europa.eu/eli/ontology#language",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
 			"@container":"@set"
 		},
 		"status":{
 			"@id":"http://www.w3.org/ns/adms#status",
 			"@type":"http://data.vlaanderen.be/ns/generiek#ELI_status"
 		},
-		"taal":{
-			"@id":"http://data.europa.eu/eli/ontology#language",
-			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
+		"onderwerp":{
+			"@id":"http://data.europa.eu/m8g/subject",
+			"@type":"http://data.vlaanderen.be/ns/generiek#Eurovoc",
 			"@container":"@set"
 		},
 		"toepassingsgebied":{
@@ -152,99 +156,75 @@
 		},
 		"aanschrijfvorm":{
 			"@id":"http://ww.w3.org/2006/vcard/ns#honorific-prefix",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
-		},
-		"beschikbaarheid":{
-			"@id":"http://schema.org/hoursAvailable",
-			"@type":"http://schema.org/OpeningHoursSpecification"
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
 		},
 		"contactnaam":{
 			"@id":"http://xmlns.com/foaf/0.1/name",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
 		"email":{
 			"@id":"http://schema.org/email",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
+		},
+		"telefoon":{
+			"@id":"http://schema.org/telephone",
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
 		"fax":{
 			"@id":"http://schema.org/faxNumber",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
+		},
+		"website":{
+			"@id":"http://xmlns.com/foaf/0.1/page",
+			"@type":"http://www.w3.org/2001/XMLSchema#anyURI"
 		},
 		"openingsuren":{
 			"@id":"http://schema.org/openingHours",
 			"@type":"http://schema.org/OpeningHoursSpecification"
 		},
-		"telefoon":{
-			"@id":"http://schema.org/telephone",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+		"beschikbaarheid":{
+			"@id":"http://schema.org/hoursAvailable",
+			"@type":"http://schema.org/OpeningHoursSpecification"
 		},
-		"website":{
-			"@id":"http://xmlns.com/foaf/0.1/page",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Resource"
-		},
-		"activiteit":{
-			"@id":"http://www.w3.org/ns/regorg#orgActivity",
-			"@type":"http://data.vlaanderen.be/ns/organisatie#OrganisatieActiviteit"
-		},
-		"alternatieveNaam":{
-			"@id":"http://www.w3.org/2004/02/skos/core#altLabel",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal",
-			"@container":"@set"
-		},
-		"classificatie":{
-			"@id":"https://www.w3.org/ns/org#classification",
-			"@type":"http://data.vlaanderen.be/ns/organisatie#OrganisatieClassificatie"
-		},
-		"doel":{
-			"@id":"https://www.w3.org/ns/org#purpose",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal",
-			"@container":"@set"
-		},
-		"homepage":{
-			"@id":"http://xmlns.com/foaf/0.1/homepage",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
-		},
-		"isTeBereikenOp":{
-			"@id":"http://data.vlaanderen.be/ns/organisatie#isTeBereikenOp",
-			"@type":"http://schema.org/ContactPoint"
-		},
-		"logo":{
-			"@id":"http://schema.org/logo",
-			"@type":""
+		"ContactInfo.adres":{
+			"@id":"http://www.w3.org/ns/locn#address",
+			"@type":"http://www.w3.org/ns/locn#Address"
 		},
 		"voorkeursNaam":{
 			"@id":"http://www.w3.org/2004/02/skos/core#prefLabel",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
 		},
 		"werkingsgebied":{
 			"@id":"http://purl.org/dc/terms/spatial",
-			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
-		},
-		"valuta":{
-			"@id":"http://data.europa.eu/m8g/currency",
-			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
+			"@container":"@set"
 		},
 		"waarde":{
 			"@id":"http://data.europa.eu/m8g/value",
 			"@type":"http://www.w3.org/2001/XMLSchema#double"
+		},
+		"valuta":{
+			"@id":"http://data.europa.eu/m8g/currency",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
 		},
 		"rol":{
 			"@id":"http://data.europa.eu/m8g/role",
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
 			"@container":"@set"
 		},
-		"documentatie":{
-			"@id":"http://xmlns.com/foaf/0.1/page",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Resource",
+		"Richtlijn.taal":{
+			"@id":"http://purl.org/dc/terms/language",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
 			"@container":"@set"
 		},
-		"contactinfo":{
-			"@id":"http://data.europa.eu/m8g/hasContactPoint",
-			"@type":"http://schema.org/ContactPoint"
+		"Bewijs.taal":{
+			"@id":"http://purl.org/dc/terms/language",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
+			"@container":"@set"
 		},
-		"kost":{
-			"@id":"http://data.europa.eu/m8g/hasCost",
-			"@type":"http://data.europa.eu/m8g/Cost",
+		"trefwoord":{
+			"@id":"http://www.w3.org/ns/dcat#keyword",
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
 			"@container":"@set"
 		},
 		"sector":{
@@ -252,14 +232,23 @@
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
 			"@container":"@set"
 		},
-		"trefwoord":{
-			"@id":"http://www.w3.org/ns/dcat#keyword",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal",
+		"PubliekeDienstverlening.taal":{
+			"@id":"http://purl.org/dc/terms/language",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
 			"@container":"@set"
+		},
+		"contactinfo":{
+			"@id":"http://data.europa.eu/m8g/hasContactPoint",
+			"@type":"http://schema.org/ContactPoint"
 		},
 		"verwerkingstijd":{
 			"@id":"http://data.europa.eu/m8g/processingTime",
-			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
+		},
+		"kost":{
+			"@id":"http://data.europa.eu/m8g/hasCost",
+			"@type":"http://data.europa.eu/m8g/Cost",
+			"@container":"@set"
 		}
 	}
 }
