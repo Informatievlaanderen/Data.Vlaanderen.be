@@ -89,8 +89,8 @@ locn:Geometry a rdfs:Class ;
 
 <http://data.vlaanderen.be/ns/weg#europeesWegnummer> a owl:DatatypeProperty ;
     rdfs:label "europees wegnummer"@nl ;
-    rdfs:comment """Code die de route in het internationaal E-wegennetwerk identificeert. De\r
-code begint steeds met de letter E en wordt vervolledigd door een getal\r
+    rdfs:comment """Code die de route in het internationaal E-wegennetwerk identificeert. De\r\r
+code begint steeds met de letter E en wordt vervolledigd door een getal\r\r
 met 1,2 of 3 cijfers."""@nl ;
     rdfs:domain <http://data.vlaanderen.be/ns/weg#EuropeseWeg> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
@@ -139,8 +139,8 @@ met 1,2 of 3 cijfers."""@nl ;
 
 <http://data.vlaanderen.be/ns/weg#methodeWegsegmentgeometrie> a rdf:Property ;
     rdfs:label "methode wegsegmentgeometrie"@nl ;
-    rdfs:comment """Aanduiding van de kwaliteit/betrouwbaarheid van de geometrie\r
-van het wegsegment aan de hand van de methode gebruikt om\r
+    rdfs:comment """Aanduiding van de kwaliteit/betrouwbaarheid van de geometrie\r\r
+van het wegsegment aan de hand van de methode gebruikt om\r\r
 deze geometrie te bepalen."""@nl ;
     rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> .
@@ -154,7 +154,7 @@ deze geometrie te bepalen."""@nl ;
 
 <http://data.vlaanderen.be/ns/weg#morfologischeWegklasse> a rdf:Property ;
     rdfs:label "morfologische wegklasse"@nl ;
-    rdfs:comment """Beschrijft bepaalde aspecten van de morfologische vorm die een weg\r
+    rdfs:comment """Beschrijft bepaalde aspecten van de morfologische vorm die een weg\r\r
 kan aannemen."""@nl ;
     rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> .
@@ -228,7 +228,7 @@ kan aannemen."""@nl ;
 
 <http://data.vlaanderen.be/ns/weg#wegcategorie> a rdf:Property ;
     rdfs:label "wegcategorie"@nl ;
-    rdfs:comment """Wegcategorie zoals gedefinieerd in het Ruimtelijke Structuurplan\r
+    rdfs:comment """Wegcategorie zoals gedefinieerd in het Ruimtelijke Structuurplan\r\r
 Vlaanderen"""@nl ;
     rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> .
@@ -306,16 +306,16 @@ skos:notation a rdf:Property ;
 
 <http://data.vlaanderen.be/ns/weg#OngelijkgrondseKruising> a owl:Class ;
     rdfs:label "Ongelijkgrondse Kruising"@nl ;
-    rdfs:comment """Relatie die bij een ongelijkgrondse kruising van twee wegsegmenten\r
-aanduidt welk wegsegment zich bovenaan bevindt en welk wegsegment\r
+    rdfs:comment """Relatie die bij een ongelijkgrondse kruising van twee wegsegmenten\r\r
+aanduidt welk wegsegment zich bovenaan bevindt en welk wegsegment\r\r
 zich onderaan bevindt."""@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
     rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#NetwerkElement> .
 
 <http://data.vlaanderen.be/ns/weg#Referentiepunt> a owl:Class ;
     rdfs:label "Referentiepunt"@nl ;
-    rdfs:comment """Referentiepaal die, meestal in regelmatige intervallen, langs een route in\r
-een netwerk staat en die de afstand van aan de paal tot aan het begin\r
+    rdfs:comment """Referentiepaal die, meestal in regelmatige intervallen, langs een route in\r\r
+een netwerk staat en die de afstand van aan de paal tot aan het begin\r\r
 van de route (of tot aan een ander referentiepunt) weergeeft."""@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
     rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#NetwerkElement> .
@@ -333,8 +333,8 @@ van de route (of tot aan een ander referentiepunt) weergeeft."""@nl ;
 
 <http://data.vlaanderen.be/ns/weg#Wegknoop> a owl:Class ;
     rdfs:label "Wegknoop"@nl ;
-    rdfs:comment """Ruimtelijk puntobject dat gebruikt wordt om de connectiviteit tussen 2\r
-wegsegmenten te beschrijven of om een significant ruimtelijk object voor\r
+    rdfs:comment """Ruimtelijk puntobject dat gebruikt wordt om de connectiviteit tussen 2\r\r
+wegsegmenten te beschrijven of om een significant ruimtelijk object voor\r\r
 te stellen."""@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
     rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#NetwerkElement> .
@@ -357,7 +357,7 @@ te stellen."""@nl ;
 
 <http://data.vlaanderen.be/ns/weg#Wegsegment> a owl:Class ;
     rdfs:label "Wegsegment"@nl ;
-    rdfs:comment """Lineair object dat de connectiviteit tussen 2 punten in het netwerk\r
+    rdfs:comment """Lineair object dat de connectiviteit tussen 2 punten in het netwerk\r\r
 beschrijft."""@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
     rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#NetwerkElement> .
@@ -367,10 +367,19 @@ beschrijft."""@nl ;
     dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
     dcterms:mediator [ foaf:homepage <https://data.vlaanderen.be> ;
             foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
+            foaf:name "Data Vlaanderen" ],
+        [ foaf:homepage <https://data.vlaanderen.be> ;
+            foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
             foaf:name "Data Vlaanderen" ] ;
     dcterms:title "Weg"@nl ;
     vann:preferredNamespaceUri "http://data.vlaanderen.be/ns/weg" ;
     rec:editor [ a <http://www.w3.org/ns/person#Person> ;
+            schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
+                    foaf:name "PwC" ] ;
+            foaf:firstName "Carmen" ;
+            foaf:lastName "Vandeloo" ;
+            foaf:mbox <mailto:carmen.vandeloo@pwc.com> ],
+        [ a <http://www.w3.org/ns/person#Person> ;
             schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
                     foaf:name "PwC" ] ;
             foaf:firstName "Carmen" ;
