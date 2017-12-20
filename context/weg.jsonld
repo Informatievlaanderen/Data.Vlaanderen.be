@@ -1,6 +1,9 @@
 {
 	"@context":
 	{
+		"Organisatie":"http://www.w3.org/ns/org#Organization",
+		"Straatnaam":"http://data.vlaanderen.be/ns/adres#Straatnaam",
+		"Gemeentenaam":"http://data.vlaanderen.be/ns/adres#Gemeentenaam",
 		"GenummerdeWeg":"http://data.vlaanderen.be/ns/weg#GenummerdeWeg",
 		"NationaleWeg":"http://data.vlaanderen.be/ns/weg#NationaleWeg",
 		"EuropeseWeg":"http://data.vlaanderen.be/ns/weg#EuropeseWeg",
@@ -17,27 +20,42 @@
 			"@id":"http://data.vlaanderen.be/ns/weg#bovenliggendWegsegment",
 			"@type":"http://data.vlaanderen.be/ns/weg#Wegsegment"
 		},
+		"linkerstraatnaam":{
+			"@id":"http://data.vlaanderen.be/ns/weg#linkerstraatnaam",
+			"@type":"http://data.vlaanderen.be/ns/adres#Straatnaam"
+		},
 		"behoortTot":{
 			"@id":"http://data.vlaanderen.be/ns/weg#behoortTot",
 			"@type":"http://data.vlaanderen.be/ns/weg#EuropeseWeg",
 			"@container":"@set"
 		},
+		"rechterstraatnaam":{
+			"@id":"http://data.vlaanderen.be/ns/weg#rechterstraatnaam",
+			"@type":"http://data.vlaanderen.be/ns/adres#Straatnaam"
+		},
+		"rechtergemeentenaam":{
+			"@id":"http://data.vlaanderen.be/ns/weg#rechtergemeentenaam",
+			"@type":"http://data.vlaanderen.be/ns/adres#Gemeentenaam"
+		},
 		"onderliggendWegsegment":{
 			"@id":"http://data.vlaanderen.be/ns/weg#onderliggendWegsegment",
 			"@type":"http://data.vlaanderen.be/ns/weg#Wegsegment"
+		},
+		"linkergemeentenaam":{
+			"@id":"http://data.vlaanderen.be/ns/weg#linkergemeentenaam",
+			"@type":"http://data.vlaanderen.be/ns/adres#Gemeentenaam"
 		},
 		"staatLangs":{
 			"@id":"http://data.vlaanderen.be/ns/weg#staatLangs",
 			"@type":"http://data.vlaanderen.be/ns/weg#GenummerdeWeg"
 		},
+		"wegbeheerder":{
+			"@id":"http://data.vlaanderen.be/ns/weg#wegbeheerder",
+			"@type":"http://www.w3.org/ns/org#Organization"
+		},
 		"eindknoop":{
 			"@id":"http://data.vlaanderen.be/ns/weg#eindknoop",
 			"@type":"http://data.vlaanderen.be/ns/weg#Wegknoop"
-		},
-		"vervangt":{
-			"@id":"https://www.w3.org/TR/prov-o/#wasDerivedFrom",
-			"@type":"http://data.vlaanderen.be/ns/weg#Wegsegment",
-			"@container":"@set"
 		},
 		"meeteenheid":{
 			"@id":"http://data.vlaanderen.be/ns/weg#meeteenheid",
@@ -45,7 +63,7 @@
 		},
 		"waarde":{
 			"@id":"http://data.vlaanderen.be/ns/weg#waarde",
-			"@type":""
+			"@type":"http://www.w3.org/2001/XMLSchema#decimal"
 		},
 		"identificator":{
 			"@id":"http://www.w3.org/2004/02/skos/core#notation",
