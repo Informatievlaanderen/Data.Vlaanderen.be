@@ -1,0 +1,308 @@
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+<http://data.vlaanderen.be/ns/toestemming#ContactvoorkeurDescriptorShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/toestemming#ContactvoorkeurDescriptor> ;
+	sh:property [
+		sh:name "contactkanaal" ;
+		sh:description "Het kanaal of medium langs waar een gebruiker gecontacteerd kan worden. Bijvoorbeeld sms of e-mail." ;
+		sh:path <http://data.vlaanderen.be/ns/toestemming#contactkanaal> ;
+		sh:minCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/toestemming#ToestemmingDescriptorShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/toestemming#ToestemmingDescriptor> ;
+	sh:property [
+		sh:name "dataController" ;
+		sh:description "De entiteit die beslist over het doel, de voorwaarden en de manier waarop persoonlijke informatie verwerkt wordt." ;
+		sh:path <http://data.vlaanderen.be/ns/toestemming#dataController> ;
+		sh:class <http://data.europa.eu/m8g/PublicOrganisation> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "isGerelateerdMet" ;
+		sh:description "De Publieke Dienstverlening waarbinnen de toestemming kadert." ;
+		sh:path <http://purl.org/dc/terms/relation> ;
+		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "databron" ;
+		sh:description "De entiteit die de technische beheerder is van de persoonlijke informatie." ;
+		sh:path <http://data.vlaanderen.be/ns/toestemming#databron> ;
+		sh:class <http://data.europa.eu/m8g/PublicOrganisation> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "dataProcessor" ;
+		sh:description "De entiteit die persoonlijke informatie verwerkt namens de data controller." ;
+		sh:path <http://data.vlaanderen.be/ns/toestemming#dataProcessor> ;
+		sh:class <http://www.w3.org/ns/org#Organization> ;
+		sh:minCount 1 ;
+	] ;
+	sh:property [
+		sh:name "label" ;
+		sh:description "Een label voor de ToestemmingDescriptor." ;
+		sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "toestemmingsvraag" ;
+		sh:description "De vraag die gesteld wordt aan gebruikers om hun toestemming te verlenen." ;
+		sh:path <http://data.vlaanderen.be/ns/toestemming#toestemmingsvraag> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/toestemming#ContactvoorkeurShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/toestemming#Contactvoorkeur> ;
+	sh:property [
+		sh:name "contactkanaal" ;
+		sh:description "Het kanaal of medium langs waar een gebruiker gecontacteerd kan worden. Bijvoorbeeld sms of e-mail." ;
+		sh:path <http://data.vlaanderen.be/ns/toestemming#contactkanaal> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "email" ;
+		sh:description "Het e-mail adres waarvoor de Agent toestemming verleende om gecontacteerd te worden. " ;
+		sh:path <http://schema.org/email> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "frequentie" ;
+		sh:description "De frequentie waarmee de Agent gecontacteerd mag worden." ;
+		sh:path <http://data.vlaanderen.be/ns/toestemming#frequentie> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "notificatiecategorie" ;
+		sh:description "De notificatie categorie waarvoor de Agent toestemming verleende om gecontacteerd te worden." ;
+		sh:path <http://data.vlaanderen.be/ns/toestemming#notificatiecategorie> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "telefoon" ;
+		sh:description "Het telefoonnummer waarvoor de Agent toestemming verleende om gecontacteerd te worden." ;
+		sh:path <http://schema.org/telephone> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://purl.org/vocab/cpsv#PublicServiceShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://purl.org/vocab/cpsv#PublicService> ;
+	sh:property [
+		sh:name "beschrijving" ;
+		sh:description "Beschrijving van de Publieke Dienstverlening.
+" ;
+		sh:path <http://purl.org/dc/terms/description> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "contactinfo" ;
+		sh:description "Informatie waarmee de Publieke Dienstverlening kan worden gecontacteerd." ;
+		sh:path <http://data.europa.eu/m8g/hasContactPoint> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "kost" ;
+		sh:description "Kostprijs verbonden aan het gebruik van de Publieke dienstverlening." ;
+		sh:path <http://data.europa.eu/m8g/hasCost> ;
+	] ;
+	sh:property [
+		sh:name "naam" ;
+		sh:description "Officiële naam van de Publieke Dienstverlening." ;
+		sh:path <http://purl.org/dc/terms/title> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "sector" ;
+		sh:description "Sector of bedrijvigheid waarop de Publieke Dienstverlening betrekking heeft of waarvoor deze is bedoeld." ;
+		sh:path <http://data.europa.eu/m8g/sector> ;
+	] ;
+	sh:property [
+		sh:name "status" ;
+		sh:description "Geeft aan of een Publieke Dienstverlening actief, inactief, in ontwikkeling etc is." ;
+		sh:path <http://www.w3.org/ns/adms#status> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "taal" ;
+		sh:description "Taal waarin een Publieke Dienstverlening wordt aangeboden." ;
+		sh:path <http://purl.org/dc/terms/language> ;
+	] ;
+	sh:property [
+		sh:name "toepassingsgebied" ;
+		sh:description "Gebied waarin de Publieke Dienstverlening beschikbaar is." ;
+		sh:path <http://purl.org/dc/terms/spatial> ;
+	] ;
+	sh:property [
+		sh:name "trefwoord" ;
+		sh:description "Sleutelwoord, term, begrip dat de Publieke Dienst beschrijft." ;
+		sh:path <http://www.w3.org/ns/dcat#keyword> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+	] ;
+	sh:property [
+		sh:name "type" ;
+		sh:description "Soort Publieke Dienstverlening." ;
+		sh:path <http://purl.org/dc/terms/type> ;
+	] ;
+	sh:property [
+		sh:name "verwerkingstijd" ;
+		sh:description "Geschatte tijd nodig om de Publieke Dienstverlening af te leveren." ;
+		sh:path <http://data.europa.eu/m8g/processingTime> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://www.w3.org/ns/org#OrganizationShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://www.w3.org/ns/org#Organization> ;
+	sh:property [
+		sh:name "activiteit" ;
+		sh:description "Type activiteit die door de Organisatie wordt uitgeoefend." ;
+		sh:path <http://www.w3.org/ns/regorg#orgActivity> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "alternatieveNaam" ;
+		sh:description "Andere naam waaronder de organisatie bekend is." ;
+		sh:path <http://www.w3.org/2004/02/skos/core#altLabel> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+	] ;
+	sh:property [
+		sh:name "beschrijving" ;
+		sh:description "Beschrijving van de Publieke Organisatie." ;
+		sh:path <http://purl.org/dc/terms/description> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "classificatie" ;
+		sh:description "Rangschikking van de Organisatie in een classificatiesysteem." ;
+		sh:path <http://www.w3.org/ns/org#classification> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "doel" ;
+		sh:description "Bestaanreden vd Organisatie." ;
+		sh:path <http://www.w3.org/ns/org#purpose> ;
+	] ;
+	sh:property [
+		sh:name "homepage" ;
+		sh:description "Adres vd homepage van de website vd Publieke Organisatie." ;
+		sh:path <http://xmlns.com/foaf/0.1/homepage> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "isTeBereikenOp" ;
+		sh:description "Informatie zoals email, telefoon die toelaat de Organisatie te contacteren.
+" ;
+		sh:path <http://schema.org/contactPoint> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "logo" ;
+		sh:description "Verwijzing naar het logo vd Publieke Organisatie." ;
+		sh:path <http://schema.org/logo> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "status" ;
+		sh:description "Toestand vd Organisatie." ;
+		sh:path <http://www.w3.org/ns/regorg#orgStatus> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "type" ;
+		sh:description "Type Organisatie." ;
+		sh:path <http://www.w3.org/ns/regorg#orgType> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "voorkeursNaam" ;
+		sh:description "Naam waarmee de Organisatie bij voorkeur wordt aangeduid." ;
+		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.europa.eu/m8g/PublicOrganisationShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.europa.eu/m8g/PublicOrganisation> ;
+	sh:closed false .
+
+<http://purl.org/dc/terms/AgentShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://purl.org/dc/terms/Agent> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/toestemming#ToestemmingShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/toestemming#Toestemming> ;
+	sh:property [
+		sh:name "dataSubject" ;
+		sh:description "Verwijst naar de Agent die het onderwerp vormt van de persoonlijke informatie waarvoor toestemming verleend werd." ;
+		sh:path <http://data.vlaanderen.be/ns/toestemming#dataSubject> ;
+		sh:class <http://purl.org/dc/terms/Agent> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "descriptor" ;
+		sh:description "Verwijzing naar de ToestemmingDescriptor die de blauwdruk vormt voor de toestemming." ;
+		sh:path <http://data.vlaanderen.be/ns/toestemming#descriptor> ;
+		sh:class <http://data.vlaanderen.be/ns/toestemming#ToestemmingDescriptor> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "beperking" ;
+		sh:description "Een beperking die wordt opgelegd aan de toestemming door het data subject." ;
+		sh:path <http://data.vlaanderen.be/ns/toestemming#beperking> ;
+		sh:class <http://www.w3.org/2000/01/rdf-schema#Literal> ;
+	] ;
+	sh:property [
+		sh:name "gegevenOp" ;
+		sh:description "De datum waarop de toestemming werd verleend." ;
+		sh:path <http://data.vlaanderen.be/ns/toestemming#gegevenOp> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "status" ;
+		sh:description "De status geeft aan of de toestemming al dan niet actief is." ;
+		sh:path <http://data.vlaanderen.be/ns/toestemming#status> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "vervalt" ;
+		sh:description "De datum waarop de toestemming vervalt." ;
+		sh:path <http://schema.org/expires> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+

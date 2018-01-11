@@ -1,0 +1,745 @@
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+<http://purl.org/vocab/cpsv#FormalFrameworkShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://purl.org/vocab/cpsv#FormalFramework> ;
+	sh:property [
+		sh:name "beschrijving" ;
+		sh:description "Beschrijving van het formeel kader." ;
+		sh:path <http://purl.org/dc/terms/description> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "naam" ;
+		sh:description "Naam vh formeel kader." ;
+		sh:path <http://purl.org/dc/terms/title> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "onderwerp" ;
+		sh:description "Onderwerp vh formeel kader." ;
+		sh:path <http://data.europa.eu/m8g/subject> ;
+	] ;
+	sh:property [
+		sh:name "status" ;
+		sh:description "Status vh formeel kader." ;
+		sh:path <http://www.w3.org/ns/adms#status> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "taal" ;
+		sh:description "Taal waarin het formeel kader beschikbaar is." ;
+		sh:path <http://data.europa.eu/eli/ontology#language> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+	] ;
+	sh:property [
+		sh:name "toepassingsgebied" ;
+		sh:description "Het geografisch bereik vh formeel kader." ;
+		sh:path <http://data.europa.eu/m8g/territorialApplication> ;
+	] ;
+	sh:property [
+		sh:name "type" ;
+		sh:description "Aard vh formeel kader." ;
+		sh:path <http://purl.org/dc/terms/type> ;
+	] ;
+	sh:closed false .
+
+<http://www.w3.org/ns/locn#AddressShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://www.w3.org/ns/locn#Address> ;
+	sh:property [
+		sh:name "administratieveEenheidNiveau1" ;
+		sh:description "Hoogste Administratieve eenheid vh adres, doorgaans een land." ;
+		sh:path <http://www.w3.org/ns/locn#adminUnitL1> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "administratieveEenheidNiveau2" ;
+		sh:description "De regio vh adres, doorgaans een provincie of deelstaat of gelijkaardig gebied dat typisch meerdere plaatsen omvat." ;
+		sh:path <http://www.w3.org/ns/locn#adminUnitL2> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "adresgebied" ;
+		sh:description "Naam ve geografisch gebied of plaats die een aantal adresseerbare objecten groepeert om deze te adresseren zonder dat het gebied of de plaats een administratieve eenheid is" ;
+		sh:path <http://www.w3.org/ns/locn#addressArea> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "busnummer" ;
+		sh:description "Officieel toegekende alfanumerieke code die wordt toegevoegd aan het huisnummer om meerdere gebouweenheden, standplaatsen, ligplaatsen of percelen te onderscheiden die eenzelfde huisnummer hebben." ;
+		sh:path <http://data.vlaanderen.be/ns/subsidie#Adresvoorstelling.busnummer> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "gemeentenaam" ;
+		sh:description "Gemeentenaam vh adres." ;
+		sh:path <http://data.vlaanderen.be/ns/subsidie#gemeentenaam> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "huisnummer" ;
+		sh:description "Alfanumerieke code officieel toegekend aan gebouweenheden, ligplaatsen, standplaatsen of percelen." ;
+		sh:path <http://data.vlaanderen.be/ns/subsidie#Adresvoorstelling.huisnummer> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "land" ;
+		sh:description "Land waarin het adres gelegen is." ;
+		sh:path <http://data.vlaanderen.be/ns/subsidie#land> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "locatieaanduiding" ;
+		sh:description "Alfanumerieke code die de adreslocator uniek identificeert binnen de straat, administratieve eenheid etc." ;
+		sh:path <http://www.w3.org/ns/locn#locatorDesignator> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "locatienaam" ;
+		sh:description "Naam of omschrijving vh het geografisch object dat de adreslocator aanduidt." ;
+		sh:path <http://www.w3.org/ns/locn#locatorName> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "postbus" ;
+		sh:description "Postbusnummer in een postkantoor." ;
+		sh:path <http://www.w3.org/ns/locn#poBox> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "postcode" ;
+		sh:description "Code waarmee het geografisch gebied dat adressen voor postale doeleinden groepeert wordt aangeduid." ;
+		sh:path <http://www.w3.org/ns/locn#postCode> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "postnaam" ;
+		sh:description "Naam waarmee het geografisch gebied dat adressen voor postale doeleinden groepeert wordt aangeduid." ;
+		sh:path <http://www.w3.org/ns/locn#postName> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "straatnaam" ;
+		sh:description "Straatnaam vh adres." ;
+		sh:path <http://www.w3.org/ns/locn#thoroughfare> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "volledigAdres" ;
+		sh:description "Het complete adres in één string, al dan niet geformatteerd." ;
+		sh:path <http://www.w3.org/ns/locn#fullAddress> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://schema.org/ContactPointShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://schema.org/ContactPoint> ;
+	sh:property [
+		sh:name "aanschrijfvorm" ;
+		sh:description "Titel waarmee iemand wordt aangeschreven of aangesproken of waarmee naar iemand wordt verwezen." ;
+		sh:path <http://ww.w3.org/2006/vcard/ns#honorific-prefix> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "adres" ;
+		sh:description "Adres dat men kan aanschrijven of bezoeken." ;
+		sh:path <http://www.w3.org/ns/locn#address> ;
+		sh:class <http://www.w3.org/ns/locn#Address> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "beschikbaarheid" ;
+		sh:description "Periode waarin contact kan worden opgenomen." ;
+		sh:path <http://schema.org/hoursAvailable> ;
+		sh:class <http://schema.org/OpeningHoursSpecification> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "contactnaam" ;
+		sh:description "Naam van bvb de persoon die men kan contacteren." ;
+		sh:path <http://xmlns.com/foaf/0.1/name> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "email" ;
+		sh:description "Email-adres waarnaar men kan mailen." ;
+		sh:path <http://schema.org/email> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "fax" ;
+		sh:description "Faxnummer waarnaar men kan faxen." ;
+		sh:path <http://schema.org/faxNumber> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "openingsuren" ;
+		sh:description "Uren waarbinnen contact kan worden opgenomen." ;
+		sh:path <http://schema.org/openingHours> ;
+		sh:class <http://schema.org/OpeningHoursSpecification> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "telefoon" ;
+		sh:description "Telefoonnummer waarop men kan bellen." ;
+		sh:path <http://schema.org/telephone> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "website" ;
+		sh:description "Website waarnaar men kan surfen." ;
+		sh:path <http://xmlns.com/foaf/0.1/page> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#anyURI> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/subsidie#FinanciëleVerplichtingShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/subsidie#FinanciëleVerplichting> ;
+	sh:property [
+		sh:name "type" ;
+		sh:description "Type van de Financiële Verplichting." ;
+		sh:path <http://purl.org/dc/terms/type> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/besluit#BestuursorgaanShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/besluit#BesluitShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/besluit#Besluit> ;
+	sh:property [
+		sh:name "realiseert" ;
+		sh:description "De rechtsgrond beschreven door dit besluit." ;
+		sh:path <http://data.europa.eu/eli/ontology#realizes> ;
+		sh:class <http://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "citeeropschrift" ;
+		sh:description "De beknopte titel of officiële korte naam van een decreet, wet, besluit... Deze wordt officieel vastgelegd. Deze benaming wordt in de praktijk gebruikt om naar de rechtsgrond te verwijzen." ;
+		sh:path <http://data.europa.eu/eli/ontology#title_short> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "motivering" ;
+		sh:description "Beschrijving van de juridische en feitelijke motivering achter de beslissing die wordt uitgedrukt in het besluit." ;
+		sh:path <http://data.vlaanderen.be/ns/besluit#motivering> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "publicatiedatum" ;
+		sh:description "De officiële publicatiedatum van het besluit." ;
+		sh:path <http://data.europa.eu/eli/ontology#date_publication> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/subsidie#StatusShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/subsidie#Status> ;
+	sh:property [
+		sh:name "actie" ;
+		sh:description "Omschrijving van de uit te voeren actie." ;
+		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActie> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "actieNodig" ;
+		sh:description "Aanduiding of de huidige status impliceert dat er actie van burger of onderneming nodig is." ;
+		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActieNodig> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "statusdatum" ;
+		sh:description "De datum van de Status." ;
+		sh:path <http://data.vlaanderen.be/ns/subsidie#statusdatum> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "statusDetail1" ;
+		sh:description "Dit is de (originele) Status-definitie of -vermelding zoals geregistreerd in de bron." ;
+		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusDetail1> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "statusDetail2" ;
+		sh:description "Interne status die kan worden meegegeven en die niet wordt getoond aan de burger of onderneming." ;
+		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusDetail2> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "statusEDRL" ;
+		sh:description "Dit is de (originele) Status-definitie of -vermelding zoals geregistreerd in de bron." ;
+		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusEDRL> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "statusVlaamsCode" ;
+		sh:description "De Vlaamse status - Code. Verplicht in geval van een dossier van het type DossierStatus." ;
+		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusVlaamsCode> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "statusVlaamsFase" ;
+		sh:description "De Vlaamse status - Fase. Verplicht in geval van een dossier van het type DossierStatus." ;
+		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusVlaamsFase> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "streefdatum" ;
+		sh:description "De streefdatum voor het beëindigen van de huidige status." ;
+		sh:path <http://data.vlaanderen.be/ns/subsidie#streefdatum> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidieShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie> ;
+	sh:property [
+		sh:name "aangenomen door" ;
+		sh:description "Het orgaan dat de rechtsgrond (Besluit) heeft goedgekeurd, waardoor er een rechtsgevolg ontstond." ;
+		sh:path <http://data.europa.eu/eli/ontology#passed_by> ;
+		sh:class <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "bedrag" ;
+		sh:description "Het bedrag dat werd toegekend aan de begunstigde van de subsidiemaatregel." ;
+		sh:path <http://data.vlaanderen.be/ns/subsidie#bedrag> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "buitenwerkingtreding" ;
+		sh:description "De laatste dag waarop de regelgeving nog van kracht is." ;
+		sh:path <http://data.europa.eu/eli/ontology#date_no_longer_in_force> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "inwerkingtreding" ;
+		sh:description "De datum waarop de regelgeving van kracht wordt." ;
+		sh:path <http://data.europa.eu/eli/ontology#first_date_entry_in_force> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "type document" ;
+		sh:description "Het type van de rechtsgrond." ;
+		sh:path <http://data.europa.eu/eli/ontology#type_document> ;
+		sh:minCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/subsidie#KwalitatiefCriteriumvereisteShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/subsidie#KwalitatiefCriteriumvereiste> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/subsidie#ParametriseerbaarCriteriumvereisteShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/subsidie#ParametriseerbaarCriteriumvereiste> ;
+	sh:property [
+		sh:name "heeftAuthentiekeBron" ;
+		sh:description "Geeft aan of de informatie voor de beoordeling van het criterium via een authentieke bron verkregen kan worden." ;
+		sh:path <http://data.vlaanderen.be/ns/subsidie#heeftAuthentiekeBron> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/subsidie#FinancieelVoordeelShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/subsidie#FinancieelVoordeel> ;
+	sh:property [
+		sh:name "type" ;
+		sh:description "Type van het Financieel Voordeel." ;
+		sh:path <http://purl.org/dc/terms/type> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://purl.org/dc/terms/AgentShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://purl.org/dc/terms/Agent> ;
+	sh:property [
+		sh:name "heeftParticiperende" ;
+		sh:description "De manier waarop de agent participeert wordt beschreven door de entiteit Participatie. Laat oa toe om de bestaande associaties PubliekeDienstverlening-wordtUitgevoerdDoor-Agent en PubliekeDienstverlening-heeftVerantwoordelijke-PubliekeOrganisatie meer in detail te beschrijven." ;
+		sh:path <http://data.europa.eu/m8g/playsRole> ;
+		sh:class <http://data.europa.eu/m8g/Participation> ;
+		sh:minCount  ;
+		sh:maxCount  ;
+	] ;
+	sh:property [
+		sh:name "adres" ;
+		sh:description "Adres vd dienstverlener." ;
+		sh:path <http://data.europa.eu/m8g/hasAddress> ;
+		sh:class <http://www.w3.org/ns/locn#Address> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "naam" ;
+		sh:description "Naam vd dienstverlener." ;
+		sh:path <http://purl.org/dc/terms/title> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<https://www.w3.org/ns/org#OrganizationShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://www.w3.org/ns/org#Organization> ;
+	sh:property [
+		sh:name "alternatieveNaam" ;
+		sh:description "Andere naam waaronder de organisatie bekend is." ;
+		sh:path <http://www.w3.org/2004/02/skos/core#altLabel> ;
+	] ;
+	sh:property [
+		sh:name "bankrekeningnummer" ;
+		sh:description "Het bankrekeningnummer waarop het bedrag, toegekend als onderdeel van de subsidiemaatregel, moet uitbetaald worden." ;
+		sh:path <http://data.vlaanderen.be/ns/subsidie#bankrekeningnummer> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "classificatie" ;
+		sh:description "Rangschikking van de Organisatie in een classificatiesysteem." ;
+		sh:path <https://www.w3.org/ns/org#classification> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "contactinfo" ;
+		sh:description "Informatie zoals email, telefoon die toelaat de Organisatie te contacteren.
+" ;
+		sh:path <http://schema.org/contactPoint> ;
+		sh:class <http://schema.org/ContactPoint> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "doel" ;
+		sh:description "Bestaanreden vd Organisatie." ;
+		sh:path <https://www.w3.org/ns/org#purpose> ;
+	] ;
+	sh:property [
+		sh:name "voorkeursNaam" ;
+		sh:description "Naam waarmee de Organisatie bij voorkeur wordt aangeduid." ;
+		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.europa.eu/m8g/PublicOrganisationShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.europa.eu/m8g/PublicOrganisation> ;
+	sh:property [
+		sh:name "beschrijving" ;
+		sh:description "Beschrijving van de Publieke Organisatie." ;
+		sh:path <http://purl.org/dc/terms/description> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "homepage" ;
+		sh:description "Adres vd homepage van de website vd Publieke Organisatie." ;
+		sh:path <http://xmlns.com/foaf/0.1/homepage> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "logo" ;
+		sh:description "Verwijzing naar het logo vd Publieke Organisatie." ;
+		sh:path <http://schema.org/logo> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "werkingsgebied" ;
+		sh:description "Administratief gebied dat de Publieke Organisatie dekt." ;
+		sh:path <http://purl.org/dc/terms/spatial> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.europa.eu/m8g/ParticipationShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.europa.eu/m8g/Participation> ;
+	sh:property [
+		sh:name "beschrijving" ;
+		sh:description "Beschrijving van de Participatie." ;
+		sh:path <http://purl.org/dc/terms/description> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "rol" ;
+		sh:description "De rol die de deelnemer ad Publieke Organisatie speelt." ;
+		sh:path <http://data.europa.eu/m8g/role> ;
+		sh:minCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://purl.org/vocab/cpsv#RuleShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://purl.org/vocab/cpsv#Rule> ;
+	sh:property [
+		sh:name "implementeert" ;
+		sh:description "Relevante wetgeving of beleid waarbinnen de Richtlijn is gedefinieerd." ;
+		sh:path <http://purl.org/vocab/cpsv#implements> ;
+		sh:class <http://purl.org/vocab/cpsv#FormalFramework> ;
+	] ;
+	sh:property [
+		sh:name "beschrijving" ;
+		sh:description "Beschrijving van de Richtlijn." ;
+		sh:path <http://purl.org/dc/terms/description> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "naam" ;
+		sh:description "Naam vd Richtlijn." ;
+		sh:path <http://purl.org/dc/terms/title> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "taal" ;
+		sh:description "Taal waarin de Richtlijn is gesteld." ;
+		sh:path <http://purl.org/dc/terms/language> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+	] ;
+	sh:closed false .
+
+<http://data.europa.eu/m8g/EvidenceShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.europa.eu/m8g/Evidence> ;
+	sh:property [
+		sh:name "beschrijving" ;
+		sh:description "Beschrijving vh Bewijs." ;
+		sh:path <http://purl.org/dc/terms/description> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "documentatie" ;
+		sh:description "Documentatie gerelateerd ah Bewiijs." ;
+		sh:path <http://xmlns.com/foaf/0.1/page> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#anyURI> ;
+	] ;
+	sh:property [
+		sh:name "naam" ;
+		sh:description "Officiële naam vh Bewijs." ;
+		sh:path <http://purl.org/dc/terms/title> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "taal" ;
+		sh:description "Taal waarin het aangeboden Bewijs moet zijn gesteld." ;
+		sh:path <http://purl.org/dc/terms/language> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+	] ;
+	sh:property [
+		sh:name "type" ;
+		sh:description "Aard vh Bewijs." ;
+		sh:path <http://purl.org/dc/terms/type> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.europa.eu/m8g/OutputShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.europa.eu/m8g/Output> ;
+	sh:property [
+		sh:name "bedrag" ;
+		sh:description "Het bedrag dat werd uitbetaald aan de begunstigde van de subsidiemaatregel op een bepaalde datum." ;
+		sh:path <http://data.vlaanderen.be/ns/subsidie#bedrag> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "beschrijving" ;
+		sh:description "Beschrijving van de Output." ;
+		sh:path <http://purl.org/dc/terms/description> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "datum" ;
+		sh:description "De datum waarop de FinanciëleOutput werd uitebetaald of teruggevorderd. " ;
+		sh:path <http://purl.org/dc/terms/date> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "naam" ;
+		sh:description "Officiële naam van de Output." ;
+		sh:path <http://purl.org/dc/terms/title> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "type" ;
+		sh:description "Aard van de Output." ;
+		sh:path <http://purl.org/dc/terms/type> ;
+	] ;
+	sh:closed false .
+
+<http://data.europa.eu/m8g/CriterionRequirementShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.europa.eu/m8g/CriterionRequirement> ;
+	sh:property [
+		sh:name "naam" ;
+		sh:description "Officiële naam vd CriteriumVereiste." ;
+		sh:path <http://purl.org/dc/terms/title> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "type" ;
+		sh:description "Aard vd CriteriumVereiste." ;
+		sh:path <http://purl.org/dc/terms/type> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://purl.org/vocab/cpsv#PublicServiceShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://purl.org/vocab/cpsv#PublicService> ;
+	sh:property [
+		sh:name "isGerelateerdMet" ;
+		sh:description "Andere Publieke Dienstverlening waarmee de Publieke Dienstverlening gerelateerd is." ;
+		sh:path <http://purl.org/dc/terms/relation> ;
+		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
+	] ;
+	sh:property [
+		sh:name "heeftParticiperende" ;
+		sh:description "Participatie (van een agent) aan de publieke dienstverlening." ;
+		sh:path <http://data.europa.eu/m8g/hasParticipation> ;
+		sh:class <http://data.europa.eu/m8g/Participation> ;
+		sh:minCount  ;
+		sh:maxCount  ;
+	] ;
+	sh:property [
+		sh:name "heeftCriterium" ;
+		sh:description "Criterium waaraan de gebruiker moet voldoen om recht te hebben op een dienstverlening of om een dienstverlening te mogen gebruiken." ;
+		sh:path <http://data.europa.eu/m8g/hasCriterion> ;
+		sh:class <http://data.europa.eu/m8g/CriterionRequirement> ;
+	] ;
+	sh:property [
+		sh:name "wordtUitgevoerdDoor" ;
+		sh:description "Agent die de Publieke Dienstverlening verstrekt." ;
+		sh:path <http://data.europa.eu/m8g/serviceProvider> ;
+		sh:class <http://purl.org/dc/terms/Agent> ;
+	] ;
+	sh:property [
+		sh:name "vereistAlsInput" ;
+		sh:description "Bewijsstuk dat moeten voorgelegd worden om de Publieke Dienstverlening te kunnen gebruiken." ;
+		sh:path <http://purl.org/vocab/cpsv#hasInput> ;
+		sh:class <http://data.europa.eu/m8g/Evidence> ;
+	] ;
+	sh:property [
+		sh:name "heeftRechtsgrond" ;
+		sh:description "De rechtsgrond op basis waarvan de subsidiemaatregel werd toegekend." ;
+		sh:path <http://data.vlaanderen.be/ns/subsidie#heeftRechtsgrond> ;
+		sh:class <http://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie> ;
+	] ;
+	sh:property [
+		sh:name "volgt" ;
+		sh:description "De Richtlijn die de werking van de Publieke Dienstverlening stuurt." ;
+		sh:path <http://purl.org/vocab/cpsv#follows> ;
+		sh:class <http://purl.org/vocab/cpsv#Rule> ;
+	] ;
+	sh:property [
+		sh:name "vereist" ;
+		sh:description "Publieke Dienstverlening die voorafgaandelijk moet worden uitgevoerd om van de Publieke Dienstverlening gebruik te kunnen maken." ;
+		sh:path <http://purl.org/dc/terms/requires> ;
+		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
+	] ;
+	sh:property [
+		sh:name "aangebodenBinnen" ;
+		sh:description "Het formeel kader (bv de wetgeving) waar de publieke dienstverlening betrekking op heeft of waarbinnen ze werkt of waaraan ze haar wettelijke basis ontleent." ;
+		sh:path <http://data.europa.eu/m8g/hasFormalFramework> ;
+		sh:class <http://purl.org/vocab/cpsv#FormalFramework> ;
+	] ;
+	sh:property [
+		sh:name "heeftVerantwoordelijke" ;
+		sh:description "Publieke Organisatie die verantwoordelijk is voor het aanbieden en beheren van de Publieke dienstverlening." ;
+		sh:path <http://data.europa.eu/m8g/hasCompetentAuthority> ;
+		sh:class <http://data.europa.eu/m8g/PublicOrganisation> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "produceert" ;
+		sh:description "Het werkelijke resultaat van de uitvoering vd Publieke Dienstverlening." ;
+		sh:path <http://purl.org/vocab/cpsv#produces> ;
+		sh:class <http://data.europa.eu/m8g/Output> ;
+	] ;
+	sh:property [
+		sh:name "heeftStatus" ;
+		sh:description "Link tussen Publieke Dienstverlening en Status." ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#heeftStatus> ;
+		sh:class <http://data.vlaanderen.be/ns/subsidie#Status> ;
+		sh:minCount  ;
+		sh:maxCount  ;
+	] ;
+	sh:property [
+		sh:name "doelstelling" ;
+		sh:description "Primaire doelstelling, te behalen door de begunstigde met gebruik van de steunmaatregel." ;
+		sh:path <http://data.europa.eu/stateaidtransparency/sat#objective> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "instrument" ;
+		sh:description "Type van de steunmaatregel. Bv. belastingsvermindering, subsidie, etc." ;
+		sh:path <http://data.europa.eu/stateaidtransparency/sat#aidInstrument> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "staatssteunnummer" ;
+		sh:description "Identificatie van de steunmaatregel. Dit is de identificator van het State Aid Case Management systeem van de Europese Commissie." ;
+		sh:path <http://data.europa.eu/stateaidtransparency/sat#aidMeasure> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+

@@ -1,0 +1,388 @@
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+<http://data.vlaanderen.be/ns/persoon#PersoonsgebeurtenisShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Persoonsgebeurtenis> ;
+	sh:property [
+		sh:name "plaats" ;
+		sh:description "Plaats waar de gebeurtenis plaatsvond." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#plaats> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "datum" ;
+		sh:description "Datum waarop de gebeurtenis plaatsvond." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#datum> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://www.w3.org/ns/org#OrganizationShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://www.w3.org/ns/org#Organization> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#GezinsrelatieShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Gezinsrelatie> ;
+	sh:property [
+		sh:name "gezinsrelatietype" ;
+		sh:description "Aard vd relatie." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#gezinsrelatietype> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#BurgerlijkeStaatShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#BurgerlijkeStaat> ;
+	sh:property [
+		sh:name "type" ;
+		sh:description "Aard vd burgerlijke staat." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#type> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#VoogdijShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Voogdij> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#SamenwonenShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Samenwonen> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#HuwelijkShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Huwelijk> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#PersoonsrelatieShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Persoonsrelatie> ;
+	sh:property [
+		sh:name "heeftRelatieMet" ;
+		sh:description "Persoon waarmee de persoon gerelateerd is." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#isRelatieMet> ;
+		sh:class <http://www.w3.org/ns/person#Person> ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#NationaliteitShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Nationaliteit> ;
+	sh:property [
+		sh:name "nationaliteit" ;
+		sh:description "De nationaliteit vd persoon." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#nationaliteit> ;
+		sh:class <http://www.w3.org/2000/01/rdf-schema#Literal> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#OverlijdenShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Overlijden> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#GeboorteShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Geboorte> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#DomicilieShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Domicilie> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#VerblijfplaatsShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Verblijfplaats> ;
+	sh:property [
+		sh:name "verblijfsadres" ;
+		sh:description "Plaats waar een persoon al dan niet tijdelijk woont of logeert." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#verblijfsadres> ;
+		sh:class <http://www.w3.org/ns/locn#Address> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#GeenInwonerShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#GeenInwoner> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#InwonerschapShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Inwonerschap> ;
+	sh:property [
+		sh:name "heeftVerblijfplaats" ;
+		sh:description "Plaats waar een persoon verblijft." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#heeftVerblijfplaats> ;
+		sh:class <http://data.vlaanderen.be/ns/persoon#Verblijfplaats> ;
+	] ;
+	sh:property [
+		sh:name "inwonerschap" ;
+		sh:description "Jurisdictie waarbinnen het inwonerschap (ve persoon) is gedefineerd." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#Inwonerschap.binnenJurisdictie> ;
+		sh:class <http://purl.org/dc/terms/Jurisdiction> ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#StaatsburgerShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Staatsburger> ;
+	sh:closed false .
+
+<http://purl.org/dc/terms/AgentShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://purl.org/dc/terms/Agent> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#VreemdelingShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Vreemdeling> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#StaatsburgerschapShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Staatsburgerschap> ;
+	sh:property [
+		sh:name "staatsburgerschap" ;
+		sh:description "Jurisdictie waarbinnen het inwonerschap (ve persoon) is gedefineerd." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#Staatsburgerschap.binnenJurisdictie> ;
+		sh:class <http://purl.org/dc/terms/Jurisdiction> ;
+	] ;
+	sh:closed false .
+
+<http://purl.org/dc/terms/JurisdictionShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://purl.org/dc/terms/Jurisdiction> ;
+	sh:property [
+		sh:name "plaats" ;
+		sh:description "Plaatsnaam waarmee de Jurisdictie kan worden aangeduid." ;
+		sh:path <http://data.vlaanderen.be/ns/generiek#plaats> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#GezinShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Gezin> ;
+	sh:property [
+		sh:name "gezinsadres" ;
+		sh:description "Verblijfplaats vh gezin." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#gezinsadres> ;
+		sh:class <http://www.w3.org/ns/locn#Address> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#AfstammingShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Afstamming> ;
+	sh:property [
+		sh:name "afstammingsType" ;
+		sh:description "Aard vd afstamming." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#afstammingsType> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "datumVanAfstamming" ;
+		sh:description "De datum waarop de afstamming wordt vastgesteld." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#datumVanAfstamming> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#TijdelijkInwonerShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#TijdelijkInwoner> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#PermanentInwonerShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#PermanentInwoner> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#InwonerShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#Inwoner> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#GeregistreerdPersoonShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#GeregistreerdPersoon> ;
+	sh:property [
+		sh:name "registratie" ;
+		sh:description "Identificatiecode vd persoon ih register." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#registratie> ;
+		sh:class <http://www.w3.org/ns/adms#Identifier> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://www.w3.org/ns/person#PersonShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://www.w3.org/ns/person#Person> ;
+	sh:property [
+		sh:name "heeftOverlijden" ;
+		sh:description "Verwijst naar de overlijdensgegevens vd persoon." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#heeftOverlijden> ;
+		sh:class <http://data.vlaanderen.be/ns/persoon#Overlijden> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "isLidVan" ;
+		sh:description "Persoon die tot een gezin behoort." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#isLidVan> ;
+		sh:class <http://data.vlaanderen.be/ns/persoon#Gezin> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "inwonerschap" ;
+		sh:description "Jurisdictie waarbinnen het Inwonerschap vd persoon is gedefinieerd." ;
+		sh:path <http://www.w3.org/ns/person#residency> ;
+		sh:class <http://purl.org/dc/terms/Jurisdiction> ;
+	] ;
+	sh:property [
+		sh:name "heeftGeboorte" ;
+		sh:description "Verwijst naar de geboortegegevens vd persoon." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#heeftGeboorte> ;
+		sh:class <http://data.vlaanderen.be/ns/persoon#Geboorte> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "heeftNationaliteit" ;
+		sh:description "Nationaliteit vd persoon." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#heeftNationaliteit> ;
+		sh:class <http://data.vlaanderen.be/ns/persoon#Nationaliteit> ;
+	] ;
+	sh:property [
+		sh:name "inwonerschap" ;
+		sh:description "Inwonerschap vd persoon." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#heeftInwonerschap> ;
+		sh:class <http://data.vlaanderen.be/ns/persoon#Inwonerschap> ;
+		sh:minCount  ;
+		sh:maxCount  ;
+	] ;
+	sh:property [
+		sh:name "heeftBurgerlijkeStaat" ;
+		sh:description "Burgerlijke staat vd Persoon." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#heeftBurgerlijkeStaat> ;
+		sh:class <http://data.vlaanderen.be/ns/persoon#BurgerlijkeStaat> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "isHoofdVan" ;
+		sh:description "Persoon die standaard het gezin vertegenwoordigt." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#isHoofdVan> ;
+		sh:class <http://data.vlaanderen.be/ns/persoon#Gezin> ;
+	] ;
+	sh:property [
+		sh:name "staatburgerschap" ;
+		sh:description "Jurisdictie waarbinnen het staatsburgerschap vd persoon is gedefinieerd." ;
+		sh:path <http://www.w3.org/ns/person#citizenship> ;
+		sh:class <http://purl.org/dc/terms/Jurisdiction> ;
+	] ;
+	sh:property [
+		sh:name "staatsburgerschap" ;
+		sh:description "Inwonerschap vd persoon." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#heeftStaatsburgerschap> ;
+		sh:class <http://data.vlaanderen.be/ns/persoon#Staatsburgerschap> ;
+		sh:minCount  ;
+		sh:maxCount  ;
+	] ;
+	sh:property [
+		sh:name "heeftRelatieMet" ;
+		sh:description "Relatie van een persoon (met een ander persoon)." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#heeftPersoonsrelatie> ;
+		sh:class <http://data.vlaanderen.be/ns/persoon#Persoonsrelatie> ;
+		sh:minCount  ;
+		sh:maxCount  ;
+	] ;
+	sh:property [
+		sh:name "voornaam" ;
+		sh:description "Naam die een kind bij geboorte wordt gegeven. Onderscheidt het kind van de andere kinderen in de familie." ;
+		sh:path <http://xmlns.com/foaf/0.1/givenName> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+	] ;
+	sh:property [
+		sh:name "achternaam" ;
+		sh:description "Gedeelte van de volledige naam vd persoon ontvangen van de vorige generatie." ;
+		sh:path <http://xmlns.com/foaf/0.1/familyName> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "volledigeNaam" ;
+		sh:description "De volledige naam vd persoon, doorgaans de combinatie van voornamen en achternaam." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#volledigeNaam> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "gebruikteVoornaam" ;
+		sh:description "Belangrijkste vd voornamen ve persoon." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#gebruikteVoornaam> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "geslacht" ;
+		sh:description "Het feit of de persoon een man of een vrouw is." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#geslacht> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "patroniem" ;
+		sh:description "Achternaam gebaseerd op de voornaam vd vader ve persoon." ;
+		sh:path <http://www.w3.org/ns/person#patronymicName> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "geboortenaam" ;
+		sh:description "Volledige naam vd persoon bij geboorte." ;
+		sh:path <http://www.w3.org/ns/person#birthName> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "alternatieveNaam" ;
+		sh:description "Alternatief voor de volledige naam vd persoon." ;
+		sh:path <http://xmlns.com/foaf/0.1/name> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+	] ;
+	sh:property [
+		sh:name "contactinfo" ;
+		sh:description "Informatie zoals email, telefoon die toelaat de Persoon te contacteren." ;
+		sh:path <http://schema.org/contactPoint> ;
+		sh:class <https://schema.org/ContactPoint> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
