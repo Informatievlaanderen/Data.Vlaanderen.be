@@ -45,7 +45,7 @@
               <div class="head" role="contentinfo" id="respecHeader">
                 <dl>
                   <dt>Laatste aanpassing</dt>
-                  <dd>2017-12-22</dd>
+                  <dd>2018-01-31</dd>
 
                   
                   
@@ -247,13 +247,20 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       <br />
                       |
                       <a href="#Agent">Agent</a> |
+                      <a href="#Applicatie">Applicatie</a> |
                       <a href="#Concept">Concept</a> |
                       <a href="#Dataset">Dataset</a> |
                       <a href="#Eigenschap">Eigenschap</a> |
+                      <a href="#Geregistreerd Persoon">Geregistreerd Persoon</a> |
+                      <a href="#Hoedanigheid">Hoedanigheid</a> |
                       <a href="#label">label</a> |
                       <a href="#Melding">Melding</a> |
                       <a href="#Meldingsobject">Meldingsobject</a> |
+                      <a href="#Organisatie">Organisatie</a> |
+                      <a href="#Organisatie-eenheid">Organisatie-eenheid</a> |
                       <a href="#Participatie">Participatie</a> |
+                      <a href="#Persoon">Persoon</a> |
+                      <a href="#Publieke Organisatie">Publieke Organisatie</a> |
                       <a href="#TijdToestand">TijdToestand</a> |
                     </p>
                   </div>
@@ -332,6 +339,21 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             </div>
             
             <div class="region region--no-space-top">
+              <h3 class="h3" id="Applicatie"><a href="http://data.vlaanderen.be/ns/melding#Applicatie" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#Applicatie" data-placement="right">Applicatie</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Een artifici&#235;le agent in een softwareomgeving.  </dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn geen eigenschappen gedefinieerd.</dd>
+                    
+                  </dl>
+                </div>
+                
+            </div>
+            
+            <div class="region region--no-space-top">
               <h3 class="h3" id="Concept"><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Concept</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
@@ -342,7 +364,8 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                     <dt>Eigenschappen</dt>
                     
                     <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Concept%3AprefLabel">prefLabel</a>.</dd>
+                      <a href="#Concept%3AprefLabel">prefLabel</a>, 
+                      <a href="#Concept%3Awerd%20toegewezen%20aan">werd toegewezen aan</a>.</dd>
                     
                   </dl>
                 </div>
@@ -372,6 +395,20 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
                         <td>1</td>
                         <td property="rdfs:comment">Het geprefereerde label.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Concept%3Awerd%20toegewezen%20aan" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#werdToegewezenAan">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/melding#werdToegewezenAan" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#werdToegewezenAan" data-placement="right">
+                            werd toegewezen aan</a>
+                          </code>
+                        </td>
+                        <td><a href="https://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="https://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Het toewijzen van de CodelijstWaarde aan een Agent (Publieke Organisatie) die verantwoordelijk is voor het behandelen van meldingen op deze Eigenschap indien de Eigenschap een bepaalde waarde heeft.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -478,7 +515,8 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       <a href="#Eigenschap%3Adatatype">datatype</a>, 
                       <a href="#Eigenschap%3Alabel">label</a>, 
                       <a href="#Eigenschap%3Alabel">label</a>, 
-                      <a href="#Eigenschap%3Ameldbaar">meldbaar</a>.</dd>
+                      <a href="#Eigenschap%3Ameldbaar">meldbaar</a>, 
+                      <a href="#Eigenschap%3Awerd%20toegewezen%20aan">werd toegewezen aan</a>.</dd>
                     
                   </dl>
                 </div>
@@ -568,10 +606,92 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                     
+                      <tr id="Eigenschap%3Awerd%20toegewezen%20aan" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#werdToegewezenAan">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/melding#werdToegewezenAan" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#werdToegewezenAan" data-placement="right">
+                            werd toegewezen aan</a>
+                          </code>
+                        </td>
+                        <td><a href="https://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="https://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Het toewijzen van de Eigenschap aan een Agent (Publieke Organisatie) die verantwoordelijk is voor het behandelen van meldingen op deze Eigenschap.</td>
+                        <td property="vann:usageNote">Dit attribuut wordt genegeerd indien werdToegewezenAan gedefinieerd is op niveau van CodelijstWaarde.</td>
+                        <td></td>
+                      </tr>
+                    
                     </tbody>
                   </table>
                 </div>
       			  
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Geregistreerd Persoon"><a href="http://data.vlaanderen.be/ns/persoon#GeregistreerdPersoon" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/persoon#GeregistreerdPersoon" data-placement="right">Geregistreerd Persoon</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Persoon waarvan de gegevens zijn ingeschreven in een register.</dd>
+                    
+                    <dt>Gebruik</dt><dd>Doorgaans is dit register een bevolkingsregister maar het kan bv ook een kiesregister zijn. De ingeschreven gegevens hebben betrekking op de identeit (vb naam en voornaam) en de Verblijfplaats vd persoon en op belangrijke levensgebeurtenissen zoals geboor</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Geregistreerd%20Persoon%3Aregistratie">registratie</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Geregistreerd%20Persoon%3Aregistratie" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/persoon#registratie">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/persoon#registratie" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/persoon#registratie" data-placement="right">
+                            registratie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/ns/adms#Identifier" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#Identifier" data-placement="right">Identificator</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Identificatiecode van de persoon in het register.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Hoedanigheid"><a href="http://data.vlaanderen.be/ns/organisatie#Hoedanigheid" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/organisatie#Hoedanigheid" data-placement="right">Hoedanigheid</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Agent met een Functie.</dd>
+                    
+                    <dt>Gebruik</dt><dd>Laat een Functie toe om te handelen,bv ihkv een Dienstverlening (bv diversiteitsplan wordt opgemaakt door diversieteitsambtenaar).</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn geen eigenschappen gedefinieerd.</dd>
+                    
+                  </dl>
+                </div>
+                
             </div>
             
             <div class="region region--no-space-top">
@@ -654,6 +774,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       <a href="#Melding%3Aheeft%20doelwit">heeft doelwit</a>, 
                       <a href="#Melding%3Aheeft%20participerende">heeft participerende</a>, 
                       <a href="#Melding%3Aheeft%20status">heeft status</a>, 
+                      <a href="#Melding%3Aindiener">indiener</a>, 
                       <a href="#Melding%3Ameldingsapplicatie">meldingsapplicatie</a>, 
                       <a href="#Melding%3Ameldingsorganisatie">meldingsorganisatie</a>, 
                       <a href="#Melding%3Ameldingstype">meldingstype</a>, 
@@ -735,6 +856,20 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                     
+                      <tr id="Melding%3Aindiener" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#indiener">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/melding#indiener" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#indiener" data-placement="right">
+                            indiener</a>
+                          </code>
+                        </td>
+                        <td><a href="http://purl.org/dc/terms/Agent" data-toggle="tooltip" data-content="http://purl.org/dc/terms/Agent" data-placement="right">Agent</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De agent die de melding initieert of indient bij de terugmeldapplicatie.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
                       <tr id="Melding%3Ameldingsapplicatie" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#meldingsapplicatie">
                         <td>
                           <code property="rdfs:label">
@@ -756,7 +891,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             meldingsorganisatie</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Organisatie</a></td>
+                        <td><a href="https://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="https://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">De organisatie die verantwoordelijk is voor de applicatie die werd gebruikt voor de creatie van de melding.</td>
                         <td property="vann:usageNote"></td>
@@ -842,7 +977,8 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       <a href="#Meldingsobject%3Aheeft%20onderwerp">heeft onderwerp</a>, 
                       <a href="#Meldingsobject%3Aheeft%20status">heeft status</a>, 
                       <a href="#Meldingsobject%3Aheeft%20toestand">heeft toestand</a>, 
-                      <a href="#Meldingsobject%3AheeftBron">heeftBron</a>.</dd>
+                      <a href="#Meldingsobject%3AheeftBron">heeftBron</a>, 
+                      <a href="#Meldingsobject%3Awerd%20toegewezen%20aan">werd toegewezen aan</a>.</dd>
                     
                   </dl>
                 </div>
@@ -946,6 +1082,209 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                     
+                      <tr id="Meldingsobject%3Awerd%20toegewezen%20aan" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#werdToegewezenAan">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/melding#werdToegewezenAan" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#werdToegewezenAan" data-placement="right">
+                            werd toegewezen aan</a>
+                          </code>
+                        </td>
+                        <td><a href="https://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="https://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Het toewijzen van een Meldingsobject aan een Agent die verantwoordelijk is voor de behandeling ervan.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Organisatie"><a href="https://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="https://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Een aantal mensen georganiseerd in een gemeenschap of andere sociale, commerci&#235;le of politieke structuur. De groep heeft een gemeenschappelijk doel of bestaanreden die de individuele leden ervan overstijgt en kan handelen als Agent. Een organisatie heeft dikwijls een hi&#235;rarchische structuur.</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Organisatie%3AAlternatieve%20Naam">Alternatieve Naam</a>, 
+                      <a href="#Organisatie%3ABestaanreden%20vd%20Organisatie.">Bestaanreden vd Organisatie.</a>, 
+                      <a href="#Organisatie%3AClassificatie">Classificatie</a>, 
+                      <a href="#Organisatie%3ACode">Code</a>, 
+                      <a href="#Organisatie%3Aheeft%20eenheid">heeft eenheid</a>, 
+                      <a href="#Organisatie%3AIs%20Te%20Bereiken%20Op">Is Te Bereiken Op</a>, 
+                      <a href="#Organisatie%3AVoorkeursnaam">Voorkeursnaam</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Organisatie%3AAlternatieve%20Naam" typeof="rdfs:Property" resource="http://www.w3.org/2004/02/skos/core#altLabel">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/2004/02/skos/core#altLabel" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#altLabel" data-placement="right">
+                            Alternatieve Naam</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Andere naam waaronder de organisatie bekend is.</td>
+                        <td property="vann:usageNote">Bv commerci&#235;le naam, informele naam&#133;</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Organisatie%3ABestaanreden%20vd%20Organisatie." typeof="rdfs:Property" resource="https://www.w3.org/ns/org#purpose">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://www.w3.org/ns/org#purpose" data-toggle="tooltip" data-content="https://www.w3.org/ns/org#purpose" data-placement="right">
+                            Bestaanreden vd Organisatie.</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Bestaanreden vd Organisatie.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Organisatie%3AClassificatie" typeof="rdfs:Property" resource="https://www.w3.org/ns/org#classification">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://www.w3.org/ns/org#classification" data-toggle="tooltip" data-content="https://www.w3.org/ns/org#classification" data-placement="right">
+                            Classificatie</a>
+                          </code>
+                        </td>
+                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">OrganisatieClassificatie</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Rangschikking van de Organisatie in een classificatiesysteem.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Organisatie%3ACode" typeof="rdfs:Property" resource="http://www.w3.org/2004/02/skos/core#notation">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/2004/02/skos/core#notation" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#notation" data-placement="right">
+                            Code</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Code waarmee de Organisatie kan worden aangeduid;</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Organisatie%3Aheeft%20eenheid" typeof="rdfs:Property" resource="http://www.w3.org/ns/org#hasUnit">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/ns/org#hasUnit" data-toggle="tooltip" data-content="http://www.w3.org/ns/org#hasUnit" data-placement="right">
+                            heeft eenheid</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/ns/org#OrganizationalUnit" data-toggle="tooltip" data-content="http://www.w3.org/ns/org#OrganizationalUnit" data-placement="right">OrganisatieEenheid</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Verwijst naar een organisatie-eenheid die deel uitmaakt van de organisatie, bv een afdeling.	</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Organisatie%3AIs%20Te%20Bereiken%20Op" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#isTeBereikenOp">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/melding#isTeBereikenOp" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#isTeBereikenOp" data-placement="right">
+                            Is Te Bereiken Op</a>
+                          </code>
+                        </td>
+                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">ContactInfo</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Informatie zoals email, telefoon&#133; die toelaat de Organisatie te contacteren.
+</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Organisatie%3AVoorkeursnaam" typeof="rdfs:Property" resource="http://www.w3.org/2004/02/skos/core#prefLabel">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/2004/02/skos/core#prefLabel" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#prefLabel" data-placement="right">
+                            Voorkeursnaam</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Naam waarmee de Organisatie bij voorkeur wordt aangeduid.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Organisatie-eenheid"><a href="http://www.w3.org/ns/org#OrganizationalUnit" data-toggle="tooltip" data-content="http://www.w3.org/ns/org#OrganizationalUnit" data-placement="right">Organisatie-eenheid</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Een organisatie zoals een afdeling of dienst die deel uitmaakt van de grotere organisatie en zijn bestaansreden daaraan ontleent. Heeft geen juridische status op zich.</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Organisatie-eenheid%3Ais%20eenheid%20van">is eenheid van</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Organisatie-eenheid%3Ais%20eenheid%20van" typeof="rdfs:Property" resource="http://www.w3.org/ns/org#unitOf">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/ns/org#unitOf" data-toggle="tooltip" data-content="http://www.w3.org/ns/org#unitOf" data-placement="right">
+                            is eenheid van</a>
+                          </code>
+                        </td>
+                        <td><a href="https://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="https://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Organisatie waarvan de organisatie-eenheid deel uitmaakt.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
                     </tbody>
                   </table>
                 </div>
@@ -1016,6 +1355,130 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                   </table>
                 </div>
       			  
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Persoon"><a href="http://www.w3.org/ns/person#Person" data-toggle="tooltip" data-content="http://www.w3.org/ns/person#Person" data-placement="right">Persoon</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Natuurlijk persoon.</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Persoon%3A"></a>, 
+                      <a href="#Persoon%3A"></a>, 
+                      <a href="#Persoon%3A"></a>, 
+                      <a href="#Persoon%3AGeslacht">Geslacht</a>, 
+                      <a href="#Persoon%3AIs%20Te%20Bereiken%20op">Is Te Bereiken op</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Persoon%3A" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#adellijke titel">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/melding#adellijke titel" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#adellijke titel" data-placement="right">
+                            </a>
+                          </code>
+                        </td>
+                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right"></a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">TODO</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Persoon%3A" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#contactVoorkeur">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/melding#contactVoorkeur" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#contactVoorkeur" data-placement="right">
+                            </a>
+                          </code>
+                        </td>
+                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">ContactVoorkeur</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">TODO</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Persoon%3A" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#lezersnummerBibliotheek">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/melding#lezersnummerBibliotheek" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#lezersnummerBibliotheek" data-placement="right">
+                            </a>
+                          </code>
+                        </td>
+                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right"></a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">TODO</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Persoon%3AGeslacht" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#geslacht">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/melding#geslacht" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#geslacht" data-placement="right">
+                            Geslacht</a>
+                          </code>
+                        </td>
+                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right"></a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Het feit of men een man of een vrouw is.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Persoon%3AIs%20Te%20Bereiken%20op" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#isTeBereikenOp">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/melding#isTeBereikenOp" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#isTeBereikenOp" data-placement="right">
+                            Is Te Bereiken op</a>
+                          </code>
+                        </td>
+                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">ContactInfo</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Informatie zoals email, telefoon&#133; die toelaat de Persoon te contacteren.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Publieke Organisatie"><a href="http://data.europa.eu/m8g/PublicOrganisation" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/PublicOrganisation" data-placement="right">Publieke Organisatie</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Een Organisatie die volgens een wettelijk kader behoort tot de publieke sector, ongeacht het bestuursniveau waarop dat kader van kracht is.</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn geen eigenschappen gedefinieerd.</dd>
+                    
+                  </dl>
+                </div>
+                
             </div>
             
             <div class="region region--no-space-top">

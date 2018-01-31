@@ -4,25 +4,50 @@
 		"Datatype":"http://www.w3.org/2000/01/rdf-schema#label",
 		"Concept":"http://www.w3.org/2004/02/skos/core#Concept",
 		"Participatie":"http://data.europa.eu/m8g/Participation",
+		"Persoon":"http://www.w3.org/ns/person#Person",
+		"Organisatie":"https://www.w3.org/ns/org#Organization",
 		"Eigenschap":"http://data.vlaanderen.be/ns/melding#Eigenschap",
+		"Hoedanigheid":"http://data.vlaanderen.be/ns/organisatie#Hoedanigheid",
 		"Agent":"http://purl.org/dc/terms/Agent",
 		"Dataset":"http://purl.org/dc/dcmitype/Dataset",
 		"TijdToestand":"http://www.w3.org/ns/oa#TimeState",
 		"Meldingsobject":"http://data.vlaanderen.be/ns/melding#Meldingsobject",
 		"Melding":"http://data.vlaanderen.be/ns/melding#Melding",
+		"Applicatie":"http://data.vlaanderen.be/ns/melding#Applicatie",
+		"GeregistreerdPersoon":"http://data.vlaanderen.be/ns/persoon#GeregistreerdPersoon",
+		"OrganisatieEenheid":"http://www.w3.org/ns/org#OrganizationalUnit",
+		"PubliekeOrganisatie":"http://data.europa.eu/m8g/PublicOrganisation",
 
-		"eigenschap":{
-			"@id":"http://data.vlaanderen.be/ns/melding#eigenschap",
-			"@type":"http://data.vlaanderen.be/ns/melding#Eigenschap",
+		"heeftBron":{
+			"@id":"http://www.w3.org/ns/oa#hasSource",
+			"@type":"http://purl.org/dc/dcmitype/Dataset"
+		},
+		"heeftBody":{
+			"@id":"http://www.w3.org/ns/oa#hasBody",
+			"@type":"http://data.vlaanderen.be/ns/melding#MeldingBody",
 			"@container":"@set"
 		},
-		"heeftToestand":{
-			"@id":"http://www.w3.org/ns/oa#hasState",
-			"@type":"http://www.w3.org/ns/oa#TimeState"
+		"werdToegewezenAan":{
+			"@id":"http://data.vlaanderen.be/ns/melding#werdToegewezenAan",
+			"@type":"https://www.w3.org/ns/org#Organization"
 		},
 		"heeftStatus":{
 			"@id":"http://data.vlaanderen.be/ns/melding#heeftStatus",
 			"@type":"http://data.vlaanderen.be/ns/melding#Status",
+			"@container":"@set"
+		},
+		"indiener":{
+			"@id":"http://data.vlaanderen.be/ns/melding#indiener",
+			"@type":"http://purl.org/dc/terms/Agent"
+		},
+		"heeftDoelwit":{
+			"@id":"http://www.w3.org/ns/oa#hasTarget",
+			"@type":"http://data.vlaanderen.be/ns/melding#Meldingsobject",
+			"@container":"@set"
+		},
+		"heeftEenheid":{
+			"@id":"http://www.w3.org/ns/org#hasUnit",
+			"@type":"http://www.w3.org/ns/org#OrganizationalUnit",
 			"@container":"@set"
 		},
 		"codelijst":{
@@ -30,23 +55,18 @@
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
 			"@container":"@set"
 		},
-		"heeftDoelwit":{
-			"@id":"http://www.w3.org/ns/oa#hasTarget",
-			"@type":"http://data.vlaanderen.be/ns/melding#Meldingsobject",
-			"@container":"@set"
-		},
-		"heeftBody":{
-			"@id":"http://www.w3.org/ns/oa#hasBody",
-			"@type":"http://data.vlaanderen.be/ns/melding#MeldingBody",
+		"eigenschap":{
+			"@id":"http://data.vlaanderen.be/ns/melding#eigenschap",
+			"@type":"http://data.vlaanderen.be/ns/melding#Eigenschap",
 			"@container":"@set"
 		},
 		"datatype":{
 			"@id":"http://data.vlaanderen.be/ns/melding#datatype",
 			"@type":"http://www.w3.org/2000/01/rdf-schema#label"
 		},
-		"heeftBron":{
-			"@id":"http://www.w3.org/ns/oa#hasSource",
-			"@type":"http://purl.org/dc/dcmitype/Dataset"
+		"gerelateerdeBody":{
+			"@id":"http://data.vlaanderen.be/ns/melding#gerelateerdeBody",
+			"@type":"http://data.vlaanderen.be/ns/melding#MeldingBody"
 		},
 		"heeftParticiperende":{
 			"@id":"http://data.europa.eu/m8g/hasParticipation",
@@ -56,9 +76,13 @@
 			"@id":"http://data.europa.eu/m8g/playsRole",
 			"@type":"http://data.europa.eu/m8g/Participation"
 		},
-		"gerelateerdeBody":{
-			"@id":"http://data.vlaanderen.be/ns/melding#gerelateerdeBody",
-			"@type":"http://data.vlaanderen.be/ns/melding#MeldingBody"
+		"heeftToestand":{
+			"@id":"http://www.w3.org/ns/oa#hasState",
+			"@type":"http://www.w3.org/ns/oa#TimeState"
+		},
+		"isEenheidVan":{
+			"@id":"http://www.w3.org/ns/org#unitOf",
+			"@type":"https://www.w3.org/ns/org#Organization"
 		},
 		"beschrijving":{
 			"@id":"http://purl.org/dc/terms/description",
@@ -109,6 +133,45 @@
 			"@type":"",
 			"@container":"@set"
 		},
+		"adellijke titel":{
+			"@id":"http://data.vlaanderen.be/ns/melding#adellijke titel",
+			"@type":""
+		},
+		"contactVoorkeur":{
+			"@id":"http://data.vlaanderen.be/ns/melding#contactVoorkeur",
+			"@type":""
+		},
+		"geslacht":{
+			"@id":"http://data.vlaanderen.be/ns/melding#geslacht",
+			"@type":""
+		},
+		"isTeBereikenOp":{
+			"@id":"http://data.vlaanderen.be/ns/melding#isTeBereikenOp",
+			"@type":""
+		},
+		"lezersnummerBibliotheek":{
+			"@id":"http://data.vlaanderen.be/ns/melding#lezersnummerBibliotheek",
+			"@type":""
+		},
+		"alternatieveNaam":{
+			"@id":"http://www.w3.org/2004/02/skos/core#altLabel",
+			"@type":"http://www.w3.org/2001/XMLSchema#string",
+			"@container":"@set"
+		},
+		"classificatie":{
+			"@id":"https://www.w3.org/ns/org#classification",
+			"@type":""
+		},
+		"code":{
+			"@id":"http://www.w3.org/2004/02/skos/core#notation",
+			"@type":"http://www.w3.org/2001/XMLSchema#string",
+			"@container":"@set"
+		},
+		"doel":{
+			"@id":"https://www.w3.org/ns/org#purpose",
+			"@type":"http://www.w3.org/2001/XMLSchema#string",
+			"@container":"@set"
+		},
 		"meldbaar":{
 			"@id":"http://data.vlaanderen.be/ns/melding#meldbaar",
 			"@type":""
@@ -140,7 +203,7 @@
 		},
 		"meldingsorganisatie":{
 			"@id":"http://data.vlaanderen.be/ns/melding#meldingsorganisatie",
-			"@type":""
+			"@type":"https://www.w3.org/ns/org#Organization"
 		},
 		"meldingstype":{
 			"@id":"http://www.w3.org/ns/oa#motivatedBy",
@@ -154,6 +217,10 @@
 		"Melding.url":{
 			"@id":"http://data.vlaanderen.be/ns/melding#url",
 			"@type":"http://www.w3.org/2001/XMLSchema#string"
+		},
+		"registratie":{
+			"@id":"http://data.vlaanderen.be/ns/persoon#registratie",
+			"@type":"http://www.w3.org/ns/adms#Identifier"
 		}
 	}
 }

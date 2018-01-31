@@ -87,6 +87,14 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://www.w3.org/2004/02/skos/core#Concept> ;
 	sh:property [
+		sh:name "werdToegewezenAan" ;
+		sh:description "Het toewijzen van de CodelijstWaarde aan een Agent (Publieke Organisatie) die verantwoordelijk is voor het behandelen van meldingen op deze Eigenschap indien de Eigenschap een bepaalde waarde heeft." ;
+		sh:path <http://data.vlaanderen.be/ns/melding#werdToegewezenAan> ;
+		sh:class <https://www.w3.org/ns/org#Organization> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
 		sh:name "prefLabel" ;
 		sh:description "Het geprefereerde label." ;
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
@@ -114,8 +122,7 @@
 	] ;
 	sh:property [
 		sh:name "url" ;
-		sh:description "Identificeert een resource die aan de MeldingsBody verbonden is en mogelijks speciale verwerking vraagt.
-" ;
+		sh:description "Identificeert een resource die aan de MeldingsBody verbonden is en mogelijks speciale verwerking vraagt. " ;
 		sh:path <https://www.w3.org/ns/activitystreams#attachment> ;
 		sh:class <http://www.w3.org/2001/XMLSchema#anyURI> ;
 		sh:maxCount 1 ;
@@ -141,22 +148,117 @@
 	] ;
 	sh:closed false .
 
+<http://www.w3.org/ns/person#PersonShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://www.w3.org/ns/person#Person> ;
+	sh:property [
+		sh:name "adellijke titel" ;
+		sh:description "TODO" ;
+		sh:path <http://data.vlaanderen.be/ns/melding#adellijke titel> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "contactVoorkeur" ;
+		sh:description "TODO" ;
+		sh:path <http://data.vlaanderen.be/ns/melding#contactVoorkeur> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "geslacht" ;
+		sh:description "Het feit of men een man of een vrouw is." ;
+		sh:path <http://data.vlaanderen.be/ns/melding#geslacht> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "isTeBereikenOp" ;
+		sh:description "Informatie zoals email, telefoon die toelaat de Persoon te contacteren." ;
+		sh:path <http://data.vlaanderen.be/ns/melding#isTeBereikenOp> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "lezersnummerBibliotheek" ;
+		sh:description "TODO" ;
+		sh:path <http://data.vlaanderen.be/ns/melding#lezersnummerBibliotheek> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<https://www.w3.org/ns/org#OrganizationShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://www.w3.org/ns/org#Organization> ;
+	sh:property [
+		sh:name "heeftEenheid" ;
+		sh:description "Verwijst naar een organisatie-eenheid die deel uitmaakt van de organisatie, bv een afdeling.	" ;
+		sh:path <http://www.w3.org/ns/org#hasUnit> ;
+		sh:class <http://www.w3.org/ns/org#OrganizationalUnit> ;
+	] ;
+	sh:property [
+		sh:name "alternatieveNaam" ;
+		sh:description "Andere naam waaronder de organisatie bekend is." ;
+		sh:path <http://www.w3.org/2004/02/skos/core#altLabel> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+	] ;
+	sh:property [
+		sh:name "classificatie" ;
+		sh:description "Rangschikking van de Organisatie in een classificatiesysteem." ;
+		sh:path <https://www.w3.org/ns/org#classification> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "code" ;
+		sh:description "Code waarmee de Organisatie kan worden aangeduid;" ;
+		sh:path <http://www.w3.org/2004/02/skos/core#notation> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+	] ;
+	sh:property [
+		sh:name "doel" ;
+		sh:description "Bestaanreden vd Organisatie." ;
+		sh:path <https://www.w3.org/ns/org#purpose> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+	] ;
+	sh:property [
+		sh:name "isTeBereikenOp" ;
+		sh:description "Informatie zoals email, telefoon die toelaat de Organisatie te contacteren. " ;
+		sh:path <http://data.vlaanderen.be/ns/melding#isTeBereikenOp> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "voorkeursNaam" ;
+		sh:description "Naam waarmee de Organisatie bij voorkeur wordt aangeduid." ;
+		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
 <http://data.vlaanderen.be/ns/melding#EigenschapShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/melding#Eigenschap> ;
 	sh:property [
-		sh:name "datatype" ;
-		sh:description "Het datatype voor de eigenschap." ;
-		sh:path <http://data.vlaanderen.be/ns/melding#datatype> ;
-		sh:class <http://www.w3.org/2000/01/rdf-schema#label> ;
-		sh:minCount  ;
-		sh:maxCount  ;
+		sh:name "werdToegewezenAan" ;
+		sh:description "Het toewijzen van de Eigenschap aan een Agent (Publieke Organisatie) die verantwoordelijk is voor het behandelen van meldingen op deze Eigenschap." ;
+		sh:path <http://data.vlaanderen.be/ns/melding#werdToegewezenAan> ;
+		sh:class <https://www.w3.org/ns/org#Organization> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "codelijst" ;
 		sh:description "Associeert de Eigenschap met mogelijk codelijst waarden die voor de Eigenschap gebruikt kunnen worden." ;
 		sh:path <http://data.vlaanderen.be/ns/melding#codelijst> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+	] ;
+	sh:property [
+		sh:name "datatype" ;
+		sh:description "Het datatype voor de eigenschap." ;
+		sh:path <http://data.vlaanderen.be/ns/melding#datatype> ;
+		sh:class <http://www.w3.org/2000/01/rdf-schema#label> ;
 	] ;
 	sh:property [
 		sh:name "label" ;
@@ -181,6 +283,11 @@
 	] ;
 	sh:closed false .
 
+<http://data.vlaanderen.be/ns/organisatie#HoedanigheidShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/organisatie#Hoedanigheid> ;
+	sh:closed false .
+
 <http://purl.org/dc/terms/AgentShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://purl.org/dc/terms/Agent> ;
@@ -189,8 +296,6 @@
 		sh:description "De relatie tussen een Melding en een Agent die een rol speelt in de Melding." ;
 		sh:path <http://data.europa.eu/m8g/playsRole> ;
 		sh:class <http://data.europa.eu/m8g/Participation> ;
-		sh:minCount  ;
-		sh:maxCount  ;
 	] ;
 	sh:closed false .
 
@@ -238,18 +343,32 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/melding#Meldingsobject> ;
 	sh:property [
-		sh:name "gerelateerdeBody" ;
-		sh:description "De body van de Melding die betrekking heeft op het Meldingsobject." ;
-		sh:path <http://data.vlaanderen.be/ns/melding#gerelateerdeBody> ;
-		sh:class <http://data.vlaanderen.be/ns/melding#MeldingBody> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
 		sh:name "heeftBron" ;
 		sh:description "De bron (Dataset) waar het Meldingsobject werd uit afgeleid." ;
 		sh:path <http://www.w3.org/ns/oa#hasSource> ;
 		sh:class <http://purl.org/dc/dcmitype/Dataset> ;
 		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "heeftStatus" ;
+		sh:description "De Status verbonden aan het Meldingsobject." ;
+		sh:path <http://data.vlaanderen.be/ns/melding#heeftStatus> ;
+		sh:class <http://data.vlaanderen.be/ns/melding#Status> ;
+	] ;
+	sh:property [
+		sh:name "werdToegewezenAan" ;
+		sh:description "Het toewijzen van een Meldingsobject aan een Agent die verantwoordelijk is voor de behandeling ervan." ;
+		sh:path <http://data.vlaanderen.be/ns/melding#werdToegewezenAan> ;
+		sh:class <https://www.w3.org/ns/org#Organization> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "gerelateerdeBody" ;
+		sh:description "De body van de Melding die betrekking heeft op het Meldingsobject." ;
+		sh:path <http://data.vlaanderen.be/ns/melding#gerelateerdeBody> ;
+		sh:class <http://data.vlaanderen.be/ns/melding#MeldingBody> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -259,12 +378,6 @@
 		sh:class <http://www.w3.org/ns/oa#TimeState> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "heeftStatus" ;
-		sh:description "De Status verbonden aan het Meldingsobject." ;
-		sh:path <http://data.vlaanderen.be/ns/melding#heeftStatus> ;
-		sh:class <http://data.vlaanderen.be/ns/melding#Status> ;
 	] ;
 	sh:property [
 		sh:name "heeftEigenschap" ;
@@ -286,24 +399,10 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/melding#Melding> ;
 	sh:property [
-		sh:name "heeftDoelwit" ;
-		sh:description "De relatie tussen de Melding en het doelwit, het Meldingsobject waarop de melding slaat." ;
-		sh:path <http://www.w3.org/ns/oa#hasTarget> ;
-		sh:class <http://data.vlaanderen.be/ns/melding#Meldingsobject> ;
-	] ;
-	sh:property [
 		sh:name "heeftBody" ;
 		sh:description "Het object van deze associatie is een resource die de body van de Melding beschrijft (MeldingBody)." ;
 		sh:path <http://www.w3.org/ns/oa#hasBody> ;
 		sh:class <http://data.vlaanderen.be/ns/melding#MeldingBody> ;
-	] ;
-	sh:property [
-		sh:name "heeftParticiperende" ;
-		sh:description "De relatie tussen een Melding en een Agent die een rol speelt in de Melding." ;
-		sh:path <http://data.europa.eu/m8g/hasParticipation> ;
-		sh:class <http://data.europa.eu/m8g/Participation> ;
-		sh:minCount  ;
-		sh:maxCount  ;
 	] ;
 	sh:property [
 		sh:name "heeftStatus" ;
@@ -311,6 +410,26 @@
 		sh:path <http://data.vlaanderen.be/ns/melding#heeftStatus> ;
 		sh:class <http://data.vlaanderen.be/ns/melding#Status> ;
 		sh:minCount 1 ;
+	] ;
+	sh:property [
+		sh:name "indiener" ;
+		sh:description "De agent die de melding initieert of indient bij de terugmeldapplicatie." ;
+		sh:path <http://data.vlaanderen.be/ns/melding#indiener> ;
+		sh:class <http://purl.org/dc/terms/Agent> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "heeftDoelwit" ;
+		sh:description "De relatie tussen de Melding en het doelwit, het Meldingsobject waarop de melding slaat." ;
+		sh:path <http://www.w3.org/ns/oa#hasTarget> ;
+		sh:class <http://data.vlaanderen.be/ns/melding#Meldingsobject> ;
+	] ;
+	sh:property [
+		sh:name "heeftParticiperende" ;
+		sh:description "De relatie tussen een Melding en een Agent die een rol speelt in de Melding." ;
+		sh:path <http://data.europa.eu/m8g/hasParticipation> ;
+		sh:class <http://data.europa.eu/m8g/Participation> ;
 	] ;
 	sh:property [
 		sh:name "meldingsapplicatie" ;
@@ -324,6 +443,7 @@
 		sh:name "meldingsorganisatie" ;
 		sh:description "De organisatie die verantwoordelijk is voor de applicatie die werd gebruikt voor de creatie van de melding." ;
 		sh:path <http://data.vlaanderen.be/ns/melding#meldingsorganisatie> ;
+		sh:class <https://www.w3.org/ns/org#Organization> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -354,5 +474,41 @@
 		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/melding#ApplicatieShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/melding#Applicatie> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/persoon#GeregistreerdPersoonShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/persoon#GeregistreerdPersoon> ;
+	sh:property [
+		sh:name "registratie" ;
+		sh:description "Identificatiecode van de persoon in het register." ;
+		sh:path <http://data.vlaanderen.be/ns/persoon#registratie> ;
+		sh:class <http://www.w3.org/ns/adms#Identifier> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://www.w3.org/ns/org#OrganizationalUnitShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://www.w3.org/ns/org#OrganizationalUnit> ;
+	sh:property [
+		sh:name "isEenheidVan" ;
+		sh:description "Organisatie waarvan de organisatie-eenheid deel uitmaakt." ;
+		sh:path <http://www.w3.org/ns/org#unitOf> ;
+		sh:class <https://www.w3.org/ns/org#Organization> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.europa.eu/m8g/PublicOrganisationShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.europa.eu/m8g/PublicOrganisation> ;
 	sh:closed false .
 
