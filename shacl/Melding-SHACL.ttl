@@ -283,6 +283,14 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
+		sh:name "heeftToestand" ;
+		sh:description "De relatie tussen het Meldingsobject en een TijdToestand." ;
+		sh:path <http://www.w3.org/ns/oa#hasState> ;
+		sh:class <http://www.w3.org/ns/oa#TimeState> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
 		sh:name "werdToegewezenAan" ;
 		sh:description "Het toewijzen van een Meldingsobject aan een Agent die verantwoordelijk is voor de behandeling ervan." ;
 		sh:path <http://data.vlaanderen.be/ns/melding#werdToegewezenAan> ;
@@ -304,14 +312,6 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "heeftToestand" ;
-		sh:description "De relatie tussen het Meldingsobject en een TijdToestand." ;
-		sh:path <http://www.w3.org/ns/oa#hasState> ;
-		sh:class <http://www.w3.org/ns/oa#TimeState> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
 		sh:name "heeftEigenschap" ;
 		sh:description "Refereert naar een Eigenschap die deel uitmaakt van het Meldingsobject." ;
 		sh:path <http://data.vlaanderen.be/ns/melding#heeftEigenschap> ;
@@ -322,7 +322,6 @@
 		sh:description "Het onderwerp van een meldingsobject is de informatie resource waarop teruggemeld wordt." ;
 		sh:path <http://data.vlaanderen.be/ns/melding#heeftOnderwerp> ;
 		sh:class <http://www.w3.org/2001/XMLSchema#anyURI> ;
-		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
@@ -335,14 +334,6 @@
 		sh:description "De relatie tussen een Melding en een Agent die een rol speelt in de Melding." ;
 		sh:path <http://data.europa.eu/m8g/hasParticipation> ;
 		sh:class <http://data.europa.eu/m8g/Participation> ;
-	] ;
-	sh:property [
-		sh:name "indiener" ;
-		sh:description "De agent die de melding initieert of indient bij de terugmeldapplicatie." ;
-		sh:path <http://data.vlaanderen.be/ns/melding#indiener> ;
-		sh:class <http://purl.org/dc/terms/Agent> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "heeftBody" ;
