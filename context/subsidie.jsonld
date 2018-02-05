@@ -1,15 +1,14 @@
 {
 	"@context":
 	{
+		"FormeelKader":"http://purl.org/vocab/cpsv#FormalFramework",
 		"FinanciëleVerplichting":"http://data.vlaanderen.be/ns/subsidie#FinanciëleVerplichting",
 		"Bestuursorgaan":"http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
-		"Besluit":"http://data.vlaanderen.be/ns/besluit#Besluit",
-		"Rechtsgrond Toekenning Subsidie":"http://data.vlaanderen.be/ns/subsidie#Rechtsgrond Toekenning Subsidie",
+		"RechtsgrondToekenningSubsidie":"http://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie",
 		"KwalitatiefCriteriumvereiste":"http://data.vlaanderen.be/ns/subsidie#KwalitatiefCriteriumvereiste",
 		"ParametriseerbaarCriteriumvereiste":"http://data.vlaanderen.be/ns/subsidie#ParametriseerbaarCriteriumvereiste",
 		"FinancieelVoordeel":"http://data.vlaanderen.be/ns/subsidie#FinancieelVoordeel",
 		"Agent":"http://purl.org/dc/terms/Agent",
-		"FormeelKader":"http://purl.org/vocab/cpsv#FormalFramework",
 		"Organisatie":"https://www.w3.org/ns/org#Organization",
 		"PubliekeOrganisatie":"http://data.europa.eu/m8g/PublicOrganisation",
 		"Participatie":"http://data.europa.eu/m8g/Participation",
@@ -19,14 +18,38 @@
 		"CriteriumVereiste":"http://data.europa.eu/m8g/CriterionRequirement",
 		"Subsidiemaatregel":"http://purl.org/vocab/cpsv#PublicService",
 
-		"heeftRechtsgrond":{
-			"@id":"http://data.vlaanderen.be/ns/subsidie#heeftRechtsgrond",
-			"@type":"http://data.vlaanderen.be/ns/subsidie#Rechtsgrond Toekenning Subsidie",
+		"wordtUitgevoerdDoor":{
+			"@id":"http://data.europa.eu/m8g/serviceProvider",
+			"@type":"http://purl.org/dc/terms/Agent",
+			"@container":"@set"
+		},
+		"heeftCriterium":{
+			"@id":"http://data.europa.eu/m8g/hasCriterion",
+			"@type":"http://data.europa.eu/m8g/CriterionRequirement",
 			"@container":"@set"
 		},
 		"aangebodenBinnen":{
 			"@id":"http://data.europa.eu/m8g/hasFormalFramework",
 			"@type":"http://purl.org/vocab/cpsv#FormalFramework",
+			"@container":"@set"
+		},
+		"produceert":{
+			"@id":"http://purl.org/vocab/cpsv#produces",
+			"@type":"http://data.europa.eu/m8g/Output",
+			"@container":"@set"
+		},
+		"implementeert":{
+			"@id":"http://purl.org/vocab/cpsv#implements",
+			"@type":"http://purl.org/vocab/cpsv#FormalFramework",
+			"@container":"@set"
+		},
+		"aangenomen door":{
+			"@id":"http://data.europa.eu/eli/ontology#passed_by",
+			"@type":"http://data.vlaanderen.be/ns/besluit#Bestuursorgaan"
+		},
+		"volgt":{
+			"@id":"http://purl.org/vocab/cpsv#follows",
+			"@type":"http://purl.org/vocab/cpsv#Rule",
 			"@container":"@set"
 		},
 		"heeftParticiperende":{
@@ -37,37 +60,13 @@
 			"@id":"http://data.europa.eu/m8g/playsRole",
 			"@type":"http://data.europa.eu/m8g/Participation"
 		},
-		"implementeert":{
-			"@id":"http://purl.org/vocab/cpsv#implements",
-			"@type":"http://purl.org/vocab/cpsv#FormalFramework",
-			"@container":"@set"
-		},
 		"heeftVerantwoordelijke":{
 			"@id":"http://data.europa.eu/m8g/hasCompetentAuthority",
 			"@type":"http://data.europa.eu/m8g/PublicOrganisation"
 		},
-		"produceert":{
-			"@id":"http://purl.org/vocab/cpsv#produces",
-			"@type":"http://data.europa.eu/m8g/Output",
-			"@container":"@set"
-		},
 		"vereist":{
 			"@id":"http://purl.org/dc/terms/requires",
 			"@type":"http://purl.org/vocab/cpsv#PublicService",
-			"@container":"@set"
-		},
-		"aangenomen door":{
-			"@id":"http://data.europa.eu/eli/ontology#passed_by",
-			"@type":"http://data.vlaanderen.be/ns/besluit#Bestuursorgaan"
-		},
-		"wordtUitgevoerdDoor":{
-			"@id":"http://data.europa.eu/m8g/serviceProvider",
-			"@type":"http://purl.org/dc/terms/Agent",
-			"@container":"@set"
-		},
-		"volgt":{
-			"@id":"http://purl.org/vocab/cpsv#follows",
-			"@type":"http://purl.org/vocab/cpsv#Rule",
 			"@container":"@set"
 		},
 		"vereistAlsInput":{
@@ -79,18 +78,46 @@
 			"@id":"http://data.vlaanderen.be/ns/dienst#heeftStatus",
 			"@type":"http://data.vlaanderen.be/ns/subsidie#Status"
 		},
-		"realiseert":{
-			"@id":"http://data.europa.eu/eli/ontology#realizes",
-			"@type":"http://data.vlaanderen.be/ns/subsidie#Rechtsgrond Toekenning Subsidie"
+		"heeftRechtsgrond":{
+			"@id":"http://data.vlaanderen.be/ns/subsidie#heeftRechtsgrond",
+			"@type":"http://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie",
+			"@container":"@set"
 		},
 		"isGerelateerdMet":{
 			"@id":"http://purl.org/dc/terms/relation",
 			"@type":"http://purl.org/vocab/cpsv#PublicService",
 			"@container":"@set"
 		},
-		"heeftCriterium":{
-			"@id":"http://data.europa.eu/m8g/hasCriterion",
-			"@type":"http://data.europa.eu/m8g/CriterionRequirement",
+		"beschrijving":{
+			"@id":"http://purl.org/dc/terms/description",
+			"@type":""
+		},
+		"naam":{
+			"@id":"http://purl.org/dc/terms/title",
+			"@type":""
+		},
+		"onderwerp":{
+			"@id":"http://data.europa.eu/m8g/subject",
+			"@type":"",
+			"@container":"@set"
+		},
+		"status":{
+			"@id":"http://www.w3.org/ns/adms#status",
+			"@type":""
+		},
+		"taal":{
+			"@id":"http://data.europa.eu/eli/ontology#language",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
+			"@container":"@set"
+		},
+		"toepassingsgebied":{
+			"@id":"http://data.europa.eu/m8g/territorialApplication",
+			"@type":"",
+			"@container":"@set"
+		},
+		"type":{
+			"@id":"http://purl.org/dc/terms/type",
+			"@type":"",
 			"@container":"@set"
 		},
 		"administratieveEenheidNiveau1":{
@@ -185,22 +212,6 @@
 			"@id":"http://xmlns.com/foaf/0.1/page",
 			"@type":"http://www.w3.org/2001/XMLSchema#anyURI"
 		},
-		"type":{
-			"@id":"http://purl.org/dc/terms/type",
-			"@type":""
-		},
-		"citeeropschrift":{
-			"@id":"http://data.europa.eu/eli/ontology#title_short",
-			"@type":"http://www.w3.org/2001/XMLSchema#string"
-		},
-		"motivering":{
-			"@id":"http://data.vlaanderen.be/ns/besluit#motivering",
-			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-		},
-		"publicatiedatum":{
-			"@id":"http://data.europa.eu/eli/ontology#date_publication",
-			"@type":"http://www.w3.org/2001/XMLSchema#date"
-		},
 		"actie":{
 			"@id":"https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActie",
 			"@type":"http://www.w3.org/2001/XMLSchema#string"
@@ -214,15 +225,15 @@
 			"@type":"http://www.w3.org/2001/XMLSchema#date"
 		},
 		"statusDetail1":{
-			"@id":"https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusDetail1",
+			"@id":"http://data.vlaanderen.be/ns/transactie#statusdetail1",
 			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
 		"statusDetail2":{
-			"@id":"https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusDetail2",
+			"@id":"http://data.vlaanderen.be/ns/transactie#statusdetail2",
 			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
 		"statusEDRL":{
-			"@id":"https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusEDRL",
+			"@id":"http://data.vlaanderen.be/ns/transactie#statusedrl",
 			"@type":""
 		},
 		"statusVlaamsCode":{
@@ -261,33 +272,6 @@
 		"Agent.adres":{
 			"@id":"http://data.europa.eu/m8g/hasAddress",
 			"@type":"http://www.w3.org/ns/locn#Address"
-		},
-		"naam":{
-			"@id":"http://purl.org/dc/terms/title",
-			"@type":"http://www.w3.org/2001/XMLSchema#string"
-		},
-		"beschrijving":{
-			"@id":"http://purl.org/dc/terms/description",
-			"@type":""
-		},
-		"onderwerp":{
-			"@id":"http://data.europa.eu/m8g/subject",
-			"@type":"",
-			"@container":"@set"
-		},
-		"status":{
-			"@id":"http://www.w3.org/ns/adms#status",
-			"@type":""
-		},
-		"taal":{
-			"@id":"http://data.europa.eu/eli/ontology#language",
-			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
-			"@container":"@set"
-		},
-		"toepassingsgebied":{
-			"@id":"http://data.europa.eu/m8g/territorialApplication",
-			"@type":"",
-			"@container":"@set"
 		},
 		"alternatieveNaam":{
 			"@id":"http://www.w3.org/2004/02/skos/core#altLabel",
@@ -329,7 +313,7 @@
 		},
 		"rol":{
 			"@id":"http://data.europa.eu/m8g/role",
-			"@type":"",
+			"@type":"http://data.vlaanderen.be/ns/subsidie#ParticipatieRol",
 			"@container":"@set"
 		},
 		"Richtlijn.taal":{

@@ -1,0 +1,224 @@
+@prefix schema:  <http://schema.org/> .
+@prefix eli:     <http://data.europa.eu/eli/ontology#> .
+@prefix org:     <http://www.w3.org/ns/org#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix besluit:  <http://data.vlaanderen.be/ns/besluit#> .
+@prefix sat:     <http://data.europa.eu/stateaidtransparency/sat#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix eu:      <http://data.europa.eu/m8g/> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix person:  <http://www.w3.org/ns/person#> .
+@prefix rov:     <http://www.w3.org/ns/regorg#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix locn:    <http://www.w3.org/ns/locn#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix cpsv:    <http://purl.org/vocab/cpsv#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+
+<http://data.vlaanderen.be/ns/dienst>
+      a       owl:Ontology ;
+      rdfs:label "Public Service - Transaction"@en , "Dienst - Transactie"@nl ;
+      dcterms:issued "2017-12-05"^^xsd:date ;
+      dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
+      dcterms:title "Public Service - Transaction"@en , "Dienst - Transactie"@nl ;
+      vann:preferredNamespaceUri
+              "http://data.vlaanderen.be/ns/dienst" .
+
+<http://data.vlaanderen.be/ns/dienst#Status>
+      a       owl:Class ;
+      rdfs:comment "De Status die van toepassing is op de Publieke Dienstverlening op een bepaald tijdstip."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "Status"@nl .
+
+<http://data.vlaanderen.be/ns/dienst#heeftStatus>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Link tussen Publieke Dienstverlening en Status."@nl ;
+      rdfs:domain cpsv:PublicService ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "heeft status"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/dienst#Status> .
+
+<http://data.vlaanderen.be/ns/dienst#statusDetail1>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Dit is de (originele) Status-definitie of -vermelding zoals geregistreerd in de bron."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "status detail 1"@nl ;
+      rdfs:range xsd:string .
+
+<http://data.vlaanderen.be/ns/dienst#statusDetail2>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Interne status die kan worden meegegeven en die niet wordt getoond aan de burger of onderneming."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "status detail 2"@nl ;
+      rdfs:range xsd:string .
+
+<http://data.vlaanderen.be/ns/dienst#statusEDRL>
+      a       rdf:Property ;
+      rdfs:comment "De status volgens de Europese Dienstenrichtlijn"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "status EDRL"@nl .
+
+<http://data.vlaanderen.be/ns/dienst#statusdatum>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "De datum van de Status."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "statusdatum"@nl ;
+      rdfs:range xsd:date .
+
+<http://data.vlaanderen.be/ns/dienst#streefdatum>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "De streefdatum voor het beëindigen van de huidige status."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "streefdatum"@nl ;
+      rdfs:range xsd:date .
+
+dcterms:Agent
+      a       rdfs:Class .
+
+dcterms:description
+      a       rdf:Property ;
+      rdfs:label "beschrijving"@nl .
+
+dcterms:language
+      a       rdf:Property ;
+      rdfs:label "taal"@nl .
+
+dcterms:relation
+      a       rdf:Property ;
+      rdfs:label "is gerelateerd met"@nl .
+
+dcterms:title
+      a       rdf:Property ;
+      rdfs:label "titel"@nl , "Titel"@nl .
+
+dcterms:type
+      a       rdf:Property ;
+      rdfs:label "type"@nl .
+
+cpsv:PublicService
+      a       rdfs:Class ;
+      rdfs:label "Publieke Dienstverlening"@nl .
+
+cpsv:hasInput
+      a       rdf:Property ;
+      rdfs:label "heeft input"@nl .
+
+cpsv:produces
+      a       rdf:Property ;
+      rdfs:label "produceert"@nl .
+
+foaf:page
+      a       rdf:Property ;
+      rdfs:label "pagina"@nl .
+
+<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=DossierUpdateFrequentie>
+      a       rdf:Property ;
+      rdfs:label "updateFrequentie"@nl .
+
+<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=IsPubliek>
+      a       rdf:Property ;
+      rdfs:label "is publiek"@nl .
+
+<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=IsVertrouwelijk>
+      a       rdf:Property ;
+      rdfs:label "is vertrouwelijk"@nl .
+
+<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=MogelijkeVlaamseFases>
+      a       rdf:Property ;
+      rdfs:label "executieStatus"@nl .
+
+<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActie>
+      a       rdf:Property ;
+      rdfs:label "actie"@nl .
+
+<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActieNodig>
+      a       rdf:Property ;
+      rdfs:label "actie nodig"@nl .
+
+<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusVlaamsCode>
+      a       rdf:Property ;
+      rdfs:label "status Vlaamse code"@nl .
+
+<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusVlaamsFase>
+      a       rdf:Property ;
+      rdfs:label "status Vlaamse fase"@nl .
+
+<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StreefDatum>
+      a       rdf:Property ;
+      rdfs:label "streefdatum"@nl .
+
+<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=TypeDossier>
+      a       rdf:Property ;
+      rdfs:label "typeDossier"@nl .
+
+<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=WijzigingsDatum>
+      a       rdf:Property ;
+      rdfs:label "wijzigingsdatum"@nl .
+
+<https://schema.org/hoursAvailable>
+      a       rdf:Property ;
+      rdfs:label "uren beschikbaarheid"@nl .
+
+<https://schema.org/openingHours>
+      a       rdf:Property ;
+      rdfs:label "openingsuren"@nl .
+
+eu:Channel
+      a       rdfs:Class ;
+      rdfs:label "kanaal"@nl .
+
+eu:Cost
+      a       rdfs:Class ;
+      rdfs:label "Kost"@nl .
+
+eu:Output
+      a       rdfs:Class ;
+      rdfs:label "Output"@nl .
+
+eu:Participation
+      a       rdfs:Class ;
+      rdfs:label "Participatie"@nl .
+
+eu:currency
+      a       rdf:Property ;
+      rdfs:label "valuta"@nl .
+
+eu:hasChannel
+      a       rdf:Property ;
+      rdfs:label "heeft kanaal"@nl .
+
+eu:Evidence
+      a       rdfs:Class ;
+      rdfs:label "Bewijs"@nl .
+
+eu:hasContactPoint
+      a       rdf:Property ;
+      rdfs:label "heeft contactpunt"@nl .
+
+eu:hasCost
+      a       rdf:Property ;
+      rdfs:label "heeft kost"@nl .
+
+eu:hasParticipation
+      a       rdf:Property ;
+      rdfs:label "heeft participatie"@nl .
+
+eu:role
+      a       rdf:Property ;
+      rdfs:label "rol"@nl .
+
+eu:serviceProvider
+      a       rdf:Property ;
+      rdfs:label "dienstverlener"@nl .
+
+eu:value
+      a       rdf:Property ;
+      rdfs:label "waarde"@nl .

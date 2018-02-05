@@ -44,9 +44,6 @@ eu:Participation a rdfs:Class ;
 eu:PublicOrganisation a rdfs:Class ;
     rdfs:label "Publieke Organisatie"@nl .
 
-besluit:Besluit a rdfs:Class ;
-    rdfs:label "Besluit"@nl .
-
 besluit:Bestuursorgaan a rdfs:Class ;
     rdfs:label "Bestuursorgaan"@nl .
 
@@ -68,9 +65,6 @@ skos:Concept a rdfs:Class .
 eli:date_no_longer_in_force a rdf:Property ;
     rdfs:label "buitenwerkingstreding"@nl .
 
-eli:date_publication a rdf:Property ;
-    rdfs:label "publicatiedatum"@nl .
-
 eli:first_date_entry_in_force a rdf:Property ;
     rdfs:label "inwerkingstreding"@nl .
 
@@ -78,12 +72,6 @@ eli:language a rdf:Property .
 
 eli:passed_by a rdf:Property ;
     rdfs:label "aangenomen door"@nl .
-
-eli:realizes a rdf:Property ;
-    rdfs:label "realiseert"@nl .
-
-eli:title_short a rdf:Property ;
-    rdfs:label "citeeropschrift"@nl .
 
 eli:type_document a rdf:Property ;
     rdfs:label "type document"@nl .
@@ -111,9 +99,6 @@ sat:aidMeasure a rdf:Property ;
 
 sat:objective a rdf:Property ;
     rdfs:label "doelstelling"@nl .
-
-besluit:motivering a rdf:Property ;
-    rdfs:label "motivering"@nl .
 
 <http://data.vlaanderen.be/ns/dienst#heeftStatus> a rdf:Property ;
     rdfs:label "heeft status"@nl .
@@ -146,6 +131,7 @@ besluit:motivering a rdf:Property ;
 <http://data.vlaanderen.be/ns/subsidie#bedrag> a rdf:Property ;
     rdfs:label "bedrag"@nl ;
     rdfs:comment "Een bedrag in de context van het toekennen en uitkeren van een subsidiemaatregel."@nl ;
+    rdfs:domain rdfs:Resource ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/subsidie> .
 
 <http://data.vlaanderen.be/ns/subsidie#heeftAuthentiekeBron> a owl:DatatypeProperty ;
@@ -175,6 +161,15 @@ besluit:motivering a rdf:Property ;
     rdfs:domain <http://data.vlaanderen.be/ns/subsidie#Status> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/subsidie> ;
     rdfs:range xsd:date .
+
+<http://data.vlaanderen.be/ns/transactie#statusdetail1> a rdf:Property ;
+    rdfs:label "status detail 1"@nl .
+
+<http://data.vlaanderen.be/ns/transactie#statusdetail2> a rdf:Property ;
+    rdfs:label "status detail 2"@nl .
+
+<http://data.vlaanderen.be/ns/transactie#statusedrl> a rdf:Property ;
+    rdfs:label "status EDRL"@nl .
 
 dcterms:date a rdf:Property ;
     rdfs:label "datum"@nl .
@@ -237,15 +232,6 @@ foaf:page a rdf:Property ;
 <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActieNodig> a rdf:Property ;
     rdfs:label "actie nodig"@nl .
 
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusDetail1> a rdf:Property ;
-    rdfs:label "status detail 1"@nl .
-
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusDetail2> a rdf:Property ;
-    rdfs:label "status detail 2"@nl .
-
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusEDRL> a rdf:Property ;
-    rdfs:label "status detail 1"@nl .
-
 <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusVlaamsCode> a rdf:Property ;
     rdfs:label "status Vlaamse code"@nl .
 
@@ -281,20 +267,11 @@ foaf:page a rdf:Property ;
     dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
     dcterms:mediator [ foaf:homepage <https://data.vlaanderen.be> ;
             foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
-            foaf:name "Data Vlaanderen" ],
-        [ foaf:homepage <https://data.vlaanderen.be> ;
-            foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
             foaf:name "Data Vlaanderen" ] ;
     dcterms:title "Subsidy"@en,
         "Subsidie"@nl ;
     vann:preferredNamespaceUri "http://data.vlaanderen.be/ns/subsidie" ;
     rec:editor [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
-                    foaf:name "PwC" ] ;
-            foaf:firstName "Michiel" ;
-            foaf:lastName "De Keyzer" ;
-            foaf:mbox <mailto:michiel.de.keyzer@pwc.com> ],
-        [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
                     foaf:name "PwC" ] ;
             foaf:firstName "Carmen" ;
@@ -309,28 +286,10 @@ foaf:page a rdf:Property ;
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
                     foaf:name "PwC" ] ;
-            foaf:firstName "Carmen" ;
-            foaf:lastName "Vandeloo" ;
-            foaf:mbox <mailto:carmen.vandeloo@pwc.com> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
-                    foaf:name "PwC" ] ;
             foaf:firstName "Michiel" ;
             foaf:lastName "De Keyzer" ;
-            foaf:mbox <mailto:michiel.de.keyzer@pwc.com> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
-                    foaf:name "PwC" ] ;
-            foaf:firstName "Jens" ;
-            foaf:lastName "Scheerlinck" ;
-            foaf:mbox <mailto:jens.scheerlinck@pwc.com> ] ;
+            foaf:mbox <mailto:michiel.de.keyzer@pwc.com> ] ;
     foaf:maker [ a person:Person ;
-            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Sarah" ;
-            foaf:lastName "Spiessens" ;
-            foaf:mbox <mailto:sarah.spiessens@bz.vlaanderen.be> ],
-        [ a person:Person ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
                     foaf:name "Informatie Vlaanderen" ] ;
             foaf:firstName "Dorien" ;
@@ -341,11 +300,5 @@ foaf:page a rdf:Property ;
                     foaf:name "Informatie Vlaanderen" ] ;
             foaf:firstName "Sarah" ;
             foaf:lastName "Spiessens" ;
-            foaf:mbox <mailto:sarah.spiessens@bz.vlaanderen.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Dorien" ;
-            foaf:lastName "Bauwens" ;
-            foaf:mbox <mailto:dorien.bauwens@bz.vlaanderen.be> ] .
+            foaf:mbox <mailto:sarah.spiessens@bz.vlaanderen.be> ] .
 

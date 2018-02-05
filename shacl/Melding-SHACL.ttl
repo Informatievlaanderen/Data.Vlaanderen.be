@@ -171,10 +171,10 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/melding#Eigenschap> ;
 	sh:property [
-		sh:name "codelijst" ;
-		sh:description "Associeert de Eigenschap met mogelijk codelijst waarden die voor de Eigenschap gebruikt kunnen worden." ;
-		sh:path <http://data.vlaanderen.be/ns/melding#codelijst> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:name "datatype" ;
+		sh:description "Het datatype voor de eigenschap." ;
+		sh:path <http://data.vlaanderen.be/ns/melding#datatype> ;
+		sh:class <http://www.w3.org/2000/01/rdf-schema#label> ;
 	] ;
 	sh:property [
 		sh:name "werdToegewezenAan" ;
@@ -185,10 +185,10 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "datatype" ;
-		sh:description "Het datatype voor de eigenschap." ;
-		sh:path <http://data.vlaanderen.be/ns/melding#datatype> ;
-		sh:class <http://www.w3.org/2000/01/rdf-schema#label> ;
+		sh:name "codelijst" ;
+		sh:description "Associeert de Eigenschap met mogelijk codelijst waarden die voor de Eigenschap gebruikt kunnen worden." ;
+		sh:path <http://data.vlaanderen.be/ns/melding#codelijst> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 	] ;
 	sh:property [
 		sh:name "label" ;
@@ -275,19 +275,18 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/melding#Meldingsobject> ;
 	sh:property [
-		sh:name "heeftBron" ;
-		sh:description "De bron (Dataset) waar het Meldingsobject werd uit afgeleid." ;
-		sh:path <http://www.w3.org/ns/oa#hasSource> ;
-		sh:class <http://purl.org/dc/dcmitype/Dataset> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
 		sh:name "heeftToestand" ;
 		sh:description "De relatie tussen het Meldingsobject en een TijdToestand." ;
 		sh:path <http://www.w3.org/ns/oa#hasState> ;
 		sh:class <http://www.w3.org/ns/oa#TimeState> ;
 		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "gerelateerdeBody" ;
+		sh:description "De body van de Melding die betrekking heeft op het Meldingsobject." ;
+		sh:path <http://data.vlaanderen.be/ns/melding#gerelateerdeBody> ;
+		sh:class <http://data.vlaanderen.be/ns/melding#MeldingBody> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -305,10 +304,11 @@
 		sh:class <http://data.vlaanderen.be/ns/melding#Status> ;
 	] ;
 	sh:property [
-		sh:name "gerelateerdeBody" ;
-		sh:description "De body van de Melding die betrekking heeft op het Meldingsobject." ;
-		sh:path <http://data.vlaanderen.be/ns/melding#gerelateerdeBody> ;
-		sh:class <http://data.vlaanderen.be/ns/melding#MeldingBody> ;
+		sh:name "heeftBron" ;
+		sh:description "De bron (Dataset) waar het Meldingsobject werd uit afgeleid." ;
+		sh:path <http://www.w3.org/ns/oa#hasSource> ;
+		sh:class <http://purl.org/dc/dcmitype/Dataset> ;
+		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -330,16 +330,16 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/melding#Melding> ;
 	sh:property [
-		sh:name "heeftParticiperende" ;
-		sh:description "De relatie tussen een Melding en een Agent die een rol speelt in de Melding." ;
-		sh:path <http://data.europa.eu/m8g/hasParticipation> ;
-		sh:class <http://data.europa.eu/m8g/Participation> ;
-	] ;
-	sh:property [
 		sh:name "heeftBody" ;
 		sh:description "Het object van deze associatie is een resource die de body van de Melding beschrijft (MeldingBody)." ;
 		sh:path <http://www.w3.org/ns/oa#hasBody> ;
 		sh:class <http://data.vlaanderen.be/ns/melding#MeldingBody> ;
+	] ;
+	sh:property [
+		sh:name "heeftDoelwit" ;
+		sh:description "De relatie tussen de Melding en het doelwit, het Meldingsobject waarop de melding slaat." ;
+		sh:path <http://www.w3.org/ns/oa#hasTarget> ;
+		sh:class <http://data.vlaanderen.be/ns/melding#Meldingsobject> ;
 	] ;
 	sh:property [
 		sh:name "heeftStatus" ;
@@ -349,10 +349,10 @@
 		sh:minCount 1 ;
 	] ;
 	sh:property [
-		sh:name "heeftDoelwit" ;
-		sh:description "De relatie tussen de Melding en het doelwit, het Meldingsobject waarop de melding slaat." ;
-		sh:path <http://www.w3.org/ns/oa#hasTarget> ;
-		sh:class <http://data.vlaanderen.be/ns/melding#Meldingsobject> ;
+		sh:name "heeftParticiperende" ;
+		sh:description "De relatie tussen een Melding en een Agent die een rol speelt in de Melding." ;
+		sh:path <http://data.europa.eu/m8g/hasParticipation> ;
+		sh:class <http://data.europa.eu/m8g/Participation> ;
 	] ;
 	sh:property [
 		sh:name "meldingsapplicatie" ;

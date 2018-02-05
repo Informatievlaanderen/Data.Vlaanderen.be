@@ -1,0 +1,156 @@
+@prefix schema:  <http://schema.org/> .
+@prefix eli:     <http://data.europa.eu/eli/ontology#> .
+@prefix org:     <http://www.w3.org/ns/org#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix besluit:  <http://data.vlaanderen.be/ns/besluit#> .
+@prefix sat:     <http://data.europa.eu/stateaidtransparency/sat#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix eu:      <http://data.europa.eu/m8g/> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix person:  <http://www.w3.org/ns/person#> .
+@prefix rov:     <http://www.w3.org/ns/regorg#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix locn:    <http://www.w3.org/ns/locn#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix cpsv:    <http://purl.org/vocab/cpsv#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+
+eu:PublicOrganisation
+      a       rdfs:Class ;
+      rdfs:label "Publieke Organisatie"@nl .
+
+<http://data.vlaanderen.be/ns/notificatie>
+      a       owl:Ontology ;
+      rdfs:label "Notification"@en , "Notificatie"@nl ;
+      dcterms:issued "2017-12-05"^^xsd:date ;
+      dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
+      dcterms:title "Notification"@en , "Notificatie"@nl ;
+      vann:preferredNamespaceUri
+              "http://data.vlaanderen.be/ns/notificatie" .
+
+<http://data.vlaanderen.be/ns/dienst#isVerantwoordelijkVoor>
+      a       rdf:Property ;
+      rdfs:label "is verantwoordelijk voor"@nl .
+
+<http://data.vlaanderen.be/ns/notificatie#Notificatiebericht>
+      a       owl:Class , rdf:Property ;
+      rdfs:comment "Een Notificatiebericht van een afzender naar een bestemmeling."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
+      rdfs:label "Notificatiebericht"@nl .
+
+<http://data.vlaanderen.be/ns/notificatie#SleutelWaardePaar>
+      a       owl:Class ;
+      rdfs:comment "Een open data structuur dat uitbreiding toelaat aan de hand van een sleutel en een waarde."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
+      rdfs:label "Sleutel/Waarde Paar"@nl .
+
+<http://data.vlaanderen.be/ns/notificatie#Status>
+      a       owl:Class ;
+      rdfs:comment "De Status van het Notificatiebericht voor een bepaalde bestemmeling."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
+      rdfs:label "Status"@nl .
+
+<http://data.vlaanderen.be/ns/notificatie#bestemmeling>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De status van een Notificiatiebericht per bestemmeling."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/notificatie#Notificatiebericht> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
+      rdfs:label "status"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/notificatie#Status> .
+
+<http://data.vlaanderen.be/ns/notificatie#inhoud>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De inhoud van een Notificatiebericht."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/notificatie#Notificatiebericht> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
+      rdfs:label "inhoud"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/notificatie#SleutelWaardePaar> .
+
+<http://data.vlaanderen.be/ns/notificatie#notificatieStatus>
+      a       rdf:Property ;
+      rdfs:comment "De status van de notificatie voor een bepaalde bestemmeling."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/notificatie#Status> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
+      rdfs:label "notificatie status"@nl .
+
+<http://data.vlaanderen.be/ns/notificatie#notificatiekanaal>
+      a       rdf:Property ;
+      rdfs:comment "Het notificatiekanaal duidt het technisch medium aan waarlangs het Notificatiebericht wordt verzonden."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/notificatie#Status> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
+      rdfs:label "notificatiekanaal"@nl .
+
+<http://purl.org/dc/elements/1.1/title>
+      a       rdf:Property ;
+      rdfs:label "titel"@nl .
+
+dcterms:Agent
+      a       rdfs:Class , rdf:Property ;
+      rdfs:label "agent"@nl , "Agent"@nl .
+
+dcterms:created
+      a       rdf:Property ;
+      rdfs:label "datum creatie"@nl .
+
+dcterms:relation
+      a       rdf:Property ;
+      rdfs:label "is gerelateerd met"@nl .
+
+dcterms:source
+      a       rdf:Property ;
+      rdfs:label "bron"@nl .
+
+dcterms:type
+      a       rdf:Property ;
+      rdfs:label "type"@nl .
+
+schema:Brand
+      a       rdfs:Class ;
+      rdfs:label "Merk"@nl .
+
+schema:brand
+      a       rdf:Property ;
+      rdfs:label "heeft merk"@nl .
+
+schema:contactPoint
+      a       rdf:Property ;
+      rdfs:label "contactinfo"@nl .
+
+schema:dateRead
+      a       rdf:Property ;
+      rdfs:label "datum gelezen"@nl .
+
+schema:dateSent
+      a       rdf:Property ;
+      rdfs:label "datum verzending"@nl .
+
+schema:expires
+      a       rdf:Property ;
+      rdfs:label "vervalt"@nl .
+
+schema:name
+      a       rdf:Property ;
+      rdfs:label "naam"@nl .
+
+schema:sender
+      a       rdf:Property ;
+      rdfs:label "afzender"@nl .
+
+schema:url
+      a       rdf:Property ;
+      rdfs:label "url"@nl .
+
+rdf:value
+      a       rdf:Property ;
+      rdfs:label "waarde"@nl .
+
+rdfs:label
+      a       rdf:Property ;
+      rdfs:label "label"@nl .
+
+skos:prefLabel
+      a       rdf:Property ;
+      rdfs:label "voorkeursnaam"@nl .
