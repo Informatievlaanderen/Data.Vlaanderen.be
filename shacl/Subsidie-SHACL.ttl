@@ -608,22 +608,10 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://purl.org/vocab/cpsv#PublicService> ;
 	sh:property [
-		sh:name "wordtUitgevoerdDoor" ;
-		sh:description "Agent die de Publieke Dienstverlening verstrekt." ;
-		sh:path <http://data.europa.eu/m8g/serviceProvider> ;
-		sh:class <http://purl.org/dc/terms/Agent> ;
-	] ;
-	sh:property [
-		sh:name "heeftCriterium" ;
-		sh:description "Criterium waaraan de gebruiker moet voldoen om recht te hebben op een dienstverlening of om een dienstverlening te mogen gebruiken." ;
-		sh:path <http://data.europa.eu/m8g/hasCriterion> ;
-		sh:class <http://data.europa.eu/m8g/CriterionRequirement> ;
-	] ;
-	sh:property [
-		sh:name "aangebodenBinnen" ;
-		sh:description "Het formeel kader (bv de wetgeving) waar de publieke dienstverlening betrekking op heeft of waarbinnen ze werkt of waaraan ze haar wettelijke basis ontleent." ;
-		sh:path <http://data.europa.eu/m8g/hasFormalFramework> ;
-		sh:class <http://purl.org/vocab/cpsv#FormalFramework> ;
+		sh:name "heeftStatus" ;
+		sh:description "Link tussen Publieke Dienstverlening en Status." ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#heeftStatus> ;
+		sh:class <http://data.vlaanderen.be/ns/subsidie#Status> ;
 	] ;
 	sh:property [
 		sh:name "produceert" ;
@@ -632,10 +620,28 @@
 		sh:class <http://data.europa.eu/m8g/Output> ;
 	] ;
 	sh:property [
+		sh:name "vereistAlsInput" ;
+		sh:description "Bewijsstuk dat moeten voorgelegd worden om de Publieke Dienstverlening te kunnen gebruiken." ;
+		sh:path <http://purl.org/vocab/cpsv#hasInput> ;
+		sh:class <http://data.europa.eu/m8g/Evidence> ;
+	] ;
+	sh:property [
 		sh:name "volgt" ;
 		sh:description "De Richtlijn die de werking van de Publieke Dienstverlening stuurt." ;
 		sh:path <http://purl.org/vocab/cpsv#follows> ;
 		sh:class <http://purl.org/vocab/cpsv#Rule> ;
+	] ;
+	sh:property [
+		sh:name "aangebodenBinnen" ;
+		sh:description "Het formeel kader (bv de wetgeving) waar de publieke dienstverlening betrekking op heeft of waarbinnen ze werkt of waaraan ze haar wettelijke basis ontleent." ;
+		sh:path <http://data.europa.eu/m8g/hasFormalFramework> ;
+		sh:class <http://purl.org/vocab/cpsv#FormalFramework> ;
+	] ;
+	sh:property [
+		sh:name "heeftRechtsgrond" ;
+		sh:description "De rechtsgrond op basis waarvan de subsidiemaatregel werd toegekend." ;
+		sh:path <http://data.vlaanderen.be/ns/subsidie#heeftRechtsgrond> ;
+		sh:class <http://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie> ;
 	] ;
 	sh:property [
 		sh:name "heeftParticiperende" ;
@@ -652,34 +658,16 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "vereist" ;
-		sh:description "Publieke Dienstverlening die voorafgaandelijk moet worden uitgevoerd om van de Publieke Dienstverlening gebruik te kunnen maken." ;
-		sh:path <http://purl.org/dc/terms/requires> ;
-		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
+		sh:name "wordtUitgevoerdDoor" ;
+		sh:description "Agent die de Publieke Dienstverlening verstrekt." ;
+		sh:path <http://data.europa.eu/m8g/serviceProvider> ;
+		sh:class <http://purl.org/dc/terms/Agent> ;
 	] ;
 	sh:property [
-		sh:name "vereistAlsInput" ;
-		sh:description "Bewijsstuk dat moeten voorgelegd worden om de Publieke Dienstverlening te kunnen gebruiken." ;
-		sh:path <http://purl.org/vocab/cpsv#hasInput> ;
-		sh:class <http://data.europa.eu/m8g/Evidence> ;
-	] ;
-	sh:property [
-		sh:name "heeftStatus" ;
-		sh:description "Link tussen Publieke Dienstverlening en Status." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#heeftStatus> ;
-		sh:class <http://data.vlaanderen.be/ns/subsidie#Status> ;
-	] ;
-	sh:property [
-		sh:name "heeftRechtsgrond" ;
-		sh:description "De rechtsgrond op basis waarvan de subsidiemaatregel werd toegekend." ;
-		sh:path <http://data.vlaanderen.be/ns/subsidie#heeftRechtsgrond> ;
-		sh:class <http://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie> ;
-	] ;
-	sh:property [
-		sh:name "isGerelateerdMet" ;
-		sh:description "Andere Publieke Dienstverlening waarmee de Publieke Dienstverlening gerelateerd is." ;
-		sh:path <http://purl.org/dc/terms/relation> ;
-		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
+		sh:name "heeftCriterium" ;
+		sh:description "Criterium waaraan de gebruiker moet voldoen om recht te hebben op een dienstverlening of om een dienstverlening te mogen gebruiken." ;
+		sh:path <http://data.europa.eu/m8g/hasCriterion> ;
+		sh:class <http://data.europa.eu/m8g/CriterionRequirement> ;
 	] ;
 	sh:property [
 		sh:name "doelstelling" ;

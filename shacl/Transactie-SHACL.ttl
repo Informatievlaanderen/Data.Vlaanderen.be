@@ -226,16 +226,16 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "statusDetail1" ;
+		sh:name "statusExtern" ;
 		sh:description "Dit is de (originele) Status-definitie of -vermelding zoals geregistreerd in de bron." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#statusDetail1> ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#statusExtern> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "statusDetail2" ;
+		sh:name "statusIntern" ;
 		sh:description "Interne status die kan worden meegegeven en die niet wordt getoond aan de burger of onderneming." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#statusDetail2> ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#statusIntern> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
@@ -366,34 +366,10 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://purl.org/vocab/cpsv#PublicService> ;
 	sh:property [
-		sh:name "vereistAlsInput" ;
-		sh:description "Bewijsstuk dat moeten voorgelegd worden om de Publieke Dienstverlening te kunnen gebruiken." ;
-		sh:path <http://purl.org/vocab/cpsv#hasInput> ;
-		sh:class <http://data.europa.eu/m8g/Evidence> ;
-	] ;
-	sh:property [
-		sh:name "produceert" ;
-		sh:description "Het werkelijke resultaat van de uitvoering vd Publieke Dienstverlening." ;
-		sh:path <http://purl.org/vocab/cpsv#produces> ;
-		sh:class <http://data.europa.eu/m8g/Output> ;
-	] ;
-	sh:property [
 		sh:name "heeftParticiperende" ;
 		sh:description "Participatie (van een agent) aan de publieke dienstverlening." ;
 		sh:path <http://data.europa.eu/m8g/hasParticipation> ;
 		sh:class <http://data.europa.eu/m8g/Participation> ;
-	] ;
-	sh:property [
-		sh:name "teConsumerenVia" ;
-		sh:description "Kanaal waarlangs een Agent interageert met een Publieke Dienstverlening." ;
-		sh:path <http://data.europa.eu/m8g/hasChannel> ;
-		sh:class <http://data.europa.eu/m8g/Channel> ;
-	] ;
-	sh:property [
-		sh:name "heeftStatus" ;
-		sh:description "Link tussen Publieke Dienstverlening en Status." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#heeftStatus> ;
-		sh:class <http://data.vlaanderen.be/ns/dienst#Status> ;
 	] ;
 	sh:property [
 		sh:name "wordtUitgevoerdDoor" ;
@@ -402,10 +378,34 @@
 		sh:class <http://purl.org/dc/terms/Agent> ;
 	] ;
 	sh:property [
+		sh:name "vereistAlsInput" ;
+		sh:description "Bewijsstuk dat moeten voorgelegd worden om de Publieke Dienstverlening te kunnen gebruiken." ;
+		sh:path <http://purl.org/vocab/cpsv#hasInput> ;
+		sh:class <http://data.europa.eu/m8g/Evidence> ;
+	] ;
+	sh:property [
 		sh:name "isGerelateerdMet" ;
 		sh:description "Andere Publieke Dienstverlening waarmee de Publieke Dienstverlening gerelateerd is." ;
 		sh:path <http://purl.org/dc/terms/relation> ;
 		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
+	] ;
+	sh:property [
+		sh:name "produceert" ;
+		sh:description "Het werkelijke resultaat van de uitvoering vd Publieke Dienstverlening." ;
+		sh:path <http://purl.org/vocab/cpsv#produces> ;
+		sh:class <http://data.europa.eu/m8g/Output> ;
+	] ;
+	sh:property [
+		sh:name "heeftStatus" ;
+		sh:description "Link tussen Publieke Dienstverlening en Status." ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#heeftStatus> ;
+		sh:class <http://data.vlaanderen.be/ns/dienst#Status> ;
+	] ;
+	sh:property [
+		sh:name "teConsumerenVia" ;
+		sh:description "Kanaal waarlangs een Agent interageert met een Publieke Dienstverlening." ;
+		sh:path <http://data.europa.eu/m8g/hasChannel> ;
+		sh:class <http://data.europa.eu/m8g/Channel> ;
 	] ;
 	sh:property [
 		sh:name "beschrijving" ;
@@ -425,20 +425,6 @@
 		sh:name "executieStatus" ;
 		sh:description "De mogelijke Vlaamse Fases die door deze Publieke DIenstverlening kunnen aangenomen worden." ;
 		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=MogelijkeVlaamseFases> ;
-	] ;
-	sh:property [
-		sh:name "isPubliek" ;
-		sh:description "Aanduiding of de informatie met betrekking tot de dienstverlening publiek is." ;
-		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=IsPubliek> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "isVertrouwelijk" ;
-		sh:description "Aanduiding of de informatie met betrekking tot de dienstverlening vertruwelijk is." ;
-		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=IsVertrouwelijk> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
-		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "kost" ;
