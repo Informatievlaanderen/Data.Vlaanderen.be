@@ -1,0 +1,192 @@
+@prefix schema:  <http://schema.org/> .
+@prefix org:     <http://www.w3.org/ns/org#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix eu:      <http://data.europa.eu/m8g/> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix person:  <http://www.w3.org/ns/person#> .
+@prefix rov:     <http://www.w3.org/ns/regorg#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix locn:    <http://www.w3.org/ns/locn#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix cpsv:    <http://purl.org/vocab/cpsv#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+
+<http://data.vlaanderen.be/ns/gebouw>
+      a       owl:Ontology ;
+      rdfs:label "Building"@en , "Gebouw"@nl ;
+      dcterms:issued "TBD"^^xsd:date ;
+      dcterms:title "Building"@en , "Gebouw"@nl ;
+      vann:preferredNamespaceUri
+              "http://data.vlaanderen.be/ns/gebouw" .
+
+<http://data.vlaanderen.be/ns/gebouw#Gebouw>
+      a       owl:Class ;
+      rdfs:comment "Een gesloten en/of overdekt, bovengronds of ondergronds bouwwerk, dat dient of bestemd is, ofwel om mensen, dieren en voorwerpen onder te brengen, ofwel om economische goederen te vervaardigen of diensten te verstrekken. Een gebouw verwijst naar gelijk welke structuur die op blijvende wijze op een terrein opgetrokken of gebouwd wordt."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "Gebouw"@nl ;
+      rdfs:subClassOf rdfs:Resource .
+
+<http://data.vlaanderen.be/ns/gebouw#Gebouw.adres>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Adres van het gebouw."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#Gebouw> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "adres"@nl ;
+      rdfs:range locn:Address .
+
+<http://data.vlaanderen.be/ns/gebouw#Gebouw.geometrie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "2D geometrische voorstelling van het gebouw."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#Gebouw> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "geometrie"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie> .
+
+<http://data.vlaanderen.be/ns/gebouw#Gebouweenheid>
+      a       owl:Class ;
+      rdfs:comment "De kleinste eenheid binnen een gebouw die geschikt is voor woon-, bedrijfsmatige, of recreatieve doeleinden en die ontsloten wordt via een eigen afsluitbare toegang vanaf de openbare weg, een erf of een gedeelde circulatieruimte. Een gebouweenheid is in functioneel opzicht zelfstandig. Daarnaast kan een gebouweenheid ook een gemeenschappelijk deel zijn."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "Gebouweenheid"@nl ;
+      rdfs:subClassOf rdfs:Resource , <http://data.vlaanderen.be/ns/adres#AdresseerbaarObject> .
+
+<http://data.vlaanderen.be/ns/gebouw#Gebouweenheid.adres>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Adres vd gebouweenheid."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#Gebouweenheid> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "adres"@nl ;
+      rdfs:range locn:Address .
+
+<http://data.vlaanderen.be/ns/gebouw#Gebouweenheid.geometrie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "2D geometrische voorstelling van de gebouweenheid."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#Gebouweenheid> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "geometrie"@nl ;
+      rdfs:range locn:Geometry .
+
+<http://data.vlaanderen.be/ns/gebouw#aantalVerdiepingen>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Totaal van het aantal boven- en ondergrondse gebouwlagen, bekeken over alle gebouwdelen heen."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#Gebouw> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "aantal verdiepingen"@nl ;
+      rdfs:range xsd:integer .
+
+<http://data.vlaanderen.be/ns/gebouw#bestaatUit>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De percelen waarmee het gebouw officieel geassocieerd is."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#Gebouw> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "bestaat uit"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/gebouw#Gebouweenheid> .
+
+<http://data.vlaanderen.be/ns/gebouw#bouwjaar>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Datum waarop het gebouw werd voltooid."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#Gebouw> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "bouwjaar"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum> .
+
+<http://data.vlaanderen.be/ns/gebouw#default>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Geometrie die moet worden gebruikt bv bij voorstelling op kaart."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "default"@nl ;
+      rdfs:range xsd:boolean .
+
+<http://data.vlaanderen.be/ns/gebouw#functie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Functie waarvoor de gebouweenheid in de realiteit (zoals vastgesteld op het terrein) gebruikt wordt."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#Gebouweenheid> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "functie"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/gebouw#gebouweenheidstatus>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Fase van de levensloop waarin de gebouweenheid zich bevindt."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#Gebouweenheid> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "gebouweenheidstatus"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/gebouw#gebouwnaam>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Naam van het gebouw."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#Gebouw> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "gebouwnaam"@nl ;
+      rdfs:range rdf:langString .
+
+<http://data.vlaanderen.be/ns/gebouw#gebouwstatus>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Fase van de levensloop waarin het gebouw zich bevindt."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#Gebouw> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "gebouwstatus"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/gebouw#geometrie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "2D geometrische voorstelling van het gebouw."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "geometrie"@nl ;
+      rdfs:range <http://www.opengis.net/ont/sf#Polygon> .
+
+<http://data.vlaanderen.be/ns/gebouw#laatsteRenovatie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Datum waarop het gebouw laatst gerenoveerd werd."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#Gebouw> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "laatste renovatie"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum> .
+
+<http://data.vlaanderen.be/ns/gebouw#ligtOp>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De gebouweenheden die tot het gebouw behoren."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#Gebouw> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "ligt op"@nl ;
+      rdfs:range <http://fixme.com#Perceel> .
+
+<http://data.vlaanderen.be/ns/gebouw#locatieAanduiding>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Alfanumerieke code die een adreslocator uniek identificeert binnen de straat, administratieve eenheid etc."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#Gebouweenheid> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "locatie-aanduiding"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/adres#Locatieaanduiding> .
+
+<http://data.vlaanderen.be/ns/gebouw#methode>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Beschrijving van de manier waarop de geometrie aangemaakt werd."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "methode"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/gebouw#specificatie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Deel van het gebouw dat door de xy-coördinaten wordt voorgesteld."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "specificatie"@nl ;
+      rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie>
+      a       owl:Class ;
+      rdfs:comment "Geometrie van het gebouw en metadata over welk deel van het gebouw door de geometrie wordt voorgesteld en hoe deze werd bepaald."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/gebouw> ;
+      rdfs:label "2D Gebouwgeometrie"@nl .
+
+skos:Concept
+      a       rdfs:Class ;
+      rdfs:comment "Waarden die het huidig gebruik weergeven."@nl , "Waarden die de status van een constructie weergeven."@nl .
