@@ -1,0 +1,44 @@
+@prefix ns0: <http://data.vlaanderen.be/ns/melding#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://njh.me/led>
+  a <http://purl.org/dc/dcmitype/Dataset> ;
+  ns0:attribuut <http://data.vlaanderen.be/id/eigenschap/led/BEWIJS_REF_LEV>, <http://data.vlaanderen.be/id/eigenschap/led/OMSCHR_BEWIJS>, <http://data.vlaanderen.be/id/eigenschap/led/UITREIKINGSDATUM>, <http://data.vlaanderen.be/id/eigenschap/led/OMSCHR_STUDIERICHTING>, <http://data.vlaanderen.be/id/eigenschap/led/INSTELLINGSNAAM> ;
+  dc:description "In de Leer- en ervaringsbewijzendatabank (LED) worden diploma's, certificaten, ervaringsbewijzen, getuigschriften ... geregistreerd die behaald zijn. Zodra Vlaamse scholen, instellingen... diploma's, getuigschriften of bewijzen uitreiken, worden ze automatisch opgenomen in de Leer- en ervaringsbewijzendatabank."^^rdfs:Literal .
+
+<http://data.vlaanderen.be/id/eigenschap/led/BEWIJS_REF_LEV>
+  a ns0:Eigenschap ;
+  rdfs:label "Referentie leverancier"^^rdfs:Literal ;
+  prov:wasAttributedTo <https://wegwijs.vlaanderen.be/#/organisations/5c63f9ff-177d-4f2b-9922-033745d81b6a> .
+
+<http://data.vlaanderen.be/id/eigenschap/led/OMSCHR_BEWIJS>
+  a ns0:Eigenschap ;
+  prov:wasAttributedTo <https://wegwijs.vlaanderen.be/#/organisations/5c63f9ff-177d-4f2b-9922-033745d81b6A> .
+
+<http://data.vlaanderen.be/id/eigenschap/led/UITREIKINGSDATUM>
+  a ns0:Eigenschap ;
+  rdfs:label "Uitreikingsdatum"^^rdfs:Literal ;
+  prov:wasAttributedTo <https://wegwijs.vlaanderen.be/#/organisations/5c63f9ff-177d-4f2b-9922-033745d81b6a> .
+
+<http://data.vlaanderen.be/id/eigenschap/led/OMSCHR_STUDIERICHTING>
+  a ns0:Eigenschap ;
+  rdfs:label "Afstudeerrichting"^^rdfs:Literal ;
+  prov:wasAttributedTo <https://wegwijs.vlaanderen.be/#/organisations/5c63f9ff-177d-4f2b-9922-033745d81b6a> .
+
+<http://data.vlaanderen.be/id/eigenschap/led/INSTELLINGSNAAM>
+  a ns0:Eigenschap ;
+  ns0:codelijst <http://example.org/A>, <http://example.org/B>, <http://example.org/C> ;
+  rdfs:label "Instellingsnaam"^^rdfs:Literal ;
+  prov:wasAttributedTo <https://wegwijs.vlaanderen.be/#/organisations/5c63f9ff-177d-4f2b-9922-033745d81b6a> .
+
+<http://example.org/A> 
+  a ns0:CodelijstWaarde ;
+  rdf:value "Instelling A" .
+<http://example.org/B>
+  a ns0:CodelijstWaarde .
+<http://example.org/C>
+  a ns0:CodelijstWaarde ;
+  rdf:value "Instelling C" .
