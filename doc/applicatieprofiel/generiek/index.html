@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="nl" lang="nl" dir="ltr" typeof="bibo:Document " about="" property="dcterms:language" content="nl" prefix="dcterms: http://purl.org/dc/terms/ bibo: http://purl.org/ontology/bibo/ schema: http://schema.org/ w3p: http://www.w3.org/2001/02pd/rec54#">
 
 <head>
-  <title>Generiek Basis AP</title>
+  <title>Generiek basis AP</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -41,11 +41,11 @@
         <div class="layout layout--wide">
           <div class="grid u-hr">
             <div class="col--9-12 col--1-1--s">
-              <h1 class="h1">Generiek Basis AP</h1>
+              <h1 class="h1">Generiek basis AP</h1>
               <div class="head" role="contentinfo" id="respecHeader">
                 <dl>
                   <dt>Laatste aanpassing</dt>
-                  <dd>2017-11-28</dd>
+                  <dd>2018-03-14</dd>
 
                   
                   
@@ -312,7 +312,7 @@
             <div class="region" id="introduction">
               <div class="introduction typography">
               
-                <p>Dit document beschrijft een <strong>applicatieprofiel</strong>, in dit geval <strong>Generiek Basis AP</strong>.
+                <p>Dit document beschrijft een <strong>applicatieprofiel</strong>, in dit geval <strong>Generiek basis AP</strong>.
                 <!--Een applicatieprofiel is een specificatie die bestaande termen hergebruikt van verschillende basis-standaarden en daar meer specificiteit aan toevoegt.-->
                 <!-- Daarbij wordt het gebruik van de termen toegelicht voor de interbestuurlijke uitwisseling van overheidsinformatie.-->
                 Dit applicatieprofiel beantwoordt de vraag over hoe het corresponderende domeinmodel in de praktijk kan toegepast worden.
@@ -411,12 +411,15 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       <a href="#Geografische Naam">Geografische Naam</a> |
                       <a href="#Geografische Positie">Geografische Positie</a> |
                       <a href="#Geometrie">Geometrie</a> |
+                      <a href="#Gestructureerde Identificator">Gestructureerde Identificator</a> |
                       <a href="#Getypeerde String">Getypeerde String</a> |
                       <a href="#Herkomstactiviteit">Herkomstactiviteit</a> |
                       <a href="#Herkomstagent">Herkomstagent</a> |
                       <a href="#Herkomstentiteit">Herkomstentiteit</a> |
                       <a href="#Identificator">Identificator</a> |
                       <a href="#Invalidatie">Invalidatie</a> |
+                      <a href="#Lijnstring">Lijnstring</a> |
+                      <a href="#Polygoon">Polygoon</a> |
                       <a href="#Punt">Punt</a> |
                       <a href="#Taalstring">Taalstring</a> |
                       <a href="#TijdsInterval">TijdsInterval</a> |
@@ -572,7 +575,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td>0...*</td>
                         <td property="rdfs:comment">Taal waarin het formeel kader beschikbaar is.</td>
                         <td property="vann:usageNote"> </td>
-                        <td><a href="http://publications.europa.eu/mdr/authority/language/index.html">Link</a></td>
+                        <td><a href="http://publications.europa.eu/mdr/authority/language">Link</a></td>
                       </tr>
                     
                       <tr id="Formeel%20Kader%3Atoepassingsgebied" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/territorialApplication">
@@ -718,7 +721,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         </td>
                         <td><a href="http://www.w3.org/ns/adms#Identifier" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#Identifier" data-placement="right">Identificator</a></td>
                         <td>1</td>
-                        <td property="rdfs:comment">Identificator vd entiteit.</td>
+                        <td property="rdfs:comment">Identificator van het object.</td>
                         <td property="vann:usageNote"> </td>
                         <td></td>
                       </tr>
@@ -1143,7 +1146,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             <a href="http://www.w3.org/ns/locn#geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#geometry" data-placement="right">geometrie</a>
                           </code>
                         </td>
-                        <td><a href="http://www.w3.org/ns/locn#Geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#Geometry" data-placement="right">Geometrie</a></td>
+                        <td><a href="http://www.opengis.net/ont/sf#Point" data-toggle="tooltip" data-content="http://www.opengis.net/ont/sf#Point" data-placement="right">Punt</a></td>
                         <td>1</td>
                         <td property="rdfs:comment">De cartografische co&#246;ordinaten vh punt.</td>
                         <td property="vann:usageNote"> </td>
@@ -1237,6 +1240,82 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td>0...1</td>
                         <td property="rdfs:comment">Geometrie uitgedrukt in wkt-formaat.</td>
                         <td property="vann:usageNote">Gebruik http://www.opengis.net/ont/geosparql#wktLiteral als datatype.</td>
+                        <td></td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
+                
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Gestructureerde Identificator"><a href="http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator" data-placement="right">Gestructureerde Identificator</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Identificator van een object opgesplitst in zijn onderdelen.</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor dit datatype zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Gestructureerde%20Identificator%3Alokale%20identificator">lokale identificator</a>, 
+                      <a href="#Gestructureerde%20Identificator%3Anaamruimte">naamruimte</a>, 
+                      <a href="#Gestructureerde%20Identificator%3Aversie-identificator">versie-identificator</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                      
+                      <tr id="Gestructureerde%20Identificator%3Alokale%20identificator" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/generiek#lokaleIdentificator">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/generiek#lokaleIdentificator" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#lokaleIdentificator" data-placement="right">lokale identificator</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">String gebruikt om het object uniek te identificeren binnen de naamruimte.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                      
+                      <tr id="Gestructureerde%20Identificator%3Anaamruimte" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/generiek#naamruimte">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/generiek#naamruimte" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#naamruimte" data-placement="right">naamruimte</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">String die toegvoegd wordt aan de lokaleidentificator om deze globaal uniek te maken.</td>
+                        <td property="vann:usageNote">Laat toe om objecten met dezelfde identificator maar van verschillend type en/of afkomstig uit verschillende domeinen uiteen te houden. In praktijk bv een uri samengesteld uit betekenisvolle elementen zoals een domeinnaam, type en concept (bv http://data.vlaanderen.be/id/adres/). </td>
+                        <td></td>
+                      </tr>
+                      
+                      <tr id="Gestructureerde%20Identificator%3Aversie-identificator" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/generiek#versieIdentificator">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/generiek#versieIdentificator" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#versieIdentificator" data-placement="right">versie-identificator</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Identificator van de specifieke versie van een object.</td>
+                        <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
                       
@@ -1459,13 +1538,14 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
               <h3 class="h3" id="Identificator"><a href="http://www.w3.org/ns/adms#Identifier" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#Identifier" data-placement="right">Identificator</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Informatie gebruikt om de instantie ve object uniek te identificeren. </dd>
+                    <dt>Beschrijving</dt><dd>Informatie gebruikt om een object uniek te identificeren. </dd>
                     
                     <dt>Gebruik</dt><dd>Uitgangspunt hier is dat deze string door een organisatie wordt toegekend en dat dit gebeurt volgens een welbepaald systeem.</dd>
                     
                     <dt>Eigenschappen</dt>
                     
                     <dd>Voor dit datatype zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Identificator%3Agestructureerde%20identificator">gestructureerde identificator</a>, 
                       <a href="#Identificator%3Aidentificator">identificator</a>, 
                       <a href="#Identificator%3Atoegekend%20door">toegekend door</a>, 
                       <a href="#Identificator%3Atoegekend%20door%20%28String%29">toegekend door (String)</a>, 
@@ -1489,6 +1569,19 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
         
                     <tbody class="supertype">
                       
+                      <tr id="Identificator%3Agestructureerde%20identificator" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/generiek#gestructureerdedentificator">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/generiek#gestructureerdedentificator" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#gestructureerdedentificator" data-placement="right">gestructureerde identificator</a>
+                          </code>
+                        </td>
+                        <td><a href="http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator" data-placement="right">GestructureerdeIdentificator</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Identificator vh object opgesplitst in zijn onderdelen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                      
                       <tr id="Identificator%3Aidentificator" typeof="rdfs:Property" resource="http://www.w3.org/2004/02/skos/core#notation">
                         <td>
                           <code property="rdfs:label">
@@ -1497,7 +1590,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         </td>
                         <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">GetypeerdeString</a></td>
                         <td>1</td>
-                        <td property="rdfs:comment">String gebruikt om de instantie ve object uniek te identificeren. </td>
+                        <td property="rdfs:comment">String gebruikt om het object uniek te identificeren. </td>
                         <td property="vann:usageNote">Type vd string slaat op het identificatiesysteem (incl de versie ervan), de string zelf op de eigenlijke identificator.</td>
                         <td></td>
                       </tr>
@@ -1612,65 +1705,52 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Punt"><a href="http://www.w3.org/2003/01/geo/wgs84_pos#Point" data-toggle="tooltip" data-content="http://www.w3.org/2003/01/geo/wgs84_pos#Point" data-placement="right">Punt</a></h3>
+              <h3 class="h3" id="Lijnstring"><a href="http://www.opengis.net/ont/sf#LineString" data-toggle="tooltip" data-content="http://www.opengis.net/ont/sf#LineString" data-placement="right">Lijnstring</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Nuldimensioneel object.</dd>
+                    <dt>Beschrijving</dt><dd>Curve met lineaire interpolatie tussen de punten. Elk opeenvolgend paar punten vormt een lijnsegment. De lijnstring heeft ten minste twee punten.</dd>
+                    
+                    <dt>Gebruik</dt><dd>Een curve is een 1-dimensioneel geometrisch object gedefinieerd als een sequentie van punten. De interpolatie kan op verschillende manieren gebeuren (bv lineair bij een lijnstring).</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor dit datatype zijn geen eigenschappen gedefinieerd.</dd>
+                    
+                  </dl>
+                </div>
+                
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Polygoon"><a href="http://www.opengis.net/ont/sf#Polygon" data-toggle="tooltip" data-content="http://www.opengis.net/ont/sf#Polygon" data-placement="right">Polygoon</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Oppervlak bestaande uit 1 buitengrens en 0 of meer binnengrenzen. Elke binnengrens vormt een gat in de polygoon.</dd>
+                    
+                    <dt>Gebruik</dt><dd>De grenzen zijn zgn lineaire ringen, ttz het zijn gesloten (niet zelfsnijdende) lijnstringen. De buitengrens wordt onderscheiden vd binnengrens door resp de kloksgewijze en tegenkloksgewijze richting waarin de ring loopt.</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor dit datatype zijn geen eigenschappen gedefinieerd.</dd>
+                    
+                  </dl>
+                </div>
+                
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Punt"><a href="http://www.opengis.net/ont/sf#Point" data-toggle="tooltip" data-content="http://www.opengis.net/ont/sf#Point" data-placement="right">Punt</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Een 0-dimensioneel geometrisch object dat een bepaalde locatie in een co&#246;rdinaatruimte voorstelt. Heeft een x-co&#246;rdinaat en een y-co&#246;rdinaat. Kan ook een z-co&#246;rdinaat (hoogte) en een m-co&#246;rdinaat (afstand langs een curve) hebben.</dd>
                     
                     <dt>Gebruik</dt><dd> </dd>
                     
                     <dt>Eigenschappen</dt>
                     
-                    <dd>Voor dit datatype zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Punt%3Awgs84%20latitude">wgs84 latitude</a>, 
-                      <a href="#Punt%3Awgs84%20longitude">wgs84 longitude</a>.</dd>
+                    <dd>Voor dit datatype zijn geen eigenschappen gedefinieerd.</dd>
                     
                   </dl>
-                </div>
-                
-                <div class="u-table-overflow">
-                  <table class="data-table">
-                    <thead>
-                      <tr class="data-table__header">
-                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
-                        <th class="data-table__header-title--sortable">Verwacht Type</th>
-                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
-                        <th class="data-table__header-title--sortable">Beschrijving</th>
-                        <th class="data-table__header-title--sortable">Gebruik</th>
-                        <th class="data-table__header-title--sortable">Codelijst</th>
-                      </tr>
-                    </thead>
-        
-                    <tbody class="supertype">
-                      
-                      <tr id="Punt%3Awgs84%20latitude" typeof="rdfs:Property" resource="http://www.w3.org/2003/01/geo/wgs84_pos#lat">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://www.w3.org/2003/01/geo/wgs84_pos#lat" data-toggle="tooltip" data-content="http://www.w3.org/2003/01/geo/wgs84_pos#lat" data-placement="right">wgs84 latitude</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Breedte van de positie vh punt volgens het co&#246;rdinaatsysteem WGS84.</td>
-                        <td property="vann:usageNote"> </td>
-                        <td></td>
-                      </tr>
-                      
-                      <tr id="Punt%3Awgs84%20longitude" typeof="rdfs:Property" resource="http://www.w3.org/2003/01/geo/wgs84_pos#long">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://www.w3.org/2003/01/geo/wgs84_pos#long" data-toggle="tooltip" data-content="http://www.w3.org/2003/01/geo/wgs84_pos#long" data-placement="right">wgs84 longitude</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Lengte van de positie vh punt volgens het co&#246;rdinaatsysteem WGS84.</td>
-                        <td property="vann:usageNote"> </td>
-                        <td></td>
-                      </tr>
-                      
-                    </tbody>
-                  </table>
                 </div>
                 
             </div>
@@ -1724,10 +1804,10 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
         
                     <tbody class="supertype">
                       
-                      <tr id="TijdsInterval%3Abegin" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/generiek#begin">
+                      <tr id="TijdsInterval%3Abegin" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/generiek#Tijdsinterval.begin">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/generiek#begin" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#begin" data-placement="right">begin</a>
+                            <a href="http://data.vlaanderen.be/ns/generiek#Tijdsinterval.begin" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#Tijdsinterval.begin" data-placement="right">begin</a>
                           </code>
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
@@ -1737,10 +1817,10 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                       
-                      <tr id="TijdsInterval%3Aeinde" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/generiek#einde">
+                      <tr id="TijdsInterval%3Aeinde" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/generiek#Tijdsinterval.einde">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/generiek#einde" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#einde" data-placement="right">einde</a>
+                            <a href="http://data.vlaanderen.be/ns/generiek#Tijdsinterval.einde" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#Tijdsinterval.einde" data-placement="right">einde</a>
                           </code>
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
