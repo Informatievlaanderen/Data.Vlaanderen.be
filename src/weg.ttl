@@ -1,81 +1,241 @@
-@prefix as: <https://www.w3.org/ns/activitystreams#> .
-@prefix cc: <http://creativecommons.org/ns#> .
-@prefix corevoc: <http://data.europa.eu/m8g/> .
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcmi: <http://purl.org/dc/dcmitype/> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
-@prefix gsp: <http://www.opengis.net/ont/geosparql#> .
-@prefix locn: <http://www.w3.org/ns/locn#> .
-@prefix oa: <http://www.w3.org/ns/oa#> .
-@prefix org: <https://www.w3.org/ns/org#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix rec: <http://www.w3.org/2001/02pd/rec54#> .
-@prefix schema: <http://schema.org/> .
-@prefix sf: <http://www.opengis.net/ont/sf#> .
-@prefix sioc: <http://rdfs.org/sioc/ns#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix vann: <http://purl.org/vocab/vann/> .
-@prefix voaf: <http://purl.org/vocommons/voaf#> .
-@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
-@prefix wdrs: <http://www.w3.org/2007/05/powder-s#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix corevoc:  <http://data.europa.eu/m8g/> .
+@prefix org:     <https://www.w3.org/ns/org#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix oa:      <http://www.w3.org/ns/oa#> .
+@prefix as:      <https://www.w3.org/ns/activitystreams#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcmi:    <http://purl.org/dc/dcmitype/> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix locn:    <http://www.w3.org/ns/locn#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
 
-<http://data.vlaanderen.be/ns/adres#Gemeentenaam> a rdfs:Class ;
-    rdfs:label "Gemeentenaam"@nl .
+<http://data.vlaanderen.be/ns/weg>
+      a       owl:Ontology ;
+      dcterms:issued "2017-03-15"^^xsd:date ;
+      dcterms:title "Weg"@nl ;
+      vann:preferredNamespaceUri
+              "http://data.vlaanderen.be/ns/weg" .
 
-<http://data.vlaanderen.be/ns/adres#Straatnaam> a rdfs:Class ;
-    rdfs:label "Straatnaam"@nl .
+<http://data.vlaanderen.be/ns/adres#Gemeentenaam>
+      a       rdfs:Class ;
+      rdfs:label "Gemeentenaam"@nl .
 
-sf:LineString a rdfs:Class ;
-    rdfs:label "Lijnstring"@nl .
+<http://data.vlaanderen.be/ns/adres#Straatnaam>
+      a       rdfs:Class ;
+      rdfs:label "Straatnaam"@nl .
 
-sf:Point a rdfs:Class ;
-    rdfs:label "Punt"@nl .
+<http://data.vlaanderen.be/ns/weg#AantalRijstroken>
+      a       owl:Class ;
+      rdfs:comment "Het aantal rijstroken van een wegsegment"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Aantal Rijstroken"@nl .
 
-skos:Concept a rdfs:Class .
+<http://data.vlaanderen.be/ns/weg#Afstand>
+      a       owl:Class ;
+      rdfs:comment "Gebruikt als een type voor het retourneren van afstanden en mogelijk lengtes."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Afstand"@nl ;
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#Lengte> ;
+      vann:usageNote "Wees voorzichtig bij het gebruik van afstand waarbij lengte wordt bedoeld. De afstand van begin tot einde van een curve is niet de lengte van de curve, maar vertegenwoordigt de lengte van de kortste curve tussen deze twee punten."@nl .
 
-<http://www.w3.org/ns/adms#Identifier> a rdfs:Class ;
-    rdfs:label "Identificator"@nl .
+<http://data.vlaanderen.be/ns/weg#EuropeseWeg>
+      a       owl:Class ;
+      rdfs:comment "Een verzameling weglinksequenties en/of individuele weglinks die een route vertegenwoordigt die deel uitmaakt van het internationale E-wegennetwerk, gekenmerkt door zijn Europese routenummer."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Europese Weg"@nl ;
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#TransportLinkSet> ;
+      vann:usageNote " "@nl .
 
-locn:Geometry a rdfs:Class ;
-    rdfs:label "Geometrie"@nl .
+<http://data.vlaanderen.be/ns/weg#GenummerdeWeg>
+      a       owl:Class ;
+      rdfs:comment "Een verzameling weglinksequenties en/of individuele weglinks die een route vertegenwoordigt die deel uitmaakt van het gewestwegennetwerk."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Genummerde Weg"@nl ;
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#Weg> ;
+      vann:usageNote " "@nl .
 
-<http://www.w3.org/ns/org#Organization> a rdfs:Class ;
-    rdfs:label "Organisatie"@nl .
+<http://data.vlaanderen.be/ns/weg#Gewicht>
+      a       owl:Class ;
+      rdfs:comment "Het gewicht van een voorwerp is de kracht die dat voorwerp, als gevolg van de zwaartekracht, op zijn ondersteuning of ophanging uitoefent."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Gewicht"@nl ;
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#Meting> .
 
-<http://data.vlaanderen.be/ns/weg#aantal> a owl:DatatypeProperty ;
-    rdfs:label "aantal"@nl ;
-    rdfs:comment "Het aantal door (doorlopende of onderbroken) witte strepen begrensde delen van de rijbaan, plaats biedend aan autoverkeer"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#AantalRijstroken> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range xsd:integer .
+<http://data.vlaanderen.be/ns/weg#Lengte>
+      a       owl:Class ;
+      rdfs:comment "De maat van de afstand als een integraal, d.w.z. de grens van een oneindige som van afstanden tussen punten op een kromme. Bijvoorbeeld de lengte van de curve, de omtrek van een polygoon als de lengte van de grens."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Lengte"@nl ;
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#Meting> .
 
-<http://data.vlaanderen.be/ns/weg#aantalRijstroken> a owl:ObjectProperty ;
-    rdfs:label "aantal rijstroken"@nl ;
-    rdfs:comment "Het aantal rijstroken van een wegsegment"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://data.vlaanderen.be/ns/weg#AantalRijstroken> .
+<http://data.vlaanderen.be/ns/weg#Meting>
+      a       owl:Class ;
+      rdfs:comment "Het resultaat van het uitvoeren van de handeling of het proces van het vaststellen van de omvang, afmetingen of hoeveelheid van een bepaalde entiteit. Een meetwaarde wordt altijd gekoppeld aan een maateenheid."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Lengte"@nl .
 
-<http://data.vlaanderen.be/ns/weg#beginknoop> a owl:ObjectProperty ;
-    rdfs:label "beginknoop"@nl ;
-    rdfs:comment "De beginknoop van het wegsegment"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://data.vlaanderen.be/ns/weg#Wegknoop> .
+<http://data.vlaanderen.be/ns/weg#NationaleWeg>
+      a       owl:Class ;
+      rdfs:comment "Een verzameling weglinksequenties en of individuele weglinks die een route vertegenwoordigt die deel uitmaakt van het gewestwegennetwerk. De route wordt gekenmerkt door een nationaal wegnummer."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Nationale Weg"@nl ;
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#Weg> ;
+      vann:usageNote " "@nl .
 
-<http://data.vlaanderen.be/ns/weg#behoortTot> a owl:ObjectProperty ;
-    rdfs:label "behoort tot"@nl ;
-    rdfs:comment "De TransportLinkSet tot dewelke het Wegsegment behoort"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://data.vlaanderen.be/ns/weg#TransportLinkSet> .
+<http://data.vlaanderen.be/ns/weg#NetwerkElement>
+      a       owl:Class ;
+      rdfs:comment "Abstract basistype dat een element in een netwerk vertegenwoordigt. Elk element in een netwerk biedt een functie die van belang is in het netwerk."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "NetwerkElement"@nl ;
+      vann:usageNote "De klasse NetwerkElement is een abstracte klasse. In praktijk zullen de subklassen EuropeseWeg, NationaleWeg, GenummerdeWeg, ReferentiePunt, Wegsegment, Wegknoop en OngelijkgrondseKruising voorkomen voor instanties van NetwerkElement."@nl .
+
+<http://data.vlaanderen.be/ns/weg#OngelijkgrondseKruising>
+      a       owl:Class ;
+      rdfs:comment "Relatie die bij een ongelijkgrondse kruising van twee wegsegmenten aanduidt welk wegsegment zich bovenaan bevindt en welk wegsegment zich onderaan bevindt."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Ongelijkgrondse Kruising"@nl ;
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#NetwerkElement> ;
+      vann:usageNote " "@nl .
+
+<http://data.vlaanderen.be/ns/weg#Positie>
+      a       owl:Class ;
+      rdfs:comment "Positie van het wegsegment op de Transportlinkset"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Positie"@nl .
+
+<http://data.vlaanderen.be/ns/weg#Referentiepunt>
+      a       owl:Class ;
+      rdfs:comment "Referentiepaal die, meestal in regelmatige intervallen, langs een route in een netwerk staat en die de afstand van aan de paal tot aan het begin van de route (of tot aan een ander referentiepunt) weergeeft."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Referentiepunt"@nl ;
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#NetwerkElement> .
+
+<http://data.vlaanderen.be/ns/weg#Rijrichting>
+      a       owl:Class ;
+      rdfs:comment "Geeft de richting van de verkeersstroom aan in relatie tot de logische richting van het wegsegment."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Rijrichting"@nl ;
+      vann:usageNote "De logische richting wordt bepaald adhv de begin- en eindknoop. Men kijkt steeds van begin- naar eindknoop. Dit komt niet altijd overeen met de digitalisatiezin van het wegsegment."@nl .
+
+<http://data.vlaanderen.be/ns/weg#Snelheid>
+      a       owl:Class ;
+      rdfs:comment "De mate van beweging in termen van snelheid in een bepaalde richting. Het wordt meestal berekend met behulp van de eenvoudige formule, de verandering in positie gedurende een bepaald tijdsinterval."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Snelheid"@nl ;
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#Meting> .
+
+<http://data.vlaanderen.be/ns/weg#Snelheidsbeperking>
+      a       owl:Class ;
+      rdfs:comment "Beperking voor de snelheid van een voertuig op een wegsegment"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Snelheidsbeperking"@nl .
+
+<http://data.vlaanderen.be/ns/weg#TransportLinkSet>
+      a       owl:Class ;
+      rdfs:comment "Een verzameling transportlinksequenties en/of individuele transportlinks die een specifieke functie of betekenis hebben in een transportnetwerk."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Transport Link Set"@nl ;
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#NetwerkElement> ;
+      vann:usageNote "De klasse TransportLinkSet is een abstracte klasse. In praktijk zullen de subklassen EuropeseWeg, NationaleWeg en GenummerdeWeg voorkomen voor instanties van TransportLinkSet."@nl .
+
+<http://data.vlaanderen.be/ns/weg#TransportNetwerk>
+      a       owl:Class ;
+      rdfs:comment "Verzameling van netwerkelementen die tot een enkele vervoerswijze behoren."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Transport Netwerk"@nl .
+
+<http://data.vlaanderen.be/ns/weg#Voertuigbeperking>
+      a       owl:Class ;
+      rdfs:comment "Beperking op voertuigen toegelaten op een wegsegment"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "voertuigbeperking"@nl .
+
+<http://data.vlaanderen.be/ns/weg#Weg>
+      a       owl:Class ;
+      rdfs:comment "Een verzameling weglinksequenties en / of individuele weglinks die worden gekenmerkt door een of meer thematische identifiers en / of eigenschappen."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Weg"@nl ;
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#TransportLinkSet> ;
+      vann:usageNote "De klasse Weg is een abstracte klasse. In praktijk zullen de subklassen NationaleWeg en GenummerdeWeg voorkomen voor instanties van Weg."@nl .
+
+<http://data.vlaanderen.be/ns/weg#Wegbreedte>
+      a       owl:Class ;
+      rdfs:comment "De wegbreedte is de afstand tussen beide randen van een baan"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Wegbreedte"@nl .
+
+<http://data.vlaanderen.be/ns/weg#Wegknoop>
+      a       owl:Class ;
+      rdfs:comment "Ruimtelijk puntobject dat gebruikt wordt om de connectiviteit tussen 2 wegsegmenten te beschrijven of om een significant ruimtelijk object voor te stellen."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Wegknoop"@nl ;
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#NetwerkElement> .
+
+<http://data.vlaanderen.be/ns/weg#Wegsegment>
+      a       owl:Class ;
+      rdfs:comment "Lineair object dat de connectiviteit tussen 2 punten in het netwerk beschrijft."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Wegsegment"@nl .
+
+<http://data.vlaanderen.be/ns/weg#Wegverharding>
+      a       owl:Class ;
+      rdfs:comment "Geeft aan of het wegsegment al dan niet verhard is"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Wegverharding"@nl .
+
+<http://data.vlaanderen.be/ns/weg#aantal>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Het aantal door (doorlopende of onderbroken) witte strepen begrensde delen van de rijbaan, plaats biedend aan autoverkeer"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#AantalRijstroken> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "aantal"@nl ;
+      rdfs:range xsd:integer .
+
+<http://data.vlaanderen.be/ns/weg#aantalRijstroken>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het aantal rijstroken van een wegsegment"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "aantal rijstroken"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#AantalRijstroken> .
+
+<http://data.vlaanderen.be/ns/weg#alternatieveStraatnaam>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "De alternatieve straatnaam. Dit is geen officiële straatnaam."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "alternatieve straatnaam"@nl ;
+      rdfs:range xsd:string ;
+      vann:usageNote "Dit attribuut kan gebruikt worden wanneer er bijvoorbeeld een alternatieve, niet-officiële straatnaam gebruikt wordt in de volksmond."@nl .
+
+<http://data.vlaanderen.be/ns/weg#begin>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain dcterms:PeriodOfTime ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "begin"@nl ;
+      rdfs:range rdfs:Literal ;
+      vann:usageNote "Zie bv Time and date & Recurring and partial dates van https://www.w3.org/TR/rdf11-concepts/#h3_xsd-datatypes"@nl .
+
+<http://data.vlaanderen.be/ns/weg#beginknoop>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De beginknoop van het wegsegment"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "beginknoop"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#Wegknoop> .
+
+<http://data.vlaanderen.be/ns/weg#behoortTot>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De TransportLinkSet tot dewelke het Wegsegment behoort"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "behoort tot"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#TransportLinkSet> .
 
 <http://data.vlaanderen.be/ns/weg#behoortTotSequentie> a owl:ObjectProperty ;
     rdfs:label "behoort tot sequentie"@nl ;
@@ -83,369 +243,493 @@ locn:Geometry a rdfs:Class ;
     rdfs:domain <https://www.w3.org/1999/02/22-rdf-syntax-ns#Resource> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
     rdfs:range <https://www.w3.org/1999/02/22-rdf-syntax-ns#Resource> .
+    
+<http://data.vlaanderen.be/ns/weg#beperking>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het type beperking op voertuigen toegelaten op een wegsegment"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Voertuigbeperking> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "beperking"@nl ;
+      rdfs:range skos:Concept .
 
-<http://data.vlaanderen.be/ns/weg#bovenliggendWegsegment> a owl:ObjectProperty ;
-    rdfs:label "bovenliggend wegsegment"@nl ;
-    rdfs:comment "Het bovenliggend wegsegment"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#OngelijkgrondseKruising> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://data.vlaanderen.be/ns/weg#Wegsegment> .
+<http://data.vlaanderen.be/ns/weg#bovenliggendWegsegment>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het bovenliggend wegsegment"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#OngelijkgrondseKruising> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "bovenliggend wegsegment"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#Wegsegment> .
 
-<http://data.vlaanderen.be/ns/weg#breedte> a owl:DatatypeProperty ;
-    rdfs:label "breedte"@nl ;
-    rdfs:comment "Breedte van de rijbaan gemeten als gemiddelde waarde"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegbreedte> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range xsd:integer .
+<http://data.vlaanderen.be/ns/weg#breedte>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Breedte van de rbaan gemeten als gemiddelde waarde"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegbreedte> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "breedte"@nl ;
+      rdfs:range xsd:double .
 
-<http://data.vlaanderen.be/ns/weg#eindknoop> a owl:ObjectProperty ;
-    rdfs:label "eindknoop"@nl ;
-    rdfs:comment "De eindknoop van het wegsegment"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://data.vlaanderen.be/ns/weg#Wegknoop> .
+<http://data.vlaanderen.be/ns/weg#einde>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain dcterms:PeriodOfTime ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "einde"@nl ;
+      rdfs:range rdfs:Literal ;
+      vann:usageNote "Zie bv Time and date & Recurring and partial dates van https://www.w3.org/TR/rdf11-concepts/#h3_xsd-datatypes"@nl .
 
-<http://data.vlaanderen.be/ns/weg#europeesWegnummer> a owl:DatatypeProperty ;
-    rdfs:label "europees wegnummer"@nl ;
-    rdfs:comment "Code die de route in het internationaal E-wegennetwerk identificeert. De code begint steeds met de letter ?E? en wordt vervolledigd door een getal met 1,2 of 3 cijfers."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#EuropeseWeg> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range xsd:string .
+<http://data.vlaanderen.be/ns/weg#eindknoop>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De eindknoop van het wegsegment"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "eindknoop"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#Wegknoop> .
 
-<http://data.vlaanderen.be/ns/weg#genummerdeWegnummer> a owl:DatatypeProperty ;
-    rdfs:label "genummerdeWegnummer"@nl ;
-    rdfs:comment "Technische code van een genummerde weg toegekend door het Agentschap Wegen en Verkeer"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#GenummerdeWeg> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range xsd:string .
+<http://data.vlaanderen.be/ns/weg#europeesWegnummer>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Code die de route in het internationaal E-wegennetwerk identificeert. De code begint steeds met de letter ?E? en wordt vervolledigd door een getal met 1,2 of 3 cijfers."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#EuropeseWeg> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "europees wegnummer"@nl ;
+      rdfs:range xsd:string .
 
-<http://data.vlaanderen.be/ns/weg#geometrie> a owl:ObjectProperty ;
-    rdfs:label "geometrie"@nl ;
-    rdfs:comment "De locatie van het netwerkelement"@nl ;
-    rdfs:domain <https://www.w3.org/1999/02/22-rdf-syntax-ns#Resource> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range sf:Point .
+<http://data.vlaanderen.be/ns/weg#geldigheidsperiode>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Periode waarin de rijrichting geldt."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Rijrichting> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "geldigheidsperiode"@nl ;
+      rdfs:range dcterms:PeriodOfTime ;
+      vann:usageNote "De geldigheidsperiode wordt alleen ingevuld wanneer er afwijkende tijdsperiodes van toepassing zijn"@nl .
 
-<http://data.vlaanderen.be/ns/weg#identificator> a owl:ObjectProperty ;
-    rdfs:label "identificator"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#NetwerkElement> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://www.w3.org/ns/adms#Identifier> .
+<http://data.vlaanderen.be/ns/weg#genummerdeWegnummer>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Technische code van een genummerde weg toegekend door het Agentschap Wegen en Verkeer"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#GenummerdeWeg> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "genummerdeWegnummer"@nl ;
+      rdfs:range xsd:string .
 
-<http://data.vlaanderen.be/ns/weg#inNetwerk> a owl:ObjectProperty ;
-    rdfs:label "in netwerk"@nl ;
-    rdfs:comment "De netwerken waarin een netwerkelement een lid is"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#NetwerkElement> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://data.vlaanderen.be/ns/weg#TransportNetwerk> .
+<http://data.vlaanderen.be/ns/weg#geometrie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De locatie van het netwerkelement"@nl ;
+      rdfs:domain <https://www.w3.org/1999/02/22-rdf-syntax-ns#Resource> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "geometrie"@nl ;
+      rdfs:range <http://www.opengis.net/ont/sf#Point> .
 
-<http://data.vlaanderen.be/ns/weg#linkergemeentenaam> a owl:ObjectProperty ;
-    rdfs:label "linkergemeentenaam"@nl ;
-    vann:usageNote "De aanduiding links/rechts wordt bepaald adhv de begin- en eindknoop. Men kijkt steeds van begin- naar eindknoop. Dit komt niet altijd overeen met de digitalisatiezin van het wegsegment."@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://data.vlaanderen.be/ns/adres#Gemeentenaam> .
+<http://data.vlaanderen.be/ns/weg#heeftRijrichting>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Geeft de richting van de verkeersstroom aan in relatie tot de logische richting van het wegsegment."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "heeft rijrichting"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#Rijrichting> .
 
-<http://data.vlaanderen.be/ns/weg#linkerstraatnaam> a owl:ObjectProperty ;
-    rdfs:label "linkerstraatnaam"@nl ;
-    vann:usageNote "De aanduiding links/rechts wordt bepaald adhv de begin- en eindknoop. Men kijkt steeds van begin- naar eindknoop. Dit komt niet altijd overeen met de digitalisatiezin van het wegsegment."@nl ;
-    rdfs:comment "Straatnaam voorkomend aan de linkerstraatkant"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://data.vlaanderen.be/ns/adres#Straatnaam> .
+<http://data.vlaanderen.be/ns/weg#heeftSnelheidsbeperking>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Beperking voor de snelheid van een voertuig op een wegsegment"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "heeft snelheidsbeperking"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#Snelheidsbeperking> .
 
-<http://data.vlaanderen.be/ns/weg#meeteenheid> a rdf:Property ;
-    rdfs:label "meeteenheid"@nl ;
-    rdfs:comment "Meeteenheid bij de numerieke hoeveelheid die is opgegeven of gemeten voor een fysieke entiteit"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Lengte> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> .
+<http://data.vlaanderen.be/ns/weg#heeftVoertuigbeperking>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Beperking op voertuigen toegelaten op het wegsegment"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "heeftVoertuigbeperking"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#Voertuigbeperking> .
 
-<http://data.vlaanderen.be/ns/weg#methodeWegsegmentgeometrie> a owl:ObjectProperty ;
-    rdfs:label "methode wegsegmentgeometrie"@nl ;
-    rdfs:comment "Aanduiding van de kwaliteit/betrouwbaarheid van de geometrie van het wegsegment aan de hand van de methode gebruikt om deze geometrie te bepalen."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range skos:Concept .
+<http://data.vlaanderen.be/ns/weg#identificator>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#NetwerkElement> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "identificator"@nl ;
+      rdfs:range <http://www.w3.org/ns/adms#Identifier> .
 
-<http://data.vlaanderen.be/ns/weg#middellijnGeometrie> a owl:ObjectProperty ;
-    rdfs:label "middelijn geometrie"@nl ;
-    rdfs:comment "De geometrie die de middellijn van het wegsegment vertegenwoordigt."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range sf:LineString .
+<http://data.vlaanderen.be/ns/weg#inGebruik>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Geeft aan of het wegsegment al dan niet in gebruik is"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "in gebruik"@nl ;
+      rdfs:range xsd:boolean .
 
-<http://data.vlaanderen.be/ns/weg#morfologischeWegklasse> a owl:ObjectProperty ;
-    rdfs:label "morfologische wegklasse"@nl ;
-    rdfs:comment "Beschrijft bepaalde aspecten van de morfologische vorm die een weg kan aannemen."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range skos:Concept .
+<http://data.vlaanderen.be/ns/weg#inNetwerk>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De netwerken waarin een netwerkelement een lid is"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#NetwerkElement> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "in netwerk"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#TransportNetwerk> .
 
-<http://data.vlaanderen.be/ns/weg#nationaleWegnummer> a owl:DatatypeProperty ;
-    rdfs:label "nationaleWegnummer"@nl ;
-    rdfs:comment "Code die de route in het nationale wegennetwerk identificeert."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#NationaleWeg> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range xsd:string .
+<http://data.vlaanderen.be/ns/weg#linkergemeentenaam>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "linkergemeentenaam"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/adres#Gemeentenaam> ;
+      vann:usageNote "De aanduiding links/rechts wordt bepaald adhv de begin- en eindknoop. Men kijkt steeds van begin- naar eindknoop. Dit komt niet altijd overeen met de digitalisatiezin van het wegsegment."@nl .
 
-<http://data.vlaanderen.be/ns/weg#onderliggendWegsegment> a owl:ObjectProperty ;
-    rdfs:label "onderliggend wegsegment"@nl ;
-    rdfs:comment "Het onderliggend wegsegment"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#OngelijkgrondseKruising> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://data.vlaanderen.be/ns/weg#Wegsegment> .
+<http://data.vlaanderen.be/ns/weg#linkerstraatnaam>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Straatnaam voorkomend aan de linkerstraatkant"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "linkerstraatnaam"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/adres#Straatnaam> ;
+      vann:usageNote "De aanduiding links/rechts wordt bepaald adhv de begin- en eindknoop. Men kijkt steeds van begin- naar eindknoop. Dit komt niet altijd overeen met de digitalisatiezin van het wegsegment."@nl .
 
-<http://data.vlaanderen.be/ns/weg#opschrift> a owl:ObjectProperty ;
-    rdfs:label "locatie"@nl ;
-    rdfs:comment "Afstand vanaf het begin van de route of een ander referentiepunt tot het punt waar een markeringspost zich bevindt."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Referentiepunt> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://data.vlaanderen.be/ns/weg#Afstand> .
+<http://data.vlaanderen.be/ns/weg#linkerwegbeheerder>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De organisatie die verantwoordelijk is voor het fysieke onderhoud en beheer van de linkerstraatkant van de weg op het terrein."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "linkerwegbeheerder"@nl ;
+      rdfs:range <http://www.w3.org/ns/org#Organization> ;
+      vann:usageNote "De aanduiding links/rechts wordt bepaald adhv de begin- en eindknoop. Men kijkt steeds van begin- naar eindknoop. Dit komt niet altijd overeen met de digitalisatiezin van het wegsegment."@nl .
 
-<http://data.vlaanderen.be/ns/weg#rechtergemeentenaam> a owl:ObjectProperty ;
-    rdfs:label "rechtergemeentenaam"@nl ;
-    vann:usageNote "De aanduiding links/rechts wordt bepaald adhv de begin- en eindknoop. Men kijkt steeds van begin- naar eindknoop. Dit komt niet altijd overeen met de digitalisatiezin van het wegsegment."@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://data.vlaanderen.be/ns/adres#Gemeentenaam> .
+<http://data.vlaanderen.be/ns/weg#meeteenheid>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Meeteenheid bij de numerieke hoeveelheid die is opgegeven of gemeten voor een fysieke entiteit"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Meting> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "meeteenheid"@nl ;
+      rdfs:range skos:Concept .
 
-<http://data.vlaanderen.be/ns/weg#rechterstraatnaam> a owl:ObjectProperty ;
-    rdfs:label "rechterstraatnaam"@nl ;
-    vann:usageNote "De aanduiding links/rechts wordt bepaald adhv de begin- en eindknoop. Men kijkt steeds van begin- naar eindknoop. Dit komt niet altijd overeen met de digitalisatiezin van het wegsegment."@nl ;
-    rdfs:comment "Straatnaam voorkomend aan de rechterstraatkant"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://data.vlaanderen.be/ns/adres#Straatnaam> .
+<http://data.vlaanderen.be/ns/weg#methodeWegsegmentgeometrie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Aanduiding van de kwaliteit/betrouwbaarheid van de geometrie van het wegsegment aan de hand van de methode gebruikt om deze geometrie te bepalen."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "methode wegsegmentgeometrie"@nl ;
+      rdfs:range skos:Concept .
 
-<http://data.vlaanderen.be/ns/weg#richting> a rdf:Property,
-        owl:ObjectProperty ;
-    rdfs:label "richting"@nl ;
-    rdfs:comment "De richting ten opzichte van de zin van de vector of digitalisatiezin"@nl ;
-    rdfs:domain <https://www.w3.org/1999/02/22-rdf-syntax-ns#Resource> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range skos:Concept .
+<http://data.vlaanderen.be/ns/weg#middellijnGeometrie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De geometrie die de middellijn van het wegsegment vertegenwoordigt."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "middelijn geometrie"@nl ;
+      rdfs:range <http://www.opengis.net/ont/sf#LineString> .
 
-<http://data.vlaanderen.be/ns/weg#staatLangs> a owl:ObjectProperty ;
-    rdfs:label "staat langs"@nl ;
-    rdfs:comment "Route in een transportnetwerk waarlangs het referentiepunt staat"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Referentiepunt> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://data.vlaanderen.be/ns/weg#TransportLinkSet> .
+<http://data.vlaanderen.be/ns/weg#morfologischeWegklasse>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Beschrijft bepaalde aspecten van de morfologische vorm die een weg kan aannemen."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "morfologische wegklasse"@nl ;
+      rdfs:range skos:Concept .
 
-<http://data.vlaanderen.be/ns/weg#toegangsbeperking> a owl:ObjectProperty ;
-    rdfs:label "toegangsbeperking"@nl ;
-    rdfs:comment "De toegankelijkheid van het wegsegment voor de weggebruiker"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range skos:Concept .
+<http://data.vlaanderen.be/ns/weg#nationaleWegnummer>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Code die de route in het nationale wegennetwerk identificeert."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#NationaleWeg> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "nationaleWegnummer"@nl ;
+      rdfs:range xsd:string .
 
-<http://data.vlaanderen.be/ns/weg#totPositie> a owl:ObjectProperty ;
-    rdfs:label "tot positie"@nl ;
-    rdfs:comment "De eindpositie, uitgedrukt als de afstand langs de veelhoekslijn vanaf de start van het wegsegment."@nl ;
-    rdfs:domain <https://www.w3.org/1999/02/22-rdf-syntax-ns#Resource> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://data.vlaanderen.be/ns/weg#Lengte> .
+<http://data.vlaanderen.be/ns/weg#nauwkeurigheidVanOpmeting>
+      a       rdf:Property ;
+      rdfs:comment "De nauwkeurigheid waarmee de wegbreedte werd opgemeten"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegbreedte> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "nauwkeurigheid van opmeting"@nl .
 
-<http://data.vlaanderen.be/ns/weg#type> a owl:ObjectProperty ;
-    rdfs:label "type"@nl ;
-    rdfs:comment "Het type referentiepunt"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Referentiepunt> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range skos:Concept .
+<http://data.vlaanderen.be/ns/weg#omgeving>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De snelheidsbeperking is afhankelijk van de omgeving waarin het wegsegment zich bevindt."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Snelheidsbeperking> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "omgeving"@nl ;
+      rdfs:range skos:Concept .
 
-<http://data.vlaanderen.be/ns/weg#vanPositie> a owl:ObjectProperty ;
-    rdfs:label "van positie"@nl ;
-    rdfs:comment "De startpositie, uitgedrukt als de afstand langs de veelhoekslijn vanaf de start van het wegsegment."@nl ;
-    rdfs:domain <https://www.w3.org/1999/02/22-rdf-syntax-ns#Resource> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://data.vlaanderen.be/ns/weg#Lengte> .
+<http://data.vlaanderen.be/ns/weg#onderliggendWegsegment>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het onderliggend wegsegment"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#OngelijkgrondseKruising> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "onderliggend wegsegment"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#Wegsegment> .
 
-<http://data.vlaanderen.be/ns/weg#volgnummer> a rdf:Property ;
-    rdfs:label "volgnummer"@nl ;
-    rdfs:comment "Volgnummer van het Wegsegment in de ordening van de GenummerdeWeg"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Positie> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> .
+<http://data.vlaanderen.be/ns/weg#opmeting>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het resultaat van het uitvoeren van de handeling of het proces van het vaststellen van de omvang, afmetingen of hoeveelheid van een bepaalde entiteit. Een meetwaarde wordt altijd gekoppeld aan een maateenheid."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Voertuigbeperking> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "opmeting"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#Meting> .
 
-<http://data.vlaanderen.be/ns/weg#waarde> a owl:ObjectProperty ;
-    rdfs:label "waarde"@nl ;
-    rdfs:comment "Aangegeven of gemeten fysieke grootte uitgedrukt als een numerieke hoeveelheid"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Lengte> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range xsd:decimal .
+<http://data.vlaanderen.be/ns/weg#opschrift>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Afstand vanaf het begin van de route of een ander referentiepunt tot het punt waar een markeringspost zich bevindt."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Referentiepunt> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "locatie"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#Afstand> .
 
-<http://data.vlaanderen.be/ns/weg#wegbeheerder> a owl:ObjectProperty ;
-    rdfs:label "wegbeheerder"@nl ;
-    rdfs:comment "De organisatie die verantwoordelijk is voor het fysieke onderhoud en beheer van de weg op het terrein."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://www.w3.org/ns/org#Organization> .
+<http://data.vlaanderen.be/ns/weg#rechtergemeentenaam>
+      a       owl:ObjectProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "rechtergemeentenaam"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/adres#Gemeentenaam> ;
+      vann:usageNote "De aanduiding links/rechts wordt bepaald adhv de begin- en eindknoop. Men kijkt steeds van begin- naar eindknoop. Dit komt niet altijd overeen met de digitalisatiezin van het wegsegment."@nl .
 
-<http://data.vlaanderen.be/ns/weg#wegbreedte> a owl:ObjectProperty ;
-    rdfs:label "wegbreedte"@nl ;
-    rdfs:comment "De rijbaanbreedte van een wegsegment"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range <http://data.vlaanderen.be/ns/weg#Wegbreedte> .
+<http://data.vlaanderen.be/ns/weg#rechterstraatnaam>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Straatnaam voorkomend aan de rechterstraatkant"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "rechterstraatnaam"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/adres#Straatnaam> ;
+      vann:usageNote "De aanduiding links/rechts wordt bepaald adhv de begin- en eindknoop. Men kijkt steeds van begin- naar eindknoop. Dit komt niet altijd overeen met de digitalisatiezin van het wegsegment."@nl .
 
-<http://data.vlaanderen.be/ns/weg#wegcategorie> a owl:ObjectProperty ;
-    rdfs:label "wegcategorie"@nl ;
-    rdfs:comment """Wegcategorie zoals gedefinieerd in het Ruimtelijke Structuurplan\r
-Vlaanderen"""@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range skos:Concept .
+<http://data.vlaanderen.be/ns/weg#rechterwegbeheerder>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De organisatie die verantwoordelijk is voor het fysieke onderhoud en beheer van de rechterstraatkant van de weg op het terrein."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "rechterwegbeheerder"@nl ;
+      rdfs:range <http://www.w3.org/ns/org#Organization> ;
+      vann:usageNote "De aanduiding links/rechts wordt bepaald adhv de begin- en eindknoop. Men kijkt steeds van begin- naar eindknoop. Dit komt niet altijd overeen met de digitalisatiezin van het wegsegment."@nl .
 
-<http://data.vlaanderen.be/ns/weg#wegsegmentstatus> a owl:ObjectProperty ;
-    rdfs:label "wegsegmentstatus"@nl ;
-    rdfs:comment "De status van het wegsegment"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range skos:Concept .
+<http://data.vlaanderen.be/ns/weg#richting>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De logische richting wordt bepaald adhv de begin- en eindknoop."@nl ;
+      rdfs:domain <https://www.w3.org/1999/02/22-rdf-syntax-ns#Resource> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "richting"@nl ;
+      rdfs:range skos:Concept ;
+      vann:usageNote "De richting wordt bepaald adhv de begin- en eindknoop. Men kijkt steeds van begin- naar eindknoop. Dit komt niet altijd overeen met de digitalisatiezin van het wegsegment."@nl .
 
-<http://data.vlaanderen.be/ns/weg#wegverharding> a owl:ObjectProperty ;
-    rdfs:label "wegverharding"@nl ;
-    rdfs:comment "Het type wegverharding van een wegsegment"@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:range skos:Concept .
+<http://data.vlaanderen.be/ns/weg#rijrichting>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Geeft de richting van de verkeersstroom aan in relatie tot de logische richting van het wegsegment."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Rijrichting> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "rijrichting"@nl ;
+      rdfs:range skos:Concept ;
+      vann:usageNote "De logische richting wordt bepaald adhv de begin- en eindknoop. Men kijkt steeds van begin- naar eindknoop. Dit komt niet altijd overeen met de digitalisatiezin van het wegsegment."@nl .
 
-dcterms:creator a rdf:Property ;
-    rdfs:label "maker"@nl .
+<http://data.vlaanderen.be/ns/weg#snelheidsbeperkingWaarde>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Waarde van de snelheidsbeperking die op dat wegsegment geldt"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Snelheidsbeperking> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "snelheidsbeperking waarde"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#Snelheid> .
 
-dcterms:issued a rdf:Property ;
-    rdfs:label "uitgegeven"@nl .
+<http://data.vlaanderen.be/ns/weg#snelheidslimietBron>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Bron van de snelheidsbeperking"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Snelheidsbeperking> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "snelheidsbeperking bron"@nl ;
+      rdfs:range skos:Concept .
 
-dcterms:type a rdf:Property ;
-    rdfs:label "type"@nl .
+<http://data.vlaanderen.be/ns/weg#snelheidszone>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Waarde van de snelheidszone waarin het wegsegment zich bevindt."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Snelheidsbeperking> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "snelheidszone"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#Snelheid> ;
+      vann:usageNote "De waarde van de snelheidszone en de snelheidsbeperking kan soms verschillend zijn. Bv. wanneer men 30km/u mag rijden maar zich in een zone 50 bevindt."@nl .
 
-gsp:asGML a rdf:Property ;
-    rdfs:label "als GML"@nl .
+<http://data.vlaanderen.be/ns/weg#staatLangs>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Route in een transportnetwerk waarlangs het referentiepunt staat"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Referentiepunt> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "staat langs"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#TransportLinkSet> .
 
-gsp:asWKT a rdf:Property ;
-    rdfs:label "als WKT"@nl .
+<http://data.vlaanderen.be/ns/weg#toegangsbeperking>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De toegankelijkheid van het wegsegment voor de weggebruiker"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "toegangsbeperking"@nl ;
+      rdfs:range skos:Concept .
 
-skos:notation a rdf:Property ;
-    rdfs:label "notatie"@nl .
+<http://data.vlaanderen.be/ns/weg#totPositie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De eindpositie, uitgedrukt als de afstand langs de veelhoekslijn vanaf de start van het wegsegment."@nl ;
+      rdfs:domain <https://www.w3.org/1999/02/22-rdf-syntax-ns#Resource> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "tot positie"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#Lengte> .
 
-<http://www.w3.org/ns/adms#schemaAgency> a rdf:Property ;
-    rdfs:label "schema agentschap"@nl .
+<http://data.vlaanderen.be/ns/weg#type>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het type referentiepunt"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Referentiepunt> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "type"@nl ;
+      rdfs:range skos:Concept .
 
-<https://www.w3.org/2002/07/owl#versionInfo> a rdf:Property ;
-    rdfs:label "versie informatie"@nl .
+<http://data.vlaanderen.be/ns/weg#vanPositie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De startpositie, uitgedrukt als de afstand langs de veelhoekslijn vanaf de start van het wegsegment."@nl ;
+      rdfs:domain <https://www.w3.org/1999/02/22-rdf-syntax-ns#Resource> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "van positie"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#Lengte> .
 
-<http://data.vlaanderen.be/ns/weg#Afstand> a owl:Class ;
-    rdfs:label "Afstand"@nl ;
-    vann:usageNote "Wees voorzichtig bij het gebruik van afstand waarbij lengte wordt bedoeld. De afstand van begin tot einde van een curve is niet de lengte van de curve, maar vertegenwoordigt de lengte van de kortste curve tussen deze twee punten."@nl ;
-    rdfs:comment "Gebruikt als een type voor het retourneren van afstanden en mogelijk lengtes."@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#Lengte> .
+<http://data.vlaanderen.be/ns/weg#verharding>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het type wegverharding van een wegsegment"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegverharding> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "verharding"@nl ;
+      rdfs:range skos:Concept .
 
-<http://data.vlaanderen.be/ns/weg#EuropeseWeg> a owl:Class ;
-    rdfs:label "Europese Weg"@nl ;
-    vann:usageNote " "@nl ;
-    rdfs:comment "Een verzameling weglinksequenties en/of individuele weglinks die een route vertegenwoordigt die deel uitmaakt van het internationale E-wegennetwerk, gekenmerkt door zijn Europese routenummer."@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#TransportLinkSet> .
+<http://data.vlaanderen.be/ns/weg#voertuigtype>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het type voertuig waarvoor deze rijrichting geldt"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Rijrichting> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "voertuigtype"@nl ;
+      rdfs:range skos:Concept .
 
-<http://data.vlaanderen.be/ns/weg#GenummerdeWeg> a owl:Class ;
-    rdfs:label "Genummerde Weg"@nl ;
-    vann:usageNote " "@nl ;
-    rdfs:comment "Een verzameling weglinksequenties en/of individuele weglinks die een route vertegenwoordigt die deel uitmaakt van het gewestwegennetwerk."@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#Weg> .
+<http://data.vlaanderen.be/ns/weg#volgnummer>
+      a       rdf:Property ;
+      rdfs:comment "Volgnummer van het Wegsegment in de ordening van de GenummerdeWeg"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Positie> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "volgnummer"@nl .
 
-<http://data.vlaanderen.be/ns/weg#NationaleWeg> a owl:Class ;
-    rdfs:label "Nationale Weg"@nl ;
-    vann:usageNote " "@nl ;
-    rdfs:comment "Een verzameling weglinksequenties en of individuele weglinks die een route vertegenwoordigt die deel uitmaakt van het gewestwegennetwerk. De route wordt gekenmerkt door een nationaal wegnummer."@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#Weg> .
+<http://data.vlaanderen.be/ns/weg#waarde>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Aangegeven of gemeten fysieke grootte uitgedrukt als een numerieke hoeveelheid"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Meting> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "waarde"@nl ;
+      rdfs:range xsd:decimal .
 
-<http://data.vlaanderen.be/ns/weg#TransportNetwerk> a owl:Class ;
-    rdfs:label "Transport Netwerk"@nl ;
-    rdfs:comment "Verzameling van netwerkelementen die tot een enkele vervoerswijze behoren."@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> .
+<http://data.vlaanderen.be/ns/weg#wegbreedte>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De baanbreedte van een wegsegment"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "wegbreedte"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#Wegbreedte> .
 
-<http://data.vlaanderen.be/ns/weg#AantalRijstroken> a owl:Class ;
-    rdfs:label "Aantal Rijstroken"@nl ;
-    rdfs:comment "Het aantal rijstroken van een wegsegment"@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> .
+<http://data.vlaanderen.be/ns/weg#wegcategorie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Wegcategorie zoals gedefinieerd in het Ruimtelijke Structuurplan Vlaanderen"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "wegcategorie"@nl ;
+      rdfs:range skos:Concept .
 
-<http://data.vlaanderen.be/ns/weg#OngelijkgrondseKruising> a owl:Class ;
-    rdfs:label "Ongelijkgrondse Kruising"@nl ;
-    vann:usageNote " "@nl ;
-    rdfs:comment "Relatie die bij een ongelijkgrondse kruising van twee wegsegmenten aanduidt welk wegsegment zich bovenaan bevindt en welk wegsegment zich onderaan bevindt."@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#NetwerkElement> .
+<http://data.vlaanderen.be/ns/weg#wegsegmentstatus>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De status van het wegsegment"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "wegsegmentstatus"@nl ;
+      rdfs:range skos:Concept .
 
-<http://data.vlaanderen.be/ns/weg#Positie> a owl:Class ;
-    rdfs:label "Positie"@nl ;
-    rdfs:comment "Positie van het wegsegment op de Transportlinkset"@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> .
+<http://data.vlaanderen.be/ns/weg#wegverharding>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het type wegverharding van een wegsegment"@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "wegverharding"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#Wegverharding> .
 
-<http://data.vlaanderen.be/ns/weg#Weg> a owl:Class ;
-    rdfs:label "Weg"@nl ;
-    vann:usageNote "De klasse Weg is een abstracte klasse. In praktijk zullen de subklassen NationaleWeg en GenummerdeWeg voorkomen voor instanties van Weg."@nl ;
-    rdfs:comment "Een verzameling weglinksequenties en / of individuele weglinks die worden gekenmerkt door een of meer thematische identifiers en / of eigenschappen."@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#TransportLinkSet> .
+<http://data.vlaanderen.be/ns/weg/MeeteenheidWaarde/Mt>
+      a       skos:Concept ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "TODO"@nl .
 
-<http://data.vlaanderen.be/ns/weg#Wegbreedte> a owl:Class ;
-    rdfs:label "Wegbreedte"@nl ;
-    rdfs:comment "De rijbaanbreedte van een wegsegment"@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> .
+<http://data.vlaanderen.be/ns/weg/MeeteenheidWaarde/g>
+      a       skos:Concept ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "TODO"@nl .
 
-<http://data.vlaanderen.be/ns/weg#Wegknoop> a owl:Class ;
-    rdfs:label "Wegknoop"@nl ;
-    rdfs:comment "Ruimtelijk puntobject dat gebruikt wordt om de connectiviteit tussen 2 wegsegmenten te beschrijven of om een significant ruimtelijk object voor te stellen."@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#NetwerkElement> .
+<http://data.vlaanderen.be/ns/weg/MeeteenheidWaarde/kg>
+      a       skos:Concept ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "TODO"@nl .
 
-<http://data.vlaanderen.be/ns/weg#Referentiepunt> a owl:Class ;
-    rdfs:label "Referentiepunt"@nl ;
-    rdfs:comment "Referentiepaal die, meestal in regelmatige intervallen, langs een route in een netwerk staat en die de afstand van aan de paal tot aan het begin van de route (of tot aan een ander referentiepunt) weergeeft."@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#NetwerkElement> .
+<http://data.vlaanderen.be/ns/weg/MeeteenheidWaarde/mg>
+      a       skos:Concept ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "TODO"@nl .
 
-<http://data.vlaanderen.be/ns/weg#Lengte> a owl:Class ;
-    rdfs:label "Lengte"@nl ;
-    rdfs:comment "De maat van de afstand als een integraal, d.w.z. de grens van een oneindige som van afstanden tussen punten op een kromme. Bijvoorbeeld de lengte van de curve, de omtrek van een polygoon als de lengte van de grens."@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> .
+<http://data.vlaanderen.be/ns/weg/MeeteenheidWaarde/t>
+      a       skos:Concept ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "TODO"@nl .
 
-<http://data.vlaanderen.be/ns/weg#TransportLinkSet> a owl:Class ;
-    rdfs:label "Transport Link Set"@nl ;
-    vann:usageNote "De klasse TransportLinkSet is een abstracte klasse. In praktijk zullen de subklassen EuropeseWeg, NationaleWeg en GenummerdeWeg voorkomen voor instanties van TransportLinkSet."@nl ;
-    rdfs:comment "Een verzameling transportlinksequenties en/of individuele transportlinks die een specifieke functie of betekenis hebben in een transportnetwerk."@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#NetwerkElement> .
+dcterms:PeriodOfTime
+      a       rdfs:Class ;
+      rdfs:label "TijdsInterval"@nl .
 
-<http://data.vlaanderen.be/ns/weg#NetwerkElement> a owl:Class ;
-    rdfs:label "NetwerkElement"@nl ;
-    vann:usageNote "De klasse NetwerkElement is een abstracte klasse. In praktijk zullen de subklassen EuropeseWeg, NationaleWeg, GenummerdeWeg, ReferentiePunt, Wegsegment, Wegknoop en OngelijkgrondseKruising voorkomen voor instanties van NetwerkElement."@nl ;
-    rdfs:comment "Abstract basistype dat een element in een netwerk vertegenwoordigt. Elk element in een netwerk biedt een functie die van belang is in het netwerk."@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> .
+dcterms:creator
+      a       rdf:Property ;
+      rdfs:label "maker"@nl .
 
-<http://data.vlaanderen.be/ns/weg#Wegsegment> a owl:Class ;
-    rdfs:label "Wegsegment"@nl ;
-    rdfs:comment """Lineair object dat de connectiviteit tussen 2 punten in het netwerk\r
-beschrijft."""@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> .
+dcterms:issued
+      a       rdf:Property ;
+      rdfs:label "uitgegeven"@nl .
 
-<http://data.vlaanderen.be/ns/weg> a owl:Ontology ;
-    dcterms:issued "2017-12-14"^^xsd:date ;
-    dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
-    dcterms:mediator [ foaf:homepage <https://data.vlaanderen.be> ;
-            foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
-            foaf:name "Data Vlaanderen" ] ;
-    dcterms:title "Weg"@nl ;
-    vann:preferredNamespaceUri "http://data.vlaanderen.be/ns/weg" ;
-    rec:editor [ a <http://www.w3.org/ns/person#Person> ;
-            schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
-                    foaf:name "PwC" ] ;
-            foaf:firstName "Carmen" ;
-            foaf:lastName "Vandeloo" ;
-            foaf:mbox <mailto:carmen.vandeloo@pwc.com> ] .
+dcterms:type
+      a       rdf:Property ;
+      rdfs:label "type"@nl .
 
+<http://www.opengis.net/ont/geosparql#asGML>
+      a       rdf:Property ;
+      rdfs:label "als GML"@nl .
+
+<http://www.opengis.net/ont/geosparql#asWKT>
+      a       rdf:Property ;
+      rdfs:label "als WKT"@nl .
+
+<http://www.opengis.net/ont/sf#LineString>
+      a       rdfs:Class ;
+      rdfs:label "Lijnstring"@nl .
+
+<http://www.opengis.net/ont/sf#Point>
+      a       rdfs:Class ;
+      rdfs:label "Punt"@nl .
+
+skos:Concept
+      a       rdfs:Class .
+
+skos:notation
+      a       rdf:Property ;
+      rdfs:label "notatie"@nl .
+
+<http://www.w3.org/ns/adms#Identifier>
+      a       rdfs:Class ;
+      rdfs:label "Identificator"@nl .
+
+<http://www.w3.org/ns/adms#schemaAgency>
+      a       rdf:Property ;
+      rdfs:label "schema agentschap"@nl .
+
+locn:Geometry
+      a       rdfs:Class ;
+      rdfs:label "Geometrie"@nl .
+
+<http://www.w3.org/ns/org#Organization>
+      a       rdfs:Class ;
+      rdfs:label "Organisatie"@nl .
+
+<https://www.w3.org/2002/07/owl#versionInfo>
+      a       rdf:Property ;
+      rdfs:label "versie informatie"@nl .

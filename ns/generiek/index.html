@@ -43,7 +43,7 @@
                         
                         <dt>Laatste aanpassing</dt>
 
-                        <dd>2017-11-28
+                        <dd>2018-03-14
                         </dd>
                         
 
@@ -516,9 +516,9 @@ Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeens
                                     
                                         <li><a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a></li>
                                     
-                                        <li><a href="http://www.w3.org/2000/01/rdf-schema">http://www.w3.org/2000/01/rdf-schema</a></li>
+                                        <li><a href="http://www.opengis.net/ont/sf">http://www.opengis.net/ont/sf</a></li>
                                     
-                                        <li><a href="http://www.w3.org/2003/01/geo/wgs84_pos">http://www.w3.org/2003/01/geo/wgs84_pos</a></li>
+                                        <li><a href="http://www.w3.org/2000/01/rdf-schema">http://www.w3.org/2000/01/rdf-schema</a></li>
                                     
                                         <li><a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a></li>
                                     
@@ -546,7 +546,11 @@ Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeens
                                         <p>
                                             |
                                             
+                                            <a href="#Gebeurtenisdatum" rel="class">Gebeurtenisdatum</a> |
+                                            
                                             <a href="#GeografischePositie" rel="class">Geografische Positie</a> |
+                                            
+                                            <a href="#GestructureerdeIdentificator" rel="class">Gestructureerde Identificator</a> |
                                             
                                         </p>
                                     </div>
@@ -562,21 +566,35 @@ Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeens
                                         <p>
                                             |
                                             
-                                            <a href="#begin" rel="property">begin (TijdsInterval)</a> |
+                                            <a href="#Gebeurtenisdatum.begin" rel="property">begin (Gebeurtenisdatum)</a> |
+                                            
+                                            <a href="#Tijdsinterval.begin" rel="property">begin (TijdsInterval)</a> |
                                             
                                             <a href="#bewerking" rel="property">bewerking (Activiteit)</a> |
                                             
                                             <a href="#default" rel="property">default (Geografische Positie)</a> |
                                             
-                                            <a href="#einde" rel="property">einde (TijdsInterval)</a> |
+                                            <a href="#Gebeurtenisdatum.einde" rel="property">einde (Gebeurtenisdatum)</a> |
+                                            
+                                            <a href="#Tijdsinterval.einde" rel="property">einde (TijdsInterval)</a> |
+                                            
+                                            <a href="#gestructureerdeIdentificator" rel="property">gestructureerde identificator (Identificator)</a> |
                                             
                                             <a href="#handeldeInOpdrachtVan" rel="property">handelde in opdracht van (Agent)</a> |
                                             
+                                            <a href="#lokaleIdentificator" rel="property">lokale identificator (Gestructureerde Identificator)</a> |
+                                            
                                             <a href="#methode" rel="property">methode (Geografische Positie)</a> |
+                                            
+                                            <a href="#naamruimte" rel="property">naamruimte (Gestructureerde Identificator)</a> |
                                             
                                             <a href="#plaats" rel="property">plaats (Jurisdictie)</a> |
                                             
                                             <a href="#specificatie" rel="property">specificatie (Geografische Positie)</a> |
+                                            
+                                            <a href="#tussentijdstip" rel="property">tussentijdstip (Gebeurtenisdatum)</a> |
+                                            
+                                            <a href="#versieIdentificator" rel="property">versie-identificator (Gestructureerde Identificator)</a> |
                                             
                                         </p>
                                     </div>
@@ -594,6 +612,30 @@ Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeens
                                     <p>Deze sectie geeft een formele definitie aan elke klasse.</p>
                                 </div>
                                 
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="Gebeurtenisdatum">Klasse <em>Gebeurtenisdatum</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Klasse</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum</code></td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>Datum waarop een gebeurtenis plaatsvond evt op een alternatieve manier beschreven.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
                                 
                                 
                                 <div class="region region--no-space-top">
@@ -620,6 +662,30 @@ Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeens
                                 </div>
                                 
                                 
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="GestructureerdeIdentificator">Klasse <em>Gestructureerde Identificator</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Klasse</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator</code></td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>Identificator van een object opgesplitst in zijn onderdelen.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
                             </section>
                         </div>
 
@@ -638,7 +704,7 @@ Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeens
                                 
                                 
                                 <div class="region region--no-space-top">
-                                    <h3 class="h3" id="begin">Eigenschap <em>begin</em></h3>
+                                    <h3 class="h3" id="Gebeurtenisdatum.begin">Eigenschap <em>begin</em></h3>
                                     <table class="definition">
                                         <tbody>
                                           <tr>
@@ -648,7 +714,43 @@ Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeens
                                           
                                           <tr>
                                             <th>URI</th>
-                                            <td><code>http://data.vlaanderen.be/ns/generiek#begin</code></td>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum.begin</code></td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Domein</th>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Bereik</th>
+                                            <td><code>http://www.w3.org/2001/XMLSchema#dateTime</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>Datum en tijd waarop de gebeurtenis startte.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="Tijdsinterval.begin">Eigenschap <em>begin</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Eigenschap</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#Tijdsinterval.begin</code></td>
                                           </tr>
                                           
                                           <tr>
@@ -766,7 +868,7 @@ Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeens
                                 
                                 
                                 <div class="region region--no-space-top">
-                                    <h3 class="h3" id="einde">Eigenschap <em>einde</em></h3>
+                                    <h3 class="h3" id="Gebeurtenisdatum.einde">Eigenschap <em>einde</em></h3>
                                     <table class="definition">
                                         <tbody>
                                           <tr>
@@ -776,7 +878,43 @@ Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeens
                                           
                                           <tr>
                                             <th>URI</th>
-                                            <td><code>http://data.vlaanderen.be/ns/generiek#einde</code></td>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum.einde</code></td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Domein</th>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Bereik</th>
+                                            <td><code>http://www.w3.org/2001/XMLSchema#dateTime</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>Datum en tijd waarop de gebeurtenis eindigde.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="Tijdsinterval.einde">Eigenschap <em>einde</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Eigenschap</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#Tijdsinterval.einde</code></td>
                                           </tr>
                                           
                                           <tr>
@@ -794,6 +932,42 @@ Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeens
                                           <tr>
                                             <th>Definitie</th>
                                             <td>Moment waarop het tijdsinterval eindigt.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="gestructureerdeIdentificator">Eigenschap <em>gestructureerde identificator</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Eigenschap</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator</code></td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Domein</th>
+                                            <td><code>http://www.w3.org/ns/adms#Identifier</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Bereik</th>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>Identificator vh object opgesplitst in zijn onderdelen.</td>
                                           </tr>
                                           
                                         </tbody>
@@ -839,7 +1013,48 @@ Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeens
                                           
                                           <tr>
                                             <th>Definitie</th>
-                                            <td>TODO</td>
+                                            <td>Organisatie die de agent vertegenwoordigt bij het uitvoeren ve specifieke activiteit en waarvan hij/zij de vereiste autoriteit/verantwoordelijkheid heeft gekregen om dit te doen.</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Gebruik</th>
+                                            <td>De betrokken organisatie behoudt hierbij een zekere verantwoordelijkheid mbt het resultaat vd activiteit.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="lokaleIdentificator">Eigenschap <em>lokale identificator</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Eigenschap</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#lokaleIdentificator</code></td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Domein</th>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Bereik</th>
+                                            <td><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>String gebruikt om het object uniek te identificeren binnen de naamruimte.</td>
                                           </tr>
                                           
                                         </tbody>
@@ -881,6 +1096,47 @@ Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeens
                                           <tr>
                                             <th>Gebruik</th>
                                             <td>Bvb positie afgeleid ve bestaand object (bvb door berekening vd centro&#239;de).</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="naamruimte">Eigenschap <em>naamruimte</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Eigenschap</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#naamruimte</code></td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Domein</th>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Bereik</th>
+                                            <td><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>String die toegvoegd wordt aan de lokaleidentificator om deze globaal uniek te maken.</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Gebruik</th>
+                                            <td>Laat toe om objecten met dezelfde identificator maar van verschillend type en/of afkomstig uit verschillende domeinen uiteen te houden. In praktijk bv een uri samengesteld uit betekenisvolle elementen zoals een domeinnaam, type en concept (bv http://data.vlaanderen.be/id/adres/).</td>
                                           </tr>
                                           
                                         </tbody>
@@ -970,6 +1226,78 @@ Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeens
                                 </div>
                                 
                                 
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="tussentijdstip">Eigenschap <em>tussentijdstip</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Eigenschap</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#tussentijdstip</code></td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Domein</th>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Bereik</th>
+                                            <td><code>http://www.w3.org/2001/XMLSchema#dateTime</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>Datum en tijd van een moment tussen begin en einde.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="versieIdentificator">Eigenschap <em>versie-identificator</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Eigenschap</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#versieIdentificator</code></td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Domein</th>
+                                            <td><code>http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Bereik</th>
+                                            <td><code>http://www.w3.org/2001/XMLSchema#string</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>Identificator van de specifieke versie van een object.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
                             </section>
                         </div>
                         <div class="region region--no-space-top">
@@ -1007,7 +1335,7 @@ Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeens
                                           
                                           <tr>
                                             <th>URI</th>
-                                            <td><code>http://www.w3.org/ns/prov#Agent</code></td>
+                                            <td><code>http://purl.org/dc/terms/Agent</code></td>
                                           </tr>
                                           
                                         </tbody>
@@ -1021,7 +1349,7 @@ Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeens
                                           
                                           <tr>
                                             <th>URI</th>
-                                            <td><code>http://purl.org/dc/terms/Agent</code></td>
+                                            <td><code>http://www.w3.org/ns/prov#Agent</code></td>
                                           </tr>
                                           
                                         </tbody>
@@ -1155,13 +1483,41 @@ Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeens
                                 </div>
                                 
                                 <div class="region region--no-space-top">
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>Lijnstring</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://www.opengis.net/ont/sf#LineString</code></td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>Polygoon</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://www.opengis.net/ont/sf#Polygon</code></td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="region region--no-space-top">
                                     <h3 class="h4" id="#statuswijzigingObject"><em>Punt</em></h3>
                                     <table class="definition">
                                         <tbody>
                                           
                                           <tr>
                                             <th>URI</th>
-                                            <td><code>http://www.w3.org/2003/01/geo/wgs84_pos#Point</code></td>
+                                            <td><code>http://www.opengis.net/ont/sf#Point</code></td>
                                           </tr>
                                           
                                         </tbody>
@@ -1400,34 +1756,6 @@ Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeens
                                           <tr>
                                             <th>URI</th>
                                             <td><code>http://www.w3.org/2000/01/rdf-schema#label</code></td>
-                                          </tr>
-                                          
-                                        </tbody>
-                                    </table>
-                                </div>
-                                
-                                <div class="region region--no-space-top">
-                                    <h3 class="h4" id="#statuswijzigingObject"><em>latitude</em></h3>
-                                    <table class="definition">
-                                        <tbody>
-                                          
-                                          <tr>
-                                            <th>URI</th>
-                                            <td><code>http://www.w3.org/2003/01/geo/wgs84_pos#lat</code></td>
-                                          </tr>
-                                          
-                                        </tbody>
-                                    </table>
-                                </div>
-                                
-                                <div class="region region--no-space-top">
-                                    <h3 class="h4" id="#statuswijzigingObject"><em>longitude</em></h3>
-                                    <table class="definition">
-                                        <tbody>
-                                          
-                                          <tr>
-                                            <th>URI</th>
-                                            <td><code>http://www.w3.org/2003/01/geo/wgs84_pos#long</code></td>
                                           </tr>
                                           
                                         </tbody>
