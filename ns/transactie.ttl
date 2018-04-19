@@ -29,9 +29,6 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-eu:Channel a rdfs:Class ;
-    rdfs:label "kanaal"@nl .
-
 eu:Cost a rdfs:Class ;
     rdfs:label "Kost"@nl .
 
@@ -44,19 +41,23 @@ eu:Output a rdfs:Class ;
 eu:Participation a rdfs:Class ;
     rdfs:label "Participatie"@nl .
 
+<http://data.vlaanderen.be/ns/organisatie#Hoedanigheid> a rdfs:Class ;
+    rdfs:label "Hoedanigheid"@nl .
+
 dcterms:Agent a rdfs:Class .
 
 cpsv:PublicService a rdfs:Class ;
-    rdfs:label "Publieke Dienstverlening"@nl .
+    rdfs:label "Publieke Dienstverlening"@nl,
+        "Publieke Dienstverlening (aanbod)"@nl .
+
+<http://www.w3.org/ns/adms#Identifier> a rdfs:Class ;
+    rdfs:label "Identificator"@nl .
+
+<https://www.w3.org/ns/org#Organization> a rdfs:Class ;
+    rdfs:label "Organisatie"@nl .
 
 eu:currency a rdf:Property ;
     rdfs:label "valuta"@nl .
-
-eu:hasChannel a rdf:Property ;
-    rdfs:label "heeft kanaal"@nl .
-
-eu:hasContactPoint a rdf:Property ;
-    rdfs:label "heeft contactpunt"@nl .
 
 eu:hasCost a rdf:Property ;
     rdfs:label "heeft kost"@nl .
@@ -73,6 +74,26 @@ eu:serviceProvider a rdf:Property ;
 eu:value a rdf:Property ;
     rdfs:label "waarde"@nl .
 
+<http://data.vlaanderen.be/ns/dienst#actie> a owl:DatatypeProperty ;
+    rdfs:label "actie"@nl ;
+    rdfs:comment "Deze parameter laat toe om aan te geven dat - qua procesverloop van de transactie - de bal expliciet in het kamp van de klant (= de Agent) ligt en dat er dus een actie verwacht wordt van zijn kant."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+    rdfs:range xsd:string .
+
+<http://data.vlaanderen.be/ns/dienst#actieNodig> a owl:DatatypeProperty ;
+    rdfs:label "actie nodig"@nl ;
+    rdfs:comment "Indien Actie Nodig 'Ja', dan laat dit veld toe te specifiëren welke Actie van de klant (Agent) wordt verwacht."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+    rdfs:range xsd:boolean .
+
+<http://data.vlaanderen.be/ns/dienst#bedrag> a rdf:Property ;
+    rdfs:label "bedrag"@nl ;
+    rdfs:comment "In geval van een financieel voordel, het bedrag dat werd uitbetaald aan de begunstigde van de publieke dienstverlening op een bepaalde datum."@nl ;
+    rdfs:domain eu:Output ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> .
+
 <http://data.vlaanderen.be/ns/dienst#heeftStatus> a owl:ObjectProperty ;
     rdfs:label "heeft status"@nl ;
     rdfs:comment "Link tussen Publieke Dienstverlening en Status."@nl ;
@@ -80,19 +101,19 @@ eu:value a rdf:Property ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
     rdfs:range <http://data.vlaanderen.be/ns/dienst#Status> .
 
-<http://data.vlaanderen.be/ns/dienst#statusDetail1> a owl:DatatypeProperty ;
-    rdfs:label "status detail 1"@nl ;
-    rdfs:comment "Dit is de (originele) Status-definitie of -vermelding zoals geregistreerd in de bron."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
+<http://data.vlaanderen.be/ns/dienst#isInstantieVan> a owl:ObjectProperty ;
+    rdfs:label "is instantie van"@nl ;
+    rdfs:comment "Linkt een bepaalde consumptie van een publieke dienstverlening (een transactie) met het product uit het dienstverleningsregister."@nl ;
+    rdfs:domain cpsv:PublicService ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-    rdfs:range xsd:string .
+    rdfs:range cpsv:PublicService .
 
-<http://data.vlaanderen.be/ns/dienst#statusDetail2> a owl:DatatypeProperty ;
-    rdfs:label "status detail 2"@nl ;
-    rdfs:comment "Interne status die kan worden meegegeven en die niet wordt getoond aan de burger of onderneming."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
+<http://data.vlaanderen.be/ns/dienst#isTeBereikenOp> a owl:ObjectProperty ;
+    rdfs:label "Is Te Bereiken Op"@nl ;
+    rdfs:comment "TODO"@nl ;
+    rdfs:domain <https://www.w3.org/ns/org#Organization> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-    rdfs:range xsd:string .
+    rdfs:range schema:ContactPoint .
 
 <http://data.vlaanderen.be/ns/dienst#statusEDRL> a rdf:Property ;
     rdfs:label "status EDRL"@nl ;
@@ -100,19 +121,48 @@ eu:value a rdf:Property ;
     rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> .
 
-<http://data.vlaanderen.be/ns/dienst#statusdatum> a owl:DatatypeProperty ;
+<http://data.vlaanderen.be/ns/dienst#statusExtern> a owl:DatatypeProperty ;
+    rdfs:label "status extern"@nl ;
+    rdfs:comment "Dit is de (originele) Status-definitie of -vermelding zoals geregistreerd in de bron."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+    rdfs:range xsd:string .
+
+<http://data.vlaanderen.be/ns/dienst#statusIntern> a owl:DatatypeProperty ;
+    rdfs:label "status intern"@nl ;
+    rdfs:comment "Interne status die kan worden meegegeven en die niet wordt getoond aan de burger of onderneming."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+    rdfs:range xsd:string .
+
+<http://data.vlaanderen.be/ns/dienst#statusVlaamsCode> a rdf:Property ;
+    rdfs:label "status Vlaamse code"@nl ;
+    rdfs:comment "Verdere precisering van de status-fase volgens de 'Generieke Vlaamse status'."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> .
+
+<http://data.vlaanderen.be/ns/dienst#statusVlaamsFase> a rdf:Property ;
+    rdfs:label "status Vlaams fase"@nl ;
+    rdfs:comment "Is het eerste veld van 2 verplichte velden (Fase+Status) die samen de 'Generieke Vlaamse status' specifiëren. De StatusVlaamsFase vormt de eerste en hogere indeling van het dossierverloop (in aanvraag, in behandeling, in beroep, in uitvoering enz). Verdere precisering binnen de Fase gebeurt dan in het veld StatusVlaamsCode."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> .
+
+<http://data.vlaanderen.be/ns/dienst#statusWijzigingsdatum> a owl:DatatypeProperty ;
     rdfs:label "statusdatum"@nl ;
-    rdfs:comment "De datum van de Status."@nl ;
+    rdfs:comment "Is de verplichte vermelding van de datum + tijdstip waarop de betrokken status werd geregistreerd."@nl ;
     rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
     rdfs:range xsd:date .
 
 <http://data.vlaanderen.be/ns/dienst#streefdatum> a owl:DatatypeProperty ;
     rdfs:label "streefdatum"@nl ;
-    rdfs:comment "De streefdatum voor het beëindigen van de huidige status."@nl ;
+    rdfs:comment "Is de datum waarop verwacht wordt dat de volgende stap (status-wijziging) in de transactie zal of zou moeten plaatsvinden. Dit kan in bepaalde gevallen bepaald worden door een wettelijke termijn (van een fase of status)."@nl ;
     rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
     rdfs:range xsd:date .
+
+<http://data.vlaanderen.be/ns/organisatie#contactinfo> a rdf:Property ;
+    rdfs:label "contactinfo"@nl .
 
 <http://data.vlaanderen.be/ns/transactie> a owl:Ontology ;
     dcterms:contributor [ a person:Person ;
@@ -152,6 +202,12 @@ eu:value a rdf:Property ;
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
                     foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Bart" ;
+            foaf:lastName "Misseeuw" ;
+            foaf:mbox <mailto:bart.misseeuw@kb.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
             foaf:firstName "Raf" ;
             foaf:lastName "Buyle" ;
             foaf:mbox <mailto:raf.buyle@kb.vlaanderen.be> ],
@@ -164,30 +220,33 @@ eu:value a rdf:Property ;
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
                     foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Bart" ;
-            foaf:lastName "Misseeuw" ;
-            foaf:mbox <mailto:bart.misseeuw@kb.vlaanderen.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
             foaf:firstName "Dries" ;
             foaf:lastName "Beheydt" ;
             foaf:mbox <mailto:dries.beheydt@kb.vlaanderen.be> ],
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
                     foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Goedele" ;
-            foaf:lastName "Van der Spiegel" ;
-            foaf:mbox <mailto:goedele.vanderspiegel@kb.vlaanderen.be> ],
+            foaf:firstName "Thomas" ;
+            foaf:lastName "D'haenens" ;
+            foaf:mbox <mailto:thomas.dhaenens@bz.vlaanderen.be> ],
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
                     foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Thomas" ;
-            foaf:lastName "D'haenens" ;
-            foaf:mbox <mailto:thomas.dhaenens@bz.vlaanderen.be> ] .
+            foaf:firstName "Goedele" ;
+            foaf:lastName "Van der Spiegel" ;
+            foaf:mbox <mailto:goedele.vanderspiegel@kb.vlaanderen.be> ] .
+
+dcterms:creator a rdf:Property ;
+    rdfs:label "maker"@nl .
+
+dcterms:date a rdf:Property ;
+    rdfs:label "datum"@nl .
 
 dcterms:description a rdf:Property ;
     rdfs:label "beschrijving"@nl .
+
+dcterms:issued a rdf:Property ;
+    rdfs:label "uitgegeven"@nl .
 
 dcterms:language a rdf:Property ;
     rdfs:label "taal"@nl .
@@ -196,8 +255,7 @@ dcterms:relation a rdf:Property ;
     rdfs:label "is gerelateerd met"@nl .
 
 dcterms:title a rdf:Property ;
-    rdfs:label "Titel"@nl,
-        "titel"@nl .
+    rdfs:label "titel"@nl .
 
 dcterms:type a rdf:Property ;
     rdfs:label "type"@nl .
@@ -208,51 +266,34 @@ cpsv:hasInput a rdf:Property ;
 cpsv:produces a rdf:Property ;
     rdfs:label "produceert"@nl .
 
+skos:notation a rdf:Property ;
+    rdfs:label "Code"@nl,
+        "identificator"@nl .
+
+skos:prefLabel a rdf:Property ;
+    rdfs:label "Voorkeursnaam"@nl .
+
+<http://www.w3.org/ns/adms#identifier> a rdf:Property ;
+    rdfs:label "referentie"@nl .
+
+<http://www.w3.org/ns/adms#schemaAgency> a rdf:Property ;
+    rdfs:label "schema agentschap"@nl .
+
+org:memberOf a rdf:Property ;
+    rdfs:label "is lid van"@nl .
+
 foaf:page a rdf:Property ;
-    rdfs:label "pagina"@nl .
+    rdfs:label "documentatie"@nl .
 
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=DossierUpdateFrequentie> a rdf:Property ;
-    rdfs:label "updateFrequentie"@nl .
+<https://www.w3.org/ns/org#classification> a rdf:Property ;
+    rdfs:label "Classificatie"@nl .
 
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=IsPubliek> a rdf:Property ;
-    rdfs:label "is publiek"@nl .
-
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=IsVertrouwelijk> a rdf:Property ;
-    rdfs:label "is vertrouwelijk"@nl .
-
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=MogelijkeVlaamseFases> a rdf:Property ;
-    rdfs:label "executieStatus"@nl .
-
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActie> a rdf:Property ;
-    rdfs:label "actie"@nl .
-
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActieNodig> a rdf:Property ;
-    rdfs:label "actie nodig"@nl .
-
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusVlaamsCode> a rdf:Property ;
-    rdfs:label "status Vlaamse code"@nl .
-
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusVlaamsFase> a rdf:Property ;
-    rdfs:label "status Vlaamse fase"@nl .
-
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StreefDatum> a rdf:Property ;
-    rdfs:label "streefdatum"@nl .
-
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=TypeDossier> a rdf:Property ;
-    rdfs:label "typeDossier"@nl .
-
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=WijzigingsDatum> a rdf:Property ;
-    rdfs:label "wijzigingsdatum"@nl .
-
-<https://schema.org/hoursAvailable> a rdf:Property ;
-    rdfs:label "uren beschikbaarheid"@nl .
-
-<https://schema.org/openingHours> a rdf:Property ;
-    rdfs:label "openingsuren"@nl .
+<https://www.w3.org/ns/org#purpose> a rdf:Property ;
+    rdfs:label "Bestaanreden vd Organisatie."@nl .
 
 <http://data.vlaanderen.be/ns/dienst#Status> a owl:Class ;
     rdfs:label "Status"@nl ;
-    rdfs:comment "De Status die van toepassing is op de Publieke Dienstverlening op een bepaald tijdstip."@nl ;
+    rdfs:comment "De status die van toepassing is op een entiteit op een bepaald tijdstip."@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> .
 
 <http://data.vlaanderen.be/ns/dienst> a owl:Ontology ;
