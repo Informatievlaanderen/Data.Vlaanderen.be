@@ -8,6 +8,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui.css" />
   <link rel="stylesheet" href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui-corporate.css" />
+    <style>
+  
+  .node {
+    cursor: pointer;
+  }
+
+  .node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 3px;
+  }
+
+  .node text {
+    font: 12px sans-serif;
+  }
+
+  .link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 2px;
+  }
+  
+    </style>
 
   <link rel="icon" sizes="192x192" href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/icon-highres-precomposed.png" />
   <link rel="apple-touch-icon" href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-precomposed.png" />
@@ -40,7 +63,7 @@
       <div class="region">
         <div class="layout layout--wide">
           <div class="grid u-hr">
-            <div class="col--9-12 col--1-1--s">
+            <div class="col">
               <h1 class="h1">Objectencataloog vegetatie-elementen</h1>
               <div class="head" role="contentinfo" id="respecHeader">
                 <dl>
@@ -57,15 +80,7 @@
                   
                 </dl>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="main" itemprop="mainContentOfPage" role="main" tabindex="-1" class="main-content">
-      <div class="layout layout--wide">
-        <div class="grid">
-          <div class="col--8-12 col--12-12--s">
+
             <div class="region" id="introduction">
               <div class="introduction typography">
               
@@ -129,12 +144,285 @@
               </div>
             </div>
             <div class="region region--no-space-top">
-              <h2 class="h2">Taxonomie</h2> 
+              <h2 class="h2">Taxonomie</h2>
+              <p>Klik op de cirkels om de boomstructuur uit te breiden of in te krimpen of klik op de tekst labels om rechtstreeks naar de details van een bepaalde entiteit te gaan.</p>
+              <div id="tree"></div>
+              <script src="https://d3js.org/d3.v3.min.js"></script>
+            <script>
+
+            var treeData = [
+              {
+                "name": "Vegetatie Element",
+                "parent": "null",
+                "children": [
+                  {
+                    "name": "Plantbakvorm",
+                    "parent": "Vegetatie Element",
+                    "children": [
+                      {
+                        "name": "Plantbak",
+                        "parent": "Plantbakvorm",
+                        "children": [
+                          {
+                            "name": "Verplaatsbare plantbak",
+                            "parent": "Plantbak"           
+                          },
+                          {
+                            "name": "Niet-verplaatsbare plantbak",
+                            "parent": "Plantbak"            
+                          }             
+                        ]           
+                      },
+                      {
+                        "name": "Bloemenmand",
+                        "parent": "Plantbakvorm"           
+                      },
+                      {
+                        "name": "Bloementoren",
+                        "parent": "Plantbakvorm"            
+                      },
+                      {
+                        "name": "Vegetatiewand",
+                        "parent": "Plantbakvorm"            
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Boomvorm",
+                    "parent": "Vegetatie Element",
+                    "children": [
+                      {
+                        "name": "Opgaande boom",
+                        "parent": "Boomvorm",
+                        "children": [
+                          {
+                            "name": "Vrij uitgroeiende boom",
+                            "parent": "Opgaande boom"
+                          }, 
+                          {
+                            "name": "Niet vrij uitgroeiende boom",
+                            "parent": "Opgaande boom"
+                          }               
+                        ]           
+                      },
+                      {
+                        "name": "Vormboom",
+                        "parent": "Boomvorm",
+                        "children": [
+                          {
+                            "name": "Gekandelaarde boom",
+                            "parent": "Vormboom"
+                          }, 
+                          {
+                            "name": "Geschoren boom",
+                            "parent": "Vormboom"
+                          }, 
+                          {
+                            "name": "Knotboom",
+                            "parent": "Vormboom"
+                          }, 
+                          {
+                            "name": "Leiboom",
+                            "parent": "Vormboom"
+                          } 
+                        ]           
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Klimvorm",
+                    "parent": "Vegetatie Element",
+                    "children": [
+                      {
+                        "name": "Zelfhechtende klimvorm",
+                        "parent": "Klimvorm"
+                      }, 
+                      {
+                        "name": "Niet-zelfhechtende klimvorm",
+                        "parent": "Klimvorm"
+                      }               
+                    ] 
+                  },
+                  {
+                    "name": "Haagvorm",
+                    "parent": "Vegetatie Element",
+                    "children": [
+                      {
+                        "name": "Haag",
+                        "parent": "Haagvorm"
+                      }, 
+                      {
+                        "name": "Houtkant",
+                        "parent": "Haagvorm"
+                      } , 
+                      {
+                        "name": "Houtwal",
+                        "parent": "Haagvorm"
+                      }               
+                    ] 
+                  },
+                  {
+                    "name": "Muurvegetatie",
+                    "parent": "Vegetatie Element"
+                  }
+                ]
+              }
+            ];
+
+
+            // ************** Generate the tree diagram  *****************
+            var margin = {top: 20, right: 120, bottom: 20, left: 120},
+              width = 960 - margin.right - margin.left,
+              height = 500 - margin.top - margin.bottom;
               
-              <a href="/cms/ap/objectencataloog-vegetatie-elementen/overview.jpg" target="_blank">
-                 <img src="/cms/ap/objectencataloog-vegetatie-elementen/overview.jpg" />
-              </a>
+            var i = 0,
+              duration = 750,
+              root;
+
+            var tree = d3.layout.tree()
+              .size([height, width]);
+
+            var diagonal = d3.svg.diagonal()
+              .projection(function(d) { return [d.y, d.x]; });
+
+            var svg = d3.select("#tree").append("svg")
+              .attr("width", width + margin.right + margin.left)
+              .attr("height", height + margin.top + margin.bottom)
+              .append("g")
+              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+            root = treeData[0];
+            root.x0 = height / 2;
+            root.y0 = 0
+
+            root.children.forEach(toggleAll);
+              
+            update(root);
+
+            d3.select(self.frameElement).style("height", "500px");
+
+
+            function update(source) {
+
+              // Compute the new tree layout.
+              var nodes = tree.nodes(root).reverse(),
+                links = tree.links(nodes);
+
+              // Normalize for fixed-depth.
+              nodes.forEach(function(d) { d.y = d.depth * 180; });
+
+              // Update the nodes…
+              var node = svg.selectAll("g.node")
+                .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+              // Enter any new nodes at the parent's previous position.
+              var nodeEnter = node.enter().append("g")
+                .attr("class", "node")
+                .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+                .on("click", click);
+
+              nodeEnter.append("circle")
+                .attr("r", 1e-6)
+                .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+              nodeEnter.append("a")
+                .attr("xlink:href", function(d) { return "#"+d.name; })
+                .append("text")
+                .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
+                .attr("dy", ".35em")
+                .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+                .text(function(d) { return d.name; })
+                .style("fill-opacity", 1e-6);
+
+              // Transition nodes to their new position.
+              var nodeUpdate = node.transition()
+                .duration(duration)
+                .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+              nodeUpdate.select("circle")
+                .attr("r", 10)
+                .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+              nodeUpdate.select("text")
+                .style("fill-opacity", 1);
+
+              // Transition exiting nodes to the parent's new position.
+              var nodeExit = node.exit().transition()
+                .duration(duration)
+                .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+                .remove();
+
+              nodeExit.select("circle")
+                .attr("r", 1e-6);
+
+              nodeExit.select("text")
+                .style("fill-opacity", 1e-6);
+
+              // Update the links…
+              var link = svg.selectAll("path.link")
+                .data(links, function(d) { return d.target.id; });
+
+              // Enter any new links at the parent's previous position.
+              link.enter().insert("path", "g")
+                .attr("class", "link")
+                .attr("d", function(d) {
+                var o = {x: source.x0, y: source.y0};
+                return diagonal({source: o, target: o});
+                });
+
+              // Transition links to their new position.
+              link.transition()
+                .duration(duration)
+                .attr("d", diagonal);
+
+              // Transition exiting nodes to the parent's new position.
+              link.exit().transition()
+                .duration(duration)
+                .attr("d", function(d) {
+                var o = {x: source.x, y: source.y};
+                return diagonal({source: o, target: o});
+                })
+                .remove();
+
+              // Stash the old positions for transition.
+              nodes.forEach(function(d) {
+              d.x0 = d.x;
+              d.y0 = d.y;
+              });
+            }
+
+            // Toggle children on click.
+            function click(d) {
+              if (d.children) {
+              d._children = d.children;
+              d.children = null;
+              } else {
+              d.children = d._children;
+              d._children = null;
+              }
+              update(d);
+            }
+
+            function toggleAll(d) {
+              if (d.children) {
+                d.children.forEach(toggleAll);
+                click(d);
+              }
+            }
+            </script>
             </div>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main" itemprop="mainContentOfPage" role="main" tabindex="-1" class="main-content">
+      <div class="layout layout--wide">
+        <div class="grid">
+          <div class="col--8-12 col--12-12--s">
             <div class="region region--no-space-top">
               <h2 class="h2">Entiteiten</h2> 
             </div>
