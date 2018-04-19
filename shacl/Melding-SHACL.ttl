@@ -1,7 +1,7 @@
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
-<http://data.vlaanderen.be/ns/melding#StatusShape>
+<http://data.vlaanderen.be/ns/melding#MeldingstatusShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/melding#Status> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/melding#Meldingstatus> ;
 	sh:property [
 		sh:name "beschrijving" ;
 		sh:description "Een beschrijving van de Status." ;
@@ -51,7 +51,7 @@
 		sh:name "regex" ;
 		sh:description "Een regular expression die het verwachte patroon aangeeft voor de waarden van de Eigenschap." ;
 		sh:path <http://data.vlaanderen.be/ns/melding#regex> ;
-		sh:class <http://www.w3.org/2000/01/rdf-schema#Literal> ;
+		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
@@ -283,6 +283,14 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
+		sh:name "heeftBron" ;
+		sh:description "De bron (Dataset) waar het Meldingsobject werd uit afgeleid." ;
+		sh:path <http://www.w3.org/ns/oa#hasSource> ;
+		sh:class <http://purl.org/dc/dcmitype/Dataset> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
 		sh:name "gerelateerdeBody" ;
 		sh:description "De body van de Melding die betrekking heeft op het Meldingsobject." ;
 		sh:path <http://data.vlaanderen.be/ns/melding#gerelateerdeBody> ;
@@ -294,20 +302,6 @@
 		sh:description "Het toewijzen van een Meldingsobject aan een Agent die verantwoordelijk is voor de behandeling ervan." ;
 		sh:path <http://data.vlaanderen.be/ns/melding#werdToegewezenAan> ;
 		sh:class <https://www.w3.org/ns/org#Organization> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "heeftStatus" ;
-		sh:description "De Status verbonden aan het Meldingsobject." ;
-		sh:path <http://data.vlaanderen.be/ns/melding#heeftStatus> ;
-		sh:class <http://data.vlaanderen.be/ns/melding#Status> ;
-	] ;
-	sh:property [
-		sh:name "heeftBron" ;
-		sh:description "De bron (Dataset) waar het Meldingsobject werd uit afgeleid." ;
-		sh:path <http://www.w3.org/ns/oa#hasSource> ;
-		sh:class <http://purl.org/dc/dcmitype/Dataset> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -324,42 +318,22 @@
 		sh:datatype <http://www.w3.org/2001/XMLSchema#anyURI> ;
 		sh:maxCount 1 ;
 	] ;
+	sh:property [
+		sh:name "heeftStatus" ;
+		sh:description "De Status verbonden aan het Meldingsobject." ;
+		sh:path <http://data.vlaanderen.be/ns/melding#heeftStatus> ;
+		sh:class <http://data.vlaanderen.be/ns/melding#Meldingstatus> ;
+	] ;
 	sh:closed false .
 
 <http://data.vlaanderen.be/ns/melding#MeldingShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/melding#Melding> ;
 	sh:property [
-		sh:name "heeftBody" ;
-		sh:description "Het object van deze associatie is een resource die de body van de Melding beschrijft (MeldingBody)." ;
-		sh:path <http://www.w3.org/ns/oa#hasBody> ;
-		sh:class <http://data.vlaanderen.be/ns/melding#MeldingBody> ;
-	] ;
-	sh:property [
-		sh:name "heeftDoelwit" ;
-		sh:description "De relatie tussen de Melding en het doelwit, het Meldingsobject waarop de melding slaat." ;
-		sh:path <http://www.w3.org/ns/oa#hasTarget> ;
-		sh:class <http://data.vlaanderen.be/ns/melding#Meldingsobject> ;
-	] ;
-	sh:property [
-		sh:name "heeftStatus" ;
-		sh:description "De Status verbonden aan de Melding." ;
-		sh:path <http://data.vlaanderen.be/ns/melding#heeftStatus> ;
-		sh:class <http://data.vlaanderen.be/ns/melding#Status> ;
-		sh:minCount 1 ;
-	] ;
-	sh:property [
-		sh:name "heeftParticiperende" ;
-		sh:description "De relatie tussen een Melding en een Agent die een rol speelt in de Melding." ;
-		sh:path <http://data.europa.eu/m8g/hasParticipation> ;
-		sh:class <http://data.europa.eu/m8g/Participation> ;
-	] ;
-	sh:property [
 		sh:name "meldingsapplicatie" ;
 		sh:description "De applicatie dat de Melding creëerde." ;
 		sh:path <http://data.vlaanderen.be/ns/melding#meldingsapplicatie> ;
-		sh:class <http://purl.org/dc/terms/Agent> ;
-		sh:minCount 1 ;
+		sh:class <http://data.vlaanderen.be/ns/melding#Applicatie> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -368,6 +342,24 @@
 		sh:path <http://data.vlaanderen.be/ns/melding#meldingsorganisatie> ;
 		sh:class <https://www.w3.org/ns/org#Organization> ;
 		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "heeftBody" ;
+		sh:description "Het object van deze associatie is een resource die de body van de Melding beschrijft (MeldingBody)." ;
+		sh:path <http://www.w3.org/ns/oa#hasBody> ;
+		sh:class <http://data.vlaanderen.be/ns/melding#MeldingBody> ;
+	] ;
+	sh:property [
+		sh:name "heeftParticiperende" ;
+		sh:description "De relatie tussen een Melding en een Agent die een rol speelt in de Melding." ;
+		sh:path <http://data.europa.eu/m8g/hasParticipation> ;
+		sh:class <http://data.europa.eu/m8g/Participation> ;
+	] ;
+	sh:property [
+		sh:name "heeftDoelwit" ;
+		sh:description "De relatie tussen de Melding en het doelwit, het Meldingsobject waarop de melding slaat." ;
+		sh:path <http://www.w3.org/ns/oa#hasTarget> ;
+		sh:class <http://data.vlaanderen.be/ns/melding#Meldingsobject> ;
 	] ;
 	sh:property [
 		sh:name "meldingstype" ;
@@ -397,6 +389,12 @@
 		sh:path <http://data.vlaanderen.be/ns/melding#url> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "heeftStatus" ;
+		sh:description "De Status verbonden aan de Melding." ;
+		sh:path <http://data.vlaanderen.be/ns/melding#heeftStatus> ;
+		sh:class <http://data.vlaanderen.be/ns/melding#Meldingstatus> ;
 	] ;
 	sh:closed false .
 
@@ -443,7 +441,7 @@
 		sh:name "gml" ;
 		sh:description "Geometrie uitgedrukt in gml-formaat." ;
 		sh:path <http://www.opengis.net/ont/geosparql#asGML> ;
-		sh:class <http://www.w3.org/2000/01/rdf-schema#Literal> ;
+		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -451,7 +449,7 @@
 		sh:name "wkt" ;
 		sh:description "Geometrie uitgedrukt in wkt-formaat." ;
 		sh:path <http://www.opengis.net/ont/geosparql#asWKT> ;
-		sh:class <http://www.w3.org/2000/01/rdf-schema#Literal> ;
+		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;

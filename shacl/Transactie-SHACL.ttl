@@ -1,4 +1,107 @@
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
+<http://www.w3.org/ns/adms#IdentifierShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://www.w3.org/ns/adms#Identifier> ;
+	sh:property [
+		sh:name "identificator" ;
+		sh:description "String gebruikt om het object uniek te identificeren" ;
+		sh:path <http://www.w3.org/2004/02/skos/core#notation> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "toegekendDoor" ;
+		sh:description "Link naar de agent die de identificator heeft uitgegeven." ;
+		sh:path <http://purl.org/dc/terms/creator> ;
+		sh:class <http://purl.org/dc/terms/Agent> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "toegekendDoorString" ;
+		sh:description "Naam vd agent die de identificator heeft toegekend." ;
+		sh:path <http://www.w3.org/ns/adms#schemaAgency> ;
+		sh:class <http://purl.org/dc/terms/Agent> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "toegekendOp" ;
+		sh:description "Tijdstip waarop de identificator werd uitgegeven." ;
+		sh:path <http://purl.org/dc/terms/issued> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://purl.org/vocab/cpsv#PublicServiceShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://purl.org/vocab/cpsv#PublicService> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/dienst#StatusShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/dienst#Status> ;
+	sh:property [
+		sh:name "actie" ;
+		sh:description "Deze parameter laat toe om aan te geven dat - qua procesverloop van de transactie - de bal expliciet in het kamp van de klant (= de Agent) ligt en dat er dus een actie verwacht wordt van zijn kant." ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#actie> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "actieNodig" ;
+		sh:description "Indien Actie Nodig 'Ja', dan laat dit veld toe te specifiëren welke Actie van de klant (Agent) wordt verwacht." ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#actieNodig> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "statusEDRL" ;
+		sh:description "De status volgens de Europese Dienstenrichtlijn" ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#statusEDRL> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "statusExtern" ;
+		sh:description "Dit is de (originele) Status-definitie of -vermelding zoals geregistreerd in de bron." ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#statusExtern> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "statusIntern" ;
+		sh:description "Interne status die kan worden meegegeven en die niet wordt getoond aan de burger of onderneming." ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#statusIntern> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "statusVlaamsCode" ;
+		sh:description "Verdere precisering van de status-fase volgens de 'Generieke Vlaamse status'." ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#statusVlaamsCode> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "statusVlaamsFase" ;
+		sh:description "Is het eerste veld van 2 verplichte velden (Fase+Status) die samen de 'Generieke Vlaamse status' specifiëren. De StatusVlaamsFase vormt de eerste en hogere indeling van het dossierverloop (in aanvraag, in behandeling, in beroep, in uitvoering enz). Verdere precisering binnen de Fase gebeurt dan in het veld StatusVlaamsCode. " ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#statusVlaamsFase> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "statusWijzigingsdatum" ;
+		sh:description "Is de verplichte vermelding van de datum + tijdstip waarop de betrokken status werd geregistreerd." ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#statusWijzigingsdatum> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "streefdatum" ;
+		sh:description "Is de datum waarop verwacht wordt dat de volgende stap (status-wijziging) in de transactie zal of zou moeten plaatsvinden. Dit kan in bepaalde gevallen bepaald worden door een wettelijke termijn (van een fase of status)." ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#streefdatum> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
 <http://data.europa.eu/m8g/ParticipationShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.europa.eu/m8g/Participation> ;
@@ -6,7 +109,6 @@
 		sh:name "beschrijving" ;
 		sh:description "Beschrijving van de participatie." ;
 		sh:path <http://purl.org/dc/terms/description> ;
-		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -42,228 +144,26 @@
 	] ;
 	sh:closed false .
 
-<http://www.w3.org/ns/locn#AddressShape>
+<http://data.vlaanderen.be/ns/organisatie#HoedanigheidShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://www.w3.org/ns/locn#Address> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/organisatie#Hoedanigheid> ;
 	sh:property [
-		sh:name "administratieveEenheidNiveau1" ;
-		sh:description "Hoogste Administratieve eenheid vh adres, doorgaans een land." ;
-		sh:path <http://www.w3.org/ns/locn#adminUnitL1> ;
-		sh:maxCount 1 ;
+		sh:name "isLidVan" ;
+		sh:description "Associeert de hoedanigheid met een bepaalde organisatie. Bv. een persoon in de hoedanigheid van zaakvoerder bij een organisatie." ;
+		sh:path <http://www.w3.org/ns/org#memberOf> ;
+		sh:class <https://www.w3.org/ns/org#Organization> ;
 	] ;
 	sh:property [
-		sh:name "administratieveEenheidNiveau2" ;
-		sh:description "De regio vh adres, doorgaans een provincie of deelstaat of gelijkaardig gebied dat typisch meerdere plaatsen omvat." ;
-		sh:path <http://www.w3.org/ns/locn#adminUnitL2> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "adresgebied" ;
-		sh:description "Naam ve geografisch gebied of plaats die een aantal adresseerbare objecten groepeert om deze te adresseren zonder dat het gebied of de plaats een administratieve eenheid is" ;
-		sh:path <http://www.w3.org/ns/locn#addressArea> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "busnummer" ;
-		sh:description "Officieel toegekende alfanumerieke code die wordt toegevoegd aan het huisnummer om meerdere gebouweenheden, standplaatsen, ligplaatsen of percelen te onderscheiden die eenzelfde huisnummer hebben." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#Adresvoorstelling.busnummer> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "gemeentenaam" ;
-		sh:description "Gemeentenaam vh adres." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#gemeentenaam> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "huisnummer" ;
-		sh:description "Alfanumerieke code officieel toegekend aan gebouweenheden, ligplaatsen, standplaatsen of percelen." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#Adresvoorstelling.huisnummer> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "land" ;
-		sh:description "Land waarin het adres gelegen is." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#land> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "locatieaanduiding" ;
-		sh:description "Alfanumerieke code die de adreslocator uniek identificeert binnen de straat, administratieve eenheid etc." ;
-		sh:path <http://www.w3.org/ns/locn#locatorDesignator> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "locatienaam" ;
-		sh:description "Naam of omschrijving vh het geografisch object dat de adreslocator aanduidt." ;
-		sh:path <http://www.w3.org/ns/locn#locatorName> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "postbus" ;
-		sh:description "Postbusnummer in een postkantoor." ;
-		sh:path <http://www.w3.org/ns/locn#poBox> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "postcode" ;
-		sh:description "Code waarmee het geografisch gebied dat adressen voor postale doeleinden groepeert wordt aangeduid." ;
-		sh:path <http://www.w3.org/ns/locn#postCode> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "postnaam" ;
-		sh:description "Naam waarmee het geografisch gebied dat adressen voor postale doeleinden groepeert wordt aangeduid." ;
-		sh:path <http://www.w3.org/ns/locn#postName> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "straatnaam" ;
-		sh:description "Straatnaam vh adres." ;
-		sh:path <http://www.w3.org/ns/locn#thoroughfare> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "volledigAdres" ;
-		sh:description "Het complete adres in één string, al dan niet geformatteerd." ;
-		sh:path <http://www.w3.org/ns/locn#fullAddress> ;
+		sh:name "contactinfo" ;
+		sh:description "Informatie zoals email, telefoon die toelaat de hoedanigheid te contacteren." ;
+		sh:path <http://data.vlaanderen.be/ns/organisatie#contactinfo> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://schema.org/ContactPointShape>
+<https://www.w3.org/ns/org#OrganizationShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://schema.org/ContactPoint> ;
-	sh:property [
-		sh:name "aanschrijfvorm" ;
-		sh:description "Titel waarmee iemand wordt aangeschreven of aangesproken of waarmee naar iemand wordt verwezen." ;
-		sh:path <http://ww.w3.org/2006/vcard/ns#honorific-prefix> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "adres" ;
-		sh:description "Adres dat men kan aanschrijven of bezoeken." ;
-		sh:path <http://www.w3.org/ns/locn#address> ;
-		sh:class <http://www.w3.org/ns/locn#Address> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "beschikbaarheid" ;
-		sh:description "Periode waarin contact kan worden opgenomen." ;
-		sh:path <http://schema.org/hoursAvailable> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "contactnaam" ;
-		sh:description "Naam van bvb de persoon die men kan contacteren." ;
-		sh:path <http://xmlns.com/foaf/0.1/name> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "email" ;
-		sh:description "Email-adres waarnaar men kan mailen." ;
-		sh:path <http://schema.org/email> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "fax" ;
-		sh:description "Faxnummer waarnaar men kan faxen." ;
-		sh:path <http://schema.org/faxNumber> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "openingsuren" ;
-		sh:description "Uren waarbinnen contact kan worden opgenomen." ;
-		sh:path <http://schema.org/openingHours> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "telefoon" ;
-		sh:description "Telefoonnummer waarop men kan bellen." ;
-		sh:path <http://schema.org/telephone> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "website" ;
-		sh:description "Website waarnaar men kan surfen." ;
-		sh:path <http://xmlns.com/foaf/0.1/page> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#anyURI> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/dienst#StatusShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/dienst#Status> ;
-	sh:property [
-		sh:name "actie" ;
-		sh:description "Omschrijving van de uit te voeren actie." ;
-		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActie> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "actieNodig" ;
-		sh:description "Aanduiding of de huidige status impliceert dat er actie van burger of onderneming nodig is." ;
-		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActieNodig> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "statusdatum" ;
-		sh:description "De datum van de Status." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#statusdatum> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "statusDetail1" ;
-		sh:description "Dit is de (originele) Status-definitie of -vermelding zoals geregistreerd in de bron." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#statusDetail1> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "statusDetail2" ;
-		sh:description "Interne status die kan worden meegegeven en die niet wordt getoond aan de burger of onderneming." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#statusDetail2> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "statusEDRL" ;
-		sh:description "De status volgens de Europese Dienstenrichtlijn" ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#statusEDRL> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "statusVlaamsCode" ;
-		sh:description "De Vlaamse status - Code. Verplicht in geval van een dossier van het type DossierStatus." ;
-		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusVlaamsCode> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "statusVlaamsFase" ;
-		sh:description "De Vlaamse status - Fase. Verplicht in geval van een dossier van het type DossierStatus." ;
-		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusVlaamsFase> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "streefdatum" ;
-		sh:description "De streefdatum voor het beëindigen van de huidige status." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#streefdatum> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
-		sh:maxCount 1 ;
-	] ;
+	sh:targetClass <https://www.w3.org/ns/org#Organization> ;
 	sh:closed false .
 
 <http://purl.org/dc/terms/AgentShape>
@@ -277,42 +177,12 @@
 	] ;
 	sh:closed false .
 
-<http://data.europa.eu/m8g/ChannelShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.europa.eu/m8g/Channel> ;
-	sh:property [
-		sh:name "beschikbaarheid" ;
-		sh:description "Periode waarin de Publieke Dienstverlening beschikbaar is via het Kanaal." ;
-		sh:path <https://schema.org/hoursAvailable> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "openingsuren" ;
-		sh:description "Uren waarbinnen de Publieke Dienstverlening beschikbaar is via het Kanaal." ;
-		sh:path <https://schema.org/openingHours> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-	] ;
-	sh:property [
-		sh:name "type" ;
-		sh:description "Aard vh Kanaal." ;
-		sh:path <http://purl.org/dc/terms/type> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
 <http://data.europa.eu/m8g/EvidenceShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.europa.eu/m8g/Evidence> ;
 	sh:property [
-		sh:name "beschrijving" ;
-		sh:description "Beschrijving vh Bewijs." ;
-		sh:path <http://purl.org/dc/terms/description> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
 		sh:name "documentatie" ;
-		sh:description "Documentatie gerelateerd ah Bewiijs." ;
+		sh:description "Documentatie gerelateerd aan het Bewiijs." ;
 		sh:path <http://xmlns.com/foaf/0.1/page> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#anyURI> ;
 	] ;
@@ -325,9 +195,12 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "taal" ;
-		sh:description "Taal waarin het aangeboden Bewijs moet zijn gesteld." ;
-		sh:path <http://purl.org/dc/terms/language> ;
+		sh:name "referentie" ;
+		sh:description "Identificator van het object." ;
+		sh:path <http://www.w3.org/ns/adms#identifier> ;
+		sh:class <http://www.w3.org/ns/adms#Identifier> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "type" ;
@@ -341,10 +214,24 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.europa.eu/m8g/Output> ;
 	sh:property [
+		sh:name "bedrag" ;
+		sh:description "In geval van een financieel voordel, het bedrag dat werd uitbetaald aan de begunstigde van de publieke dienstverlening op een bepaalde datum." ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#bedrag> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
 		sh:name "beschrijving" ;
 		sh:description "Beschrijving van de Output." ;
 		sh:path <http://purl.org/dc/terms/description> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "datum" ;
+		sh:description "De datum waarop de output werd toegekend of het financieel voordeel werd uitebetaald. " ;
+		sh:path <http://purl.org/dc/terms/date> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -356,8 +243,16 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
+		sh:name "referentie" ;
+		sh:description "Identificator van het object." ;
+		sh:path <http://www.w3.org/ns/adms#identifier> ;
+		sh:class <http://www.w3.org/ns/adms#Identifier> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
 		sh:name "type" ;
-		sh:description "Aard van de Output." ;
+		sh:description "Aard van de output." ;
 		sh:path <http://purl.org/dc/terms/type> ;
 	] ;
 	sh:closed false .
@@ -365,12 +260,6 @@
 <http://purl.org/vocab/cpsv#PublicServiceShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://purl.org/vocab/cpsv#PublicService> ;
-	sh:property [
-		sh:name "vereistAlsInput" ;
-		sh:description "Bewijsstuk dat moeten voorgelegd worden om de Publieke Dienstverlening te kunnen gebruiken." ;
-		sh:path <http://purl.org/vocab/cpsv#hasInput> ;
-		sh:class <http://data.europa.eu/m8g/Evidence> ;
-	] ;
 	sh:property [
 		sh:name "produceert" ;
 		sh:description "Het werkelijke resultaat van de uitvoering vd Publieke Dienstverlening." ;
@@ -384,16 +273,10 @@
 		sh:class <http://data.europa.eu/m8g/Participation> ;
 	] ;
 	sh:property [
-		sh:name "teConsumerenVia" ;
-		sh:description "Kanaal waarlangs een Agent interageert met een Publieke Dienstverlening." ;
-		sh:path <http://data.europa.eu/m8g/hasChannel> ;
-		sh:class <http://data.europa.eu/m8g/Channel> ;
-	] ;
-	sh:property [
-		sh:name "heeftStatus" ;
-		sh:description "Link tussen Publieke Dienstverlening en Status." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#heeftStatus> ;
-		sh:class <http://data.vlaanderen.be/ns/dienst#Status> ;
+		sh:name "vereistAlsInput" ;
+		sh:description "Bewijsstuk dat moeten voorgelegd worden om de Publieke Dienstverlening te kunnen gebruiken." ;
+		sh:path <http://purl.org/vocab/cpsv#hasInput> ;
+		sh:class <http://data.europa.eu/m8g/Evidence> ;
 	] ;
 	sh:property [
 		sh:name "wordtUitgevoerdDoor" ;
@@ -402,43 +285,22 @@
 		sh:class <http://purl.org/dc/terms/Agent> ;
 	] ;
 	sh:property [
+		sh:name "isInstantieVan" ;
+		sh:description "Linkt een bepaalde consumptie van een publieke dienstverlening (een transactie) met het product uit het dienstverleningsregister." ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#isInstantieVan> ;
+		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
+	] ;
+	sh:property [
 		sh:name "isGerelateerdMet" ;
 		sh:description "Andere Publieke Dienstverlening waarmee de Publieke Dienstverlening gerelateerd is." ;
 		sh:path <http://purl.org/dc/terms/relation> ;
 		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
 	] ;
 	sh:property [
-		sh:name "beschrijving" ;
-		sh:description "Beschrijving vd publieke dienstverlening." ;
-		sh:path <http://purl.org/dc/terms/description> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "contactinfo" ;
-		sh:description "Informatie waarmee de publieke dienstverlening kan worden gecontacteerd." ;
-		sh:path <http://data.europa.eu/m8g/hasContactPoint> ;
-		sh:class <http://schema.org/ContactPoint> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "executieStatus" ;
-		sh:description "De mogelijke Vlaamse Fases die door deze Publieke DIenstverlening kunnen aangenomen worden." ;
-		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=MogelijkeVlaamseFases> ;
-	] ;
-	sh:property [
-		sh:name "isPubliek" ;
-		sh:description "Aanduiding of de informatie met betrekking tot de dienstverlening publiek is." ;
-		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=IsPubliek> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "isVertrouwelijk" ;
-		sh:description "Aanduiding of de informatie met betrekking tot de dienstverlening vertruwelijk is." ;
-		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=IsVertrouwelijk> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
-		sh:maxCount 1 ;
+		sh:name "heeftStatus" ;
+		sh:description "Link tussen Publieke Dienstverlening en Status." ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#heeftStatus> ;
+		sh:class <http://data.vlaanderen.be/ns/dienst#Status> ;
 	] ;
 	sh:property [
 		sh:name "kost" ;
@@ -450,44 +312,18 @@
 		sh:name "naam" ;
 		sh:description "Officiële naam van de publieke dienstverlening." ;
 		sh:path <http://purl.org/dc/terms/title> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "streefdatum" ;
-		sh:description "Datum en tijdstip tegen wanneer logischerwijze het dossier afgerond zal zijn." ;
-		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StreefDatum> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "taal" ;
 		sh:description "Taal waarin een publieke dienstverlening wordt aangeboden." ;
 		sh:path <http://purl.org/dc/terms/language> ;
-	] ;
-	sh:property [
-		sh:name "type" ;
-		sh:description "Soort publieke dienstverlening." ;
-		sh:path <http://purl.org/dc/terms/type> ;
-	] ;
-	sh:property [
-		sh:name "typeDossier" ;
-		sh:description "Het type van dossier (een dossier met een status of een verwijzing naar een dossier of een cluster van dossiers, zonder status)." ;
-		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=TypeDossier> ;
 		sh:maxCount 1 ;
 	] ;
-	sh:property [
-		sh:name "updateFrequentie" ;
-		sh:description "De update freqentie van het dossier." ;
-		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=DossierUpdateFrequentie> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "wijzigingsdatum" ;
-		sh:description "Datum en tijdstip van de laatste dossierwijziging." ;
-		sh:path <https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=WijzigingsDatum> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
-		sh:maxCount 1 ;
-	] ;
+	sh:closed false .
+
+<http://www.w3.org/ns/person#PersonShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://www.w3.org/ns/person#Person> ;
 	sh:closed false .
 

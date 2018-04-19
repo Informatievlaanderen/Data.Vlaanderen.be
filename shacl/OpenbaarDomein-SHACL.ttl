@@ -1,0 +1,343 @@
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+<http://data.vlaanderen.be/ns/openbaardomein#BeheerobjectShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#Beheerobject> ;
+	sh:property [
+		sh:name "beheerder" ;
+		sh:description "Instantie (tot op team- of dienstniveau) die instaat voor het beheer van het object." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#beheerder> ;
+		sh:class <http://www.w3.org/ns/org#Organization> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "begindatum" ;
+		sh:description "Datum waarop de huidige versie van het beheerobject in gebruik wordt genomen. " ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#begindatum> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "einddatum" ;
+		sh:description "Datum waarop de huidige versie van het beheerobject uit gebruik wordt genomen." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#einddatum> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "niveau" ;
+		sh:description "Het niveau waarop het object zich bevindt." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#niveau> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#integer> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "geometrie" ;
+		sh:description "De geometrie overeenkomstig met een bepaald object." ;
+		sh:path <http://www.w3.org/ns/locn#geometry> ;
+		sh:class <http://www.opengis.net/ont/geosparql#Geometry> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomenShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomen> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/vegetatie#BegroeidVoorkomenShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#BegroeidVoorkomen> ;
+	sh:property [
+		sh:name "drassigheid" ;
+		sh:description "Mate waarin de bodem verzadigd is met water." ;
+		sh:path <http://data.vlaanderen.be/ns/vegetatie#drassigheid> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://fixme.com#OnbegroeidVoorkomenShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://fixme.com#OnbegroeidVoorkomen> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/vegetatie#VegetatieElementShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#VegetatieElement> ;
+	sh:property [
+		sh:name "plantdatum" ;
+		sh:description "De datum waarop het vegetatie element werd geplant." ;
+		sh:path <http://data.vlaanderen.be/ns/vegetatie#plantdatum> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "hoogte" ;
+		sh:description "TODO" ;
+		sh:path <http://data.vlaanderen.be/ns/vegetatie#hoogte> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "soortcode" ;
+		sh:description "Een unieke identificator voor de soort van het vegetatie-element. " ;
+		sh:path <http://data.vlaanderen.be/ns/vegetatie#soortcode> ;
+		sh:minCount 1 ;
+	] ;
+	sh:property [
+		sh:name "soortnaamWetenschappelijk" ;
+		sh:description "De wetenschappelijke soortnaam van het vegetatie-element." ;
+		sh:path <http://rs.tdwg.org/dwc/terms/scientificName> ;
+		sh:minCount 1 ;
+	] ;
+	sh:property [
+		sh:name "soortnaamNederlands" ;
+		sh:description "Soortnaam in het Nederlands." ;
+		sh:path <http://data.vlaanderen.be/ns/vegetatie#soortnaamNederlands> ;
+		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+	] ;
+	sh:closed false .
+
+<http://fixme.com#InfrastructuurelementShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://fixme.com#Infrastructuurelement> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/openbaardomein#BeheerdeelShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#Beheerdeel> ;
+	sh:property [
+		sh:name "voorkomen" ;
+		sh:description "Verwijst naar het fysiek voorkomen van het beheerdeel." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#voorkomen> ;
+		sh:class <http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomen> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "geometrie" ;
+		sh:description "De geometrie overeenkomstig met een bepaald object." ;
+		sh:path <http://www.w3.org/ns/locn#geometry> ;
+		sh:class <http://www.opengis.net/ont/sf#Polygon> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/openbaardomein#BeheerelementShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#Beheerelement> ;
+	sh:closed false .
+
+<http://fixme.com#WaterdeelShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://fixme.com#Waterdeel> ;
+	sh:closed false .
+
+<http://fixme.com#TerreindeelShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://fixme.com#Terreindeel> ;
+	sh:property [
+		sh:name "gemiddeldeBreedte" ;
+		sh:description "TODO" ;
+		sh:path <http://fixme.com#gemiddeldeBreedte> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "lengte" ;
+		sh:description "TODO" ;
+		sh:path <http://fixme.com#lengte> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "oppervlakte" ;
+		sh:description "TODO" ;
+		sh:path <http://fixme.com#oppervlakte> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/openbaardomein#BeheergebiedShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#Beheergebied> ;
+	sh:property [
+		sh:name "beheerder" ;
+		sh:description "Instantie (tot op team- of dienstniveau) die instaat voor het beheer van het gebied." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#beheerder> ;
+		sh:class <http://www.w3.org/ns/org#Organization> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "begindatum" ;
+		sh:description "Datum waarop de huidige versie van het beheergebied in gebruik wordt genomen." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#begindatum> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "einddatum" ;
+		sh:description "Datum waarop de huidige versie van het beheergebied uit gebruik wordt genomen." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#einddatum> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "geometrie" ;
+		sh:description "De geometrie overeenkomstig met een bepaald gebied." ;
+		sh:path <http://www.w3.org/ns/locn#geometry> ;
+		sh:class <http://www.opengis.net/ont/sf#Polygon> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "naam" ;
+		sh:description "Een naam voor het gebied." ;
+		sh:path <http://purl.org/dc/terms/title> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/openbaardomein#TerreinVoorkomenShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#TerreinVoorkomen> ;
+	sh:property [
+		sh:name "obstakels" ;
+		sh:description "Eigenschap die aangeeft of er binnen het beheerdeel  al dan niet objecten voorkomen die de vrije werking van machines of andere werktuigen kan verhinderen" ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#obstakels> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "talud" ;
+		sh:description "TODO" ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#talud> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://www.opengis.net/ont/sf#PolygonShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://www.opengis.net/ont/sf#Polygon> ;
+	sh:closed false .
+
+<http://www.w3.org/ns/org#OrganizationShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://www.w3.org/ns/org#Organization> ;
+	sh:property [
+		sh:name "alternatieveNaam" ;
+		sh:description "Andere naam waaronder de organisatie bekend is." ;
+		sh:path <http://www.w3.org/2004/02/skos/core#altLabel> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "contactinfo" ;
+		sh:description "Informatie zoals email, telefoon die toelaat de Organisatie te contacteren." ;
+		sh:path <http://schema.org/contactPoint> ;
+		sh:class <http://schema.org/ContactPoint> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "voorkeursnaam" ;
+		sh:description "Naam waarmee de organisatie bij voorkeur wordt aangeduid." ;
+		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://www.opengis.net/ont/geosparql#GeometryShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://www.opengis.net/ont/geosparql#Geometry> ;
+	sh:property [
+		sh:name "gml" ;
+		sh:description "Geometrie uitgedrukt in gml-formaat." ;
+		sh:path <http://www.opengis.net/ont/geosparql#asGML> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "wkt" ;
+		sh:description "Geometrie uitgedrukt in wkt-formaat." ;
+		sh:path <http://www.opengis.net/ont/geosparql#asWKT> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://fixme.com#PuntShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://fixme.com#Punt> ;
+	sh:property [
+		sh:name "wgs84Latitude" ;
+		sh:description "Breedte van de positie vh punt volgens het coördinaatsysteem WGS84." ;
+		sh:path <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "wgs84Longtitude" ;
+		sh:description "Lengte van de positie vh punt volgens het coördinaatsysteem WGS84." ;
+		sh:path <http://www.w3.org/2003/01/geo/wgs84_pos#long> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://www.opengis.net/ont/sf#MultiCurveShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://www.opengis.net/ont/sf#MultiCurve> ;
+	sh:closed false .
+
+<http://www.w3.org/2000/01/rdf-schema#ResourceShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://www.w3.org/2000/01/rdf-schema#Resource> ;
+	sh:property [
+		sh:name "bronnaam" ;
+		sh:description "De naam van de bron." ;
+		sh:path <http://fixme.com#bronnaam> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "uuid" ;
+		sh:description "Een globaal unieke identificator voor het object." ;
+		sh:path <http://fixme.com#uuid> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/openbaardomein#CollectieShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#Collectie> ;
+	sh:property [
+		sh:name "bevat" ;
+		sh:description "Relatie naar de objecten die deel uitmaken van de collectie." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#bevat> ;
+		sh:class <http://data.vlaanderen.be/ns/openbaardomein#Beheerobject> ;
+	] ;
+	sh:property [
+		sh:name "titel" ;
+		sh:description "Een titel voor de collectie." ;
+		sh:path <http://purl.org/dc/terms/title> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+

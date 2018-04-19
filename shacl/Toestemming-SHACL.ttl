@@ -15,13 +15,6 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/toestemming#ToestemmingDescriptor> ;
 	sh:property [
-		sh:name "databron" ;
-		sh:description "De entiteit die de technische beheerder is van de persoonlijke informatie." ;
-		sh:path <http://data.vlaanderen.be/ns/toestemming#databron> ;
-		sh:class <http://data.europa.eu/m8g/PublicOrganisation> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
 		sh:name "dataController" ;
 		sh:description "De entiteit die beslist over het doel, de voorwaarden en de manier waarop persoonlijke informatie verwerkt wordt." ;
 		sh:path <http://data.vlaanderen.be/ns/toestemming#dataController> ;
@@ -30,18 +23,18 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "dataProcessor" ;
-		sh:description "De entiteit die persoonlijke informatie verwerkt namens de data controller." ;
-		sh:path <http://data.vlaanderen.be/ns/toestemming#dataProcessor> ;
-		sh:class <http://www.w3.org/ns/org#Organization> ;
-		sh:minCount 1 ;
-	] ;
-	sh:property [
 		sh:name "isGerelateerdMet" ;
 		sh:description "De Publieke Dienstverlening waarbinnen de toestemming kadert." ;
 		sh:path <http://purl.org/dc/terms/relation> ;
 		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
 		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "dataProcessor" ;
+		sh:description "De entiteit die persoonlijke informatie verwerkt namens de data controller." ;
+		sh:path <http://data.vlaanderen.be/ns/toestemming#dataProcessor> ;
+		sh:class <http://www.w3.org/ns/org#Organization> ;
+		sh:minCount 1 ;
 	] ;
 	sh:property [
 		sh:name "label" ;
@@ -145,7 +138,7 @@
 		sh:name "beperking" ;
 		sh:description "Een beperking die wordt opgelegd aan de toestemming door het data subject." ;
 		sh:path <http://data.vlaanderen.be/ns/toestemming#beperking> ;
-		sh:class <http://www.w3.org/2000/01/rdf-schema#Literal> ;
+		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
 	] ;
 	sh:property [
 		sh:name "gegevenOp" ;

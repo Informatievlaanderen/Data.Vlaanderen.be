@@ -9,7 +9,7 @@
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix gsp: <http://www.opengis.net/ont/geosparql#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
-@prefix od: <http://test.data.vlaanderen.be/ns/openbaardomein#> .
+@prefix od: <http://data.vlaanderen.be/ns/openbaardomein#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix person: <http://www.w3.org/ns/person#> .
@@ -30,636 +30,85 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-skos:Concept a rdfs:Class ;
-    rdfs:label "Concept" .
-
 org:Organization a rdfs:Class ;
     rdfs:label "Organisatie"@nl .
 
-<http://data.vlaanderen.be/ns/openbaardomein> a owl:Ontology ;
-    dcterms:contributor [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Stad Gent - Data & Informatie" ] ;
-            foaf:firstName "Diedrik" ;
-            foaf:lastName "Gaus" ;
-            foaf:mbox <mailto:Diedrik.gaus@stad.gent> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Elia" ] ;
-            foaf:firstName "Ruben" ;
-            foaf:lastName "Deblauwe" ;
-            foaf:mbox <mailto:ruben.deblauwe@elia.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Federale Overheidsdienst Beleid en Ondersteuning" ] ;
-            foaf:firstName "Marc" ;
-            foaf:lastName "Bruyland" ;
-            foaf:mbox <mailto:marc.bruyland@bosa.fgov.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "TMVW" ] ;
-            foaf:firstName "Nicolas" ;
-            foaf:lastName "De Blieck" ;
-            foaf:mbox <mailto:nicolas.deblieck@farys.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "De Vlaamse Waterweg nv" ] ;
-            foaf:firstName "Reinhilde" ;
-            foaf:lastName "Schepens" ;
-            foaf:mbox <mailto:reinhilde.schepens@wenz.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Geosparc" ] ;
-            foaf:firstName "Berdien" ;
-            foaf:lastName "De Roo" ;
-            foaf:mbox <mailto:berdien.deroo@geosparc.com> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Vereniging voor Openbaar Groen" ] ;
-            foaf:firstName "Emmanuel" ;
-            foaf:lastName "Ampe" ;
-            foaf:mbox <mailto:emmanuel@vvog.info> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Hogeschool Gent" ] ;
-            foaf:firstName "Dennis" ;
-            foaf:lastName "Devriendt" ;
-            foaf:mbox <mailto:dennis.devriendt@hogent.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Provincie Oost-Vlaanderen" ] ;
-            foaf:firstName "Filip" ;
-            foaf:lastName "Mahieu" ;
-            foaf:mbox <mailto:filip.mahieu@oost-vlaanderen.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "G.I.M. - Geographic Information Management" ] ;
-            foaf:firstName "An" ;
-            foaf:lastName "Heirman" ;
-            foaf:mbox <mailto:an@gim.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Hogeschool PXL" ] ;
-            foaf:firstName "Bea" ;
-            foaf:lastName "Toppet" ;
-            foaf:mbox <mailto:bea.toppet@pxl.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Stad Lier" ] ;
-            foaf:firstName "Luc" ;
-            foaf:lastName "Janssens" ;
-            foaf:mbox <mailto:luc.janssens@lier.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "WVI" ] ;
-            foaf:firstName "Wouter" ;
-            foaf:lastName "Verhelst" ;
-            foaf:mbox <mailto:w.verhelst@wvi.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Federale Overheidsdienst Beleid en Ondersteuning" ] ;
-            foaf:firstName "Liesbet" ;
-            foaf:lastName "DHondt" ;
-            foaf:mbox <mailto:liesbet.dhondt@bosa.fgov.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Tom" ;
-            foaf:lastName "Van Herck" ;
-            foaf:mbox <mailto:Tom.vanherck@kb.vlaanderen.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Provincie Vlaams-Brabant" ] ;
-            foaf:firstName "Floris" ;
-            foaf:lastName "Van den Broeck" ;
-            foaf:mbox <mailto:floris.vandenbroeck@vlaamsbrabant.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Stad Antwerpen" ] ;
-            foaf:firstName "Joke" ;
-            foaf:lastName "Van De Maele" ;
-            foaf:mbox <mailto:joke.vandemaele@stad.antwerpen.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Departement Omgeving" ] ;
-            foaf:firstName "Luk" ;
-            foaf:lastName "Mutsaerts" ;
-            foaf:mbox <mailto:luk.mutsaerts@vlaanderen.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Stad Aalst" ] ;
-            foaf:firstName "Jan" ;
-            foaf:lastName "De Wael" ;
-            foaf:mbox <mailto:jan.dewael@aalst.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Stad Aalst" ] ;
-            foaf:firstName "Pieter" ;
-            foaf:lastName "Lauwereys" ;
-            foaf:mbox <mailto:pieter.lauwereys@aalst.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Hogeschool Gent" ] ;
-            foaf:firstName "Kristien" ;
-            foaf:lastName "De Rouck" ;
-            foaf:mbox <mailto:kristien.derouck@hogent.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Provincie Oost-Vlaanderen" ] ;
-            foaf:firstName "Pieter" ;
-            foaf:lastName "Deckers" ;
-            foaf:mbox <mailto:pieter.deckers@oost-vlaanderen.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Hogeschool Gent" ] ;
-            foaf:firstName "Cornelis" ;
-            foaf:lastName "Stal" ;
-            foaf:mbox <mailto:cornelis.stal@hogent.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Geosparc" ] ;
-            foaf:firstName "Oliver" ;
-            foaf:lastName "May" ;
-            foaf:mbox <mailto:oliver.may@geosparc.com> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Stad Aalst" ] ;
-            foaf:firstName "Joris" ;
-            foaf:lastName "Verbeken" ;
-            foaf:mbox <mailto:joris.verbeken@aalst.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Gemeente Evergem" ] ;
-            foaf:firstName "Peter" ;
-            foaf:lastName "Van de Veire" ;
-            foaf:mbox <mailto:peter.vandeveire@evergem.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Stad Oostende" ] ;
-            foaf:firstName "Ellen" ;
-            foaf:lastName "Debever" ;
-            foaf:mbox <mailto:ellen.debever@oostende.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Stad Sint-Niklaas" ] ;
-            foaf:firstName "Els" ;
-            foaf:lastName "Podevyn" ;
-            foaf:mbox <mailto:els.podevyn@sint-niklaas.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Provincie Oost-Vlaanderen" ] ;
-            foaf:firstName "Steven" ;
-            foaf:lastName "De Vriendt" ;
-            foaf:mbox <mailto:steven.de.vriendt@oost-vlaanderen.be> ] ;
-    dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
-    dcterms:mediator [ foaf:homepage <https://data.vlaanderen.be> ;
-            foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
-            foaf:name "Data Vlaanderen" ] ;
-    rec:editor [ a person:Person ;
-            schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
-                    foaf:name "PwC" ] ;
-            foaf:firstName "Jens" ;
-            foaf:lastName "Scheerlinck" ;
-            foaf:mbox <mailto:jens.scheerlinck@pwc.com> ] ;
-    foaf:maker [ a person:Person ;
-            schema:affiliation [ foaf:homepage <file:///C:/OSLO/src/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
-                    foaf:name "Ugent" ] ;
-            foaf:firstName "Tim" ;
-            foaf:lastName "Baert" ;
-            foaf:mbox <mailto:tim.baert@ugent.be> ] .
+od:Beheerelement a owl:Class ;
+    rdfs:label "Beheerelement"@nl ;
+    rdfs:comment "Afzonderlijk te onderscheiden element dat ofwel direct of indirect bevestigd is aan het aardoppervlak, ofwel deel uitmaakt van het aardoppervlak maar te beperkt is in oppervlakte is om een beheerdeel te vormen."@nl ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
+    rdfs:subClassOf od:Beheerobject .
 
-schema:contactPoint a rdf:Property ;
-    rdfs:label "contactinfo"@nl .
-
-od:afsluitingtype a rdf:Property ;
-    rdfs:label "afsluitingtype"@nl ;
-    rdfs:comment "Het type afsluiting."@nl ;
-    rdfs:domain od:Afsluiting ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> .
-
-od:baktype a owl:ObjectProperty ;
-    rdfs:label "baktype"@nl ;
-    rdfs:comment "Het type bak."@nl ;
-    rdfs:domain od:Bak ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:bedekkingtype a owl:ObjectProperty ;
-    rdfs:label "bedekkingtype"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:BedekkingOnbegroeidVoorkomen ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
+od:Beheergebied a owl:Class ;
+    rdfs:label "Beheergebied"@nl ;
+    vann:usageNote "De openbare ruimte wordt geïnterpreteerd zoals aangegeven in het GRB lexicon (AGIV): \"Ruimte die ten dienste staat van iedereen (algemeen belang), zonder beperking naar specifieke gemeenschappen. De openbare ruimte is principieel voor iedereen toegankelijk\". Voorbeeld: een stadspark is parkzone, om hiermee aan te duiden dat de zone is ontworpen is om recreatie en natuur samen te laten plaatsvinden. "@nl ;
+    rdfs:comment """Begrensd en benoemd gedeelte van de openbare ruimte met een bepaalde hoofdfunctie.\r
+"""@nl ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> .
 
 od:begindatum a owl:DatatypeProperty ;
     rdfs:label "begindatum"@nl ;
     rdfs:comment "Datum waarop de huidige versie van het gebied of object in gebruik wordt genomen."@nl ;
     rdfs:domain rdfs:Resource ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
     rdfs:range xsd:dateTime .
-
-od:begroeiingtype a owl:ObjectProperty ;
-    rdfs:label "begroeiingtype"@nl ;
-    rdfs:comment "Het type begroeiing."@nl ;
-    rdfs:domain od:OverigeBegroeiingVoorkomen ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
 
 od:beheerder a owl:ObjectProperty ;
     rdfs:label "beheerder"@nl ;
     rdfs:comment "Instantie (tot op team- of dienstniveau) die instaat voor het beheer van het gebied of object."@nl ;
     rdfs:domain rdfs:Resource ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
     rdfs:range org:Organization .
 
-od:beheergebiedtype a owl:ObjectProperty ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:Beheergebied ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range <http://fixme.com#BeheergebiedtypeWaarde> .
-
-od:bereikbaar a owl:DatatypeProperty ;
-    rdfs:label "bereikbaar"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:Plantbakvorm ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:boolean .
-
-od:bestratingVerhardingType a owl:ObjectProperty ;
-    rdfs:label "bestrating verharding yype"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:BestratingOnbegroeidVoorkomen ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:boomtype a owl:ObjectProperty ;
-    rdfs:label "boomtype"@nl ;
-    rdfs:comment "Het type boom."@nl ;
-    rdfs:domain od:BomenVoorkomen ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:boomvormtype a rdf:Property ;
-    rdfs:label "boomvormtype"@nl ;
-    rdfs:comment "Het type boomvorm."@nl ;
-    rdfs:domain od:Boomvorm ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> .
-
-od:breedte a owl:DatatypeProperty ;
-    rdfs:label "breedte"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:Beheerobject ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:double .
-
-od:conditie a owl:ObjectProperty ;
-    rdfs:label "conditie"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:Boomvorm ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:dekselFunctie a owl:ObjectProperty ;
-    rdfs:label "deksel functie"@nl ;
-    rdfs:comment "De functie van het deksel."@nl ;
-    rdfs:domain od:Deksel ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:dekselVorm a owl:ObjectProperty ;
-    rdfs:label "deksel vorm"@nl ;
-    rdfs:comment "De vorm van het deksel."@nl ;
-    rdfs:domain od:Deksel ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:dekseltype a owl:ObjectProperty ;
-    rdfs:label "dekseltype"@nl ;
-    rdfs:comment "Het type deksel."@nl ;
-    rdfs:domain od:Deksel ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:diameter a owl:DatatypeProperty ;
-    rdfs:label "diameter"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:Boomvorm ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:double .
-
-od:drassigheid a owl:ObjectProperty ;
-    rdfs:label "drassigheid"@nl ;
-    vann:usageNote "De drassigheid geeft hierbij aan in welke mate de normale werking van types machines zou kunnen verstoord worden."@nl ;
-    rdfs:comment "Mate waarin de bodem verzadigd is met water."@nl ;
-    rdfs:domain od:BegroeidVoorkomen ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
+od:bevat a owl:ObjectProperty ;
+    rdfs:label "bevat"@nl ;
+    rdfs:comment "Relatie naar de objecten die deel uitmaken van de collectie."@nl ;
+    rdfs:domain od:Collectie ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
+    rdfs:range od:Beheerobject .
 
 od:einddatum a owl:DatatypeProperty ;
     rdfs:label "einddatum"@nl ;
     rdfs:comment "Datum waarop de huidige versie van het gebied of object uit gebruik wordt genomen."@nl ;
     rdfs:domain rdfs:Resource ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
     rdfs:range xsd:dateTime .
 
-od:gebondenType a owl:ObjectProperty ;
-    rdfs:label "gebonden type"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:Klimvorm ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:gemiddeldeBreedte a owl:DatatypeProperty ;
-    rdfs:label "gemiddelde breedte"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:Beheerdeel ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:double .
-
-od:gemiddeldeHoogte a owl:DatatypeProperty ;
-    rdfs:label "gemiddelde hoogte"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:Haagvorm ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:double .
-
-od:geslotenVerhardingType a owl:ObjectProperty ;
-    rdfs:label "gesloten verharding type"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:GeslotenOnbegroeidVoorkomen ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:grasEnKruidachtigenType a owl:ObjectProperty ;
-    rdfs:label "gras en kruidachtigen type"@nl ;
-    rdfs:comment "Het type gras en kruidachtigen."@nl ;
-    rdfs:domain od:GrasEnKruidachtigVoorkomen ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:haagvormtype a owl:ObjectProperty ;
-    rdfs:label "haagvormtype"@nl ;
-    rdfs:comment "Het type haagvorm."@nl ;
-    rdfs:domain od:Haagvorm ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:heesterstype a owl:ObjectProperty ;
-    rdfs:label "heesterstype"@nl ;
-    rdfs:comment "Het type heesters."@nl ;
-    rdfs:domain od:HeestersVoorkomen ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:hoogte a rdf:Property ;
-    rdfs:label "hoogte"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:VegetatieElement ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:double .
-
-od:installatietype a owl:ObjectProperty ;
-    rdfs:label "installatietype"@nl ;
-    rdfs:comment "Het type installatie."@nl ;
-    rdfs:domain od:Installatie ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:kasttype a owl:ObjectProperty ;
-    rdfs:label "kasttype"@nl ;
-    rdfs:comment "Het type kast."@nl ;
-    rdfs:domain od:Kast ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:knipoppervlak a owl:DatatypeProperty ;
-    rdfs:label "knipoppervlak"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:Haagvorm ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:double .
-
-od:lengte a owl:DatatypeProperty ;
-    rdfs:label "lengte"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:Beheerobject ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:double .
-
-od:naam a owl:DatatypeProperty ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:Beheergebied ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:string .
-
-od:niveau a rdf:Property ;
+od:niveau a owl:DatatypeProperty ;
     rdfs:label "niveau"@nl ;
+    vann:usageNote "Negatieve waarden worden geassocieerd met ondergrond, nul met gelijkgronds en positieve waarden met bovengronds."@nl ;
     rdfs:comment "Het niveau waarop het object zich bevindt."@nl ;
     rdfs:domain od:Beheerobject ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> .
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
+    rdfs:range xsd:integer .
 
 od:obstakels a owl:DatatypeProperty ;
     rdfs:label "obstakels"@nl ;
     rdfs:comment "Eigenschap die aangeeft of er binnen het beheerdeel  al dan niet objecten voorkomen die de vrije werking van machines of andere werktuigen kan verhinderen"@nl ;
     rdfs:domain od:TerreinVoorkomen ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
     rdfs:range xsd:boolean .
-
-od:obstakelsAanwezig a owl:DatatypeProperty ;
-    rdfs:label "obstakel aanwezig"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:Haagvorm ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:boolean .
-
-od:oppervlakte a owl:DatatypeProperty ;
-    rdfs:label "oppervlakte"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:Beheerobject ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:double .
-
-od:paaltype a owl:ObjectProperty ;
-    rdfs:label "paaltype"@nl ;
-    rdfs:comment "Het type paal."@nl ;
-    rdfs:domain od:Paal ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:plantbakvormtype a owl:ObjectProperty ;
-    rdfs:label "plantbakvormtype"@nl ;
-    rdfs:comment "Het type plantbakvorm."@nl ;
-    rdfs:domain od:Plantbakvorm ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:plantdatum a owl:DatatypeProperty ;
-    rdfs:label "plantdatum"@nl ;
-    rdfs:comment "De datum waarop het vegetatie element werd geplant."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/openbaardomein#plantdatum> ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:dateTime .
-
-od:planttype a owl:ObjectProperty ;
-    rdfs:label "planttype"@nl ;
-    rdfs:comment "Het type plant."@nl ;
-    rdfs:domain od:PlantenVoorkomen ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:roostertype a owl:ObjectProperty ;
-    rdfs:label "roostertype"@nl ;
-    rdfs:comment "Het type rooster."@nl ;
-    rdfs:domain od:Rooster ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:sensortype a owl:ObjectProperty ;
-    rdfs:label "sensortype"@nl ;
-    rdfs:comment "Het type sensor."@nl ;
-    rdfs:domain od:Sensor ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:soortnaamLatijns a owl:DatatypeProperty ;
-    rdfs:label "soortnaam Latijns"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:VegetatieElement ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:string .
-
-od:soortnaamNederlands a owl:DatatypeProperty ;
-    rdfs:label "soortnaam Nederlands"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:VegetatieElement ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:string .
-
-od:speeltoesteltype a owl:ObjectProperty ;
-    rdfs:label "speeltoesteltype"@nl ;
-    rdfs:comment "Het type speeltoestel."@nl ;
-    rdfs:domain od:SpeelEnSportvoorziening ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:stamomtrek a owl:DatatypeProperty ;
-    rdfs:label "stamomtrek"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:Boomvorm ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:double .
-
-od:straatgoottype a owl:ObjectProperty ;
-    rdfs:label "straatgoottype"@nl ;
-    rdfs:comment "Het type straatgoot."@nl ;
-    rdfs:domain od:Straatgoot ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:straatmeubilairtype a owl:ObjectProperty ;
-    rdfs:label "straatmeubilairtype"@nl ;
-    rdfs:comment "Het type straatmeubilair."@nl ;
-    rdfs:domain od:Straatmeubilair ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
 
 od:talud a owl:ObjectProperty ;
     rdfs:label "talud"@nl ;
     rdfs:comment "TODO"@nl ;
     rdfs:domain od:TerreinVoorkomen ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
     rdfs:range skos:Concept .
-
-od:terreindeeltype a owl:ObjectProperty ;
-    rdfs:label "terreindeeltype"@nl ;
-    rdfs:comment "Het type terreindeel."@nl ;
-    rdfs:domain od:Terreindeel ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:volume a owl:DatatypeProperty ;
-    rdfs:label "volume"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:Plantbakvorm ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:double .
 
 od:voorkomen a owl:ObjectProperty ;
     rdfs:label "voorkomen"@nl ;
     rdfs:comment "Verwijst naar het fysiek voorkomen van het beheerobject."@nl ;
-    rdfs:domain od:Beheerobject ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
+    rdfs:domain od:Beheerdeel ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
     rdfs:range od:FysiekVoorkomen .
 
-od:waterlooptype a owl:ObjectProperty ;
-    rdfs:label "waterlooptype"@nl ;
-    rdfs:comment "Het type waterloop."@nl ;
-    rdfs:domain od:Waterloop ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
+dcterms:title a rdf:Property ;
+    rdfs:label "naam"@nl,
+        "titel"@nl .
 
-od:watertype a owl:ObjectProperty ;
-    rdfs:label "watertype"@nl ;
-    rdfs:comment "Het type water."@nl ;
-    rdfs:domain od:WaterVoorkomen ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:watervlaktype a owl:ObjectProperty ;
-    rdfs:label "watervlaktype"@nl ;
-    rdfs:comment "Het type watervlak."@nl ;
-    rdfs:domain od:Watervlak ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range skos:Concept .
-
-od:wortelzonediepte a owl:DatatypeProperty ;
-    rdfs:label "wortelzonediepte"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:Boomvorm ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:double .
-
-od:wortelzonestraal a owl:DatatypeProperty ;
-    rdfs:label "wortelzonestraal"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain od:Boomvorm ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range xsd:double .
-
-<http://test.data.vlaanderen.be/ns/openbaardomein/BoomtypeWaarde/BOMEN_ALGEMEEN> a skos:Concept ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> .
-
-<http://test.data.vlaanderen.be/ns/openbaardomein/WatervlaktypeWaarde/MEER> a skos:Concept ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> .
-
-<http://test.data.vlaanderen.be/ns/openbaardomein/WatervlaktypeWaarde/POEL> a skos:Concept ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> .
-
-<http://test.data.vlaanderen.be/ns/openbaardomein/WatervlaktypeWaarde/SLOTGRACHT> a skos:Concept ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> .
-
-<http://test.data.vlaanderen.be/ns/openbaardomein/WatervlaktypeWaarde/VEN> a skos:Concept ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> .
-
-<http://test.data.vlaanderen.be/ns/openbaardomein/WatervlaktypeWaarde/VIJVER> a skos:Concept ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> .
-
-rdfs:label a rdf:Property ;
-    rdfs:label "naam"@nl .
+schema:contactPoint a rdf:Property ;
+    rdfs:label "contactinfo"@nl .
 
 skos:altLabel a rdf:Property ;
     rdfs:label "alternatieve naam"@nl .
@@ -670,243 +119,81 @@ skos:prefLabel a rdf:Property ;
 locn:geometry a rdf:Property ;
     rdfs:label "geometrie"@nl .
 
-od:Afsluiting a owl:Class ;
-    rdfs:label "Afsluiting"@nl ;
-    rdfs:comment "Op het terrein ondubbelzinnig aanwijsbare en permanent verankerde scheiding, bestaande uit afsluitingen, muren, borstweringen en slagbomen."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Infrastructuurelement .
-
-od:Bak a owl:Class ;
-    rdfs:label "Bak"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Infrastructuurelement .
-
-od:BedekkingOnbegroeidVoorkomen a owl:Class ;
-    rdfs:label "Bedekking Onbegroeid Voorkomen"@nl ;
-    vann:usageNote "Bron definitie: GRB-skeletaanvulling detail: WSV1: Soort verharding/bedekking."@nl ;
-    rdfs:comment "Niet gecompacteerd en op niet-duurzame wijze verankerd met het"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:OnbegroeidVoorkomen .
-
-od:BestratingOnbegroeidVoorkomen a owl:Class ;
-    rdfs:label "Bestrating Onbegroeid Voorkomen"@nl ;
-    rdfs:comment "Verhardingstype opgebouwd uit bestratingen (rechthoekige of vierkante componenten) waardoor een aanzienlijk aantal voegen tussen de componenten zitten."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:OnbegroeidVoorkomen .
-
-od:BomenVoorkomen a owl:Class ;
-    rdfs:label "Bomen Voorkomen"@nl ;
-    vann:usageNote "Bron definitie: vrij naar CROW in Gegevenscatalogus IMGeo 2.1.1 (definitie BOSPLANTSOEN)"@nl ;
-    rdfs:comment "Opgaande beplanting van houtachtige gewassen die boomvormend  zijn."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:BegroeidVoorkomen .
-
-od:GeslotenOnbegroeidVoorkomen a owl:Class ;
-    rdfs:label "Gesloten Onbegroeid Voorkomen"@nl ;
-    rdfs:comment "Verhardingstype gekenmerkt door een continue bedekking, waardoor er weinig voegen tussen de componenten aan te treffen zijn."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:OnbegroeidVoorkomen .
-
-od:GrasEnKruidachtigVoorkomen a owl:Class ;
-    rdfs:label "Gras En Kruidachtig Voorkomen"@nl ;
-    rdfs:comment "Vegetatietype gekenmerkt door een laagblijvende, aaneengesloten kruidachtige vegetatie. (zowel grassen als andere planten)"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:BegroeidVoorkomen .
-
-od:HeestersVoorkomen a owl:Class ;
-    rdfs:label "Heesters Voorkomen"@nl ;
-    rdfs:comment "Beplanting van houtige gewassen die struikvormend zijn en die al dan niet een gesloten geheel vormen. Het accent ligt op de sierwaarde, de beplanting kan uit één soort of uit meerdere soorten bestaan. Onder de heesters kan een houtachtige of kruidachtige onderbegroeiing aanwezig zijn. Het oppervlak met struikachtige gewassen is meer dan 50% van de totale oppervlakte van het vak."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:BegroeidVoorkomen .
-
-od:Installatie a owl:Class ;
-    rdfs:label "Installatie"@nl ;
-    rdfs:comment "Installaties zijn een diverse groep van objecten die bestaan uit afzonderlijke componenten en die over het algemeen een specifiek mechanische, hydraulische of pneumatische werking hebben."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Infrastructuurelement .
-
-od:Kast a owl:Class ;
-    rdfs:label "Kast"@nl ;
-    rdfs:comment "Een voor de mens niet-toegankelijke bovengrondse en beschermende ombouw waarin elektrische onderdelen en installaties, noodzakelijk voor de distributie van gas, elektriciteit en communicatiesignalen, worden ondergebracht (algemeen)."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Infrastructuurelement .
-
-od:Klimvorm a owl:Class ;
-    rdfs:label "Klimvorm"@nl ;
-    rdfs:comment "Plant met buigzame stengels die zich aan muren, bomen, enz. hecht en zodoende omhoog klimt."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:VegetatieElement .
-
-od:OverigeBegroeiingVoorkomen a owl:Class ;
-    rdfs:label "Overige Begroeiing Voorkomen"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:BegroeidVoorkomen .
-
-od:Paal a owl:Class ;
-    rdfs:label "Paal"@nl ;
-    rdfs:comment "Langwerpig verticaal (of eventueel enigszins schuin) geplaatst object, waarbij de breedte over de hele lengte ongeveer gelijk is."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Infrastructuurelement .
-
-od:PlantenVoorkomen a owl:Class ;
-    rdfs:label "Planten Voorkomen"@nl ;
-    rdfs:comment "Algemene groep van begroeiingstypes, waarbij de aard van de samenstelling van de planten bepalend is voor het uitzicht en het beheer."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:BegroeidVoorkomen .
-
-od:Rooster a owl:Class ;
-    rdfs:label "Rooster"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Infrastructuurelement .
-
-od:Sensor a owl:Class ;
-    rdfs:label "Sensor"@nl ;
-    rdfs:comment "Apparaat bedoeld om iets waar te nemen."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Infrastructuurelement .
-
-od:SpeelEnSportvoorziening a owl:Class ;
-    rdfs:label "Speel- en sportvoorziening"@nl ;
-    rdfs:comment "Toestel ontworpen of kennelijk bestemd om te spelen of te sporten."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Infrastructuurelement .
-
-od:Straatgoot a owl:Class ;
-    rdfs:label "Straatgoot"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Infrastructuurelement .
-
-od:Straatmeubilair a owl:Class ;
-    rdfs:label "Straatmeubilair"@nl ;
-    rdfs:comment "Straatmeubilair is  een diverse groep van objecten die in het algemeen in de openbare ruimte staan (zowel corridor- als surplusgebied)"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Infrastructuurelement .
-
-od:Terreindeel a owl:Class ;
-    rdfs:label "Terreindeel"@nl ;
-    rdfs:comment "Gedeelte van het aardoppervlak, met een gelijkaardige functie, dat geen deel uitmaakt van 'waterdeel'"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Beheerdeel .
-
-od:WaterVoorkomen a owl:Class ;
-    rdfs:label "Water Voorkomen"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:FysiekVoorkomen .
-
-od:Waterloop a owl:Class ;
-    rdfs:label "Waterloop"@nl ;
-    rdfs:comment "Gebied dat zorgt voor het verzamelen en transporteren van de horizontale afvloeiing van neerslag- en bronwater. "@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Waterdeel .
-
-od:Watervlak a owl:Class ;
-    rdfs:label "Watervlak"@nl ;
-    rdfs:comment "Het gedeelte van het landoppervlak dat wordt ingenomen door stilstaand water en dat in hoofdzaak geen deel uitmaakt van het hydrografisch netwerk"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Waterdeel .
-
-od:Beheerelement a owl:Class ;
-    rdfs:label "Beheerelement"@nl ;
-    rdfs:comment "Afzonderlijk te onderscheiden element dat ofwel direct of indirect bevestigd is aan het aardoppervlak, ofwel deel uitmaakt van het aardoppervlak maar te beperkt is in oppervlakte is om een beheerdeel te vormen."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Beheerobject .
-
-od:Beheergebied a owl:Class ;
-    rdfs:label "Beheergebied"@nl ;
-    vann:usageNote "De openbare ruimte wordt geïnterpreteerd zoals aangegeven in het GRB lexicon (AGIV): \"Ruimte die ten dienste staat van iedereen (algemeen belang), zonder beperking naar specifieke gemeenschappen. De openbare ruimte is principieel voor iedereen toegankelijk\". Voorbeeld: een stadspark is parkzone, om hiermee aan te duiden dat de zone is ontworpen is om recreatie en natuur samen te laten plaatsvinden. "@nl ;
-    rdfs:comment """Begrensd en benoemd gedeelte van de openbare ruimte met een bepaalde hoofdfunctie.\r
-"""@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> .
-
-od:Waterdeel a owl:Class ;
-    rdfs:label "Waterdeel"@nl ;
-    vann:usageNote "GRB Lexicon: Definitie Watergang"@nl ;
-    rdfs:comment "Gebied dat rechtstreeks gedomineerd wordt door de tijdelijke of permanente aanwezigheid van oppervlaktewater, met een bepaalde hieraan verbonden functie"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Beheerdeel .
-
 od:Beheerdeel a owl:Class ;
     rdfs:label "Beheerdeel"@nl ;
     rdfs:comment "Afzonderlijk te onderscheiden gedeelte van het aardoppervlak, met een gelijkaardige functie en fysiek voorkomen."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
     rdfs:subClassOf od:Beheerobject .
 
-od:Deksel a owl:Class ;
-    rdfs:label "Deksel"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Infrastructuurelement .
+od:Collectie a owl:Class ;
+    rdfs:label "Collectie"@nl ;
+    vann:usageNote "Bijvoorbeeld, alle objecten op het openbaar domein die bij een verkeersplateau horen maar niet noodzakelijk een rechtstreekse ruimtelijke relatie hebben."@nl ;
+    rdfs:comment "Een verzameling van individuele objecten, wordt objecten met een functionele relatie samen te nemen."@nl ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> .
 
 od:FysiekVoorkomen a owl:Class ;
     rdfs:label "Fysiek Voorkomen"@nl ;
     rdfs:comment "Beschrijving van het fysieke voorkomen van het beheerobject."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> .
-
-od:OnbegroeidVoorkomen a owl:Class ;
-    rdfs:label "Onbegroeid Voorkomen"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:TerreinVoorkomen .
-
-od:Plantbakvorm a owl:Class ;
-    rdfs:label "Plantbakvorm"@nl ;
-    rdfs:comment "Beplanting die niet in volle grond werd aangebracht, maar in bakvorm."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:VegetatieElement .
-
-od:Haagvorm a owl:Class ;
-    rdfs:label "Haagvorm"@nl ;
-    rdfs:comment "Een rijvormige afscheiding van zeer beperkte breedte bestaande uit aangeplante aaneengesloten struiken."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:VegetatieElement .
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> .
 
 od:TerreinVoorkomen a owl:Class ;
     rdfs:label "Terrein Voorkomen"@nl ;
     rdfs:comment "Beschrijving van het terrein voorkomen van het terreindeel"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
     rdfs:subClassOf od:FysiekVoorkomen .
-
-od:BegroeidVoorkomen a owl:Class ;
-    rdfs:label "Begroeid Voorkomen"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:TerreinVoorkomen .
-
-od:Boomvorm a owl:Class ;
-    rdfs:label "Boomvorm"@nl ;
-    rdfs:comment "Individueel te onderscheiden vegetatie-element. Een boom is een overblijvende plant met een verhoute stam en een kroon (kruin)."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:VegetatieElement .
 
 od:Beheerobject a owl:Class ;
     rdfs:label "Beheerobject"@nl ;
     rdfs:comment "De hoofdklasse waar alle objecten die beheerd kunnen worden van afgeleid worden."@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> .
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> .
 
-od:VegetatieElement a owl:Class ;
-    rdfs:label "Vegetatie Element"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Beheerelement .
-
-od:Infrastructuurelement a owl:Class ;
-    rdfs:label "Infrastructuurelement"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://test.data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:subClassOf od:Beheerelement .
-
-<http://test.data.vlaanderen.be/ns/openbaardomein> a owl:Ontology ;
-    rdfs:label "TODO"@en,
-        "Openbaar Domein"@nl ;
-    dcterms:issued "TODO"^^xsd:date ;
-    dcterms:license <file:///C:/OSLO/src/TODO> ;
-    dcterms:title "TODO"@en,
-        "Openbaar Domein"@nl ;
+<http://data.vlaanderen.be/ns/openbaardomein> a owl:Ontology ;
+    rdfs:label "Inventarisatie Openbaar Domein"@nl ;
+    dcterms:issued "2018-03-20"^^xsd:date ;
+    dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
+    dcterms:mediator [ foaf:homepage <https://data.vlaanderen.be> ;
+            foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
+            foaf:name "Data Vlaanderen" ],
+        [ foaf:homepage <https://data.vlaanderen.be> ;
+            foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
+            foaf:name "Data Vlaanderen" ] ;
+    dcterms:title "Inventarisatie Openbaar Domein"@nl ;
     vann:preferredNamespacePrefix "od" ;
-    vann:preferredNamespaceUri "http://test.data.vlaanderen.be/ns/openbaardomein" .
+    vann:preferredNamespaceUri "http://data.vlaanderen.be/ns/openbaardomein" ;
+    rec:editor [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
+                    foaf:name "PwC" ] ;
+            foaf:firstName "Jens" ;
+            foaf:lastName "Scheerlinck" ;
+            foaf:mbox <mailto:jens.scheerlinck@pwc.com> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <file:///C:/OSLO-EA-to-RDF-master/target/ggino/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Liesbet" ;
+            foaf:lastName "De Wolf" ;
+            foaf:mbox <mailto:liesbet.dewolf@kb.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <file:///C:/OSLO-EA-to-RDF-master/target/ggino/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
+                    foaf:name "Ugent" ] ;
+            foaf:firstName "Tim" ;
+            foaf:lastName "Baert" ;
+            foaf:mbox <mailto:tim.baert@ugent.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
+                    foaf:name "PwC" ] ;
+            foaf:firstName "Jens" ;
+            foaf:lastName "Scheerlinck" ;
+            foaf:mbox <mailto:jens.scheerlinck@pwc.com> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <file:///C:/OSLO-EA-to-RDF-master/target/ggino/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Liesbet" ;
+            foaf:lastName "De Wolf" ;
+            foaf:mbox <mailto:liesbet.dewolf@kb.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <file:///C:/OSLO-EA-to-RDF-master/target/ggino/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
+                    foaf:name "Ugent" ] ;
+            foaf:firstName "Tim" ;
+            foaf:lastName "Baert" ;
+            foaf:mbox <mailto:tim.baert@ugent.be> ] .
 

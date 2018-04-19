@@ -35,6 +35,28 @@ eu:territorialApplication
       vann:preferredNamespaceUri
               "http://data.vlaanderen.be/ns/generiek" .
 
+<http://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum>
+      a       owl:Class ;
+      rdfs:comment "Datum waarop een gebeurtenis plaatsvond evt op een alternatieve manier beschreven. "@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "Gebeurtenisdatum"@nl .
+
+<http://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum.begin>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Datum en tijd waarop de gebeurtenis startte."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "begin"@nl ;
+      rdfs:range xsd:dateTime .
+
+<http://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum.einde>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Datum en tijd waarop de gebeurtenis eindigde."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "einde"@nl ;
+      rdfs:range xsd:dateTime .
+
 <http://data.vlaanderen.be/ns/generiek#GeografischePositie>
       a       owl:Class ;
       rdfs:comment "Geografische positie aangegeven dmv een punt."@nl ;
@@ -42,12 +64,27 @@ eu:territorialApplication
       rdfs:label "Geografische Positie"@nl ;
       vann:usageNote " "@nl .
 
-<http://data.vlaanderen.be/ns/generiek#begin>
+<http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>
+      a       owl:Class ;
+      rdfs:comment "Identificator van een object opgesplitst in zijn onderdelen."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "Gestructureerde Identificator"@nl .
+
+<http://data.vlaanderen.be/ns/generiek#Tijdsinterval.begin>
       a       owl:DatatypeProperty ;
       rdfs:comment "Moment waarop het tijdsinterval begint."@nl ;
       rdfs:domain dcterms:PeriodOfTime ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
       rdfs:label "begin"@nl ;
+      rdfs:range rdfs:Literal ;
+      vann:usageNote " "@nl .
+
+<http://data.vlaanderen.be/ns/generiek#Tijdsinterval.einde>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Moment waarop het tijdsinterval eindigt."@nl ;
+      rdfs:domain dcterms:PeriodOfTime ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "einde"@nl ;
       rdfs:range rdfs:Literal ;
       vann:usageNote " "@nl .
 
@@ -70,23 +107,31 @@ eu:territorialApplication
       rdfs:range xsd:boolean ;
       vann:usageNote "Hieronder wordt de positie verstaan die per default moet worden gebruikt als het object meerdere posities heeft."@nl .
 
-<http://data.vlaanderen.be/ns/generiek#einde>
-      a       owl:DatatypeProperty ;
-      rdfs:comment "Moment waarop het tijdsinterval eindigt."@nl ;
-      rdfs:domain dcterms:PeriodOfTime ;
+<http://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Identificator vh object opgesplitst in zijn onderdelen."@nl ;
+      rdfs:domain <http://www.w3.org/ns/adms#Identifier> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
-      rdfs:label "einde"@nl ;
-      rdfs:range rdfs:Literal ;
-      vann:usageNote " "@nl .
+      rdfs:label "gestructureerde identificator"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> .
 
 <http://data.vlaanderen.be/ns/generiek#handeldeInOpdrachtVan>
       a       owl:ObjectProperty ;
-      rdfs:comment "TODO"@nl ;
+      rdfs:comment "Organisatie die de agent vertegenwoordigt bij het uitvoeren ve specifieke activiteit en waarvan hij/zij de vereiste autoriteit/verantwoordelijkheid heeft gekregen om dit te doen."@nl ;
       rdfs:domain prov:Agent ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
       rdfs:label "handelde in opdracht van"@nl ;
       rdfs:range org:Organization ;
-      rdfs:subPropertyOf prov:actedOnBehalfOf .
+      rdfs:subPropertyOf prov:actedOnBehalfOf ;
+      vann:usageNote "De betrokken organisatie behoudt hierbij een zekere verantwoordelijkheid mbt het resultaat vd activiteit."@nl .
+
+<http://data.vlaanderen.be/ns/generiek#lokaleIdentificator>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "String gebruikt om het object uniek te identificeren binnen de naamruimte."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "lokale identificator"@nl ;
+      rdfs:range xsd:string .
 
 <http://data.vlaanderen.be/ns/generiek#methode>
       a       owl:ObjectProperty ;
@@ -96,6 +141,15 @@ eu:territorialApplication
       rdfs:label "methode"@nl ;
       rdfs:range skos:Concept ;
       vann:usageNote "Bvb positie afgeleid ve bestaand object (bvb door berekening vd centroïde)."@nl .
+
+<http://data.vlaanderen.be/ns/generiek#naamruimte>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "String die toegvoegd wordt aan de lokaleidentificator om deze globaal uniek te maken."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "naamruimte"@nl ;
+      rdfs:range xsd:string ;
+      vann:usageNote "Laat toe om objecten met dezelfde identificator maar van verschillend type en/of afkomstig uit verschillende domeinen uiteen te houden. In praktijk bv een uri samengesteld uit betekenisvolle elementen zoals een domeinnaam, type en concept (bv http://data.vlaanderen.be/id/adres/). "@nl .
 
 <http://data.vlaanderen.be/ns/generiek#plaats>
       a       owl:DatatypeProperty ;
@@ -114,6 +168,22 @@ eu:territorialApplication
       rdfs:label "specificatie"@nl ;
       rdfs:range skos:Concept ;
       vann:usageNote "Bvb perceel, gebouw..."@nl .
+
+<http://data.vlaanderen.be/ns/generiek#tussentijdstip>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Datum en tijd van een moment tussen begin en einde."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "tussentijdstip"@nl ;
+      rdfs:range xsd:dateTime .
+
+<http://data.vlaanderen.be/ns/generiek#versieIdentificator>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Identificator van de specifieke versie van een object."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/generiek> ;
+      rdfs:label "versie-identificator"@nl ;
+      rdfs:range xsd:string .
 
 dcterms:Agent
       a       rdfs:Class ;
@@ -191,6 +261,18 @@ schema:telephone
       a       rdf:Property ;
       rdfs:label "als WKT"@nl .
 
+<http://www.opengis.net/ont/sf#LineString>
+      a       rdfs:Class ;
+      rdfs:label "Lijnstring"@nl .
+
+<http://www.opengis.net/ont/sf#Point>
+      a       rdfs:Class ;
+      rdfs:label "Punt"@nl .
+
+<http://www.opengis.net/ont/sf#Polygon>
+      a       rdfs:Class ;
+      rdfs:label "Polygoon"@nl .
+
 rdf:langString
       a       rdfs:Class .
 
@@ -204,18 +286,6 @@ rdfs:Resource
 rdfs:label
       a       rdf:Property ;
       rdfs:label "label"@nl .
-
-<http://www.w3.org/2003/01/geo/wgs84_pos#Point>
-      a       rdfs:Class ;
-      rdfs:label "Punt"@nl .
-
-<http://www.w3.org/2003/01/geo/wgs84_pos#lat>
-      a       rdf:Property ;
-      rdfs:label "latitude"@nl .
-
-<http://www.w3.org/2003/01/geo/wgs84_pos#long>
-      a       rdf:Property ;
-      rdfs:label "longitude"@nl .
 
 skos:Concept
       a       rdfs:Class ;
