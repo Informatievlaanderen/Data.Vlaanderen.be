@@ -30,12 +30,19 @@
       vann:preferredNamespaceUri
               "http://data.vlaanderen.be/ns/infrastructuur" .
 
+odi:ANPRCamera
+      a       owl:Class ;
+      rdfs:comment "Een toestel dat gebruikt wordt voor automatische nummerplaatherkenning."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "ANPR camera"@nl ;
+      rdfs:subClassOf odi:Camera .
+
 odi:Aanplakbord
       a       owl:Class ;
       rdfs:comment "TODO"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Aanplakbord"@nl ;
-      rdfs:subClassOf odi:SignalisatiePubliciteit .
+      rdfs:subClassOf odi:Straatmeubilair .
 
 odi:Afsluiting
       a       owl:Class ;
@@ -44,21 +51,6 @@ odi:Afsluiting
       rdfs:label "Afsluiting"@nl ;
       rdfs:subClassOf odi:Infrastructuurelement ;
       vann:usageNote "Bron object: GRB AFS: Afsluiting"@nl .
-
-odi:Afvalcontainer
-      a       owl:Class ;
-      rdfs:comment "Bak bedoeld voor het verzamelen van afval. "@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Afvalcontainer"@nl ;
-      rdfs:subClassOf odi:Bak ;
-      vann:usageNote "Een afvalcontainer verschilt van een openbare vuilnisbak in het feit dat een afvalcontainer als inzamelpunt geldt voor bewust verzamelen van grotere hoeveelheden afval, terwijl een openbare vuilnisbak enkel dient voor het deponeren van zeer beperkte hoeveelheden van afval door toevallige voorbijgangers."@nl .
-
-odi:Bak
-      a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Bak"@nl ;
-      rdfs:subClassOf odi:Infrastructuurelement .
 
 odi:Barbecuetoestel
       a       owl:Class ;
@@ -75,19 +67,34 @@ odi:Bedieningszuil
       rdfs:subClassOf odi:Sensor ;
       vann:usageNote "Bijvoorbeeld, bedieningszuil voor verzinkbare wegmonoliet."@nl .
 
+odi:BestendigeAfsluiting
+      a       owl:Class ;
+      rdfs:comment "Op het terrein ondubbelzinnig aanwijsbare en permanent verankerde scheiding die statisch is in vorm en geen doorgang toelaat."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Bestendige afsluiting"@nl ;
+      rdfs:subClassOf odi:Afsluiting .
+
+odi:Betaalautomaat
+      a       owl:Class ;
+      rdfs:comment "Automaat die betaalkaarten of geld accepteert om betalingen uit te voeren bijvoorbeeld voor parkeertickets of tickets voor het openbaar vervoer."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Betaalautomaat"@nl ;
+      rdfs:subClassOf odi:Straatmeubilair ;
+      vann:usageNote "Bron definitie: GRB-skeletaanvulling detail: WPI23: Parkeermeter en betaalautomaat"@nl .
+
 odi:Bladkorf
       a       owl:Class ;
       rdfs:comment "	Container of bak bedoeld voor het verzamelen van afgevallen bladeren"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Bladkorf"@nl ;
-      rdfs:subClassOf odi:Bak .
+      rdfs:subClassOf odi:Recyclagecontainer .
 
 odi:Blikvanger
       a       owl:Class ;
       rdfs:comment "Een type afvalbak veelal naast fietspaden of rijbanen, zodanig ontworpen dat weggebruikers hun afval erin kwijt zonder te hoeven vertragen."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Bak bedoeld voor het verzamelen van afval."@nl ;
-      rdfs:subClassOf odi:Bak .
+      rdfs:subClassOf odi:Recyclagecontainer .
 
 odi:Boombeugel
       a       owl:Class ;
@@ -109,7 +116,7 @@ odi:Borstwering
       rdfs:comment "Hekwerk of constructie (balustrade, 'omega'-profielen,...) die geplaatst werd met het oog op de veiligheid van de zwakke weggebruiker, overwegend parallel aan de hartlijn van de wegbaan georiënteerd"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Borstwering"@nl ;
-      rdfs:subClassOf odi:StatischeAfsluiting ;
+      rdfs:subClassOf odi:BestendigeAfsluiting ;
       vann:usageNote "Bron definitie: naar GRB-skeletaanvulling detail: WLI8: Borstwering"@nl .
 
 odi:BovengrondseBrandkraan
@@ -117,7 +124,7 @@ odi:BovengrondseBrandkraan
       rdfs:comment "Bovengronds aansluitingspunt aan de waterleiding, gelegen boven het maaiveld waar brandslangen op aangesloten kunnen worden."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Bovengrondse brandkraan"@nl ;
-      rdfs:subClassOf odi:Installatie ;
+      rdfs:subClassOf odi:Straatmeubilair ;
       vann:usageNote "Bron object: GRB-entiteit: Bovengrondse brandkraan (Wpi4)"@nl .
 
 odi:Bushok
@@ -143,6 +150,23 @@ odi:Communicatiemast
       rdfs:subClassOf odi:Mast ;
       vann:usageNote "Bron object: GRB KNW15: Communicatiemast divers"@nl .
 
+odi:CultuurhistorischMonument
+      a       owl:Class ;
+      rdfs:comment "Een cultuurhistorisch monument is een zichtbare constructie met historische, esthetische of landschappelijke waarde opgetrokken uit duurzame materialen."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Cultuurhistorisch monument"@nl ;
+      rdfs:subClassOf odi:Straatmeubilair ;
+      vann:usageNote "Bron object: GRB KNW3 Cultuurhistorisch monument"@nl ;
+      owl:sameAs "https://id.erfgoed.net/thesauri/erfgoedtypes/237" .
+
+odi:Debietmeter
+      a       owl:Class ;
+      rdfs:comment "Een meettoestel bevestigd in of langs een waterloop die het aantal kubieke meter water registreert dat op een bepaald punt in een waterloop per seconde passeer."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Debietmeter"@nl ;
+      rdfs:subClassOf odi:Sensor ;
+      vann:usageNote "Bron object: GRB: WRM3 Debietmeter"@nl .
+
 odi:Deksel
       a       owl:Class ;
       rdfs:comment "Een deksel of luik van ondergrondse leidingen en installaties."@nl ;
@@ -162,7 +186,7 @@ odi:Draadafsluiting
       rdfs:comment "TODO"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Draadafsluiting"@nl ;
-      rdfs:subClassOf odi:StatischeAfsluiting .
+      rdfs:subClassOf odi:BestendigeAfsluiting .
 
 odi:Draaitoestel
       a       owl:Class ;
@@ -176,52 +200,29 @@ odi:Dwarsligger
       rdfs:comment "Een afsluiting met één of meerdere horizontale dwarsliggers."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Dwarsligger"@nl ;
-      rdfs:subClassOf odi:StatischeAfsluiting .
-
-odi:DynamischeAfsluiting
-      a       owl:Class ;
-      rdfs:comment "Op het terrein ondubbelzinnig aanwijsbare en permanent verankerde scheiding die dynamisch is in vorm en bijgevolg gebruikt kan worden om selectief of periodiek toegang te verlenen."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Dynamische afsluiting"@nl ;
-      rdfs:subClassOf odi:Afsluiting .
-
-odi:Elektriciteitspaal
-      a       owl:Class ;
-      rdfs:comment "Paal van de elektriciteitsleiding"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Elektriciteitspaal"@nl ;
-      rdfs:subClassOf odi:Paal ;
-      vann:usageNote "Bron definitie: GRB-skeletaanvulling detail: WPI1: Paal + WPI103 elektriciteit"@nl .
+      rdfs:subClassOf odi:BestendigeAfsluiting .
 
 odi:Fietspomp
       a       owl:Class ;
       rdfs:comment "Een apparaat waarmee lucht in fietsbanden kan worden geblazen."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Fietspomp"@nl ;
-      rdfs:subClassOf odi:Installatie .
+      rdfs:subClassOf odi:Straatmeubilair .
 
 odi:Fietsstalling
       a       owl:Class ;
-      rdfs:comment "Een fietsstalling is een paal of verankeringspunt van een constructie bestemd voor het vastmaken van fietsen, gelegen op het openbare domein."@nl ;
+      rdfs:comment "Een fietsstalling is het geheel aan palen en/of verankeringspunten van een constructie bestemd voor het vastmaken van fietsen, gelegen op het openbare domein."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Fietsstalling"@nl ;
       rdfs:subClassOf odi:Straatmeubilair ;
       vann:usageNote "Bron object: GRB WPI16: Fietsstalling"@nl .
-
-odi:Fontein
-      a       owl:Class ;
-      rdfs:comment "Een zichtbare constructie met historische, esthetische of landschappelijke waarde opgetrokken uit duurzame materialen (type fontein)"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Fontein"@nl ;
-      rdfs:subClassOf odi:Installatie ;
-      vann:usageNote "Bron object: GRB-entiteit: Kunstwerk (Knw) + cf. GRB-skeletaanvulling detail: WFT: Functiecode terreinobject: FO : fontein (functiecode bij Knw)"@nl .
 
 odi:Geluidscherm
       a       owl:Class ;
       rdfs:comment "Geluidswerende wand langs autosnelwegen, spoorwegen, met als doel de omwonenden"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Geluidscherm"@nl ;
-      rdfs:subClassOf odi:StatischeAfsluiting ;
+      rdfs:subClassOf odi:BestendigeAfsluiting ;
       vann:usageNote "Bron object: GRB WGS: geluidsscherm"@nl .
 
 odi:Glascontainer
@@ -229,7 +230,7 @@ odi:Glascontainer
       rdfs:comment "Container of bak bedoeld voor het verzamelen van glas."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Container of bak bedoeld voor het verzamelen van glas."@nl ;
-      rdfs:subClassOf odi:Bak .
+      rdfs:subClassOf odi:Recyclagecontainer .
 
 odi:Glijbaan
       a       owl:Class ;
@@ -258,21 +259,14 @@ odi:Infozuil
       rdfs:comment "TODO"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Infozuil"@nl ;
-      rdfs:subClassOf odi:SignalisatiePubliciteit .
+      rdfs:subClassOf odi:Straatmeubilair .
 
 odi:Infrastructuurelement
       a       owl:Class ;
       rdfs:comment "TODO"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Infrastructuurelement"@nl ;
-      rdfs:subClassOf <http://data.vlaanderen.be/ns/openbaardomein#InventarisatieElement> .
-
-odi:Installatie
-      a       owl:Class ;
-      rdfs:comment "Installaties zijn een diverse groep van objecten die bestaan uit afzonderlijke componenten en die over het algemeen een specifiek mechanische, hydraulische of pneumatische werking hebben."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Installatie"@nl ;
-      rdfs:subClassOf odi:Infrastructuurelement .
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/openbaardomein#Element> .
 
 odi:Kabelbaan
       a       owl:Class ;
@@ -281,12 +275,20 @@ odi:Kabelbaan
       rdfs:label "Kabelbaan"@nl ;
       rdfs:subClassOf odi:SpeelEnSportvoorziening .
 
+odi:Keldergat
+      a       owl:Class ;
+      rdfs:comment "Elke horizontale en artificieel afgebakende opening in het maaiveld langsheen de gevelwand"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Keldergat"@nl ;
+      rdfs:subClassOf odi:Rooster ;
+      vann:usageNote "Bron object: GRB GBA8  Rand gebouwaanhorigheid type keldergat"@nl .
+
 odi:Kledingcontainer
       a       owl:Class ;
       rdfs:comment "Container of bak bedoeld voor het verzamelen van kleding."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Kledingcontainer"@nl ;
-      rdfs:subClassOf odi:Bak .
+      rdfs:subClassOf odi:Recyclagecontainer .
 
 odi:Knipperlicht
       a       owl:Class ;
@@ -314,11 +316,19 @@ odi:Krooshek
 
 odi:Lichtpunt
       a       owl:Class ;
-      rdfs:comment "Elk lichtpunt dat is ingewerkt in het maaiveld of op een paaltje op beperkte hoogte boven het maaiveld en dat gebruikt wordt als randverlichting (bvb verlichting van monument, parking,...), naast de openbare straatverlichting"@nl ;
+      rdfs:comment "Elk lichtpunt dat is ingewerkt in het maaiveld of op een paaltje op beperkte hoogte boven het maaiveld (tot 2 meter) en dat gebruikt wordt als randverlichting (bvb verlichting van monument, parking,...), naast de openbare straatverlichting"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Lichtpunt"@nl ;
-      rdfs:subClassOf odi:Verlichting ;
+      rdfs:subClassOf odi:OpenbareVerlichting ;
       vann:usageNote "Bron definitie: GRB-skeletaanvulling detail : WPI20: Lichtpunt"@nl .
+
+odi:LijnvormigeWegmarkering
+      a       owl:Class ;
+      rdfs:comment "Lijnvormige schilderingen aangebracht op het verhard gedeelte van de wegbaan of kleurveranderingen van de verharding die een onderdeel vormen van de verkeerswetgeving."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Lijnvormige wegmarkering"@nl ;
+      rdfs:subClassOf odi:Wegmarkering ;
+      vann:usageNote "Bron object: GRB WEM2: Lijnvormige wegmarkering"@nl .
 
 odi:Mast
       a       owl:Class ;
@@ -332,15 +342,23 @@ odi:Meerpaal
       rdfs:comment "Een paal/bolder, gelegen aan de rand van grote waterpartijen en van een speciale vorm voorzien om een schip vast te kunnen leggen bij het aanmeren. Een meerpaal is in principe hetzelfde als een bolder."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Meerpaal"@nl ;
-      rdfs:subClassOf odi:Straatmeubilair ;
+      rdfs:subClassOf odi:Infrastructuurelement ;
       vann:usageNote "Bron object: GRB-entiteit: Meerpaal (WPI3)"@nl .
+
+odi:Meteosensor
+      a       owl:Class ;
+      rdfs:comment "Een meetinstrument ter bepaling van atmosferische omstandigheden."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Meteosensor"@nl ;
+      rdfs:subClassOf odi:Sensor ;
+      vann:usageNote "Bron definitie: GRB: WPI28 Meteopaal"@nl .
 
 odi:Muur
       a       owl:Class ;
       rdfs:comment "Buiten de wegbaan gelegen en op het terrein ondubbelzinnig aanwijsbare en permanent, lijnvormig verankerde en rechtopstaande scheiding of grondkering bestaande uit opeengestapeld (min. 2 lagen) metselwerk of beton."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Muur"@nl ;
-      rdfs:subClassOf odi:StatischeAfsluiting ;
+      rdfs:subClassOf odi:BestendigeAfsluiting ;
       vann:usageNote "Bron definitie: GRB-skeletaanvulling detail: AMR: Muur"@nl .
 
 odi:MuurBinnenWegbaan
@@ -358,28 +376,12 @@ odi:Netstructuur
       rdfs:label "Netstructuur"@nl ;
       rdfs:subClassOf odi:SpeelEnSportvoorziening .
 
-odi:NietVerplaatsbareZitbank
-      a       owl:Class ;
-      rdfs:comment "	Een openbaar zitmeubel, op een duurzame manier verbonden met het aardoppervlak en gelegen in parken of langsheen de openbare weg."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Niet-verplaatsbare zitbank"@nl ;
-      rdfs:subClassOf odi:Straatmeubilair ;
-      vann:usageNote "Bron definitie: GRB-skeletaanvulling detail: WSM3: Niet-verplaatsbare zitbank."@nl .
-
-odi:NietVerzinkbareWegmonoliet
-      a       owl:Class ;
-      rdfs:comment "Een niet-verzinkbare massief obstakel dat de doorgang van voertuigen belet"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Niet verzinkbare wegmonoliet"@nl ;
-      rdfs:subClassOf odi:Straatmeubilair ;
-      vann:usageNote "Bijvoorbeeld, 'Amsterdammers'. Bron definitie: naar GRB-skeletaanvulling detail: WPI14: Wegmonoliet"@nl .
-
 odi:NormandischeAfsluiting
       a       owl:Class ;
       rdfs:comment "Een afsluiting die typisch bestaat uit betonnen palen met betonnen dwarsbalken."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Normandische afsluiting"@nl ;
-      rdfs:subClassOf odi:StatischeAfsluiting .
+      rdfs:subClassOf odi:BestendigeAfsluiting .
 
 odi:Nutskast
       a       owl:Class ;
@@ -387,6 +389,21 @@ odi:Nutskast
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Nutskast"@nl ;
       rdfs:subClassOf odi:Infrastructuurelement .
+
+odi:Nutspaal
+      a       owl:Class ;
+      rdfs:comment "Paal van de elektriciteitsleiding, telefoon, bovenleiding van trolley- of spoorinstallaties, verlichting, flitspaal, verkeerslichten en seinverlichting NMBS-overgang. Palen behorende bij de wegbaan (WBN), waarvan het contact met het grondoppervlak onvoldoende groot is om hen als lijn, veelhoek of cirkel te karteren."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Nutspaal"@nl ;
+      rdfs:subClassOf odi:Infrastructuurelement ;
+      vann:usageNote "Bron definitie: GRB WPI1: Paal"@nl .
+
+odi:OmklapbareWegmonoliet
+      a       owl:Class ;
+      rdfs:comment "Een omklapbaar massief obstakel dat de doorgang van voertuigen belet en niet dynamisch is in aard."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Omklapbare wegmonoliet"@nl ;
+      rdfs:subClassOf odi:Wegmonoliet .
 
 odi:OpenbaarToilet
       a       owl:Class ;
@@ -400,7 +417,7 @@ odi:OpenbaarToiletVerzinkbaar
       rdfs:comment "Een verzinkbaar openbaar toilet dat alleen tussen bepaalde tijdstippen of tijdens uitgaansavonden en evenementen gebruikt kan worden."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Verzinkbaar openbaar toilet"@nl ;
-      rdfs:subClassOf odi:Installatie .
+      rdfs:subClassOf odi:Straatmeubilair .
 
 odi:OpenbareBrievenbus
       a       owl:Class ;
@@ -410,13 +427,20 @@ odi:OpenbareBrievenbus
       rdfs:subClassOf odi:Straatmeubilair ;
       vann:usageNote "Bron definitie: GRB-skeletaanvulling detail: WPI13: Openbare brievenbus"@nl .
 
-odi:OpenbareStraatverlichtingGevel
+odi:OpenbareStraatverlichtingMuur
       a       owl:Class ;
       rdfs:comment "Een openbaar lichtpunt dat is bevestigd aan de gevel van een gebouw of constructie of bevestigd is aan een muur en dat gebruikt wordt om de omgeving te verlichten."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Openbare straatverlichting aan gevel of muur"@nl ;
-      rdfs:subClassOf odi:Verlichting ;
-      vann:usageNote "Bron object: GRB WPI31: Openbare straatverlichting aan gevel/muur"@nl .
+      rdfs:subClassOf odi:OpenbareVerlichting ;
+      vann:usageNote "Omvat bijvoorbeeld ook de plafondverlichting in tunnels. Bron object: GRB WPI31: Openbare straatverlichting aan gevel/muur"@nl .
+
+odi:OpenbareVerlichting
+      a       owl:Class ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Openbare verlichting"@nl ;
+      rdfs:subClassOf odi:Infrastructuurelement .
 
 odi:OpenbareVuilnisbak
       a       owl:Class ;
@@ -431,70 +455,37 @@ odi:OplaadpuntAuto
       rdfs:comment "Infrastructuurelement dat elektrische energie voorziet om elektrische auto's op te laden."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Oplaadpunt auto"@nl ;
-      rdfs:subClassOf odi:Installatie .
+      rdfs:subClassOf odi:Straatmeubilair .
 
 odi:OplaadpuntFiets
       a       owl:Class ;
       rdfs:comment "Infrastructuurelement dat elektrische energie voorziet om elektrische fietsen op te laden."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Oplaadpunt fiets"@nl ;
-      rdfs:subClassOf odi:Installatie .
-
-odi:OverdekteFietsstalling
-      a       owl:Class ;
-      rdfs:comment "Een overdekte fietsenstalling is een openbaar inrichtingselement waar de fiets kan gestald worden onder een duidelijke dakconstructie."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Overdekte fietsstalling"@nl ;
-      rdfs:subClassOf odi:Straatmeubilair ;
-      vann:usageNote "Bron object: GRB WGA3 Overdekte fietsstalling"@nl .
-
-odi:Paal
-      a       owl:Class ;
-      rdfs:comment "Paal van de elektriciteitsleiding, telefoon, bovenleiding van trolley- of spoorinstallaties, verlichting, flitspaal, verkeerslichten en seinverlichting NMBS-overgang. Palen behorende bij de wegbaan (WBN), waarvan het contact met het grondoppervlak onvoldoende groot is om hen als lijn, veelhoek of cirkel te karteren."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Paal"@nl ;
-      rdfs:subClassOf odi:Infrastructuurelement ;
-      vann:usageNote "Bron definitie: GRB WPI1: Paal"@nl .
+      rdfs:subClassOf odi:Straatmeubilair .
 
 odi:PaalBovenleidingTramTreinTrolley
       a       owl:Class ;
       rdfs:comment "Paal van de bovenleiding van trolley- of spoorinstallaties"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Paal bovenleiding tram trein trolley"@nl ;
-      rdfs:subClassOf odi:Paal ;
+      rdfs:subClassOf odi:Infrastructuurelement ;
       vann:usageNote "Bron definitie: GRB-skeletaanvulling detail: WPI1: Paal + WPI105 bovenleiding tram, trein of trolley"@nl .
 
-odi:PaalVerkeerslicht
+odi:Paneelafsluiting
       a       owl:Class ;
-      rdfs:comment "Paal van een verkeerslicht langs de weg."@nl ;
+      rdfs:comment "Een afsluiting opgebouwd uit een of meerdere panelen."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Paal verkeerslicht"@nl ;
-      rdfs:subClassOf odi:Paal ;
-      vann:usageNote "Bron definitie: GRB-skeletaanvulling detail: WPI1: Paal + WPI107 verkeerslicht"@nl .
+      rdfs:label "Paneel"@nl ;
+      rdfs:subClassOf odi:BestendigeAfsluiting ;
+      vann:usageNote "Bron object: GRB AFS: Afsluiting - houten paneel en afsluiting"@nl .
 
-odi:PaalVerkeerslichtOverhangend
+odi:Parkeersensor
       a       owl:Class ;
-      rdfs:comment "Paal van een overhangend verkeerslicht."@nl ;
+      rdfs:comment "Een sensor in het wegdek die de aanwezigheid van een voertuig op een parkeerplaats registreert."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Paal verkeerslicht overhangend"@nl ;
-      rdfs:subClassOf odi:Paal ;
-      vann:usageNote "Bron definitie: GRB-skeletaanvulling detail: WPI1: Paal + WPI108 verkeerslicht overhangend"@nl .
-
-odi:PaalVerkeerslichtVoetgangerFietser
-      a       owl:Class ;
-      rdfs:comment "Paal van een verkeerslicht voor voetgangers/fietsers."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Paal verkeerslicht voetganger fietser"@nl ;
-      rdfs:subClassOf odi:Paal ;
-      vann:usageNote "Bron definitie: GRB-skeletaanvulling detail: WPI1: Paal + WPI109 verkeerslicht voetganger/fietser"@nl .
-
-odi:ParkeermeterEnBetaalautomaat
-      a       owl:Class ;
-      rdfs:comment "Installatie opgericht per individuele parkeerplaats (parkeermeter) dat de resterende parkeertijd grafisch weergeeft of een automaat die betaalkaarten of geld accepteert om betalingen uit te voeren bijvoorbeeld voor parkeertickets of tickets voor het openbaar vervoer."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Parkeermeter en betaalautomaat"@nl ;
-      rdfs:subClassOf odi:Installatie ;
-      vann:usageNote "Bron definitie: GRB-skeletaanvulling detail: WPI23: Parkeermeter en betaalautomaat"@nl .
+      rdfs:label "Parkeersensor"@nl ;
+      rdfs:subClassOf odi:Sensor .
 
 odi:Picknicktafel
       a       owl:Class ;
@@ -504,6 +495,14 @@ odi:Picknicktafel
       rdfs:subClassOf odi:Straatmeubilair ;
       vann:usageNote "Bron object: GRB-skeletoptie groen- en begraafplaatsenbeheer: PRA: Park- of recreatieattribuut + P: picknicktafel"@nl .
 
+odi:PuntvormigeWegmarkering
+      a       owl:Class ;
+      rdfs:comment "Puntvormige schilderingen aangebracht op het verhard gedeelte van de wegbaan en die een onderdeel vormen van de verkeerswetgeving."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Puntvormige wegmarkering"@nl ;
+      rdfs:subClassOf odi:Wegmarkering ;
+      vann:usageNote "Bron object: GRB WEM1: Puntvormige wegmarkering"@nl .
+
 odi:Putdeksel
       a       owl:Class ;
       rdfs:comment "Een putdeksel is een deksel of luik van ondergrondse leidingen en installaties. Onder putdeksels vallen cirkelvormige (vrije) deksels met diameter gelegen tussen 65 en 100cm en vierkante (vrije) deksels (65cm <= zijde <= 100cm)."@nl ;
@@ -512,6 +511,13 @@ odi:Putdeksel
       rdfs:subClassOf odi:Deksel ;
       vann:usageNote "Bron definitie: GRB WRI: Putdeksel"@nl .
 
+odi:Recyclagecontainer
+      a       owl:Class ;
+      rdfs:comment "Container voor het verzamelen van al dan niet specifiek materiaal met als doel het te sorteren, recycleren of hergebruiken."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Recyclagecontainer"@nl ;
+      rdfs:subClassOf odi:Infrastructuurelement .
+
 odi:Reddingsboei
       a       owl:Class ;
       rdfs:comment "Een reddingsboei is een drijfhulpmiddel en reddingsmiddel voor personen die door omstandigheden te water zijn geraakt."@nl ;
@@ -519,12 +525,27 @@ odi:Reddingsboei
       rdfs:label "Reddingsboei"@nl ;
       rdfs:subClassOf odi:Straatmeubilair .
 
+odi:Restafvalcontainer
+      a       owl:Class ;
+      rdfs:comment "Container bedoeld voor het verzamelen van resafval. "@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Restafvalcontainer"@nl ;
+      rdfs:subClassOf odi:Recyclagecontainer ;
+      vann:usageNote "Een restafvalcontainer verschilt van een openbare vuilnisbak in het feit dat een afvalcontainer als inzamelpunt geldt voor bewust verzamelen van grotere hoeveelheden afval, terwijl een openbare vuilnisbak enkel dient voor het deponeren van zeer beperkte hoeveelheden van afval door toevallige voorbijgangers."@nl .
+
 odi:Rijbaankussen
       a       owl:Class ;
-      rdfs:comment "Uit kunststof vervaardigd type verkeersremmer"@nl ;
+      rdfs:comment "Een verkeersremmer vervaardigd uit kunststof en strekt zich doorgaans niet uit over de volledige breedte van de rijbaan."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Rijbaankussen"@nl ;
       rdfs:subClassOf odi:Straatmeubilair .
+
+odi:Roodlichtcamera
+      a       owl:Class ;
+      rdfs:comment "Een meettoestel waarmee zowel snelheidsovertredingen als het negeren van een rood verkeerslicht kunnen worden vastgesteld."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Roodlichtcamera"@nl ;
+      rdfs:subClassOf odi:Camera .
 
 odi:Rooster
       a       owl:Class ;
@@ -538,7 +559,7 @@ odi:Schoencontainer
       rdfs:comment "Container of bak bedoeld voor het verzamelen van schoenen."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Schoencontainer"@nl ;
-      rdfs:subClassOf odi:Bak .
+      rdfs:subClassOf odi:Recyclagecontainer .
 
 odi:Schommel
       a       owl:Class ;
@@ -554,9 +575,16 @@ odi:SeininstallatieOvergangSpoorbedding
       rdfs:label "Seininstallatie overgang spoorbedding"@nl ;
       rdfs:subClassOf odi:Wegsignalisatie .
 
+odi:SelectieveAfsluiting
+      a       owl:Class ;
+      rdfs:comment "Op het terrein ondubbelzinnig aanwijsbare afsluiting die gebruikt kan worden om selectief of periodiek toegang te verlenen aan voertuigen, fietsers en/of voetgangers."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Selectieve afsluiting"@nl ;
+      rdfs:subClassOf odi:Afsluiting .
+
 odi:Sensor
       a       owl:Class ;
-      rdfs:comment "Apparaat bedoeld om iets waar te nemen."@nl ;
+      rdfs:comment "Meettoestel bedoeld om iets waar te nemen."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Sensor"@nl ;
       rdfs:subClassOf odi:Infrastructuurelement .
@@ -573,22 +601,31 @@ odi:SignalisatieEnLeidingenportiek
       rdfs:comment "Elke overspanning van een gedeelte van de wegbaan, watergang of spoorbaan waarbij ofwel signalisatieborden werden aangebracht ofwel gebruikt ter overbrugging van de wegbaan, watergang of spoorbaan voor leidingen"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Signalisatie en leidingenportiek"@nl ;
-      rdfs:subClassOf odi:Installatie ;
+      rdfs:subClassOf odi:Infrastructuurelement ;
       vann:usageNote "Bron definitie: GRB-skeletaanvulling detail: WSM2: Signalisatie- en leidingenportiek"@nl .
 
-odi:SignalisatiePubliciteit
+odi:SignalisatieScheepvaart
       a       owl:Class ;
       rdfs:comment "TODO"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Signalisatie publiciteit"@nl ;
+      rdfs:label "Signalisatie scheepvaart"@nl ;
       rdfs:subClassOf odi:Signalisatie .
 
-odi:Signalisatiepaal
+odi:SignalisatieScheepvaartElektrisch
       a       owl:Class ;
-      rdfs:comment "Alle soorten palen aangebracht ten behoeve van de weggebruiker, bijvoorbeeld: reflectorpaaltjes, palen voor verkeersborden, wegwijzers, plaatsnaamborden, straatnaambord, bord bebouwde kom, signalisatiepalen openbaar vervoer."@nl ;
+      rdfs:comment "TODO"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Signalisatiepaal"@nl ;
-      rdfs:subClassOf odi:Paal .
+      rdfs:label "Signalisatie scheepvaart elektrisch"@nl ;
+      rdfs:subClassOf odi:SignalisatieScheepvaart ;
+      vann:usageNote "Bron object: GRB WRS2: Signalisatie scheepvaart elektrisch"@nl .
+
+odi:SignalisatieScheepvaartNietElektrisch
+      a       owl:Class ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Signalisatie scheepvaart niet-elektrisch"@nl ;
+      rdfs:subClassOf odi:SignalisatieScheepvaart ;
+      vann:usageNote "Bron object: GRB WRS2: Signalisatie scheepvaart niet-elektrisch"@nl .
 
 odi:Skatetoestel
       a       owl:Class ;
@@ -602,8 +639,23 @@ odi:Slagboom
       rdfs:comment "Een afsluitingsmechanisme met slagboomarmen dat dient om controle uit te kunnen oefenen over het gebruik van een doorgang of een toegang."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Slagboom"@nl ;
-      rdfs:subClassOf odi:DynamischeAfsluiting ;
+      rdfs:subClassOf odi:SelectieveAfsluiting ;
       vann:usageNote "Bron definitie: naar GRB-skeletaanvulling detail: WSB: Slagboom"@nl .
+
+odi:Snelheidscamera
+      a       owl:Class ;
+      rdfs:comment "Een meettoestel waarmee snelheidsovertredingen vastgesteld kunnen worden."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Snelheidscamera"@nl ;
+      rdfs:subClassOf odi:Camera .
+
+odi:SpandraadKetting
+      a       owl:Class ;
+      rdfs:comment "Een afsluiting bestaande uit spandraad en/of kettingen."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Afsluiting spandraad en -ketting"@nl ;
+      rdfs:subClassOf odi:Afsluiting ;
+      vann:usageNote "Bron object: GRB AFS: Afsluiting - Spandraad en -ketting"@nl .
 
 odi:SpeelEnSportvoorziening
       a       owl:Class ;
@@ -613,27 +665,20 @@ odi:SpeelEnSportvoorziening
       rdfs:subClassOf odi:Infrastructuurelement ;
       vann:usageNote "Cf. GRB-skeletoptie groen- en begraafplaatsenbeheer: PRA: Park- of recreatieattribuut + S: sporttuigen"@nl .
 
-odi:Standbeeld
+odi:StatischeWegmonoliet
       a       owl:Class ;
-      rdfs:comment "Een zichtbare constructie met historische, esthetische of landschappelijke waarde opgetrokken uit duurzame materialen."@nl ;
+      rdfs:comment "Een niet-verzinkbare massief obstakel dat de doorgang van voertuigen belet"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Standbeeld"@nl ;
-      rdfs:subClassOf odi:Straatmeubilair ;
-      vann:usageNote "Bron object: GRB-entiteit: Kunstwerk (Knw) + cf. GRB-skeletaanvulling detail: WFT: Functiecode terreinobject: ST : standbeeld (functiecode bij Knw)"@nl .
-
-odi:StatischeAfsluiting
-      a       owl:Class ;
-      rdfs:comment "Op het terrein ondubbelzinnig aanwijsbare en permanent verankerde scheiding die statisch is in vorm en bijgevolg geen doorgang toelaat."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Statische afsluiting"@nl ;
-      rdfs:subClassOf odi:Afsluiting .
+      rdfs:label "Statische wegmonoliet"@nl ;
+      rdfs:subClassOf odi:Wegmonoliet ;
+      vann:usageNote "Bijvoorbeeld, 'Amsterdammers'. Bron definitie: naar GRB-skeletaanvulling detail: WPI14: Wegmonoliet"@nl .
 
 odi:Stootband
       a       owl:Class ;
       rdfs:comment "Vaste inrichtingselementen binnen de wegbaan (WBN) met als doel de normale verkeersstromen in gescheiden stroken te leiden. Deze zijn overwegend parallel aan de hartlijn van de wegbaan georiënteerd een stootband is een geprefabriceerde betonnen veiligheidsband die over haar gehele lengte op de bodem rust en geplaatst werd om te voorkomen dat voertuigen van de weg afraken."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Stootband"@nl ;
-      rdfs:subClassOf odi:StatischeAfsluiting ;
+      rdfs:subClassOf odi:BestendigeAfsluiting ;
       vann:usageNote "Bron object: GRB WLI2: Muur / stootband"@nl .
 
 odi:StootbandDupuis
@@ -652,13 +697,6 @@ odi:StootbandNewJersey
       rdfs:subClassOf odi:Stootband ;
       vann:usageNote "Bron object: GRB WLI12: Stootband type new jersey"@nl .
 
-odi:Straatgoot
-      a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Straatgoot"@nl ;
-      rdfs:subClassOf odi:Infrastructuurelement .
-
 odi:Straatkap
       a       owl:Class ;
       rdfs:comment "Elke straatkap of deksel in beton, pvc, polyester of gietijzer die een leiding aanduidt. Een zichtbare straatkap is een merkteken of deksel dat zich in het vlak van de wegbaan bevindt (bv. luiken en deksels communicatieleidingen, waterleiding,...)."@nl ;
@@ -666,6 +704,13 @@ odi:Straatkap
       rdfs:label "Straatkap"@nl ;
       rdfs:subClassOf odi:Deksel ;
       vann:usageNote "Bron definitie: GRB WPI17: Zichtbare straatkap gelijkgronds"@nl .
+
+odi:Straatkolk
+      a       owl:Class ;
+      rdfs:comment "Afvoeropening dat op regelmatige afstand geplaatst wordt met het oog op de afwatering van de wegbaan."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Straatkolk"@nl ;
+      rdfs:subClassOf odi:Rooster .
 
 odi:Straatmeubilair
       a       owl:Class ;
@@ -688,20 +733,12 @@ odi:TV-mast
       rdfs:label "TV-mast"@nl ;
       rdfs:subClassOf odi:Mast .
 
-odi:Telefoonpaal
-      a       owl:Class ;
-      rdfs:comment "Paal van de telefoonleidingen"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Telefoonpaal"@nl ;
-      rdfs:subClassOf odi:Paal ;
-      vann:usageNote "NOTE Bron definitie: GRB-skeletaanvulling detail: WPI1: Paal + WPI104 telefoon"@nl .
-
 odi:Toegangspoort
       a       owl:Class ;
       rdfs:comment "Een object dat de toegang tot een gebied, zone of terreindeel periodiek kan afsluiten."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Toegangspoort"@nl ;
-      rdfs:subClassOf odi:DynamischeAfsluiting ;
+      rdfs:subClassOf odi:SelectieveAfsluiting ;
       vann:usageNote "Gerelateerd aan object: GRB WSP: Scharnierpunt hek/poort "@nl .
 
 odi:Treinbiels
@@ -709,22 +746,14 @@ odi:Treinbiels
       rdfs:comment "TODO"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Treinbiels"@nl ;
-      rdfs:subClassOf odi:StatischeAfsluiting .
-
-odi:TweevoetigeMast
-      a       owl:Class ;
-      rdfs:comment "Mast met tweevoudige verankering met het aardoppervlak."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Tweevoetige mast"@nl ;
-      rdfs:subClassOf odi:Mast ;
-      vann:usageNote "Bron object: GRB WSM4: Tweevoetige mast"@nl .
+      rdfs:subClassOf odi:BestendigeAfsluiting .
 
 odi:Vangrail
       a       owl:Class ;
       rdfs:comment "Een vangrail is een constructie-element bestaande uit metalen stroken voor de scheiding en beveiliging van diverse soorten weggebruikers, voornamelijk langs de berm van wegen."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Vangrail"@nl ;
-      rdfs:subClassOf odi:StatischeAfsluiting ;
+      rdfs:subClassOf odi:BestendigeAfsluiting ;
       vann:usageNote "Definitie naar GRB-Basis Vangrail (WLI3)"@nl .
 
 odi:Veerooster
@@ -763,19 +792,12 @@ odi:VerkeerslichtVoetgangerFietser
       rdfs:label "Verkeerslicht voetganger fietser"@nl ;
       rdfs:subClassOf odi:Wegsignalisatie .
 
-odi:Verlichting
-      a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "TODO"@nl ;
-      rdfs:subClassOf odi:Infrastructuurelement .
-
 odi:Verlichtingspaal
       a       owl:Class ;
       rdfs:comment "Paal met straatverlichting"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Verlichtingspaal"@nl ;
-      rdfs:subClassOf odi:Verlichting ;
+      rdfs:subClassOf odi:OpenbareVerlichting ;
       vann:usageNote "Bron definitie: GRB-skeletaanvulling detail: WPI1: Paal + WPI102 verlichting"@nl .
 
 odi:Verluchtingsrooster
@@ -791,7 +813,7 @@ odi:VerzinkbareWegmonoliet
       rdfs:comment "Een verzinkbare massief obstakel dat de doorgang van voertuigen belet."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Verzinkbare wegmonoliet"@nl ;
-      rdfs:subClassOf odi:Installatie ;
+      rdfs:subClassOf odi:Wegmonoliet ;
       vann:usageNote "Bron definitie: naar GRB-skeletaanvulling detail: WPI14: Wegmonoliet"@nl .
 
 odi:Vlaggenpaal
@@ -799,8 +821,16 @@ odi:Vlaggenpaal
       rdfs:comment "Paal, permanent en duurzaam verankerd met de bodem en opgericht voor het bevestigen en hijsen van vlaggen."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Vlaggenpaal"@nl ;
-      rdfs:subClassOf odi:Paal ;
+      rdfs:subClassOf odi:Straatmeubilair ;
       vann:usageNote "Bron definitie: GRB-skeletaanvulling detail: WPI24: Vlaggenpaal"@nl .
+
+odi:VlakvormigeWegmarkering
+      a       owl:Class ;
+      rdfs:comment "Vlakvormige schilderingen aangebracht op het verhard gedeelte van de wegbaan of kleurveranderingen van de verharding die een onderdeel vormen van de verkeerswetgeving."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Vlakvormige wegmarkering"@nl ;
+      rdfs:subClassOf odi:Wegmarkering ;
+      vann:usageNote "Bron object: GRB WEM3: Vlakvormige wegmarkering"@nl .
 
 odi:VolledigOmslotenSpeeltoestel
       a       owl:Class ;
@@ -809,30 +839,45 @@ odi:VolledigOmslotenSpeeltoestel
       rdfs:label "Volledig omsloten speeltoestel"@nl ;
       rdfs:subClassOf odi:SpeelEnSportvoorziening .
 
-odi:Waterslikker
-      a       owl:Class ;
-      rdfs:comment "Afvoeropening dat op regelmatige afstand geplaatst wordt met het oog op de afwatering van de wegbaan."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Waterslikker"@nl ;
-      rdfs:subClassOf odi:Rooster .
-
 odi:Watertappunt
       a       owl:Class ;
       rdfs:comment "Voorziening waar water kan getapt worden."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Watertappunt"@nl ;
-      rdfs:subClassOf odi:Installatie .
+      rdfs:subClassOf odi:Straatmeubilair .
 
-odi:Weerstation
+odi:Weginrichtingselement
       a       owl:Class ;
-      rdfs:comment "Een weerstation is een verzameling instrumenten die het weer kunnen meten."@nl ;
+      rdfs:comment "Een element behorende bij of gelegen binnen de wegbaan."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "Weerstation"@nl ;
-      rdfs:subClassOf odi:Sensor .
+      rdfs:label "Weginrichtingselement"@nl ;
+      rdfs:subClassOf odi:Infrastructuurelement .
+
+odi:Wegmarkering
+      a       owl:Class ;
+      rdfs:comment "Schilderingen aangebracht op het verhard gedeelte van de wegbaan of kleurveranderingen van de verharding die een onderdeel vormen van de verkeerswetgeving."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Wegmarkering"@nl ;
+      rdfs:subClassOf odi:Wegsignalisatie .
+
+odi:Wegmonoliet
+      a       owl:Class ;
+      rdfs:comment "Een massief obstakel dat de doorgang van voertuigen belet."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Wegmonoliet"@nl ;
+      rdfs:subClassOf odi:SelectieveAfsluiting ;
+      vann:usageNote "Bron definitie: naar GRB-skeletaanvulling detail: WPI14: Wegmonoliet"@nl .
+
+odi:WegneembareWegmonoliet
+      a       owl:Class ;
+      rdfs:comment "Een wegneembaar obstakel dat de doorgang van voertuigen belet en niet dynamisch is in aard."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Wegneembare wegmonoliet"@nl ;
+      rdfs:subClassOf odi:Wegmonoliet .
 
 odi:Wegsignalisatie
       a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
+      rdfs:comment "Alle elementen aangebracht ten behoeve van de weggebruiker, bijvoorbeeld: reflectorpaaltjes, palen voor verkeersborden, wegwijzers, plaatsnaamborden, straatnaambord, bord bebouwde kom, signalisatiepalen openbaar vervoer."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
       rdfs:label "Wegsignalisatie"@nl ;
       rdfs:subClassOf odi:Signalisatie .
@@ -858,6 +903,38 @@ odi:ZichtbaarDekselOfLuik
       rdfs:label "Zichtbaar deksel of luik"@nl ;
       rdfs:subClassOf odi:Deksel ;
       vann:usageNote "Bron definitie: GRB WRI1: Zichtbaar cirkelvormig putdeksel"@nl .
+
+odi:Zitbank
+      a       owl:Class ;
+      rdfs:comment "Een openbaar zitmeubel, op een duurzame manier verbonden met het aardoppervlak en gelegen in parken of langsheen de openbare weg."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "Zitbank"@nl ;
+      rdfs:subClassOf odi:Straatmeubilair ;
+      vann:usageNote "Bron definitie: GRB-skeletaanvulling detail: WSM3: Niet-verplaatsbare zitbank."@nl .
+
+odi:aantalAnkerpunten
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Het aantal bevestigingspunten waarmee de mast verankerd is aan het aardoppervlak."@nl ;
+      rdfs:domain odi:Mast ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "aantal ankerpunten"@nl ;
+      rdfs:range xsd:int .
+
+odi:afsluitbaar
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Duidt aan of het object al dan niet kan afgesloten worden om toegang voor onbevoegden te verhinderen."@nl ;
+      rdfs:domain odi:Infrastructuurelement ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "afsluitbaar"@nl ;
+      rdfs:range xsd:boolean .
+
+odi:capaciteit
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Geeft het opslagvermogen van een object weer, bijvoorbeeld het aantal fietsen dat in een fietsenstalling gestald kunnen worden."@nl ;
+      rdfs:domain schema:Thing ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "capaciteit"@nl ;
+      rdfs:range xsd:int .
 
 odi:dekselVorm
       a       owl:ObjectProperty ;
@@ -893,13 +970,13 @@ odi:nutsvoorzieningscode
       rdfs:range rdfs:Literal ;
       vann:usageNote "Het GRB voorziet een codelijst: WNC nutsvoorzieningscode."@nl .
 
-odi:paaltype
-      a       owl:ObjectProperty ;
-      rdfs:comment "Het type paal."@nl ;
-      rdfs:domain odi:Paal ;
+odi:overdekt
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Duidt aan of het object al dan niet overdekt is."@nl ;
+      rdfs:domain odi:Infrastructuurelement ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
-      rdfs:label "paaltype"@nl ;
-      rdfs:range skos:Concept .
+      rdfs:label "afsluitbaar"@nl ;
+      rdfs:range xsd:boolean .
 
 odi:rioleringscode
       a       owl:DatatypeProperty ;
@@ -918,9 +995,21 @@ odi:speeltoesteltype
       rdfs:label "speeltoesteltype"@nl ;
       rdfs:range skos:Concept .
 
-schema:width
-      a       rdf:Property ;
-      rdfs:label "breedte"@nl .
+odi:verplaatsbaar
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Duidt aan of het element al dan niet verplaatsbaar is en dus niet permanent verankerd werd met het aardoppervlak."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/openbaardomein#Element> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/infrastructuur> ;
+      rdfs:label "verplaatsbaar"@nl ;
+      rdfs:range xsd:boolean .
 
 skos:Concept
       a       rdfs:Class .
+
+<https://id.erfgoed.net/thesauri/erfgoedtypes/140>
+      a       rdfs:Class ;
+      rdfs:label "Fontein"@nl .
+
+<https://id.erfgoed.net/thesauri/erfgoedtypes/48>
+      a       rdfs:Class ;
+      rdfs:label "Sculptuur"@nl .

@@ -2,13 +2,13 @@
 	"@context":
 	{
 		"BegroeidVoorkomen":"http://data.vlaanderen.be/ns/vegetatie#BegroeidVoorkomen",
-		"Beheerdeel":"http://data.vlaanderen.be/ns/openbaardomein#Beheerdeel",
-		"Beheerelement":"http://data.vlaanderen.be/ns/openbaardomein#Beheerelement",
-		"Beheergebied":"http://data.vlaanderen.be/ns/openbaardomein#Beheergebied",
-		"Beheerobject":"http://data.vlaanderen.be/ns/openbaardomein#Beheerobject",
 		"Collectie":"http://data.vlaanderen.be/ns/openbaardomein#Collectie",
+		"Deel":"http://data.vlaanderen.be/ns/openbaardomein#Deel",
+		"Element":"http://data.vlaanderen.be/ns/openbaardomein#Element",
 		"FysiekVoorkomen":"http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomen",
-		"Infrastructuurelement":"http://fixme.com#Infrastructuurelement",
+		"Gebied":"http://data.vlaanderen.be/ns/openbaardomein#Gebied",
+		"Infrastructuurelement":"http://data.vlaanderen.be/ns/infrastructuur#Infrastructuurelement",
+		"Object":"http://data.vlaanderen.be/ns/openbaardomein#Object",
 		"OnbegroeidVoorkomen":"http://fixme.com#OnbegroeidVoorkomen",
 		"Organisatie":"http://www.w3.org/ns/org#Organization",
 		"TerreinVoorkomen":"http://data.vlaanderen.be/ns/openbaardomein#TerreinVoorkomen",
@@ -30,7 +30,7 @@
 		},
 		"bevat":{
 			"@id":"http://data.vlaanderen.be/ns/openbaardomein#bevat",
-			"@type":"http://data.vlaanderen.be/ns/openbaardomein#Beheerobject",
+			"@type":"http://data.vlaanderen.be/ns/openbaardomein#Object",
 			"@container":"@set"
 		},
 		"bronnaam":{
@@ -44,6 +44,10 @@
 		"drassigheid":{
 			"@id":"http://data.vlaanderen.be/ns/vegetatie#drassigheid",
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
+		},
+		"eigenaar":{
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein#eigenaar",
+			"@type":"http://www.w3.org/ns/org#Organization"
 		},
 		"einddatum":{
 			"@id":"http://data.vlaanderen.be/ns/openbaardomein#einddatum",
@@ -62,16 +66,26 @@
 			"@type":""
 		},
 		"hoogte":{
-			"@id":"http://data.vlaanderen.be/ns/vegetatie#hoogte",
+			"@id":"http://schema.org/height",
 			"@type":"http://www.w3.org/2001/XMLSchema#double"
 		},
 		"lengte":{
-			"@id":"http://fixme.com#lengte",
+			"@id":"http://open.vocab.org/terms/length",
 			"@type":"http://www.w3.org/2001/XMLSchema#double"
+		},
+		"materiaal":{
+			"@id":"http://data.vlaanderen.be/ns/infrastructuur#materiaal",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
+			"@container":"@set"
+		},
+		"meetmethode":{
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein#meetmethode",
+			"@type":"http://data.vlaanderen.be/ns/openbaardomein#Meetmethode"
 		},
 		"naam":{
 			"@id":"http://purl.org/dc/terms/title",
-			"@type":"http://www.w3.org/2001/XMLSchema#string"
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+			"@container":"@set"
 		},
 		"niveau":{
 			"@id":"http://data.vlaanderen.be/ns/openbaardomein#niveau",
@@ -89,14 +103,19 @@
 			"@id":"http://data.vlaanderen.be/ns/vegetatie#plantdatum",
 			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
 		},
+		"relatie":{
+			"@id":"http://purl.org/dc/terms/relation",
+			"@type":"http://www.w3.org/2000/01/rdf-schema#Resource",
+			"@container":"@set"
+		},
 		"soortcode":{
 			"@id":"http://data.vlaanderen.be/ns/vegetatie#soortcode",
-			"@type":"",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
 			"@container":"@set"
 		},
 		"soortnaamNederlands":{
 			"@id":"http://data.vlaanderen.be/ns/vegetatie#soortnaamNederlands",
-			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+			"@type":"",
 			"@container":"@set"
 		},
 		"soortnaamWetenschappelijk":{
@@ -119,14 +138,6 @@
 		"voorkomen":{
 			"@id":"http://data.vlaanderen.be/ns/openbaardomein#voorkomen",
 			"@type":"http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomen"
-		},
-		"wgs84Latitude":{
-			"@id":"http://www.w3.org/2003/01/geo/wgs84_pos#lat",
-			"@type":"http://www.w3.org/2001/XMLSchema#double"
-		},
-		"wgs84Longtitude":{
-			"@id":"http://www.w3.org/2003/01/geo/wgs84_pos#long",
-			"@type":"http://www.w3.org/2001/XMLSchema#double"
 		},
 		"wkt":{
 			"@id":"http://www.opengis.net/ont/geosparql#asWKT",

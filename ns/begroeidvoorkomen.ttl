@@ -37,26 +37,41 @@ odv:BegroeidVoorkomen
       rdfs:label "Begroeid Voorkomen"@nl ;
       rdfs:subClassOf <http://data.vlaanderen.be/ns/openbaardomein#TerreinVoorkomen> .
 
+odv:Bloemenakker
+      a       owl:Class ;
+      rdfs:comment "Grasland dat is ingezaaid met wilde- of half wilde soorten waarvan de bodem elk jaar moet geschoffeld of geploegd worden."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
+      rdfs:label "Bloemenakker"@nl ;
+      rdfs:subClassOf odv:Grasachtigen .
+
 odv:Bloemenweide
       a       owl:Class ;
       rdfs:comment "Grasland dat is ingezaaid met wilde- of half wilde soorten"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
       rdfs:label "Bloemenweide"@nl ;
-      rdfs:subClassOf odv:GrasEnKruidachtigen .
+      rdfs:subClassOf odv:Grasachtigen .
+
+odv:Blokhaak
+      a       owl:Class ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
+      rdfs:label "Blokhaak"@nl ;
+      rdfs:subClassOf odv:LageHoutachtigen ;
+      vann:usageNote "TODO"@nl .
 
 odv:Bodembedekkers
       a       owl:Class ;
       rdfs:comment "Aangelegd begroeiingstype, doorgaans met vaste planten, die bedoeld is om snel de bodem af te dekken."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
       rdfs:label "Bodembedekkers"@nl ;
-      rdfs:subClassOf odv:Planten .
+      rdfs:subClassOf odv:Kruidachtigen .
 
-odv:Bollengrasland
+odv:BolEnKnolgewassen
       a       owl:Class ;
-      rdfs:comment "Grasland waarin bloembollen zijn aangeplant."@nl ;
+      rdfs:comment "TODO"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
-      rdfs:label "Bollengrasland"@nl ;
-      rdfs:subClassOf odv:GrasEnKruidachtigen .
+      rdfs:label "Bol- en knolgewassen"@nl ;
+      rdfs:subClassOf odv:Kruidachtigen .
 
 odv:Bomen
       a       owl:Class ;
@@ -73,86 +88,79 @@ odv:Braakland
       rdfs:label "Braakland"@nl ;
       rdfs:subClassOf odv:OverigeBegroeiing .
 
-odv:ExtensiefGrasland
-      a       owl:Class ;
-      rdfs:comment "Grasland met bloeiend gras en hoge, bloeiende planten, ontstaan door een extensief beheer (lage maaifrequentie)"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
-      rdfs:label "Extensief grasland"@nl ;
-      rdfs:subClassOf odv:GrasEnKruidachtigen .
-
 odv:Gazon
       a       owl:Class ;
       rdfs:comment "Grasland zonder bloeiende grassen noch planten, gekenmerkt door een monotoon groen uiterlijk, lage soortendiversiteit en een kort vegetatiedek (enkele centimers hoogte) Een gazon wordt in stand gehouden door een intensief beheer (hoge maaifrequentie)"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
       rdfs:label "Gazon"@nl ;
-      rdfs:subClassOf odv:GrasEnKruidachtigen .
+      rdfs:subClassOf odv:Grasachtigen .
 
-odv:GrasEnKruidachtigen
+odv:Grasachtigen
       a       owl:Class ;
-      rdfs:comment "Vegetatietype gekenmerkt door een laagblijvende, aaneengesloten kruidachtige vegetatie. (zowel grassen als andere planten)"@nl ;
+      rdfs:comment "Begroeiingen die overheersend bestaat uit grassen (behorende tot de Grassenfamilie, Poaceae)."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
-      rdfs:label "Gras en kruidachtigen"@nl ;
+      rdfs:label "Grasachtig"@nl ;
       rdfs:subClassOf odv:BegroeidVoorkomen .
-
-odv:GrasKunststofplaten
-      a       owl:Class ;
-      rdfs:comment "Gras- en kruidachtig vegetatietype dat voorzien is van rastervormig kunststof verstevigingsmateriaal."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
-      rdfs:label "Gras kunststofplaten"@nl ;
-      rdfs:subClassOf odv:GrasEnKruidachtigen .
 
 odv:Grasdals
       a       owl:Class ;
       rdfs:comment "Gras- en kruidachtig vegetatietype dat voorzien is van een rastervormig kunststof verstevigingsmateriaal en bedoeld om de bodem te verstevigen."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
       rdfs:label "Grasdals"@nl ;
-      rdfs:subClassOf odv:GrasEnKruidachtigen ;
+      rdfs:subClassOf odv:Grasachtigen ;
       vann:usageNote "Ook gekend onder de term 'grasbetontegel', NOTE cf. GRB-skeletaanvulling detail: WSV1003: grasdal"@nl .
+
+odv:GrazigeRuigte
+      a       owl:Class ;
+      rdfs:comment "Grasachtige vegetatie (met veel biomassaproductie) waarin door gebrek aan beheer het strooisel zich jaar na jaar ophoopt. Een beperkt aantal soorten vooral forse kruiden zijn dominant."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
+      rdfs:label "Grazige ruigte"@nl ;
+      rdfs:subClassOf odv:Grasachtigen .
 
 odv:Grindgazon
       a       owl:Class ;
       rdfs:comment "Gazontype specifiek op een gestabiliseerde ondergrond."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
       rdfs:label "Grindgazon"@nl ;
-      rdfs:subClassOf odv:GrasEnKruidachtigen .
+      rdfs:subClassOf odv:Grasachtigen .
 
 odv:Heestermassief
       a       owl:Class ;
       rdfs:comment "Heestertype gekenmerkt door een gesloten, massieve structuur, waarbij de individuele heesters moeilijk te onderscheiden zijn."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
       rdfs:label "Heestermassief"@nl ;
-      rdfs:subClassOf odv:Heesters ;
+      rdfs:subClassOf odv:LageHoutachtigen ;
       vann:usageNote "De totale oppervlakte van het massief wordt geschoren. Synoniemen: beplantingsmassief of blokhaag"@nl .
 
-odv:Heesters
+odv:Houtkant
       a       owl:Class ;
-      rdfs:comment "Beplanting van houtige gewassen die struikvormend zijn en die al dan niet een gesloten geheel vormen. Het accent ligt op de sierwaarde, de beplanting kan uit één soort of uit meerdere soorten bestaan. Onder de heesters kan een houtachtige of kruidachtige onderbegroeiing aanwezig zijn. Het oppervlak met struikachtige gewassen is meer dan 50% van de totale oppervlakte van het vak."@nl ;
+      rdfs:comment "Ongeschoren haag of mantelvegetatie, die soms als hakhout wordt behandeld, maar niet op een door de mens aangelegde wal (verhoging)."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
-      rdfs:label "Heesters"@nl ;
+      rdfs:label "Houtkant"@nl ;
+      rdfs:subClassOf odv:LageHoutachtigen ;
+      vann:usageNote "Bron definitie: Vlaams agentschap voor Natuur en Bos"@nl .
+
+odv:Houtwal
+      a       owl:Class ;
+      rdfs:comment "Houtkant op een door de mens aangelegde wal (verhoging)."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
+      rdfs:label "Houtwal"@nl ;
+      rdfs:subClassOf odv:LageHoutachtigen ;
+      vann:usageNote "Bron definitie: Vlaams agentschap voor Natuur en Bos"@nl .
+
+odv:Kruidachtigen
+      a       owl:Class ;
+      rdfs:comment "Algemene groep van begroeiingstypes, waarbij de aard van de samenstelling van de planten bepalend is voor het uitzicht en het beheer."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
+      rdfs:label "Planten"@nl ;
       rdfs:subClassOf odv:BegroeidVoorkomen .
 
-odv:HeestersBodembedekkend
+odv:LageHoutachtigen
       a       owl:Class ;
-      rdfs:comment "Heestertype gekenmerkt door een laagblijvende en bodembedekkende vegetatiestructuur"@nl ;
+      rdfs:comment "Beplanting van houtige gewassen die struikvormend zijn en die al dan niet een gesloten geheel vormen. Het accent ligt op de sierwaarde, de beplanting kan uit één soort of uit meerdere soorten bestaan. Er kan een houtachtige of kruidachtige onderbegroeiing aanwezig zijn. Het oppervlak met struikachtige gewassen is meer dan 50% van de totale oppervlakte van het terreindeel."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
-      rdfs:label "Heesters bodembedekkend"@nl ;
-      rdfs:subClassOf odv:Heesters ;
-      vann:usageNote "De heesters worden periodiek aan de randen geschoren en volgens nood bovenaan verjongd."@nl .
-
-odv:HeestersNietGeslotenOpgaand
-      a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
-      rdfs:label "Heesters niet gesloten opgaand"@nl ;
-      rdfs:subClassOf odv:Heesters .
-
-odv:HeestersSolitair
-      a       owl:Class ;
-      rdfs:comment "Heestertype gekenmerkt door een open vegetatiestructuur waarbij de individuele heesters te onderscheiden zijn, en ook afzonderlijk worden beheerd."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
-      rdfs:label "Heesters solitair"@nl ;
-      rdfs:subClassOf odv:Heesters ;
-      vann:usageNote "Beheer: De heesters krijgen afzonderlijke vormsnoei."@nl .
+      rdfs:label "Lage houtachtigen"@nl ;
+      rdfs:subClassOf odv:BegroeidVoorkomen .
 
 odv:NietBegroeid
       a       owl:Class ;
@@ -169,47 +177,47 @@ odv:OverigeBegroeiing
       rdfs:label "Overige begroeiing"@nl ;
       rdfs:subClassOf odv:BegroeidVoorkomen .
 
-odv:Planten
+odv:Siergazon
       a       owl:Class ;
-      rdfs:comment "Algemene groep van begroeiingstypes, waarbij de aard van de samenstelling van de planten bepalend is voor het uitzicht en het beheer."@nl ;
+      rdfs:comment "Gazon aangelegd vanwege decoratieve waarde."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
-      rdfs:label "Planten"@nl ;
-      rdfs:subClassOf odv:BegroeidVoorkomen .
+      rdfs:label "Siergazon"@nl ;
+      rdfs:subClassOf odv:Gazon .
 
-odv:Ruigte
+odv:Siergrassen
       a       owl:Class ;
-      rdfs:comment "Kruidachtige vegetatie (met veel biomassaproductie) waarin door gebrek aan beheer het strooisel zich jaar na jaar ophoopt. Een beperkt aantal soorten vooral forse kruiden zijn dominant."@nl ;
+      rdfs:comment "TODO"@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
-      rdfs:label "Ruigte"@nl ;
-      rdfs:subClassOf odv:GrasEnKruidachtigen .
+      rdfs:label "Siergrassen"@nl ;
+      rdfs:subClassOf odv:Kruidachtigen .
+
+odv:Sierheesters
+      a       owl:Class ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
+      rdfs:label "Sierheesters"@nl ;
+      rdfs:subClassOf odv:LageHoutachtigen .
+
+odv:Speelgazon
+      a       owl:Class ;
+      rdfs:comment "Gazon gebruikt als speelterrein."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
+      rdfs:label "Speelgazon"@nl ;
+      rdfs:subClassOf odv:Gazon .
 
 odv:Sportgazon
       a       owl:Class ;
       rdfs:comment "Gazon gebruikt als sportterrein."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
       rdfs:label "Sportgazon"@nl ;
-      rdfs:subClassOf odv:GrasEnKruidachtigen .
-
-odv:Struiken
-      a       owl:Class ;
-      rdfs:comment "Opgaande beplanting van houtachtige gewassen die struikvormend zijn. Onderscheidt zich van heesters omdat de sierkenmerken niet voorop staan."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
-      rdfs:label "Struiken"@nl ;
-      rdfs:subClassOf odv:Heesters .
-
-odv:Struikrozen
-      a       owl:Class ;
-      rdfs:comment "Begroeiingstype bestaande uit struikrozen"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
-      rdfs:label "Struikrozen"@nl ;
-      rdfs:subClassOf odv:Planten .
+      rdfs:subClassOf odv:Gazon .
 
 odv:VastePlanten
       a       owl:Class ;
       rdfs:comment "Begroeiingstype met planten die een kruidachtige stengel hebben en overblijvend zijn."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
       rdfs:label "Vaste planten"@nl ;
-      rdfs:subClassOf odv:Planten ;
+      rdfs:subClassOf odv:Kruidachtigen ;
       vann:usageNote "Bron definitie: naar Technisch Vademecum Kruidachtigen Harmonisch Park- en Groenbeheer. De term vaste plant wordt niet gebruikt in de biologie. De term komt uit de kwekerijsector. Onder vaste planten (s.s.) worden in kwekerscatalogi planten verstaan die een kruidachtige stengel hebben en overblijvend zijn. De meeste soorten sterven in de winter bovengronds af (levensvorm: hemicryptofyten) en vormen elk jaar nieuwe stengels, bladeren, bloemen en zaad. Hun overwinteringsknoppen zitten gewoonlijk op het maaiveld. Soorten die hun overwinteringsknoppen boven het maaiveld hebben onder de 50 cm, behoren tot de chamefyten en zijn meestal verhout., De term vaste plant (s.l.) wordt dus gebruikt voor alle kruidachtige vaatplanten, met uitzondering van eenjarige en tweejarige kruidachtige soorten."@nl .
 
 odv:Wisselperk
@@ -217,7 +225,7 @@ odv:Wisselperk
       rdfs:comment "	Jaarlijks opnieuw aangelegd begroeiingstype waarbij de sierwaarde centraal staat. De sierwaarde bestaat uit rijkelijk bloeiende planten."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
       rdfs:label "Wisselperk"@nl ;
-      rdfs:subClassOf odv:Planten ;
+      rdfs:subClassOf odv:Kruidachtigen ;
       vann:usageNote "Bron definitie: Technisch Vademecum Kruidachtigen Harmonisch Park- en Groenbeheer (ANB). Typische BLOEMPERKEN horen eveneens bij WISSELPERKEN."@nl .
 
 odv:drassigheid
@@ -228,3 +236,47 @@ odv:drassigheid
       rdfs:label "drassigheid"@nl ;
       rdfs:range skos:Concept ;
       vann:usageNote "De drassigheid geeft hierbij aan in welke mate de normale werking van types machines zou kunnen verstoord worden."@nl .
+
+odv:gemiddeldeHoogte
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain odv:LageHoutachtigen ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
+      rdfs:label "gemiddelde hoogte"@nl ;
+      rdfs:range xsd:double .
+
+odv:knipoppervlak
+      a       owl:DatatypeProperty ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:domain odv:LageHoutachtigen ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
+      rdfs:label "knipoppervlak"@nl ;
+      rdfs:range xsd:double .
+
+odv:soortcode
+      a       owl:ObjectProperty ;
+      rdfs:comment "Een unieke identificator voor de soort van het vegetatie-element. "@nl ;
+      rdfs:domain rdfs:Resource ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
+      rdfs:label "soortcode"@nl ;
+      rdfs:range skos:Concept ;
+      vann:usageNote "De soortcode wordt opgenomen onder de vorm van de 'GBIF Key'."@nl .
+
+odv:soortnaamNederlands
+      a       rdf:Property ;
+      rdfs:comment "Soortnaam in het Nederlands."@nl ;
+      rdfs:domain rdfs:Resource ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/vegetatie> ;
+      rdfs:label "soortnaam Nederlands"@nl .
+
+<http://open.vocab.org/terms/length>
+      a       rdf:Property ;
+      rdfs:label "lengte"@nl .
+
+<http://rs.tdwg.org/dwc/terms/scientificName>
+      a       rdf:Property ;
+      rdfs:label "wetenschappelijke soortnaam"@nl .
+
+schema:width
+      a       rdf:Property ;
+      rdfs:label "breedte"@nl .

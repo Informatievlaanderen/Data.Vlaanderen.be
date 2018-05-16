@@ -1,7 +1,39 @@
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
-<http://data.vlaanderen.be/ns/vegetatie#HeestersShape>
+<http://data.vlaanderen.be/ns/vegetatie#LageHoutachtigenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Heesters> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#LageHoutachtigen> ;
+	sh:property [
+		sh:name "breedte" ;
+		sh:description "TODO" ;
+		sh:path <http://schema.org/width> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "gemiddeldeHoogte" ;
+		sh:description "TODO" ;
+		sh:path <http://data.vlaanderen.be/ns/vegetatie#gemiddeldeHoogte> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "knipoppervlak" ;
+		sh:description "TODO" ;
+		sh:path <http://data.vlaanderen.be/ns/vegetatie#knipoppervlak> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "lengte" ;
+		sh:description "TODO" ;
+		sh:path <http://open.vocab.org/terms/length> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
 	sh:closed false .
 
 <http://data.vlaanderen.be/ns/vegetatie#BegroeidVoorkomenShape>
@@ -14,6 +46,22 @@
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:maxCount 1 ;
 	] ;
+	sh:property [
+		sh:name "soortcode" ;
+		sh:description "Een unieke identificator voor de soort van het vegetatie-element. " ;
+		sh:path <http://data.vlaanderen.be/ns/vegetatie#soortcode> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+	] ;
+	sh:property [
+		sh:name "soortnaamNederlands" ;
+		sh:description "Soortnaam in het Nederlands." ;
+		sh:path <http://data.vlaanderen.be/ns/vegetatie#soortnaamNederlands> ;
+	] ;
+	sh:property [
+		sh:name "soortnaamWetenschappelijk" ;
+		sh:description "De wetenschappelijke soortnaam." ;
+		sh:path <http://rs.tdwg.org/dwc/terms/scientificName> ;
+	] ;
 	sh:closed false .
 
 <http://data.vlaanderen.be/ns/vegetatie#BomenShape>
@@ -21,9 +69,9 @@
 	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Bomen> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#GrasEnKruidachtigenShape>
+<http://data.vlaanderen.be/ns/vegetatie#GrasachtigenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#GrasEnKruidachtigen> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Grasachtigen> ;
 	sh:closed false .
 
 <http://data.vlaanderen.be/ns/vegetatie#OverigeBegroeiingShape>
@@ -31,9 +79,9 @@
 	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#OverigeBegroeiing> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#PlantenShape>
+<http://data.vlaanderen.be/ns/vegetatie#KruidachtigenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Planten> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Kruidachtigen> ;
 	sh:closed false .
 
 <http://data.vlaanderen.be/ns/vegetatie#BloemenweideShape>
@@ -41,24 +89,9 @@
 	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Bloemenweide> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#BollengraslandShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Bollengrasland> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/vegetatie#ExtensiefGraslandShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#ExtensiefGrasland> ;
-	sh:closed false .
-
 <http://data.vlaanderen.be/ns/vegetatie#GazonShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Gazon> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/vegetatie#GrasKunststofplatenShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#GrasKunststofplaten> ;
 	sh:closed false .
 
 <http://data.vlaanderen.be/ns/vegetatie#GrasdalsShape>
@@ -71,9 +104,9 @@
 	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Grindgazon> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#RuigteShape>
+<http://data.vlaanderen.be/ns/vegetatie#GrazigeRuigteShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Ruigte> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#GrazigeRuigte> ;
 	sh:closed false .
 
 <http://data.vlaanderen.be/ns/vegetatie#SportgazonShape>
@@ -86,24 +119,9 @@
 	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Heestermassief> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#HeestersBodembedekkendShape>
+<http://data.vlaanderen.be/ns/vegetatie#BlokhaakShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#HeestersBodembedekkend> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/vegetatie#HeestersNietGeslotenOpgaandShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#HeestersNietGeslotenOpgaand> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/vegetatie#HeestersSolitairShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#HeestersSolitair> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/vegetatie#StruikenShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Struiken> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Blokhaak> ;
 	sh:closed false .
 
 <http://data.vlaanderen.be/ns/vegetatie#BodembedekkersShape>
@@ -111,9 +129,9 @@
 	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Bodembedekkers> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#StruikrozenShape>
+<http://data.vlaanderen.be/ns/vegetatie#SierheestersShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Struikrozen> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Sierheesters> ;
 	sh:closed false .
 
 <http://data.vlaanderen.be/ns/vegetatie#VastePlantenShape>
@@ -158,5 +176,40 @@
 <http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomenShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomen> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/vegetatie#BloemenakkerShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Bloemenakker> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/vegetatie#SpeelgazonShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Speelgazon> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/vegetatie#SiergazonShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Siergazon> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/vegetatie#HoutkantShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Houtkant> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/vegetatie#HoutwalShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Houtwal> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/vegetatie#SiergrassenShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Siergrassen> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/vegetatie#BolEnKnolgewassenShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#BolEnKnolgewassen> ;
 	sh:closed false .
 
