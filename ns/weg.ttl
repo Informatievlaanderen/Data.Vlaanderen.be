@@ -282,6 +282,14 @@ locn:Geometry a rdfs:Class ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
     rdfs:range xsd:string .
 
+<http://data.vlaanderen.be/ns/weg#nationaleWegnummer> a owl:DatatypeProperty ;
+    rdfs:label "nationaleWegnummer"@nl ;
+    vann:usageNote "Gebruik hiervoor de ident 2."@nl ;
+    rdfs:comment "Code die de route in het nationale wegennetwerk identificeert."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/weg#NationaleWeg> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+    rdfs:range xsd:string .
+
 <http://data.vlaanderen.be/ns/weg#nauwkeurigheidVanOpmeting> a rdf:Property ;
     rdfs:label "nauwkeurigheid van opmeting"@nl ;
     rdfs:comment "De nauwkeurigheid waarmee de wegbreedte werd opgemeten"@nl ;
@@ -542,6 +550,13 @@ skos:notation a rdf:Property ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
     rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#Weg> .
 
+<http://data.vlaanderen.be/ns/weg#NationaleWeg> a owl:Class ;
+    rdfs:label "Nationale Weg"@nl ;
+    vann:usageNote " "@nl ;
+    rdfs:comment "Een nationale weg is een weg, veelal van bovenlokaal belang, die voorzien is van een vereenvoudigd administratief nummer"@nl ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+    rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#Weg> .
+
 <http://data.vlaanderen.be/ns/weg#Positie> a owl:Class ;
     rdfs:label "Positie"@nl ;
     rdfs:comment "Positie van het wegsegment op de Transportlinkset"@nl ;
@@ -551,13 +566,6 @@ skos:notation a rdf:Property ;
     rdfs:label "Transport Netwerk"@nl ;
     rdfs:comment "Verzameling van netwerkelementen die tot een enkele vervoerswijze behoren."@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> .
-
-<http://data.vlaanderen.be/ns/weg#Weg> a owl:Class ;
-    rdfs:label "Weg"@nl ;
-    vann:usageNote "De klasse Weg is een abstracte klasse. In praktijk zullen de subklassen NationaleWeg en GenummerdeWeg voorkomen voor instanties van Weg."@nl ;
-    rdfs:comment "Een verzameling weglinksequenties en / of individuele weglinks die worden gekenmerkt door een of meer thematische identifiers en / of eigenschappen."@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
-    rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#TransportLinkSet> .
 
 <http://data.vlaanderen.be/ns/weg#AantalRijstroken> a owl:Class ;
     rdfs:label "Aantal Rijstroken"@nl ;
@@ -576,6 +584,13 @@ skos:notation a rdf:Property ;
     rdfs:comment "De mate van beweging in termen van snelheid in een bepaalde richting. Het wordt meestal berekend met behulp van de eenvoudige formule, de verandering in positie gedurende een bepaald tijdsinterval."@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
     rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#Meting> .
+
+<http://data.vlaanderen.be/ns/weg#Weg> a owl:Class ;
+    rdfs:label "Weg"@nl ;
+    vann:usageNote "De klasse Weg is een abstracte klasse. In praktijk zullen de subklassen NationaleWeg en GenummerdeWeg voorkomen voor instanties van Weg."@nl ;
+    rdfs:comment "Een verzameling weglinksequenties en / of individuele weglinks die worden gekenmerkt door een of meer thematische identifiers en / of eigenschappen."@nl ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+    rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#TransportLinkSet> .
 
 <http://data.vlaanderen.be/ns/weg#Wegknoop> a owl:Class ;
     rdfs:label "Wegknoop"@nl ;
@@ -651,7 +666,7 @@ skos:notation a rdf:Property ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> .
 
 <http://data.vlaanderen.be/ns/weg> a owl:Ontology ;
-    dcterms:issued "2017-03-30"^^xsd:date ;
+    dcterms:issued "2017-05-25"^^xsd:date ;
     dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
     dcterms:mediator [ foaf:homepage <https://data.vlaanderen.be> ;
             foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
@@ -659,12 +674,6 @@ skos:notation a rdf:Property ;
     dcterms:title "Weg"@nl ;
     vann:preferredNamespaceUri "http://data.vlaanderen.be/ns/weg" ;
     rec:editor [ a <http://www.w3.org/ns/person#Person> ;
-            schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
-                    foaf:name "PwC" ] ;
-            foaf:firstName "Jens" ;
-            foaf:lastName "Scheerlinck" ;
-            foaf:mbox <mailto:jens.scheerlinck@pwc.com> ],
-        [ a <http://www.w3.org/ns/person#Person> ;
             schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
                     foaf:name "PwC" ] ;
             foaf:firstName "Michiel" ;
@@ -675,37 +684,19 @@ skos:notation a rdf:Property ;
                     foaf:name "PwC" ] ;
             foaf:firstName "Carmen" ;
             foaf:lastName "Vandeloo" ;
-            foaf:mbox <mailto:carmen.vandeloo@pwc.com> ] ;
-    foaf:maker [ a <http://www.w3.org/ns/person#Person> ;
-            schema:affiliation [ foaf:homepage <http://departement-mow.vlaanderen.be/nl> ;
-                    foaf:name "Mobiliteit en Openbare Werken" ] ;
-            foaf:firstName "Severien" ;
-            foaf:lastName "Gouwy" ;
-            foaf:mbox <mailto:severien.gouwy@mow.vlaanderen.be> ],
+            foaf:mbox <mailto:carmen.vandeloo@pwc.com> ],
         [ a <http://www.w3.org/ns/person#Person> ;
+            schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
+                    foaf:name "PwC" ] ;
+            foaf:firstName "Jens" ;
+            foaf:lastName "Scheerlinck" ;
+            foaf:mbox <mailto:jens.scheerlinck@pwc.com> ] ;
+    foaf:maker [ a <http://www.w3.org/ns/person#Person> ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
                     foaf:name "Informatie Vlaanderen" ] ;
             foaf:firstName "Jelmer" ;
             foaf:lastName "Panman" ;
             foaf:mbox <mailto:jelmer.panman@kb.vlaanderen.be> ],
-        [ a <http://www.w3.org/ns/person#Person> ;
-            schema:affiliation [ foaf:homepage <http://wegenenverkeer.be/> ;
-                    foaf:name "Agentschap Wegen en Verkeer" ] ;
-            foaf:firstName "Joachim" ;
-            foaf:lastName "Dero" ;
-            foaf:mbox <mailto:joachim.dero@mow.vlaanderen.be> ],
-        [ a <http://www.w3.org/ns/person#Person> ;
-            schema:affiliation [ foaf:homepage <http://departement-mow.vlaanderen.be/nl> ;
-                    foaf:name "Mobiliteit en Openbare Werken" ] ;
-            foaf:firstName "Joshua" ;
-            foaf:lastName "De Clercq" ;
-            foaf:mbox <mailto:joshua.declercq@mow.vlaanderen.be> ],
-        [ a <http://www.w3.org/ns/person#Person> ;
-            schema:affiliation [ foaf:homepage <https://www.turnhout.be/> ;
-                    foaf:name "Turnhout" ] ;
-            foaf:firstName "Karolien" ;
-            foaf:lastName "Van den Broeck" ;
-            foaf:mbox <mailto:karolien.vandenbroeck@turnhout.be> ],
         [ a <http://www.w3.org/ns/person#Person> ;
             schema:affiliation [ foaf:homepage <https://www.vlaamsbrabant.be/> ;
                     foaf:name "Provincie Vlaams-Brabant" ] ;
@@ -713,77 +704,23 @@ skos:notation a rdf:Property ;
             foaf:lastName "Librecht" ;
             foaf:mbox <mailto:ireen.librecht@vlaamsbrabant.be> ],
         [ a <http://www.w3.org/ns/person#Person> ;
-            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Raf" ;
-            foaf:lastName "Buyle" ;
-            foaf:mbox <mailto:raf.buyle@kb.vlaanderen.be> ],
-        [ a <http://www.w3.org/ns/person#Person> ;
-            schema:affiliation [ foaf:homepage <http://www.vvsg.be/Pages/Home.aspx> ;
-                    foaf:name "VVSG" ] ;
-            foaf:firstName "Ward" ;
-            foaf:lastName "Van Hal" ;
-            foaf:mbox <mailto:ward.vanhal@vvsg.be> ],
-        [ a <http://www.w3.org/ns/person#Person> ;
-            schema:affiliation [ foaf:homepage <https://www.zulte.be/> ;
-                    foaf:name "Zulte" ] ;
-            foaf:firstName "Ine" ;
-            foaf:lastName "De Cubber" ;
-            foaf:mbox <mailto:Ine.DeCubber@zulte.be> ],
-        [ a <http://www.w3.org/ns/person#Person> ;
-            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Tom" ;
-            foaf:lastName "Vande Wiele" ;
-            foaf:mbox <mailto:tom.vandewiele@kb.vlaanderen.be> ],
-        [ a <http://www.w3.org/ns/person#Person> ;
-            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Ziggy" ;
-            foaf:lastName "Vanlishout" ;
-            foaf:mbox <mailto:Siegfried.Vanlishout@kb.vlaanderen.be> ],
-        [ a <http://www.w3.org/ns/person#Person> ;
-            schema:affiliation [ foaf:homepage <http://www.nevele.be/> ;
-                    foaf:name "Nevele" ] ;
-            foaf:firstName "Sam" ;
-            foaf:lastName "Blok" ;
-            foaf:mbox <mailto:Sam.Blok@nevele.be> ],
-        [ a <http://www.w3.org/ns/person#Person> ;
-            schema:affiliation [ foaf:homepage <http://wegenenverkeer.be/> ;
-                    foaf:name "Agentschap Wegen en Verkeer" ] ;
-            foaf:firstName "Geert" ;
-            foaf:lastName "Van Gaever" ;
-            foaf:mbox <mailto:geert.vangaever@mow.vlaanderen.be> ],
-        [ a <http://www.w3.org/ns/person#Person> ;
-            schema:affiliation [ foaf:homepage <https://stad.gent/> ;
-                    foaf:name "Stad Gent" ] ;
-            foaf:firstName "Peter" ;
-            foaf:lastName "Bogaert" ;
-            foaf:mbox <mailto:Peter.bogaert@stad.gent> ],
-        [ a <http://www.w3.org/ns/person#Person> ;
-            schema:affiliation [ foaf:homepage <http://www.verkeerscentrum.be/> ;
-                    foaf:name "Vlaams Verkeerscentrum" ] ;
-            foaf:firstName "Arin" ;
-            foaf:lastName "Verschueren" ;
-            foaf:mbox <mailto:arin.verschueren@mow.vlaanderen.be> ],
-        [ a <http://www.w3.org/ns/person#Person> ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
                     foaf:name "Informatie Vlaanderen" ] ;
             foaf:firstName "Kurt" ;
             foaf:lastName "De Jonghe" ;
             foaf:mbox <mailto:kurt.dejonghe@kb.vlaanderen.be> ],
         [ a <http://www.w3.org/ns/person#Person> ;
-            schema:affiliation [ foaf:homepage <http://tenforce.com> ;
-                    foaf:name "Tenforce" ] ;
-            foaf:firstName "Bert" ;
-            foaf:lastName "Van Nuffelen" ;
-            foaf:mbox <mailto:Bert.Van.Nuffelen@tenforce.com> ],
+            schema:affiliation [ foaf:homepage <http://departement-mow.vlaanderen.be/nl> ;
+                    foaf:name "Mobiliteit en Openbare Werken" ] ;
+            foaf:firstName "Severien" ;
+            foaf:lastName "Gouwy" ;
+            foaf:mbox <mailto:severien.gouwy@mow.vlaanderen.be> ],
         [ a <http://www.w3.org/ns/person#Person> ;
-            schema:affiliation [ foaf:homepage <http://wegenenverkeer.be/> ;
-                    foaf:name "Agentschap Wegen en Verkeer" ] ;
-            foaf:firstName "Bert" ;
-            foaf:lastName "Boterbergh" ;
-            foaf:mbox <mailto:bert.boterbergh@mow.vlaanderen.be> ],
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Ziggy" ;
+            foaf:lastName "Vanlishout" ;
+            foaf:mbox <mailto:Siegfried.Vanlishout@kb.vlaanderen.be> ],
         [ a <http://www.w3.org/ns/person#Person> ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
                     foaf:name "Informatie Vlaanderen" ] ;
@@ -797,9 +734,87 @@ skos:notation a rdf:Property ;
             foaf:lastName "De Meulenaer" ;
             foaf:mbox <mailto:lies.demeulenaer@kb.vlaanderen.be> ],
         [ a <http://www.w3.org/ns/person#Person> ;
+            schema:affiliation [ foaf:homepage <https://stad.gent/> ;
+                    foaf:name "Stad Gent" ] ;
+            foaf:firstName "Peter" ;
+            foaf:lastName "Bogaert" ;
+            foaf:mbox <mailto:Peter.bogaert@stad.gent> ],
+        [ a <http://www.w3.org/ns/person#Person> ;
+            schema:affiliation [ foaf:homepage <http://wegenenverkeer.be/> ;
+                    foaf:name "Agentschap Wegen en Verkeer" ] ;
+            foaf:firstName "Joachim" ;
+            foaf:lastName "Dero" ;
+            foaf:mbox <mailto:joachim.dero@mow.vlaanderen.be> ],
+        [ a <http://www.w3.org/ns/person#Person> ;
+            schema:affiliation [ foaf:homepage <http://wegenenverkeer.be/> ;
+                    foaf:name "Agentschap Wegen en Verkeer" ] ;
+            foaf:firstName "Bert" ;
+            foaf:lastName "Boterbergh" ;
+            foaf:mbox <mailto:bert.boterbergh@mow.vlaanderen.be> ],
+        [ a <http://www.w3.org/ns/person#Person> ;
+            schema:affiliation [ foaf:homepage <http://www.verkeerscentrum.be/> ;
+                    foaf:name "Vlaams Verkeerscentrum" ] ;
+            foaf:firstName "Arin" ;
+            foaf:lastName "Verschueren" ;
+            foaf:mbox <mailto:arin.verschueren@mow.vlaanderen.be> ],
+        [ a <http://www.w3.org/ns/person#Person> ;
+            schema:affiliation [ foaf:homepage <http://tenforce.com> ;
+                    foaf:name "Tenforce" ] ;
+            foaf:firstName "Bert" ;
+            foaf:lastName "Van Nuffelen" ;
+            foaf:mbox <mailto:Bert.Van.Nuffelen@tenforce.com> ],
+        [ a <http://www.w3.org/ns/person#Person> ;
+            schema:affiliation [ foaf:homepage <http://departement-mow.vlaanderen.be/nl> ;
+                    foaf:name "Mobiliteit en Openbare Werken" ] ;
+            foaf:firstName "Joshua" ;
+            foaf:lastName "De Clercq" ;
+            foaf:mbox <mailto:joshua.declercq@mow.vlaanderen.be> ],
+        [ a <http://www.w3.org/ns/person#Person> ;
+            schema:affiliation [ foaf:homepage <http://wegenenverkeer.be/> ;
+                    foaf:name "Agentschap Wegen en Verkeer" ] ;
+            foaf:firstName "Geert" ;
+            foaf:lastName "Van Gaever" ;
+            foaf:mbox <mailto:geert.vangaever@mow.vlaanderen.be> ],
+        [ a <http://www.w3.org/ns/person#Person> ;
             schema:affiliation [ foaf:homepage <http://wegenenverkeer.be/> ;
                     foaf:name "Agentschap Wegen en Verkeer" ] ;
             foaf:firstName "Natasha" ;
             foaf:lastName "Blommaert" ;
-            foaf:mbox <mailto:natasha.blommaert@mow.vlaanderen.be> ] .
+            foaf:mbox <mailto:natasha.blommaert@mow.vlaanderen.be> ],
+        [ a <http://www.w3.org/ns/person#Person> ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Raf" ;
+            foaf:lastName "Buyle" ;
+            foaf:mbox <mailto:raf.buyle@kb.vlaanderen.be> ],
+        [ a <http://www.w3.org/ns/person#Person> ;
+            schema:affiliation [ foaf:homepage <http://www.nevele.be/> ;
+                    foaf:name "Nevele" ] ;
+            foaf:firstName "Sam" ;
+            foaf:lastName "Blok" ;
+            foaf:mbox <mailto:Sam.Blok@nevele.be> ],
+        [ a <http://www.w3.org/ns/person#Person> ;
+            schema:affiliation [ foaf:homepage <http://www.vvsg.be/Pages/Home.aspx> ;
+                    foaf:name "VVSG" ] ;
+            foaf:firstName "Ward" ;
+            foaf:lastName "Van Hal" ;
+            foaf:mbox <mailto:ward.vanhal@vvsg.be> ],
+        [ a <http://www.w3.org/ns/person#Person> ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Tom" ;
+            foaf:lastName "Vande Wiele" ;
+            foaf:mbox <mailto:tom.vandewiele@kb.vlaanderen.be> ],
+        [ a <http://www.w3.org/ns/person#Person> ;
+            schema:affiliation [ foaf:homepage <https://www.zulte.be/> ;
+                    foaf:name "Zulte" ] ;
+            foaf:firstName "Ine" ;
+            foaf:lastName "De Cubber" ;
+            foaf:mbox <mailto:Ine.DeCubber@zulte.be> ],
+        [ a <http://www.w3.org/ns/person#Person> ;
+            schema:affiliation [ foaf:homepage <https://www.turnhout.be/> ;
+                    foaf:name "Turnhout" ] ;
+            foaf:firstName "Karolien" ;
+            foaf:lastName "Van den Broeck" ;
+            foaf:mbox <mailto:karolien.vandenbroeck@turnhout.be> ] .
 
