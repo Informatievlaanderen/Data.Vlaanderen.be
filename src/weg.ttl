@@ -15,7 +15,7 @@
 
 <http://data.vlaanderen.be/ns/weg>
       a       owl:Ontology ;
-      dcterms:issued "2017-03-30"^^xsd:date ;
+      dcterms:issued "2017-05-25"^^xsd:date ;
       dcterms:title "Weg"@nl ;
       vann:preferredNamespaceUri
               "http://data.vlaanderen.be/ns/weg" .
@@ -83,6 +83,14 @@
       rdfs:comment "Het resultaat van het uitvoeren van de handeling of het proces van het vaststellen van de omvang, afmetingen of hoeveelheid van een bepaalde entiteit. Een meetwaarde wordt altijd gekoppeld aan een maateenheid."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
       rdfs:label "Lengte"@nl .
+
+<http://data.vlaanderen.be/ns/weg#NationaleWeg>
+      a       owl:Class ;
+      rdfs:comment "Een nationale weg is een weg, veelal van bovenlokaal belang, die voorzien is van een vereenvoudigd administratief nummer"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "Nationale Weg"@nl ;
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/weg#Weg> ;
+      vann:usageNote " "@nl .
 
 <http://data.vlaanderen.be/ns/weg#NetwerkElement>
       a       owl:Class ;
@@ -439,6 +447,15 @@
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
       rdfs:label "TODO"@nl ;
       rdfs:range xsd:string .
+
+<http://data.vlaanderen.be/ns/weg#nationaleWegnummer>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Code die de route in het nationale wegennetwerk identificeert."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/weg#NationaleWeg> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/weg> ;
+      rdfs:label "nationaleWegnummer"@nl ;
+      rdfs:range xsd:string ;
+      vann:usageNote "Gebruik hiervoor de ident 2."@nl .
 
 <http://data.vlaanderen.be/ns/weg#nauwkeurigheidVanOpmeting>
       a       rdf:Property ;
