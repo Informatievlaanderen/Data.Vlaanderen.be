@@ -1,21 +1,32 @@
 {
 	"@context":
 	{
-		"BegroeidVoorkomen":"http://data.vlaanderen.be/ns/vegetatie#BegroeidVoorkomen",
+		"BegroeidVoorkomen":"http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#BegroeidVoorkomen",
 		"Collectie":"http://data.vlaanderen.be/ns/openbaardomein#Collectie",
 		"Deel":"http://data.vlaanderen.be/ns/openbaardomein#Deel",
 		"Element":"http://data.vlaanderen.be/ns/openbaardomein#Element",
 		"FysiekVoorkomen":"http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomen",
 		"Gebied":"http://data.vlaanderen.be/ns/openbaardomein#Gebied",
-		"Infrastructuurelement":"http://data.vlaanderen.be/ns/infrastructuur#Infrastructuurelement",
+		"Infrastructuurelement":"http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Infrastructuurelement",
 		"Object":"http://data.vlaanderen.be/ns/openbaardomein#Object",
-		"OnbegroeidVoorkomen":"http://fixme.com#OnbegroeidVoorkomen",
+		"OnbegroeidVoorkomen":"http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#OnbegroeidVoorkomen",
 		"Organisatie":"http://www.w3.org/ns/org#Organization",
 		"TerreinVoorkomen":"http://data.vlaanderen.be/ns/openbaardomein#TerreinVoorkomen",
-		"Terreindeel":"http://fixme.com#Terreindeel",
-		"VegetatieElement":"http://data.vlaanderen.be/ns/vegetatie#VegetatieElement",
-		"Waterdeel":"http://fixme.com#Waterdeel",
+		"Terreindeel":"http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Terreindeel",
+		"VegetatieElement":"http://data.vlaanderen.be/ns/openbaardomein/vegetatie#VegetatieElement",
+		"WaterVoorkomen":"http://fixme.com#WaterVoorkomen",
+		"Waterdeel":"http://data.vlaanderen.be/ns/openbaardomein/waterdeel#Waterdeel",
 
+		"VegetatieElement.soortcode":{
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortcode",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
+			"@container":"@set"
+		},
+		"VegetatieElement.soortnaamNederlands":{
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortnaamNederlands",
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+			"@container":"@set"
+		},
 		"alternatieveNaam":{
 			"@id":"http://www.w3.org/2004/02/skos/core#altLabel",
 			"@type":"http://www.w3.org/2001/XMLSchema#string"
@@ -42,7 +53,7 @@
 			"@type":"http://schema.org/ContactPoint"
 		},
 		"drassigheid":{
-			"@id":"http://data.vlaanderen.be/ns/vegetatie#drassigheid",
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#drassigheid",
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
 		},
 		"eigenaar":{
@@ -54,7 +65,7 @@
 			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
 		},
 		"gemiddeldeBreedte":{
-			"@id":"http://fixme.com#gemiddeldeBreedte",
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte",
 			"@type":"http://www.w3.org/2001/XMLSchema#double"
 		},
 		"geometrie":{
@@ -74,18 +85,18 @@
 			"@type":"http://www.w3.org/2001/XMLSchema#double"
 		},
 		"materiaal":{
-			"@id":"http://data.vlaanderen.be/ns/infrastructuur#materiaal",
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#materiaal",
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
 			"@container":"@set"
-		},
-		"meetmethode":{
-			"@id":"http://data.vlaanderen.be/ns/openbaardomein#meetmethode",
-			"@type":"http://data.vlaanderen.be/ns/openbaardomein#Meetmethode"
 		},
 		"naam":{
 			"@id":"http://purl.org/dc/terms/title",
 			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
 			"@container":"@set"
+		},
+		"nauwkeurigheid":{
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid",
+			"@type":"http://data.vlaanderen.be/ns/openbaardomein#Nauwkeurigsheidsklassen"
 		},
 		"niveau":{
 			"@id":"http://data.vlaanderen.be/ns/openbaardomein#niveau",
@@ -96,11 +107,11 @@
 			"@type":"http://www.w3.org/2001/XMLSchema#boolean"
 		},
 		"oppervlakte":{
-			"@id":"http://fixme.com#oppervlakte",
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein#oppervlakte",
 			"@type":"http://www.w3.org/2001/XMLSchema#double"
 		},
 		"plantdatum":{
-			"@id":"http://data.vlaanderen.be/ns/vegetatie#plantdatum",
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/vegetatie#plantdatum",
 			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
 		},
 		"relatie":{
@@ -109,12 +120,12 @@
 			"@container":"@set"
 		},
 		"soortcode":{
-			"@id":"http://data.vlaanderen.be/ns/vegetatie#soortcode",
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#soortcode",
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
 			"@container":"@set"
 		},
 		"soortnaamNederlands":{
-			"@id":"http://data.vlaanderen.be/ns/vegetatie#soortnaamNederlands",
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#soortnaamNederlands",
 			"@type":"",
 			"@container":"@set"
 		},
@@ -138,6 +149,10 @@
 		"voorkomen":{
 			"@id":"http://data.vlaanderen.be/ns/openbaardomein#voorkomen",
 			"@type":"http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomen"
+		},
+		"watertype":{
+			"@id":"http://fixme.com#watertype",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
 		},
 		"wkt":{
 			"@id":"http://www.opengis.net/ont/geosparql#asWKT",

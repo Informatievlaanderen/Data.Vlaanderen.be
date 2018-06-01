@@ -80,17 +80,17 @@ od:einddatum a owl:DatatypeProperty ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
     rdfs:range xsd:dateTime .
 
-od:meetmethode a owl:ObjectProperty ;
-    rdfs:label "meetmethode"@nl ;
-    rdfs:comment "De methode waarmee de inventarisatie is opgemeten."@nl ;
+od:nauwkeurigheid a owl:ObjectProperty ;
+    rdfs:label "nauwkeurigheid"@nl ;
+    rdfs:comment "De precisie waarmee het object opgemeten werd."@nl ;
     rdfs:domain od:Object ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range od:Meetmethode .
+    rdfs:range od:Nauwkeurigsheidsklassen .
 
 od:niveau a owl:DatatypeProperty ;
     rdfs:label "niveau"@nl ;
-    vann:usageNote "Negatieve waarden worden geassocieerd met ondergrond, nul met gelijkgronds en positieve waarden met bovengronds."@nl ;
-    rdfs:comment "Het niveau waarop het object zich bevindt."@nl ;
+    vann:usageNote "Negatieve waarden worden geassocieerd met ondergronds en positieve waarden met bovengronds. Nul wordt beschouwd als een absolute waarde om het maaiveld aan te duiden."@nl ;
+    rdfs:comment "Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten."@nl ;
     rdfs:domain od:Object ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
     rdfs:range xsd:integer .
@@ -102,9 +102,17 @@ od:obstakels a owl:DatatypeProperty ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
     rdfs:range xsd:boolean .
 
+od:oppervlakte a owl:DatatypeProperty ;
+    rdfs:label "oppervlakte"@nl ;
+    rdfs:comment "De afmeting van het object in vierkante meter."@nl ;
+    rdfs:domain od:Deel ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
+    rdfs:range xsd:double .
+
 od:talud a owl:ObjectProperty ;
     rdfs:label "talud"@nl ;
-    rdfs:comment "TODO"@nl ;
+    vann:usageNote "Naar GRB-skeletaanvulling detail - WTO1: Teen verharde talud; WTO2: Kruin verharde talud; WTO3: Teen onverharde talud; WTO4: Kruin onverharde talud "@nl ;
+    rdfs:comment "Een talud is het kunstmatig gedeelte van een vlak van de wegbaan, dijken, spoorbanen, vestingswerken, dat een helling (min. 20%, max 80% voor kunstmatig verharde taluds) vertoont en bedoeld voor het opvangen van een hoogteverschil."@nl ;
     rdfs:domain od:TerreinVoorkomen ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
     rdfs:range skos:Concept .
@@ -141,25 +149,45 @@ od:Collectie a owl:Class ;
     rdfs:comment "Een verzameling van individuele objecten waartussen een functionele relatie bestaat."@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> .
 
+<http://data.vlaanderen.be/ns/openbaardomein/Nauwkeurigsheidsklassen/A> a od:Nauwkeurigsheidsklassen ;
+    rdfs:label "Klasse A"@nl ;
+    rdfs:comment "Idealisatienauwkeurigheid van 0,7cm en een relatieve nauwkeurigheid van 4cm."@nl ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> .
+
+<http://data.vlaanderen.be/ns/openbaardomein/Nauwkeurigsheidsklassen/B> a od:Nauwkeurigsheidsklassen ;
+    rdfs:label "Klasse B"@nl ;
+    rdfs:comment "Idealisatienauwkeurigheid van 2cm en een relatieve nauwkeurigheid van 5cm."@nl ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> .
+
+<http://data.vlaanderen.be/ns/openbaardomein/Nauwkeurigsheidsklassen/C> a od:Nauwkeurigsheidsklassen ;
+    rdfs:label "Klasse C"@nl ;
+    rdfs:comment "Idealisatienauwkeurigheid van 4cm en een relatieve nauwkeurigheid van 7cm."@nl ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> .
+
+<http://data.vlaanderen.be/ns/openbaardomein/Nauwkeurigsheidsklassen/D> a od:Nauwkeurigsheidsklassen ;
+    rdfs:label "Klasse D"@nl ;
+    rdfs:comment "Idealisatienauwkeurigheid van 15cm en een relatieve nauwkeurigheid van 15cm."@nl ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> .
+
+<http://data.vlaanderen.be/ns/openbaardomein/Nauwkeurigsheidsklassen/E> a od:Nauwkeurigsheidsklassen ;
+    rdfs:label "Klasse E"@nl ;
+    rdfs:comment "Idealisatienauwkeurigheid van 20cm en een relatieve nauwkeurigheid van 30cm."@nl ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> .
+
+<http://data.vlaanderen.be/ns/openbaardomein/Nauwkeurigsheidsklassen/F> a od:Nauwkeurigsheidsklassen ;
+    rdfs:label "Klasse F"@nl ;
+    rdfs:comment "Geen nauwkeurigheidsinformatie beschikbaar."@nl ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> .
+
 od:Deel a owl:Class ;
     rdfs:label "Deel"@nl ;
     rdfs:comment "Homogeen gedeelte van het aardoppervlak, met een gelijkaardige hoofdfunctie en fysiek voorkomen."@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
     rdfs:subClassOf od:Object .
 
-<http://data.vlaanderen.be/ns/openbaardomein/Meetmethode/fotogrammetrisch> a od:Meetmethode ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> .
-
-<http://data.vlaanderen.be/ns/openbaardomein/Meetmethode/terrestrisch> a od:Meetmethode ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> .
-
 od:FysiekVoorkomen a owl:Class ;
     rdfs:label "Fysiek Voorkomen"@nl ;
-    rdfs:comment "Beschrijving van het fysieke voorkomen van het beheerobject."@nl ;
+    rdfs:comment "Beschrijving van het fysieke voorkomen van het object."@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> .
 
 od:TerreinVoorkomen a owl:Class ;
@@ -168,17 +196,17 @@ od:TerreinVoorkomen a owl:Class ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
     rdfs:subClassOf od:FysiekVoorkomen .
 
-od:Meetmethode a owl:Class ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
-    owl:oneOf ( <http://data.vlaanderen.be/ns/openbaardomein/Meetmethode/terrestrisch> <http://data.vlaanderen.be/ns/openbaardomein/Meetmethode/fotogrammetrisch> ) .
-
 od:Object a owl:Class ;
     rdfs:label "Object"@nl ;
     rdfs:comment "De hoofdklasse waar alle objecten die geïnventariseerd kunnen worden van afgeleid worden."@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
     rdfs:subClassOf "http://schema.org/Thing" .
+
+od:Nauwkeurigsheidsklassen a owl:Class ;
+    rdfs:label "Nauwkeurigheidsklassen"@nl ;
+    rdfs:comment "De nauwkeurigheid waarmee objecten opgemeten worden hangt af van de meetmethode (terrestrisch of via luchtfotogrammetrie) en van de precisie waarmee objecten op het terrein kunnen aangeduid worden. Het GRB definieert 6 nauwkeurigheidsklassen."@nl ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
+    owl:oneOf ( <http://data.vlaanderen.be/ns/openbaardomein/Nauwkeurigsheidsklassen/A> <http://data.vlaanderen.be/ns/openbaardomein/Nauwkeurigsheidsklassen/B> <http://data.vlaanderen.be/ns/openbaardomein/Nauwkeurigsheidsklassen/C> <http://data.vlaanderen.be/ns/openbaardomein/Nauwkeurigsheidsklassen/D> <http://data.vlaanderen.be/ns/openbaardomein/Nauwkeurigsheidsklassen/E> <http://data.vlaanderen.be/ns/openbaardomein/Nauwkeurigsheidsklassen/F> ) .
 
 <http://data.vlaanderen.be/ns/openbaardomein> a owl:Ontology ;
     rdfs:label "Inventarisatie Openbaar Domein"@nl ;
@@ -186,11 +214,53 @@ od:Object a owl:Class ;
     dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
     dcterms:mediator [ foaf:homepage <https://data.vlaanderen.be> ;
             foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
+            foaf:name "Data Vlaanderen" ],
+        [ foaf:homepage <https://data.vlaanderen.be> ;
+            foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
+            foaf:name "Data Vlaanderen" ],
+        [ foaf:homepage <https://data.vlaanderen.be> ;
+            foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
             foaf:name "Data Vlaanderen" ] ;
     dcterms:title "Inventarisatie Openbaar Domein"@nl ;
     vann:preferredNamespacePrefix "od" ;
     vann:preferredNamespaceUri "http://data.vlaanderen.be/ns/openbaardomein" ;
     rec:editor [ a person:Person ;
+            schema:affiliation [ foaf:homepage <file:///C:/OSLO-EA-to-RDF-master/target/ggino/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
+                    foaf:name "Ugent" ] ;
+            foaf:firstName "Tim" ;
+            foaf:lastName "Baert" ;
+            foaf:mbox <mailto:tim.baert@ugent.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <file:///C:/OSLO-EA-to-RDF-master/target/ggino/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Liesbet" ;
+            foaf:lastName "De Wolf" ;
+            foaf:mbox <mailto:liesbet.dewolf@kb.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
+                    foaf:name "PwC" ] ;
+            foaf:firstName "Jens" ;
+            foaf:lastName "Scheerlinck" ;
+            foaf:mbox <mailto:jens.scheerlinck@pwc.com> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
+                    foaf:name "PwC" ] ;
+            foaf:firstName "Jens" ;
+            foaf:lastName "Scheerlinck" ;
+            foaf:mbox <mailto:jens.scheerlinck@pwc.com> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <file:///C:/OSLO-EA-to-RDF-master/target/ggino/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
+                    foaf:name "Ugent" ] ;
+            foaf:firstName "Tim" ;
+            foaf:lastName "Baert" ;
+            foaf:mbox <mailto:tim.baert@ugent.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <file:///C:/OSLO-EA-to-RDF-master/target/ggino/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Liesbet" ;
+            foaf:lastName "De Wolf" ;
+            foaf:mbox <mailto:liesbet.dewolf@kb.vlaanderen.be> ],
+        [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
                     foaf:name "PwC" ] ;
             foaf:firstName "Jens" ;

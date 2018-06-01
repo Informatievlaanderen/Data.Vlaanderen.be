@@ -68,7 +68,7 @@
               <div class="head" role="contentinfo" id="respecHeader">
                 <dl>
                   <dt>Laatste aanpassing</dt>
-                  <dd>2018-05-29</dd>
+                  <dd>2018-06-01</dd>
 
                   
                   
@@ -109,6 +109,7 @@
                       <br />
                       |
                       <a href="#Akker">Akker</a> |
+                      <a href="#Bijzondere overrijdbare bedding">Bijzondere overrijdbare bedding</a> |
                       <a href="#Boordsteen">Boordsteen</a> |
                       <a href="#Bushaltehaven">Bushaltehaven</a> |
                       <a href="#Deel">Deel</a> |
@@ -138,9 +139,10 @@
                       <a href="#Straatgoot">Straatgoot</a> |
                       <a href="#Terreindeel">Terreindeel</a> |
                       <a href="#Tijdelijk groen">Tijdelijk groen</a> |
+                      <a href="#Trap tussen 2 straatniveaus">Trap tussen 2 straatniveaus</a> |
+                      <a href="#Trottoir">Trottoir</a> |
                       <a href="#Tuinbouwgrond">Tuinbouwgrond</a> |
                       <a href="#Tussenberm">Tussenberm</a> |
-                      <a href="#Voetpad">Voetpad</a> |
                       <a href="#Voetweg">Voetweg</a> |
                       <a href="#Wegbaan">Wegbaan</a> |
                       <a href="#Wegberm">Wegberm</a> |
@@ -195,7 +197,11 @@
                             "parent": "Wegbaan"
                         }, 
                         {
-                            "name": "Voetpad",
+                            "name": "Bijzondere overrijdbare bedding",
+                            "parent": "Wegbaan"
+                        }, 
+                        {
+                            "name": "Trottoir",
                             "parent": "Wegbaan"
                         }, 
                         {
@@ -265,6 +271,10 @@
                             "parent": "Receatieve ruimte"
                         }
                       ]
+                  },
+                  {
+                      "name": "Trap",
+                      "parent": "Terreindeel"
                   },
                   {
                       "name": "Groenvlak",
@@ -470,7 +480,7 @@
               <h3 class="h3" id="Akker"><a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Akker" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Akker" data-placement="right">Akker</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Terreindeel bewerkt wordt voor productie van landbouwgewassen.</dd>
+                    <dt>Beschrijving</dt><dd>Terreindeel dat bewerkt wordt voor productie van landbouwgewassen.</dd>
                     
                     <dt>Eigenschappen</dt>
                     
@@ -610,7 +620,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -636,12 +646,183 @@
             </div>
             
             <div class="region region--no-space-top">
+              <h3 class="h3" id="Bijzondere overrijdbare bedding"><a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#BijzondereOverrijdbareBedding" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#BijzondereOverrijdbareBedding" data-placement="right">Bijzondere overrijdbare bedding</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Het deel van de openbare weg dat aan het verkeer van voertuigen van geregelde diensten voor gemeenschappelijk vervoer is voorbehouden door middel van de wegmarkeringen bedoeld in de artikelen 72.6. en 77.8. en waarvan het begin is aangeduid door het verkeersbord F18.</dd>
+                    
+                    <dt>Gebruik</dt><dd>Naar definitie in wegcode: https://wegcode.be/wetteksten/secties/kb/wegcode/100-art2</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Bijzondere%20overrijdbare%20bedding%3Abegindatum">begindatum</a>, 
+                      <a href="#Bijzondere%20overrijdbare%20bedding%3Aeinddatum">einddatum</a>, 
+                      <a href="#Bijzondere%20overrijdbare%20bedding%3Agemiddelde%20breedte">gemiddelde breedte</a>, 
+                      <a href="#Bijzondere%20overrijdbare%20bedding%3Ageometrie">geometrie</a>, 
+                      <a href="#Bijzondere%20overrijdbare%20bedding%3Alengte">lengte</a>, 
+                      <a href="#Bijzondere%20overrijdbare%20bedding%3Anauwkeurigheid">nauwkeurigheid</a>, 
+                      <a href="#Bijzondere%20overrijdbare%20bedding%3Aniveau">niveau</a>, 
+                      <a href="#Bijzondere%20overrijdbare%20bedding%3Aoppervlakte">oppervlakte</a>, 
+                      <a href="#Bijzondere%20overrijdbare%20bedding%3Arelatie">relatie</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Bijzondere%20overrijdbare%20bedding%3Abegindatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#begindatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
+                            begindatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het gebied of object in gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Bijzondere%20overrijdbare%20bedding%3Aeinddatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#einddatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
+                            einddatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het beheerobject uit gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Bijzondere%20overrijdbare%20bedding%3Agemiddelde%20breedte" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte" data-placement="right">
+                            gemiddelde breedte</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">TODO</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Bijzondere%20overrijdbare%20bedding%3Ageometrie" typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#geometry">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/ns/locn#geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#geometry" data-placement="right">
+                            geometrie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.opengis.net/ont/geosparql#Geometry" data-toggle="tooltip" data-content="http://www.opengis.net/ont/geosparql#Geometry" data-placement="right">Geometrie</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De geometrie overeenkomstig met een bepaald object.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Bijzondere%20overrijdbare%20bedding%3Alengte" typeof="rdfs:Property" resource="http://open.vocab.org/terms/length">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://open.vocab.org/terms/length" data-toggle="tooltip" data-content="http://open.vocab.org/terms/length" data-placement="right">
+                            lengte</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">TODO</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Bijzondere%20overrijdbare%20bedding%3Anauwkeurigheid" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
+                            nauwkeurigheid</a>
+                          </code>
+                        </td>
+                        <td><a href="http://data.vlaanderen.be/ns/openbaardomein#Nauwkeurigsheidsklassen" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#Nauwkeurigsheidsklassen" data-placement="right">Nauwkeurigsheidsklassen</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De precisie waarmee het object opgemeten werd.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Bijzondere%20overrijdbare%20bedding%3Aniveau" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#niveau">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
+                            niveau</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#integer" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#integer" data-placement="right">Integer</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten.</td>
+                        <td property="vann:usageNote">Negatieve waarden worden geassocieerd met ondergronds en positieve waarden met bovengronds. Nul wordt beschouwd als een absolute waarde om het maaiveld aan te duiden.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Bijzondere%20overrijdbare%20bedding%3Aoppervlakte" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-placement="right">
+                            oppervlakte</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Bijzondere%20overrijdbare%20bedding%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
+                            relatie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Resource" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Resource" data-placement="right">RelatieObject</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Verwijst naar een object in een andere databank dat meer informatie kan verschaffen over het beheerobject.</td>
+                        <td property="vann:usageNote">Bijvoorbeeld een verwijzing naar een object uit het wegenregister of grootschalig referentiebestand.</td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
+            </div>
+            
+            <div class="region region--no-space-top">
               <h3 class="h3" id="Boordsteen"><a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Boordsteen" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Boordsteen" data-placement="right">Boordsteen</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
                     <dt>Beschrijving</dt><dd>Boordstenen en kantstenen met als doel de normale verkeersstromen in gescheiden stroken te leiden</dd>
                     
-                    <dt>Gebruik</dt><dd>Bron object: GRB Verhoogde boordsteen / kantsteen (WLI1)</dd>
+                    <dt>Gebruik</dt><dd>Naar GRB-basis - WLI1: Verhoogde boordsteen/kantsteen</dd>
                     
                     <dt>Eigenschappen</dt>
                     
@@ -781,7 +962,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -950,7 +1131,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -1089,7 +1270,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -1118,7 +1299,7 @@
               <h3 class="h3" id="Dierenloopweide"><a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Dierenloopweide" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Dierenloopweide" data-placement="right">Dierenloopweide</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Terreindeel dat bedoeld is gedomesticeerde dieren in de buitenruimte te laten lopen</dd>
+                    <dt>Beschrijving</dt><dd>Terreindeel dat bedoeld is om gedomesticeerde dieren in de buitenruimte vrij te laten lopen.</dd>
                     
                     <dt>Eigenschappen</dt>
                     
@@ -1258,7 +1439,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -1287,7 +1468,9 @@
               <h3 class="h3" id="Eigen bedding"><a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#EigenBedding" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#EigenBedding" data-placement="right">Eigen bedding</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Het gedeelte van de weg dat alleen door trams, treinen of bussen, wordt gebruikt, een soort aparte spoorlijn of gereserveerde rijstrook.</dd>
+                    <dt>Beschrijving</dt><dd>Terreindeel bestemd voor het gebruik van spoorvoertuigen (trein, tram) dat niet behoord tot de wegbaan.</dd>
+                    
+                    <dt>Gebruik</dt><dd>Geen Bijzonder Overrijdbare Bedding (Behoort tot de wegbaan)</dd>
                     
                     <dt>Eigenschappen</dt>
                     
@@ -1427,7 +1610,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -1597,7 +1780,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -1782,7 +1965,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -1951,7 +2134,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -1980,9 +2163,9 @@
               <h3 class="h3" id="Hondentoilet"><a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Hondentoilet" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Hondentoilet" data-placement="right">Hondentoilet</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>	Een plaats waar huisdieren (honden) hun behoefte kunnen en mogen doen en waarbij het opruimen van de hondenpoep wordt uitgevoerd door de gemeente of een andere instantie.</dd>
+                    <dt>Beschrijving</dt><dd>Een plaats waar huisdieren (honden) hun behoefte kunnen en mogen doen en waarbij het opruimen van de hondenpoep wordt uitgevoerd door de gemeente of een andere instantie.</dd>
                     
-                    <dt>Gebruik</dt><dd>Bron definitie: GRB-skeletoptie groen- en begraafplaatsenbeheer: PRA: Park- of recreatieattribuut + H: hondentoilet</dd>
+                    <dt>Gebruik</dt><dd>Naar GRB-skeletoptie groen- en begraafplaatsenbeheer - PRA: Park- of recreatieattribuut; PRC: Functiecode park- of recreatieattribuut.</dd>
                     
                     <dt>Eigenschappen</dt>
                     
@@ -2122,7 +2305,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -2151,7 +2334,7 @@
               <h3 class="h3" id="Hondenuitlaatplaats"><a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Hondenuitlaatplaats" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Hondenuitlaatplaats" data-placement="right">Hondenuitlaatplaats</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Afgebakend terreindeel waar honden vrij mogen rondlopen. Er geldt wel opruimplicht voor hondenpoep.</dd>
+                    <dt>Beschrijving</dt><dd>Afgebakend terreindeel waar geen opruimplicht voor hondenpoep geldt en waar honden aan de leiband dienen te lopen.</dd>
                     
                     <dt>Eigenschappen</dt>
                     
@@ -2291,7 +2474,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -2321,6 +2504,8 @@
                 <div class="region region--no-space-top">
                   <dl>
                     <dt>Beschrijving</dt><dd>Hoogstamboomgaarden zijn aanplanten van hoogstammige fruitbomen in grasland. Dikwijls liggen ze in de onmiddellijke omgeving van de bebouwing. Een hoogstamboomgaard onderscheidt zich van een laagstam- of productieboomgaard (kl) door de hoogstammige fruitbomen, een aaneengesloten graslandvegetatie onder de bomen en een veelal hogere ouderdom.</dd>
+                    
+                    <dt>Gebruik</dt><dd>Naar Ecopedia (https://www.ecopedia.be/bwk/hoogstamboomgaard-kj)</dd>
                     
                     <dt>Eigenschappen</dt>
                     
@@ -2460,7 +2645,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -2629,7 +2814,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -2659,6 +2844,8 @@
                 <div class="region region--no-space-top">
                   <dl>
                     <dt>Beschrijving</dt><dd>Het betreft vrijwel uitsluitend productieboomgaarden met lage fruitbomen in rijen, dicht op elkaar. Tussen de rijen is meestal een grasstrook vrijgelaten die als doorgang voor landbouwmachines dient.</dd>
+                    
+                    <dt>Gebruik</dt><dd>Naar Ecopedia (https://www.ecopedia.be/bwk/laagstamboomgaard-kl)</dd>
                     
                     <dt>Eigenschappen</dt>
                     
@@ -2798,7 +2985,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -2967,7 +3154,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -3138,7 +3325,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -3307,7 +3494,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -3462,6 +3649,8 @@
                   <dl>
                     <dt>Beschrijving</dt><dd>Al dan niet verstevigde rand van een waterloop of watervlak</dd>
                     
+                    <dt>Gebruik</dt><dd>Naar GRB-skeletoptie water- en rioolbeheer - WRO: Oeververharding (afgeleid)</dd>
+                    
                     <dt>Eigenschappen</dt>
                     
                     <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
@@ -3600,7 +3789,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -3769,7 +3958,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -3940,7 +4129,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -3969,7 +4158,7 @@
               <h3 class="h3" id="Recreatieve ruimte"><a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#RecreatieveRuimte" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#RecreatieveRuimte" data-placement="right">Recreatieve ruimte</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Terreindeel voor vrijetijdsbestind, zoals ontspanning, spel en sport.</dd>
+                    <dt>Beschrijving</dt><dd>Terreindeel voor vrijetijdsbesteding, zoals ontspanning, spel en sport.</dd>
                     
                     <dt>Eigenschappen</dt>
                     
@@ -4109,7 +4298,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -4280,7 +4469,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -4449,7 +4638,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -4618,7 +4807,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -4647,7 +4836,7 @@
               <h3 class="h3" id="Spoorwegberm"><a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Spoorwegberm" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Spoorwegberm" data-placement="right">Spoorwegberm</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>	Hoofdzakelijk begroeide en langgerekte strook grond binnen de spoorwegcorridor gelegen.</dd>
+                    <dt>Beschrijving</dt><dd>Langgerekte strook grond binnen de spoorwegcorridor gelegen.</dd>
                     
                     <dt>Eigenschappen</dt>
                     
@@ -4787,7 +4976,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -4956,7 +5145,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -4987,7 +5176,7 @@
                   <dl>
                     <dt>Beschrijving</dt><dd>Een deel van de weginrichting die geplaatst werd met het oog op de afwatering van oppervlaktewater, afkomstig van het verhard gedeelte van de wegbaan.</dd>
                     
-                    <dt>Gebruik</dt><dd>Bron definitie: WRV20: Rand verharding, binnenkant straatgoot</dd>
+                    <dt>Gebruik</dt><dd>Naar GRB-skeletaanvulling detail - WRV20: Rand verharding, binnenkant straatgoot </dd>
                     
                     <dt>Eigenschappen</dt>
                     
@@ -5127,7 +5316,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -5296,7 +5485,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -5465,12 +5654,354 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
                     
                       <tr id="Tijdelijk%20groen%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
+                            relatie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Resource" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Resource" data-placement="right">RelatieObject</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Verwijst naar een object in een andere databank dat meer informatie kan verschaffen over het beheerobject.</td>
+                        <td property="vann:usageNote">Bijvoorbeeld een verwijzing naar een object uit het wegenregister of grootschalig referentiebestand.</td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Trap tussen 2 straatniveaus"><a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Trap" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Trap" data-placement="right">Trap tussen 2 straatniveaus</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Constructie, niet aanleunend bij een gebouw bestaande uit treden die de verbinding vormt tussen 2 straatpeilen.</dd>
+                    
+                    <dt>Gebruik</dt><dd>Naar GRB-skeletaanvulling detail - KNW25: Trap tussen 2 straatniveaus</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Trap%20tussen%202%20straatniveaus%3Abegindatum">begindatum</a>, 
+                      <a href="#Trap%20tussen%202%20straatniveaus%3Aeinddatum">einddatum</a>, 
+                      <a href="#Trap%20tussen%202%20straatniveaus%3Agemiddelde%20breedte">gemiddelde breedte</a>, 
+                      <a href="#Trap%20tussen%202%20straatniveaus%3Ageometrie">geometrie</a>, 
+                      <a href="#Trap%20tussen%202%20straatniveaus%3Alengte">lengte</a>, 
+                      <a href="#Trap%20tussen%202%20straatniveaus%3Anauwkeurigheid">nauwkeurigheid</a>, 
+                      <a href="#Trap%20tussen%202%20straatniveaus%3Aniveau">niveau</a>, 
+                      <a href="#Trap%20tussen%202%20straatniveaus%3Aoppervlakte">oppervlakte</a>, 
+                      <a href="#Trap%20tussen%202%20straatniveaus%3Arelatie">relatie</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Trap%20tussen%202%20straatniveaus%3Abegindatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#begindatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
+                            begindatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het gebied of object in gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Trap%20tussen%202%20straatniveaus%3Aeinddatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#einddatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
+                            einddatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het beheerobject uit gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Trap%20tussen%202%20straatniveaus%3Agemiddelde%20breedte" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte" data-placement="right">
+                            gemiddelde breedte</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">TODO</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Trap%20tussen%202%20straatniveaus%3Ageometrie" typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#geometry">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/ns/locn#geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#geometry" data-placement="right">
+                            geometrie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.opengis.net/ont/geosparql#Geometry" data-toggle="tooltip" data-content="http://www.opengis.net/ont/geosparql#Geometry" data-placement="right">Geometrie</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De geometrie overeenkomstig met een bepaald object.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Trap%20tussen%202%20straatniveaus%3Alengte" typeof="rdfs:Property" resource="http://open.vocab.org/terms/length">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://open.vocab.org/terms/length" data-toggle="tooltip" data-content="http://open.vocab.org/terms/length" data-placement="right">
+                            lengte</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">TODO</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Trap%20tussen%202%20straatniveaus%3Anauwkeurigheid" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
+                            nauwkeurigheid</a>
+                          </code>
+                        </td>
+                        <td><a href="http://data.vlaanderen.be/ns/openbaardomein#Nauwkeurigsheidsklassen" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#Nauwkeurigsheidsklassen" data-placement="right">Nauwkeurigsheidsklassen</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De precisie waarmee het object opgemeten werd.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Trap%20tussen%202%20straatniveaus%3Aniveau" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#niveau">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
+                            niveau</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#integer" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#integer" data-placement="right">Integer</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten.</td>
+                        <td property="vann:usageNote">Negatieve waarden worden geassocieerd met ondergronds en positieve waarden met bovengronds. Nul wordt beschouwd als een absolute waarde om het maaiveld aan te duiden.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Trap%20tussen%202%20straatniveaus%3Aoppervlakte" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-placement="right">
+                            oppervlakte</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Trap%20tussen%202%20straatniveaus%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
+                            relatie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Resource" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Resource" data-placement="right">RelatieObject</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Verwijst naar een object in een andere databank dat meer informatie kan verschaffen over het beheerobject.</td>
+                        <td property="vann:usageNote">Bijvoorbeeld een verwijzing naar een object uit het wegenregister of grootschalig referentiebestand.</td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Trottoir"><a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Trottoir" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Trottoir" data-placement="right">Trottoir</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Het gedeelte van de openbare weg, al dan niet verhoogd aangelegd ten opzichte van de rijbaan, in &#146;t bijzonder ingericht voor het verkeer van voetgangers; het trottoir is verhard en de scheiding ervan met de andere gedeelten van de openbare weg is duidelijk herkenbaar voor alle weggebruikers.</dd>
+                    
+                    <dt>Gebruik</dt><dd>Naar Wegcode Artikel 2.40 (Trottoir)</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Trottoir%3Abegindatum">begindatum</a>, 
+                      <a href="#Trottoir%3Aeinddatum">einddatum</a>, 
+                      <a href="#Trottoir%3Agemiddelde%20breedte">gemiddelde breedte</a>, 
+                      <a href="#Trottoir%3Ageometrie">geometrie</a>, 
+                      <a href="#Trottoir%3Alengte">lengte</a>, 
+                      <a href="#Trottoir%3Anauwkeurigheid">nauwkeurigheid</a>, 
+                      <a href="#Trottoir%3Aniveau">niveau</a>, 
+                      <a href="#Trottoir%3Aoppervlakte">oppervlakte</a>, 
+                      <a href="#Trottoir%3Arelatie">relatie</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Trottoir%3Abegindatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#begindatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
+                            begindatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het gebied of object in gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Trottoir%3Aeinddatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#einddatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
+                            einddatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het beheerobject uit gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Trottoir%3Agemiddelde%20breedte" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte" data-placement="right">
+                            gemiddelde breedte</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">TODO</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Trottoir%3Ageometrie" typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#geometry">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/ns/locn#geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#geometry" data-placement="right">
+                            geometrie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.opengis.net/ont/geosparql#Geometry" data-toggle="tooltip" data-content="http://www.opengis.net/ont/geosparql#Geometry" data-placement="right">Geometrie</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De geometrie overeenkomstig met een bepaald object.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Trottoir%3Alengte" typeof="rdfs:Property" resource="http://open.vocab.org/terms/length">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://open.vocab.org/terms/length" data-toggle="tooltip" data-content="http://open.vocab.org/terms/length" data-placement="right">
+                            lengte</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">TODO</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Trottoir%3Anauwkeurigheid" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
+                            nauwkeurigheid</a>
+                          </code>
+                        </td>
+                        <td><a href="http://data.vlaanderen.be/ns/openbaardomein#Nauwkeurigsheidsklassen" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#Nauwkeurigsheidsklassen" data-placement="right">Nauwkeurigsheidsklassen</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De precisie waarmee het object opgemeten werd.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Trottoir%3Aniveau" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#niveau">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
+                            niveau</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#integer" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#integer" data-placement="right">Integer</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten.</td>
+                        <td property="vann:usageNote">Negatieve waarden worden geassocieerd met ondergronds en positieve waarden met bovengronds. Nul wordt beschouwd als een absolute waarde om het maaiveld aan te duiden.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Trottoir%3Aoppervlakte" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-placement="right">
+                            oppervlakte</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Trottoir%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
                         <td>
                           <code property="rdfs:label">
                             <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
@@ -5634,7 +6165,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -5805,181 +6336,12 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
                     
                       <tr id="Tussenberm%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
-                            relatie</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Resource" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Resource" data-placement="right">RelatieObject</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Verwijst naar een object in een andere databank dat meer informatie kan verschaffen over het beheerobject.</td>
-                        <td property="vann:usageNote">Bijvoorbeeld een verwijzing naar een object uit het wegenregister of grootschalig referentiebestand.</td>
-                        <td></td>
-                      </tr>
-                    
-                    </tbody>
-                  </table>
-                </div>
-      			  
-            </div>
-            
-            <div class="region region--no-space-top">
-              <h3 class="h3" id="Voetpad"><a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Voetpad" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Voetpad" data-placement="right">Voetpad</a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>Een voetpad is een zone geschikt voor voetgangersstromen binnen de binnen- of buitenberm. Een voetpad is steeds verhard. Een schijnbaar privatieve verharde strook die aanleunt bij de rand van de wegbaan en een detaillering vormt van de buitenberm wordt beschouwd als voetpad indien deze strook raakt aan minstens drie gebruikspercelen en hierbinnen geen wijzigingen in materiaal vertoont.</dd>
-                    
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Voetpad%3Abegindatum">begindatum</a>, 
-                      <a href="#Voetpad%3Aeinddatum">einddatum</a>, 
-                      <a href="#Voetpad%3Agemiddelde%20breedte">gemiddelde breedte</a>, 
-                      <a href="#Voetpad%3Ageometrie">geometrie</a>, 
-                      <a href="#Voetpad%3Alengte">lengte</a>, 
-                      <a href="#Voetpad%3Anauwkeurigheid">nauwkeurigheid</a>, 
-                      <a href="#Voetpad%3Aniveau">niveau</a>, 
-                      <a href="#Voetpad%3Aoppervlakte">oppervlakte</a>, 
-                      <a href="#Voetpad%3Arelatie">relatie</a>.</dd>
-                    
-                  </dl>
-                </div>
-                
-                <div class="u-table-overflow">
-                  <table class="data-table">
-                    <thead>
-                      <tr class="data-table__header">
-                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
-                        <th class="data-table__header-title--sortable">Verwacht Type</th>
-                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
-                        <th class="data-table__header-title--sortable">Beschrijving</th>
-                        <th class="data-table__header-title--sortable">Gebruik</th>
-                        <th class="data-table__header-title--sortable">Codelijst</th>
-                      </tr>
-                    </thead>
-        
-                    <tbody class="supertype">
-                    
-                      <tr id="Voetpad%3Abegindatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#begindatum">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
-                            begindatum</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Datum waarop de huidige versie van het gebied of object in gebruik wordt genomen.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Voetpad%3Aeinddatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#einddatum">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
-                            einddatum</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Datum waarop de huidige versie van het beheerobject uit gebruik wordt genomen.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Voetpad%3Agemiddelde%20breedte" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte" data-placement="right">
-                            gemiddelde breedte</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Voetpad%3Ageometrie" typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#geometry">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://www.w3.org/ns/locn#geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#geometry" data-placement="right">
-                            geometrie</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.opengis.net/ont/geosparql#Geometry" data-toggle="tooltip" data-content="http://www.opengis.net/ont/geosparql#Geometry" data-placement="right">Geometrie</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">De geometrie overeenkomstig met een bepaald object.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Voetpad%3Alengte" typeof="rdfs:Property" resource="http://open.vocab.org/terms/length">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://open.vocab.org/terms/length" data-toggle="tooltip" data-content="http://open.vocab.org/terms/length" data-placement="right">
-                            lengte</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Voetpad%3Anauwkeurigheid" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
-                            nauwkeurigheid</a>
-                          </code>
-                        </td>
-                        <td><a href="http://data.vlaanderen.be/ns/openbaardomein#Nauwkeurigsheidsklassen" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#Nauwkeurigsheidsklassen" data-placement="right">Nauwkeurigsheidsklassen</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">De precisie waarmee het object opgemeten werd.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Voetpad%3Aniveau" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#niveau">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
-                            niveau</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#integer" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#integer" data-placement="right">Integer</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten.</td>
-                        <td property="vann:usageNote">Negatieve waarden worden geassocieerd met ondergronds en positieve waarden met bovengronds. Nul wordt beschouwd als een absolute waarde om het maaiveld aan te duiden.</td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Voetpad%3Aoppervlakte" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-placement="right">
-                            oppervlakte</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Voetpad%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
                         <td>
                           <code property="rdfs:label">
                             <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
@@ -6143,7 +6505,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -6174,7 +6536,7 @@
                   <dl>
                     <dt>Beschrijving</dt><dd>De wegbaan (Wbn) is de voorstelling van de wegcorridor in het GRB. De wegbaan wordt overlangs opgedeeld in verschillende arbitrair afgebakende wegbaanelementen. Er zijn twee types wegbaanelementen: een kruispuntzone komt overeen met een kruispunt; een wegsegment komt overeen met een wegvak.</dd>
                     
-                    <dt>Gebruik</dt><dd>Bron object: GRB Wegbaan (Wbn)</dd>
+                    <dt>Gebruik</dt><dd>Naar GRB-basis - WBN: Rand van de wegbaan</dd>
                     
                     <dt>Eigenschappen</dt>
                     
@@ -6314,7 +6676,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -6343,7 +6705,7 @@
               <h3 class="h3" id="Wegberm"><a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Wegberm" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Wegberm" data-placement="right">Wegberm</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Hoofdzakelijk begroeide en langgerekte strook grond binnen de wegcorridor gelegen.</dd>
+                    <dt>Beschrijving</dt><dd>Langgerekte strook grond binnen de wegcorridor gelegen.</dd>
                     
                     <dt>Gebruik</dt><dd>cf. GRB Lexicon: Deel van corridor</dd>
                     
@@ -6485,7 +6847,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -6656,7 +7018,7 @@
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">TODO</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>

@@ -3,16 +3,16 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#Object> ;
 	sh:property [
-		sh:name "eigenaar" ;
-		sh:description "De entiteit (bv. de gemeente) die eigenaar is van het object." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#eigenaar> ;
+		sh:name "beheerder" ;
+		sh:description "Instantie (tot op team- of dienstniveau) die instaat voor het beheer van het object." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#beheerder> ;
 		sh:class <http://www.w3.org/ns/org#Organization> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "beheerder" ;
-		sh:description "Instantie (tot op team- of dienstniveau) die instaat voor het beheer van het object." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#beheerder> ;
+		sh:name "eigenaar" ;
+		sh:description "De entiteit (bv. de gemeente) die eigenaar is van het object." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#eigenaar> ;
 		sh:class <http://www.w3.org/ns/org#Organization> ;
 		sh:maxCount 1 ;
 	] ;
@@ -32,7 +32,7 @@
 	] ;
 	sh:property [
 		sh:name "niveau" ;
-		sh:description "Het niveau waarop het object zich bevindt." ;
+		sh:description "Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten." ;
 		sh:path <http://data.vlaanderen.be/ns/openbaardomein#niveau> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#integer> ;
 		sh:maxCount 1 ;
@@ -46,10 +46,10 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "meetmethode" ;
-		sh:description "De methode waarmee de inventarisatie is opgemeten." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#meetmethode> ;
-		sh:class <http://data.vlaanderen.be/ns/openbaardomein#Meetmethode> ;
+		sh:name "nauwkeurigheid" ;
+		sh:description "De precisie waarmee het object opgemeten werd." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid> ;
+		sh:class <http://data.vlaanderen.be/ns/openbaardomein#Nauwkeurigsheidsklassen> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -66,26 +66,26 @@
 	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomen> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#BegroeidVoorkomenShape>
+<http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#BegroeidVoorkomenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#BegroeidVoorkomen> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#BegroeidVoorkomen> ;
 	sh:property [
 		sh:name "drassigheid" ;
 		sh:description "Mate waarin de bodem verzadigd is met water." ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#drassigheid> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#drassigheid> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "soortcode" ;
 		sh:description "Een unieke identificator voor de soort van het vegetatie-element. " ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#soortcode> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#soortcode> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 	] ;
 	sh:property [
 		sh:name "soortnaamNederlands" ;
 		sh:description "Soortnaam in het Nederlands." ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#soortnaamNederlands> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#soortnaamNederlands> ;
 	] ;
 	sh:property [
 		sh:name "soortnaamWetenschappelijk" ;
@@ -94,25 +94,25 @@
 	] ;
 	sh:closed false .
 
-<http://fixme.com#OnbegroeidVoorkomenShape>
+<http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#OnbegroeidVoorkomenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://fixme.com#OnbegroeidVoorkomen> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#OnbegroeidVoorkomen> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#VegetatieElementShape>
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie#VegetatieElementShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#VegetatieElement> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#VegetatieElement> ;
 	sh:property [
 		sh:name "plantdatum" ;
 		sh:description "De datum waarop het vegetatie element werd geplant." ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#plantdatum> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#plantdatum> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "hoogte" ;
-		sh:description "TODO" ;
+		sh:description "De hoogte van het object in meter." ;
 		sh:path <http://schema.org/height> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
 		sh:maxCount 1 ;
@@ -120,7 +120,7 @@
 	sh:property [
 		sh:name "soortcode" ;
 		sh:description "Een unieke identificator voor de soort van het vegetatie-element. " ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#soortcode> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortcode> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 	] ;
@@ -133,18 +133,18 @@
 	sh:property [
 		sh:name "soortnaamNederlands" ;
 		sh:description "Soortnaam in het Nederlands." ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#soortnaamNederlands> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortnaamNederlands> ;
 		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#InfrastructuurelementShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#InfrastructuurelementShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Infrastructuurelement> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Infrastructuurelement> ;
 	sh:property [
 		sh:name "materiaal" ;
 		sh:description "Materiaal waar het object uit vervaardigd is." ;
-		sh:path <http://data.vlaanderen.be/ns/infrastructuur#materiaal> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#materiaal> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 	] ;
 	sh:closed false .
@@ -160,6 +160,13 @@
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
+	sh:property [
+		sh:name "oppervlakte" ;
+		sh:description "De afmeting van het object in vierkante meter." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#oppervlakte> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
+		sh:maxCount 1 ;
+	] ;
 	sh:closed false .
 
 <http://data.vlaanderen.be/ns/openbaardomein#ElementShape>
@@ -167,18 +174,18 @@
 	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#Element> ;
 	sh:closed false .
 
-<http://fixme.com#WaterdeelShape>
+<http://data.vlaanderen.be/ns/openbaardomein/waterdeel#WaterdeelShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://fixme.com#Waterdeel> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/waterdeel#Waterdeel> ;
 	sh:closed false .
 
-<http://fixme.com#TerreindeelShape>
+<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#TerreindeelShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://fixme.com#Terreindeel> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Terreindeel> ;
 	sh:property [
 		sh:name "gemiddeldeBreedte" ;
 		sh:description "TODO" ;
-		sh:path <http://fixme.com#gemiddeldeBreedte> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
 		sh:maxCount 1 ;
 	] ;
@@ -186,13 +193,6 @@
 		sh:name "lengte" ;
 		sh:description "TODO" ;
 		sh:path <http://open.vocab.org/terms/length> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "oppervlakte" ;
-		sh:description "TODO" ;
-		sh:path <http://fixme.com#oppervlakte> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
 		sh:maxCount 1 ;
 	] ;
@@ -257,7 +257,7 @@
 	] ;
 	sh:property [
 		sh:name "talud" ;
-		sh:description "TODO" ;
+		sh:description "Een talud is het kunstmatig gedeelte van een vlak van de wegbaan, dijken, spoorbanen, vestingswerken, dat een helling (min. 20%, max 80% voor kunstmatig verharde taluds) vertoont en bedoeld voor het opvangen van een hoogteverschil." ;
 		sh:path <http://data.vlaanderen.be/ns/openbaardomein#talud> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:maxCount 1 ;
@@ -360,6 +360,19 @@
 		sh:description "Een titel voor de collectie." ;
 		sh:path <http://purl.org/dc/terms/title> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://fixme.com#WaterVoorkomenShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://fixme.com#WaterVoorkomen> ;
+	sh:property [
+		sh:name "watertype" ;
+		sh:description "Het type water." ;
+		sh:path <http://fixme.com#watertype> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;

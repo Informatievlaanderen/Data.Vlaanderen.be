@@ -1,11 +1,11 @@
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
-<http://data.vlaanderen.be/ns/infrastructuur#InfrastructuurelementShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#InfrastructuurelementShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Infrastructuurelement> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Infrastructuurelement> ;
 	sh:property [
 		sh:name "materiaal" ;
 		sh:description "Materiaal waar het object uit vervaardigd is." ;
-		sh:path <http://data.vlaanderen.be/ns/infrastructuur#materiaal> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#materiaal> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 	] ;
 	sh:closed false .
@@ -34,7 +34,7 @@
 	] ;
 	sh:property [
 		sh:name "niveau" ;
-		sh:description "Het niveau waarop het object zich bevindt." ;
+		sh:description "Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten." ;
 		sh:path <http://data.vlaanderen.be/ns/openbaardomein#niveau> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#integer> ;
 		sh:maxCount 1 ;
@@ -48,10 +48,10 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "meetmethode" ;
-		sh:description "De methode waarmee de inventarisatie is opgemeten." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#meetmethode> ;
-		sh:class <http://data.vlaanderen.be/ns/openbaardomein#Meetmethode> ;
+		sh:name "nauwkeurigheid" ;
+		sh:description "De precisie waarmee het object opgemeten werd." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid> ;
+		sh:class <http://data.vlaanderen.be/ns/openbaardomein#Nauwkeurigsheidsklassen> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -63,25 +63,25 @@
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#AfsluitingShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#AfsluitingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Afsluiting> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Afsluiting> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#DekselShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#DekselShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Deksel> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Deksel> ;
 	sh:property [
 		sh:name "nutsvoorzieningscode" ;
 		sh:description "Aanduiding van de soort nutsvoorziening." ;
-		sh:path <http://data.vlaanderen.be/ns/infrastructuur#nutsvoorzieningscode> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#nutsvoorzieningscode> ;
 		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "dekselVorm" ;
 		sh:description "De vorm van het deksel." ;
-		sh:path <http://data.vlaanderen.be/ns/infrastructuur#dekselVorm> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#dekselVorm> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
@@ -89,332 +89,295 @@
 	sh:property [
 		sh:name "rioleringscode" ;
 		sh:description "De rioleringscode is een arbitraire notitie van waarneembare eigenschappen van het deksel m.b.t. de beheerder en de functie van de ondergrondse ioleringsleiding." ;
-		sh:path <http://data.vlaanderen.be/ns/infrastructuur#rioleringscode> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#rioleringscode> ;
 		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#NutskastShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#NutskastShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Nutskast> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Nutskast> ;
 	sh:property [
 		sh:name "nutsvoorzieningscode" ;
 		sh:description "Aanduiding van de soort nutsvoorziening." ;
-		sh:path <http://data.vlaanderen.be/ns/infrastructuur#nutsvoorzieningscode> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#nutsvoorzieningscode> ;
 		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#NutspaalShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#NutspaalShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Nutspaal> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Nutspaal> ;
 	sh:property [
 		sh:name "nutsvoorzieningscode" ;
 		sh:description "Aanduiding van de soort nutsvoorziening." ;
-		sh:path <http://data.vlaanderen.be/ns/infrastructuur#nutsvoorzieningscode> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#nutsvoorzieningscode> ;
 		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
 		sh:minCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#RoosterShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#RoosterShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Rooster> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Rooster> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#SensorShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SensoropstellingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Sensor> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Sensoropstelling> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#SpeelEnSportvoorzieningShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SpeelEnSportvoorzieningShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#SpeelEnSportvoorziening> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SpeelEnSportvoorziening> ;
 	sh:property [
 		sh:name "speeltoesteltype" ;
 		sh:description "Het type speeltoestel." ;
-		sh:path <http://data.vlaanderen.be/ns/infrastructuur#speeltoesteltype> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
-		sh:minCount 1 ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#speeltoesteltype> ;
+		sh:class <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SpeelEnSportvoorzieningType> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#BestendigeAfsluitingShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#BestendigeAfsluitingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#BestendigeAfsluiting> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#BestendigeAfsluiting> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#SelectieveAfsluitingShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SelectieveAfsluitingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#SelectieveAfsluiting> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SelectieveAfsluiting> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#SlagboomShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SlagboomShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Slagboom> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Slagboom> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#ToegangspoortShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#ToegangspoortShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Toegangspoort> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Toegangspoort> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#MuurShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#MuurShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Muur> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Muur> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#BorstweringShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#BorstweringShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Borstwering> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Borstwering> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#VangrailShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#VangrailShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Vangrail> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Vangrail> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#KopmuurShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#KopmuurShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Kopmuur> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Kopmuur> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#MuurBinnenWegbaanShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#MuurBinnenWegbaanShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#MuurBinnenWegbaan> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#MuurBinnenWegbaan> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#StraatkapShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#StraatkapShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Straatkap> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Straatkap> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#HuisaansluitingShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#HuisaansluitingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Huisaansluiting> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Huisaansluiting> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#ZichtbaarDekselOfLuikShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#ZichtbaarDekselOfLuikShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#ZichtbaarDekselOfLuik> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#ZichtbaarDekselOfLuik> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#BovengrondseBrandkraanShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#BovengrondseBrandkraanShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#BovengrondseBrandkraan> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#BovengrondseBrandkraan> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#FietspompShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#OplaadpuntShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Fietspomp> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Oplaadpunt> ;
+	sh:property [
+		sh:name "geschiktVoor" ;
+		sh:description "Duidt het vervoersmiddel aan waarvoor het oplaadpunt geschikt is: auto, fiets,..." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#geschiktVoor> ;
+		sh:class <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Vervoersmiddelen> ;
+		sh:minCount 1 ;
+	] ;
+	sh:property [
+		sh:name "stekkertype" ;
+		sh:description "Het stekkertype volgens de IEC norm 62196." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#stekkertype> ;
+		sh:class <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#OplaadpuntStekkertypes> ;
+		sh:minCount 1 ;
+	] ;
+	sh:property [
+		sh:name "oplaadwijze" ;
+		sh:description "De oplaadwijze volgens de IEC norm 62196." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#oplaadwijze> ;
+		sh:class <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Oplaadwijzes> ;
+		sh:minCount 1 ;
+	] ;
 	sh:closed false .
 
-<https://id.erfgoed.net/thesauri/erfgoedtypes/140Shape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SignalisatieEnLeidingenportiekShape>
 	a sh:NodeShape ;
-	sh:targetClass <https://id.erfgoed.net/thesauri/erfgoedtypes/140> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/infrastructuur#OplaadpuntAutoShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#OplaadpuntAuto> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/infrastructuur#OplaadpuntFietsShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#OplaadpuntFiets> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/infrastructuur#SignalisatieEnLeidingenportiekShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#SignalisatieEnLeidingenportiek> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SignalisatieEnLeidingenportiek> ;
 	sh:property [
 		sh:name "nutsvoorzieningscode" ;
 		sh:description "Aanduiding van de soort nutsvoorziening." ;
-		sh:path <http://data.vlaanderen.be/ns/infrastructuur#nutsvoorzieningscode> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#nutsvoorzieningscode> ;
 		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#VerzinkbareWegmonolietShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#VerzinkbareWegmonolietShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#VerzinkbareWegmonoliet> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#VerzinkbareWegmonoliet> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#WatertappuntShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#WaterpuntShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Watertappunt> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Waterpunt> ;
 	sh:property [
 		sh:name "drinkbaar" ;
 		sh:description "Geschikt voor menselijke consumptie." ;
-		sh:path <http://data.vlaanderen.be/ns/infrastructuur#drinkbaar> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#drinkbaar> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#VerlichtingspaalShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#VerlichtingspaalShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Verlichtingspaal> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Verlichtingspaal> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#PaalBovenleidingTramTreinTrolleyShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#PaalBovenleidingTramTreinTrolleyShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#PaalBovenleidingTramTreinTrolley> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#PaalBovenleidingTramTreinTrolley> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#KrooshekShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#KrooshekShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Krooshek> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Krooshek> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#VeeroosterShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#VeeroosterShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Veerooster> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Veerooster> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#VerluchtingsroosterShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#VerluchtingsroosterShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Verluchtingsrooster> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Verluchtingsrooster> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#StraatkolkShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#StraatkolkShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Straatkolk> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Straatkolk> ;
+	sh:property [
+		sh:name "straatkolktype" ;
+		sh:description "Het type straatkolk." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#straatkolktype> ;
+		sh:class <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Straatkolktypes> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#BedieningszuilShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#BedieningszuilShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Bedieningszuil> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Bedieningszuil> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#CameraShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#CameraShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Camera> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Camera> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#DetectielusShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#DetectielusShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Detectielus> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Detectielus> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#MeteosensorShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#MeteopaalShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Meteosensor> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Meteopaal> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#DraaitoestelShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#MastShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Draaitoestel> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/infrastructuur#GlijbaanShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Glijbaan> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/infrastructuur#KabelbaanShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Kabelbaan> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/infrastructuur#NetstructuurShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Netstructuur> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/infrastructuur#SchommelShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Schommel> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/infrastructuur#SkatetoestelShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Skatetoestel> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/infrastructuur#VolledigOmslotenSpeeltoestelShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#VolledigOmslotenSpeeltoestel> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/infrastructuur#WipShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Wip> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/infrastructuur#ZandbakShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Zandbak> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/infrastructuur#MastShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Mast> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Mast> ;
 	sh:property [
 		sh:name "aantalAnkerpunten" ;
 		sh:description "Het aantal bevestigingspunten waarmee de mast verankerd is aan het aardoppervlak." ;
-		sh:path <http://data.vlaanderen.be/ns/infrastructuur#aantalAnkerpunten> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#aantalAnkerpunten> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#int> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#HoogspanningsmastShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#HoogspanningsmastShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Hoogspanningsmast> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Hoogspanningsmast> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#TV-mastShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#TV-mastShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#TV-mast> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#TV-mast> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#PutdekselShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#PutdekselShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Putdeksel> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Putdeksel> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#StraatmeubilairShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#StraatmeubilairShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Straatmeubilair> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Straatmeubilair> ;
 	sh:property [
 		sh:name "verplaatsbaar" ;
 		sh:description "Duidt aan of het element al dan niet verplaatsbaar is en dus niet permanent verankerd werd met het aardoppervlak." ;
-		sh:path <http://data.vlaanderen.be/ns/infrastructuur#verplaatsbaar> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#verplaatsbaar> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#BarbecuetoestelShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#BoombeugelShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Barbecuetoestel> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Boombeugel> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#BoombeugelShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#BoomroosterShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Boombeugel> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Boomrooster> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#BoomroosterShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#FietsstallingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Boomrooster> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/infrastructuur#FietsstallingShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Fietsstalling> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Fietsstalling> ;
 	sh:property [
 		sh:name "afsluitbaar" ;
 		sh:description "Duidt aan of de fietsstalling al dan niet kan afgesloten worden om toegang voor onbevoegden te verhinderen." ;
-		sh:path <http://data.vlaanderen.be/ns/infrastructuur#afsluitbaar> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#afsluitbaar> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
@@ -422,7 +385,7 @@
 	sh:property [
 		sh:name "overdekt" ;
 		sh:description "Duidt aan of de fietsstalling al dan niet overdekt is." ;
-		sh:path <http://data.vlaanderen.be/ns/infrastructuur#overdekt> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#overdekt> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
@@ -430,330 +393,362 @@
 	sh:property [
 		sh:name "capaciteit" ;
 		sh:description "Geeft aan hoeveel fietsen gestald kunnen worden aan of in de fietsenstalling." ;
-		sh:path <http://data.vlaanderen.be/ns/infrastructuur#capaciteit> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#capaciteit> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#int> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#LichtpuntShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#LichtpuntShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Lichtpunt> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Lichtpunt> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#MeerpaalShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#MeerpaalShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Meerpaal> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Meerpaal> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#VlaggenpaalShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#VlaggenpaalShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Vlaggenpaal> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Vlaggenpaal> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#StatischeWegmonolietShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#StatischeWegmonolietShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#StatischeWegmonoliet> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#StatischeWegmonoliet> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#ZitbankShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#ZitbankShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Zitbank> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Zitbank> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#OpenbaarToiletVerzinkbaarShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#OpenbaarToiletShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#OpenbaarToiletVerzinkbaar> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#OpenbaarToilet> ;
+	sh:property [
+		sh:name "verzinkbaar" ;
+		sh:description "Geeft aan dat het element ondergronds opgeborgen kan worden." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#verzinkbaar> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#OpenbaarToiletShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#OpenbareBrievenbusShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#OpenbaarToilet> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#OpenbareBrievenbus> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#OpenbareBrievenbusShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#BetaalautomaatShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#OpenbareBrievenbus> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Betaalautomaat> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#BetaalautomaatShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#PicknicktafelShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Betaalautomaat> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Picknicktafel> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#PicknicktafelShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#ReddingsboeiShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Picknicktafel> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Reddingsboei> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#ReddingsboeiShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#RijbaankussenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Reddingsboei> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Rijbaankussen> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#RijbaankussenShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#StraatspiegelShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Rijbaankussen> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Straatspiegel> ;
 	sh:closed false .
 
-<https://id.erfgoed.net/thesauri/erfgoedtypes/48Shape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#NormandischeAfsluitingShape>
 	a sh:NodeShape ;
-	sh:targetClass <https://id.erfgoed.net/thesauri/erfgoedtypes/48> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#NormandischeAfsluiting> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#StraatspiegelShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#DwarsliggerShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Straatspiegel> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Dwarsligger> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#NormandischeAfsluitingShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#DraadafsluitingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#NormandischeAfsluiting> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Draadafsluiting> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#DwarsliggerShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#TreinbielsShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Dwarsligger> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Treinbiels> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#DraadafsluitingShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#StootbandShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Draadafsluiting> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Stootband> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#TreinbielsShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#StootbandDupuisShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Treinbiels> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#StootbandDupuis> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#StootbandShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#StootbandNewJerseyShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Stootband> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#StootbandNewJersey> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#StootbandDupuisShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#VeiligheidsbandShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#StootbandDupuis> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Veiligheidsband> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#StootbandNewJerseyShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#GeluidschermShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#StootbandNewJersey> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Geluidscherm> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#VeiligheidsbandShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#CommunicatiemastShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Veiligheidsband> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Communicatiemast> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#GeluidschermShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#BushokShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Geluidscherm> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Bushok> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#CommunicatiemastShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#OpenbareVerlichtingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Communicatiemast> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#OpenbareVerlichting> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#BushokShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#OpenbareStraatverlichtingAanGevelOfMuurShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Bushok> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#OpenbareStraatverlichtingAanGevelOfMuur> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#OpenbareVerlichtingShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#KnipperlichtShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#OpenbareVerlichting> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Knipperlicht> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#OpenbareStraatverlichtingMuurShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#VerkeerslichtShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#OpenbareStraatverlichtingMuur> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Verkeerslicht> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#KnipperlichtShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#VerkeerslichtVoetgangerFietserShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Knipperlicht> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#VerkeerslichtVoetgangerFietser> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#VerkeerslichtShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#InfozuilShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Verkeerslicht> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Infozuil> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#VerkeerslichtVoetgangerFietserShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#VerkeersbordShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#VerkeerslichtVoetgangerFietser> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Verkeersbord> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#InfozuilShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#WegsignalisatieShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Infozuil> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Wegsignalisatie> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#VerkeersbordShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#AanplakbordShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Verkeersbord> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Aanplakbord> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#WegsignalisatieShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SeininstallatieOvergangSpoorbeddingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Wegsignalisatie> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SeininstallatieOvergangSpoorbedding> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#AanplakbordShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#RecyclagecontainerShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Aanplakbord> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Recyclagecontainer> ;
+	sh:property [
+		sh:name "sorteerfractie" ;
+		sh:description "Duidt het materiaal aan om te sorteren." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#sorteerfractie> ;
+		sh:class <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Sorteerfracties> ;
+	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#SeininstallatieOvergangSpoorbeddingShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#OpenbareVuilnisbakShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#SeininstallatieOvergangSpoorbedding> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#OpenbareVuilnisbak> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#RecyclagecontainerShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#OmklapbareWegmonolietShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Recyclagecontainer> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#OmklapbareWegmonoliet> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#BladkorfShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#WegneembareWegmonolietShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Bladkorf> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#WegneembareWegmonoliet> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#BlikvangerShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#WegmonolietShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Blikvanger> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Wegmonoliet> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#RestafvalcontainerShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#KeldergatShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Restafvalcontainer> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Keldergat> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#GlascontainerShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#ParkeersensorShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Glascontainer> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Parkeersensor> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#KledingcontainerShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#DebietmeterShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Kledingcontainer> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Debietmeter> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#SchoencontainerShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#CultuurhistorischMonumentShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Schoencontainer> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#CultuurhistorischMonument> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#OpenbareVuilnisbakShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#WegmarkeringShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#OpenbareVuilnisbak> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Wegmarkering> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#OmklapbareWegmonolietShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#PuntvormigeWegmarkeringShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#OmklapbareWegmonoliet> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#PuntvormigeWegmarkering> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#WegneembareWegmonolietShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#LijnvormigeWegmarkeringShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#WegneembareWegmonoliet> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#LijnvormigeWegmarkering> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#WegmonolietShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#VlakvormigeWegmarkeringShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Wegmonoliet> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#VlakvormigeWegmarkering> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#KeldergatShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SignalisatieScheepvaartShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Keldergat> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SignalisatieScheepvaart> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#ParkeersensorShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SignalisatieScheepvaartElektrischShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Parkeersensor> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SignalisatieScheepvaartElektrisch> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#RoodlichtcameraShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SignalisatieScheepvaartNietElektrischShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Roodlichtcamera> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SignalisatieScheepvaartNietElektrisch> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#SnelheidscameraShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#PaneelafsluitingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Snelheidscamera> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Paneelafsluiting> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#ANPRCameraShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SpandraadKettingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#ANPRCamera> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SpandraadKetting> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#DebietmeterShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SignalisatieShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Debietmeter> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Signalisatie> ;
+	sh:property [
+		sh:name "inwendigVerlicht" ;
+		sh:description "Duidt aan of het element al dan niet inwendig verlicht is." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#inwendigVerlicht> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#CultuurhistorischMonumentShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#WeginrichtingselementShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#CultuurhistorischMonument> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Weginrichtingselement> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#WegmarkeringShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#FlitspaalShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Wegmarkering> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Flitspaal> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#PuntvormigeWegmarkeringShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SchampblokShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#PuntvormigeWegmarkering> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Schampblok> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#LijnvormigeWegmarkeringShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#TractorsluisShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#LijnvormigeWegmarkering> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Tractorsluis> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#VlakvormigeWegmarkeringShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#VerkeersdrempelShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#VlakvormigeWegmarkering> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Verkeersdrempel> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#SignalisatieScheepvaartShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#BiggetjeShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#SignalisatieScheepvaart> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Biggetje> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#SignalisatieScheepvaartElektrischShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#FietstelpaalShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#SignalisatieScheepvaartElektrisch> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Fietstelpaal> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#SignalisatieScheepvaartNietElektrischShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#HaltepaalShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#SignalisatieScheepvaartNietElektrisch> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Haltepaal> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#PaneelafsluitingShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#TransversaleWeginrichtingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Paneelafsluiting> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#TransversaleWeginrichting> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#SpandraadKettingShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#LongitudinaleWeginrichtingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#SpandraadKetting> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#LongitudinaleWeginrichting> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#SignalisatieShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#PijlerShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Signalisatie> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Pijler> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/infrastructuur#WeginrichtingselementShape>
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#SiloShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/infrastructuur#Weginrichtingselement> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Silo> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#GrenspaalShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Grenspaal> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#KleineWindturbineShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#KleineWindturbine> ;
 	sh:closed false .
 

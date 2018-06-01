@@ -1,63 +1,63 @@
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
-<http://data.vlaanderen.be/ns/vegetatie#BoomvormShape>
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie#BoomvormShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Boomvorm> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#Boomvorm> ;
 	sh:property [
 		sh:name "conditiewaarde" ;
 		sh:description "De conditiewaarde van een boom is een coëfficiënt die iets vertelt over de gezondheidstoestand (vitaliteit, conditie) en de levensverwachting van een boom. Een dode boom heeft een conditiewaarde nul. Een kerngezonde boom met zeer hoge levensverwachting heeft een conditiewaarde 1." ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#conditiewaarde> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#conditiewaarde> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "diameter" ;
 		sh:description "Diameter van de kroonprojectie." ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#diameter> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#diameter> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "stamomtrek" ;
 		sh:description "Stamomtrek in cm, gemeten vanaf 1 meter 30 centimeter boven de grond." ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#stamomtrek> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#stamomtrek> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "conditiebeoordeling" ;
 		sh:description "De conditie beoordeeld volgens de kronenstructuur van Dr. A. Roloff, gelet op de scheutlengte ontwikkeling en vorming van dood hout." ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#conditiebeoordeling> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#conditiebeoordeling> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "markantElement" ;
 		sh:description "Een kenmerk van een boom waardoor deze zich onderscheid van andere bomen van dezelfde soort. Bijvoorbeerld door een bepaalde erfgoedwaarde." ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#markantElement> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#markantElement> ;
 	] ;
 	sh:property [
 		sh:name "groeifase" ;
 		sh:description "De levensfase van een Boomvorm." ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#groeifase> ;
-		sh:class <http://data.vlaanderen.be/ns/vegetatie#Groeifasen> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#groeifase> ;
+		sh:class <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#Groeifasen> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#VegetatieElementShape>
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie#VegetatieElementShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#VegetatieElement> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#VegetatieElement> ;
 	sh:property [
 		sh:name "plantdatum" ;
 		sh:description "De datum waarop het vegetatie element werd geplant." ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#plantdatum> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#plantdatum> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "hoogte" ;
-		sh:description "TODO" ;
+		sh:description "De hoogte van het object in meter." ;
 		sh:path <http://schema.org/height> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
 		sh:maxCount 1 ;
@@ -65,7 +65,7 @@
 	sh:property [
 		sh:name "soortcode" ;
 		sh:description "Een unieke identificator voor de soort van het vegetatie-element. " ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#soortcode> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortcode> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 	] ;
@@ -78,107 +78,90 @@
 	sh:property [
 		sh:name "soortnaamNederlands" ;
 		sh:description "Soortnaam in het Nederlands." ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#soortnaamNederlands> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortnaamNederlands> ;
 		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#PlantbakvormShape>
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie#PlantbakvormShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Plantbakvorm> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#Plantbakvorm> ;
 	sh:property [
 		sh:name "bereikbaar" ;
-		sh:description "TODO" ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#bereikbaar> ;
+		sh:description "Duidt aan of het element door de mens fysiek bereikbaar is zonder hulpmiddelen." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#bereikbaar> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "oppervlakte" ;
-		sh:description "TODO" ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#oppervlakte> ;
+		sh:description "De afmeting van het object in vierkante meter." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#oppervlakte> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "volume" ;
-		sh:description "TODO" ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#volume> ;
+		sh:description "De inhoud of grootte van het object in de ruimte in kubieke meter." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#volume> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "voorkomen" ;
 		sh:description "Verwijst naar het fysiek voorkomen van het beheerobject." ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#voorkomen> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#voorkomen> ;
 		sh:class <http://data.vlaanderen.be/ns/vegetatie#BegroeidVoorkomen> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "verplaatsbaar" ;
 		sh:description "Duidt aan of het element al dan niet verplaatsbaar is en dus niet permanent verankerd werd met het aardoppervlak." ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#verplaatsbaar> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#verplaatsbaar> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#KlimvormShape>
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie#KlimvormShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Klimvorm> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#Klimvorm> ;
 	sh:property [
 		sh:name "grondgebonden" ;
-		sh:description "TODO" ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#grondgebonden> ;
+		sh:description "Duidt aan of het object al dan niet in volle grond staat." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#grondgebonden> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "begroeidOppervlak" ;
 		sh:description "Oppervlakte in vierkante meter." ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#begroeidOppervlak> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#begroeidOppervlak> ;
 		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#PlantbakShape>
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie#PlantbakShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Plantbak> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#Plantbak> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#BloemenmandShape>
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie#BloemenmandShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Bloemenmand> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#Bloemenmand> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#BloementorenShape>
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie#BloementorenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Bloementoren> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#Bloementoren> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#VrijUitgroeiendeBoomShape>
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie#VormboomShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#VrijUitgroeiendeBoom> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/vegetatie#NietVrijUitgroeiendeBoomShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#NietVrijUitgroeiendeBoom> ;
-	sh:property [
-		sh:name "takvrijeStamlengte" ;
-		sh:description "De lengte in meters, gemeten vanop het aardoppervlak, van het gedeelte van de stam dat takvrij dient gehouden te worden. Alle takken die lager zitten dan de uiteindelijke takvrije stamlengte behoren tot de tijdelijke kroon en zullen gesnoeid worden in verschillende fasen gespreid over verschillende jaren." ;
-		sh:path <http://data.vlaanderen.be/ns/vegetatie#takvrijeStamlengte> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/vegetatie#VormboomShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Vormboom> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#Vormboom> ;
 	sh:closed false .
 
 <https://id.erfgoed.net/thesauri/erfgoedtypes/1609Shape>
@@ -186,9 +169,9 @@
 	sh:targetClass <https://id.erfgoed.net/thesauri/erfgoedtypes/1609> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#GeschorenBoomShape>
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie#GeschorenBoomShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#GeschorenBoom> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#GeschorenBoom> ;
 	sh:closed false .
 
 <https://id.erfgoed.net/thesauri/erfgoedtypes/1610Shape>
@@ -204,16 +187,31 @@
 <https://id.erfgoed.net/thesauri/erfgoedtypes/1607Shape>
 	a sh:NodeShape ;
 	sh:targetClass <https://id.erfgoed.net/thesauri/erfgoedtypes/1607> ;
+	sh:property [
+		sh:name "takvrijeStamlengte" ;
+		sh:description "De lengte in meters, gemeten vanop het aardoppervlak, van het gedeelte van de stam dat takvrij dient gehouden te worden. Alle takken die lager zitten dan de uiteindelijke takvrije stamlengte behoren tot de tijdelijke kroon en zullen gesnoeid worden in verschillende fasen gespreid over verschillende jaren." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#takvrijeStamlengte> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "vrijUitgroeiend" ;
+		sh:description "Geeft aan of de vegetatie of begroeiing al dan niet snoei vereist." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#vrijUitgroeiend> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#ZelfhechtendeKlimvormShape>
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie#ZelfhechtendeKlimvormShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#ZelfhechtendeKlimvorm> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#ZelfhechtendeKlimvorm> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#NietZelfhechtendeKlimvormShape>
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie#NietZelfhechtendeKlimvormShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#NietZelfhechtendeKlimvorm> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#NietZelfhechtendeKlimvorm> ;
 	sh:closed false .
 
 <http://data.vlaanderen.be/ns/openbaardomein#ObjectShape>
@@ -235,7 +233,7 @@
 	] ;
 	sh:property [
 		sh:name "niveau" ;
-		sh:description "Het niveau waarop het object zich bevindt." ;
+		sh:description "Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten." ;
 		sh:path <http://data.vlaanderen.be/ns/openbaardomein#niveau> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#integer> ;
 		sh:maxCount 1 ;
@@ -249,10 +247,10 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "meetmethode" ;
-		sh:description "De methode waarmee de inventarisatie is opgemeten." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#meetmethode> ;
-		sh:class <http://data.vlaanderen.be/ns/openbaardomein#Meetmethode> ;
+		sh:name "nauwkeurigheid" ;
+		sh:description "De precisie waarmee het object opgemeten werd." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid> ;
+		sh:class <http://data.vlaanderen.be/ns/openbaardomein#Nauwkeurigsheidsklassen> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -269,13 +267,18 @@
 	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#Element> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#VegetatiewandShape>
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie#VegetatiewandShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Vegetatiewand> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#Vegetatiewand> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/vegetatie#MuurvegetatieShape>
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie#MuurvegetatieShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/vegetatie#Muurvegetatie> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#Muurvegetatie> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie#SolitaireHeesterShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#SolitaireHeester> ;
 	sh:closed false .
 
