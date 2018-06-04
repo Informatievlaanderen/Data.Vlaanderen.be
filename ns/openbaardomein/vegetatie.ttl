@@ -1,0 +1,342 @@
+@prefix schema:  <http://schema.org/> .
+@prefix odv:     <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#> .
+@prefix eli:     <http://data.europa.eu/eli/ontology#> .
+@prefix org:     <http://www.w3.org/ns/org#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix besluit:  <http://data.vlaanderen.be/ns/besluit#> .
+@prefix sat:     <http://data.europa.eu/stateaidtransparency/sat#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix eu:      <http://data.europa.eu/m8g/> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix person:  <http://www.w3.org/ns/person#> .
+@prefix rov:     <http://www.w3.org/ns/regorg#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix locn:    <http://www.w3.org/ns/locn#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix cpsv:    <http://purl.org/vocab/cpsv#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie>
+      a       owl:Ontology ;
+      rdfs:label "Vocabularium vegetatie-elementen"@nl ;
+      dcterms:issued "2018-06-08"^^xsd:date ;
+      dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
+      dcterms:title "Vocabularium vegetatie-elementen"@nl ;
+      vann:preferredNamespacePrefix
+              "odv" ;
+      vann:preferredNamespaceUri
+              "http://data.vlaanderen.be/ns/openbaardomein/vegetatie" .
+
+odv:Bloemenmand
+      a       owl:Class ;
+      rdfs:comment "Plantbak die doelbewust verhoogd opgehangen wordt."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "Bloemenmand"@nl ;
+      rdfs:subClassOf odv:Plantbakvorm .
+
+odv:Bloementoren
+      a       owl:Class ;
+      rdfs:comment "Torenvormige constructie door een combinatie van individuele plantbakken."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "Bloementoren"@nl ;
+      rdfs:subClassOf odv:Plantbakvorm .
+
+odv:Boomvorm
+      a       owl:Class ;
+      rdfs:comment "Individueel te onderscheiden vegetatie-element. Een boom is een overblijvende plant met een verhoute stam en een kroon (kruin)."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "Boomvorm"@nl ;
+      rdfs:subClassOf odv:VegetatieElement .
+
+odv:GeschorenBoom
+      a       owl:Class ;
+      rdfs:comment "Bomen waarvan de kruinen zijn geschoren. De vorm werd bepaald bij de eerste vormsnoei van de gesteltakken en werd uitgevoerd op jonge bomen. Het beheer wordt uitgevoerd in periodieke scheerbeurten, één of meerdere keren per jaar."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "Geschoren boom"@nl ;
+      rdfs:subClassOf odv:Vormboom ;
+      vann:usageNote "Definitie naar begrippenlijst landschap van Vlaams agentschap Onroerend Erfgoed."@nl .
+
+odv:Groeifasen
+      a       owl:Class ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "TODO"@nl ;
+      owl:oneOf (<http://data.vlaanderen.be/ns/openbaardomein/vegetatie/Groeifasen/Aanslagfase> <http://data.vlaanderen.be/ns/openbaardomein/vegetatie/Groeifasen/Jeugd> <http://data.vlaanderen.be/ns/openbaardomein/vegetatie/Groeifasen/Volwassen> <http://data.vlaanderen.be/ns/openbaardomein/vegetatie/Groeifasen/Aftakeling> <http://data.vlaanderen.be/ns/openbaardomein/vegetatie/Groeifasen/Dood>) .
+
+odv:Klimvorm
+      a       owl:Class ;
+      rdfs:comment "Plant met buigzame stengels die zich aan muren, bomen, enz. hecht en zodoende omhoog klimt."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "Klimvorm"@nl ;
+      rdfs:subClassOf odv:VegetatieElement .
+
+odv:Muurvegetatie
+      a       owl:Class ;
+      rdfs:comment "Muurvegetaties zijn gebonden aan door de mens gecreëerde stenige, doorgaans steile tot verticale standplaatsen. Voorbeelden zijn kerkhofmuren, stadswallen, ruïnes, kademuren, oude forten en bunkers."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "Muurvegetatie"@nl ;
+      rdfs:subClassOf odv:VegetatieElement ;
+      vann:usageNote "Definitie naar Ecopedia."@nl .
+
+odv:NietZelfhechtendeKlimvorm
+      a       owl:Class ;
+      rdfs:comment "Planten die niet zelf hechten hebben en een draagstructuur nodig hebben. Het zijn slingerende soorten zoals kamperfoelie of hop. De draagstructuur kan tegen de gevel worden geplaatst of op een bepaalde afstand."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "Niet-zelfhechtende klimvorm"@nl ;
+      rdfs:subClassOf odv:Klimvorm ;
+      vann:usageNote "Definitie vrij naar Ecopedia: https://www.ecopedia.be/encyclopedie/groene-gevel"@nl .
+
+odv:Plantbak
+      a       owl:Class ;
+      rdfs:comment "Bak waarin planten in kuntsmatig aangevoerde grond worden geplant."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "Plantbak"@nl ;
+      rdfs:subClassOf odv:Plantbakvorm .
+
+odv:Plantbakvorm
+      a       owl:Class ;
+      rdfs:comment "Beplanting die niet in volle grond werd aangebracht, maar in bakvorm."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "Plantbakvorm"@nl ;
+      rdfs:subClassOf odv:VegetatieElement .
+
+odv:SolitaireHeester
+      a       owl:Class ;
+      rdfs:comment "Afzonderlijk te onderscheiden heester."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "Solitaire Heester"@nl ;
+      rdfs:subClassOf odv:VegetatieElement .
+
+odv:VegetatieElement
+      a       owl:Class ;
+      rdfs:comment "Solitaire plant in de ruimte."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "Vegetatie Element"@nl ;
+      rdfs:subClassOf "http://rs.tdwg.org/dwc/terms/Taxon" , <http://data.vlaanderen.be/ns/openbaardomein#Element> .
+
+odv:Vegetatiewand
+      a       owl:Class ;
+      rdfs:comment "Een vegetatiewand is een plantbakvorm met een verticale structuur en is niet-grondgebonden."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "Vegetatiewand"@nl ;
+      rdfs:subClassOf odv:Plantbakvorm .
+
+odv:Vormboom
+      a       owl:Class ;
+      rdfs:comment "Een kunstmatig gevormde boom die geleid en gesnoeid is in diverse geometrische, fantasie- of diervormen. De vorm wordt bepaald bij het jonge plantgoed en tijdens de eerste vormsnoei van de gesteltakken. Het beheer wordt uitgevoerd in periodieke scheerbeurten, één of meerdere keren per jaar."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "Vormboom"@nl ;
+      rdfs:subClassOf odv:Boomvorm ;
+      vann:usageNote "Definitie naar erfgoedtype 'topiary' van Vlaams agentschap Onroerend Erfgoed: https://id.erfgoed.net/thesauri/erfgoedtypes/1709"@nl .
+
+odv:ZelfhechtendeKlimvorm
+      a       owl:Class ;
+      rdfs:comment "Een zelfhechtende klimplant zoals klimop of wingerd groeit rechtstreeks op de muur zonder nood aan een draagstructuur."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "Zelfhechtende klimvorm"@nl ;
+      rdfs:subClassOf odv:Klimvorm ;
+      vann:usageNote "Definitie vrij naar Ecopedia: https://www.ecopedia.be/encyclopedie/groene-gevel"@nl .
+
+odv:begroeidOppervlak
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Oppervlakte in vierkante meter."@nl ;
+      rdfs:domain odv:Klimvorm ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "begroeid oppervlak"@nl ;
+      rdfs:range rdfs:Literal .
+
+odv:bereikbaar
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Duidt aan of het element door de mens fysiek bereikbaar is zonder hulpmiddelen."@nl ;
+      rdfs:domain odv:Plantbakvorm ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "bereikbaar"@nl ;
+      rdfs:range xsd:boolean .
+
+odv:conditiebeoordeling
+      a       owl:ObjectProperty ;
+      rdfs:comment "De conditie beoordeeld volgens de kronenstructuur van Dr. A. Roloff, gelet op de scheutlengte ontwikkeling en vorming van dood hout."@nl ;
+      rdfs:domain odv:Boomvorm ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "conditiebeoordeling"@nl ;
+      rdfs:range skos:Concept .
+
+odv:conditiewaarde
+      a       owl:DatatypeProperty ;
+      rdfs:comment "De conditiewaarde van een boom is een coëfficiënt die iets vertelt over de gezondheidstoestand (vitaliteit, conditie) en de levensverwachting van een boom. Een dode boom heeft een conditiewaarde nul. Een kerngezonde boom met zeer hoge levensverwachting heeft een conditiewaarde 1."@nl ;
+      rdfs:domain odv:Boomvorm ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "conditiewaarde"@nl ;
+      rdfs:range xsd:double ;
+      vann:usageNote "De conditiewaarde is te gebruiken in de context van de waardebepaling van bomen zoals vooropgesteld door de vereniging voor openbaar groen: http://www.vvog.info/default.asp?page=47 "@nl .
+
+odv:diameter
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Diameter van de kroonprojectie."@nl ;
+      rdfs:domain odv:Boomvorm ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "diameter"@nl ;
+      rdfs:range xsd:double .
+
+odv:groeifase
+      a       owl:ObjectProperty ;
+      rdfs:comment "De levensfase van een Boomvorm."@nl ;
+      rdfs:domain odv:Boomvorm ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "groeifase"@nl ;
+      rdfs:range odv:Groeifasen ;
+      vann:usageNote "De mogelijke types zijn gedefinieerd vanuit Inverde."@nl .
+
+odv:grondgebonden
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Duidt aan of het object al dan niet in volle grond staat."@nl ;
+      rdfs:domain odv:Klimvorm ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "grondgebonden"@nl ;
+      rdfs:range xsd:boolean .
+
+odv:markantElement
+      a       rdf:Property ;
+      rdfs:comment "Een kenmerk van een boom waardoor deze zich onderscheid van andere bomen van dezelfde soort. Bijvoorbeerld door een bepaalde erfgoedwaarde."@nl ;
+      rdfs:domain odv:Boomvorm ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "markant element"@nl .
+
+odv:oppervlakte
+      a       owl:DatatypeProperty ;
+      rdfs:comment "De afmeting van het object in vierkante meter."@nl ;
+      rdfs:domain odv:Plantbakvorm ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "oppervlakte"@nl ;
+      rdfs:range xsd:double .
+
+odv:plantdatum
+      a       owl:DatatypeProperty ;
+      rdfs:comment "De datum waarop het vegetatie element werd geplant."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/openbaardomein#plantdatum> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "plantdatum"@nl ;
+      rdfs:range xsd:dateTime .
+
+odv:soortcode
+      a       owl:ObjectProperty ;
+      rdfs:comment "Een unieke identificator voor de soort van het vegetatie-element. "@nl ;
+      rdfs:domain rdfs: ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "soortcode"@nl ;
+      rdfs:range skos:Concept ;
+      vann:usageNote "De soortcode wordt opgenomen onder de vorm van de 'GBIF Key'."@nl .
+
+odv:soortnaamNederlands
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Soortnaam in het Nederlands."@nl ;
+      rdfs:domain rdfs: ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "soortnaam Nederlands"@nl ;
+      rdfs:range rdf:langString .
+
+odv:stamomtrek
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Stamomtrek in cm, gemeten vanaf 1 meter 30 centimeter boven de grond."@nl ;
+      rdfs:domain odv:Boomvorm ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "stamomtrek"@nl ;
+      rdfs:range xsd:double .
+
+odv:takvrijeStamlengte
+      a       owl:DatatypeProperty ;
+      rdfs:comment "De lengte in meters, gemeten vanop het aardoppervlak, van het gedeelte van de stam dat takvrij dient gehouden te worden. Alle takken die lager zitten dan de uiteindelijke takvrije stamlengte behoren tot de tijdelijke kroon en zullen gesnoeid worden in verschillende fasen gespreid over verschillende jaren."@nl ;
+      rdfs:domain <https://id.erfgoed.net/thesauri/erfgoedtypes/1607> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "takvrije stamlengte"@nl ;
+      rdfs:range xsd:double ;
+      vann:usageNote "Definitie vrij naar Ecopedia: https://www.ecopedia.be/encyclopedie/begeleidingssnoei-bij-bomen"@nl .
+
+odv:verplaatsbaar
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Duidt aan of het element al dan niet verplaatsbaar is en dus niet permanent verankerd werd met het aardoppervlak."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/openbaardomein#Element> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "verplaatsbaar"@nl ;
+      rdfs:range xsd:boolean .
+
+odv:volume
+      a       owl:DatatypeProperty ;
+      rdfs:comment "De inhoud of grootte van het object in de ruimte in kubieke meter."@nl ;
+      rdfs:domain odv:Plantbakvorm ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "volume"@nl ;
+      rdfs:range xsd:double .
+
+odv:voorkomen
+      a       owl:ObjectProperty ;
+      rdfs:comment "Verwijst naar het fysiek voorkomen van het beheerobject."@nl ;
+      rdfs:domain odv:Plantbakvorm ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "voorkomen"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/vegetatie#BegroeidVoorkomen> .
+
+odv:vrijUitgroeiend
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Geeft aan of de vegetatie of begroeiing al dan niet snoei vereist."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/openbaardomein#Object> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "vrij uitgroeiend"@nl ;
+      rdfs:range xsd:boolean .
+
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie/Groeifasen/Aanslagfase>
+      a       odv:Groeifasen ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "TODO"@nl .
+
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie/Groeifasen/Aftakeling>
+      a       odv:Groeifasen ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "TODO"@nl .
+
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie/Groeifasen/Dood>
+      a       odv:Groeifasen ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "TODO"@nl .
+
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie/Groeifasen/Jeugd>
+      a       odv:Groeifasen ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "TODO"@nl .
+
+<http://data.vlaanderen.be/ns/openbaardomein/vegetatie/Groeifasen/Volwassen>
+      a       odv:Groeifasen ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/vegetatie> ;
+      rdfs:label "TODO"@nl .
+
+<http://rs.tdwg.org/dwc/terms/scientificName>
+      a       rdf:Property ;
+      rdfs:label "wetenschappelijke soortnaam"@nl .
+
+schema:height
+      a       rdf:Property ;
+      rdfs:label "hoogte"@nl .
+
+<https://id.erfgoed.net/thesauri/erfgoedtypes/1607>
+      a       rdfs:Class ;
+      rdfs:label "Opgaande boom"@nl .
+
+<https://id.erfgoed.net/thesauri/erfgoedtypes/1609>
+      a       rdfs:Class ;
+      rdfs:label "Gekandelaarde boom"@nl .
+
+<https://id.erfgoed.net/thesauri/erfgoedtypes/1610>
+      a       rdfs:Class ;
+      rdfs:label "Knotboom"@nl .
+
+<https://id.erfgoed.net/thesauri/erfgoedtypes/1706>
+      a       rdfs:Class ;
+      rdfs:label "Leiboom"@nl .

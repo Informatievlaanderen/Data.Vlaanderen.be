@@ -1,0 +1,83 @@
+@prefix schema:  <http://schema.org/> .
+@prefix eli:     <http://data.europa.eu/eli/ontology#> .
+@prefix org:     <http://www.w3.org/ns/org#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix besluit:  <http://data.vlaanderen.be/ns/besluit#> .
+@prefix sat:     <http://data.europa.eu/stateaidtransparency/sat#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix eu:      <http://data.europa.eu/m8g/> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix person:  <http://www.w3.org/ns/person#> .
+@prefix rov:     <http://www.w3.org/ns/regorg#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix odo:     <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#> .
+@prefix locn:    <http://www.w3.org/ns/locn#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix cpsv:    <http://purl.org/vocab/cpsv#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+
+<http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen>
+      a       owl:Ontology ;
+      rdfs:label "Vocabularium onbegroeid voorkomen"@nl ;
+      dcterms:issued "2018-06-08"^^xsd:date ;
+      dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
+      dcterms:title "Vocabularium onbegroeid voorkomen"@nl ;
+      vann:preferredNamespacePrefix
+              "odo" ;
+      vann:preferredNamespaceUri
+              "http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen" .
+
+odo:BedekkingOnbegroeidVoorkomen
+      a       owl:Class ;
+      rdfs:comment "Niet gecompacteerd en op niet-duurzame wijze verankerd met het"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen> ;
+      rdfs:label "Bedekking Onbegroeid Voorkomen"@nl ;
+      rdfs:subClassOf odo:OnbegroeidVoorkomen ;
+      vann:usageNote "Naar GRB-skeletaanvulling detail: WSV1: Soort verharding/bedekking."@nl .
+
+odo:BestratingOnbegroeidVoorkomen
+      a       owl:Class ;
+      rdfs:comment "Verhardingstype opgebouwd uit bestratingen (rechthoekige of vierkante componenten) waardoor een aanzienlijk aantal voegen tussen de componenten zitten."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen> ;
+      rdfs:label "Bestrating Onbegroeid Voorkomen"@nl ;
+      rdfs:subClassOf odo:OnbegroeidVoorkomen .
+
+odo:GeslotenOnbegroeidVoorkomen
+      a       owl:Class ;
+      rdfs:comment "Verhardingstype gekenmerkt door een continue bedekking, waardoor er weinig voegen tussen de componenten aan te treffen zijn."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen> ;
+      rdfs:label "Gesloten Onbegroeid Voorkomen"@nl ;
+      rdfs:subClassOf odo:OnbegroeidVoorkomen .
+
+odo:OnbegroeidVoorkomen
+      a       owl:Class ;
+      rdfs:comment "Beschrijving van het terrein onbegroeid voorkomen van het terreindeel"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen> ;
+      rdfs:label "Onbegroeid Voorkomen"@nl ;
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/openbaardomein#TerreinVoorkomen> .
+
+odo:bedekkingtype
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het type bedekking."@nl ;
+      rdfs:domain odo:BedekkingOnbegroeidVoorkomen ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen> ;
+      rdfs:label "bedekkingtype"@nl ;
+      rdfs:range skos:Concept .
+
+odo:bestratingVerhardingType
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het type bestrating."@nl ;
+      rdfs:domain odo:BestratingOnbegroeidVoorkomen ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen> ;
+      rdfs:label "bestrating verharding yype"@nl ;
+      rdfs:range skos:Concept .
+
+odo:geslotenVerhardingType
+      a       rdf:Property ;
+      rdfs:comment "Het type gesloten verharding."@nl ;
+      rdfs:domain odo:GeslotenOnbegroeidVoorkomen ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen> ;
+      rdfs:label "gesloten verharding type"@nl .

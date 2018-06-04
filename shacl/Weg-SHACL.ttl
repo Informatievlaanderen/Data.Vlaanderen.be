@@ -44,17 +44,17 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/weg#OngelijkgrondseKruising> ;
 	sh:property [
-		sh:name "onderliggendWegsegment" ;
-		sh:description "Het onderliggend wegsegment" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#onderliggendWegsegment> ;
+		sh:name "bovenliggendWegsegment" ;
+		sh:description "Het bovenliggende wegsegment" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#bovenliggendWegsegment> ;
 		sh:class <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "bovenliggendWegsegment" ;
-		sh:description "Het bovenliggende wegsegment" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#bovenliggendWegsegment> ;
+		sh:name "onderliggendWegsegment" ;
+		sh:description "Het onderliggend wegsegment" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#onderliggendWegsegment> ;
 		sh:class <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
@@ -138,14 +138,6 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "linkergemeentenaam" ;
-		sh:description "TODO" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#linkergemeentenaam> ;
-		sh:class <http://data.vlaanderen.be/ns/adres#Gemeentenaam> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
 		sh:name "rechtergemeentenaam" ;
 		sh:description "TODO" ;
 		sh:path <http://data.vlaanderen.be/ns/weg#rechtergemeentenaam> ;
@@ -154,10 +146,46 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "eindknoop" ;
-		sh:description "De eindknoop van het wegsegment" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#eindknoop> ;
+		sh:name "heeftSnelheidsbeperking" ;
+		sh:description "Beperking voor de snelheid van een voertuig op een wegsegment" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#heeftSnelheidsbeperking> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#Snelheidsbeperking> ;
+	] ;
+	sh:property [
+		sh:name "behoortTotSeqentie" ;
+		sh:description "TODO" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#behoortTotSeqentie> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#Positie> ;
+	] ;
+	sh:property [
+		sh:name "linkergemeentenaam" ;
+		sh:description "TODO" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#linkergemeentenaam> ;
+		sh:class <http://data.vlaanderen.be/ns/adres#Gemeentenaam> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "rechterstraatnaam" ;
+		sh:description "Straatnaam voorkomend aan de rechterstraatkant" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#rechterstraatnaam> ;
+		sh:class <http://data.vlaanderen.be/ns/adres#Straatnaam> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "beginknoop" ;
+		sh:description "De beginknoop van het wegsegment" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#beginknoop> ;
 		sh:class <http://data.vlaanderen.be/ns/weg#Wegknoop> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "linkerwegbeheerder" ;
+		sh:description "De organisatie die verantwoordelijk is voor het fysieke onderhoud en beheer van de linkerstraatkant van de weg op het terrein." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#linkerwegbeheerder> ;
+		sh:class <http://www.w3.org/ns/org#Organization> ;
+		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -173,27 +201,6 @@
 		sh:class <http://data.vlaanderen.be/ns/weg#EuropeseWeg> ;
 	] ;
 	sh:property [
-		sh:name "heeftSnelheidsbeperking" ;
-		sh:description "Beperking voor de snelheid van een voertuig op een wegsegment" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#heeftSnelheidsbeperking> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#Snelheidsbeperking> ;
-	] ;
-	sh:property [
-		sh:name "linkerwegbeheerder" ;
-		sh:description "De organisatie die verantwoordelijk is voor het fysieke onderhoud en beheer van de linkerstraatkant van de weg op het terrein." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#linkerwegbeheerder> ;
-		sh:class <http://www.w3.org/ns/org#Organization> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "beginknoop" ;
-		sh:description "De beginknoop van het wegsegment" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#beginknoop> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#Wegknoop> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
 		sh:name "rechterwegbeheerder" ;
 		sh:description "De organisatie die verantwoordelijk is voor het fysieke onderhoud en beheer van de rechterstraatkant van de weg op het terrein." ;
 		sh:path <http://data.vlaanderen.be/ns/weg#rechterwegbeheerder> ;
@@ -202,18 +209,17 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "rechterstraatnaam" ;
-		sh:description "Straatnaam voorkomend aan de rechterstraatkant" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#rechterstraatnaam> ;
-		sh:class <http://data.vlaanderen.be/ns/adres#Straatnaam> ;
-		sh:minCount 1 ;
+		sh:name "eindknoop" ;
+		sh:description "De eindknoop van het wegsegment" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#eindknoop> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#Wegknoop> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "behoortTotSeqentie" ;
-		sh:description "TODO" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#behoortTotSeqentie> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#Positie> ;
+		sh:name "behoortTot" ;
+		sh:description "Route die deel uitmaakt van het gewestwegennetwerk tot dewelke het Wegsegment behoort. De route wordt gekenmerkt door een nationaal wegnummer." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#behoortTot> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#NationaleWeg> ;
 	] ;
 	sh:property [
 		sh:name "middellijnGeometrie" ;
@@ -635,6 +641,19 @@
 		sh:description "Identificator van de specifieke versie van een object." ;
 		sh:path <http://data.vlaanderen.be/ns/weg#versieIdentificator> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/weg#NationaleWegShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/weg#NationaleWeg> ;
+	sh:property [
+		sh:name "nationaleWegnummer" ;
+		sh:description "Code die de route in het nationale wegennetwerk identificeert." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#nationaleWegnummer> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .

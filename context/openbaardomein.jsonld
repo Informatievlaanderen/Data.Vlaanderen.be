@@ -1,21 +1,32 @@
 {
 	"@context":
 	{
-		"BegroeidVoorkomen":"http://data.vlaanderen.be/ns/vegetatie#BegroeidVoorkomen",
-		"Beheerdeel":"http://data.vlaanderen.be/ns/openbaardomein#Beheerdeel",
-		"Beheerelement":"http://data.vlaanderen.be/ns/openbaardomein#Beheerelement",
-		"Beheergebied":"http://data.vlaanderen.be/ns/openbaardomein#Beheergebied",
-		"Beheerobject":"http://data.vlaanderen.be/ns/openbaardomein#Beheerobject",
+		"BegroeidVoorkomen":"http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#BegroeidVoorkomen",
 		"Collectie":"http://data.vlaanderen.be/ns/openbaardomein#Collectie",
+		"Deel":"http://data.vlaanderen.be/ns/openbaardomein#Deel",
+		"Element":"http://data.vlaanderen.be/ns/openbaardomein#Element",
 		"FysiekVoorkomen":"http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomen",
-		"Infrastructuurelement":"http://fixme.com#Infrastructuurelement",
-		"OnbegroeidVoorkomen":"http://fixme.com#OnbegroeidVoorkomen",
+		"Gebied":"http://data.vlaanderen.be/ns/openbaardomein#Gebied",
+		"Infrastructuurelement":"http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Infrastructuurelement",
+		"Object":"http://data.vlaanderen.be/ns/openbaardomein#Object",
+		"OnbegroeidVoorkomen":"http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#OnbegroeidVoorkomen",
 		"Organisatie":"http://www.w3.org/ns/org#Organization",
 		"TerreinVoorkomen":"http://data.vlaanderen.be/ns/openbaardomein#TerreinVoorkomen",
-		"Terreindeel":"http://fixme.com#Terreindeel",
-		"VegetatieElement":"http://data.vlaanderen.be/ns/vegetatie#VegetatieElement",
-		"Waterdeel":"http://fixme.com#Waterdeel",
+		"Terreindeel":"http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Terreindeel",
+		"VegetatieElement":"http://data.vlaanderen.be/ns/openbaardomein/vegetatie#VegetatieElement",
+		"WaterVoorkomen":"http://fixme.com#WaterVoorkomen",
+		"Waterdeel":"http://data.vlaanderen.be/ns/openbaardomein/waterdeel#Waterdeel",
 
+		"VegetatieElement.soortcode":{
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortcode",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
+			"@container":"@set"
+		},
+		"VegetatieElement.soortnaamNederlands":{
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortnaamNederlands",
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+			"@container":"@set"
+		},
 		"alternatieveNaam":{
 			"@id":"http://www.w3.org/2004/02/skos/core#altLabel",
 			"@type":"http://www.w3.org/2001/XMLSchema#string"
@@ -30,7 +41,7 @@
 		},
 		"bevat":{
 			"@id":"http://data.vlaanderen.be/ns/openbaardomein#bevat",
-			"@type":"http://data.vlaanderen.be/ns/openbaardomein#Beheerobject",
+			"@type":"http://data.vlaanderen.be/ns/openbaardomein#Object",
 			"@container":"@set"
 		},
 		"bronnaam":{
@@ -42,15 +53,19 @@
 			"@type":"http://schema.org/ContactPoint"
 		},
 		"drassigheid":{
-			"@id":"http://data.vlaanderen.be/ns/vegetatie#drassigheid",
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#drassigheid",
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
+		},
+		"eigenaar":{
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein#eigenaar",
+			"@type":"http://www.w3.org/ns/org#Organization"
 		},
 		"einddatum":{
 			"@id":"http://data.vlaanderen.be/ns/openbaardomein#einddatum",
 			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
 		},
 		"gemiddeldeBreedte":{
-			"@id":"http://fixme.com#gemiddeldeBreedte",
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte",
 			"@type":"http://www.w3.org/2001/XMLSchema#double"
 		},
 		"geometrie":{
@@ -62,16 +77,26 @@
 			"@type":""
 		},
 		"hoogte":{
-			"@id":"http://data.vlaanderen.be/ns/vegetatie#hoogte",
+			"@id":"http://schema.org/height",
 			"@type":"http://www.w3.org/2001/XMLSchema#double"
 		},
 		"lengte":{
-			"@id":"http://fixme.com#lengte",
+			"@id":"http://open.vocab.org/terms/length",
 			"@type":"http://www.w3.org/2001/XMLSchema#double"
+		},
+		"materiaal":{
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#materiaal",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
+			"@container":"@set"
 		},
 		"naam":{
 			"@id":"http://purl.org/dc/terms/title",
-			"@type":"http://www.w3.org/2001/XMLSchema#string"
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+			"@container":"@set"
+		},
+		"nauwkeurigheid":{
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid",
+			"@type":"http://data.vlaanderen.be/ns/openbaardomein#Nauwkeurigsheidsklassen"
 		},
 		"niveau":{
 			"@id":"http://data.vlaanderen.be/ns/openbaardomein#niveau",
@@ -82,21 +107,26 @@
 			"@type":"http://www.w3.org/2001/XMLSchema#boolean"
 		},
 		"oppervlakte":{
-			"@id":"http://fixme.com#oppervlakte",
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein#oppervlakte",
 			"@type":"http://www.w3.org/2001/XMLSchema#double"
 		},
 		"plantdatum":{
-			"@id":"http://data.vlaanderen.be/ns/vegetatie#plantdatum",
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/vegetatie#plantdatum",
 			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
 		},
+		"relatie":{
+			"@id":"http://purl.org/dc/terms/relation",
+			"@type":"http://www.w3.org/2000/01/rdf-schema#Resource",
+			"@container":"@set"
+		},
 		"soortcode":{
-			"@id":"http://data.vlaanderen.be/ns/vegetatie#soortcode",
-			"@type":"",
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#soortcode",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
 			"@container":"@set"
 		},
 		"soortnaamNederlands":{
-			"@id":"http://data.vlaanderen.be/ns/vegetatie#soortnaamNederlands",
-			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#soortnaamNederlands",
+			"@type":"",
 			"@container":"@set"
 		},
 		"soortnaamWetenschappelijk":{
@@ -120,13 +150,9 @@
 			"@id":"http://data.vlaanderen.be/ns/openbaardomein#voorkomen",
 			"@type":"http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomen"
 		},
-		"wgs84Latitude":{
-			"@id":"http://www.w3.org/2003/01/geo/wgs84_pos#lat",
-			"@type":"http://www.w3.org/2001/XMLSchema#double"
-		},
-		"wgs84Longtitude":{
-			"@id":"http://www.w3.org/2003/01/geo/wgs84_pos#long",
-			"@type":"http://www.w3.org/2001/XMLSchema#double"
+		"watertype":{
+			"@id":"http://fixme.com#watertype",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
 		},
 		"wkt":{
 			"@id":"http://www.opengis.net/ont/geosparql#asWKT",
