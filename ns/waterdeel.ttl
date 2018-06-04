@@ -1,0 +1,144 @@
+@prefix schema:  <http://schema.org/> .
+@prefix eli:     <http://data.europa.eu/eli/ontology#> .
+@prefix odw:     <http://data.vlaanderen.be/ns/openbaardomein/waterdeel#> .
+@prefix org:     <http://www.w3.org/ns/org#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix besluit:  <http://data.vlaanderen.be/ns/besluit#> .
+@prefix sat:     <http://data.europa.eu/stateaidtransparency/sat#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix eu:      <http://data.europa.eu/m8g/> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix person:  <http://www.w3.org/ns/person#> .
+@prefix rov:     <http://www.w3.org/ns/regorg#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix locn:    <http://www.w3.org/ns/locn#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix cpsv:    <http://purl.org/vocab/cpsv#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+
+<http://data.vlaanderen.be/ns/openbaardomein/waterdeel>
+      a       owl:Ontology ;
+      rdfs:label "Vocabularium waterdeel"@nl ;
+      dcterms:issued "2018-06-08"^^xsd:date ;
+      dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
+      dcterms:title "Vocabularium waterdeel"@nl ;
+      vann:preferredNamespacePrefix
+              "odw" ;
+      vann:preferredNamespaceUri
+              "http://data.vlaanderen.be/ns/openbaardomein/waterdeel" .
+
+odw:Beek
+      a       owl:Class ;
+      rdfs:comment "Een beek is een buiten de wegbaan gelegen natuurlijke stroom ondiep water die vanuit een oorpsrong, vaak een bron, stroomafwaarts vloeit."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/waterdeel> ;
+      rdfs:label "Beek"@nl ;
+      rdfs:subClassOf odw:Waterloop .
+
+odw:Gracht
+      a       owl:Class ;
+      rdfs:comment "Een binnen de wegbaan gelegen onbevaarbare waterloop, bedoeld voor de af- of aanvoer of het tijdelijk ophouden van oppervlaktewater"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/waterdeel> ;
+      rdfs:label "Gracht"@nl ;
+      rdfs:subClassOf odw:Waterloop ;
+      vann:usageNote "Bron definitie: naar GRB-basis: WGR: Gracht"@nl .
+
+odw:Kanaal
+      a       owl:Class ;
+      rdfs:comment "Een waterloop die, geheel of in grote mate, tot stand is gebracht door het ingrijpen van de mens."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/waterdeel> ;
+      rdfs:label "Kanaal"@nl ;
+      rdfs:subClassOf odw:Waterloop .
+
+odw:Meer
+      a       owl:Class ;
+      rdfs:comment "Een meer is een door land omringde watervlakte. De meeste meren hebben een of meer voedende en afwaterende rivieren."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/waterdeel> ;
+      rdfs:label "Meer"@nl ;
+      rdfs:subClassOf odw:Watervlak .
+
+odw:Poel
+      a       owl:Class ;
+      rdfs:comment "Een poel is een meestal door de mens uitgegraven waterpartij in een grasland, bedoeld als drinkplaats voor het vee. Het zijn meestal kleine, ondiepe waterpartijen in grasland."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/waterdeel> ;
+      rdfs:label "Poel"@nl ;
+      rdfs:subClassOf odw:Watervlak .
+
+odw:Rivier
+      a       owl:Class ;
+      rdfs:comment "Een natuurlijke waterloop, bedoeld voor de af- of aanvoer of het tijdelijk ophouden van oppervlaktewater en die bevaarbaar is."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/waterdeel> ;
+      rdfs:label "Rivier"@nl ;
+      rdfs:subClassOf odw:Waterloop ;
+      vann:usageNote "Bron object: GRB-entiteit: Watergang (Wtz), NOTE Bron object: VHA: waterloop"@nl .
+
+odw:Sloot
+      a       owl:Class ;
+      rdfs:comment "Een sloot is een waterloop op plaatsen waar regenwater samenstroomt, zodat het gezamenlijk kan worden afgevoerd om wateroverlast te voorkomen. Een sloot is een onderdeel van de waterhishoudkundige infrastructuur. Het via sloten afgevoerde water wordt elders weggepompt."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/waterdeel> ;
+      rdfs:label "Sloot"@nl ;
+      rdfs:subClassOf odw:Waterloop .
+
+odw:Slotgracht
+      a       owl:Class ;
+      rdfs:comment "Een slotgracht is een diepe, brede gracht, droog of gevuld met water, dat een kasteel of gebouw omringt."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/waterdeel> ;
+      rdfs:label "Slotgracht"@nl ;
+      rdfs:subClassOf odw:Watervlak .
+
+odw:Ven
+      a       owl:Class ;
+      rdfs:comment "Een ven is een klein, meestal ondiep meer dat voorkomt op Pleistocene zandgronden. Vennen hebben wisselende waterstanden en zijn zelden groter dan enkele hectaren. Onder vennen worden uitsluitend natuurlijke wateren verstaan."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/waterdeel> ;
+      rdfs:label "Ven"@nl ;
+      rdfs:subClassOf odw:Watervlak .
+
+odw:Vijver
+      a       owl:Class ;
+      rdfs:comment "Een vijver is een door de mens aangelegd waterlichaam met beperkte oppervlakte en  wordt geassocieerd met visvangst of een sierfunctie."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/waterdeel> ;
+      rdfs:label "Vijver"@nl ;
+      rdfs:subClassOf odw:Watervlak .
+
+odw:Waterdeel
+      a       owl:Class ;
+      rdfs:comment "Gebied dat rechtstreeks gedomineerd wordt door de tijdelijke of permanente aanwezigheid van oppervlaktewater, met een bepaalde hieraan verbonden functie"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/waterdeel> ;
+      rdfs:label "Waterdeel"@nl ;
+      rdfs:subClassOf <http://data.vlaanderen.be/ns/openbaardomein#Deel> ;
+      vann:usageNote "GRB Lexicon: Definitie Watergang"@nl .
+
+odw:Waterloop
+      a       owl:Class ;
+      rdfs:comment "Gebied dat zorgt voor het verzamelen en transporteren van de horizontale afvloeiing van neerslag- en bronwater. "@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/waterdeel> ;
+      rdfs:label "Waterloop"@nl ;
+      rdfs:subClassOf odw:Waterdeel .
+
+odw:Watervlak
+      a       owl:Class ;
+      rdfs:comment "Het gedeelte van het landoppervlak dat wordt ingenomen door stilstaand water en dat in hoofdzaak geen deel uitmaakt van het hydrografisch netwerk"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/waterdeel> ;
+      rdfs:label "Watervlak"@nl ;
+      rdfs:subClassOf odw:Waterdeel .
+
+odw:watervlaktype
+      a       rdf:Property ;
+      rdfs:comment "Het type watervlak."@nl ;
+      rdfs:domain odw:Watervlak ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/waterdeel> ;
+      rdfs:label "watervlaktype"@nl .
+
+<http://open.vocab.org/terms/length>
+      a       rdf:Property ;
+      rdfs:label "lengte"@nl .
+
+schema:width
+      a       rdf:Property ;
+      rdfs:label "breedte"@nl .
+
+rdfs:label
+      a       rdf:Property ;
+      rdfs:label "naam"@nl .
