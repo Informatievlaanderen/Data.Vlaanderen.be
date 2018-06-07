@@ -1,4 +1,109 @@
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
+<http://data.vlaanderen.be/ns/weg#NationaleWegShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/weg#NationaleWeg> ;
+	sh:property [
+		sh:name "nationaleWegnummer" ;
+		sh:description "Code die de route in het nationale wegennetwerk identificeert." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#nationaleWegnummer> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/weg#SnelheidsbeperkingShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/weg#Snelheidsbeperking> ;
+	sh:property [
+		sh:name "omgeving" ;
+		sh:description "De snelheidsbeperking is afhankelijk van de omgeving waarin het wegsegment zich bevindt." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#omgeving> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+	] ;
+	sh:property [
+		sh:name "richting" ;
+		sh:description "De richting waarin de snelheidsbeperking geldt." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#richting> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "snelheidsbeperkingWaarde" ;
+		sh:description "Waarde van de snelheidsbeperking die op dat wegsegment geldt" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#snelheidsbeperkingWaarde> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#Snelheid> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "snelheidslimietBron" ;
+		sh:description "Bron van de snelheidsbeperking" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#snelheidslimietBron> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "snelheidszone" ;
+		sh:description "Waarde van de snelheidszone waarin het wegsegment zich bevindt." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#snelheidszone> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#Snelheid> ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/weg#RijrichtingShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/weg#Rijrichting> ;
+	sh:property [
+		sh:name "geldigheidsperiode" ;
+		sh:description "Periode waarin de rijrichting geldt" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#geldigheidsperiode> ;
+		sh:class <http://purl.org/dc/terms/PeriodOfTime> ;
+	] ;
+	sh:property [
+		sh:name "rijrichting" ;
+		sh:description "Geeft de richting van de verkeersstroom aan in relatie tot de logische richting van het wegsegment." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#rijrichting> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "voertuigtype" ;
+		sh:description "Het type voertuig waarvoor deze rijrichting geldt." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#voertuigtype> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/weg#PositieShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/weg#Positie> ;
+	sh:property [
+		sh:name "behoortTotSet" ;
+		sh:description "De GenummerdeWeg waartoe het Wegsegment op de Positie behoort" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#behoortTotSet> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#GenummerdeWeg> ;
+	] ;
+	sh:property [
+		sh:name "richting" ;
+		sh:description "De richting waarin de ident 8 geldt ten opzichte van het wegsegment" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#richting> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "volgnummer" ;
+		sh:description "Volgnummer van het Wegsegment in de ordening van de GenummerdeWeg" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#volgnummer> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
 <http://www.w3.org/ns/org#OrganizationShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://www.w3.org/ns/org#Organization> ;
@@ -44,14 +149,6 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/weg#OngelijkgrondseKruising> ;
 	sh:property [
-		sh:name "bovenliggendWegsegment" ;
-		sh:description "Het bovenliggende wegsegment" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#bovenliggendWegsegment> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
 		sh:name "onderliggendWegsegment" ;
 		sh:description "Het onderliggend wegsegment" ;
 		sh:path <http://data.vlaanderen.be/ns/weg#onderliggendWegsegment> ;
@@ -60,45 +157,17 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
+		sh:name "bovenliggendWegsegment" ;
+		sh:description "Het bovenliggende wegsegment" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#bovenliggendWegsegment> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
 		sh:name "type" ;
 		sh:description "Het type ongelijkgrondse kruising (brug/tunnel)" ;
 		sh:path <http://purl.org/dc/terms/type> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/weg#ReferentiepuntShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/weg#Referentiepunt> ;
-	sh:property [
-		sh:name "staatLangs" ;
-		sh:description "Technische code van de genummerde weg waartoe het referentiepunt behoort." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#staatLangs> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#GenummerdeWeg> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "geometrie" ;
-		sh:description "De locatie van het referentiepunt" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#geometrie> ;
-		sh:class <http://www.opengis.net/ont/sf#Point> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "opschrift" ;
-		sh:description "Opschrift van het referentiepunt" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#opschrift> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#Afstand> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "type" ;
-		sh:description "Het type referentiepunt" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#type> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
@@ -130,10 +199,82 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/weg#Wegsegment> ;
 	sh:property [
+		sh:name "linkerwegbeheerder" ;
+		sh:description "De organisatie die verantwoordelijk is voor het fysieke onderhoud en beheer van de linkerstraatkant van de weg op het terrein." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#linkerwegbeheerder> ;
+		sh:class <http://www.w3.org/ns/org#Organization> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "rechterwegbeheerder" ;
+		sh:description "De organisatie die verantwoordelijk is voor het fysieke onderhoud en beheer van de rechterstraatkant van de weg op het terrein." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#rechterwegbeheerder> ;
+		sh:class <http://www.w3.org/ns/org#Organization> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "eindknoop" ;
+		sh:description "De eindknoop van het wegsegment" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#eindknoop> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#Wegknoop> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "rechterstraatnaam" ;
+		sh:description "Straatnaam voorkomend aan de rechterstraatkant" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#rechterstraatnaam> ;
+		sh:class <http://data.vlaanderen.be/ns/adres#Straatnaam> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "behoortTotSet" ;
+		sh:description "De Positie waarop het Wegsegment behoort tot de GenummerdeWeg" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#behoortTotSet> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#Positie> ;
+	] ;
+	sh:property [
+		sh:name "behoortTot" ;
+		sh:description "Route die deel uitmaakt van het internationale E-wegennetwerk tot dewelke het Wegsegment behoort. De route wordt gekenmerkt door een Europees wegnummer." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#behoortTot> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#EuropeseWeg> ;
+	] ;
+	sh:property [
 		sh:name "linkerstraatnaam" ;
-		sh:description "Straatnaam voorkomend aan de linkerstraatkant" ;
+		sh:description "Straatnaam vookomend aan de linkerstraatkant" ;
 		sh:path <http://data.vlaanderen.be/ns/weg#linkerstraatnaam> ;
 		sh:class <http://data.vlaanderen.be/ns/adres#Straatnaam> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "linkergemeentenaam" ;
+		sh:description "TODO" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#linkergemeentenaam> ;
+		sh:class <http://data.vlaanderen.be/ns/adres#Gemeentenaam> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "heeftRijrichting" ;
+		sh:description "Geeft de richting van de verkeersstroom aan in relatie tot de logische richting van het wegsegment." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#heeftRijrichting> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#Rijrichting> ;
+	] ;
+	sh:property [
+		sh:name "behoortTot" ;
+		sh:description "Route die deel uitmaakt van het gewestwegennetwerk tot dewelke het Wegsegment behoort. De route wordt gekenmerkt door een nationaal wegnummer." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#behoortTot> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#NationaleWeg> ;
+	] ;
+	sh:property [
+		sh:name "beginknoop" ;
+		sh:description "De beginknoop van het wegsegment" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#beginknoop> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#Wegknoop> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -152,74 +293,32 @@
 		sh:class <http://data.vlaanderen.be/ns/weg#Snelheidsbeperking> ;
 	] ;
 	sh:property [
-		sh:name "behoortTotSeqentie" ;
-		sh:description "TODO" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#behoortTotSeqentie> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#Positie> ;
+		sh:name "heeftVoertuigbeperking" ;
+		sh:description "Beperking op voertuigen toegelaten op een wegsegment" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#heeftVoertuigbeperking> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#Voertuigbeperking> ;
 	] ;
 	sh:property [
-		sh:name "linkergemeentenaam" ;
-		sh:description "TODO" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#linkergemeentenaam> ;
-		sh:class <http://data.vlaanderen.be/ns/adres#Gemeentenaam> ;
+		sh:name "aantalRijstroken" ;
+		sh:description "Het aantal rijstroken van een wegsegment" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#aantalRijstroken> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#AantalRijstroken> ;
+		sh:minCount 1 ;
+	] ;
+	sh:property [
+		sh:name "alternatieveStraatnaam" ;
+		sh:description "De alternatieve straatnaam. Dit is geen officiële straatnaam." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#alternatieveStraatnaam> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "methodeWegsegmentgeometrie" ;
+		sh:description "Aanduiding van de kwaliteit/betrouwbaarheid van de geometrie van het wegsegment aan de hand van de methode gebruikt om deze geometrie te bepalen." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#methodeWegsegmentgeometrie> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "rechterstraatnaam" ;
-		sh:description "Straatnaam voorkomend aan de rechterstraatkant" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#rechterstraatnaam> ;
-		sh:class <http://data.vlaanderen.be/ns/adres#Straatnaam> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "beginknoop" ;
-		sh:description "De beginknoop van het wegsegment" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#beginknoop> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#Wegknoop> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "linkerwegbeheerder" ;
-		sh:description "De organisatie die verantwoordelijk is voor het fysieke onderhoud en beheer van de linkerstraatkant van de weg op het terrein." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#linkerwegbeheerder> ;
-		sh:class <http://www.w3.org/ns/org#Organization> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "heeftRijrichting" ;
-		sh:description "Geeft de richting van de verkeersstroom aan in relatie tot de logische richting van het wegsegment." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#heeftRijrichting> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#Rijrichting> ;
-	] ;
-	sh:property [
-		sh:name "behoortTot" ;
-		sh:description "Route die deel uitmaakt van het internationale E-wegennetwerk tot dewelke het Wegsegment behoort. De route wordt gekenmerkt door een Europees wegnummer." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#behoortTot> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#EuropeseWeg> ;
-	] ;
-	sh:property [
-		sh:name "rechterwegbeheerder" ;
-		sh:description "De organisatie die verantwoordelijk is voor het fysieke onderhoud en beheer van de rechterstraatkant van de weg op het terrein." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#rechterwegbeheerder> ;
-		sh:class <http://www.w3.org/ns/org#Organization> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "eindknoop" ;
-		sh:description "De eindknoop van het wegsegment" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#eindknoop> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#Wegknoop> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "behoortTot" ;
-		sh:description "Route die deel uitmaakt van het gewestwegennetwerk tot dewelke het Wegsegment behoort. De route wordt gekenmerkt door een nationaal wegnummer." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#behoortTot> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#NationaleWeg> ;
 	] ;
 	sh:property [
 		sh:name "middellijnGeometrie" ;
@@ -238,14 +337,6 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "wegcategorie" ;
-		sh:description "Wegcategorie zoals gedefinieerd in het Ruimtelijke Structuurplan Vlaanderen" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#wegcategorie> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
 		sh:name "toegangsbeperking" ;
 		sh:description "De toegankelijkheid van het wegsegment voor de weggebruiker" ;
 		sh:path <http://data.vlaanderen.be/ns/weg#toegangsbeperking> ;
@@ -254,32 +345,19 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "methodeWegsegmentgeometrie" ;
-		sh:description "Aanduiding van de kwaliteit/betrouwbaarheid van de geometrie van het wegsegment aan de hand van de methode gebruikt om deze geometrie te bepalen." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#methodeWegsegmentgeometrie> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "wegverharding" ;
-		sh:description "Geeft aan of het wegsegment al dan niet verhard is" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#wegverharding> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#Wegverharding> ;
-		sh:minCount 1 ;
-	] ;
-	sh:property [
-		sh:name "aantalRijstroken" ;
-		sh:description "Het aantal rijstroken van een wegsegment" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#aantalRijstroken> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#AantalRijstroken> ;
-		sh:minCount 1 ;
-	] ;
-	sh:property [
 		sh:name "wegbreedte" ;
 		sh:description "De wegbreedte is de afstand tussen beide randen van een rijbaan" ;
 		sh:path <http://data.vlaanderen.be/ns/weg#wegbreedte> ;
 		sh:class <http://data.vlaanderen.be/ns/weg#Wegbreedte> ;
 		sh:minCount 1 ;
+	] ;
+	sh:property [
+		sh:name "wegcategorie" ;
+		sh:description "Wegcategorie zoals gedefinieerd in het Ruimtelijke Structuurplan Vlaanderen" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#wegcategorie> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "wegsegmentstatus" ;
@@ -290,102 +368,32 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "alternatieveStraatnaam" ;
-		sh:description "De alternatieve straatnaam. Dit is geen officiële straatnaam." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#alternatieveStraatnaam> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
+		sh:name "wegverharding" ;
+		sh:description "Geeft aan of het wegsegment al dan niet verhard is" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#wegverharding> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#Wegverharding> ;
+		sh:minCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/weg#PositieShape>
+<http://data.vlaanderen.be/ns/weg#VoertuigbeperkingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/weg#Positie> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/weg#Voertuigbeperking> ;
 	sh:property [
-		sh:name "behoortTotSeqentie" ;
-		sh:description "TODO" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#behoortTotSeqentie> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#GenummerdeWeg> ;
-	] ;
-	sh:property [
-		sh:name "volgnummer" ;
-		sh:description "Volgnummer van het Wegsegment in de ordening van de GenummerdeWeg" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#volgnummer> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "richting" ;
-		sh:description "De richting waarin de ident 8 geldt ten opzichte van het wegsegment" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#richting> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/weg#RijrichtingShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/weg#Rijrichting> ;
-	sh:property [
-		sh:name "rijrichting" ;
-		sh:description "Geeft de richting van de verkeersstroom aan in relatie tot de logische richting van het wegsegment." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#rijrichting> ;
+		sh:name "beperking" ;
+		sh:description "Het type beperking op voertuigen toegelaten op een wegsegment" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#beperking> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "voertuigtype" ;
-		sh:description "Het type voertuig waarvoor deze rijrichting geldt." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#voertuigtype> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
-	] ;
-	sh:property [
-		sh:name "geldigheidsperiode" ;
-		sh:description "Periode waarin de rijrichting geldt" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#geldigheidsperiode> ;
-		sh:class <http://purl.org/dc/terms/PeriodOfTime> ;
-	] ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/weg#SnelheidsbeperkingShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/weg#Snelheidsbeperking> ;
-	sh:property [
-		sh:name "snelheidsbeperkingWaarde" ;
-		sh:description "Waarde van de snelheidsbeperking die op dat wegsegment geldt" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#snelheidsbeperkingWaarde> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#Snelheid> ;
+		sh:name "opmeting" ;
+		sh:description "Het resultaat van het uitvoeren van de handeling of het proces van het vaststellen van de omvang, afmetingen of hoeveelheid van een bepaalde entiteit. Een meetwaarde wordt altijd gekoppeld aan een maateenheid." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#opmeting> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#Meting> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "richting" ;
-		sh:description "De richting waarin de snelheidsbeperking geldt." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#richting> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "snelheidslimietBron" ;
-		sh:description "Bron van de snelheidsbeperking" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#snelheidslimietBron> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "snelheidszone" ;
-		sh:description "Waarde van de snelheidszone waarin het wegsegment zich bevindt." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#snelheidszone> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#Snelheid> ;
-	] ;
-	sh:property [
-		sh:name "omgeving" ;
-		sh:description "De snelheidsbeperking is afhankelijk van de omgeving waarin het wegsegment zich bevindt." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#omgeving> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 	] ;
 	sh:closed false .
 
@@ -393,15 +401,15 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://www.w3.org/ns/locn#Geometry> ;
 	sh:property [
-		sh:name "wkt" ;
-		sh:description "Geometrie uitgedrukt in wkt-formaat." ;
-		sh:path <http://www.opengis.net/ont/geosparql#asWKT> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
 		sh:name "gml" ;
 		sh:description "Geometrie uitgedrukt in gml-formaat." ;
 		sh:path <http://www.opengis.net/ont/geosparql#asGML> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "wkt" ;
+		sh:description "Geometrie uitgedrukt in wkt-formaat." ;
+		sh:path <http://www.opengis.net/ont/geosparql#asWKT> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
@@ -418,10 +426,10 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "vanPositie" ;
-		sh:description "De startpositie, uitgedrukt als de afstand langs de veelhoekslijn vanaf de start van het wegsegment." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#vanPositie> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#Lengte> ;
+		sh:name "richting" ;
+		sh:description "De richting waarin het aantal rijstroken geldt." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#richting> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -434,10 +442,10 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "richting" ;
-		sh:description "De richting waarin het aantal rijstroken geldt." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#richting> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:name "vanPositie" ;
+		sh:description "De startpositie, uitgedrukt als de afstand langs de veelhoekslijn vanaf de start van het wegsegment." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#vanPositie> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#Lengte> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -455,10 +463,9 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "vanPositie" ;
-		sh:description "De startpositie, uitgedrukt als de afstand langs de veelhoekslijn vanaf de start van het wegsegment." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#vanPositie> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#Lengte> ;
+		sh:name "nauwkeurigheidVanOpmeting" ;
+		sh:description "De nauwkeurigheid waarmee de wegbreedte werd opgemeten" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#nauwkeurigheidVanOpmeting> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -471,9 +478,10 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "nauwkeurigheidVanOpmeting" ;
-		sh:description "De nauwkeurigheid waarmee de wegbreedte werd opgemeten" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#nauwkeurigheidVanOpmeting> ;
+		sh:name "vanPositie" ;
+		sh:description "De startpositie, uitgedrukt als de afstand langs de veelhoekslijn vanaf de start van het wegsegment." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#vanPositie> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#Lengte> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -534,16 +542,16 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://purl.org/dc/terms/PeriodOfTime> ;
 	sh:property [
-		sh:name "einde" ;
+		sh:name "begin" ;
 		sh:description "TODO" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#einde> ;
+		sh:path <http://data.vlaanderen.be/ns/generiek#Tijdsinterval.begin> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "begin" ;
+		sh:name "einde" ;
 		sh:description "TODO" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#begin> ;
+		sh:path <http://data.vlaanderen.be/ns/generiek#Tijdsinterval.einde> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -553,10 +561,10 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/weg#Wegverharding> ;
 	sh:property [
-		sh:name "verharding" ;
-		sh:description "Het type wegverharding van een wegsegment" ;
-		sh:path <http://data.vlaanderen.be/ns/weg#verharding> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:name "totPositie" ;
+		sh:description "De eindpositie, uitgedrukt als de afstand langs de veelhoekslijn vanaf de start van het wegsegment." ;
+		sh:path <http://data.vlaanderen.be/ns/weg#totPositie> ;
+		sh:class <http://data.vlaanderen.be/ns/weg#Lengte> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -569,10 +577,10 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "totPositie" ;
-		sh:description "De eindpositie, uitgedrukt als de afstand langs de veelhoekslijn vanaf de start van het wegsegment." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#totPositie> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#Lengte> ;
+		sh:name "verharding" ;
+		sh:description "Het type wegverharding van een wegsegment" ;
+		sh:path <http://data.vlaanderen.be/ns/weg#verharding> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -582,17 +590,17 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://www.w3.org/ns/adms#Identifier> ;
 	sh:property [
+		sh:name "gestructureerdedentificator" ;
+		sh:description "Identificator vh object opgesplitst in zijn onderdelen." ;
+		sh:path <http://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ;
+		sh:class <http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
 		sh:name "identificator" ;
 		sh:description "String gebruikt om het object uniek te identificeren. " ;
 		sh:path <http://www.w3.org/2004/02/skos/core#notation> ;
 		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "gestructureerdedentificator" ;
-		sh:description "Identificator vh object opgesplitst in zijn onderdelen." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#gestructureerdedentificator> ;
-		sh:class <http://data.vlaanderen.be/ns/weg#GestructureerdeIdentificator> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -617,13 +625,13 @@
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/weg#GestructureerdeIdentificatorShape>
+<http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificatorShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/weg#GestructureerdeIdentificator> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
 	sh:property [
 		sh:name "lokaleIdentificator" ;
 		sh:description "String gebruikt om het object uniek te identificeren binnen de naamruimte." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#lokaleIdentificator> ;
+		sh:path <http://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
@@ -631,7 +639,7 @@
 	sh:property [
 		sh:name "naamruimte" ;
 		sh:description "String die toegvoegd wordt aan de lokaleidentificator om deze globaal uniek te maken." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#naamruimte> ;
+		sh:path <http://data.vlaanderen.be/ns/generiek#naamruimte> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
@@ -639,21 +647,8 @@
 	sh:property [
 		sh:name "versieIdentificator" ;
 		sh:description "Identificator van de specifieke versie van een object." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#versieIdentificator> ;
+		sh:path <http://data.vlaanderen.be/ns/generiek#versieIdentificator> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/weg#NationaleWegShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/weg#NationaleWeg> ;
-	sh:property [
-		sh:name "nationaleWegnummer" ;
-		sh:description "Code die de route in het nationale wegennetwerk identificeert." ;
-		sh:path <http://data.vlaanderen.be/ns/weg#nationaleWegnummer> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
