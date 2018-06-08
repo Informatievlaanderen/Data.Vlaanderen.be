@@ -19,6 +19,10 @@
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 @prefix odt:     <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#> .
 
+<http://data.vlaanderen.be/ns/openbaardomein#capaciteit>
+      a       rdf:Property ;
+      rdfs:label "capaciteit"@nl .
+
 <http://data.vlaanderen.be/ns/openbaardomein/terreindeel>
       a       owl:Ontology ;
       rdfs:label "Vocabularium terreindeel"@nl ;
@@ -44,6 +48,13 @@ odt:BijzondereOverrijdbareBedding
       rdfs:label "Bijzondere overrijdbare bedding"@nl ;
       rdfs:subClassOf odt:Wegbaan ;
       vann:usageNote "Naar definitie in wegcode: https://wegcode.be/wetteksten/secties/kb/wegcode/100-art2"@nl .
+
+odt:Boomplantplaats
+      a       owl:Class ;
+      rdfs:comment "De gereserveerde wortelzone, een ruimte (ondergronds) waar de wortels van bomen vrij kunnen groeien."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/terreindeel> ;
+      rdfs:label "Boomplantplaats"@nl ;
+      rdfs:subClassOf odt:Terreindeel .
 
 odt:Boordsteen
       a       owl:Class ;
@@ -307,13 +318,13 @@ odt:Zijberm
       rdfs:subClassOf odt:Wegberm ;
       vann:usageNote "Bron definitie: GRB Lexicon: zijberm"@nl .
 
-odt:gemiddeldeBreedte
+odt:autodelen
       a       owl:DatatypeProperty ;
-      rdfs:comment "TODO"@nl ;
-      rdfs:domain odt:Terreindeel ;
+      rdfs:comment "Duidt aan of het parkeervlak al dan niet gebruikt wordt voor autodelen."@nl ;
+      rdfs:domain odt:Parkeervlak ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/terreindeel> ;
-      rdfs:label "gemiddelde breedte"@nl ;
-      rdfs:range xsd:double .
+      rdfs:label "autodelen"@nl ;
+      rdfs:range xsd:boolean .
 
 odt:vrijliggend
       a       owl:DatatypeProperty ;
@@ -326,3 +337,7 @@ odt:vrijliggend
 <http://open.vocab.org/terms/length>
       a       rdf:Property ;
       rdfs:label "lengte"@nl .
+
+schema:width
+      a       rdf:Property ;
+      rdfs:label "breedte"@nl .

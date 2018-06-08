@@ -1,37 +1,4 @@
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
-<http://data.vlaanderen.be/ns/openbaardomein#GebiedShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#Gebied> ;
-	sh:property [
-		sh:name "begindatum" ;
-		sh:description "Datum waarop de huidige versie van het beheergebied in gebruik wordt genomen." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#begindatum> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "einddatum" ;
-		sh:description "Datum waarop de huidige versie van het beheergebied uit gebruik wordt genomen." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#einddatum> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "geometrie" ;
-		sh:description "De geometrie overeenkomstig met een bepaald gebied." ;
-		sh:path <http://www.w3.org/ns/locn#geometry> ;
-		sh:class <http://www.opengis.net/ont/sf#Polygon> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "naam" ;
-		sh:description "Een naam voor het gebied." ;
-		sh:path <http://purl.org/dc/terms/title> ;
-		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
-	] ;
-	sh:closed false .
-
 <http://data.vlaanderen.be/ns/openbaardomein#DeelShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#Deel> ;
@@ -53,59 +20,33 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Terreindeel> ;
 	sh:property [
-		sh:name "gemiddeldeBreedte" ;
-		sh:description "TODO" ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte> ;
+		sh:name "breedte" ;
+		sh:description "De breedte van het object in meter. In geval van een ongelijkmatige breedte wordt de gemiddelde breedte opgenomen." ;
+		sh:path <http://schema.org/width> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "lengte" ;
-		sh:description "TODO" ;
+		sh:description "De lineare grootte van het object in meter." ;
 		sh:path <http://open.vocab.org/terms/length> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/gebied#BegraafplaatsShape>
+<http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#BegraafplaatsRijShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/gebied#Begraafplaats> ;
-	sh:property [
-		sh:name "actieveLijkbezorging" ;
-		sh:description "Duidt aan of er al dan niet nog aan actieve lijkbezorging gedaan wordt op de begraafplaats." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein/gebied#actieveLijkbezorging> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "lichteRecreatie" ;
-		sh:description "Geeft aan of de begraafplaats al dan niet geschikt is voor lichte recreatie." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein/gebied#lichteRecreatie> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#BegraafplaatsRij> ;
 	sh:closed false .
 
-<http://fixme.com#BegraafplaatsBlokShape>
+<http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#GrafShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://fixme.com#BegraafplaatsBlok> ;
-	sh:closed false .
-
-<http://fixme.com#BegraafplaatsRijShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://fixme.com#BegraafplaatsRij> ;
-	sh:closed false .
-
-<http://fixme.com#GrafShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://fixme.com#Graf> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Graf> ;
 	sh:property [
 		sh:name "grafteken" ;
 		sh:description "Duidt aan of er al dan niet een grafteken, bijvoorbeeld een zerk, aanwezig is." ;
-		sh:path <http://fixme.com#grafteken> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#grafteken> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
@@ -121,7 +62,7 @@
 	sh:property [
 		sh:name "bezetting" ;
 		sh:description "Geeft het aantal bezette plaatsen van een graf weer." ;
-		sh:path <http://fixme.com#bezetting> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#bezetting> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#integer> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
@@ -129,7 +70,7 @@
 	sh:property [
 		sh:name "grafkelderAanwezig" ;
 		sh:description "Duidt aan of het graf voorzien is van een ondergrondse of bovengrondse ruimte." ;
-		sh:path <http://fixme.com#grafkelderAanwezig> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#grafkelderAanwezig> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
@@ -137,26 +78,26 @@
 	sh:property [
 		sh:name "graftype" ;
 		sh:description "Het type graf." ;
-		sh:path <http://fixme.com#graftype> ;
-		sh:class <http://fixme.com#Graftypes> ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#graftype> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://fixme.com#ColumbariumShape>
+<http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#ColumbariumShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://fixme.com#Columbarium> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Columbarium> ;
 	sh:closed false .
 
-<http://fixme.com#UrnenveldShape>
+<http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#UrnenveldShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://fixme.com#Urnenveld> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Urnenveld> ;
 	sh:closed false .
 
-<http://fixme.com#StrooiweideShape>
+<http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#StrooiweideShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://fixme.com#Strooiweide> ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Strooiweide> ;
 	sh:closed false .
 
 <http://data.vlaanderen.be/ns/openbaardomein#ObjectShape>
@@ -195,7 +136,7 @@
 		sh:name "nauwkeurigheid" ;
 		sh:description "De precisie waarmee het object opgemeten werd." ;
 		sh:path <http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid> ;
-		sh:class <http://data.vlaanderen.be/ns/openbaardomein#Nauwkeurigsheidsklassen> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;

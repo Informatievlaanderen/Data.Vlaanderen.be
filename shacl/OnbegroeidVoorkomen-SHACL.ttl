@@ -1,0 +1,68 @@
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+<http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomenShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomen> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/openbaardomein#TerreinVoorkomenShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#TerreinVoorkomen> ;
+	sh:property [
+		sh:name "obstakels" ;
+		sh:description "Eigenschap die aangeeft of er binnen het beheerdeel  al dan niet objecten voorkomen die de vrije werking van machines of andere werktuigen kan verhinderen" ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#obstakels> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "talud" ;
+		sh:description "Een talud is het kunstmatig gedeelte van een vlak van de wegbaan, dijken, spoorbanen, vestingswerken, dat een helling (min. 20%, max 80% voor kunstmatig verharde taluds) vertoont en bedoeld voor het opvangen van een hoogteverschil." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#talud> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#BedekkingOnbegroeidVoorkomenShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#BedekkingOnbegroeidVoorkomen> ;
+	sh:property [
+		sh:name "bedekkingtype" ;
+		sh:description "Het type bedekking." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#bedekkingtype> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#BestratingOnbegroeidVoorkomenShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#BestratingOnbegroeidVoorkomen> ;
+	sh:property [
+		sh:name "bestratingVerhardingType" ;
+		sh:description "Het type bestrating." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#bestratingVerhardingType> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#GeslotenOnbegroeidVoorkomenShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#GeslotenOnbegroeidVoorkomen> ;
+	sh:property [
+		sh:name "geslotenVerhardingType" ;
+		sh:description "Het type gesloten verharding." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#geslotenVerhardingType> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#OnbegroeidVoorkomenShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#OnbegroeidVoorkomen> ;
+	sh:closed false .
+

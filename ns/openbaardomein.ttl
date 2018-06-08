@@ -66,6 +66,13 @@ od:bevat a owl:ObjectProperty ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
     rdfs:range od:Object .
 
+od:capaciteit a owl:ObjectProperty ;
+    rdfs:label "bevat"@nl ;
+    rdfs:comment "Geeft het opslagvermogen van een object weer, bijvoorbeeld het aantal fietsen dat in een fietsenstalling gestald kunnen worden."@nl ;
+    rdfs:domain schema:Thing ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
+    rdfs:range xsd:integer .
+
 od:eigenaar a owl:ObjectProperty ;
     rdfs:label "eigenaar"@nl ;
     rdfs:comment "De entiteit (bv. de gemeente) die eigenaar is van het object of gebied."@nl ;
@@ -85,7 +92,7 @@ od:nauwkeurigheid a owl:ObjectProperty ;
     rdfs:comment "De precisie waarmee het object opgemeten werd."@nl ;
     rdfs:domain od:Object ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein> ;
-    rdfs:range <http://fixme.com#Nauwkeurigsheidsklassen> .
+    rdfs:range skos:Concept .
 
 od:niveau a owl:DatatypeProperty ;
     rdfs:label "niveau"@nl ;
@@ -178,11 +185,20 @@ od:Object a owl:Class ;
     dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
     dcterms:mediator [ foaf:homepage <https://data.vlaanderen.be> ;
             foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
+            foaf:name "Data Vlaanderen" ],
+        [ foaf:homepage <https://data.vlaanderen.be> ;
+            foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
             foaf:name "Data Vlaanderen" ] ;
     dcterms:title "Inventarisatie Openbaar Domein"@nl ;
     vann:preferredNamespacePrefix "od" ;
     vann:preferredNamespaceUri "http://data.vlaanderen.be/ns/openbaardomein" ;
     rec:editor [ a person:Person ;
+            schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
+                    foaf:name "PwC" ] ;
+            foaf:firstName "Jens" ;
+            foaf:lastName "Scheerlinck" ;
+            foaf:mbox <mailto:jens.scheerlinck@pwc.com> ],
+        [ a person:Person ;
             schema:affiliation [ foaf:homepage <file:///C:/OSLO-EA-to-RDF-master/target/ggino/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
                     foaf:name "Ugent" ] ;
             foaf:firstName "Tim" ;
@@ -199,5 +215,17 @@ od:Object a owl:Class ;
                     foaf:name "PwC" ] ;
             foaf:firstName "Jens" ;
             foaf:lastName "Scheerlinck" ;
-            foaf:mbox <mailto:jens.scheerlinck@pwc.com> ] .
+            foaf:mbox <mailto:jens.scheerlinck@pwc.com> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <file:///C:/OSLO-EA-to-RDF-master/target/ggino/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
+                    foaf:name "Ugent" ] ;
+            foaf:firstName "Tim" ;
+            foaf:lastName "Baert" ;
+            foaf:mbox <mailto:tim.baert@ugent.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <file:///C:/OSLO-EA-to-RDF-master/target/ggino/temp-stakeholders_latest.csv-openbaardomein.rdf> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Liesbet" ;
+            foaf:lastName "De Wolf" ;
+            foaf:mbox <mailto:liesbet.dewolf@kb.vlaanderen.be> ] .
 
