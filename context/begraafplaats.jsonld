@@ -1,30 +1,27 @@
 {
 	"@context":
 	{
-		"Begraafplaats":"http://data.vlaanderen.be/ns/openbaardomein/gebied#Begraafplaats",
-		"BegraafplaatsBlok":"http://fixme.com#BegraafplaatsBlok",
-		"BegraafplaatsRij":"http://fixme.com#BegraafplaatsRij",
-		"Columbarium":"http://fixme.com#Columbarium",
+		"BegraafplaatsRij":"http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#BegraafplaatsRij",
+		"Columbarium":"http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Columbarium",
 		"Deel":"http://data.vlaanderen.be/ns/openbaardomein#Deel",
 		"Element":"http://data.vlaanderen.be/ns/openbaardomein#Element",
-		"Gebied":"http://data.vlaanderen.be/ns/openbaardomein#Gebied",
-		"Graf":"http://fixme.com#Graf",
+		"Graf":"http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Graf",
 		"Object":"http://data.vlaanderen.be/ns/openbaardomein#Object",
-		"Strooiweide":"http://fixme.com#Strooiweide",
+		"Strooiweide":"http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Strooiweide",
 		"Terreindeel":"http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Terreindeel",
-		"Urnenveld":"http://fixme.com#Urnenveld",
+		"Urnenveld":"http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Urnenveld",
 
-		"actieveLijkbezorging":{
-			"@id":"http://data.vlaanderen.be/ns/openbaardomein/gebied#actieveLijkbezorging",
-			"@type":"http://www.w3.org/2001/XMLSchema#boolean"
-		},
 		"begindatum":{
 			"@id":"http://data.vlaanderen.be/ns/openbaardomein#begindatum",
 			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
 		},
 		"bezetting":{
-			"@id":"http://fixme.com#bezetting",
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#bezetting",
 			"@type":"http://www.w3.org/2001/XMLSchema#integer"
+		},
+		"breedte":{
+			"@id":"http://schema.org/width",
+			"@type":"http://www.w3.org/2001/XMLSchema#double"
 		},
 		"capaciteit":{
 			"@id":"http://data.vlaanderen.be/ns/openbaardomein/infrastructuur#capaciteit",
@@ -34,42 +31,29 @@
 			"@id":"http://data.vlaanderen.be/ns/openbaardomein#einddatum",
 			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
 		},
-		"gemiddeldeBreedte":{
-			"@id":"http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte",
-			"@type":"http://www.w3.org/2001/XMLSchema#double"
-		},
 		"geometrie":{
 			"@id":"http://www.w3.org/ns/locn#geometry",
-			"@type":"http://www.opengis.net/ont/sf#Polygon"
+			"@type":"http://www.opengis.net/ont/geosparql#Geometry"
 		},
 		"grafkelderAanwezig":{
-			"@id":"http://fixme.com#grafkelderAanwezig",
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#grafkelderAanwezig",
 			"@type":"http://www.w3.org/2001/XMLSchema#boolean"
 		},
 		"grafteken":{
-			"@id":"http://fixme.com#grafteken",
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#grafteken",
 			"@type":"http://www.w3.org/2001/XMLSchema#boolean"
 		},
 		"graftype":{
-			"@id":"http://fixme.com#graftype",
-			"@type":"http://fixme.com#Graftypes"
+			"@id":"http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#graftype",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
 		},
 		"lengte":{
 			"@id":"http://open.vocab.org/terms/length",
 			"@type":"http://www.w3.org/2001/XMLSchema#double"
 		},
-		"lichteRecreatie":{
-			"@id":"http://data.vlaanderen.be/ns/openbaardomein/gebied#lichteRecreatie",
-			"@type":"http://www.w3.org/2001/XMLSchema#boolean"
-		},
-		"naam":{
-			"@id":"http://purl.org/dc/terms/title",
-			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-			"@container":"@set"
-		},
 		"nauwkeurigheid":{
 			"@id":"http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid",
-			"@type":"http://data.vlaanderen.be/ns/openbaardomein#Nauwkeurigsheidsklassen"
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
 		},
 		"niveau":{
 			"@id":"http://data.vlaanderen.be/ns/openbaardomein#niveau",

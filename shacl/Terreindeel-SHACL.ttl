@@ -3,15 +3,15 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Terreindeel> ;
 	sh:property [
-		sh:name "gemiddeldeBreedte" ;
-		sh:description "TODO" ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#gemiddeldeBreedte> ;
+		sh:name "breedte" ;
+		sh:description "De breedte van het object in meter. In geval van een ongelijkmatige breedte wordt de gemiddelde breedte opgenomen." ;
+		sh:path <http://schema.org/width> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "lengte" ;
-		sh:description "TODO" ;
+		sh:description "De lineare grootte van het object in meter." ;
 		sh:path <http://open.vocab.org/terms/length> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
 		sh:maxCount 1 ;
@@ -66,7 +66,7 @@
 		sh:name "nauwkeurigheid" ;
 		sh:description "De precisie waarmee het object opgemeten werd." ;
 		sh:path <http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid> ;
-		sh:class <http://data.vlaanderen.be/ns/openbaardomein#Nauwkeurigsheidsklassen> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -264,5 +264,10 @@
 <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#TrapShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Trap> ;
+	sh:closed false .
+
+<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#BoomplantplaatsShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Boomplantplaats> ;
 	sh:closed false .
 
