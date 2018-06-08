@@ -19,6 +19,10 @@
 @prefix cpsv:    <http://purl.org/vocab/cpsv#> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 
+<http://data.vlaanderen.be/ns/openbaardomein#capaciteit>
+      a       rdf:Property ;
+      rdfs:label "capaciteit"@nl .
+
 <http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement>
       a       owl:Ontology ;
       rdfs:label "Vocabularium infrastructuur-elementen"@nl ;
@@ -257,7 +261,7 @@ odi:Infozuil
 
 odi:Infrastructuurelement
       a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
+      rdfs:comment "Individueel object op het Openbaar Domein dat niet vegetatief is "@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement> ;
       rdfs:label "Infrastructuurelement"@nl ;
       rdfs:subClassOf <http://data.vlaanderen.be/ns/openbaardomein#Element> .
@@ -918,14 +922,6 @@ odi:afsluitbaar
       rdfs:label "afsluitbaar"@nl ;
       rdfs:range xsd:boolean .
 
-odi:capaciteit
-      a       owl:DatatypeProperty ;
-      rdfs:comment "Geeft het opslagvermogen van een object weer, bijvoorbeeld het aantal fietsen dat in een fietsenstalling gestald kunnen worden."@nl ;
-      rdfs:domain schema:Thing ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement> ;
-      rdfs:label "capaciteit"@nl ;
-      rdfs:range xsd:int .
-
 odi:dekselVorm
       a       owl:ObjectProperty ;
       rdfs:comment "De vorm van het deksel."@nl ;
@@ -942,13 +938,21 @@ odi:drinkbaar
       rdfs:label "brandkraan"@nl ;
       rdfs:range xsd:boolean .
 
+odi:fietsdelen
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Duidt aan of de fietsstalling al dan niet gebruikt wordt voor deelfietsen."@nl ;
+      rdfs:domain odi:Fietsstalling ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement> ;
+      rdfs:label "fietsdelen"@nl ;
+      rdfs:range xsd:boolean .
+
 odi:geschiktVoor
       a       owl:ObjectProperty ;
       rdfs:comment "Duidt het vervoersmiddel aan waarvoor het object geschikt is: auto, fiets,..."@nl ;
       rdfs:domain odi:Oplaadpunt ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement> ;
       rdfs:label "geschikt voor"@nl ;
-      rdfs:range <http://fixme.com#Vervoersmiddelen> .
+      rdfs:range skos:Concept .
 
 odi:inwendigVerlicht
       a       owl:DatatypeProperty ;
@@ -973,7 +977,7 @@ odi:nutsvoorzieningscode
       rdfs:domain <http://data.vlaanderen.be/ns/infrastructuur#Infrastructuurelement> ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement> ;
       rdfs:label "nutsvoorzieningscode"@nl ;
-      rdfs:range odi:Nutsvoorzieningscodes ;
+      rdfs:range skos:Concept ;
       vann:usageNote "Het GRB voorziet een codelijst: WNC nutsvoorzieningscode."@nl .
 
 odi:oplaadwijze
@@ -982,7 +986,7 @@ odi:oplaadwijze
       rdfs:domain odi:Oplaadpunt ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement> ;
       rdfs:label "oplaadwijze"@nl ;
-      rdfs:range <http://fixme.com#Oplaadwijzes> .
+      rdfs:range skos:Concept .
 
 odi:overdekt
       a       owl:DatatypeProperty ;
@@ -1007,7 +1011,7 @@ odi:sorteerfractie
       rdfs:domain odi:Recyclagecontainer ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement> ;
       rdfs:label "sorteerfractie"@nl ;
-      rdfs:range <http://fixme.com#Sorteerfracties> .
+      rdfs:range skos:Concept .
 
 odi:speeltoesteltype
       a       owl:ObjectProperty ;
@@ -1015,7 +1019,7 @@ odi:speeltoesteltype
       rdfs:domain odi:SpeelEnSportvoorziening ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement> ;
       rdfs:label "speeltoesteltype"@nl ;
-      rdfs:range <http://fixme.com#SpeelEnSportvoorzieningType> .
+      rdfs:range skos:Concept .
 
 odi:stekkertype
       a       owl:ObjectProperty ;
@@ -1023,7 +1027,7 @@ odi:stekkertype
       rdfs:domain odi:Oplaadpunt ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement> ;
       rdfs:label "stekkertype"@nl ;
-      rdfs:range <http://fixme.com#OplaadpuntStekkertypes> .
+      rdfs:range skos:Concept .
 
 odi:straatkolktype
       a       owl:ObjectProperty ;
@@ -1031,7 +1035,7 @@ odi:straatkolktype
       rdfs:domain odi:Straatkolk ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement> ;
       rdfs:label "straatkolktype"@nl ;
-      rdfs:range <http://fixme.com#Straatkolktypes> .
+      rdfs:range skos:Concept .
 
 odi:verplaatsbaar
       a       owl:DatatypeProperty ;
