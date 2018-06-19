@@ -68,7 +68,7 @@
               <div class="head" role="contentinfo" id="respecHeader">
                 <dl>
                   <dt>Laatste aanpassing</dt>
-                  <dd>2018-06-08</dd>
+                  <dd>2018-06-19</dd>
 
                   
                   
@@ -89,7 +89,7 @@
               </div>
 
               
-De objectcatalogus infrastructuurelementen is een uitbreiding van het object Element en omvat de individuele objecten op het terrein die niet vegetatief zijn. Vele van deze objecten zijn terug te vinden of zijn afgeleid van objecten uit GRB-basis en GRB-skelet. De eventuele verwijzing naar GRB-basis en GRB-skelet is bij elk object gegeven onder de rubriek Gebruik (Entiteiten). De opgestelde taxonomie is een leidraad voor de gebruiker om op een meer gestructureerde manier de verscheidene infrastructuurelementen terug te vinden.
+<p>De objectcatalogus infrastructuurelementen is een uitbreiding van het object Element en omvat de individuele objecten op het terrein die niet vegetatief zijn. Vele van deze objecten zijn terug te vinden of zijn afgeleid van objecten uit GRB-basis en GRB-skelet. De eventuele verwijzing naar GRB-basis en GRB-skelet is bij elk object gegeven onder de rubriek Gebruik (Entiteiten). De opgestelde taxonomie is een leidraad voor de gebruiker om op een meer gestructureerde manier de verscheidene infrastructuurelementen terug te vinden.</p>
 
             </div>
 
@@ -132,12 +132,15 @@ De objectcatalogus infrastructuurelementen is een uitbreiding van het object Ele
                       <a href="#Detectielus">Detectielus</a> |
                       <a href="#Draadafsluiting">Draadafsluiting</a> |
                       <a href="#Dwarsligger">Dwarsligger</a> |
+                      <a href="#Elektriciteitspaal">Elektriciteitspaal</a> |
                       <a href="#Fietsstalling">Fietsstalling</a> |
                       <a href="#Fietstelpaal">Fietstelpaal</a> |
                       <a href="#Flitspaal">Flitspaal</a> |
                       <a href="#Geluidscherm">Geluidscherm</a> |
                       <a href="#Grenspaal">Grenspaal</a> |
+                      <a href="#GSM-paal">GSM-paal</a> |
                       <a href="#Hoogspanningsmast">Hoogspanningsmast</a> |
+                      <a href="#Hoogspanningspaal">Hoogspanningspaal</a> |
                       <a href="#Huisaansluiting">Huisaansluiting</a> |
                       <a href="#Infozuil">Infozuil</a> |
                       <a href="#Infrastructuurelement">Infrastructuurelement</a> |
@@ -195,6 +198,7 @@ De objectcatalogus infrastructuurelementen is een uitbreiding van het object Ele
                       <a href="#Straatkolk">Straatkolk</a> |
                       <a href="#Straatmeubilair">Straatmeubilair</a> |
                       <a href="#Straatspiegel">Straatspiegel</a> |
+                      <a href="#Telefoonpaal">Telefoonpaal</a> |
                       <a href="#Toegangspoort">Toegangspoort</a> |
                       <a href="#Tractorsluis">Tractorsluis</a> |
                       <a href="#Transversale weginrichting">Transversale weginrichting</a> |
@@ -218,6 +222,7 @@ De objectcatalogus infrastructuurelementen is een uitbreiding van het object Ele
                       <a href="#Wegmonoliet">Wegmonoliet</a> |
                       <a href="#Wegneembare wegmonoliet">Wegneembare wegmonoliet</a> |
                       <a href="#Wegsignalisatie">Wegsignalisatie</a> |
+                      <a href="#Windturbine">Windturbine</a> |
                       <a href="#Zichtbaar deksel of luik">Zichtbaar deksel of luik</a> |
                       <a href="#Zitbank">Zitbank</a> |
                     </p>
@@ -326,6 +331,14 @@ De objectcatalogus infrastructuurelementen is een uitbreiding van het object Ele
                   {
                     "name": "Paal bovenleiding tram trein trolley",
                     "parent": "Infrastructuurelement"         
+                  }, 
+                  {
+                    "name": "Elektriciteitspaal",
+                    "parent": "Infrastructuurelement"         
+                  }, 
+                  {
+                    "name": "Telefoonpaal",
+                    "parent": "Infrastructuurelement"         
                   },  
                   {
                     "name": "Mast",
@@ -347,7 +360,21 @@ De objectcatalogus infrastructuurelementen is een uitbreiding van het object Ele
                   },
                   {
                     "name": "Nutspaal",
-                    "parent": "Infrastructuurelement",          
+                    "parent": "Infrastructuurelement",
+                    "children": [
+                      {
+                        "name": "GSM-paal",
+                        "parent": "Nutspaal"         
+                      },
+                      {
+                        "name": "Hoogspanningspaal",
+                        "parent": "Nutspaal"         
+                      },
+                      {
+                        "name": "Windturbine",
+                        "parent": "Nutspaal"         
+                      }                         
+                    ]       
                   },
                   {
                     "name": "Pijler",
@@ -698,6 +725,7 @@ De objectcatalogus infrastructuurelementen is een uitbreiding van het object Ele
                 ]
               }
             ];
+
 
 
             // ************** Generate the tree diagram  *****************
@@ -3996,6 +4024,147 @@ De objectcatalogus infrastructuurelementen is een uitbreiding van het object Ele
             </div>
             
             <div class="region region--no-space-top">
+              <h3 class="h3" id="Elektriciteitspaal"><a href="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#Elektriciteitspaal" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#Elektriciteitspaal" data-placement="right">Elektriciteitspaal</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Paal van de elektriciteitsleiding.</dd>
+                    
+                    <dt>Gebruik</dt><dd>Naar GRB-skeletaanvulling detail - WPI1: Paal</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Elektriciteitspaal%3Abegindatum">begindatum</a>, 
+                      <a href="#Elektriciteitspaal%3Aeinddatum">einddatum</a>, 
+                      <a href="#Elektriciteitspaal%3Ageometrie">geometrie</a>, 
+                      <a href="#Elektriciteitspaal%3Amateriaal">materiaal</a>, 
+                      <a href="#Elektriciteitspaal%3Anauwkeurigheid">nauwkeurigheid</a>, 
+                      <a href="#Elektriciteitspaal%3Aniveau">niveau</a>, 
+                      <a href="#Elektriciteitspaal%3Arelatie">relatie</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Elektriciteitspaal%3Abegindatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#begindatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
+                            begindatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het gebied of object in gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Elektriciteitspaal%3Aeinddatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#einddatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
+                            einddatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het beheerobject uit gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Elektriciteitspaal%3Ageometrie" typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#geometry">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/ns/locn#geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#geometry" data-placement="right">
+                            geometrie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.opengis.net/ont/geosparql#Geometry" data-toggle="tooltip" data-content="http://www.opengis.net/ont/geosparql#Geometry" data-placement="right">Geometrie</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De geometrie overeenkomstig met een bepaald object.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Elektriciteitspaal%3Amateriaal" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#materiaal">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#materiaal" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#materiaal" data-placement="right">
+                            materiaal</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Materialen</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Materiaal waar het object uit vervaardigd is.</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="https://thesaurus.onroerenderfgoed.be/conceptschemes/MATERIALEN">Link</a></td>
+                      </tr>
+                    
+                      <tr id="Elektriciteitspaal%3Anauwkeurigheid" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
+                            nauwkeurigheid</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Nauwkeurigsheidsklassen</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De precisie waarmee het object opgemeten werd.</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="http://data.vlaanderen.be/id/conceptscheme/Nauwkeurigsheidsklassen">Link</a></td>
+                      </tr>
+                    
+                      <tr id="Elektriciteitspaal%3Aniveau" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#niveau">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
+                            niveau</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#integer" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#integer" data-placement="right">Integer</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten.</td>
+                        <td property="vann:usageNote">Negatieve waarden worden geassocieerd met ondergronds en positieve waarden met bovengronds. Nul wordt beschouwd als een absolute waarde om het maaiveld aan te duiden.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Elektriciteitspaal%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
+                            relatie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Resource" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Resource" data-placement="right">RelatieObject</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Verwijst naar een object in een andere databank dat meer informatie kan verschaffen over het beheerobject.</td>
+                        <td property="vann:usageNote">Bijvoorbeeld een verwijzing naar een object uit het wegenregister of grootschalig referentiebestand.</td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
+            </div>
+            
+            <div class="region region--no-space-top">
               <h3 class="h3" id="Fietsstalling"><a href="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#Fietsstalling" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#Fietsstalling" data-placement="right">Fietsstalling</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
@@ -4776,6 +4945,147 @@ De objectcatalogus infrastructuurelementen is een uitbreiding van het object Ele
             </div>
             
             <div class="region region--no-space-top">
+              <h3 class="h3" id="GSM-paal"><a href="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#GSM-paal" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#GSM-paal" data-placement="right">GSM-paal</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Een burgerlijke constructie die gebruikt wordt voor de distributie van mobiele netwerken.</dd>
+                    
+                    <dt>Gebruik</dt><dd>Naar GRB-skeletaanvulling detail - KNW14: Nutspaal</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#GSM-paal%3Abegindatum">begindatum</a>, 
+                      <a href="#GSM-paal%3Aeinddatum">einddatum</a>, 
+                      <a href="#GSM-paal%3Ageometrie">geometrie</a>, 
+                      <a href="#GSM-paal%3Amateriaal">materiaal</a>, 
+                      <a href="#GSM-paal%3Anauwkeurigheid">nauwkeurigheid</a>, 
+                      <a href="#GSM-paal%3Aniveau">niveau</a>, 
+                      <a href="#GSM-paal%3Arelatie">relatie</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="GSM-paal%3Abegindatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#begindatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
+                            begindatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het gebied of object in gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="GSM-paal%3Aeinddatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#einddatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
+                            einddatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het beheerobject uit gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="GSM-paal%3Ageometrie" typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#geometry">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/ns/locn#geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#geometry" data-placement="right">
+                            geometrie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.opengis.net/ont/geosparql#Geometry" data-toggle="tooltip" data-content="http://www.opengis.net/ont/geosparql#Geometry" data-placement="right">Geometrie</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De geometrie overeenkomstig met een bepaald object.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="GSM-paal%3Amateriaal" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#materiaal">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#materiaal" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#materiaal" data-placement="right">
+                            materiaal</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Materialen</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Materiaal waar het object uit vervaardigd is.</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="https://thesaurus.onroerenderfgoed.be/conceptschemes/MATERIALEN">Link</a></td>
+                      </tr>
+                    
+                      <tr id="GSM-paal%3Anauwkeurigheid" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
+                            nauwkeurigheid</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Nauwkeurigsheidsklassen</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De precisie waarmee het object opgemeten werd.</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="http://data.vlaanderen.be/id/conceptscheme/Nauwkeurigsheidsklassen">Link</a></td>
+                      </tr>
+                    
+                      <tr id="GSM-paal%3Aniveau" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#niveau">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
+                            niveau</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#integer" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#integer" data-placement="right">Integer</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten.</td>
+                        <td property="vann:usageNote">Negatieve waarden worden geassocieerd met ondergronds en positieve waarden met bovengronds. Nul wordt beschouwd als een absolute waarde om het maaiveld aan te duiden.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="GSM-paal%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
+                            relatie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Resource" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Resource" data-placement="right">RelatieObject</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Verwijst naar een object in een andere databank dat meer informatie kan verschaffen over het beheerobject.</td>
+                        <td property="vann:usageNote">Bijvoorbeeld een verwijzing naar een object uit het wegenregister of grootschalig referentiebestand.</td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
+            </div>
+            
+            <div class="region region--no-space-top">
               <h3 class="h3" id="Hoogspanningsmast"><a href="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#Hoogspanningsmast" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#Hoogspanningsmast" data-placement="right">Hoogspanningsmast</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
@@ -4912,6 +5222,147 @@ De objectcatalogus infrastructuurelementen is een uitbreiding van het object Ele
                       </tr>
                     
                       <tr id="Hoogspanningsmast%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
+                            relatie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Resource" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Resource" data-placement="right">RelatieObject</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Verwijst naar een object in een andere databank dat meer informatie kan verschaffen over het beheerobject.</td>
+                        <td property="vann:usageNote">Bijvoorbeeld een verwijzing naar een object uit het wegenregister of grootschalig referentiebestand.</td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Hoogspanningspaal"><a href="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#Hoogspanningspaal" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#Hoogspanningspaal" data-placement="right">Hoogspanningspaal</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Een burgerlijke constructie die gebruikt wordt voor het transport van elektriciteit.</dd>
+                    
+                    <dt>Gebruik</dt><dd>Naar GRB-skeletaanvulling detail - KNW14: Nutspaal</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Hoogspanningspaal%3Abegindatum">begindatum</a>, 
+                      <a href="#Hoogspanningspaal%3Aeinddatum">einddatum</a>, 
+                      <a href="#Hoogspanningspaal%3Ageometrie">geometrie</a>, 
+                      <a href="#Hoogspanningspaal%3Amateriaal">materiaal</a>, 
+                      <a href="#Hoogspanningspaal%3Anauwkeurigheid">nauwkeurigheid</a>, 
+                      <a href="#Hoogspanningspaal%3Aniveau">niveau</a>, 
+                      <a href="#Hoogspanningspaal%3Arelatie">relatie</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Hoogspanningspaal%3Abegindatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#begindatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
+                            begindatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het gebied of object in gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Hoogspanningspaal%3Aeinddatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#einddatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
+                            einddatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het beheerobject uit gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Hoogspanningspaal%3Ageometrie" typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#geometry">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/ns/locn#geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#geometry" data-placement="right">
+                            geometrie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.opengis.net/ont/geosparql#Geometry" data-toggle="tooltip" data-content="http://www.opengis.net/ont/geosparql#Geometry" data-placement="right">Geometrie</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De geometrie overeenkomstig met een bepaald object.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Hoogspanningspaal%3Amateriaal" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#materiaal">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#materiaal" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#materiaal" data-placement="right">
+                            materiaal</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Materialen</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Materiaal waar het object uit vervaardigd is.</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="https://thesaurus.onroerenderfgoed.be/conceptschemes/MATERIALEN">Link</a></td>
+                      </tr>
+                    
+                      <tr id="Hoogspanningspaal%3Anauwkeurigheid" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
+                            nauwkeurigheid</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Nauwkeurigsheidsklassen</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De precisie waarmee het object opgemeten werd.</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="http://data.vlaanderen.be/id/conceptscheme/Nauwkeurigsheidsklassen">Link</a></td>
+                      </tr>
+                    
+                      <tr id="Hoogspanningspaal%3Aniveau" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#niveau">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
+                            niveau</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#integer" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#integer" data-placement="right">Integer</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten.</td>
+                        <td property="vann:usageNote">Negatieve waarden worden geassocieerd met ondergronds en positieve waarden met bovengronds. Nul wordt beschouwd als een absolute waarde om het maaiveld aan te duiden.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Hoogspanningspaal%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
                         <td>
                           <code property="rdfs:label">
                             <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
@@ -7591,9 +8042,9 @@ De objectcatalogus infrastructuurelementen is een uitbreiding van het object Ele
               <h3 class="h3" id="Nutspaal"><a href="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#Nutspaal" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#Nutspaal" data-placement="right">Nutspaal</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Paal ten behoeve van de distributie van gas, elektriciteit</dd>
+                    <dt>Beschrijving</dt><dd>Een nutspaal is een burgerlijke constructie, die gebruikt wordt voor de aanmaak (windturbine), het transport (hoogspanningspaal) of distributie (GSM-paal) van nutssignalen.</dd>
                     
-                    <dt>Gebruik</dt><dd>Aangevuld met een Nutsvoorzieningscode (GRB-skeletoptie wegbeheer - WNC: nutsvoorzieningscode). Naar GRB-skeletaanvulling detail - WPI1: Paal; WKI: Nutskast</dd>
+                    <dt>Gebruik</dt><dd>Een paal verschilt van een mast door zijn enkelvoetige duurzame verankering met de grond. Naar GRB-skeletaanvulling detail - KNW14: Nutspaal</dd>
                     
                     <dt>Eigenschappen</dt>
                     
@@ -7604,7 +8055,6 @@ De objectcatalogus infrastructuurelementen is een uitbreiding van het object Ele
                       <a href="#Nutspaal%3Amateriaal">materiaal</a>, 
                       <a href="#Nutspaal%3Anauwkeurigheid">nauwkeurigheid</a>, 
                       <a href="#Nutspaal%3Aniveau">niveau</a>, 
-                      <a href="#Nutspaal%3Anutsvoorzieningscode">nutsvoorzieningscode</a>, 
                       <a href="#Nutspaal%3Arelatie">relatie</a>.</dd>
                     
                   </dl>
@@ -7707,20 +8157,6 @@ De objectcatalogus infrastructuurelementen is een uitbreiding van het object Ele
                         <td property="rdfs:comment">Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten.</td>
                         <td property="vann:usageNote">Negatieve waarden worden geassocieerd met ondergronds en positieve waarden met bovengronds. Nul wordt beschouwd als een absolute waarde om het maaiveld aan te duiden.</td>
                         <td></td>
-                      </tr>
-                    
-                      <tr id="Nutspaal%3Anutsvoorzieningscode" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#nutsvoorzieningscode">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#nutsvoorzieningscode" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#nutsvoorzieningscode" data-placement="right">
-                            nutsvoorzieningscode</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Nutsvoorzieningscodes</a></td>
-                        <td>1...*</td>
-                        <td property="rdfs:comment">Aanduiding van de soort nutsvoorziening.</td>
-                        <td property="vann:usageNote">Gebruik de GRB codelijst: WNC nutsvoorzieningscode.</td>
-                        <td><a href="http://data.vlaanderen.be/id/conceptscheme/Nutsvoorzieningscodes">Link</a></td>
                       </tr>
                     
                       <tr id="Nutspaal%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
@@ -13512,6 +13948,147 @@ De objectcatalogus infrastructuurelementen is een uitbreiding van het object Ele
             </div>
             
             <div class="region region--no-space-top">
+              <h3 class="h3" id="Telefoonpaal"><a href="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#Telefoonpaal" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#Telefoonpaal" data-placement="right">Telefoonpaal</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Paal van de telefoonleiding.</dd>
+                    
+                    <dt>Gebruik</dt><dd>Naar GRB-skeletaanvulling detail - WPI1: Paal</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Telefoonpaal%3Abegindatum">begindatum</a>, 
+                      <a href="#Telefoonpaal%3Aeinddatum">einddatum</a>, 
+                      <a href="#Telefoonpaal%3Ageometrie">geometrie</a>, 
+                      <a href="#Telefoonpaal%3Amateriaal">materiaal</a>, 
+                      <a href="#Telefoonpaal%3Anauwkeurigheid">nauwkeurigheid</a>, 
+                      <a href="#Telefoonpaal%3Aniveau">niveau</a>, 
+                      <a href="#Telefoonpaal%3Arelatie">relatie</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Telefoonpaal%3Abegindatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#begindatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
+                            begindatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het gebied of object in gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Telefoonpaal%3Aeinddatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#einddatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
+                            einddatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het beheerobject uit gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Telefoonpaal%3Ageometrie" typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#geometry">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/ns/locn#geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#geometry" data-placement="right">
+                            geometrie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.opengis.net/ont/geosparql#Geometry" data-toggle="tooltip" data-content="http://www.opengis.net/ont/geosparql#Geometry" data-placement="right">Geometrie</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De geometrie overeenkomstig met een bepaald object.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Telefoonpaal%3Amateriaal" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#materiaal">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#materiaal" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#materiaal" data-placement="right">
+                            materiaal</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Materialen</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Materiaal waar het object uit vervaardigd is.</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="https://thesaurus.onroerenderfgoed.be/conceptschemes/MATERIALEN">Link</a></td>
+                      </tr>
+                    
+                      <tr id="Telefoonpaal%3Anauwkeurigheid" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
+                            nauwkeurigheid</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Nauwkeurigsheidsklassen</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De precisie waarmee het object opgemeten werd.</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="http://data.vlaanderen.be/id/conceptscheme/Nauwkeurigsheidsklassen">Link</a></td>
+                      </tr>
+                    
+                      <tr id="Telefoonpaal%3Aniveau" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#niveau">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
+                            niveau</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#integer" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#integer" data-placement="right">Integer</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten.</td>
+                        <td property="vann:usageNote">Negatieve waarden worden geassocieerd met ondergronds en positieve waarden met bovengronds. Nul wordt beschouwd als een absolute waarde om het maaiveld aan te duiden.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Telefoonpaal%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
+                            relatie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Resource" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Resource" data-placement="right">RelatieObject</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Verwijst naar een object in een andere databank dat meer informatie kan verschaffen over het beheerobject.</td>
+                        <td property="vann:usageNote">Bijvoorbeeld een verwijzing naar een object uit het wegenregister of grootschalig referentiebestand.</td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
+            </div>
+            
+            <div class="region region--no-space-top">
               <h3 class="h3" id="Toegangspoort"><a href="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#Toegangspoort" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#Toegangspoort" data-placement="right">Toegangspoort</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
@@ -16879,6 +17456,147 @@ De objectcatalogus infrastructuurelementen is een uitbreiding van het object Ele
                       </tr>
                     
                       <tr id="Wegsignalisatie%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
+                            relatie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Resource" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Resource" data-placement="right">RelatieObject</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Verwijst naar een object in een andere databank dat meer informatie kan verschaffen over het beheerobject.</td>
+                        <td property="vann:usageNote">Bijvoorbeeld een verwijzing naar een object uit het wegenregister of grootschalig referentiebestand.</td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Windturbine"><a href="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#Windturbine" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#Windturbine" data-placement="right">Windturbine</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Een burgerlijke constructie die gebruikt wordt voor de opwekking van elektriciteit.</dd>
+                    
+                    <dt>Gebruik</dt><dd>Naar GRB-skeletaanvulling detail - KNW14: Nutspaal</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Windturbine%3Abegindatum">begindatum</a>, 
+                      <a href="#Windturbine%3Aeinddatum">einddatum</a>, 
+                      <a href="#Windturbine%3Ageometrie">geometrie</a>, 
+                      <a href="#Windturbine%3Amateriaal">materiaal</a>, 
+                      <a href="#Windturbine%3Anauwkeurigheid">nauwkeurigheid</a>, 
+                      <a href="#Windturbine%3Aniveau">niveau</a>, 
+                      <a href="#Windturbine%3Arelatie">relatie</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Windturbine%3Abegindatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#begindatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
+                            begindatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het gebied of object in gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Windturbine%3Aeinddatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#einddatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
+                            einddatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het beheerobject uit gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Windturbine%3Ageometrie" typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#geometry">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/ns/locn#geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#geometry" data-placement="right">
+                            geometrie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.opengis.net/ont/geosparql#Geometry" data-toggle="tooltip" data-content="http://www.opengis.net/ont/geosparql#Geometry" data-placement="right">Geometrie</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De geometrie overeenkomstig met een bepaald object.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Windturbine%3Amateriaal" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#materiaal">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#materiaal" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#materiaal" data-placement="right">
+                            materiaal</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Materialen</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Materiaal waar het object uit vervaardigd is.</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="https://thesaurus.onroerenderfgoed.be/conceptschemes/MATERIALEN">Link</a></td>
+                      </tr>
+                    
+                      <tr id="Windturbine%3Anauwkeurigheid" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
+                            nauwkeurigheid</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Nauwkeurigsheidsklassen</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De precisie waarmee het object opgemeten werd.</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="http://data.vlaanderen.be/id/conceptscheme/Nauwkeurigsheidsklassen">Link</a></td>
+                      </tr>
+                    
+                      <tr id="Windturbine%3Aniveau" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#niveau">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
+                            niveau</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#integer" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#integer" data-placement="right">Integer</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten.</td>
+                        <td property="vann:usageNote">Negatieve waarden worden geassocieerd met ondergronds en positieve waarden met bovengronds. Nul wordt beschouwd als een absolute waarde om het maaiveld aan te duiden.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Windturbine%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
                         <td>
                           <code property="rdfs:label">
                             <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
