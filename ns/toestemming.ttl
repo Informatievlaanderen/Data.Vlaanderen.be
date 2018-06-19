@@ -32,7 +32,8 @@
 eu:PublicOrganisation a rdfs:Class ;
     rdfs:label "Publieke Organisatie"@nl .
 
-dcterms:Agent a rdfs:Class .
+dcterms:Agent a rdfs:Class ;
+    rdfs:label "Agent"@nl .
 
 cpsv:PublicService a rdfs:Class ;
     rdfs:label "Publieke Dienstverlening"@nl .
@@ -40,23 +41,26 @@ cpsv:PublicService a rdfs:Class ;
 org:Organization a rdfs:Class ;
     rdfs:label "Organisatie"@nl .
 
-eu:hasContactPoint a rdf:Property ;
-    rdfs:label "heeft contactpunt"@nl .
+foaf:Document a rdfs:Class ;
+    rdfs:label "Document"@nl .
 
-eu:hasCost a rdf:Property ;
-    rdfs:label "heeft kost"@nl .
-
-eu:processingTime a rdf:Property ;
-    rdfs:label "verwerkingstijd"@nl .
-
-eu:sector a rdf:Property ;
-    rdfs:label "sector"@nl .
-
-<http://data.vlaanderen.be/ns/toestemming#ContactvoorkeurDescriptor> a owl:Class ;
-    rdfs:label "Contactvoorkeur Descriptor"@nl ;
-    rdfs:comment "De blauwdruk van een contactvoorkeur zoals geconfigureerd door de data controller. Omvat de contact kanalen langs waar eindgebruikers communicatie of notificaties kunnen ontvangen."@nl ;
+<http://data.vlaanderen.be/ns/toestemming#AlgemeneVoorwaarden> a owl:Class ;
+    rdfs:label "Algemene Voorwaarden"@nl ;
+    rdfs:comment "Standaardbedingen waarnaar verwezen kan worden bij het opstellen van een schriftelijke overeenkomst. Algemene voorwaarden mogen niet 'onredelijk bezwarend' zijn; dan kunnen ze door de rechter nietig worden verklaard."@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
-    rdfs:subClassOf <http://data.vlaanderen.be/ns/toestemming#ToestemmingDescriptor> .
+    rdfs:subClassOf foaf:Document .
+
+<http://data.vlaanderen.be/ns/toestemming#Cookieverklaring> a owl:Class ;
+    rdfs:label "Cookieverklaring"@nl ;
+    rdfs:comment "Een document met informatie om personen duidelijk te informeren over welke cookies gebruikt worden in een toepassing en voor welke doeleinden."@nl ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
+    rdfs:subClassOf foaf:Document .
+
+<http://data.vlaanderen.be/ns/toestemming#Privacyverklaring> a owl:Class ;
+    rdfs:label "Privacyverklaring"@nl ;
+    rdfs:comment "Een document met informatie om personen duidelijk te informeren over welke privacygevoelige gegevens u verzamelt en met welk doel."@nl ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
+    rdfs:subClassOf foaf:Document .
 
 <http://data.vlaanderen.be/ns/toestemming#beperking> a owl:DatatypeProperty ;
     rdfs:label "beperking"@nl ;
@@ -66,26 +70,6 @@ eu:sector a rdf:Property ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
     rdfs:range rdfs:Literal .
 
-<http://data.vlaanderen.be/ns/toestemming#contactkanaal> a rdf:Property ;
-    rdfs:label "contactkanaal"@nl ;
-    rdfs:comment "Het kanaal of medium langs waar een gebruiker gecontacteerd kan worden. Bijvoorbeeld sms of e-mail."@nl ;
-    rdfs:domain rdfs:Resource ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> .
-
-<http://data.vlaanderen.be/ns/toestemming#dataController> a owl:ObjectProperty ;
-    rdfs:label "data controller"@nl ;
-    rdfs:comment "De entiteit die beslist over het doel, de voorwaarden en de manier waarop persoonlijke informatie verwerkt wordt."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/toestemming#ToestemmingDescriptor> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
-    rdfs:range eu:PublicOrganisation .
-
-<http://data.vlaanderen.be/ns/toestemming#dataProcessor> a owl:ObjectProperty ;
-    rdfs:label "data processor"@nl ;
-    rdfs:comment "De entiteit die persoonlijke informatie verwerkt namens de data controller."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/toestemming#ToestemmingDescriptor> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
-    rdfs:range org:Organization .
-
 <http://data.vlaanderen.be/ns/toestemming#dataSubject> a owl:ObjectProperty ;
     rdfs:label "data subject"@nl ;
     rdfs:comment "Verwijst naar de Agent die het onderwerp vormt van de persoonlijke informatie waarvoor toestemming verleend werd."@nl ;
@@ -93,25 +77,12 @@ eu:sector a rdf:Property ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
     rdfs:range dcterms:Agent .
 
-<http://data.vlaanderen.be/ns/toestemming#databron> a owl:ObjectProperty ;
-    rdfs:label "databron"@nl ;
-    rdfs:comment "De entiteit die de technische beheerder is van de persoonlijke informatie."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/toestemming#ToestemmingDescriptor> ;
+<http://data.vlaanderen.be/ns/toestemming#extraInformatie> a owl:ObjectProperty ;
+    rdfs:label "extra informatie"@nl ;
+    rdfs:comment "Verwijzing naar een document met extra informatie over de verwerkingsactiviteit."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/toestemming#Verwerkingsactiviteit> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
-    rdfs:range eu:PublicOrganisation .
-
-<http://data.vlaanderen.be/ns/toestemming#descriptor> a owl:ObjectProperty ;
-    rdfs:label "descriptor"@nl ;
-    rdfs:comment "Verwijzing naar de ToestemmingDescriptor die de blauwdruk vormt voor de toestemming."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/toestemming#Toestemming> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
-    rdfs:range <http://data.vlaanderen.be/ns/toestemming#ToestemmingDescriptor> .
-
-<http://data.vlaanderen.be/ns/toestemming#frequentie> a rdf:Property ;
-    rdfs:label "frequentie"@nl ;
-    rdfs:comment "De frequentie waarmee de Agent gecontacteerd mag worden."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/toestemming#Contactvoorkeur> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> .
+    rdfs:range foaf:Document .
 
 <http://data.vlaanderen.be/ns/toestemming#gegevenOp> a owl:DatatypeProperty ;
     rdfs:label "gegeven op"@nl ;
@@ -120,115 +91,97 @@ eu:sector a rdf:Property ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
     rdfs:range xsd:date .
 
-<http://data.vlaanderen.be/ns/toestemming#notificatiecategorie> a rdf:Property ;
-    rdfs:label "notificatiecategorie"@nl ;
-    rdfs:comment "De notificatie categorie waarvoor de Agent toestemming verleende om gecontacteerd te worden."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/toestemming#Contactvoorkeur> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> .
+<http://data.vlaanderen.be/ns/toestemming#gegevenVoor> a owl:ObjectProperty ;
+    rdfs:label "gegeven voor"@nl ;
+    rdfs:comment "Relatie met de verwerkingsactiviteit waarvoor expliciet toestemming werd gegeven."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/toestemming#Toestemming> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
+    rdfs:range <http://data.vlaanderen.be/ns/toestemming#Verwerkingsactiviteit> .
 
-<http://data.vlaanderen.be/ns/toestemming#status> a rdf:Property ;
+<http://data.vlaanderen.be/ns/toestemming#heeftVerwerkersovereenkomstMet> a owl:ObjectProperty ;
+    rdfs:label "heeft verwerkersovereenkomst"@nl ;
+    rdfs:comment "Verwijst naar de verwerkersovereenkomst die is aangegaan tussen de verwerker en de verwerkingsverantwoordelijke."@nl ;
+    rdfs:domain org:Organization ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
+    rdfs:range <http://data.vlaanderen.be/ns/toestemming#Verwerkersovereenkomst> .
+
+<http://data.vlaanderen.be/ns/toestemming#status> a owl:ObjectProperty ;
     rdfs:label "status"@nl ;
     rdfs:comment "De status geeft aan of de toestemming al dan niet actief is."@nl ;
     rdfs:domain <http://data.vlaanderen.be/ns/toestemming#Toestemming> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> .
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
+    rdfs:range skos:Concept .
 
-<http://data.vlaanderen.be/ns/toestemming#toestemmingsvraag> a rdf:Property ;
+<http://data.vlaanderen.be/ns/toestemming#toestemmingsvraag> a owl:DatatypeProperty ;
     rdfs:label "toestemmingsvraag"@nl ;
     rdfs:comment "De vraag die gesteld wordt aan gebruikers om hun toestemming te verlenen."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/toestemming#ToestemmingDescriptor> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> .
+    rdfs:domain <http://data.vlaanderen.be/ns/toestemming#Verwerkingsactiviteit> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
+    rdfs:range xsd:string .
 
-dcterms:description a rdf:Property ;
-    rdfs:label "beschrijving"@nl .
+<http://data.vlaanderen.be/ns/toestemming#verwerker> a owl:ObjectProperty ;
+    rdfs:label "verwerker"@nl ;
+    rdfs:comment "een natuurlijke persoon of rechtspersoon, een overheidsinstantie, een dienst of een ander orgaan die/dat ten behoeve van de verwerkingsverantwoordelijke persoonsgegevens verwerkt."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/toestemming#Verwerkingsactiviteit> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
+    rdfs:range org:Organization .
 
-dcterms:language a rdf:Property ;
-    rdfs:label "taal"@nl .
+<http://data.vlaanderen.be/ns/toestemming#verwerkingsgrond> a owl:ObjectProperty ;
+    rdfs:label "rechtsgrond"@nl ;
+    rdfs:comment "De rechtsgrond voor de verwerkingsactiviteit."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/toestemming#Verwerkingsactiviteit> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
+    rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/toestemming#verwerkingsverantwoordelijke> a owl:ObjectProperty ;
+    rdfs:label "verwerkingsverantwoordelijke"@nl ;
+    vann:usageNote "Wanneer de doelstellingen van en de middelen voor deze verwerking in het Unierecht of het lidstatelijke recht worden vastgesteld, kan daarin worden bepaald wie de verwerkingsverantwoordelijke is of volgens welke criteria deze wordt aangewezen."@nl ;
+    rdfs:comment "Een natuurlijke persoon of rechtspersoon, een overheidsinstantie, een dienst of een ander orgaan die/dat, alleen of samen met anderen, het doel van en de middelen voor de verwerking van persoonsgegevens vaststelt."@nl ;
+    rdfs:domain <http://data.vlaanderen.be/ns/toestemming#Verwerkingsactiviteit> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
+    rdfs:range eu:PublicOrganisation .
 
 dcterms:relation a rdf:Property ;
     rdfs:label "is gerelateerd met"@nl .
 
-dcterms:spatial a rdf:Property ;
-    rdfs:label "ruimtelijke dekking"@nl .
-
-dcterms:title a rdf:Property ;
-    rdfs:label "titel"@nl .
-
 dcterms:type a rdf:Property ;
-    rdfs:label "type"@nl .
-
-schema:contactPoint a rdf:Property ;
-    rdfs:label "contactpunt"@nl .
-
-schema:email a rdf:Property ;
-    rdfs:label "email"@nl .
+    rdfs:label "type verwerking"@nl .
 
 schema:expires a rdf:Property ;
     rdfs:label "vervalt"@nl .
 
-schema:logo a rdf:Property ;
-    rdfs:label "logo"@nl .
-
-schema:telephone a rdf:Property ;
-    rdfs:label "telefoon"@nl .
+schema:url a rdf:Property ;
+    rdfs:label "url"@nl .
 
 rdfs:label a rdf:Property ;
     rdfs:label "label"@nl .
 
-skos:altLabel a rdf:Property ;
-    rdfs:label "alternatieve label"@nl .
-
-skos:prefLabel a rdf:Property ;
-    rdfs:label "voorkeurslabel"@nl .
-
-<http://www.w3.org/ns/adms#status> a rdf:Property ;
-    rdfs:label "status"@nl .
-
-dcat:keyword a rdf:Property ;
-    rdfs:label "trefwoord"@nl .
-
-org:classification a rdf:Property ;
-    rdfs:label "classificatie"@nl .
-
-org:purpose a rdf:Property ;
-    rdfs:label "doel"@nl .
-
-rov:orgActivity a rdf:Property ;
-    rdfs:label "organisatieactiviteit"@nl .
-
-rov:orgStatus a rdf:Property ;
-    rdfs:label "organisatiestatus"@nl .
-
-rov:orgType a rdf:Property ;
-    rdfs:label "organisatietype"@nl .
-
-foaf:homepage a rdf:Property ;
-    rdfs:label "Homepage"@nl .
-
-<http://data.vlaanderen.be/ns/toestemming#Contactvoorkeur> a owl:Class ;
-    rdfs:label "Contactvoorkeur"@nl ;
-    rdfs:comment "Een expliciete toestemming voor het bijhouden en gebruiken van contactgegevens,gegeven door een bepaalde Agent die het onderwerp vormt van de contactgegevens of hiervoor bevoegd is."@nl ;
+<http://data.vlaanderen.be/ns/toestemming#Verwerkersovereenkomst> a owl:Class ;
+    rdfs:label "Verwerkersovereenkomst"@nl ;
+    vann:usageNote "De verwerkersovereenkomst vervangt de bewerkersovereenkomst uit de Wet bescherming persoonsgegevens en is verplicht."@nl ;
+    rdfs:comment "De overeenkomst die de verhouding tussen de verwerkersverantwoordelijke en de verwerker regelt. In deze overeenkomst wordt onder andere het doel van de verwerking, de beveiliging, geheimhouding, bewaartermijnen, procedures met betrekking tot vergeet-, wijzigings- en portatieverzoeken en de aansprakelijkheidsverdeling geregeld."@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
-    rdfs:subClassOf <http://data.vlaanderen.be/ns/toestemming#Toestemming> .
+    rdfs:subClassOf foaf:Document .
 
 <http://data.vlaanderen.be/ns/toestemming#Toestemming> a owl:Class ;
     rdfs:label "Toestemming"@nl ;
     rdfs:comment "Een expliciete toestemming,gegeven door een bepaalde Agent die het onderwerp vormt van de persoonlijke informatie."@nl ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> .
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> ;
+    rdfs:subClassOf rdfs:Resource .
 
-<http://data.vlaanderen.be/ns/toestemming#ToestemmingDescriptor> a owl:Class ;
+<http://data.vlaanderen.be/ns/toestemming#Verwerkingsactiviteit> a owl:Class ;
     rdfs:label "Toestemming Descriptor"@nl ;
-    rdfs:comment "De blauwdruk van een toestemming zoals geconfigureerd door de data controller. Omvat o.a. informatie over de databron en data processor."@nl ;
+    rdfs:comment "Specificatie van de verwerkingsactiviteit waarvoor een data subject toestemming kan verlenen. Deze verwerkingsactiviteit wordt geconfigureerd door de verwerkingsverantwoordelijke en omvat onder meer informatie over het type verwerking, de verwerkingsgrond en de verwerkers."@nl ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/toestemming> .
 
 <http://data.vlaanderen.be/ns/toestemming> a owl:Ontology ;
-    rdfs:label "Consent"@en,
-        "Toestemming"@nl ;
+    rdfs:label "Toestemming"@nl ;
     dcterms:contributor [ a person:Person ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
                     foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Omaar" ;
-            foaf:lastName "Verack" ;
-            foaf:mbox <mailto:omaar.verack@kb.vlaanderen.be> ],
+            foaf:firstName "Annelies" ;
+            foaf:lastName "De Craene" ;
+            foaf:mbox <mailto:annelies.decraene@kb.vlaanderen.be> ],
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
                     foaf:name "PwC" ] ;
@@ -238,36 +191,30 @@ foaf:homepage a rdf:Property ;
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
                     foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Annelies" ;
-            foaf:lastName "De Craene" ;
-            foaf:mbox <mailto:annelies.decraene@kb.vlaanderen.be> ] ;
-    dcterms:issued "2017-09-07"^^xsd:date ;
-    dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
+            foaf:firstName "Omaar" ;
+            foaf:lastName "Verack" ;
+            foaf:mbox <mailto:omaar.verack@kb.vlaanderen.be> ] ;
+    dcterms:issued "2018-06-15"^^xsd:date ;
+    dcterms:license <file:///C:/OSLO/src/TODO>,
+        <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
     dcterms:mediator [ foaf:homepage <https://data.vlaanderen.be> ;
             foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
             foaf:name "Data Vlaanderen" ] ;
-    dcterms:title "Consent"@en,
-        "Toestemming"@nl ;
+    dcterms:title "Toestemming"@nl ;
     vann:preferredNamespaceUri "http://data.vlaanderen.be/ns/toestemming" ;
     rec:editor [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
                     foaf:name "PwC" ] ;
-            foaf:firstName "Michiel" ;
-            foaf:lastName "De Keyzer" ;
-            foaf:mbox <mailto:michiel.de.keyzer@pwc.com> ],
+            foaf:firstName "Jens" ;
+            foaf:lastName "Scheerlinck" ;
+            foaf:mbox <mailto:jens.scheerlinck@pwc.com> ],
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
                     foaf:name "PwC" ] ;
-            foaf:firstName "Jens" ;
-            foaf:lastName "Scheerlinck" ;
-            foaf:mbox <mailto:jens.scheerlinck@pwc.com> ] ;
+            foaf:firstName "Michiel" ;
+            foaf:lastName "De Keyzer" ;
+            foaf:mbox <mailto:michiel.de.keyzer@pwc.com> ] ;
     foaf:maker [ a person:Person ;
-            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Goedele" ;
-            foaf:lastName "Van der Spiegel" ;
-            foaf:mbox <mailto:goedele.vanderspiegel@kb.vlaanderen.be> ],
-        [ a person:Person ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
                     foaf:name "Informatie Vlaanderen" ] ;
             foaf:firstName "Dries" ;
@@ -279,6 +226,12 @@ foaf:homepage a rdf:Property ;
             foaf:firstName "Kristof" ;
             foaf:lastName "De Causemaeker" ;
             foaf:mbox <mailto:kristof.decausemaeker@kb.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Goedele" ;
+            foaf:lastName "Van der Spiegel" ;
+            foaf:mbox <mailto:goedele.vanderspiegel@kb.vlaanderen.be> ],
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
                     foaf:name "Informatie Vlaanderen" ] ;
