@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="nl" lang="nl" dir="ltr" typeof="bibo:Document " about="" property="dcterms:language" content="nl" prefix="dcterms: http://purl.org/dc/terms/ bibo: http://purl.org/ontology/bibo/ schema: http://schema.org/ w3p: http://www.w3.org/2001/02pd/rec54#">
   <head><meta http-equiv="Content-Type" content="text/html; charset=ASCII" />
-    <title>Melding</title>
+    <title>Digimelding</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -34,7 +34,7 @@
             <div class="grid u-hr">
                 <div class="col--9-12 col--1-1--s">
                     <div class="head" role="contentinfo" id="respecHeader">
-                    <h1 class="h1 title p-name" property="dcterms:title" id="title">Melding</h1>
+                    <h1 class="h1 title p-name" property="dcterms:title" id="title">Digimelding</h1>
                     
                     
                     <h2 class="h2" content="2017-12-05" datatype="xsd:dateTime" property="dcterms:issued" id="draft-2017-12-05">Uitgegeven op <time datetime="2017-12-05" class="dt-published">2017-12-05</time></h2>
@@ -43,7 +43,7 @@
                         
                         <dt>Laatste aanpassing</dt>
 
-                        <dd>2018-02-05
+                        <dd>2018-06-21
                         </dd>
                         
 
@@ -234,8 +234,8 @@
                                 <div class="region region--no-space-top typography" id="summary"> 
 				
 <p>
-Dit vocabularium is ontwikkeld in voor het beschrijven van een systeem voor het melden van fouten en onvolledigheden in digitale gegevensbronnen en de opvolging ervan.
-</p>	
+Dit vocabularium is ontwikkeld voor het beschrijven van een melding. Een melding kan gebruikt worden voor het capteren van feedback met betrekking tot concrete informatievelden (bv. foutieve of ontbrekende informatie wordt weergegeven) of feedback dat slaat op re&#235;le wereld objecten zoals een put in de weg of sluikstort.
+</p>
 
 				</div>
                             </section>
@@ -290,11 +290,19 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                     
                                         <li><a href="http://data.europa.eu/m8g">http://data.europa.eu/m8g</a></li>
                                     
+                                        <li><a href="http://data.vlaanderen.be/ns/melding">http://data.vlaanderen.be/ns/melding</a></li>
+                                    
+                                        <li><a href="http://data.vlaanderen.be/ns/organisatie">http://data.vlaanderen.be/ns/organisatie</a></li>
+                                    
+                                        <li><a href="http://data.vlaanderen.be/ns/persoon">http://data.vlaanderen.be/ns/persoon</a></li>
+                                    
                                         <li><a href="http://purl.org/dc/dcmitype">http://purl.org/dc/dcmitype</a></li>
                                     
                                         <li><a href="http://purl.org/dc/terms">http://purl.org/dc/terms</a></li>
                                     
                                         <li><a href="http://rdfs.org/ns/void">http://rdfs.org/ns/void</a></li>
+                                    
+                                        <li><a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a></li>
                                     
                                         <li><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns">http://www.w3.org/1999/02/22-rdf-syntax-ns</a></li>
                                     
@@ -306,11 +314,17 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                     
                                         <li><a href="http://www.w3.org/ns/oa">http://www.w3.org/ns/oa</a></li>
                                     
+                                        <li><a href="http://www.w3.org/ns/org">http://www.w3.org/ns/org</a></li>
+                                    
+                                        <li><a href="http://www.w3.org/ns/person">http://www.w3.org/ns/person</a></li>
+                                    
                                         <li><a href="http://www.w3.org/ns/prov">http://www.w3.org/ns/prov</a></li>
                                     
                                         <li><a href="https://www.w3.org/ns/activitystreams">https://www.w3.org/ns/activitystreams</a></li>
                                     
                                         <li><a href="https://www.w3.org/ns/hydra/core">https://www.w3.org/ns/hydra/core</a></li>
+                                    
+                                        <li><a href="https://www.w3.org/ns/org">https://www.w3.org/ns/org</a></li>
                                     
                                     </ul>
                                     
@@ -340,7 +354,13 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                             
                                             <a href="#MeldingsobjectAttribuut" rel="class">Meldingsobject Attribuut</a> |
                                             
-                                            <a href="#Status" rel="class">Status</a> |
+                                            <a href="#Meldingstype" rel="class">Meldingstype</a> |
+                                            
+                                            <a href="#Meldingstatus" rel="class">Status</a> |
+                                            
+                                            <a href="#StatusType" rel="class">Status Type</a> |
+                                            
+                                            <a href="#Terugmelding" rel="class">Terugmelding</a> |
                                             
                                         </p>
                                     </div>
@@ -356,21 +376,23 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                         <p>
                                             |
                                             
-                                            <a href="#codelijst" rel="property">codelijst (Eigenschap)</a> |
+                                            <a href="#behandelaar" rel="property">behandelaar (Agent)</a> |
                                             
-                                            <a href="#datatype" rel="property">datatype (Eigenschap)</a> |
+                                            <a href="#betrokkene" rel="property">betrokkene (Melding)</a> |
+                                            
+                                            <a href="#bronhouder" rel="property">bronhouder</a> |
                                             
                                             <a href="#eigenschap" rel="property">eigenschap</a> |
                                             
-                                            <a href="#gerelateerdeBody" rel="property">gerelateerdeBody (Meldingsobject)</a> |
+                                            <a href="#gerelateerdeBody" rel="property">gerelateerde body (Meldingsobject)</a> |
                                             
                                             <a href="#heeftEigenschap" rel="property">heeft eigenschap (Meldingsobject)</a> |
-                                            
-                                            <a href="#heeftOnderwerp" rel="property">heeft onderwerp (Meldingsobject)</a> |
                                             
                                             <a href="#heeftStatus" rel="property">heeft status</a> |
                                             
                                             <a href="#huidigeWaarde" rel="property">huidige waarde (Meldingsobject Attribuut)</a> |
+                                            
+                                            <a href="#indiener" rel="property">indiener (Melding)</a> |
                                             
                                             <a href="#meldbaar" rel="property">meldbaar (Eigenschap)</a> |
                                             
@@ -378,7 +400,7 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                             
                                             <a href="#meldingsorganisatie" rel="property">meldingsorganisatie (Melding)</a> |
                                             
-                                            <a href="#regex" rel="property">regex (label)</a> |
+                                            <a href="#mogelijkeWaarden" rel="property">mogelijke waarden (Eigenschap)</a> |
                                             
                                             <a href="#statusType" rel="property">status type (Status)</a> |
                                             
@@ -386,9 +408,9 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                             
                                             <a href="#statuswijzigingDoor" rel="property">statuswijziging door (Status)</a> |
                                             
-                                            <a href="#url" rel="property">url (Melding)</a> |
-                                            
                                             <a href="#voorgesteldeWaarde" rel="property">voorgestelde waarde (Meldingsobject Attribuut)</a> |
+                                            
+                                            <a href="#webpagina" rel="property">webpagina (Melding)</a> |
                                             
                                         </p>
                                     </div>
@@ -467,14 +489,14 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
 											
                                               <li><code>http://www.w3.org/ns/prov#Entity</code></li>
 											
-                                              <li><code>ub1bL252C21</code></li>
+                                              <li><code>ub1bL301C21</code></li>
 											
                                             </ul></td>
 										  </tr>
                                           
                                           <tr>
                                             <th>Definitie</th>
-                                            <td>De klasse voor het beschrijven van de eigenschappen waaruit een dataset bestaat.</td>
+                                            <td>De klasse voor het beschrijven van de data velden waaruit een dataset bestaat.</td>
                                           </tr>
                                           
                                         </tbody>
@@ -498,7 +520,14 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           
                                           <tr>
                                             <th>Definitie</th>
-                                            <td>De klasse voor digitale annotaties voor het melden van feedback op data en re&#235;le wereld objecten.</td>
+                                            <td>Beschrijft de melding van een probleem of een vaststelling die mogelijks aanleiding geeft tot een actie van de overheid.</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>
+                                              <p>Gebruik</p>
+                                            </th>
+                                            <td>Een melding kan gebruikt worden voor vaststellingen in de echte wereld, bijvoorbeeld het melden van een put in de weg of sluikstort, of voor het melden van fouten of onvolledigheden in digitale gegevensbronnen.</td>
                                           </tr>
                                           
                                         </tbody>
@@ -589,7 +618,7 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                 
                                 
                                 <div class="region region--no-space-top">
-                                    <h3 class="h3" id="Status">Klasse <em>Status</em></h3>
+                                    <h3 class="h3" id="Meldingstype">Klasse <em>Meldingstype</em></h3>
                                     <table class="definition">
                                         <tbody>
                                           <tr>
@@ -599,12 +628,104 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           
                                           <tr>
                                             <th>URI</th>
-                                            <td><code>http://data.vlaanderen.be/ns/melding#Status</code></td>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#Meldingstype</code></td>
+                                          </tr>
+                                          
+										  <tr>
+                                            <th>Specialisatie van</th>
+											<td><ul>
+											
+											
+                                              <li><code>http://www.w3.org/ns/oa#Motivation</code></li>
+											
+                                            </ul></td>
+										  </tr>
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>Meldingstype wordt gebruikt om vast te leggen wat de motivatie was van de gebruiker om de Melding te cre&#235;eren of het bijvoegen van de body of het doelwit van de Melding. Meldingstype kan gebruikt worden om de Melding te categoriseren.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="Meldingstatus">Klasse <em>Status</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Klasse</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#Meldingstatus</code></td>
                                           </tr>
                                           
                                           <tr>
                                             <th>Definitie</th>
                                             <td>De Status van de Melding in het verwerkingsproces op een bepaald tijdstip.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="StatusType">Klasse <em>Status Type</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Klasse</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#StatusType</code></td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>Status Type wordt gebruikt voor de taxonomie van verschillende mogelijk fases in een Status.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="Terugmelding">Klasse <em>Terugmelding</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Klasse</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#Terugmelding</code></td>
+                                          </tr>
+                                          
+										  <tr>
+                                            <th>Specialisatie van</th>
+											<td><ul>
+											
+											
+                                              <li><code>http://data.vlaanderen.be/ns/melding#Melding</code></li>
+											
+                                            </ul></td>
+										  </tr>
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>Beschrijft de terugmelding van fouten of onvolledigheden in digitale gegevensbronnen naar de verantwoordelijke bronbeheerder.</td>
                                           </tr>
                                           
                                         </tbody>
@@ -630,7 +751,7 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                 
                                 
                                 <div class="region region--no-space-top">
-                                    <h3 class="h3" id="codelijst">Eigenschap <em>codelijst</em></h3>
+                                    <h3 class="h3" id="behandelaar">Eigenschap <em>behandelaar</em></h3>
                                     <table class="definition">
                                         <tbody>
                                           <tr>
@@ -640,24 +761,24 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           
                                           <tr>
                                             <th>URI</th>
-                                            <td><code>http://data.vlaanderen.be/ns/melding#codelijst</code></td>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#behandelaar</code></td>
                                           </tr>
                                           
                                           <tr>
                                             <th>Domein</th>
-                                            <td><code>http://data.vlaanderen.be/ns/melding#Eigenschap</code></td>
+                                            <td><code>http://purl.org/dc/terms/Agent</code></td>
                                           </tr>
                                           
                                           
                                           <tr>
                                             <th>Bereik</th>
-                                            <td><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+                                            <td><code>http://purl.org/dc/terms/Agent</code></td>
                                           </tr>
                                           
                                           
                                           <tr>
                                             <th>Definitie</th>
-                                            <td>Associeert de Eigenschap met mogelijk codelijst waarden die voor de Eigenschap gebruikt kunnen worden.</td>
+                                            <td>Agent die werd aangewezen om de melding en/of het meldingsobject op te volgen en af te handelen.</td>
                                           </tr>
                                           
                                         </tbody>
@@ -666,7 +787,7 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                 
                                 
                                 <div class="region region--no-space-top">
-                                    <h3 class="h3" id="datatype">Eigenschap <em>datatype</em></h3>
+                                    <h3 class="h3" id="betrokkene">Eigenschap <em>betrokkene</em></h3>
                                     <table class="definition">
                                         <tbody>
                                           <tr>
@@ -676,24 +797,65 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           
                                           <tr>
                                             <th>URI</th>
-                                            <td><code>http://data.vlaanderen.be/ns/melding#datatype</code></td>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#betrokkene</code></td>
                                           </tr>
                                           
                                           <tr>
                                             <th>Domein</th>
-                                            <td><code>http://data.vlaanderen.be/ns/melding#Eigenschap</code></td>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#Melding</code></td>
                                           </tr>
                                           
                                           
                                           <tr>
                                             <th>Bereik</th>
-                                            <td><code>http://www.w3.org/2000/01/rdf-schema#label</code></td>
+                                            <td><code>http://purl.org/dc/terms/Agent</code></td>
                                           </tr>
                                           
                                           
                                           <tr>
                                             <th>Definitie</th>
-                                            <td>Het datatype voor de eigenschap.</td>
+                                            <td>Agent die belang heeft bij de Melding of ge&#239;mpacteerd is door de behandeling ervan.</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Gebruik</th>
+                                            <td>Bijvoorbeeld indien de melding werd aangemaakt door een derde, bijvoorbeeld een ambtenaar van de gemeente op vraag van een burger.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="bronhouder">Eigenschap <em>bronhouder</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Eigenschap</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#bronhouder</code></td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Domein</th>
+                                            <td><code>http://www.w3.org/2000/01/rdf-schema#Resource</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Bereik</th>
+                                            <td><code>https://www.w3.org/ns/org#Organization</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>De bronhouder is verantwoordelijk voor het opnemen van gegevens in de dataset en het bewaken van de kwaliteit daarvan.</td>
                                           </tr>
                                           
                                         </tbody>
@@ -738,7 +900,7 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                 
                                 
                                 <div class="region region--no-space-top">
-                                    <h3 class="h3" id="gerelateerdeBody">Eigenschap <em>gerelateerdeBody</em></h3>
+                                    <h3 class="h3" id="gerelateerdeBody">Eigenschap <em>gerelateerde body</em></h3>
                                     <table class="definition">
                                         <tbody>
                                           <tr>
@@ -766,6 +928,11 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           <tr>
                                             <th>Definitie</th>
                                             <td>De body van de Melding die betrekking heeft op het Meldingsobject.</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Gebruik</th>
+                                            <td>Indien de Melding meerdere Meldingsobjecten bevat biedt deze eigenschap de mogelijkheid om te beschrijven welke MeldingBody relevant is voor de behandeling van het Meldingsobject.</td>
                                           </tr>
                                           
                                         </tbody>
@@ -820,47 +987,6 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                 
                                 
                                 <div class="region region--no-space-top">
-                                    <h3 class="h3" id="heeftOnderwerp">Eigenschap <em>heeft onderwerp</em></h3>
-                                    <table class="definition">
-                                        <tbody>
-                                          <tr>
-                                            <th>Type</th>
-                                            <td>Eigenschap</td>
-                                          </tr>
-                                          
-                                          <tr>
-                                            <th>URI</th>
-                                            <td><code>http://data.vlaanderen.be/ns/melding#heeftOnderwerp</code></td>
-                                          </tr>
-                                          
-                                          <tr>
-                                            <th>Domein</th>
-                                            <td><code>http://data.vlaanderen.be/ns/melding#Meldingsobject</code></td>
-                                          </tr>
-                                          
-                                          
-                                          <tr>
-                                            <th>Bereik</th>
-                                            <td><code>http://www.w3.org/2001/XMLSchema#anyURI</code></td>
-                                          </tr>
-                                          
-                                          
-                                          <tr>
-                                            <th>Definitie</th>
-                                            <td>Het onderwerp van een meldingsobject is de informatie resource waarop teruggemeld wordt.</td>
-                                          </tr>
-                                          
-                                          <tr>
-                                            <th>Gebruik</th>
-                                            <td>Bv. wanneer teruggemeld wordt op een diploma zoals gekend in de Leer- en ervaringsbewijzendatabank (LED), verwijst het onderwerp naar de unieke identificator voor dit diploma zoals gedefinieerd door de LED.</td>
-                                          </tr>
-                                          
-                                        </tbody>
-                                    </table>
-                                </div>
-                                
-                                
-                                <div class="region region--no-space-top">
                                     <h3 class="h3" id="heeftStatus">Eigenschap <em>heeft status</em></h3>
                                     <table class="definition">
                                         <tbody>
@@ -882,7 +1008,7 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           
                                           <tr>
                                             <th>Bereik</th>
-                                            <td><code>http://data.vlaanderen.be/ns/melding#Status</code></td>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#Meldingstatus</code></td>
                                           </tr>
                                           
                                           
@@ -927,6 +1053,47 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                             <td>De huidige waarde van een Eigenschap.</td>
                                           </tr>
                                           
+                                          <tr>
+                                            <th>Gebruik</th>
+                                            <td>Dit is de waarde zoals waargenomen door de indiener van de melding.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="indiener">Eigenschap <em>indiener</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Eigenschap</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#indiener</code></td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Domein</th>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#Melding</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Bereik</th>
+                                            <td><code>http://purl.org/dc/terms/Agent</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>Agent die de Melding heeft aangemaakt en/of ingediend.</td>
+                                          </tr>
+                                          
                                         </tbody>
                                     </table>
                                 </div>
@@ -951,6 +1118,11 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                             <td><code>http://data.vlaanderen.be/ns/melding#Eigenschap</code></td>
                                           </tr>
                                           
+                                          
+                                          <tr>
+                                            <th>Bereik</th>
+                                            <td><code>http://www.w3.org/2001/XMLSchema#boolean</code></td>
+                                          </tr>
                                           
                                           
                                           <tr>
@@ -985,7 +1157,7 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           
                                           <tr>
                                             <th>Bereik</th>
-                                            <td><code>http://purl.org/dc/terms/Agent</code></td>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#Applicatie</code></td>
                                           </tr>
                                           
                                           
@@ -1031,7 +1203,7 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           
                                           <tr>
                                             <th>Bereik</th>
-                                            <td><code>http://www.w3.org/ns/org#Organization</code></td>
+                                            <td><code>https://www.w3.org/ns/org#Organization</code></td>
                                           </tr>
                                           
                                           
@@ -1056,7 +1228,7 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                 
                                 
                                 <div class="region region--no-space-top">
-                                    <h3 class="h3" id="regex">Eigenschap <em>regex</em></h3>
+                                    <h3 class="h3" id="mogelijkeWaarden">Eigenschap <em>mogelijke waarden</em></h3>
                                     <table class="definition">
                                         <tbody>
                                           <tr>
@@ -1066,24 +1238,29 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           
                                           <tr>
                                             <th>URI</th>
-                                            <td><code>http://data.vlaanderen.be/ns/melding#regex</code></td>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#mogelijkeWaarden</code></td>
                                           </tr>
                                           
                                           <tr>
                                             <th>Domein</th>
-                                            <td><code>http://www.w3.org/2000/01/rdf-schema#label</code></td>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#Eigenschap</code></td>
                                           </tr>
                                           
                                           
                                           <tr>
                                             <th>Bereik</th>
-                                            <td><code>http://www.w3.org/2000/01/rdf-schema#Literal</code></td>
+                                            <td><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
                                           </tr>
                                           
                                           
                                           <tr>
                                             <th>Definitie</th>
-                                            <td>Een regular expression om na te gaan of een waarde voldoet aan een bepaald patroon.</td>
+                                            <td>Associeert de Eigenschap met een exhaustieve lijst aan mogelijk waarden (bv. een codelijst).</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Gebruik</th>
+                                            <td>Het is aangeraden de mogelijke waarden voor te stellen als een skos:ConceptScheme (https://www.w3.org/TR/skos-primer/)</td>
                                           </tr>
                                           
                                         </tbody>
@@ -1107,14 +1284,24 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           
                                           <tr>
                                             <th>Domein</th>
-                                            <td><code>http://data.vlaanderen.be/ns/melding#Status</code></td>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#Meldingstatus</code></td>
                                           </tr>
                                           
+                                          
+                                          <tr>
+                                            <th>Bereik</th>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#StatusType</code></td>
+                                          </tr>
                                           
                                           
                                           <tr>
                                             <th>Definitie</th>
                                             <td>Het type van de Status.</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Gebruik</th>
+                                            <td>Er wordt verwacht dat het status type gedefinieerd is in een codelijst. Het bepalen en ontlsuiten van deze codelijst kan applicatie-specifiek worden ingevuld.</td>
                                           </tr>
                                           
                                         </tbody>
@@ -1138,7 +1325,7 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           
                                           <tr>
                                             <th>Domein</th>
-                                            <td><code>http://data.vlaanderen.be/ns/melding#Status</code></td>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#Meldingstatus</code></td>
                                           </tr>
                                           
                                           
@@ -1174,7 +1361,7 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           
                                           <tr>
                                             <th>Domein</th>
-                                            <td><code>http://data.vlaanderen.be/ns/melding#Status</code></td>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#Meldingstatus</code></td>
                                           </tr>
                                           
                                           
@@ -1187,42 +1374,6 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           <tr>
                                             <th>Definitie</th>
                                             <td>De Agent die deze status heeft geactiveerd.</td>
-                                          </tr>
-                                          
-                                        </tbody>
-                                    </table>
-                                </div>
-                                
-                                
-                                <div class="region region--no-space-top">
-                                    <h3 class="h3" id="url">Eigenschap <em>url</em></h3>
-                                    <table class="definition">
-                                        <tbody>
-                                          <tr>
-                                            <th>Type</th>
-                                            <td>Eigenschap</td>
-                                          </tr>
-                                          
-                                          <tr>
-                                            <th>URI</th>
-                                            <td><code>http://data.vlaanderen.be/ns/melding#url</code></td>
-                                          </tr>
-                                          
-                                          <tr>
-                                            <th>Domein</th>
-                                            <td><code>http://data.vlaanderen.be/ns/melding#Melding</code></td>
-                                          </tr>
-                                          
-                                          
-                                          <tr>
-                                            <th>Bereik</th>
-                                            <td><code>http://www.w3.org/2001/XMLSchema#string</code></td>
-                                          </tr>
-                                          
-                                          
-                                          <tr>
-                                            <th>Definitie</th>
-                                            <td>Een doorverwijzing naar een webpagina.</td>
                                           </tr>
                                           
                                         </tbody>
@@ -1259,6 +1410,47 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           <tr>
                                             <th>Definitie</th>
                                             <td>De voorgestelde waarde van een Eigenschap.</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Gebruik</th>
+                                            <td>De suggereerde correct waarde zoals aangegeven door de indiener van de melding.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" id="webpagina">Eigenschap <em>webpagina</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Eigenschap</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#webpagina</code></td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Domein</th>
+                                            <td><code>http://data.vlaanderen.be/ns/melding#Melding</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Bereik</th>
+                                            <td><code>http://www.w3.org/2001/XMLSchema#anyURI</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>Een doorverwijzing naar een webpagina.</td>
                                           </tr>
                                           
                                         </tbody>
@@ -1325,6 +1517,104 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                 </div>
                                 
                                 <div class="region region--no-space-top">
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>Geometrie</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://www.w3.org/ns/locn#Geometry</code></td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>Geregistreerd Persoon</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/persoon#GeregistreerdPersoon</code></td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>Hoedanigheid</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.vlaanderen.be/ns/organisatie#Hoedanigheid</code></td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>Organisatie</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>https://www.w3.org/ns/org#Organization</code></td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>Organisatie-eenheid</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://www.w3.org/ns/org#OrganizationalUnit</code></td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>Persoon</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://www.w3.org/ns/person#Person</code></td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>Publieke Organisatie</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://data.europa.eu/m8g/PublicOrganisation</code></td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="region region--no-space-top">
                                     <h3 class="h4" id="#statuswijzigingObject"><em>TijdToestand</em></h3>
                                     <table class="definition">
                                         <tbody>
@@ -1346,6 +1636,34 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           <tr>
                                             <th>URI</th>
                                             <td><code>http://purl.org/dc/terms/description</code></td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>bijlage</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>https://www.w3.org/ns/activitystreams#attachment</code></td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>cached bron</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://www.w3.org/ns/oa#cachedSource</code></td>
                                           </tr>
                                           
                                         </tbody>
@@ -1381,6 +1699,20 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                 </div>
                                 
                                 <div class="region region--no-space-top">
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>gml</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://www.opengis.net/ont/geosparql#asGML</code></td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="region region--no-space-top">
                                     <h3 class="h4" id="#statuswijzigingObject"><em>heeft body</em></h3>
                                     <table class="definition">
                                         <tbody>
@@ -1409,13 +1741,13 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                 </div>
                                 
                                 <div class="region region--no-space-top">
-                                    <h3 class="h4" id="#statuswijzigingObject"><em>heeft participerende</em></h3>
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>heeft eenheid</em></h3>
                                     <table class="definition">
                                         <tbody>
                                           
                                           <tr>
                                             <th>URI</th>
-                                            <td><code>http://data.europa.eu/m8g/hasParticipation</code></td>
+                                            <td><code>http://www.w3.org/ns/org#hasUnit</code></td>
                                           </tr>
                                           
                                         </tbody>
@@ -1451,13 +1783,13 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                 </div>
                                 
                                 <div class="region region--no-space-top">
-                                    <h3 class="h4" id="#statuswijzigingObject"><em>label</em></h3>
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>is eenheid van</em></h3>
                                     <table class="definition">
                                         <tbody>
                                           
                                           <tr>
                                             <th>URI</th>
-                                            <td><code>http://www.w3.org/2000/01/rdf-schema#label</code></td>
+                                            <td><code>http://www.w3.org/ns/org#unitOf</code></td>
                                           </tr>
                                           
                                         </tbody>
@@ -1472,6 +1804,34 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           <tr>
                                             <th>URI</th>
                                             <td><code>https://www.w3.org/ns/hydra/core#required</code></td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>label</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://www.w3.org/2004/02/skos/core#prefLabel</code></td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>label</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://www.w3.org/2000/01/rdf-schema#label</code></td>
                                           </tr>
                                           
                                         </tbody>
@@ -1493,27 +1853,13 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                 </div>
                                 
                                 <div class="region region--no-space-top">
-                                    <h3 class="h4" id="#statuswijzigingObject"><em>prefLabel</em></h3>
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>registratie</em></h3>
                                     <table class="definition">
                                         <tbody>
                                           
                                           <tr>
                                             <th>URI</th>
-                                            <td><code>http://www.w3.org/2004/02/skos/core#prefLabel</code></td>
-                                          </tr>
-                                          
-                                        </tbody>
-                                    </table>
-                                </div>
-                                
-                                <div class="region region--no-space-top">
-                                    <h3 class="h4" id="#statuswijzigingObject"><em>rol</em></h3>
-                                    <table class="definition">
-                                        <tbody>
-                                          
-                                          <tr>
-                                            <th>URI</th>
-                                            <td><code>http://data.europa.eu/m8g/role</code></td>
+                                            <td><code>http://data.vlaanderen.be/ns/persoon#registratie</code></td>
                                           </tr>
                                           
                                         </tbody>
@@ -1535,20 +1881,6 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                 </div>
                                 
                                 <div class="region region--no-space-top">
-                                    <h3 class="h4" id="#statuswijzigingObject"><em>speelt rol</em></h3>
-                                    <table class="definition">
-                                        <tbody>
-                                          
-                                          <tr>
-                                            <th>URI</th>
-                                            <td><code>http://data.europa.eu/m8g/playsRole</code></td>
-                                          </tr>
-                                          
-                                        </tbody>
-                                    </table>
-                                </div>
-                                
-                                <div class="region region--no-space-top">
                                     <h3 class="h4" id="#statuswijzigingObject"><em>titel</em></h3>
                                     <table class="definition">
                                         <tbody>
@@ -1563,20 +1895,6 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                 </div>
                                 
                                 <div class="region region--no-space-top">
-                                    <h3 class="h4" id="#statuswijzigingObject"><em>url</em></h3>
-                                    <table class="definition">
-                                        <tbody>
-                                          
-                                          <tr>
-                                            <th>URI</th>
-                                            <td><code>https://www.w3.org/ns/activitystreams#attachment</code></td>
-                                          </tr>
-                                          
-                                        </tbody>
-                                    </table>
-                                </div>
-                                
-                                <div class="region region--no-space-top">
                                     <h3 class="h4" id="#statuswijzigingObject"><em>verplicht</em></h3>
                                     <table class="definition">
                                         <tbody>
@@ -1584,6 +1902,20 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           <tr>
                                             <th>URI</th>
                                             <td><code>https://www.w3.org/ns/hydra/core#required</code></td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>wkt</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>http://www.opengis.net/ont/geosparql#asWKT</code></td>
                                           </tr>
                                           
                                         </tbody>
