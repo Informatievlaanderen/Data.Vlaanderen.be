@@ -45,7 +45,7 @@
               <div class="head" role="contentinfo" id="respecHeader">
                 <dl>
                   <dt>Laatste aanpassing</dt>
-                  <dd>2018-02-05</dd>
+                  <dd>2018-06-21</dd>
 
                   
                   
@@ -162,7 +162,7 @@
               <section class="introductory" id="sotd" typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter">             
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">Status van dit document</h2>
                 
-<p>Dit applicatieprofiel dient om het specifieke gebruik van de entitieten relevant voor de beschreven applicatie te verduidelijken.</p>
+<p>Dit applicatieprofiel dient om het specifieke gebruik van de entiteiten relevant voor de beschreven applicatie te verduidelijken.</p>
 <p>Dit document werd gepubliceerd als Ontwerpdocument. De specificatie zoals in dit document beschreven is in ontwikkeling. Bijgevolg kan dit document op elk moment aangepast, vervangen of achterhaald worden.<br />
 Dit document is bedoeld om uit te groeien tot een standaard in het beschreven domein. Desalniettemin heeft het op dit ogenblik geen officieel statuut en vertegenwoordigt het geen consensus binnen OSLO.</p>
 <p>Feedback op deze specificatie kan gegeven worden als een topic in onze <a href="https://github.com/Informatievlaanderen/OSLO-Public-Discussion">publieke reviewdiscussielijst</a>.</p>
@@ -210,11 +210,12 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                     <p>In dit document wordt correct gebruik van de volgende entiteiten toegelicht:
                       <br />
                       |
+                      <a href="#Administratieve Eenheid">Administratieve Eenheid</a> |
                       <a href="#Agent">Agent</a> |
+                      <a href="#Informeer Actie">Informeer Actie</a> |
                       <a href="#Merk">Merk</a> |
                       <a href="#Notificatiebericht">Notificatiebericht</a> |
                       <a href="#Publieke Organisatie">Publieke Organisatie</a> |
-                      <a href="#Status">Status</a> |
                     </p>
                   </div>
                   
@@ -224,6 +225,9 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       <br />
                       |
                       <a href="#Contactpunt">Contactpunt</a> |
+                      <a href="#Doelgroep">Doelgroep</a> |
+                      <a href="#Geografische Naam">Geografische Naam</a> |
+                      <a href="#Geometrie">Geometrie</a> |
                       <a href="#Sleutel/Waarde Paar">Sleutel/Waarde Paar</a> |
                     </p>
                   </div>
@@ -242,6 +246,70 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             </div>
             
             <div class="region region--no-space-top">
+              <h3 class="h3" id="Administratieve Eenheid"><a href="https://schema.org/AdministrativeArea" data-toggle="tooltip" data-content="https://schema.org/AdministrativeArea" data-placement="right">Administratieve Eenheid</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Een geografisch gebied, dat typisch onder de jurisdictie van een bepaalde publieke administratie valt.</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Administratieve%20Eenheid%3Ageometrie">geometrie</a>, 
+                      <a href="#Administratieve%20Eenheid%3Anaam">naam</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Administratieve%20Eenheid%3Ageometrie" typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#geometry">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/ns/locn#geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#geometry" data-placement="right">
+                            geometrie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/ns/locn#Geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#Geometry" data-placement="right">Geometrie</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De geometrische voorstelling van het object.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Administratieve%20Eenheid%3Anaam" typeof="rdfs:Property" resource="https://schema.org/name">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://schema.org/name" data-toggle="tooltip" data-content="https://schema.org/name" data-placement="right">
+                            naam</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">GeografischeNaam</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Naam van de Administratieve Eenheid.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
+            </div>
+            
+            <div class="region region--no-space-top">
               <h3 class="h3" id="Agent"><a href="http://purl.org/dc/terms/Agent" data-toggle="tooltip" data-content="http://purl.org/dc/terms/Agent" data-placement="right">Agent</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
@@ -251,11 +319,169 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                     
                     <dt>Eigenschappen</dt>
                     
-                    <dd>Voor deze entiteit zijn geen eigenschappen gedefinieerd.</dd>
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Agent%3Acontactinfo">contactinfo</a>.</dd>
                     
                   </dl>
                 </div>
                 
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Agent%3Acontactinfo" typeof="rdfs:Property" resource="http://schema.org/contactPoint">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://schema.org/contactPoint" data-toggle="tooltip" data-content="http://schema.org/contactPoint" data-placement="right">
+                            contactinfo</a>
+                          </code>
+                        </td>
+                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Contactinfo</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Informatie zoals email, telefoon... die toelaat de entiteit te contacteren.</td>
+                        <td property="vann:usageNote">In de context van een notificatiebericht heeft een Agent slechts &#233;&#233;n set aan contactinfo. In de context van de applicatie kan een Agent meerdere sets van contactinfo bijhouden, bijvoorbeeld als onderdeel van zijn persoonlijk profiel binnen de toepassing.</td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Informeer Actie"><a href="https://schema.org/InformAction" data-toggle="tooltip" data-content="https://schema.org/InformAction" data-placement="right">Informeer Actie</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Kennisgeving van informatie aan zij die het aanbelangt. Deze informatie kan via meerdere kanalen naar een individu of naar een doelgroep genotificeerd worden.</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Informeer%20Actie%3Aagent">agent</a>, 
+                      <a href="#Informeer%20Actie%3Adoelgroep">doelgroep</a>, 
+                      <a href="#Informeer%20Actie%3Ainhoud">inhoud</a>, 
+                      <a href="#Informeer%20Actie%3Anotificatiekanaal">notificatiekanaal</a>, 
+                      <a href="#Informeer%20Actie%3Aonderwerp">onderwerp</a>, 
+                      <a href="#Informeer%20Actie%3Aresulteert%20in">resulteert in</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Informeer%20Actie%3Aagent" typeof="rdfs:Property" resource="https://schema.org/agent">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://schema.org/agent" data-toggle="tooltip" data-content="https://schema.org/agent" data-placement="right">
+                            agent</a>
+                          </code>
+                        </td>
+                        <td><a href="http://data.europa.eu/m8g/PublicOrganisation" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/PublicOrganisation" data-placement="right">PubliekeOrganisatie</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Duidt de agent aan die aanleiding gaf tot de InformeerActie.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Informeer%20Actie%3Adoelgroep" typeof="rdfs:Property" resource="http://schema.org/recipient">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://schema.org/recipient" data-toggle="tooltip" data-content="http://schema.org/recipient" data-placement="right">
+                            doelgroep</a>
+                          </code>
+                        </td>
+                        <td><a href="https://schema.org/Audience" data-toggle="tooltip" data-content="https://schema.org/Audience" data-placement="right">Doelgroep</a></td>
+                        <td>1...*</td>
+                        <td property="rdfs:comment">De bestemmeling(en) die de informatie dien(t)(en) te ontvangen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Informeer%20Actie%3Ainhoud" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/notificatie#inhoud">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/notificatie#inhoud" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#inhoud" data-placement="right">
+                            inhoud</a>
+                          </code>
+                        </td>
+                        <td><a href="https://schema.org/PropertyValue" data-toggle="tooltip" data-content="https://schema.org/PropertyValue" data-placement="right">SleutelWaarde</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">De inhoud van een Notificatiebericht.</td>
+                        <td property="vann:usageNote">De inhoudt van een Notificatiebericht wordt gevormd door een aantal key-value pairs.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Informeer%20Actie%3Anotificatiekanaal" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/notificatie#notificatiekanaal">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/notificatie#notificatiekanaal" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#notificatiekanaal" data-placement="right">
+                            notificatiekanaal</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Notificiatiekanaal</a></td>
+                        <td>1...*</td>
+                        <td property="rdfs:comment">Het notificatiekanaal duidt het technisch medium aan waarlangs het Notificatiebericht wordt verzonden.</td>
+                        <td property="vann:usageNote">Er wordt verwacht dat het notificatiekanaal gedefinieerd is in een codelijst. Het bepalen en ontlsuiten van deze codelijst kan applicatie-specifiek worden ingevuld. Mogelijke waarden zijn sms en e-mail.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Informeer%20Actie%3Aonderwerp" typeof="rdfs:Property" resource="https://schema.org/about">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://schema.org/about" data-toggle="tooltip" data-content="https://schema.org/about" data-placement="right">
+                            onderwerp</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Notificatiecategorie</a></td>
+                        <td>1...*</td>
+                        <td property="rdfs:comment">Het onderwerp van de informeer actie.</td>
+                        <td property="vann:usageNote">Er wordt verwacht dat de notificatiecategorie gedefinieerd is in een codelijst. Het bepalen en ontlsuiten van deze codelijst kan applicatie-specifiek worden ingevuld.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Informeer%20Actie%3Aresulteert%20in" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/notificatie#resulteertIn">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/notificatie#resulteertIn" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#resulteertIn" data-placement="right">
+                            resulteert in</a>
+                          </code>
+                        </td>
+                        <td><a href="http://data.vlaanderen.be/ns/notificatie#Notificatiebericht" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#Notificatiebericht" data-placement="right">Notificatiebericht</a></td>
+                        <td>1...*</td>
+                        <td property="rdfs:comment">De relatie tussen een Informeer Actie en het (de) Notificatiebericht(en) die hier uit voortkomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
             </div>
             
             <div class="region region--no-space-top">
@@ -269,8 +495,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                     <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
                       <a href="#Merk%3Acontactinfo">contactinfo</a>, 
                       <a href="#Merk%3Ais%20gerelateerd%20met">is gerelateerd met</a>, 
-                      <a href="#Merk%3Anaam">naam</a>, 
-                      <a href="#Merk%3Aurl">url</a>.</dd>
+                      <a href="#Merk%3Anaam">naam</a>.</dd>
                     
                   </dl>
                 </div>
@@ -311,7 +536,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             is gerelateerd met</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">PubliekeDienstverlening</a></td>
+                        <td><a href="http://purl.org/vocab/cpsv#PublicService" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#PublicService" data-placement="right">PubliekeDienstverlening</a></td>
                         <td>0...*</td>
                         <td property="rdfs:comment">De Publieke Dienstverlening waar het Merk aan gerelateerd is.</td>
                         <td property="vann:usageNote"></td>
@@ -332,20 +557,6 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                     
-                      <tr id="Merk%3Aurl" typeof="rdfs:Property" resource="http://schema.org/url">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://schema.org/url" data-toggle="tooltip" data-content="http://schema.org/url" data-placement="right">
-                            url</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#anyURI" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#anyURI" data-placement="right">URI</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">De url geassocieerd met het Merk.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
                     </tbody>
                   </table>
                 </div>
@@ -356,18 +567,20 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
               <h3 class="h3" id="Notificatiebericht"><a href="http://data.vlaanderen.be/ns/notificatie#Notificatiebericht" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#Notificatiebericht" data-placement="right">Notificatiebericht</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Een Notificatiebericht van een afzender naar een bestemmeling.</dd>
+                    <dt>Beschrijving</dt><dd>Een bericht van een afzender naar een bestemmeling met als doel het informeren van de bestemmeling.</dd>
                     
                     <dt>Eigenschappen</dt>
                     
                     <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
                       <a href="#Notificatiebericht%3Aafzender">afzender</a>, 
-                      <a href="#Notificatiebericht%3Abron">bron</a>, 
+                      <a href="#Notificatiebericht%3Abestemmeling">bestemmeling</a>, 
                       <a href="#Notificatiebericht%3Adatum%20creatie">datum creatie</a>, 
-                      <a href="#Notificatiebericht%3Ainhoud">inhoud</a>, 
-                      <a href="#Notificatiebericht%3Astatus">status</a>, 
+                      <a href="#Notificatiebericht%3Adatum%20gelezen">datum gelezen</a>, 
+                      <a href="#Notificatiebericht%3Adatum%20ontvangen">datum ontvangen</a>, 
+                      <a href="#Notificatiebericht%3Adatum%20verzending">datum verzending</a>, 
+                      <a href="#Notificatiebericht%3Anotificatiekanaal">notificatiekanaal</a>, 
+                      <a href="#Notificatiebericht%3Atekst">tekst</a>, 
                       <a href="#Notificatiebericht%3Atitel">titel</a>, 
-                      <a href="#Notificatiebericht%3Atype">type</a>, 
                       <a href="#Notificatiebericht%3Aurl">url</a>, 
                       <a href="#Notificatiebericht%3Avervalt">vervalt</a>.</dd>
                     
@@ -403,24 +616,24 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                     
-                      <tr id="Notificatiebericht%3Abron" typeof="rdfs:Property" resource="http://purl.org/dc/terms/source">
+                      <tr id="Notificatiebericht%3Abestemmeling" typeof="rdfs:Property" resource="https://schema.org/recipient">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/source" data-toggle="tooltip" data-content="http://purl.org/dc/terms/source" data-placement="right">
-                            bron</a>
+                            <a href="https://schema.org/recipient" data-toggle="tooltip" data-content="https://schema.org/recipient" data-placement="right">
+                            bestemmeling</a>
                           </code>
                         </td>
-                        <td><a href="http://data.europa.eu/m8g/PublicOrganisation" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/PublicOrganisation" data-placement="right">PubliekeOrganisatie</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Duidt de bron aan van een Notificatiebericht.</td>
+                        <td><a href="http://purl.org/dc/terms/Agent" data-toggle="tooltip" data-content="http://purl.org/dc/terms/Agent" data-placement="right">Agent</a></td>
+                        <td></td>
+                        <td property="rdfs:comment">De agent die het notificatiebericht ontvangt.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
                     
-                      <tr id="Notificatiebericht%3Adatum%20creatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/created">
+                      <tr id="Notificatiebericht%3Adatum%20creatie" typeof="rdfs:Property" resource="https://schema.org/dateCreated">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/created" data-toggle="tooltip" data-content="http://purl.org/dc/terms/created" data-placement="right">
+                            <a href="https://schema.org/dateCreated" data-toggle="tooltip" data-content="https://schema.org/dateCreated" data-placement="right">
                             datum creatie</a>
                           </code>
                         </td>
@@ -431,38 +644,80 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                     
-                      <tr id="Notificatiebericht%3Ainhoud" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/notificatie#inhoud">
+                      <tr id="Notificatiebericht%3Adatum%20gelezen" typeof="rdfs:Property" resource="http://schema.org/dateRead">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/notificatie#inhoud" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#inhoud" data-placement="right">
-                            inhoud</a>
+                            <a href="http://schema.org/dateRead" data-toggle="tooltip" data-content="http://schema.org/dateRead" data-placement="right">
+                            datum gelezen</a>
                           </code>
                         </td>
-                        <td><a href="http://data.vlaanderen.be/ns/notificatie#SleutelWaardePaar" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#SleutelWaardePaar" data-placement="right">SleutelWaardePaar</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">De inhoud van een Notificatiebericht.</td>
-                        <td property="vann:usageNote">De inhoudt van een Notificatiebericht wordt gevormd door een aantal key-value pairs.</td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Notificatiebericht%3Astatus" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/notificatie#bestemmeling">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/notificatie#bestemmeling" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#bestemmeling" data-placement="right">
-                            status</a>
-                          </code>
-                        </td>
-                        <td><a href="http://data.vlaanderen.be/ns/notificatie#Status" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#Status" data-placement="right">Status</a></td>
-                        <td></td>
-                        <td property="rdfs:comment">De status van een Notificiatiebericht per bestemmeling.</td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De datum waarop het Notificatiebericht werd gelezen door de bestemmeling. </td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
                     
-                      <tr id="Notificatiebericht%3Atitel" typeof="rdfs:Property" resource="http://purl.org/dc/elements/1.1/title">
+                      <tr id="Notificatiebericht%3Adatum%20ontvangen" typeof="rdfs:Property" resource="http://schema.org/dateReceived">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://purl.org/dc/elements/1.1/title" data-toggle="tooltip" data-content="http://purl.org/dc/elements/1.1/title" data-placement="right">
+                            <a href="http://schema.org/dateReceived" data-toggle="tooltip" data-content="http://schema.org/dateReceived" data-placement="right">
+                            datum ontvangen</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De datum waarop het Notificatiebericht werd ontvangen door de bestemmeling.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Notificatiebericht%3Adatum%20verzending" typeof="rdfs:Property" resource="http://schema.org/dateSent">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://schema.org/dateSent" data-toggle="tooltip" data-content="http://schema.org/dateSent" data-placement="right">
+                            datum verzending</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De datum waarop het Notificatiebericht werd verzonden naar de bestemmeling. </td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Notificatiebericht%3Anotificatiekanaal" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/notificatie#notificatiekanaal">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/notificatie#notificatiekanaal" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#notificatiekanaal" data-placement="right">
+                            notificatiekanaal</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Notificatiekanaal</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Het notificatiekanaal duidt het technisch medium aan waarlangs het Notificatiebericht wordt verzonden.</td>
+                        <td property="vann:usageNote">Er wordt verwacht dat het notificatiekanaal gedefinieerd is in een codelijst. Het bepalen en ontlsuiten van deze codelijst kan applicatie-specifiek worden ingevuld. Mogelijke waarden zijn sms en e-mail.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Notificatiebericht%3Atekst" typeof="rdfs:Property" resource="https://schema.org/text">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://schema.org/text" data-toggle="tooltip" data-content="https://schema.org/text" data-placement="right">
+                            tekst</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De tekstuele inhoud van het Notificatiebericht.</td>
+                        <td property="vann:usageNote">De tekst wordt afgeleid van de inhoud van een InformeerActie.In praktijk kan dit gebeuren door het vastleggen van sjablonen voor verschillende kanalen. De verderedere uitwerking hiervan is applicatie-specifiek.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Notificatiebericht%3Atitel" typeof="rdfs:Property" resource="https://schema.org/name">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://schema.org/name" data-toggle="tooltip" data-content="https://schema.org/name" data-placement="right">
                             titel</a>
                           </code>
                         </td>
@@ -470,20 +725,6 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td>1</td>
                         <td property="rdfs:comment">Een titel voor het Notificatiebericht.</td>
                         <td property="vann:usageNote">De titel kan in praktijk automatisch worden samengesteld aan de hand van een aantal andere beschikbare velden.</td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Notificatiebericht%3Atype" typeof="rdfs:Property" resource="http://purl.org/dc/terms/type">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/type" data-toggle="tooltip" data-content="http://purl.org/dc/terms/type" data-placement="right">
-                            type</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Notificatiecategorie</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Het type van het Notificatiebericht.</td>
-                        <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
                     
@@ -576,7 +817,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             is verantwoordelijk voor</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">PubliekeDienstverlening</a></td>
+                        <td><a href="http://purl.org/vocab/cpsv#PublicService" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#PublicService" data-placement="right">PubliekeDienstverlening</a></td>
                         <td>0...*</td>
                         <td property="rdfs:comment">Verwijst naar de Publieke Dienstverlening waar de Publieke Organisatie verantwoordelijk voor is.</td>
                         <td property="vann:usageNote"></td>
@@ -593,130 +834,6 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
                         <td>1</td>
                         <td property="rdfs:comment">Naam waarmee de Organisatie bij voorkeur wordt aangeduid.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                    </tbody>
-                  </table>
-                </div>
-      			  
-            </div>
-            
-            <div class="region region--no-space-top">
-              <h3 class="h3" id="Status"><a href="http://data.vlaanderen.be/ns/notificatie#Status" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#Status" data-placement="right">Status</a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>De Status van het Notificatiebericht voor een bepaalde bestemmeling.</dd>
-                    
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Status%3Aagent">agent</a>, 
-                      <a href="#Status%3Adatum%20gelezen">datum gelezen</a>, 
-                      <a href="#Status%3Adatum%20verzending">datum verzending</a>, 
-                      <a href="#Status%3Anotificatie%20status">notificatie status</a>, 
-                      <a href="#Status%3Anotificatiebericht">notificatiebericht</a>, 
-                      <a href="#Status%3Anotificatiekanaal">notificatiekanaal</a>.</dd>
-                    
-                  </dl>
-                </div>
-                
-                <div class="u-table-overflow">
-                  <table class="data-table">
-                    <thead>
-                      <tr class="data-table__header">
-                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
-                        <th class="data-table__header-title--sortable">Verwacht Type</th>
-                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
-                        <th class="data-table__header-title--sortable">Beschrijving</th>
-                        <th class="data-table__header-title--sortable">Gebruik</th>
-                        <th class="data-table__header-title--sortable">Codelijst</th>
-                      </tr>
-                    </thead>
-        
-                    <tbody class="supertype">
-                    
-                      <tr id="Status%3Aagent" typeof="rdfs:Property" resource="http://purl.org/dc/terms/Agent">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/Agent" data-toggle="tooltip" data-content="http://purl.org/dc/terms/Agent" data-placement="right">
-                            agent</a>
-                          </code>
-                        </td>
-                        <td><a href="http://purl.org/dc/terms/Agent" data-toggle="tooltip" data-content="http://purl.org/dc/terms/Agent" data-placement="right">Agent</a></td>
-                        <td>1...*</td>
-                        <td property="rdfs:comment">De Agent waarop deze Status betrekking heeft.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Status%3Adatum%20gelezen" typeof="rdfs:Property" resource="http://schema.org/dateRead">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://schema.org/dateRead" data-toggle="tooltip" data-content="http://schema.org/dateRead" data-placement="right">
-                            datum gelezen</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">De datum waarop het Notificatiebericht werd gelezen door de bestemmeling. </td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Status%3Adatum%20verzending" typeof="rdfs:Property" resource="http://schema.org/dateSent">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://schema.org/dateSent" data-toggle="tooltip" data-content="http://schema.org/dateSent" data-placement="right">
-                            datum verzending</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">De datum waarop het Notificatiebericht werd verzonden naar de bestemmeling. </td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Status%3Anotificatie%20status" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/notificatie#notificatieStatus">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/notificatie#notificatieStatus" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#notificatieStatus" data-placement="right">
-                            notificatie status</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">NotificatieStatus</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">De status van een notificatie voor een bepaalde bestemmeling.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Status%3Anotificatiebericht" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/notificatie#Notificatiebericht">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/notificatie#Notificatiebericht" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#Notificatiebericht" data-placement="right">
-                            notificatiebericht</a>
-                          </code>
-                        </td>
-                        <td><a href="http://data.vlaanderen.be/ns/notificatie#Notificatiebericht" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#Notificatiebericht" data-placement="right">Notificatiebericht</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Het Notificatiebericht waarop deze Status betrekking heeft.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Status%3Anotificatiekanaal" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/notificatie#notificatiekanaal">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/notificatie#notificatiekanaal" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#notificatiekanaal" data-placement="right">
-                            notificatiekanaal</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Notificiatiekanaal</a></td>
-                        <td>1...*</td>
-                        <td property="rdfs:comment">Het notificatiekanaal duidt het technisch medium aan waarlangs het Notificatiebericht wordt verzonden.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -778,7 +895,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             <a href="http://ww.w3.org/2006/vcard/ns#honorific-prefix" data-toggle="tooltip" data-content="http://ww.w3.org/2006/vcard/ns#honorific-prefix" data-placement="right">aanschrijfvorm</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
+                        <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">TaalString</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Titel waarmee iemand wordt aangeschreven of aangesproken of waarmee naar iemand wordt verwezen.</td>
                         <td property="vann:usageNote">Bvb De heer/Mevrouw, Excellentie, Dokter&#133;</td>
@@ -791,7 +908,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             <a href="http://www.w3.org/ns/locn#address" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#address" data-placement="right">adres</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Adresvoorstelling</a></td>
+                        <td><a href="http://www.w3.org/ns/locn#Address" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#Address" data-placement="right">Adresvoorstelling</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Adres dat men kan aanschrijven of bezoeken.</td>
                         <td property="vann:usageNote"> </td>
@@ -804,7 +921,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             <a href="http://schema.org/hoursAvailable" data-toggle="tooltip" data-content="http://schema.org/hoursAvailable" data-placement="right">beschikbaarheid</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">OpeningsurenSpecificatie</a></td>
+                        <td><a href="https://schema.org/OpeningHoursSpecification" data-toggle="tooltip" data-content="https://schema.org/OpeningHoursSpecification" data-placement="right">OpeningsurenSpecificatie</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Periode waarin contact kan worden opgenomen.</td>
                         <td property="vann:usageNote">Bv aanduiding van het seizoen waarin contact kan worden opgenoment aangeboden. Begin- en einddatum volgens ISO8601 syntax.</td>
@@ -856,7 +973,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             <a href="http://schema.org/openingHours" data-toggle="tooltip" data-content="http://schema.org/openingHours" data-placement="right">openingsuren</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">OpeningsurenSpecificatie</a></td>
+                        <td><a href="https://schema.org/OpeningHoursSpecification" data-toggle="tooltip" data-content="https://schema.org/OpeningHoursSpecification" data-placement="right">OpeningsurenSpecificatie</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Uren waarbinnen contact kan worden opgenomen.</td>
                         <td property="vann:usageNote">Syntax volgens schema.org voor openingsuren. Bv als contact kan worden opgenomen tussen 8 en 20u maandag tot zaterdag en tussen 8 en 18u op zondag wordt dit gecodeerd als Ma-za 08:00-20:00, zo 08:00-18:00.</td>
@@ -896,7 +1013,164 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Sleutel/Waarde Paar"><a href="http://data.vlaanderen.be/ns/notificatie#SleutelWaardePaar" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#SleutelWaardePaar" data-placement="right">Sleutel/Waarde Paar</a></h3>
+              <h3 class="h3" id="Doelgroep"><a href="https://schema.org/Audience" data-toggle="tooltip" data-content="https://schema.org/Audience" data-placement="right">Doelgroep</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>De beoogde doelgroep van een informeer actie.</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor dit datatype zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Doelgroep%3Adoelgroep%20type">doelgroep type</a>, 
+                      <a href="#Doelgroep%3Ageografisch%20gebied">geografisch gebied</a>, 
+                      <a href="#Doelgroep%3Aidentificator">identificator</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                      
+                      <tr id="Doelgroep%3Adoelgroep%20type" typeof="rdfs:Property" resource="https://schema.org/audienceType">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://schema.org/audienceType" data-toggle="tooltip" data-content="https://schema.org/audienceType" data-placement="right">doelgroep type</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Een typering van de doelgroep.</td>
+                        <td property="vann:usageNote">Er wordt verwacht dat het type doelgroep gedefinieerd is in een codelijst. Het bepalen en ontlsuiten van deze codelijst kan applicatie-specifiek worden ingevuld. Voorbeelden zijn leerkrachten, vastgoedeigenaars, personen die een auto bezitten,...</td>
+                        <td></td>
+                      </tr>
+                      
+                      <tr id="Doelgroep%3Ageografisch%20gebied" typeof="rdfs:Property" resource="https://schema.org/geographicArea">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://schema.org/geographicArea" data-toggle="tooltip" data-content="https://schema.org/geographicArea" data-placement="right">geografisch gebied</a>
+                          </code>
+                        </td>
+                        <td><a href="https://schema.org/AdministrativeArea" data-toggle="tooltip" data-content="https://schema.org/AdministrativeArea" data-placement="right">AdministratieveEenheid</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Het geografisch gebied geassocieerd met de doelgroep.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                      
+                      <tr id="Doelgroep%3Aidentificator" typeof="rdfs:Property" resource="http://www.w3.org/ns/adms#identifier">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/ns/adms#identifier" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#identifier" data-placement="right">identificator</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Een identificator voor de doelgroep.</td>
+                        <td property="vann:usageNote">Kan bijvoorbeeld een specifieke persoon of organisatie identificeren, of een groep van personen of organisaties. </td>
+                        <td></td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
+                
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Geografische Naam"><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">Geografische Naam</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Benaming toegekend aan of gebruikt voor een geografisch object.</dd>
+                    
+                    <dt>Gebruik</dt><dd> </dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor dit datatype zijn geen eigenschappen gedefinieerd.</dd>
+                    
+                  </dl>
+                </div>
+                
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Geometrie"><a href="http://www.w3.org/ns/locn#Geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#Geometry" data-placement="right">Geometrie</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Vorm- en positiekenmerken van een object.</dd>
+                    
+                    <dt>Gebruik</dt><dd>Beschrijft deze kenmerken dmv punten, lijnen, polygonen en co&#246;rdinaten.</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor dit datatype zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Geometrie%3Agml">gml</a>, 
+                      <a href="#Geometrie%3Awkt">wkt</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                      
+                      <tr id="Geometrie%3Agml" typeof="rdfs:Property" resource="http://www.opengis.net/ont/geosparql#asGML">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.opengis.net/ont/geosparql#asGML" data-toggle="tooltip" data-content="http://www.opengis.net/ont/geosparql#asGML" data-placement="right">gml</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">GetypeerdeString</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Geometrie uitgedrukt in gml-formaat.</td>
+                        <td property="vann:usageNote">Gebruik http://www.opengis.net/ont/geosparql#gmlLiteral als datatype.</td>
+                        <td></td>
+                      </tr>
+                      
+                      <tr id="Geometrie%3Awkt" typeof="rdfs:Property" resource="http://www.opengis.net/ont/geosparql#asWKT">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.opengis.net/ont/geosparql#asWKT" data-toggle="tooltip" data-content="http://www.opengis.net/ont/geosparql#asWKT" data-placement="right">wkt</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">GetypeerdeString</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Geometrie uitgedrukt in wkt-formaat.</td>
+                        <td property="vann:usageNote">Gebruik http://www.opengis.net/ont/geosparql#wktLiteral als datatype.</td>
+                        <td></td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
+                
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Sleutel/Waarde Paar"><a href="https://schema.org/PropertyValue" data-toggle="tooltip" data-content="https://schema.org/PropertyValue" data-placement="right">Sleutel/Waarde Paar</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
                     <dt>Beschrijving</dt><dd>Een open data structuur dat uitbreiding toelaat aan de hand van een sleutel en een waarde.</dd>
@@ -904,7 +1178,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                     <dt>Eigenschappen</dt>
                     
                     <dd>Voor dit datatype zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Sleutel/Waarde%20Paar%3Alabel">label</a>, 
+                      <a href="#Sleutel/Waarde%20Paar%3Anaam">naam</a>, 
                       <a href="#Sleutel/Waarde%20Paar%3Awaarde">waarde</a>.</dd>
                     
                   </dl>
@@ -925,10 +1199,10 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
         
                     <tbody class="supertype">
                       
-                      <tr id="Sleutel/Waarde%20Paar%3Alabel" typeof="rdfs:Property" resource="http://www.w3.org/2000/01/rdf-schema#label">
+                      <tr id="Sleutel/Waarde%20Paar%3Anaam" typeof="rdfs:Property" resource="https://schema.org/name">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://www.w3.org/2000/01/rdf-schema#label" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#label" data-placement="right">label</a>
+                            <a href="https://schema.org/name" data-toggle="tooltip" data-content="https://schema.org/name" data-placement="right">naam</a>
                           </code>
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
@@ -938,10 +1212,10 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                       
-                      <tr id="Sleutel/Waarde%20Paar%3Awaarde" typeof="rdfs:Property" resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#value">
+                      <tr id="Sleutel/Waarde%20Paar%3Awaarde" typeof="rdfs:Property" resource="https://schema.org/value">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#value" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#value" data-placement="right">waarde</a>
+                            <a href="https://schema.org/value" data-toggle="tooltip" data-content="https://schema.org/value" data-placement="right">waarde</a>
                           </code>
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
@@ -1047,6 +1321,10 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
       font-size: 1.4rem;
       color: #000;
       background-clip: padding-box;
+    }
+    .data-table {
+      table-layout:fixed;
+      max-width:803px;
     }
   </style>
 </body>

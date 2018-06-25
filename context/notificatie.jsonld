@@ -1,53 +1,72 @@
 {
 	"@context":
 	{
-		"PubliekeOrganisatie":"http://data.europa.eu/m8g/PublicOrganisation",
-		"Status":"http://data.vlaanderen.be/ns/notificatie#Status",
-		"Merk":"http://schema.org/Brand",
+		"AdministratieveEenheid":"https://schema.org/AdministrativeArea",
 		"Agent":"http://purl.org/dc/terms/Agent",
+		"InformeerActie":"https://schema.org/InformAction",
+		"Merk":"http://schema.org/Brand",
 		"Notificatiebericht":"http://data.vlaanderen.be/ns/notificatie#Notificatiebericht",
+		"PubliekeOrganisatie":"http://data.europa.eu/m8g/PublicOrganisation",
 
-		"bestemmeling":{
-			"@id":"http://data.vlaanderen.be/ns/notificatie#bestemmeling",
-			"@type":"http://data.vlaanderen.be/ns/notificatie#Status"
+		"Merk.naam":{
+			"@id":"http://schema.org/name",
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
-		"Status.bestemmeling":{
-			"@id":"http://data.vlaanderen.be/ns/notificatie#Notificatiebericht",
-			"@type":"http://data.vlaanderen.be/ns/notificatie#Notificatiebericht",
-			"@container":"@set"
+		"aanschrijfvorm":{
+			"@id":"http://ww.w3.org/2006/vcard/ns#honorific-prefix",
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
 		},
-		"Status.bestemmeling":{
-			"@id":"http://purl.org/dc/terms/Agent",
-			"@type":"http://purl.org/dc/terms/Agent",
-			"@container":"@set"
-		},
-		"heeftMerk":{
-			"@id":"http://schema.org/brand",
-			"@type":"http://schema.org/Brand",
-			"@container":"@set"
-		},
-		"bron":{
-			"@id":"http://purl.org/dc/terms/source",
-			"@type":"http://data.europa.eu/m8g/PublicOrganisation"
+		"adres":{
+			"@id":"http://www.w3.org/ns/locn#address",
+			"@type":"http://www.w3.org/ns/locn#Address"
 		},
 		"afzender":{
 			"@id":"http://schema.org/sender",
 			"@type":"http://schema.org/Brand"
 		},
-		"aanschrijfvorm":{
-			"@id":"http://ww.w3.org/2006/vcard/ns#honorific-prefix",
-			"@type":""
-		},
-		"adres":{
-			"@id":"http://www.w3.org/ns/locn#address",
-			"@type":""
+		"agent":{
+			"@id":"https://schema.org/agent",
+			"@type":"http://data.europa.eu/m8g/PublicOrganisation"
 		},
 		"beschikbaarheid":{
 			"@id":"http://schema.org/hoursAvailable",
-			"@type":""
+			"@type":"https://schema.org/OpeningHoursSpecification"
+		},
+		"bestemmeling":{
+			"@id":"https://schema.org/recipient",
+			"@type":"http://purl.org/dc/terms/Agent"
+		},
+		"contactinfo":{
+			"@id":"http://schema.org/contactPoint",
+			"@type":"http://schema.org/ContactPoint"
 		},
 		"contactnaam":{
 			"@id":"http://xmlns.com/foaf/0.1/name",
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
+		},
+		"datumCreatie":{
+			"@id":"https://schema.org/dateCreated",
+			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
+		},
+		"datumGelezen":{
+			"@id":"http://schema.org/dateRead",
+			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
+		},
+		"datumOntvangen":{
+			"@id":"http://schema.org/dateReceived",
+			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
+		},
+		"datumVerzending":{
+			"@id":"http://schema.org/dateSent",
+			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
+		},
+		"doelgroep":{
+			"@id":"http://schema.org/recipient",
+			"@type":"https://schema.org/Audience",
+			"@container":"@set"
+		},
+		"doelgroepType":{
+			"@id":"https://schema.org/audienceType",
 			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
 		"email":{
@@ -58,89 +77,96 @@
 			"@id":"http://schema.org/faxNumber",
 			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
-		"openingsuren":{
-			"@id":"http://schema.org/openingHours",
-			"@type":""
-		},
-		"telefoon":{
-			"@id":"http://schema.org/telephone",
-			"@type":"http://www.w3.org/2001/XMLSchema#string"
-		},
-		"website":{
-			"@id":"http://xmlns.com/foaf/0.1/page",
-			"@type":"http://www.w3.org/2001/XMLSchema#anyURI"
-		},
-		"isVerantwoordelijkVoor":{
-			"@id":"http://data.vlaanderen.be/ns/dienst#isVerantwoordelijkVoor",
-			"@type":"",
+		"geografischGebied":{
+			"@id":"https://schema.org/geographicArea",
+			"@type":"https://schema.org/AdministrativeArea",
 			"@container":"@set"
 		},
-		"voorkeursnaam":{
-			"@id":"http://www.w3.org/2004/02/skos/core#prefLabel",
-			"@type":"http://www.w3.org/2001/XMLSchema#string"
+		"geometrie":{
+			"@id":"http://www.w3.org/ns/locn#geometry",
+			"@type":"http://www.w3.org/ns/locn#Geometry"
 		},
-		"label":{
-			"@id":"http://www.w3.org/2000/01/rdf-schema#label",
-			"@type":"http://www.w3.org/2001/XMLSchema#string"
+		"gml":{
+			"@id":"http://www.opengis.net/ont/geosparql#asGML",
+			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
 		},
-		"waarde":{
-			"@id":"http://www.w3.org/1999/02/22-rdf-syntax-ns#value",
-			"@type":"http://www.w3.org/2001/XMLSchema#string"
-		},
-		"datumGelezen":{
-			"@id":"http://schema.org/dateRead",
-			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
-		},
-		"datumVerzending":{
-			"@id":"http://schema.org/dateSent",
-			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
-		},
-		"notificatiekanaal":{
-			"@id":"http://data.vlaanderen.be/ns/notificatie#notificatiekanaal",
-			"@type":"",
+		"heeftMerk":{
+			"@id":"http://schema.org/brand",
+			"@type":"http://schema.org/Brand",
 			"@container":"@set"
 		},
-		"notificatieStatus":{
-			"@id":"http://data.vlaanderen.be/ns/notificatie#notificatieStatus",
-			"@type":""
+		"identificator":{
+			"@id":"http://www.w3.org/ns/adms#identifier",
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
-		"contactinfo":{
-			"@id":"http://schema.org/contactPoint",
-			"@type":"http://schema.org/ContactPoint"
+		"inhoud":{
+			"@id":"http://data.vlaanderen.be/ns/notificatie#inhoud",
+			"@type":"https://schema.org/PropertyValue",
+			"@container":"@set"
 		},
 		"isGerelateerdMet":{
 			"@id":"http://purl.org/dc/terms/relation",
-			"@type":"",
+			"@type":"http://purl.org/vocab/cpsv#PublicService",
+			"@container":"@set"
+		},
+		"isVerantwoordelijkVoor":{
+			"@id":"http://data.vlaanderen.be/ns/dienst#isVerantwoordelijkVoor",
+			"@type":"http://purl.org/vocab/cpsv#PublicService",
 			"@container":"@set"
 		},
 		"naam":{
-			"@id":"http://schema.org/name",
+			"@id":"https://schema.org/name",
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
+		},
+		"notificatiekanaal":{
+			"@id":"http://data.vlaanderen.be/ns/notificatie#notificatiekanaal",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
+		},
+		"onderwerp":{
+			"@id":"https://schema.org/about",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
+			"@container":"@set"
+		},
+		"openingsuren":{
+			"@id":"http://schema.org/openingHours",
+			"@type":"https://schema.org/OpeningHoursSpecification"
+		},
+		"resulteertIn":{
+			"@id":"http://data.vlaanderen.be/ns/notificatie#resulteertIn",
+			"@type":"http://data.vlaanderen.be/ns/notificatie#Notificatiebericht",
+			"@container":"@set"
+		},
+		"tekst":{
+			"@id":"https://schema.org/text",
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
+		},
+		"telefoon":{
+			"@id":"http://schema.org/telephone",
 			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
 		"url":{
 			"@id":"http://schema.org/url",
 			"@type":"http://www.w3.org/2001/XMLSchema#anyURI"
 		},
-		"creatie":{
-			"@id":"http://purl.org/dc/terms/created",
-			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
-		},
-		"inhoud":{
-			"@id":"http://data.vlaanderen.be/ns/notificatie#inhoud",
-			"@type":"http://data.vlaanderen.be/ns/notificatie#SleutelWaardePaar",
-			"@container":"@set"
-		},
-		"titel":{
-			"@id":"http://purl.org/dc/elements/1.1/title",
-			"@type":"http://www.w3.org/2001/XMLSchema#string"
-		},
-		"type":{
-			"@id":"http://purl.org/dc/terms/type",
-			"@type":""
-		},
 		"vervalt":{
 			"@id":"http://schema.org/expires",
 			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
+		},
+		"voorkeursnaam":{
+			"@id":"http://www.w3.org/2004/02/skos/core#prefLabel",
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
+		},
+		"waarde":{
+			"@id":"https://schema.org/value",
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
+		},
+		"website":{
+			"@id":"http://xmlns.com/foaf/0.1/page",
+			"@type":"http://www.w3.org/2001/XMLSchema#anyURI"
+		},
+		"wkt":{
+			"@id":"http://www.opengis.net/ont/geosparql#asWKT",
+			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
 		}
 	}
 }

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="nl" lang="nl" dir="ltr" typeof="bibo:Document " about="" property="dcterms:language" content="nl" prefix="dcterms: http://purl.org/dc/terms/ bibo: http://purl.org/ontology/bibo/ schema: http://schema.org/ w3p: http://www.w3.org/2001/02pd/rec54#">
 
 <head>
-  <title>Generieke Terugmeldfaciliteit</title>
+  <title>Issue tracking voor burgers</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -41,7 +41,7 @@
         <div class="layout layout--wide">
           <div class="grid u-hr">
             <div class="col--9-12 col--1-1--s">
-              <h1 class="h1">Generieke Terugmeldfaciliteit</h1>
+              <h1 class="h1">Issue tracking voor burgers</h1>
               <div class="head" role="contentinfo" id="respecHeader">
                 <dl>
                   <dt>Laatste aanpassing</dt>
@@ -177,7 +177,7 @@
             <div class="region" id="introduction">
               <div class="introduction typography">
               
-                <p>Dit document beschrijft een <strong>applicatieprofiel</strong>, in dit geval <strong>Generieke Terugmeldfaciliteit</strong>.
+                <p>Dit document beschrijft een <strong>applicatieprofiel</strong>, in dit geval <strong>Issue tracking van burgers</strong>.
                 <!--Een applicatieprofiel is een specificatie die bestaande termen hergebruikt van verschillende basis-standaarden en daar meer specificiteit aan toevoegt.-->
                 <!-- Daarbij wordt het gebruik van de termen toegelicht voor de interbestuurlijke uitwisseling van overheidsinformatie.-->
                 Dit applicatieprofiel beantwoordt de vraag over hoe het corresponderende domeinmodel in de praktijk kan toegepast worden.
@@ -190,10 +190,8 @@
             <div class="region region--no-space-top typography" id="summary">              
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">Samenvatting</h2>
                 
-    <p>De Generieke Terugmeldfaciliteit voorziet in het opzetten van een generiek mechanisme voor gebruikers van digitaal
-verstrekte informatie om fouten en onvolledigheden in deze informatie terug te melden aan de
-verantwoordelijke bronbeheerder. Dit applicatieprofiel definieert een data specificatie voor gegevensuitwisseling met en tussen implementaties van deze bouwsteen.</p>
-<p>Een terugmelding, afgeleid van de generieke klasse Melding, wordt gelinkt aan een body en een doelwit (een meldingsobject). De body is gerelateerd aan het meldingsobject en verschaft additionele informatie aan de behandelaar van de terugmelding, bijvoorbeeld in de vorm van ingescande documenten ter staving van de terugmelding. Verder worden mechanismen voorzien die toelaten om een terugmelding te dispatchen, bijvoorbeeld op basis van de bronhouder van de dataset waar het meldingsobject in beheerd wordt.</p>
+<p>Dit applicatieprofiel beschrijft een specificatie voor het structureren en uitwisseling van meldingen met betrekking tot een bepaald probleem of een vaststelling die mogelijks aanleiding geeft tot een actie van de overheid. De melding kan gebruikt worden voor vaststellingen in de echte wereld, bijvoorbeeld het melden van een put in de weg of sluikstort, of voor het melden van fouten of onvolledigheden in digitale gegevensbronnen.</p>
+<p>Om (automatische) dispatching toe te laten werd een melding voorzien van relaties met verschillende agenten die als actor optreden tijdens de afhandeling van een melding. Verder laat een melding body toe om extra informatie m.b.t. de melding toe te voegen, zoals een foto, co&#246;rdinaten of een uitgebreide beschrijvingen van het probleem.</p>
 
             </div>
     
@@ -250,19 +248,13 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       |
                       <a href="#Agent">Agent</a> |
                       <a href="#Applicatie">Applicatie</a> |
-                      <a href="#Concept">Concept</a> |
-                      <a href="#Dataset">Dataset</a> |
-                      <a href="#Eigenschap">Eigenschap</a> |
                       <a href="#Geregistreerd Persoon">Geregistreerd Persoon</a> |
                       <a href="#Hoedanigheid">Hoedanigheid</a> |
                       <a href="#Melding">Melding</a> |
-                      <a href="#Meldingsobject">Meldingsobject</a> |
                       <a href="#Organisatie">Organisatie</a> |
                       <a href="#Organisatie-eenheid">Organisatie-eenheid</a> |
                       <a href="#Persoon">Persoon</a> |
                       <a href="#Publieke Organisatie">Publieke Organisatie</a> |
-                      <a href="#Terugmelding">Terugmelding</a> |
-                      <a href="#TijdToestand">TijdToestand</a> |
                     </p>
                   </div>
                   
@@ -273,7 +265,6 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       |
                       <a href="#Geometrie">Geometrie</a> |
                       <a href="#Melding Body">Melding Body</a> |
-                      <a href="#Meldingsobject Attribuut">Meldingsobject Attribuut</a> |
                       <a href="#Status">Status</a> |
                     </p>
                   </div>
@@ -283,8 +274,8 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             </div>
             <div class="region region--no-space-top">
               
-              <a href="/cms/ap/generieke-terugmeldfaciliteit/overview.jpg" target="_blank">
-                 <img src="/cms/ap/generieke-terugmeldfaciliteit/overview.jpg" />
+              <a href="/cms/ap/issue-tracking-voor-burgers/overview.jpg" target="_blank">
+                 <img src="/cms/ap/issue-tracking-voor-burgers/overview.jpg" />
               </a>
             </div>
             <div class="region region--no-space-top">
@@ -319,278 +310,6 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                   </dl>
                 </div>
                 
-            </div>
-            
-            <div class="region region--no-space-top">
-              <h3 class="h3" id="Concept"><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Concept</a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>Een mogelijke waarde voor de Eigenschap.</dd>
-                    
-                    <dt>Gebruik</dt><dd>Het is aangeraden de mogelijke waarden voor de stellen als een skos:ConceptScheme (https://www.w3.org/TR/skos-primer/)</dd>
-                    
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Concept%3Abronhouder">bronhouder</a>, 
-                      <a href="#Concept%3Alabel">label</a>.</dd>
-                    
-                  </dl>
-                </div>
-                
-                <div class="u-table-overflow">
-                  <table class="data-table">
-                    <thead>
-                      <tr class="data-table__header">
-                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
-                        <th class="data-table__header-title--sortable">Verwacht Type</th>
-                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
-                        <th class="data-table__header-title--sortable">Beschrijving</th>
-                        <th class="data-table__header-title--sortable">Gebruik</th>
-                        <th class="data-table__header-title--sortable">Codelijst</th>
-                      </tr>
-                    </thead>
-        
-                    <tbody class="supertype">
-                    
-                      <tr id="Concept%3Abronhouder" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#bronhouder">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/melding#bronhouder" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#bronhouder" data-placement="right">
-                            bronhouder</a>
-                          </code>
-                        </td>
-                        <td><a href="https://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="https://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">De bronhouder is verantwoordelijk voor het opnemen van gegevens in de dataset en het bewaken van de kwaliteit daarvan.</td>
-                        <td property="vann:usageNote">In dit geval is de bronhouder enkel verantwoordelijk voor een bepaald veld in de dataset. De melding kan naar de desbetreffende organisatie gedispatched worden indien het meldingsobject betrekking heeft op deze eigenschap.</td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Concept%3Alabel" typeof="rdfs:Property" resource="http://www.w3.org/2004/02/skos/core#prefLabel">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://www.w3.org/2004/02/skos/core#prefLabel" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#prefLabel" data-placement="right">
-                            label</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Het geprefereerde label voor het Concept.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                    </tbody>
-                  </table>
-                </div>
-      			  
-            </div>
-            
-            <div class="region region--no-space-top">
-              <h3 class="h3" id="Dataset"><a href="http://purl.org/dc/dcmitype/Dataset" data-toggle="tooltip" data-content="http://purl.org/dc/dcmitype/Dataset" data-placement="right">Dataset</a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>De Dataset klasse beschrijft de gegevensbron waarop de terugmelding betrekking heeft.</dd>
-                    
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Dataset%3Abeschrijving">beschrijving</a>, 
-                      <a href="#Dataset%3Abronhouder">bronhouder</a>, 
-                      <a href="#Dataset%3Aeigenschap">eigenschap</a>, 
-                      <a href="#Dataset%3Atitel">titel</a>.</dd>
-                    
-                  </dl>
-                </div>
-                
-                <div class="u-table-overflow">
-                  <table class="data-table">
-                    <thead>
-                      <tr class="data-table__header">
-                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
-                        <th class="data-table__header-title--sortable">Verwacht Type</th>
-                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
-                        <th class="data-table__header-title--sortable">Beschrijving</th>
-                        <th class="data-table__header-title--sortable">Gebruik</th>
-                        <th class="data-table__header-title--sortable">Codelijst</th>
-                      </tr>
-                    </thead>
-        
-                    <tbody class="supertype">
-                    
-                      <tr id="Dataset%3Abeschrijving" typeof="rdfs:Property" resource="http://purl.org/dc/terms/description">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/description" data-toggle="tooltip" data-content="http://purl.org/dc/terms/description" data-placement="right">
-                            beschrijving</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Een beschrijving van de Dataset.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Dataset%3Abronhouder" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#bronhouder">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/melding#bronhouder" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#bronhouder" data-placement="right">
-                            bronhouder</a>
-                          </code>
-                        </td>
-                        <td><a href="https://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="https://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></td>
-                        <td></td>
-                        <td property="rdfs:comment">De bronhouder is verantwoordelijk voor het opnemen van gegevens in de dataset en het bewaken van de kwaliteit daarvan.</td>
-                        <td property="vann:usageNote">Een dataset kan meerdere bronhouders hebben in geval van decentraal beheer. </td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Dataset%3Aeigenschap" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#eigenschap">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/melding#eigenschap" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#eigenschap" data-placement="right">
-                            eigenschap</a>
-                          </code>
-                        </td>
-                        <td><a href="http://data.vlaanderen.be/ns/melding#Eigenschap" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#Eigenschap" data-placement="right">Eigenschap</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Verwijst naar de Eigenschap die deel uitmaakt van de Dataset.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Dataset%3Atitel" typeof="rdfs:Property" resource="http://purl.org/dc/terms/title">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/title" data-toggle="tooltip" data-content="http://purl.org/dc/terms/title" data-placement="right">
-                            titel</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">De titel van een Dataset.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                    </tbody>
-                  </table>
-                </div>
-      			  
-            </div>
-            
-            <div class="region region--no-space-top">
-              <h3 class="h3" id="Eigenschap"><a href="http://data.vlaanderen.be/ns/melding#Eigenschap" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#Eigenschap" data-placement="right">Eigenschap</a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>De klasse voor het beschrijven van de data velden waaruit een dataset bestaat.</dd>
-                    
-                    <dt>Gebruik</dt><dd>In het kader van meldingen met betrekking op informatievelden met foutieve of ontbrekende gegevens kan de Eigenschap klasse gebruikt worden om voor elke Dataset weer te geven op welke informatievelden kan teruggemeld worden. Elke Eigenschap kan worden toegewezen aan een andere Organisatie die verantwoordelijk is voor het verwerken van de feedback.
-</dd>
-                    
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Eigenschap%3Abronhouder">bronhouder</a>, 
-                      <a href="#Eigenschap%3Alabel">label</a>, 
-                      <a href="#Eigenschap%3Alabel">label</a>, 
-                      <a href="#Eigenschap%3Ameldbaar">meldbaar</a>, 
-                      <a href="#Eigenschap%3Amogelijke%20waarden">mogelijke waarden</a>.</dd>
-                    
-                  </dl>
-                </div>
-                
-                <div class="u-table-overflow">
-                  <table class="data-table">
-                    <thead>
-                      <tr class="data-table__header">
-                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
-                        <th class="data-table__header-title--sortable">Verwacht Type</th>
-                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
-                        <th class="data-table__header-title--sortable">Beschrijving</th>
-                        <th class="data-table__header-title--sortable">Gebruik</th>
-                        <th class="data-table__header-title--sortable">Codelijst</th>
-                      </tr>
-                    </thead>
-        
-                    <tbody class="supertype">
-                    
-                      <tr id="Eigenschap%3Abronhouder" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#bronhouder">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/melding#bronhouder" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#bronhouder" data-placement="right">
-                            bronhouder</a>
-                          </code>
-                        </td>
-                        <td><a href="https://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="https://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">De bronhouder is verantwoordelijk voor het opnemen van gegevens in de dataset en het bewaken van de kwaliteit daarvan.</td>
-                        <td property="vann:usageNote">In dit geval is de bronhouder enkel verantwoordelijk voor een bepaald veld in de dataset. De melding kan naar de desbetreffende organisatie gedispatched worden indien het meldingsobject betrekking heeft op deze eigenschap.</td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Eigenschap%3Alabel" typeof="rdfs:Property" resource="http://www.w3.org/2000/01/rdf-schema#label">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://www.w3.org/2000/01/rdf-schema#label" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#label" data-placement="right">
-                            label</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Een label voor de Eigenschap.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Eigenschap%3Alabel" typeof="rdfs:Property" resource="https://www.w3.org/ns/hydra/core#required">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="https://www.w3.org/ns/hydra/core#required" data-toggle="tooltip" data-content="https://www.w3.org/ns/hydra/core#required" data-placement="right">
-                            label</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#boolean" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#boolean" data-placement="right">Boolean</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">True als de eigenschap verplicht mee te sturen is ter informatie van de behandelaar en bronhouder, anders false.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Eigenschap%3Ameldbaar" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#meldbaar">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/melding#meldbaar" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#meldbaar" data-placement="right">
-                            meldbaar</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#boolean" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#boolean" data-placement="right">Boolean</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Geeft aan of op de eigenschap kan teruggemeld worden (true) of deze louter ter informatie van de gebruiker wordt getoond (false). </td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Eigenschap%3Amogelijke%20waarden" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#mogelijkeWaarden">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/melding#mogelijkeWaarden" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#mogelijkeWaarden" data-placement="right">
-                            mogelijke waarden</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Concept</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Associeert de Eigenschap met een exhaustieve lijst aan mogelijk waarden (bv. een codelijst).</td>
-                        <td property="vann:usageNote">Het is aangeraden de mogelijke waarden voor te stellen als een skos:ConceptScheme (https://www.w3.org/TR/skos-primer/)</td>
-                        <td></td>
-                      </tr>
-                    
-                    </tbody>
-                  </table>
-                </div>
-      			  
             </div>
             
             <div class="region region--no-space-top">
@@ -864,133 +583,6 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Meldingsobject"><a href="http://data.vlaanderen.be/ns/melding#Meldingsobject" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#Meldingsobject" data-placement="right">Meldingsobject</a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>Het Meldingsobject identificeert een resource, een specifiek deel van een resource,een bepaalde representatie van een resource of een combinatie hiervan welke gebruikt wordt binnen de Melding.
-</dd>
-                    
-                    <dt>Gebruik</dt><dd>Het model beschrijft geen attributen voor het Meldingsobject. In de praktijk kan het Meldingsobject beschreven worden aan de hand van instanties van de klasse Eigenschap.</dd>
-                    
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Meldingsobject%3Abehandelaar">behandelaar</a>, 
-                      <a href="#Meldingsobject%3Agerelateerde%20body">gerelateerde body</a>, 
-                      <a href="#Meldingsobject%3Aheeft%20eigenschap">heeft eigenschap</a>, 
-                      <a href="#Meldingsobject%3Aheeft%20status">heeft status</a>, 
-                      <a href="#Meldingsobject%3Aheeft%20toestand">heeft toestand</a>, 
-                      <a href="#Meldingsobject%3AheeftBron">heeftBron</a>.</dd>
-                    
-                  </dl>
-                </div>
-                
-                <div class="u-table-overflow">
-                  <table class="data-table">
-                    <thead>
-                      <tr class="data-table__header">
-                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
-                        <th class="data-table__header-title--sortable">Verwacht Type</th>
-                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
-                        <th class="data-table__header-title--sortable">Beschrijving</th>
-                        <th class="data-table__header-title--sortable">Gebruik</th>
-                        <th class="data-table__header-title--sortable">Codelijst</th>
-                      </tr>
-                    </thead>
-        
-                    <tbody class="supertype">
-                    
-                      <tr id="Meldingsobject%3Abehandelaar" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#behandelaar">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/melding#behandelaar" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#behandelaar" data-placement="right">
-                            behandelaar</a>
-                          </code>
-                        </td>
-                        <td><a href="https://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="https://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></td>
-                        <td>1...*</td>
-                        <td property="rdfs:comment">Agent die werd aangewezen om het meldingsobject op te volgen en af te handelen.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Meldingsobject%3Agerelateerde%20body" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#gerelateerdeBody">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/melding#gerelateerdeBody" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#gerelateerdeBody" data-placement="right">
-                            gerelateerde body</a>
-                          </code>
-                        </td>
-                        <td><a href="http://data.vlaanderen.be/ns/melding#MeldingBody" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#MeldingBody" data-placement="right">MeldingBody</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">De body van de Melding die betrekking heeft op het Meldingsobject.</td>
-                        <td property="vann:usageNote">Indien de Melding meerdere Meldingsobjecten bevat biedt deze eigenschap de mogelijkheid om te beschrijven welke MeldingBody relevant is voor de behandeling van het Meldingsobject.</td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Meldingsobject%3Aheeft%20eigenschap" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#heeftEigenschap">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/melding#heeftEigenschap" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#heeftEigenschap" data-placement="right">
-                            heeft eigenschap</a>
-                          </code>
-                        </td>
-                        <td><a href="http://data.vlaanderen.be/ns/melding#MeldingsobjectAttribuut" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#MeldingsobjectAttribuut" data-placement="right">MeldingsobjectAttribuut</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Refereert naar een Eigenschap die deel uitmaakt van het Meldingsobject.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Meldingsobject%3Aheeft%20status" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#heeftStatus">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/melding#heeftStatus" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#heeftStatus" data-placement="right">
-                            heeft status</a>
-                          </code>
-                        </td>
-                        <td><a href="http://data.vlaanderen.be/ns/melding#Meldingstatus" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#Meldingstatus" data-placement="right">Meldingstatus</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">De Status verbonden aan het Meldingsobject.</td>
-                        <td property="vann:usageNote">Wanneer voor de melding meerdere Meldingsobjecten werden meegegeven die elk door andere Agents worden afgehandeld laat deze eigenschap toe om per Meldingsobject een status mee te geven. De Status van de Melding kan pas behandeld zijn als alle Meldingsobjecten behandeld werden.</td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Meldingsobject%3Aheeft%20toestand" typeof="rdfs:Property" resource="http://www.w3.org/ns/oa#hasState">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://www.w3.org/ns/oa#hasState" data-toggle="tooltip" data-content="http://www.w3.org/ns/oa#hasState" data-placement="right">
-                            heeft toestand</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/ns/oa#TimeState" data-toggle="tooltip" data-content="http://www.w3.org/ns/oa#TimeState" data-placement="right">TijdToestand</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">De relatie tussen het Meldingsobject en een TijdToestand.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Meldingsobject%3AheeftBron" typeof="rdfs:Property" resource="http://www.w3.org/ns/oa#hasSource">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://www.w3.org/ns/oa#hasSource" data-toggle="tooltip" data-content="http://www.w3.org/ns/oa#hasSource" data-placement="right">
-                            heeftBron</a>
-                          </code>
-                        </td>
-                        <td><a href="http://purl.org/dc/dcmitype/Dataset" data-toggle="tooltip" data-content="http://purl.org/dc/dcmitype/Dataset" data-placement="right">Dataset</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">De bron (Dataset) waar het Meldingsobject in voor komt.</td>
-                        <td property="vann:usageNote">Dit attribuut is relevant in het kader van meldingen op concrete informatievelden zoals foutieve of ontbrekende gegevens (terugmeldingen).</td>
-                        <td></td>
-                      </tr>
-                    
-                    </tbody>
-                  </table>
-                </div>
-      			  
-            </div>
-            
-            <div class="region region--no-space-top">
               <h3 class="h3" id="Organisatie"><a href="https://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="https://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
@@ -1116,119 +708,6 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                   </dl>
                 </div>
                 
-            </div>
-            
-            <div class="region region--no-space-top">
-              <h3 class="h3" id="Terugmelding"><a href="http://data.vlaanderen.be/ns/melding#Terugmelding" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#Terugmelding" data-placement="right">Terugmelding</a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>Een terugmelding kan gebruikt worden om bijvoorbeeld een foutief adres te melden op een website of een fout in de digitale weergave van een diploma.</dd>
-                    
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Terugmelding%3Aheeft%20doelwit">heeft doelwit</a>.</dd>
-                    
-                  </dl>
-                </div>
-                
-                <div class="u-table-overflow">
-                  <table class="data-table">
-                    <thead>
-                      <tr class="data-table__header">
-                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
-                        <th class="data-table__header-title--sortable">Verwacht Type</th>
-                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
-                        <th class="data-table__header-title--sortable">Beschrijving</th>
-                        <th class="data-table__header-title--sortable">Gebruik</th>
-                        <th class="data-table__header-title--sortable">Codelijst</th>
-                      </tr>
-                    </thead>
-        
-                    <tbody class="supertype">
-                    
-                      <tr id="Terugmelding%3Aheeft%20doelwit" typeof="rdfs:Property" resource="http://www.w3.org/ns/oa#hasTarget">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://www.w3.org/ns/oa#hasTarget" data-toggle="tooltip" data-content="http://www.w3.org/ns/oa#hasTarget" data-placement="right">
-                            heeft doelwit</a>
-                          </code>
-                        </td>
-                        <td><a href="http://data.vlaanderen.be/ns/melding#Meldingsobject" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#Meldingsobject" data-placement="right">Meldingsobject</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">De relatie tussen de Melding en het doelwit, het Meldingsobject waarop de melding slaat.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                    </tbody>
-                  </table>
-                </div>
-      			  
-            </div>
-            
-            <div class="region region--no-space-top">
-              <h3 class="h3" id="TijdToestand"><a href="http://www.w3.org/ns/oa#TimeState" data-toggle="tooltip" data-content="http://www.w3.org/ns/oa#TimeState" data-placement="right">TijdToestand</a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>Een TijdToestand legt de datum en het tijdstip vast waarop het Meldingsobject dient ge&#239;nterpreteerd te worden.</dd>
-                    
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#TijdToestand%3Acached%20bron">cached bron</a>, 
-                      <a href="#TijdToestand%3Adatum%20vaststelling">datum vaststelling</a>.</dd>
-                    
-                  </dl>
-                </div>
-                
-                <div class="u-table-overflow">
-                  <table class="data-table">
-                    <thead>
-                      <tr class="data-table__header">
-                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
-                        <th class="data-table__header-title--sortable">Verwacht Type</th>
-                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
-                        <th class="data-table__header-title--sortable">Beschrijving</th>
-                        <th class="data-table__header-title--sortable">Gebruik</th>
-                        <th class="data-table__header-title--sortable">Codelijst</th>
-                      </tr>
-                    </thead>
-        
-                    <tbody class="supertype">
-                    
-                      <tr id="TijdToestand%3Acached%20bron" typeof="rdfs:Property" resource="http://www.w3.org/ns/oa#cachedSource">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://www.w3.org/ns/oa#cachedSource" data-toggle="tooltip" data-content="http://www.w3.org/ns/oa#cachedSource" data-placement="right">
-                            cached bron</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#anyURI" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#anyURI" data-placement="right">URI</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Een cached momentopname van de bron op het moment van de vaststelling van de fout of onvolledigheid.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="TijdToestand%3Adatum%20vaststelling" typeof="rdfs:Property" resource="http://www.w3.org/ns/oa#sourceDate">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://www.w3.org/ns/oa#sourceDate" data-toggle="tooltip" data-content="http://www.w3.org/ns/oa#sourceDate" data-placement="right">
-                            datum vaststelling</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">De datum en het tijdstip waarop het Meldingsobject moet ge&#239;nterpreteerd worden als zijnde van toepassing op de Melding.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                    </tbody>
-                  </table>
-                </div>
-      			  
             </div>
             
             
@@ -1381,82 +860,6 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Meldingsobject Attribuut"><a href="http://data.vlaanderen.be/ns/melding#MeldingsobjectAttribuut" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#MeldingsobjectAttribuut" data-placement="right">Meldingsobject Attribuut</a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>Beschrijft een attribuut van het Meldingsobject.</dd>
-                    
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor dit datatype zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Meldingsobject%20Attribuut%3Aeigenschap">eigenschap</a>, 
-                      <a href="#Meldingsobject%20Attribuut%3Ahuidige%20waarde">huidige waarde</a>, 
-                      <a href="#Meldingsobject%20Attribuut%3Avoorgestelde%20waarde">voorgestelde waarde</a>.</dd>
-                    
-                  </dl>
-                </div>
-                
-                <div class="u-table-overflow">
-                  <table class="data-table">
-                    <thead>
-                      <tr class="data-table__header">
-                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
-                        <th class="data-table__header-title--sortable">Verwacht Type</th>
-                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
-                        <th class="data-table__header-title--sortable">Beschrijving</th>
-                        <th class="data-table__header-title--sortable">Gebruik</th>
-                        <th class="data-table__header-title--sortable">Codelijst</th>
-                      </tr>
-                    </thead>
-        
-                    <tbody class="supertype">
-                      
-                      <tr id="Meldingsobject%20Attribuut%3Aeigenschap" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#eigenschap">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/melding#eigenschap" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#eigenschap" data-placement="right">eigenschap</a>
-                          </code>
-                        </td>
-                        <td><a href="http://data.vlaanderen.be/ns/melding#Eigenschap" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#Eigenschap" data-placement="right">Eigenschap</a></td>
-                        <td></td>
-                        <td property="rdfs:comment">Verwijst naar de Eigenschap die deel uitmaakt van een bepaalde Dataset.</td>
-                        <td property="vann:usageNote">Als waarde wordt de identificator opgenomen van de Eigenschap zoals gedefinieerd bij de configuratie van de Dataset bij de Generieke Terugmeldfaciliteit.</td>
-                        <td></td>
-                      </tr>
-                      
-                      <tr id="Meldingsobject%20Attribuut%3Ahuidige%20waarde" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#huidigeWaarde">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/melding#huidigeWaarde" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#huidigeWaarde" data-placement="right">huidige waarde</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">De huidige waarde van een Eigenschap.</td>
-                        <td property="vann:usageNote">Dit is de waarde zoals waargenomen door de indiener van de melding.</td>
-                        <td></td>
-                      </tr>
-                      
-                      <tr id="Meldingsobject%20Attribuut%3Avoorgestelde%20waarde" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/melding#voorgesteldeWaarde">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/melding#voorgesteldeWaarde" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#voorgesteldeWaarde" data-placement="right">voorgestelde waarde</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">De voorgestelde waarde van een Eigenschap.</td>
-                        <td property="vann:usageNote">De suggereerde correct waarde zoals aangegeven door de indiener van de melding.</td>
-                        <td></td>
-                      </tr>
-                      
-                    </tbody>
-                  </table>
-                </div>
-                
-            </div>
-            
-            <div class="region region--no-space-top">
               <h3 class="h3" id="Status"><a href="http://data.vlaanderen.be/ns/melding#Meldingstatus" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/melding#Meldingstatus" data-placement="right">Status</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
@@ -1552,7 +955,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             <div class="region region--no-space-top" id="jsonld">              
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">JSON-LD context</h2>
                 
-<p>Een herbruikbare JSON-LD context definitie voor dit applicatieprofiel is terug te vinden op: <a href="../../../context/terugmelding.jsonld" target="_blank">http://data.vlaanderen.be/context/terugmelding.jsonld</a></p>
+<p>Een herbruikbare JSON-LD context definitie voor dit applicatieprofiel is terug te vinden op: <a href="../../../context/melding.jsonld" target="_blank">http://data.vlaanderen.be/context/melding.jsonld</a></p>
 
             </div>
           </div>
