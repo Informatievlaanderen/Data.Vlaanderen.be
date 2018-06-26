@@ -45,7 +45,7 @@
               <div class="head" role="contentinfo" id="respecHeader">
                 <dl>
                   <dt>Laatste aanpassing</dt>
-                  <dd>2018-04-19</dd>
+                  <dd>2018-06-26</dd>
 
                   
                   
@@ -198,7 +198,7 @@
               <section class="introductory" id="sotd" typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter">             
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">Status van dit document</h2>
                 
-<p>Dit applicatieprofiel dient om het specifieke gebruik van de entitieten relevant voor de beschreven applicatie te verduidelijken.</p>
+<p>Dit applicatieprofiel dient om het specifieke gebruik van de entiteiten relevant voor de beschreven applicatie te verduidelijken.</p>
 <p>Dit document werd gepubliceerd als Ontwerpdocument. De specificatie zoals in dit document beschreven is in ontwikkeling. Bijgevolg kan dit document op elk moment aangepast, vervangen of achterhaald worden.<br />
 Dit document is bedoeld om uit te groeien tot een standaard in het beschreven domein. Desalniettemin heeft het op dit ogenblik geen officieel statuut en vertegenwoordigt het geen consensus binnen OSLO.</p>
 <p>Feedback op deze specificatie kan gegeven worden als een topic in onze <a href="https://github.com/Informatievlaanderen/OSLO-Public-Discussion">publieke reviewdiscussielijst</a>.</p>
@@ -248,6 +248,8 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       |
                       <a href="#Agent">Agent</a> |
                       <a href="#Bewijs">Bewijs</a> |
+                      <a href="#Criterium antwoord">Criterium antwoord</a> |
+                      <a href="#Criteriumvereiste">Criteriumvereiste</a> |
                       <a href="#Hoedanigheid">Hoedanigheid</a> |
                       <a href="#Organisatie">Organisatie</a> |
                       <a href="#Output">Output</a> |
@@ -266,6 +268,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       |
                       <a href="#Identificator">Identificator</a> |
                       <a href="#Kost">Kost</a> |
+                      <a href="#TijdsInterval">TijdsInterval</a> |
                     </p>
                   </div>
                   
@@ -291,7 +294,8 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                     <dt>Eigenschappen</dt>
                     
                     <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Agent%3Aspeelt%20rol">speelt rol</a>.</dd>
+                      <a href="#Agent%3Aspeelt%20rol">speelt rol</a>, 
+                      <a href="#Agent%3Averschaft%20criterium%20antwoord">verschaft criterium antwoord</a>.</dd>
                     
                   </dl>
                 </div>
@@ -325,6 +329,20 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                     
+                      <tr id="Agent%3Averschaft%20criterium%20antwoord" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/providesRequirementResponse">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.europa.eu/m8g/providesRequirementResponse" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/providesRequirementResponse" data-placement="right">
+                            verschaft criterium antwoord</a>
+                          </code>
+                        </td>
+                        <td><a href="http://data.europa.eu/m8g/RequirementResponse" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/RequirementResponse" data-placement="right">CriteriumAntwoord</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Een agent verschaft antwoorden op criterium vereisten om een Publieke Dienstverlening te kunnen consumeren.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
                     </tbody>
                   </table>
                 </div>
@@ -335,9 +353,9 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
               <h3 class="h3" id="Bewijs"><a href="http://data.europa.eu/m8g/Evidence" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/Evidence" data-placement="right">Bewijs</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Elk stuk waarmee kan worden aangetoond dat men aan een CriteriumVereiste voldoet.</dd>
+                    <dt>Beschrijving</dt><dd>Een bewijs is elk middel dat gebruikt kan worden om het beantwoorden van een bepaalde criterium vereiste te staven. De klasse bevat informatie dat bewijst dat een bepaalde criterium vereiste bestaat of voldaan is.</dd>
                     
-                    <dt>Gebruik</dt><dd>In het kader van publieke dienstverlening gaat het meestal om administratieve documenten of ingevulde aanvraagformulieren. Zonder het nodige Bewijs kan de dienstverlening niet worden afgeleverd. Soms levert de Output van een Publieke Dienstverlening het Bewijs nodig voor een andere Publieke Dienstverlening.</dd>
+                    <dt>Gebruik</dt><dd>In de context van publieke dienstverlening neemt bewijs vaak de vorm aan van een administratief document of een ingevuld aanvraagformulier. Maar een bewijs kan ook de vorm aannemen van een specifiek stuk informatie (bv. leeftijd) dat wordt bijgehouden in een authentieke bron. Een publieke dienst kan bepaalde bewijzen of combinaties van bewijzen vereisen vooraleer deze kan afgeleverd worden aan de consument. In sommige gevallen kan de output van een dienstverlening dienen als bewijs voor een andere dienstverlening. Deze relaties zijn typisch opgenomen in het formeel kader en de bijhorende richtlijnen van een publieke dienst.</dd>
                     
                     <dt>Eigenschappen</dt>
                     
@@ -345,7 +363,8 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       <a href="#Bewijs%3Adocumentatie">documentatie</a>, 
                       <a href="#Bewijs%3Areferentie">referentie</a>, 
                       <a href="#Bewijs%3Atitel">titel</a>, 
-                      <a href="#Bewijs%3Atype">type</a>.</dd>
+                      <a href="#Bewijs%3Atype">type</a>, 
+                      <a href="#Bewijs%3Auitgegeven%20door%20organisatie">uitgegeven door organisatie</a>.</dd>
                     
                   </dl>
                 </div>
@@ -414,9 +433,23 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             type</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">BewijsType</a></td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">BewijsType</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Aard vh Bewijs.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Bewijs%3Auitgegeven%20door%20organisatie" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/issuedByOrganisation">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.europa.eu/m8g/issuedByOrganisation" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/issuedByOrganisation" data-placement="right">
+                            uitgegeven door organisatie</a>
+                          </code>
+                        </td>
+                        <td><a href="https://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="https://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Verwijst naar de organisatie die het bewijs heeft uitgegeven.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -425,6 +458,145 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                   </table>
                 </div>
       			  
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Criterium antwoord"><a href="http://data.europa.eu/m8g/RequirementResponse" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/RequirementResponse" data-placement="right">Criterium antwoord</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Een criterium antwoord is een bewering over een bepaald criterium vereiste. Met deze klasse wordt het effectieve antwoord van een agent op een criterium vereiste bedoelt. Een beantwoorde vereiste bestaat uit een specifieke waarde voor de specifieke vereiste en het tijdsinterval waarop de waarde van toepassing is.</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Criterium%20antwoord%3Abeschrijving">beschrijving</a>, 
+                      <a href="#Criterium%20antwoord%3Abewezen%20door">bewezen door</a>, 
+                      <a href="#Criterium%20antwoord%3Areferentie">referentie</a>, 
+                      <a href="#Criterium%20antwoord%3Avalideert%20criterium%20vereiste">valideert criterium vereiste</a>, 
+                      <a href="#Criterium%20antwoord%3Avan%20toepassing%20op%20tijdsinterval">van toepassing op tijdsinterval</a>, 
+                      <a href="#Criterium%20antwoord%3Awaarde">waarde</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Criterium%20antwoord%3Abeschrijving" typeof="rdfs:Property" resource="http://purl.org/dc/terms/description">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://purl.org/dc/terms/description" data-toggle="tooltip" data-content="http://purl.org/dc/terms/description" data-placement="right">
+                            beschrijving</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Een beschrijving van het antwoord op de vereiste.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Criterium%20antwoord%3Abewezen%20door" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/provenByEvidence">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.europa.eu/m8g/provenByEvidence" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/provenByEvidence" data-placement="right">
+                            bewezen door</a>
+                          </code>
+                        </td>
+                        <td><a href="http://data.europa.eu/m8g/Evidence" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/Evidence" data-placement="right">Bewijs</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Het criterium antwoord kan gelinkt zijn aan het bewijs om het antwoord te staven.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Criterium%20antwoord%3Areferentie" typeof="rdfs:Property" resource="http://www.w3.org/ns/adms#identifier">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/ns/adms#identifier" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#identifier" data-placement="right">
+                            referentie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/ns/adms#Identifier" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#Identifier" data-placement="right">Identificator</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Identificator van het object.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Criterium%20antwoord%3Avalideert%20criterium%20vereiste" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/validatesCriterionRequirement">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.europa.eu/m8g/validatesCriterionRequirement" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/validatesCriterionRequirement" data-placement="right">
+                            valideert criterium vereiste</a>
+                          </code>
+                        </td>
+                        <td><a href="http://data.europa.eu/m8g/CriterionRequirement" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/CriterionRequirement" data-placement="right">CriteriumVereiste</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Relatie naar de criterium vereiste waaraan het antwoord voldoet.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Criterium%20antwoord%3Avan%20toepassing%20op%20tijdsinterval" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/appliesToPeriodOfTime">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.europa.eu/m8g/appliesToPeriodOfTime" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/appliesToPeriodOfTime" data-placement="right">
+                            van toepassing op tijdsinterval</a>
+                          </code>
+                        </td>
+                        <td><a href="http://purl.org/dc/terms/PeriodOfTime" data-toggle="tooltip" data-content="http://purl.org/dc/terms/PeriodOfTime" data-placement="right">Tijdsinterval</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Wanneer de het antwoord op het criterium van toepassing is binnen een specifieke periode kan deze eigenschap gebruikt worden om het tijdsinterval te beschrijven.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Criterium%20antwoord%3Awaarde" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/value">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.europa.eu/m8g/value" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/value" data-placement="right">
+                            waarde</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Een beantwoorde vereiste moet een waarde bevatten als antwoord op een criterium vereiste. Om de criterium vereiste te vervullen, wanneer de criterium vereiste een verwachte waarde of drempel heeft, moet de waarde gelijk zijn aan de verwachte waarden of binnen het bereik liggen dat bepaald werd door de drempelwaarden.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Criteriumvereiste"><a href="http://data.europa.eu/m8g/CriterionRequirement" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/CriterionRequirement" data-placement="right">Criteriumvereiste</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Criterium dat toelaat te bepalen of een gebruiker recht heeft op een dienstverlening of deze mag gebruiken.</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn geen eigenschappen gedefinieerd.</dd>
+                    
+                  </dl>
+                </div>
+                
             </div>
             
             <div class="region region--no-space-top">
@@ -466,7 +638,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             contactinfo</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">ContactInfo</a></td>
+                        <td><a href="http://schema.org/ContactPoint" data-toggle="tooltip" data-content="http://schema.org/ContactPoint" data-placement="right">ContactInfo</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Informatie zoals email, telefoon&#133; die toelaat de hoedanigheid te contacteren.</td>
                         <td property="vann:usageNote"></td>
@@ -621,7 +793,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             type</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">OutputType</a></td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">OutputType</a></td>
                         <td>0...*</td>
                         <td property="rdfs:comment">Aard van de output.</td>
                         <td property="vann:usageNote">Het gebruik van een codelijst wordt aanbevolen. Illustratief wordt verwezen naar de output types zoals beschikbaar in het CPSV model van de Europese commissie.</td>
@@ -673,7 +845,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             beschrijving</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
+                        <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">TaalString</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Beschrijving van de participatie.</td>
                         <td property="vann:usageNote"> </td>
@@ -687,10 +859,10 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             rol</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">ParticipatieRol</a></td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">ParticipatieRol</a></td>
                         <td>1...*</td>
                         <td property="rdfs:comment">De rol die de participant speelt.</td>
-                        <td property="vann:usageNote"> </td>
+                        <td property="vann:usageNote"> Voor deze eigenschap wordt een codelijst verwacht met mogelijke rollen. Echter, een organisatie die dit model implementeert is vrij zelf een codelijst vast te leggen.</td>
                         <td></td>
                       </tr>
                     
@@ -833,7 +1005,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                           </code>
                         </td>
                         <td><a href="http://purl.org/vocab/cpsv#PublicService" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#PublicService" data-placement="right">PubliekeDienstverlening (aanbod)</a></td>
-                        <td></td>
+                        <td>1</td>
                         <td property="rdfs:comment">Linkt een bepaalde consumptie van een publieke dienstverlening (een transactie) met het product uit het dienstverleningsregister.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
@@ -847,7 +1019,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                           </code>
                         </td>
                         <td><a href="http://data.europa.eu/m8g/Cost" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/Cost" data-placement="right">Kost</a></td>
-                        <td>0...*</td>
+                        <td>0...1</td>
                         <td property="rdfs:comment">Kostprijs verbonden aan het gebruik van de publieke dienstverlening.</td>
                         <td property="vann:usageNote"> </td>
                         <td></td>
@@ -860,7 +1032,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             naam</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
+                        <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">TaalString</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Offici&#235;le naam van de publieke dienstverlening.</td>
                         <td property="vann:usageNote"> </td>
@@ -888,7 +1060,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             taal</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">NAL_language</a></td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">NAL_language</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Taal waarin een publieke dienstverlening wordt aangeboden.</td>
                         <td property="vann:usageNote"> </td>
@@ -911,11 +1083,45 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                     
                     <dt>Eigenschappen</dt>
                     
-                    <dd>Voor deze entiteit zijn geen eigenschappen gedefinieerd.</dd>
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Publieke%20Dienstverlening%20%28aanbod%29%3Aheeft%20criterium">heeft criterium</a>.</dd>
                     
                   </dl>
                 </div>
                 
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Publieke%20Dienstverlening%20%28aanbod%29%3Aheeft%20criterium" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/hasCriterion">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.europa.eu/m8g/hasCriterion" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/hasCriterion" data-placement="right">
+                            heeft criterium</a>
+                          </code>
+                        </td>
+                        <td><a href="http://data.europa.eu/m8g/CriterionRequirement" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/CriterionRequirement" data-placement="right">CriteriumVereiste</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Criterium waaraan de gebruiker moet voldoen om recht te hebben op een dienstverlening of om een dienstverlening te mogen gebruiken.</td>
+                        <td property="vann:usageNote">Bvb inwoner van de gemeente, meer dan 18 jaar etc.</td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
             </div>
             
             <div class="region region--no-space-top">
@@ -930,8 +1136,6 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       <a href="#Status%3Aactie">actie</a>, 
                       <a href="#Status%3Aactie%20nodig">actie nodig</a>, 
                       <a href="#Status%3Astatus%20EDRL">status EDRL</a>, 
-                      <a href="#Status%3Astatus%20extern">status extern</a>, 
-                      <a href="#Status%3Astatus%20intern">status intern</a>, 
                       <a href="#Status%3Astatus%20Vlaams%20fase">status Vlaams fase</a>, 
                       <a href="#Status%3Astatus%20Vlaamse%20code">status Vlaamse code</a>, 
                       <a href="#Status%3Astatusdatum">statusdatum</a>, 
@@ -995,34 +1199,6 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td property="rdfs:comment">De status volgens de Europese Dienstenrichtlijn</td>
                         <td property="vann:usageNote"></td>
                         <td><a href="https://beta.dosis.vlaanderen.be/api/cl/dosis/v1/codelijsten/StatusEDRL">Link</a></td>
-                      </tr>
-                    
-                      <tr id="Status%3Astatus%20extern" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/dienst#statusExtern">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/dienst#statusExtern" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/dienst#statusExtern" data-placement="right">
-                            status extern</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Dit is de (originele) Status-definitie of -vermelding zoals geregistreerd in de bron.</td>
-                        <td property="vann:usageNote">Indien ingevuld wordt deze informatie meegegeven aan de burger of onderneming.</td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Status%3Astatus%20intern" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/dienst#statusIntern">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/dienst#statusIntern" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/dienst#statusIntern" data-placement="right">
-                            status intern</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Interne status die kan worden meegegeven en die niet wordt getoond aan de burger of onderneming.</td>
-                        <td property="vann:usageNote">Deze interne status kan meegegeven worden omwille van verschillende redenen: inzage door eigen ambtenaren, inzage door andere gemachtigde ambtenaren, of voor B.I.- en/of DWH-doeleinden.</td>
-                        <td></td>
                       </tr>
                     
                       <tr id="Status%3Astatus%20Vlaams%20fase" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/dienst#statusVlaamsFase">
@@ -1098,7 +1274,9 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
               <h3 class="h3" id="Identificator"><a href="http://www.w3.org/ns/adms#Identifier" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#Identifier" data-placement="right">Identificator</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Informatie gebruikt om een object uniek te identificeren.</dd>
+                    <dt>Beschrijving</dt><dd>Informatie gebruikt om de instantie ve object uniek te identificeren. </dd>
+                    
+                    <dt>Gebruik</dt><dd>Uitgangspunt hier is dat deze string door een organisatie wordt toegekend en dat dit gebeurt volgens een welbepaald systeem.</dd>
                     
                     <dt>Eigenschappen</dt>
                     
@@ -1132,9 +1310,9 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             <a href="http://www.w3.org/2004/02/skos/core#notation" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#notation" data-placement="right">identificator</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">GetypeerdeString</a></td>
+                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">GetypeerdeString</a></td>
                         <td>1</td>
-                        <td property="rdfs:comment">String gebruikt om het object uniek te identificeren</td>
+                        <td property="rdfs:comment">String gebruikt om de instantie ve object uniek te identificeren. </td>
                         <td property="vann:usageNote">Type vd string slaat op het identificatiesysteem (incl de versie ervan), de string zelf op de eigenlijke identificator.</td>
                         <td></td>
                       </tr>
@@ -1148,7 +1326,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td><a href="http://purl.org/dc/terms/Agent" data-toggle="tooltip" data-content="http://purl.org/dc/terms/Agent" data-placement="right">Agent</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Link naar de agent die de identificator heeft uitgegeven.</td>
-                        <td property="vann:usageNote"></td>
+                        <td property="vann:usageNote"> </td>
                         <td></td>
                       </tr>
                       
@@ -1158,10 +1336,10 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             <a href="http://www.w3.org/ns/adms#schemaAgency" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#schemaAgency" data-placement="right">toegekend door (String)</a>
                           </code>
                         </td>
-                        <td><a href="http://purl.org/dc/terms/Agent" data-toggle="tooltip" data-content="http://purl.org/dc/terms/Agent" data-placement="right">Agent</a></td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Naam vd agent die de identificator heeft toegekend.</td>
-                        <td property="vann:usageNote"></td>
+                        <td property="vann:usageNote"> </td>
                         <td></td>
                       </tr>
                       
@@ -1174,7 +1352,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Tijdstip waarop de identificator werd uitgegeven.</td>
-                        <td property="vann:usageNote"></td>
+                        <td property="vann:usageNote"> </td>
                         <td></td>
                       </tr>
                       
@@ -1236,7 +1414,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             <a href="http://data.europa.eu/m8g/currency" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/currency" data-placement="right">valuta</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">NAL_currency</a></td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">NAL_currency</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Munteenheid waarin de kost is gedefinieerd.</td>
                         <td property="vann:usageNote"> </td>
@@ -1253,6 +1431,70 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td>0...1</td>
                         <td property="rdfs:comment">Omvang van de kost, uitgedrukt in de opgegeven munteenheid.</td>
                         <td property="vann:usageNote"> </td>
+                        <td></td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
+                
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="TijdsInterval"><a href="http://purl.org/dc/terms/PeriodOfTime" data-toggle="tooltip" data-content="http://purl.org/dc/terms/PeriodOfTime" data-placement="right">TijdsInterval</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>De tijdsperiode tussen twee momenten in de tijd.</dd>
+                    
+                    <dt>Gebruik</dt><dd> </dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor dit datatype zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#TijdsInterval%3Abegin">begin</a>, 
+                      <a href="#TijdsInterval%3Aeinde">einde</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                      
+                      <tr id="TijdsInterval%3Abegin" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/generiek#begin">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/generiek#begin" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#begin" data-placement="right">begin</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Moment waarop het tijdsinterval begint.</td>
+                        <td property="vann:usageNote">Moment waarop het tijdsinterval begint.</td>
+                        <td></td>
+                      </tr>
+                      
+                      <tr id="TijdsInterval%3Aeinde" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/generiek#einde">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/generiek#einde" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#einde" data-placement="right">einde</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Moment waarop het tijdsinterval eindigt.</td>
+                        <td property="vann:usageNote">Moment waarop het tijdsinterval eindigt.</td>
                         <td></td>
                       </tr>
                       

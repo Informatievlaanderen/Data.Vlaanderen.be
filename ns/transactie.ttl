@@ -32,6 +32,9 @@
 eu:Cost a rdfs:Class ;
     rdfs:label "Kost"@nl .
 
+eu:CriterionRequirement a rdfs:Class ;
+    rdfs:label "Criteriumvereiste"@nl .
+
 eu:Evidence a rdfs:Class ;
     rdfs:label "Bewijs"@nl .
 
@@ -41,20 +44,27 @@ eu:Output a rdfs:Class ;
 eu:Participation a rdfs:Class ;
     rdfs:label "Participatie"@nl .
 
+eu:RequirementResponse a rdfs:Class ;
+    rdfs:label "Criterium antwoord"@nl .
+
 <http://data.vlaanderen.be/ns/organisatie#Hoedanigheid> a rdfs:Class ;
     rdfs:label "Hoedanigheid"@nl .
 
-dcterms:Agent a rdfs:Class .
+dcterms:Agent a rdfs:Class ;
+    rdfs:label "Agent"@nl .
 
 cpsv:PublicService a rdfs:Class ;
     rdfs:label "Publieke Dienstverlening"@nl,
         "Publieke Dienstverlening (aanbod)"@nl .
 
-<http://www.w3.org/ns/adms#Identifier> a rdfs:Class ;
-    rdfs:label "Identificator"@nl .
+person:Person a rdfs:Class ;
+    rdfs:label "Persoon"@nl .
 
 <https://www.w3.org/ns/org#Organization> a rdfs:Class ;
     rdfs:label "Organisatie"@nl .
+
+eu:appliesToPeriodOfTime a rdf:Property ;
+    rdfs:label "van toepassing op tijdsinterval"@nl .
 
 eu:currency a rdf:Property ;
     rdfs:label "valuta"@nl .
@@ -62,14 +72,29 @@ eu:currency a rdf:Property ;
 eu:hasCost a rdf:Property ;
     rdfs:label "heeft kost"@nl .
 
+eu:hasCriterion a rdf:Property ;
+    rdfs:label "heeft criterium"@nl .
+
 eu:hasParticipation a rdf:Property ;
     rdfs:label "heeft participatie"@nl .
+
+eu:issuedByOrganisation a rdf:Property ;
+    rdfs:label "uitgegeven door organisatie"@nl .
+
+eu:provenByEvidence a rdf:Property ;
+    rdfs:label "bewezen door"@nl .
+
+eu:providesRequirementResponse a rdf:Property ;
+    rdfs:label "verschaft criterium antwoord"@nl .
 
 eu:role a rdf:Property ;
     rdfs:label "rol"@nl .
 
 eu:serviceProvider a rdf:Property ;
     rdfs:label "dienstverlener"@nl .
+
+eu:validatesCriterionRequirement a rdf:Property ;
+    rdfs:label "valideert criterium vereiste"@nl .
 
 eu:value a rdf:Property ;
     rdfs:label "waarde"@nl .
@@ -108,32 +133,11 @@ eu:value a rdf:Property ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
     rdfs:range cpsv:PublicService .
 
-<http://data.vlaanderen.be/ns/dienst#isTeBereikenOp> a owl:ObjectProperty ;
-    rdfs:label "Is Te Bereiken Op"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain <https://www.w3.org/ns/org#Organization> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-    rdfs:range schema:ContactPoint .
-
 <http://data.vlaanderen.be/ns/dienst#statusEDRL> a rdf:Property ;
     rdfs:label "status EDRL"@nl ;
     rdfs:comment "De status volgens de Europese Dienstenrichtlijn"@nl ;
     rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> .
-
-<http://data.vlaanderen.be/ns/dienst#statusExtern> a owl:DatatypeProperty ;
-    rdfs:label "status extern"@nl ;
-    rdfs:comment "Dit is de (originele) Status-definitie of -vermelding zoals geregistreerd in de bron."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-    rdfs:range xsd:string .
-
-<http://data.vlaanderen.be/ns/dienst#statusIntern> a owl:DatatypeProperty ;
-    rdfs:label "status intern"@nl ;
-    rdfs:comment "Interne status die kan worden meegegeven en die niet wordt getoond aan de burger of onderneming."@nl ;
-    rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
-    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-    rdfs:range xsd:string .
 
 <http://data.vlaanderen.be/ns/dienst#statusVlaamsCode> a rdf:Property ;
     rdfs:label "status Vlaamse code"@nl ;
@@ -194,6 +198,12 @@ eu:value a rdf:Property ;
             foaf:lastName "Tanghe" ;
             foaf:mbox <mailto:goedele.vanderspiegel@kb.vlaanderen.be> ],
         [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Bart" ;
+            foaf:lastName "Misseeuw" ;
+            foaf:mbox <mailto:bart.misseeuw@kb.vlaanderen.be> ],
+        [ a person:Person ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
                     foaf:name "Informatie Vlaanderen" ] ;
             foaf:firstName "Katrien" ;
@@ -202,27 +212,9 @@ eu:value a rdf:Property ;
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
                     foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Bart" ;
-            foaf:lastName "Misseeuw" ;
-            foaf:mbox <mailto:bart.misseeuw@kb.vlaanderen.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Raf" ;
-            foaf:lastName "Buyle" ;
-            foaf:mbox <mailto:raf.buyle@kb.vlaanderen.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
             foaf:firstName "Ziggy" ;
             foaf:lastName "Vanlishout" ;
             foaf:mbox <mailto:Siegfried.Vanlishout@kb.vlaanderen.be> ],
-        [ a person:Person ;
-            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
-                    foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Dries" ;
-            foaf:lastName "Beheydt" ;
-            foaf:mbox <mailto:dries.beheydt@kb.vlaanderen.be> ],
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
                     foaf:name "Informatie Vlaanderen" ] ;
@@ -230,23 +222,29 @@ eu:value a rdf:Property ;
             foaf:lastName "D'haenens" ;
             foaf:mbox <mailto:thomas.dhaenens@bz.vlaanderen.be> ],
         [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Raf" ;
+            foaf:lastName "Buyle" ;
+            foaf:mbox <mailto:raf.buyle@kb.vlaanderen.be> ],
+        [ a person:Person ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
                     foaf:name "Informatie Vlaanderen" ] ;
             foaf:firstName "Goedele" ;
             foaf:lastName "Van der Spiegel" ;
-            foaf:mbox <mailto:goedele.vanderspiegel@kb.vlaanderen.be> ] .
-
-dcterms:creator a rdf:Property ;
-    rdfs:label "maker"@nl .
+            foaf:mbox <mailto:goedele.vanderspiegel@kb.vlaanderen.be> ],
+        [ a person:Person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Dries" ;
+            foaf:lastName "Beheydt" ;
+            foaf:mbox <mailto:dries.beheydt@kb.vlaanderen.be> ] .
 
 dcterms:date a rdf:Property ;
     rdfs:label "datum"@nl .
 
 dcterms:description a rdf:Property ;
     rdfs:label "beschrijving"@nl .
-
-dcterms:issued a rdf:Property ;
-    rdfs:label "uitgegeven"@nl .
 
 dcterms:language a rdf:Property ;
     rdfs:label "taal"@nl .
@@ -266,30 +264,14 @@ cpsv:hasInput a rdf:Property ;
 cpsv:produces a rdf:Property ;
     rdfs:label "produceert"@nl .
 
-skos:notation a rdf:Property ;
-    rdfs:label "Code"@nl,
-        "identificator"@nl .
-
-skos:prefLabel a rdf:Property ;
-    rdfs:label "Voorkeursnaam"@nl .
-
 <http://www.w3.org/ns/adms#identifier> a rdf:Property ;
     rdfs:label "referentie"@nl .
-
-<http://www.w3.org/ns/adms#schemaAgency> a rdf:Property ;
-    rdfs:label "schema agentschap"@nl .
 
 org:memberOf a rdf:Property ;
     rdfs:label "is lid van"@nl .
 
 foaf:page a rdf:Property ;
     rdfs:label "documentatie"@nl .
-
-<https://www.w3.org/ns/org#classification> a rdf:Property ;
-    rdfs:label "Classificatie"@nl .
-
-<https://www.w3.org/ns/org#purpose> a rdf:Property ;
-    rdfs:label "Bestaanreden vd Organisatie."@nl .
 
 <http://data.vlaanderen.be/ns/dienst#Status> a owl:Class ;
     rdfs:label "Status"@nl ;

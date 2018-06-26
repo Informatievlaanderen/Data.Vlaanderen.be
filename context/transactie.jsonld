@@ -3,6 +3,8 @@
 	{
 		"Agent":"http://purl.org/dc/terms/Agent",
 		"Bewijs":"http://data.europa.eu/m8g/Evidence",
+		"CriteriumAntwoord":"http://data.europa.eu/m8g/RequirementResponse",
+		"CriteriumVereiste":"http://data.europa.eu/m8g/CriterionRequirement",
 		"Hoedanigheid":"http://data.vlaanderen.be/ns/organisatie#Hoedanigheid",
 		"Organisatie":"https://www.w3.org/ns/org#Organization",
 		"Output":"http://data.europa.eu/m8g/Output",
@@ -28,13 +30,21 @@
 			"@id":"http://data.vlaanderen.be/ns/dienst#bedrag",
 			"@type":""
 		},
+		"begin":{
+			"@id":"http://data.vlaanderen.be/ns/generiek#begin",
+			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
+		},
 		"beschrijving":{
 			"@id":"http://purl.org/dc/terms/description",
-			"@type":""
+			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+		},
+		"bewezenDoor":{
+			"@id":"http://data.europa.eu/m8g/provenByEvidence",
+			"@type":"http://data.europa.eu/m8g/Evidence"
 		},
 		"contactinfo":{
 			"@id":"http://data.vlaanderen.be/ns/organisatie#contactinfo",
-			"@type":""
+			"@type":"http://schema.org/ContactPoint"
 		},
 		"datum":{
 			"@id":"http://purl.org/dc/terms/date",
@@ -43,6 +53,15 @@
 		"documentatie":{
 			"@id":"http://xmlns.com/foaf/0.1/page",
 			"@type":"http://www.w3.org/2001/XMLSchema#anyURI",
+			"@container":"@set"
+		},
+		"einde":{
+			"@id":"http://data.vlaanderen.be/ns/generiek#einde",
+			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
+		},
+		"heeftCriterium":{
+			"@id":"http://data.europa.eu/m8g/hasCriterion",
+			"@type":"http://data.europa.eu/m8g/CriterionRequirement",
 			"@container":"@set"
 		},
 		"heeftParticiperende":{
@@ -56,7 +75,7 @@
 		},
 		"identificator":{
 			"@id":"http://www.w3.org/2004/02/skos/core#notation",
-			"@type":""
+			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
 		},
 		"isGerelateerdMet":{
 			"@id":"http://purl.org/dc/terms/relation",
@@ -74,8 +93,7 @@
 		},
 		"kost":{
 			"@id":"http://data.europa.eu/m8g/hasCost",
-			"@type":"http://data.europa.eu/m8g/Cost",
-			"@container":"@set"
+			"@type":"http://data.europa.eu/m8g/Cost"
 		},
 		"naam":{
 			"@id":"http://purl.org/dc/terms/title",
@@ -92,20 +110,12 @@
 		},
 		"rol":{
 			"@id":"http://data.europa.eu/m8g/role",
-			"@type":"",
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
 			"@container":"@set"
 		},
 		"statusEDRL":{
 			"@id":"http://data.vlaanderen.be/ns/dienst#statusEDRL",
 			"@type":""
-		},
-		"statusExtern":{
-			"@id":"http://data.vlaanderen.be/ns/dienst#statusExtern",
-			"@type":"http://www.w3.org/2001/XMLSchema#string"
-		},
-		"statusIntern":{
-			"@id":"http://data.vlaanderen.be/ns/dienst#statusIntern",
-			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
 		"statusVlaamsCode":{
 			"@id":"http://data.vlaanderen.be/ns/dienst#statusVlaamsCode",
@@ -125,7 +135,7 @@
 		},
 		"taal":{
 			"@id":"http://purl.org/dc/terms/language",
-			"@type":""
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
 		},
 		"toegekendDoor":{
 			"@id":"http://purl.org/dc/terms/creator",
@@ -133,7 +143,7 @@
 		},
 		"toegekendDoorString":{
 			"@id":"http://www.w3.org/ns/adms#schemaAgency",
-			"@type":"http://purl.org/dc/terms/Agent"
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
 		"toegekendOp":{
 			"@id":"http://purl.org/dc/terms/issued",
@@ -141,15 +151,32 @@
 		},
 		"type":{
 			"@id":"http://purl.org/dc/terms/type",
-			"@type":""
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
+		},
+		"uitgegevenDoor":{
+			"@id":"http://data.europa.eu/m8g/issuedByOrganisation",
+			"@type":"https://www.w3.org/ns/org#Organization"
+		},
+		"valideert":{
+			"@id":"http://data.europa.eu/m8g/validatesCriterionRequirement",
+			"@type":"http://data.europa.eu/m8g/CriterionRequirement"
 		},
 		"valuta":{
 			"@id":"http://data.europa.eu/m8g/currency",
-			"@type":""
+			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
+		},
+		"vanToepassingOp":{
+			"@id":"http://data.europa.eu/m8g/appliesToPeriodOfTime",
+			"@type":"http://purl.org/dc/terms/PeriodOfTime"
 		},
 		"vereistAlsInput":{
 			"@id":"http://purl.org/vocab/cpsv#hasInput",
 			"@type":"http://data.europa.eu/m8g/Evidence",
+			"@container":"@set"
+		},
+		"verschaft":{
+			"@id":"http://data.europa.eu/m8g/providesRequirementResponse",
+			"@type":"http://data.europa.eu/m8g/RequirementResponse",
 			"@container":"@set"
 		},
 		"waarde":{
