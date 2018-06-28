@@ -28,6 +28,10 @@
 			"@id":"https://schema.org/agent",
 			"@type":"http://data.europa.eu/m8g/PublicOrganisation"
 		},
+		"begin":{
+			"@id":"http://data.vlaanderen.be/ns/generiek#begin",
+			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
+		},
 		"beschikbaarheid":{
 			"@id":"http://schema.org/hoursAvailable",
 			"@type":"https://schema.org/OpeningHoursSpecification"
@@ -69,6 +73,10 @@
 			"@id":"https://schema.org/audienceType",
 			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
+		"einde":{
+			"@id":"http://data.vlaanderen.be/ns/generiek#einde",
+			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
+		},
 		"email":{
 			"@id":"http://schema.org/email",
 			"@type":"http://www.w3.org/2001/XMLSchema#string"
@@ -106,11 +114,15 @@
 		},
 		"isGerelateerdMet":{
 			"@id":"http://purl.org/dc/terms/relation",
-			"@type":"http://purl.org/vocab/cpsv#PublicService",
-			"@container":"@set"
+			"@type":"https://schema.org/InformAction"
 		},
 		"isVerantwoordelijkVoor":{
 			"@id":"http://data.vlaanderen.be/ns/dienst#isVerantwoordelijkVoor",
+			"@type":"http://purl.org/vocab/cpsv#PublicService",
+			"@container":"@set"
+		},
+		"kadertBinnen":{
+			"@id":"http://data.vlaanderen.be/ns/notificatie#kadertBinnen",
 			"@type":"http://purl.org/vocab/cpsv#PublicService",
 			"@container":"@set"
 		},
@@ -130,6 +142,10 @@
 		"openingsuren":{
 			"@id":"http://schema.org/openingHours",
 			"@type":"https://schema.org/OpeningHoursSpecification"
+		},
+		"periodeVerzending":{
+			"@id":"http://data.vlaanderen.be/ns/notificatie#periodeVerzending",
+			"@type":""
 		},
 		"resulteertIn":{
 			"@id":"http://data.vlaanderen.be/ns/notificatie#resulteertIn",

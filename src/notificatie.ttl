@@ -50,6 +50,15 @@ eu:PublicOrganisation
       rdfs:label "inhoud"@nl ;
       rdfs:range <https://schema.org/PropertyValue> .
 
+<http://data.vlaanderen.be/ns/notificatie#kadertBinnen>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Verwijst naar de publieke dienstverlening in de context waarvan de Informeer Actie plaatsvindt."@nl ;
+      rdfs:domain <https://schema.org/InformAction> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
+      rdfs:label "kadert binnen"@nl ;
+      rdfs:range cpsv:PublicService ;
+      vann:usageNote "Bijvoorbeeld een Informeer Actie over een statuswijziging in een aanvraag voor een bouwvergunning."@nl .
+
 <http://data.vlaanderen.be/ns/notificatie#notificatiekanaal>
       a       owl:ObjectProperty ;
       rdfs:comment "Het notificatiekanaal duidt het technisch medium aan waarlangs het Notificatiebericht wordt verzonden."@nl ;
@@ -57,6 +66,14 @@ eu:PublicOrganisation
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
       rdfs:label "notificatiekanaal"@nl ;
       rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/notificatie#periodeVerzending>
+      a       rdf:Property ;
+      rdfs:comment "Het tijdsinterval waarbinnen de Informeer Actie relevant is en bijgevolg kan resulteren in de verzending van notificatieberichten."@nl ;
+      rdfs:domain <https://schema.org/InformAction> ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
+      rdfs:label "periode verzending"@nl ;
+      vann:usageNote "Bijvoorbeeld, wanneer het stedelijk zwembad een week gesloten is, kan de periode voor verzending van de Informeer Actie beginnen een maand voor de sluiting en eindigen op de laatste dag van de sluitingsperiode."@nl .
 
 <http://data.vlaanderen.be/ns/notificatie#resulteertIn>
       a       owl:ObjectProperty ;
