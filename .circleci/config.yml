@@ -1,0 +1,104 @@
+jobs:
+  extract-vocabularia:
+    docker:
+      - image: oslo-vocabularia/ea-to-rdf:circleci
+    steps:
+      - checkout
+      # - run :
+      #   name: Create a list of all diagrams for each EAP file
+      #   command: |
+      #   rm /tmp/diagrams.list
+      #   for model in $(ls src/ | grep .EAP); do
+      #     java -jar ea-2-rdf.jar list -i src/${model} | awk -v model="${model}" '/Diagram/ && /OSLO/ {print model " " $2}' >> /tmp/diagrams.list
+      #   done
+      - run:
+        name: Extract ttl data for each diagram
+        command: |
+        awk '{print "java -jar ea-2-rdf.jar convert -i src/OSLO²_vocabularium.EAP -c src/config-voc.json -d OSLO-" $1 " -o /tmp/workspace/ttl/" $1 ".ttl"}' < src/eap-mapping.list | sh
+      - persist_to_workspace:
+        root: /tmp/workspace
+        paths:
+          - ttl/
+  extract-application-profiles:
+    docker:
+      - image: oslo-vocabularia/ea-to-rdf:circleci
+    steps:
+      - checkout
+      # - run:
+      #   name: Create a list of all diagrams for each EAP file
+      #   command: |
+      #   rm /tmp/diagrams.list
+      #   for model in $(ls src/ | grep .EAP); do
+      #     java -jar ea-2-rdf.jar list -i src/${model} | awk -v model="${model}" '/Diagram/ && /OSLO/ {print model " " $2}' >> /tmp/diagrams.list
+      #   done
+      - run:
+        name: Extract tsv data for each diagram
+        command: |
+        grep -v nil src/eap-mappinglist | awk '{print "java -jar ea-2-rdf.jar tsv -i src/" $2 " -c src/config-ap.json -d " $3 " -o /tmp/workspaceitsv/" $1 ".tsv"}' | sh
+      - persist_to_workspace:
+        root: /tmp/workspace
+        paths:
+          - tsv/
+  render-voc-html:
+    docker:
+      - image: oslo-vocabularia/specgen:circleci
+    steps:
+      - checkout
+      - attach_workspace:
+        at: /tmp/workspace
+      - run:
+        name: Extract contributors for every vocabulary
+        command: |
+        for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
+          python generate_vocabulary.py --contributors --csv src/stakeholders_latest.csv --csv_contributor_role_column ${model} --output /tmp/workspace/contrib/${model}.xml
+        done
+      - run:
+        name: Merge contributors xml with vocabulary ttl
+        command: |
+        for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
+          python generate_vocabulary.py --merge --rdf /tmp/workspace/ttl/${model}.ttl --rdf_contributor /tmp/workspace/contrib/${model}.xml --output /tmp/workspace/ttl/${model}.ttl
+        done
+      - run:
+        name: Render HTML version of merged ttl file
+        command: |
+        for model in $(ls /tmp/workspace/ttl); do
+          python generate_vocabulary.py --rdf /tmp/workspace/ttl/${model} --output /tmp/workspace/voc/${model}/html/
+        done
+      - persist_to_workspace:
+        root: /tmp
+        paths:
+          - workspace/
+  render-ap-html:
+    docker:
+      - image: oslo-vocabularia/specgen:circleci
+    steps:
+      - checkout
+      - attach_workspace:
+        at: /tmp/workspace
+      - run:
+        name: Render HTML of AP tsv file
+        command: |
+        for model in $(ls /tmp/workspace/tsv); do
+          python generate_vocabulary.py --ap --csv /tmp/workspace/tsv/${model} --csv_contributor src/stakeholders_latest.csv --output /tmp/workspace/ap/${model}/html/
+        done
+      - persist_to_workspace:
+        root: /tmp
+        paths:
+          - workspace/
+  render-ap-jsonld:
+    docker:
+      - image: oslo-vocabularia/specgen:circleci
+    steps:
+      - checkout
+      - attach_workspace:
+        at: /tmp/workspace
+      - run:
+        name: Render jsonld version of AP tsv file
+        command: |
+        for model in $(ls /tmp/workspace/tsv); do
+          python generate_jsonld.py --input ${model} --output /tmp/workspace/ap/${model}/jsonld/
+        done
+      - persist_to_workspace:
+        root: /tmp
+        paths:
+          - workspace/
