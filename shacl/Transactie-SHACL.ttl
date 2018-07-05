@@ -1,40 +1,13 @@
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
-<http://www.w3.org/ns/adms#IdentifierShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://www.w3.org/ns/adms#Identifier> ;
-	sh:property [
-		sh:name "identificator" ;
-		sh:description "String gebruikt om het object uniek te identificeren" ;
-		sh:path <http://www.w3.org/2004/02/skos/core#notation> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "toegekendDoor" ;
-		sh:description "Link naar de agent die de identificator heeft uitgegeven." ;
-		sh:path <http://purl.org/dc/terms/creator> ;
-		sh:class <http://purl.org/dc/terms/Agent> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "toegekendDoorString" ;
-		sh:description "Naam vd agent die de identificator heeft toegekend." ;
-		sh:path <http://www.w3.org/ns/adms#schemaAgency> ;
-		sh:class <http://purl.org/dc/terms/Agent> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "toegekendOp" ;
-		sh:description "Tijdstip waarop de identificator werd uitgegeven." ;
-		sh:path <http://purl.org/dc/terms/issued> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
 <http://purl.org/vocab/cpsv#PublicServiceShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://purl.org/vocab/cpsv#PublicService> ;
+	sh:property [
+		sh:name "heeftCriterium" ;
+		sh:description "Criterium waaraan de gebruiker moet voldoen om recht te hebben op een dienstverlening of om een dienstverlening te mogen gebruiken." ;
+		sh:path <http://data.europa.eu/m8g/hasCriterion> ;
+		sh:class <http://data.europa.eu/m8g/CriterionRequirement> ;
+	] ;
 	sh:closed false .
 
 <http://data.vlaanderen.be/ns/dienst#StatusShape>
@@ -58,20 +31,6 @@
 		sh:name "statusEDRL" ;
 		sh:description "De status volgens de Europese Dienstenrichtlijn" ;
 		sh:path <http://data.vlaanderen.be/ns/dienst#statusEDRL> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "statusExtern" ;
-		sh:description "Dit is de (originele) Status-definitie of -vermelding zoals geregistreerd in de bron." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#statusExtern> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "statusIntern" ;
-		sh:description "Interne status die kan worden meegegeven en die niet wordt getoond aan de burger of onderneming." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#statusIntern> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -109,12 +68,14 @@
 		sh:name "beschrijving" ;
 		sh:description "Beschrijving van de participatie." ;
 		sh:path <http://purl.org/dc/terms/description> ;
+		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "rol" ;
 		sh:description "De rol die de participant speelt." ;
 		sh:path <http://data.europa.eu/m8g/role> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 	] ;
 	sh:closed false .
@@ -133,6 +94,7 @@
 		sh:name "valuta" ;
 		sh:description "Munteenheid waarin de kost is gedefinieerd." ;
 		sh:path <http://data.europa.eu/m8g/currency> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -157,6 +119,7 @@
 		sh:name "contactinfo" ;
 		sh:description "Informatie zoals email, telefoon die toelaat de hoedanigheid te contacteren." ;
 		sh:path <http://data.vlaanderen.be/ns/organisatie#contactinfo> ;
+		sh:class <http://schema.org/ContactPoint> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
@@ -175,11 +138,24 @@
 		sh:path <http://data.europa.eu/m8g/playsRole> ;
 		sh:class <http://data.europa.eu/m8g/Participation> ;
 	] ;
+	sh:property [
+		sh:name "verschaft" ;
+		sh:description "Een agent verschaft antwoorden op criterium vereisten om een Publieke Dienstverlening te kunnen consumeren." ;
+		sh:path <http://data.europa.eu/m8g/providesRequirementResponse> ;
+		sh:class <http://data.europa.eu/m8g/RequirementResponse> ;
+	] ;
 	sh:closed false .
 
 <http://data.europa.eu/m8g/EvidenceShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.europa.eu/m8g/Evidence> ;
+	sh:property [
+		sh:name "uitgegevenDoor" ;
+		sh:description "Verwijst naar de organisatie die het bewijs heeft uitgegeven." ;
+		sh:path <http://data.europa.eu/m8g/issuedByOrganisation> ;
+		sh:class <https://www.w3.org/ns/org#Organization> ;
+		sh:maxCount 1 ;
+	] ;
 	sh:property [
 		sh:name "documentatie" ;
 		sh:description "Documentatie gerelateerd aan het Bewiijs." ;
@@ -206,6 +182,7 @@
 		sh:name "type" ;
 		sh:description "Aard vh Bewijs." ;
 		sh:path <http://purl.org/dc/terms/type> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
@@ -254,6 +231,7 @@
 		sh:name "type" ;
 		sh:description "Aard van de output." ;
 		sh:path <http://purl.org/dc/terms/type> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 	] ;
 	sh:closed false .
 
@@ -261,10 +239,10 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://purl.org/vocab/cpsv#PublicService> ;
 	sh:property [
-		sh:name "produceert" ;
-		sh:description "Het werkelijke resultaat van de uitvoering vd Publieke Dienstverlening." ;
-		sh:path <http://purl.org/vocab/cpsv#produces> ;
-		sh:class <http://data.europa.eu/m8g/Output> ;
+		sh:name "isGerelateerdMet" ;
+		sh:description "Andere Publieke Dienstverlening waarmee de Publieke Dienstverlening gerelateerd is." ;
+		sh:path <http://purl.org/dc/terms/relation> ;
+		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
 	] ;
 	sh:property [
 		sh:name "heeftParticiperende" ;
@@ -273,10 +251,12 @@
 		sh:class <http://data.europa.eu/m8g/Participation> ;
 	] ;
 	sh:property [
-		sh:name "vereistAlsInput" ;
-		sh:description "Bewijsstuk dat moeten voorgelegd worden om de Publieke Dienstverlening te kunnen gebruiken." ;
-		sh:path <http://purl.org/vocab/cpsv#hasInput> ;
-		sh:class <http://data.europa.eu/m8g/Evidence> ;
+		sh:name "isInstantieVan" ;
+		sh:description "Linkt een bepaalde consumptie van een publieke dienstverlening (een transactie) met het product uit het dienstverleningsregister." ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#isInstantieVan> ;
+		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "wordtUitgevoerdDoor" ;
@@ -285,16 +265,16 @@
 		sh:class <http://purl.org/dc/terms/Agent> ;
 	] ;
 	sh:property [
-		sh:name "isInstantieVan" ;
-		sh:description "Linkt een bepaalde consumptie van een publieke dienstverlening (een transactie) met het product uit het dienstverleningsregister." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#isInstantieVan> ;
-		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
+		sh:name "vereistAlsInput" ;
+		sh:description "Bewijsstuk dat moeten voorgelegd worden om de Publieke Dienstverlening te kunnen gebruiken." ;
+		sh:path <http://purl.org/vocab/cpsv#hasInput> ;
+		sh:class <http://data.europa.eu/m8g/Evidence> ;
 	] ;
 	sh:property [
-		sh:name "isGerelateerdMet" ;
-		sh:description "Andere Publieke Dienstverlening waarmee de Publieke Dienstverlening gerelateerd is." ;
-		sh:path <http://purl.org/dc/terms/relation> ;
-		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
+		sh:name "produceert" ;
+		sh:description "Het werkelijke resultaat van de uitvoering vd Publieke Dienstverlening." ;
+		sh:path <http://purl.org/vocab/cpsv#produces> ;
+		sh:class <http://data.europa.eu/m8g/Output> ;
 	] ;
 	sh:property [
 		sh:name "heeftStatus" ;
@@ -307,17 +287,20 @@
 		sh:description "Kostprijs verbonden aan het gebruik van de publieke dienstverlening." ;
 		sh:path <http://data.europa.eu/m8g/hasCost> ;
 		sh:class <http://data.europa.eu/m8g/Cost> ;
+		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "naam" ;
 		sh:description "Officiële naam van de publieke dienstverlening." ;
 		sh:path <http://purl.org/dc/terms/title> ;
+		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "taal" ;
 		sh:description "Taal waarin een publieke dienstverlening wordt aangeboden." ;
 		sh:path <http://purl.org/dc/terms/language> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
@@ -325,5 +308,114 @@
 <http://www.w3.org/ns/person#PersonShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://www.w3.org/ns/person#Person> ;
+	sh:closed false .
+
+<http://data.europa.eu/m8g/RequirementResponseShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.europa.eu/m8g/RequirementResponse> ;
+	sh:property [
+		sh:name "valideert" ;
+		sh:description "Relatie naar de criterium vereiste waaraan het antwoord voldoet." ;
+		sh:path <http://data.europa.eu/m8g/validatesCriterionRequirement> ;
+		sh:class <http://data.europa.eu/m8g/CriterionRequirement> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "bewezenDoor" ;
+		sh:description "Het criterium antwoord kan gelinkt zijn aan het bewijs om het antwoord te staven." ;
+		sh:path <http://data.europa.eu/m8g/provenByEvidence> ;
+		sh:class <http://data.europa.eu/m8g/Evidence> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "referentie" ;
+		sh:description "Identificator van het object." ;
+		sh:path <http://www.w3.org/ns/adms#identifier> ;
+		sh:class <http://www.w3.org/ns/adms#Identifier> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "beschrijving" ;
+		sh:description "Een beschrijving van het antwoord op de vereiste." ;
+		sh:path <http://purl.org/dc/terms/description> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "waarde" ;
+		sh:description "Een beantwoorde vereiste moet een waarde bevatten als antwoord op een criterium vereiste. Om de criterium vereiste te vervullen, wanneer de criterium vereiste een verwachte waarde of drempel heeft, moet de waarde gelijk zijn aan de verwachte waarden of binnen het bereik liggen dat bepaald werd door de drempelwaarden." ;
+		sh:path <http://data.europa.eu/m8g/value> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "vanToepassingOp" ;
+		sh:description "Wanneer de het antwoord op het criterium van toepassing is binnen een specifieke periode kan deze eigenschap gebruikt worden om het tijdsinterval te beschrijven." ;
+		sh:path <http://data.europa.eu/m8g/appliesToPeriodOfTime> ;
+		sh:class <http://purl.org/dc/terms/PeriodOfTime> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://data.europa.eu/m8g/CriterionRequirementShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://data.europa.eu/m8g/CriterionRequirement> ;
+	sh:closed false .
+
+<http://purl.org/dc/terms/PeriodOfTimeShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://purl.org/dc/terms/PeriodOfTime> ;
+	sh:property [
+		sh:name "begin" ;
+		sh:description "Moment waarop het tijdsinterval begint." ;
+		sh:path <http://data.vlaanderen.be/ns/generiek#begin> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "einde" ;
+		sh:description "Moment waarop het tijdsinterval eindigt." ;
+		sh:path <http://data.vlaanderen.be/ns/generiek#einde> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://www.w3.org/ns/adms#IdentifierShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://www.w3.org/ns/adms#Identifier> ;
+	sh:property [
+		sh:name "identificator" ;
+		sh:description "String gebruikt om de instantie ve object uniek te identificeren. " ;
+		sh:path <http://www.w3.org/2004/02/skos/core#notation> ;
+		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "toegekendDoor" ;
+		sh:description "Link naar de agent die de identificator heeft uitgegeven." ;
+		sh:path <http://purl.org/dc/terms/creator> ;
+		sh:class <http://purl.org/dc/terms/Agent> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "toegekendDoorString" ;
+		sh:description "Naam vd agent die de identificator heeft toegekend." ;
+		sh:path <http://www.w3.org/ns/adms#schemaAgency> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "toegekendOp" ;
+		sh:description "Tijdstip waarop de identificator werd uitgegeven." ;
+		sh:path <http://purl.org/dc/terms/issued> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:maxCount 1 ;
+	] ;
 	sh:closed false .
 

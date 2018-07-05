@@ -168,6 +168,8 @@
 		sh:description "De agent die het notificatiebericht ontvangt." ;
 		sh:path <https://schema.org/recipient> ;
 		sh:class <http://purl.org/dc/terms/Agent> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "datumCreatie" ;
@@ -197,7 +199,6 @@
 		sh:description "De datum waarop een Notificatiebericht vervalt." ;
 		sh:path <http://schema.org/expires> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
-		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -205,7 +206,6 @@
 		sh:description "De datum waarop het Notificatiebericht werd gelezen door de bestemmeling. " ;
 		sh:path <http://schema.org/dateRead> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
-		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -221,7 +221,6 @@
 		sh:description "De datum waarop het Notificatiebericht werd ontvangen door de bestemmeling." ;
 		sh:path <http://schema.org/dateReceived> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
-		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -252,6 +251,12 @@
 		sh:class <http://data.europa.eu/m8g/PublicOrganisation> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "isGerelateerdMet" ;
+		sh:description "Een relatie tussen twee Informeer Acties." ;
+		sh:path <http://purl.org/dc/terms/relation> ;
+		sh:class <https://schema.org/InformAction> ;
 	] ;
 	sh:property [
 		sh:name "resulteertIn" ;
@@ -286,6 +291,20 @@
 		sh:path <http://schema.org/recipient> ;
 		sh:class <https://schema.org/Audience> ;
 		sh:minCount 1 ;
+	] ;
+	sh:property [
+		sh:name "kadertBinnen" ;
+		sh:description "Verwijst naar de publieke dienstverlening in de context waarvan de Informeer Actie plaatsvindt." ;
+		sh:path <http://data.vlaanderen.be/ns/notificatie#kadertBinnen> ;
+		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
+		sh:minCount 1 ;
+	] ;
+	sh:property [
+		sh:name "periodeVerzending" ;
+		sh:description "Het tijdsinterval waarbinnen de Informeer Actie relevant is en bijgevolg kan resulteren in de verzending van notificatieberichten." ;
+		sh:path <http://data.vlaanderen.be/ns/notificatie#periodeVerzending> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
@@ -355,6 +374,26 @@
 		sh:description "Geometrie uitgedrukt in wkt-formaat." ;
 		sh:path <http://www.opengis.net/ont/geosparql#asWKT> ;
 		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<http://purl.org/dc/terms/PeriodOfTimeShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://purl.org/dc/terms/PeriodOfTime> ;
+	sh:property [
+		sh:name "begin" ;
+		sh:description "Moment waarop het tijdsinterval begint." ;
+		sh:path <http://data.vlaanderen.be/ns/generiek#begin> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "einde" ;
+		sh:description "Moment waarop het tijdsinterval eindigt." ;
+		sh:path <http://data.vlaanderen.be/ns/generiek#einde> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .

@@ -45,7 +45,7 @@
               <div class="head" role="contentinfo" id="respecHeader">
                 <dl>
                   <dt>Laatste aanpassing</dt>
-                  <dd>2018-06-21</dd>
+                  <dd>2018-06-28</dd>
 
                   
                   
@@ -229,6 +229,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       <a href="#Geografische Naam">Geografische Naam</a> |
                       <a href="#Geometrie">Geometrie</a> |
                       <a href="#Sleutel/Waarde Paar">Sleutel/Waarde Paar</a> |
+                      <a href="#TijdsInterval">TijdsInterval</a> |
                     </p>
                   </div>
                   
@@ -372,8 +373,11 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       <a href="#Informeer%20Actie%3Aagent">agent</a>, 
                       <a href="#Informeer%20Actie%3Adoelgroep">doelgroep</a>, 
                       <a href="#Informeer%20Actie%3Ainhoud">inhoud</a>, 
+                      <a href="#Informeer%20Actie%3Ais%20gerelateerd%20met">is gerelateerd met</a>, 
+                      <a href="#Informeer%20Actie%3Akadert%20binnen">kadert binnen</a>, 
                       <a href="#Informeer%20Actie%3Anotificatiekanaal">notificatiekanaal</a>, 
                       <a href="#Informeer%20Actie%3Aonderwerp">onderwerp</a>, 
+                      <a href="#Informeer%20Actie%3Aperiode%20verzending">periode verzending</a>, 
                       <a href="#Informeer%20Actie%3Aresulteert%20in">resulteert in</a>.</dd>
                     
                   </dl>
@@ -436,6 +440,34 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                     
+                      <tr id="Informeer%20Actie%3Ais%20gerelateerd%20met" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
+                            is gerelateerd met</a>
+                          </code>
+                        </td>
+                        <td><a href="https://schema.org/InformAction" data-toggle="tooltip" data-content="https://schema.org/InformAction" data-placement="right">InformeerActie</a></td>
+                        <td></td>
+                        <td property="rdfs:comment">Een relatie tussen twee Informeer Acties.</td>
+                        <td property="vann:usageNote">Bijvoorbeeld wanneer een Informeer Actie aangemaakt wordt om aan te geven dat ramen en deuren gesloten moeten blijven wegens een brand in de buurt, kan deze gelinkt wordt met een tweede Informeer Actie om inwoners op de hoogte te brengen dat het gevaar geweken is.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Informeer%20Actie%3Akadert%20binnen" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/notificatie#kadertBinnen">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/notificatie#kadertBinnen" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#kadertBinnen" data-placement="right">
+                            kadert binnen</a>
+                          </code>
+                        </td>
+                        <td><a href="http://purl.org/vocab/cpsv#PublicService" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#PublicService" data-placement="right">PubliekeDienstverlening</a></td>
+                        <td>1...*</td>
+                        <td property="rdfs:comment">Verwijst naar de publieke dienstverlening in de context waarvan de Informeer Actie plaatsvindt.</td>
+                        <td property="vann:usageNote">Bijvoorbeeld een Informeer Actie over een statuswijziging in een aanvraag voor een bouwvergunning.</td>
+                        <td></td>
+                      </tr>
+                    
                       <tr id="Informeer%20Actie%3Anotificatiekanaal" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/notificatie#notificatiekanaal">
                         <td>
                           <code property="rdfs:label">
@@ -457,10 +489,24 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             onderwerp</a>
                           </code>
                         </td>
-                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Notificatiecategorie</a></td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right"></a></td>
                         <td>1...*</td>
                         <td property="rdfs:comment">Het onderwerp van de informeer actie.</td>
                         <td property="vann:usageNote">Er wordt verwacht dat de notificatiecategorie gedefinieerd is in een codelijst. Het bepalen en ontlsuiten van deze codelijst kan applicatie-specifiek worden ingevuld.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Informeer%20Actie%3Aperiode%20verzending" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/notificatie#periodeVerzending">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/notificatie#periodeVerzending" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/notificatie#periodeVerzending" data-placement="right">
+                            periode verzending</a>
+                          </code>
+                        </td>
+                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TijdsInterval</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Het tijdsinterval waarbinnen de Informeer Actie relevant is en bijgevolg kan resulteren in de verzending van notificatieberichten.</td>
+                        <td property="vann:usageNote">Bijvoorbeeld, wanneer het stedelijk zwembad een week gesloten is, kan de periode voor verzending van de Informeer Actie beginnen een maand voor de sluiting en eindigen op de laatste dag van de sluitingsperiode.</td>
                         <td></td>
                       </tr>
                     
@@ -624,7 +670,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                           </code>
                         </td>
                         <td><a href="http://purl.org/dc/terms/Agent" data-toggle="tooltip" data-content="http://purl.org/dc/terms/Agent" data-placement="right">Agent</a></td>
-                        <td></td>
+                        <td>1</td>
                         <td property="rdfs:comment">De agent die het notificatiebericht ontvangt.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
@@ -652,7 +698,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                           </code>
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
-                        <td>1</td>
+                        <td>0...1</td>
                         <td property="rdfs:comment">De datum waarop het Notificatiebericht werd gelezen door de bestemmeling. </td>
                         <td property="vann:usageNote"></td>
                         <td></td>
@@ -666,7 +712,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                           </code>
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
-                        <td>1</td>
+                        <td>0...1</td>
                         <td property="rdfs:comment">De datum waarop het Notificatiebericht werd ontvangen door de bestemmeling.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
@@ -750,7 +796,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                           </code>
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
-                        <td>1</td>
+                        <td>0...1</td>
                         <td property="rdfs:comment">De datum waarop een Notificatiebericht vervalt.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
@@ -1222,6 +1268,70 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td>1</td>
                         <td property="rdfs:comment">De waarde van het sleutel/waarde paar.</td>
                         <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
+                
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="TijdsInterval"><a href="http://purl.org/dc/terms/PeriodOfTime" data-toggle="tooltip" data-content="http://purl.org/dc/terms/PeriodOfTime" data-placement="right">TijdsInterval</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>De tijdsperiode tussen twee momenten in de tijd.</dd>
+                    
+                    <dt>Gebruik</dt><dd> </dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor dit datatype zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#TijdsInterval%3Abegin">begin</a>, 
+                      <a href="#TijdsInterval%3Aeinde">einde</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                      
+                      <tr id="TijdsInterval%3Abegin" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/generiek#begin">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/generiek#begin" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#begin" data-placement="right">begin</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Moment waarop het tijdsinterval begint.</td>
+                        <td property="vann:usageNote">Moment waarop het tijdsinterval begint.</td>
+                        <td></td>
+                      </tr>
+                      
+                      <tr id="TijdsInterval%3Aeinde" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/generiek#einde">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/generiek#einde" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#einde" data-placement="right">einde</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Moment waarop het tijdsinterval eindigt.</td>
+                        <td property="vann:usageNote">Moment waarop het tijdsinterval eindigt.</td>
                         <td></td>
                       </tr>
                       

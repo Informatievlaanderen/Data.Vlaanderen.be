@@ -63,12 +63,27 @@ schema:ContactPoint a rdfs:Class ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
     rdfs:range <https://schema.org/PropertyValue> .
 
+<http://data.vlaanderen.be/ns/notificatie#kadertBinnen> a owl:ObjectProperty ;
+    rdfs:label "kadert binnen"@nl ;
+    vann:usageNote "Bijvoorbeeld een Informeer Actie over een statuswijziging in een aanvraag voor een bouwvergunning."@nl ;
+    rdfs:comment "Verwijst naar de publieke dienstverlening in de context waarvan de Informeer Actie plaatsvindt."@nl ;
+    rdfs:domain <https://schema.org/InformAction> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
+    rdfs:range cpsv:PublicService .
+
 <http://data.vlaanderen.be/ns/notificatie#notificatiekanaal> a owl:ObjectProperty ;
     rdfs:label "notificatiekanaal"@nl ;
     rdfs:comment "Het notificatiekanaal duidt het technisch medium aan waarlangs het Notificatiebericht wordt verzonden."@nl ;
     rdfs:domain rdfs:Resource ;
     rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
     rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/notificatie#periodeVerzending> a rdf:Property ;
+    rdfs:label "periode verzending"@nl ;
+    vann:usageNote "Bijvoorbeeld, wanneer het stedelijk zwembad een week gesloten is, kan de periode voor verzending van de Informeer Actie beginnen een maand voor de sluiting en eindigen op de laatste dag van de sluitingsperiode."@nl ;
+    rdfs:comment "Het tijdsinterval waarbinnen de Informeer Actie relevant is en bijgevolg kan resulteren in de verzending van notificatieberichten."@nl ;
+    rdfs:domain <https://schema.org/InformAction> ;
+    rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> .
 
 <http://data.vlaanderen.be/ns/notificatie#resulteertIn> a owl:ObjectProperty ;
     rdfs:label "resulteert in"@nl ;
@@ -201,21 +216,21 @@ foaf:page a rdf:Property ;
     rec:editor [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
                     foaf:name "PwC" ] ;
-            foaf:firstName "Michiel" ;
-            foaf:lastName "De Keyzer" ;
-            foaf:mbox <mailto:michiel.de.keyzer@pwc.com> ],
+            foaf:firstName "Jens" ;
+            foaf:lastName "Scheerlinck" ;
+            foaf:mbox <mailto:jens.scheerlinck@pwc.com> ],
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <http://www.pwc.be> ;
                     foaf:name "PwC" ] ;
-            foaf:firstName "Jens" ;
-            foaf:lastName "Scheerlinck" ;
-            foaf:mbox <mailto:jens.scheerlinck@pwc.com> ] ;
+            foaf:firstName "Michiel" ;
+            foaf:lastName "De Keyzer" ;
+            foaf:mbox <mailto:michiel.de.keyzer@pwc.com> ] ;
     foaf:maker [ a person:Person ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
                     foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Bart" ;
-            foaf:lastName "Misseeuw" ;
-            foaf:mbox <mailto:bart.misseeuw@kb.vlaanderen.be> ],
+            foaf:firstName "Dries" ;
+            foaf:lastName "Beheydt" ;
+            foaf:mbox <mailto:dries.beheydt@kb.vlaanderen.be> ],
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/> ;
                     foaf:name "Informatie Vlaanderen" ] ;
@@ -231,7 +246,7 @@ foaf:page a rdf:Property ;
         [ a person:Person ;
             schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
                     foaf:name "Informatie Vlaanderen" ] ;
-            foaf:firstName "Dries" ;
-            foaf:lastName "Beheydt" ;
-            foaf:mbox <mailto:dries.beheydt@kb.vlaanderen.be> ] .
+            foaf:firstName "Bart" ;
+            foaf:lastName "Misseeuw" ;
+            foaf:mbox <mailto:bart.misseeuw@kb.vlaanderen.be> ] .
 
