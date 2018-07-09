@@ -1,7 +1,8 @@
+version: 2
 jobs:
   extract-vocabularia:
     docker:
-      - image: oslo-vocabularia/ea-to-rdf:circleci
+      - image: informatievlaanderen/oslo-ea-to-rdf:circleci
     steps:
       - checkout
       # - run :
@@ -12,16 +13,16 @@ jobs:
       #     java -jar ea-2-rdf.jar list -i src/${model} | awk -v model="${model}" '/Diagram/ && /OSLO/ {print model " " $2}' >> /tmp/diagrams.list
       #   done
       - run:
-        name: Extract ttl data for each diagram
-        command: |
-        awk '{print "java -jar ea-2-rdf.jar convert -i src/OSLO²_vocabularium.EAP -c src/config-voc.json -d OSLO-" $1 " -o /tmp/workspace/ttl/" $1 ".ttl"}' < src/eap-mapping.list | sh
+          name: Extract ttl data for each diagram
+          command: |
+            awk '{print "java -jar /app/ea-2-rdf.jar convert -i src/OSLO²_vocabularium.EAP -c src/config-voc.json -d OSLO-" $1 " -o /tmp/workspace/ttl/" $1 ".ttl"}' < src/eap-mapping.list | sh
       - persist_to_workspace:
-        root: /tmp/workspace
-        paths:
-          - ttl/
+          root: /tmp/workspace
+          paths:
+            - ttl/
   extract-application-profiles:
     docker:
-      - image: oslo-vocabularia/ea-to-rdf:circleci
+      - image: informatievlaanderen/oslo-ea-to-rdf:circleci
     steps:
       - checkout
       # - run:
@@ -32,73 +33,88 @@ jobs:
       #     java -jar ea-2-rdf.jar list -i src/${model} | awk -v model="${model}" '/Diagram/ && /OSLO/ {print model " " $2}' >> /tmp/diagrams.list
       #   done
       - run:
-        name: Extract tsv data for each diagram
-        command: |
-        grep -v nil src/eap-mappinglist | awk '{print "java -jar ea-2-rdf.jar tsv -i src/" $2 " -c src/config-ap.json -d " $3 " -o /tmp/workspaceitsv/" $1 ".tsv"}' | sh
+          name: Extract tsv data for each diagram
+          command: |
+            grep -v nil src/eap-mapping.list | awk '{print "java -jar /app/ea-2-rdf.jar tsv -i src/" $2 " -c src/config-ap.json -d " $3 " -o /tmp/workspace/tsv/" $1 ".tsv"}' | sh
       - persist_to_workspace:
-        root: /tmp/workspace
-        paths:
-          - tsv/
+          root: /tmp/workspace
+          paths:
+            - tsv/
   render-voc-html:
     docker:
-      - image: oslo-vocabularia/specgen:circleci
+      - image: informatievlaanderen/oslo-specification-generator:circleci
     steps:
       - checkout
       - attach_workspace:
-        at: /tmp/workspace
+          at: /tmp/workspace
       - run:
-        name: Extract contributors for every vocabulary
-        command: |
-        for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
-          python generate_vocabulary.py --contributors --csv src/stakeholders_latest.csv --csv_contributor_role_column ${model} --output /tmp/workspace/contrib/${model}.xml
-        done
+          name: Extract contributors for every vocabulary
+          command: |
+            for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
+              python /app/specgen/generate_vocabulary.py --contributors --csv src/stakeholders_latest.csv --csv_contributor_role_column ${model} --output /tmp/workspace/contrib/${model}.xml
+            done
       - run:
-        name: Merge contributors xml with vocabulary ttl
-        command: |
-        for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
-          python generate_vocabulary.py --merge --rdf /tmp/workspace/ttl/${model}.ttl --rdf_contributor /tmp/workspace/contrib/${model}.xml --output /tmp/workspace/ttl/${model}.ttl
-        done
+          name: Merge contributors xml with vocabulary ttl
+          command: |
+            for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
+              python /app/specgen/generate_vocabulary.py --merge --rdf /tmp/workspace/ttl/${model}.ttl --rdf_contributor /tmp/workspace/contrib/${model}.xml --output /tmp/workspace/ttl/${model}.ttl
+            done
       - run:
-        name: Render HTML version of merged ttl file
-        command: |
-        for model in $(ls /tmp/workspace/ttl); do
-          python generate_vocabulary.py --rdf /tmp/workspace/ttl/${model} --output /tmp/workspace/voc/${model}/html/
-        done
+          name: Render HTML version of merged ttl file
+          command: |
+            for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
+              python /app/specgen/generate_vocabulary.py --rdf /tmp/workspace/ttl/${model}.ttl --output /tmp/workspace/voc/${model}/html/index.html
+            done
       - persist_to_workspace:
-        root: /tmp
-        paths:
-          - workspace/
+          root: /tmp
+          paths:
+            - workspace/
   render-ap-html:
     docker:
-      - image: oslo-vocabularia/specgen:circleci
+      - image: informatievlaanderen/oslo-specification-generator:circleci
     steps:
       - checkout
       - attach_workspace:
-        at: /tmp/workspace
+          at: /tmp/workspace
       - run:
-        name: Render HTML of AP tsv file
-        command: |
-        for model in $(ls /tmp/workspace/tsv); do
-          python generate_vocabulary.py --ap --csv /tmp/workspace/tsv/${model} --csv_contributor src/stakeholders_latest.csv --output /tmp/workspace/ap/${model}/html/
-        done
+          name: Render HTML of AP tsv file
+          command: |
+            for model in $(ls /tmp/workspace/tsv | sed 's/.tsv//'); do
+              python /app/specgen/generate_vocabulary.py --ap --csv /tmp/workspace/tsv/${model}.tsv --csv_contributor src/stakeholders_latest.csv --title ${model} --output /tmp/workspace/ap/${model}/html/index.html
+            done
       - persist_to_workspace:
-        root: /tmp
-        paths:
-          - workspace/
+          root: /tmp
+          paths:
+            - workspace/
   render-ap-jsonld:
     docker:
-      - image: oslo-vocabularia/specgen:circleci
+      - image: informatievlaanderen/oslo-specification-generator:circleci
     steps:
       - checkout
       - attach_workspace:
-        at: /tmp/workspace
+          at: /tmp/workspace
       - run:
-        name: Render jsonld version of AP tsv file
-        command: |
-        for model in $(ls /tmp/workspace/tsv); do
-          python generate_jsonld.py --input ${model} --output /tmp/workspace/ap/${model}/jsonld/
-        done
+          name: Render jsonld version of AP tsv file
+          command: |
+            for model in $(ls /tmp/workspace/tsv | sed 's/.tsv//'); do
+              python /app/specgen/generate_jsonld.py --input /tmp/workspace/tsv/${model}.tsv --output /tmp/workspace/ap/${model}/context.jsonld
+            done
       - persist_to_workspace:
-        root: /tmp
-        paths:
-          - workspace/
+          root: /tmp
+          paths:
+            - workspace/
+workflows:
+  version: 2
+  generate_documentation:
+    jobs:
+      - extract-vocabularia
+      - extract-application-profiles
+      - render-voc-html:
+          requires:
+            - extract-vocabularia
+      - render-ap-html:
+          requires:
+            - extract-application-profiles
+      - render-ap-jsonld:
+          requires:
+            - extract-application-profiles
