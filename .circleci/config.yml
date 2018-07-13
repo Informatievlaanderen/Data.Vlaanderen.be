@@ -63,12 +63,12 @@ jobs:
           name: Render HTML version of merged ttl file
           command: |
             for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
-              python /app/specgen/generate_vocabulary.py --rdf /tmp/workspace/ttl/${model}.ttl --output /tmp/workspace/voc/${model}/html/index.html
+              python /app/specgen/generate_vocabulary.py --rdf /tmp/workspace/ttl/${model}.ttl --output /tmp/workspace/voc/${model}/index.html
             done
       - persist_to_workspace:
-          root: /tmp
+          root: /tmp/workspace
           paths:
-            - workspace/
+            - voc/
   render-ap-html:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:circleci
@@ -80,12 +80,12 @@ jobs:
           name: Render HTML of AP tsv file
           command: |
             for model in $(ls /tmp/workspace/tsv | sed 's/.tsv//'); do
-              python /app/specgen/generate_vocabulary.py --ap --csv /tmp/workspace/tsv/${model}.tsv --csv_contributor src/stakeholders_latest.csv --title ${model} --output /tmp/workspace/ap/${model}/html/index.html
+              python /app/specgen/generate_vocabulary.py --ap --csv /tmp/workspace/tsv/${model}.tsv --csv_contributor src/stakeholders_latest.csv --title ${model} --output /tmp/workspace/ap/${model}/index.html
             done
       - persist_to_workspace:
-          root: /tmp
+          root: /tmp/workspace
           paths:
-            - workspace/
+            - ap/
   render-ap-jsonld:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:circleci
@@ -100,9 +100,17 @@ jobs:
               python /app/specgen/generate_jsonld.py --input /tmp/workspace/tsv/${model}.tsv --output /tmp/workspace/ap/${model}/context.jsonld
             done
       - persist_to_workspace:
-          root: /tmp
+          root: /tmp/workspace
           paths:
-            - workspace/
+            - ap/
+  create-artifact:
+    docker:
+      - image: circleci/node:latest-browsers
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - store_artifacts:
+          path: /tmp/workspace
 workflows:
   version: 2
   generate_documentation:
@@ -118,3 +126,8 @@ workflows:
       - render-ap-jsonld:
           requires:
             - extract-application-profiles
+      - create-artifact:
+          requires:
+            - render-voc-html
+            - render-ap-html
+            - render-ap-jsonld
