@@ -3,12 +3,6 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/toestemming#Verwerkingsactiviteit> ;
 	sh:property [
-		sh:name "extraInformatie" ;
-		sh:description "Verwijzing naar een document met extra informatie over de verwerkingsactiviteit." ;
-		sh:path <http://data.vlaanderen.be/ns/toestemming#extraInformatie> ;
-		sh:class <http://xmlns.com/foaf/0.1/Document> ;
-	] ;
-	sh:property [
 		sh:name "verwerker" ;
 		sh:description "een natuurlijke persoon of rechtspersoon, een overheidsinstantie, een dienst of een ander orgaan die/dat ten behoeve van de verwerkingsverantwoordelijke persoonsgegevens verwerkt." ;
 		sh:path <http://data.vlaanderen.be/ns/toestemming#verwerker> ;
@@ -19,12 +13,21 @@
 		sh:description "De Publieke Dienstverlening waarbinnen de toestemming kadert." ;
 		sh:path <http://purl.org/dc/terms/relation> ;
 		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "extraInformatie" ;
+		sh:description "Verwijzing naar een document met extra informatie over de verwerkingsactiviteit." ;
+		sh:path <http://data.vlaanderen.be/ns/toestemming#extraInformatie> ;
+		sh:class <http://xmlns.com/foaf/0.1/Document> ;
 	] ;
 	sh:property [
 		sh:name "verwerkingsverantwoordelijke" ;
 		sh:description "Een overheidsinstantie, een dienst of een ander orgaan die/dat, alleen of samen met anderen, het doel van en de middelen voor de verwerking van persoonsgegevens vaststelt." ;
 		sh:path <http://data.vlaanderen.be/ns/toestemming#verwerkingsverantwoordelijke> ;
 		sh:class <http://data.europa.eu/m8g/PublicOrganisation> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "contactkanaal" ;
@@ -156,6 +159,8 @@
 		sh:description "Relatie met de verwerkingsactiviteit waarvoor expliciet toestemming werd gegeven." ;
 		sh:path <http://data.vlaanderen.be/ns/toestemming#gegevenVoor> ;
 		sh:class <http://data.vlaanderen.be/ns/toestemming#Verwerkingsactiviteit> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "contactkanaal" ;
