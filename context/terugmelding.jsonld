@@ -8,7 +8,6 @@
 		"Eigenschap":"http://data.vlaanderen.be/ns/melding#Eigenschap",
 		"GeregistreerdPersoon":"http://data.vlaanderen.be/ns/persoon#GeregistreerdPersoon",
 		"Hoedanigheid":"http://data.vlaanderen.be/ns/organisatie#Hoedanigheid",
-		"Melding":"http://data.vlaanderen.be/ns/melding#Melding",
 		"Meldingsobject":"http://data.vlaanderen.be/ns/melding#Meldingsobject",
 		"Organisatie":"https://www.w3.org/ns/org#Organization",
 		"OrganisatieEenheid":"http://www.w3.org/ns/org#OrganizationalUnit",
@@ -23,8 +22,7 @@
 		},
 		"behandelaar":{
 			"@id":"http://data.vlaanderen.be/ns/melding#behandelaar",
-			"@type":"https://www.w3.org/ns/org#Organization",
-			"@container":"@set"
+			"@type":"http://purl.org/dc/terms/Agent"
 		},
 		"beschrijving":{
 			"@id":"http://purl.org/dc/terms/description",
@@ -53,7 +51,8 @@
 		},
 		"eigenschap":{
 			"@id":"http://data.vlaanderen.be/ns/melding#eigenschap",
-			"@type":"http://data.vlaanderen.be/ns/melding#Eigenschap"
+			"@type":"http://data.vlaanderen.be/ns/melding#Eigenschap",
+			"@container":"@set"
 		},
 		"geometrie":{
 			"@id":"http://www.w3.org/ns/locn#geometry",
@@ -120,6 +119,10 @@
 			"@id":"http://data.vlaanderen.be/ns/melding#meldbaar",
 			"@type":"http://www.w3.org/2001/XMLSchema#boolean"
 		},
+		"melder":{
+			"@id":"http://data.vlaanderen.be/ns/melding#melder",
+			"@type":"http://purl.org/dc/terms/Agent"
+		},
 		"meldingsapplicatie":{
 			"@id":"http://data.vlaanderen.be/ns/melding#meldingsapplicatie",
 			"@type":"http://data.vlaanderen.be/ns/melding#Applicatie"
@@ -129,7 +132,7 @@
 			"@type":"https://www.w3.org/ns/org#Organization"
 		},
 		"meldingstype":{
-			"@id":"http://www.w3.org/ns/oa#motivatedBy",
+			"@id":"http://data.vlaanderen.be/ns/melding#meldingstype",
 			"@type":"http://data.vlaanderen.be/ns/melding#Meldingstype",
 			"@container":"@set"
 		},
@@ -146,13 +149,13 @@
 			"@id":"https://www.w3.org/ns/activitystreams#summary",
 			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
-		"statusType":{
-			"@id":"http://data.vlaanderen.be/ns/melding#statusType",
-			"@type":"http://data.vlaanderen.be/ns/melding#StatusType"
-		},
 		"statusdatum":{
 			"@id":"http://data.vlaanderen.be/ns/melding#statusdatum",
 			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
+		},
+		"statuswaarde":{
+			"@id":"http://data.vlaanderen.be/ns/melding#statuswaarde",
+			"@type":"http://data.vlaanderen.be/ns/melding#MeldingStatuswaarde"
 		},
 		"statuswijzigingDoor":{
 			"@id":"http://data.vlaanderen.be/ns/melding#statuswijzigingDoor",
@@ -165,6 +168,10 @@
 		"verplicht":{
 			"@id":"https://www.w3.org/ns/hydra/core#required",
 			"@type":"http://www.w3.org/2001/XMLSchema#boolean"
+		},
+		"verwachtType":{
+			"@id":"http://data.vlaanderen.be/ns/melding#verwachtType",
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
 		"voorgesteldeWaarde":{
 			"@id":"http://data.vlaanderen.be/ns/melding#voorgesteldeWaarde",

@@ -150,6 +150,14 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.europa.eu/m8g/Evidence> ;
 	sh:property [
+		sh:name "behoortTotAgent" ;
+		sh:description "Een Bewijs zal behoren tot een Agent. Een criterium kan invloed hebben op verschillende Agents; voor een Bewijs moet daarom gespecifieerd worden tot welke Agent het behoort." ;
+		sh:path <http://data.europa.eu/m8g/belongsToAgent> ;
+		sh:class <http://purl.org/dc/terms/Agent> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
 		sh:name "uitgegevenDoor" ;
 		sh:description "Verwijst naar de organisatie die het bewijs heeft uitgegeven." ;
 		sh:path <http://data.europa.eu/m8g/issuedByOrganisation> ;
@@ -185,17 +193,18 @@
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:maxCount 1 ;
 	] ;
+	sh:property [
+		sh:name "betrouwbaarheidsniveau" ;
+		sh:description "Geeft aan hoe betrouwbaar het bewijs is." ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#betrouwbaarheidsniveau> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
 	sh:closed false .
 
 <http://data.europa.eu/m8g/OutputShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.europa.eu/m8g/Output> ;
-	sh:property [
-		sh:name "bedrag" ;
-		sh:description "In geval van een financieel voordel, het bedrag dat werd uitbetaald aan de begunstigde van de publieke dienstverlening op een bepaalde datum." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#bedrag> ;
-		sh:maxCount 1 ;
-	] ;
 	sh:property [
 		sh:name "beschrijving" ;
 		sh:description "Beschrijving van de Output." ;
@@ -231,7 +240,7 @@
 		sh:name "type" ;
 		sh:description "Aard van de output." ;
 		sh:path <http://purl.org/dc/terms/type> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:class <http://data.vlaanderen.be/ns/dienst#OutputType> ;
 	] ;
 	sh:closed false .
 
@@ -239,24 +248,10 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://purl.org/vocab/cpsv#PublicService> ;
 	sh:property [
-		sh:name "isGerelateerdMet" ;
-		sh:description "Andere Publieke Dienstverlening waarmee de Publieke Dienstverlening gerelateerd is." ;
-		sh:path <http://purl.org/dc/terms/relation> ;
-		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
-	] ;
-	sh:property [
 		sh:name "heeftParticiperende" ;
 		sh:description "Participatie (van een agent) aan de publieke dienstverlening." ;
 		sh:path <http://data.europa.eu/m8g/hasParticipation> ;
 		sh:class <http://data.europa.eu/m8g/Participation> ;
-	] ;
-	sh:property [
-		sh:name "isInstantieVan" ;
-		sh:description "Linkt een bepaalde consumptie van een publieke dienstverlening (een transactie) met het product uit het dienstverleningsregister." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#isInstantieVan> ;
-		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "wordtUitgevoerdDoor" ;
@@ -265,22 +260,50 @@
 		sh:class <http://purl.org/dc/terms/Agent> ;
 	] ;
 	sh:property [
-		sh:name "vereistAlsInput" ;
-		sh:description "Bewijsstuk dat moeten voorgelegd worden om de Publieke Dienstverlening te kunnen gebruiken." ;
-		sh:path <http://purl.org/vocab/cpsv#hasInput> ;
-		sh:class <http://data.europa.eu/m8g/Evidence> ;
-	] ;
-	sh:property [
 		sh:name "produceert" ;
 		sh:description "Het werkelijke resultaat van de uitvoering vd Publieke Dienstverlening." ;
 		sh:path <http://purl.org/vocab/cpsv#produces> ;
 		sh:class <http://data.europa.eu/m8g/Output> ;
 	] ;
 	sh:property [
+		sh:name "wordtGeconsumeerdDoor" ;
+		sh:description "De Agent die een bepaalde Publieke Dienstverlening afneemt" ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#wordtGeconsumeerdDoor> ;
+		sh:class <http://purl.org/dc/terms/Agent> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
 		sh:name "heeftStatus" ;
 		sh:description "Link tussen Publieke Dienstverlening en Status." ;
 		sh:path <http://data.vlaanderen.be/ns/dienst#heeftStatus> ;
 		sh:class <http://data.vlaanderen.be/ns/dienst#Status> ;
+	] ;
+	sh:property [
+		sh:name "isGerelateerdMet" ;
+		sh:description "Andere Publieke Dienstverlening waarmee de Publieke Dienstverlening gerelateerd is." ;
+		sh:path <http://purl.org/dc/terms/relation> ;
+		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
+	] ;
+	sh:property [
+		sh:name "isGedocumenteerdDoor" ;
+		sh:description "Verwijzing naar een dossier met een logische bundeling van documenten binnen een bepaalde consumptie van een Publieke Dienstverlening." ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#isGedocumenteerdDoor> ;
+		sh:class <https://lod.milieuinfo.be/ns/dossier> ;
+	] ;
+	sh:property [
+		sh:name "vereistAlsInput" ;
+		sh:description "Bewijsstuk dat moeten voorgelegd worden om de Publieke Dienstverlening te kunnen gebruiken." ;
+		sh:path <http://purl.org/vocab/cpsv#hasInput> ;
+		sh:class <http://data.europa.eu/m8g/Evidence> ;
+	] ;
+	sh:property [
+		sh:name "isInstantieVan" ;
+		sh:description "Linkt een bepaalde consumptie van een publieke dienstverlening (een transactie) met het product uit het dienstverleningsregister." ;
+		sh:path <http://data.vlaanderen.be/ns/dienst#isInstantieVan> ;
+		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "kost" ;
@@ -417,5 +440,10 @@
 		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:maxCount 1 ;
 	] ;
+	sh:closed false .
+
+<https://lod.milieuinfo.be/ns/dossierShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://lod.milieuinfo.be/ns/dossier> ;
 	sh:closed false .
 

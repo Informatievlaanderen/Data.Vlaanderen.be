@@ -46,6 +46,10 @@ eu:appliesToPeriodOfTime
       a       rdf:Property ;
       rdfs:label "van toepassing op tijdsinterval"@nl .
 
+eu:belongsToAgent
+      a       rdf:Property ;
+      rdfs:label "behoort tot agent"@nl .
+
 eu:currency
       a       rdf:Property ;
       rdfs:label "valuta"@nl .
@@ -99,6 +103,13 @@ eu:value
       vann:preferredNamespaceUri
               "http://data.vlaanderen.be/ns/dienst" .
 
+<http://data.vlaanderen.be/ns/dienst#OutputType>
+      a       owl:Class ;
+      rdfs:comment "TODO"@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "TODO"@nl ;
+      owl:oneOf (<http://data.vlaanderen.be/ns/dienst/OutputType/001> <http://data.vlaanderen.be/ns/dienst/OutputType/002> <http://data.vlaanderen.be/ns/dienst/OutputType/003> <http://data.vlaanderen.be/ns/dienst/OutputType/004> <http://data.vlaanderen.be/ns/dienst/OutputType/005> <http://data.vlaanderen.be/ns/dienst/OutputType/006> <http://data.vlaanderen.be/ns/dienst/OutputType/007>) .
+
 <http://data.vlaanderen.be/ns/dienst#Status>
       a       owl:Class ;
       rdfs:comment "De status die van toepassing is op een entiteit op een bepaald tijdstip."@nl ;
@@ -121,12 +132,13 @@ eu:value
       rdfs:label "actie nodig"@nl ;
       rdfs:range xsd:boolean .
 
-<http://data.vlaanderen.be/ns/dienst#bedrag>
+<http://data.vlaanderen.be/ns/dienst#betrouwbaarheidsniveau>
       a       rdf:Property ;
-      rdfs:comment "In geval van een financieel voordel, het bedrag dat werd uitbetaald aan de begunstigde van de publieke dienstverlening op een bepaalde datum."@nl ;
-      rdfs:domain eu:Output ;
+      rdfs:comment "Geeft aan hoe betrouwbaar het bewijs is."@nl ;
+      rdfs:domain eu:Evidence ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "bedrag"@nl .
+      rdfs:label "betrouwbaarheidsniveau"@nl ;
+      vann:usageNote "Van een toepassing wordt verwacht dat hier een bepaalde codelijst aan wordt gekoppeld met mogelijke betrouwbaarheidsniveau's. Bijvoorbeeld 0 = 'bewijs verstrekt door de aanvrager', 1 = 'bewijs gevalideerd door een dossierbehandelaar'..."@nl .
 
 <http://data.vlaanderen.be/ns/dienst#heeftStatus>
       a       owl:ObjectProperty ;
@@ -135,6 +147,14 @@ eu:value
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
       rdfs:label "heeft status"@nl ;
       rdfs:range <http://data.vlaanderen.be/ns/dienst#Status> .
+
+<http://data.vlaanderen.be/ns/dienst#isGedocumenteerdDoor>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Verwijzing naar een dossier met een logische bundeling van documenten binnen een bepaalde consumptie van een Publieke Dienstverlening."@nl ;
+      rdfs:domain cpsv:PublicService ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "is gedocumenteerd door"@nl ;
+      rdfs:range <https://lod.milieuinfo.be/ns/dossier> .
 
 <http://data.vlaanderen.be/ns/dienst#isInstantieVan>
       a       owl:ObjectProperty ;
@@ -180,6 +200,69 @@ eu:value
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
       rdfs:label "streefdatum"@nl ;
       rdfs:range xsd:date .
+
+<http://data.vlaanderen.be/ns/dienst#wordtGeconsumeerdDoor>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De Agent die een bepaalde Publieke Dienstverlening afneemt"@nl ;
+      rdfs:domain cpsv:PublicService ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "wordt geconsumeerd door"@nl ;
+      rdfs:range dcterms:Agent ;
+      vann:usageNote "Dit is typisch de Agent die de Publieke Dienstverlening heeft aangevraagd of opgestart."@nl .
+
+<http://data.vlaanderen.be/ns/dienst/BewijsType/1>
+      a       skos:Concept ;
+      rdfs:comment "Bewijs in de vorm van een document (digitaal of fysiek), zoals een vergunning, attest..."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "Document"@nl .
+
+<http://data.vlaanderen.be/ns/dienst/BewijsType/2>
+      a       skos:Concept ;
+      rdfs:comment "Bewijs afkomstig uit een authentieke bron, bijvoorbeeld het rijksregister."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "Authentieke bron"@nl .
+
+<http://data.vlaanderen.be/ns/dienst/OutputType/001>
+      a       <http://data.vlaanderen.be/ns/dienst#OutputType> ;
+      rdfs:comment "A formal statement or document, which can be used for proving something. E.g. identity card, passport health card, declaration of honour..."@en , "Een formele uitspraak of document dat gebruikt kan worden om iets te bewijzen. Bijvoorbeeld een identiteitskaart, internationaal paspoort, verklaring op eed..."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "Verklaring"@nl , "Declaration"@en .
+
+<http://data.vlaanderen.be/ns/dienst/OutputType/002>
+      a       <http://data.vlaanderen.be/ns/dienst#OutputType> ;
+      rdfs:comment "A tangible product coming out of the public service, of which the underlying value is not a declaration, recognition, permit, financial obligation, financial benefit or code e.g. buildings, container, birth gift, electronic devices... "@en , "Een tastbaar product als uitkomst van een publieke dienst, waarvan de onderliggende waarde geen verklaring, erkenning, toestemming, financiële verplichting, financieel voordel of code is. Bijvoorbeeld een container, geboortecadeau, elektronisch toestel..."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "Physical object"@en , "Fysiek object"@nl .
+
+<http://data.vlaanderen.be/ns/dienst/OutputType/003>
+      a       <http://data.vlaanderen.be/ns/dienst#OutputType> ;
+      rdfs:comment "Een reeks van alfanumerieke of andere karakters. Bijvoorbeeld een toegangscode, ondernemingsnummer..."@nl , "A series of alpha-numeric or other characters E.g. a microchip code, access code, social security number, enterprise number..."@en ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "Code"@en , "Code"@nl .
+
+<http://data.vlaanderen.be/ns/dienst/OutputType/004>
+      a       <http://data.vlaanderen.be/ns/dienst#OutputType> ;
+      rdfs:comment "De verplichting van een burger of onderneming om een bepaald bedrag te betalen aan een publieke organisatie of een dochter daarvan. Bijvoorbeeld een premie, heffing, belasting, boete..."@nl , "The obligation of a citizen or business to pay a certain amount to public administrations or a subsidiary. E.g. Financial commitment, Premium, Imposition, Tax, Fine..."@en ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "Financiële verplichting"@nl , "Financial obligation"@en .
+
+<http://data.vlaanderen.be/ns/dienst/OutputType/005>
+      a       <http://data.vlaanderen.be/ns/dienst#OutputType> ;
+      rdfs:comment "De verplichting van een publieke administratie of dochter om een bepaald bedrag te betalen aan een burger of een onderneming. Bijvoorbeeld een betalingsverklaring, subsidie, uitkering, compensatie..."@nl , "The obligation of a public administration or subsidiary to pay a certain amount to a citizen or business. E.g. Payment declaration, Financial, benefit, Subsidy, Allowance, Compensation..."@en ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "Financial benefit"@en , "Financieel voordeel"@nl .
+
+<http://data.vlaanderen.be/ns/dienst/OutputType/006>
+      a       <http://data.vlaanderen.be/ns/dienst#OutputType> ;
+      rdfs:comment "A formal statement or document, which can be used for proving the capability or conformance with something of a citizen or business. E.g. certificate, diploma, recognition..."@en , "Een formele uitspraak of document, welke gebruikt kan worden om te bewijzen dat een burger of onderneming over een bepaalde bekwaamheid beschikt of voldoet aan bepaalde conformiteitsvereisten. Bijvoorbeeld een certificaat, diploma..."@nl ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "Recognition"@en , "Erkenning"@nl .
+
+<http://data.vlaanderen.be/ns/dienst/OutputType/007>
+      a       <http://data.vlaanderen.be/ns/dienst#OutputType> ;
+      rdfs:comment "Een formele uitspraak of document, welke een burger of onderneming officieel toelaat een bepaalde handeling te stellen. Bijvoorbeeld een parkeervergunning, authorisatie, toelating tot een evenement..."@nl , "A formal statement or document, which officially allows a business or citizen to do something. E.g. Admission, Permit, Authorisation..."@en ;
+      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
+      rdfs:label "Permit"@en , "Vergunning"@nl .
 
 <http://data.vlaanderen.be/ns/organisatie#Hoedanigheid>
       a       rdfs:Class ;
@@ -229,6 +312,10 @@ cpsv:produces
       a       rdf:Property ;
       rdfs:label "produceert"@nl .
 
+skos:Concept
+      a       rdfs:Class ;
+      rdfs:label "Bewijs Type"@nl .
+
 <http://www.w3.org/ns/adms#identifier>
       a       rdf:Property ;
       rdfs:label "referentie"@nl .
@@ -244,6 +331,10 @@ person:Person
 foaf:page
       a       rdf:Property ;
       rdfs:label "documentatie"@nl .
+
+<https://lod.milieuinfo.be/ns/dossier>
+      a       rdfs:Class ;
+      rdfs:label "Dossier"@nl .
 
 <https://www.w3.org/ns/org#Organization>
       a       rdfs:Class ;
