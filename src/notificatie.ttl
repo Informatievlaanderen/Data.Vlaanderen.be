@@ -18,10 +18,6 @@
 @prefix cpsv:    <http://purl.org/vocab/cpsv#> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 
-eu:PublicOrganisation
-      a       rdfs:Class ;
-      rdfs:label "Publieke Organisatie"@nl .
-
 <http://data.vlaanderen.be/ns/notificatie>
       a       owl:Ontology ;
       rdfs:label "Notification"@en , "Notificatie"@nl ;
@@ -31,16 +27,12 @@ eu:PublicOrganisation
       vann:preferredNamespaceUri
               "http://data.vlaanderen.be/ns/notificatie" .
 
-<http://data.vlaanderen.be/ns/dienst#isVerantwoordelijkVoor>
-      a       rdf:Property ;
-      rdfs:label "is verantwoordelijk voor"@nl .
-
 <http://data.vlaanderen.be/ns/notificatie#Notificatiebericht>
       a       owl:Class ;
       rdfs:comment "Een bericht van een afzender naar een bestemmeling met als doel het informeren van de bestemmeling."@nl ;
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
       rdfs:label "Notificatiebericht"@nl ;
-      rdfs:subClassOf rdfs:Resource , "https://schema.org/Message" .
+      rdfs:subClassOf "https://schema.org/Message" .
 
 <http://data.vlaanderen.be/ns/notificatie#inhoud>
       a       owl:ObjectProperty ;
@@ -49,15 +41,6 @@ eu:PublicOrganisation
       rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
       rdfs:label "inhoud"@nl ;
       rdfs:range <https://schema.org/PropertyValue> .
-
-<http://data.vlaanderen.be/ns/notificatie#kadertBinnen>
-      a       owl:ObjectProperty ;
-      rdfs:comment "Verwijst naar de publieke dienstverlening in de context waarvan de Informeer Actie plaatsvindt."@nl ;
-      rdfs:domain <https://schema.org/InformAction> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
-      rdfs:label "kadert binnen"@nl ;
-      rdfs:range cpsv:PublicService ;
-      vann:usageNote "Bijvoorbeeld een Informeer Actie over een statuswijziging in een aanvraag voor een bouwvergunning."@nl .
 
 <http://data.vlaanderen.be/ns/notificatie#notificatiekanaal>
       a       owl:ObjectProperty ;
@@ -91,17 +74,9 @@ dcterms:relation
       a       rdf:Property ;
       rdfs:label "is gerelateerd met"@nl .
 
-schema:Brand
-      a       rdfs:Class ;
-      rdfs:label "Merk"@nl .
-
 schema:ContactPoint
       a       rdfs:Class ;
       rdfs:label "Contactpunt"@nl .
-
-schema:brand
-      a       rdf:Property ;
-      rdfs:label "heeft merk"@nl .
 
 schema:contactPoint
       a       rdf:Property ;
@@ -163,10 +138,6 @@ schema:url
       a       rdf:Property ;
       rdfs:label "aanschrijfprefix"@nl .
 
-skos:prefLabel
-      a       rdf:Property ;
-      rdfs:label "voorkeursnaam"@nl .
-
 <http://www.w3.org/ns/adms#identifier>
       a       rdf:Property ;
       rdfs:label "identificator"@nl .
@@ -195,6 +166,10 @@ foaf:page
       a       rdfs:Class ;
       rdfs:label "Doelgroep"@nl .
 
+<https://schema.org/Brand>
+      a       rdfs:Class ;
+      rdfs:label "Merk"@nl .
+
 <https://schema.org/InformAction>
       a       rdfs:Class ;
       rdfs:label "InformeerActie"@nl .
@@ -206,10 +181,6 @@ foaf:page
 <https://schema.org/about>
       a       rdf:Property ;
       rdfs:label "onderwerp"@nl .
-
-<https://schema.org/agent>
-      a       rdf:Property ;
-      rdfs:label "agent"@nl .
 
 <https://schema.org/audienceType>
       a       rdf:Property ;
