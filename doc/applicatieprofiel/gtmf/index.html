@@ -226,17 +226,27 @@
             <div class="region region--no-space-top typography" id="summary">              
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">Samenvatting</h2>
                 
-    <p>De Generieke Terugmeldfaciliteit voorziet in het opzetten van een generiek mechanisme voor gebruikers van digitaal
-verstrekte informatie om fouten en onvolledigheden in deze informatie terug te melden aan de
-verantwoordelijke bronbeheerder. Dit applicatieprofiel definieert een data specificatie voor gegevensuitwisseling met en tussen implementaties van deze bouwsteen.</p>
-<p>Een terugmelding, afgeleid van de generieke klasse Melding, wordt gelinkt aan een body en een doelwit (een meldingsobject). De body is gerelateerd aan het meldingsobject en verschaft additionele informatie aan de behandelaar van de terugmelding, bijvoorbeeld in de vorm van ingescande documenten ter staving van de terugmelding. Verder worden mechanismen voorzien die toelaten om een terugmelding te dispatchen, bijvoorbeeld op basis van de bronhouder van de dataset waar het meldingsobject in beheerd wordt.</p>
+<p>
+Dit applicatieprofiel beschrijft een informatiemodel om als overheid gestructureerd terugmeldingen te ontvangen van burgers en ondernemers. Een terugmelding beschrijft fouten of onvolledigheden in digitale gegevensbronnen die mogelijks aanleiding geven tot een actie van de overheid, zoals het aanpassen van een record in een bepaalde databank. 
+</p>
+<p>
+Een Terugmelding bestaat eveneens als de generieke <a href="https://data.vlaanderen.be/ns/melding#Melding">Melding</a> waarvan ze een specialisatie van is uit onder meer een titel, een samenvatting en een body. De Melding Body laat toe om extra informatie mee te geven met betrekking tot de melding, bijvoorbeeld een geometrie van een plaats of ge&#239;mpacteerd gebied, extra beschrijvende tekst, of bijlagen in de vorm van bijvoorbeld foto's of gescande documenten. Een melding kan daarnaast &#233;&#233;n of meerdere Meldingstatussen doorlopen. Als voorgestelde codelijst wordt verwezen naar de lijst met mogelijke statussen uit de Generieke Terugmeldfaciliteit (GTMF) van Informatie Vlaanderen. Verder treden voor meldingen verschillende Agents op die een rol spelen in de afhandeling van de melding, zoals een melder, indiener, behandelaar...
+</p>
+
+<p>
+Specifiek aan een Terugmelding is de relatie met een Meldingsobject dat het doelwit vormt van de Terugmelding. Een Meldingsobject identificeert een resource of een specifiek deel van een resource waarop de Terugmelding slaat, &#233;n laat toe om een voorgestelde of gecorrigeerde waarde mee te geven. Bijvoorbeeld een Terugmelding met betrekking tot een fout in het Adresregister zal als Meldingsobject een bepaalde record bevatten waarin de fout is vastgesteld, of een specifiek deel daarvan zoals bijvoorbeeld het huisnummer. Een Meldingsobject heeft dus een bepaalde bron (in ons voorbeeld het Adresregister), in dit model gespecifieerd als een Dataset. Daarnaast heeft een Meldingsobject een TijdToestand die informatie meegeeft over het tijdstip waarop het Meldingsobject dient ge&#239;nterpreteerd te worden, aan de hand van een datum van vaststelling (van de fout of onvolledigheid). Een Meldingsobject kan een bepaalde behandelaar hebben die verantwoordelijk is voor de opvolging en afhandeling ervan. Wanneer een Terugmelding betrekking heeft op meerdere Meldingsobjecten, kan elk Meldingsobject een andere behandelaar toegewezen krijgen. In dit laatste geval zal er ook een status mogelijk zijn op niveau van het Meldingsobject, die via bepaalde business regels vertaald zal moeten worden naar een status op niveau van de Terugmelding. Deze business rules zijn toepassing specifiek en vallen dus buiten de scope van dit informatiemodel. Als voorgestelde codelijst wordt opnieuw verwezen naar de lijst met mogelijke statussen uit de Generieke Terugmeldfaciliteit (GTMF) van Informatie Vlaanderen.
+</p>
+
+<p>
+De Dataset wordt in dit informatiemodel verder gespecifieerd aan de hand van een titel en een beschrijving. Daarnaast kan een Dataset een aantal Eigenschappen bevatten, waar al dan niet op teruggemeld kan worden. Deze beschrijving van de dataset en zijn achterliggende structuur laat toe om (1) automatisch input formulieren voor nieuwe terugmelding te genereren in een front-end toepassing en (2) terugmeldingen automatisch te dispatchen op basis van de bronhouder die aan een bepaalde eigenschap werd toegewezen of op basis van de inhoud van een bepaalde Eigenschap. De inhoud van een Eigenschap kan worden gedefinieerd als een lijst met mogelijke waarden, in het Informatiemodel weergegeven als Concepten.
+</p>
 
             </div>
     
             <div class="region region--no-space-top typography" id="status">
               <section class="introductory" id="sotd" typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter">             
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">Status van dit document</h2>
-                <p>Dit applicatieprofiel dient om het specifieke gebruik van de entiteiten relevant voor de beschreven applicatie te verduidelijken.</p>
+                <p>Dit applicatieprofiel dient om het specifieke gebruik van de entitieten relevant voor de beschreven applicatie te verduidelijken.</p>
 <p>Dit document werd gepubliceerd als Ontwerpdocument. De specificatie zoals in dit document beschreven is in ontwikkeling. Bijgevolg kan dit document op elk moment aangepast, vervangen of achterhaald worden.<br />
 Dit document is bedoeld om uit te groeien tot een standaard in het beschreven domein. Desalniettemin heeft het op dit ogenblik geen officieel statuut en vertegenwoordigt het geen consensus binnen OSLO.</p>
 <p>Feedback op deze specificatie kan gegeven worden als een topic in onze <a href="https://github.com/Informatievlaanderen/OSLO-Public-Discussion">publieke reviewdiscussielijst</a>.</p>
@@ -1578,7 +1588,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             <div class="region region--no-space-top" id="jsonld">              
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">JSON-LD context</h2>
                 
-<p>Een herbruikbare JSON-LD context definitie voor dit applicatieprofiel is terug te vinden op: <a href="../../../context/terugmelding.jsonld" target="_blank">http://data.vlaanderen.be/context/terugmelding.jsonld</a></p>
+<p>Een herbruikbare JSON-LD context definitie voor dit applicatieprofiel is terug te vinden op: <a href="../../../context/melding.jsonld" target="_blank">http://data.vlaanderen.be/context/melding.jsonld</a></p>
 
             </div>
           </div>
