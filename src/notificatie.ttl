@@ -18,54 +18,6 @@
 @prefix cpsv:    <http://purl.org/vocab/cpsv#> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 
-<http://data.vlaanderen.be/ns/notificatie>
-      a       owl:Ontology ;
-      rdfs:label "Notification"@en , "Notificatie"@nl ;
-      dcterms:issued "2018-06-21"^^xsd:date ;
-      dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
-      dcterms:title "Notification"@en , "Notificatie"@nl ;
-      vann:preferredNamespaceUri
-              "http://data.vlaanderen.be/ns/notificatie" .
-
-<http://data.vlaanderen.be/ns/notificatie#Notificatiebericht>
-      a       owl:Class ;
-      rdfs:comment "Een bericht van een afzender naar een bestemmeling met als doel het informeren van de bestemmeling."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
-      rdfs:label "Notificatiebericht"@nl ;
-      rdfs:subClassOf "https://schema.org/Message" .
-
-<http://data.vlaanderen.be/ns/notificatie#inhoud>
-      a       owl:ObjectProperty ;
-      rdfs:comment "De inhoud van een Notificatiebericht."@nl ;
-      rdfs:domain <https://schema.org/InformAction> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
-      rdfs:label "inhoud"@nl ;
-      rdfs:range <https://schema.org/PropertyValue> .
-
-<http://data.vlaanderen.be/ns/notificatie#notificatiekanaal>
-      a       owl:ObjectProperty ;
-      rdfs:comment "Het notificatiekanaal duidt het technisch medium aan waarlangs het Notificatiebericht wordt verzonden."@nl ;
-      rdfs:domain rdfs:Resource ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
-      rdfs:label "notificatiekanaal"@nl ;
-      rdfs:range skos:Concept .
-
-<http://data.vlaanderen.be/ns/notificatie#periodeVerzending>
-      a       rdf:Property ;
-      rdfs:comment "Het tijdsinterval waarbinnen de Informeer Actie relevant is en bijgevolg kan resulteren in de verzending van notificatieberichten."@nl ;
-      rdfs:domain <https://schema.org/InformAction> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
-      rdfs:label "periode verzending"@nl ;
-      vann:usageNote "Bijvoorbeeld, wanneer het stedelijk zwembad een week gesloten is, kan de periode voor verzending van de Informeer Actie beginnen een maand voor de sluiting en eindigen op de laatste dag van de sluitingsperiode."@nl .
-
-<http://data.vlaanderen.be/ns/notificatie#resulteertIn>
-      a       owl:ObjectProperty ;
-      rdfs:comment "De relatie tussen een Informeer Actie en het (de) Notificatiebericht(en) die hier uit voortkomen."@nl ;
-      rdfs:domain <https://schema.org/InformAction> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/notificatie> ;
-      rdfs:label "resulteert in"@nl ;
-      rdfs:range <http://data.vlaanderen.be/ns/notificatie#Notificatiebericht> .
-
 dcterms:Agent
       a       rdfs:Class ;
       rdfs:label "Agent"@nl .
@@ -157,6 +109,54 @@ foaf:name
 foaf:page
       a       rdf:Property ;
       rdfs:label "pagina"@nl .
+
+<https://data.vlaanderen.be/ns/notificatie>
+      a       owl:Ontology ;
+      rdfs:label "Notification"@en , "Notificatie"@nl ;
+      dcterms:issued "2018-06-21"^^xsd:date ;
+      dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
+      dcterms:title "Notification"@en , "Notificatie"@nl ;
+      vann:preferredNamespaceUri
+              "https://data.vlaanderen.be/ns/notificatie" .
+
+<https://data.vlaanderen.be/ns/notificatie#Notificatiebericht>
+      a       owl:Class ;
+      rdfs:comment "Een bericht van een afzender naar een bestemmeling met als doel het informeren van de bestemmeling."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/notificatie> ;
+      rdfs:label "Notificatiebericht"@nl ;
+      rdfs:subClassOf "https://schema.org/Message" .
+
+<https://data.vlaanderen.be/ns/notificatie#inhoud>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De inhoud van een Notificatiebericht."@nl ;
+      rdfs:domain <https://schema.org/InformAction> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/notificatie> ;
+      rdfs:label "inhoud"@nl ;
+      rdfs:range <https://schema.org/PropertyValue> .
+
+<https://data.vlaanderen.be/ns/notificatie#notificatiekanaal>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Het notificatiekanaal duidt het technisch medium aan waarlangs het Notificatiebericht wordt verzonden."@nl ;
+      rdfs:domain rdfs:Resource ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/notificatie> ;
+      rdfs:label "notificatiekanaal"@nl ;
+      rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/notificatie#periodeVerzending>
+      a       rdf:Property ;
+      rdfs:comment "Het tijdsinterval waarbinnen de Informeer Actie relevant is en bijgevolg kan resulteren in de verzending van notificatieberichten."@nl ;
+      rdfs:domain <https://schema.org/InformAction> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/notificatie> ;
+      rdfs:label "periode verzending"@nl ;
+      vann:usageNote "Bijvoorbeeld, wanneer het stedelijk zwembad een week gesloten is, kan de periode voor verzending van de Informeer Actie beginnen een maand voor de sluiting en eindigen op de laatste dag van de sluitingsperiode."@nl .
+
+<https://data.vlaanderen.be/ns/notificatie#resulteertIn>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De relatie tussen een Informeer Actie en het (de) Notificatiebericht(en) die hier uit voortkomen."@nl ;
+      rdfs:domain <https://schema.org/InformAction> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/notificatie> ;
+      rdfs:label "resulteert in"@nl ;
+      rdfs:range <https://data.vlaanderen.be/ns/notificatie#Notificatiebericht> .
 
 <https://schema.org/AdministrativeArea>
       a       rdfs:Class ;

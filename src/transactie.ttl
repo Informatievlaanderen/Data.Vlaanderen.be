@@ -94,176 +94,6 @@ eu:value
       a       rdf:Property ;
       rdfs:label "waarde"@nl .
 
-<http://data.vlaanderen.be/ns/dienst>
-      a       owl:Ontology ;
-      rdfs:label "Public Service - Transaction"@en , "Dienst - Transactie"@nl ;
-      dcterms:issued "2017-12-05"^^xsd:date ;
-      dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
-      dcterms:title "Public Service - Transaction"@en , "Dienst - Transactie"@nl ;
-      vann:preferredNamespaceUri
-              "http://data.vlaanderen.be/ns/dienst" .
-
-<http://data.vlaanderen.be/ns/dienst#OutputType>
-      a       owl:Class ;
-      rdfs:comment "TODO"@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "TODO"@nl ;
-      owl:oneOf (<http://data.vlaanderen.be/ns/dienst/OutputType/001> <http://data.vlaanderen.be/ns/dienst/OutputType/002> <http://data.vlaanderen.be/ns/dienst/OutputType/003> <http://data.vlaanderen.be/ns/dienst/OutputType/004> <http://data.vlaanderen.be/ns/dienst/OutputType/005> <http://data.vlaanderen.be/ns/dienst/OutputType/006> <http://data.vlaanderen.be/ns/dienst/OutputType/007>) .
-
-<http://data.vlaanderen.be/ns/dienst#Status>
-      a       owl:Class ;
-      rdfs:comment "De status die van toepassing is op een entiteit op een bepaald tijdstip."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "Status"@nl .
-
-<http://data.vlaanderen.be/ns/dienst#actie>
-      a       owl:DatatypeProperty ;
-      rdfs:comment "Deze parameter laat toe om aan te geven dat - qua procesverloop van de transactie - de bal expliciet in het kamp van de klant (= de Agent) ligt en dat er dus een actie verwacht wordt van zijn kant."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "actie"@nl ;
-      rdfs:range xsd:string .
-
-<http://data.vlaanderen.be/ns/dienst#actieNodig>
-      a       owl:DatatypeProperty ;
-      rdfs:comment "Indien Actie Nodig 'Ja', dan laat dit veld toe te specifiëren welke Actie van de klant (Agent) wordt verwacht."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "actie nodig"@nl ;
-      rdfs:range xsd:boolean .
-
-<http://data.vlaanderen.be/ns/dienst#betrouwbaarheidsniveau>
-      a       rdf:Property ;
-      rdfs:comment "Geeft aan hoe betrouwbaar het bewijs is."@nl ;
-      rdfs:domain eu:Evidence ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "betrouwbaarheidsniveau"@nl ;
-      vann:usageNote "Van een toepassing wordt verwacht dat hier een bepaalde codelijst aan wordt gekoppeld met mogelijke betrouwbaarheidsniveau's. Bijvoorbeeld 0 = 'bewijs verstrekt door de aanvrager', 1 = 'bewijs gevalideerd door een dossierbehandelaar'..."@nl .
-
-<http://data.vlaanderen.be/ns/dienst#heeftStatus>
-      a       owl:ObjectProperty ;
-      rdfs:comment "Link tussen Publieke Dienstverlening en Status."@nl ;
-      rdfs:domain cpsv:PublicService ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "heeft status"@nl ;
-      rdfs:range <http://data.vlaanderen.be/ns/dienst#Status> .
-
-<http://data.vlaanderen.be/ns/dienst#isGedocumenteerdDoor>
-      a       owl:ObjectProperty ;
-      rdfs:comment "Verwijzing naar een dossier met een logische bundeling van documenten binnen een bepaalde consumptie van een Publieke Dienstverlening."@nl ;
-      rdfs:domain cpsv:PublicService ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "is gedocumenteerd door"@nl ;
-      rdfs:range <https://lod.milieuinfo.be/ns/dossier> .
-
-<http://data.vlaanderen.be/ns/dienst#isInstantieVan>
-      a       owl:ObjectProperty ;
-      rdfs:comment "Linkt een bepaalde consumptie van een publieke dienstverlening (een transactie) met het product uit het dienstverleningsregister."@nl ;
-      rdfs:domain cpsv:PublicService ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "is instantie van"@nl ;
-      rdfs:range cpsv:PublicService .
-
-<http://data.vlaanderen.be/ns/dienst#statusEDRL>
-      a       rdf:Property ;
-      rdfs:comment "De status volgens de Europese Dienstenrichtlijn"@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "status EDRL"@nl .
-
-<http://data.vlaanderen.be/ns/dienst#statusVlaamsCode>
-      a       rdf:Property ;
-      rdfs:comment "Verdere precisering van de status-fase volgens de 'Generieke Vlaamse status'."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "status Vlaamse code"@nl .
-
-<http://data.vlaanderen.be/ns/dienst#statusVlaamsFase>
-      a       rdf:Property ;
-      rdfs:comment "Is het eerste veld van 2 verplichte velden (Fase+Status) die samen de 'Generieke Vlaamse status' specifiëren. De StatusVlaamsFase vormt de eerste en hogere indeling van het dossierverloop (in aanvraag, in behandeling, in beroep, in uitvoering enz). Verdere precisering binnen de Fase gebeurt dan in het veld StatusVlaamsCode."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "status Vlaams fase"@nl .
-
-<http://data.vlaanderen.be/ns/dienst#statusWijzigingsdatum>
-      a       owl:DatatypeProperty ;
-      rdfs:comment "Is de verplichte vermelding van de datum + tijdstip waarop de betrokken status werd geregistreerd."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "statusdatum"@nl ;
-      rdfs:range xsd:date .
-
-<http://data.vlaanderen.be/ns/dienst#streefdatum>
-      a       owl:DatatypeProperty ;
-      rdfs:comment "Is de datum waarop verwacht wordt dat de volgende stap (status-wijziging) in de transactie zal of zou moeten plaatsvinden. Dit kan in bepaalde gevallen bepaald worden door een wettelijke termijn (van een fase of status)."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/dienst#Status> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "streefdatum"@nl ;
-      rdfs:range xsd:date .
-
-<http://data.vlaanderen.be/ns/dienst#wordtGeconsumeerdDoor>
-      a       owl:ObjectProperty ;
-      rdfs:comment "De Agent die een bepaalde Publieke Dienstverlening afneemt"@nl ;
-      rdfs:domain cpsv:PublicService ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "wordt geconsumeerd door"@nl ;
-      rdfs:range dcterms:Agent ;
-      vann:usageNote "Dit is typisch de Agent die de Publieke Dienstverlening heeft aangevraagd of opgestart."@nl .
-
-<http://data.vlaanderen.be/ns/dienst/BewijsType/1>
-      a       skos:Concept ;
-      rdfs:comment "Bewijs in de vorm van een document (digitaal of fysiek), zoals een vergunning, attest..."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "Document"@nl .
-
-<http://data.vlaanderen.be/ns/dienst/BewijsType/2>
-      a       skos:Concept ;
-      rdfs:comment "Bewijs afkomstig uit een authentieke bron, bijvoorbeeld het rijksregister."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "Authentieke bron"@nl .
-
-<http://data.vlaanderen.be/ns/dienst/OutputType/001>
-      a       <http://data.vlaanderen.be/ns/dienst#OutputType> ;
-      rdfs:comment "A formal statement or document, which can be used for proving something. E.g. identity card, passport health card, declaration of honour..."@en , "Een formele uitspraak of document dat gebruikt kan worden om iets te bewijzen. Bijvoorbeeld een identiteitskaart, internationaal paspoort, verklaring op eed..."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "Verklaring"@nl , "Declaration"@en .
-
-<http://data.vlaanderen.be/ns/dienst/OutputType/002>
-      a       <http://data.vlaanderen.be/ns/dienst#OutputType> ;
-      rdfs:comment "A tangible product coming out of the public service, of which the underlying value is not a declaration, recognition, permit, financial obligation, financial benefit or code e.g. buildings, container, birth gift, electronic devices... "@en , "Een tastbaar product als uitkomst van een publieke dienst, waarvan de onderliggende waarde geen verklaring, erkenning, toestemming, financiële verplichting, financieel voordel of code is. Bijvoorbeeld een container, geboortecadeau, elektronisch toestel..."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "Physical object"@en , "Fysiek object"@nl .
-
-<http://data.vlaanderen.be/ns/dienst/OutputType/003>
-      a       <http://data.vlaanderen.be/ns/dienst#OutputType> ;
-      rdfs:comment "Een reeks van alfanumerieke of andere karakters. Bijvoorbeeld een toegangscode, ondernemingsnummer..."@nl , "A series of alpha-numeric or other characters E.g. a microchip code, access code, social security number, enterprise number..."@en ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "Code"@en , "Code"@nl .
-
-<http://data.vlaanderen.be/ns/dienst/OutputType/004>
-      a       <http://data.vlaanderen.be/ns/dienst#OutputType> ;
-      rdfs:comment "De verplichting van een burger of onderneming om een bepaald bedrag te betalen aan een publieke organisatie of een dochter daarvan. Bijvoorbeeld een premie, heffing, belasting, boete..."@nl , "The obligation of a citizen or business to pay a certain amount to public administrations or a subsidiary. E.g. Financial commitment, Premium, Imposition, Tax, Fine..."@en ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "Financiële verplichting"@nl , "Financial obligation"@en .
-
-<http://data.vlaanderen.be/ns/dienst/OutputType/005>
-      a       <http://data.vlaanderen.be/ns/dienst#OutputType> ;
-      rdfs:comment "De verplichting van een publieke administratie of dochter om een bepaald bedrag te betalen aan een burger of een onderneming. Bijvoorbeeld een betalingsverklaring, subsidie, uitkering, compensatie..."@nl , "The obligation of a public administration or subsidiary to pay a certain amount to a citizen or business. E.g. Payment declaration, Financial, benefit, Subsidy, Allowance, Compensation..."@en ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "Financial benefit"@en , "Financieel voordeel"@nl .
-
-<http://data.vlaanderen.be/ns/dienst/OutputType/006>
-      a       <http://data.vlaanderen.be/ns/dienst#OutputType> ;
-      rdfs:comment "A formal statement or document, which can be used for proving the capability or conformance with something of a citizen or business. E.g. certificate, diploma, recognition..."@en , "Een formele uitspraak of document, welke gebruikt kan worden om te bewijzen dat een burger of onderneming over een bepaalde bekwaamheid beschikt of voldoet aan bepaalde conformiteitsvereisten. Bijvoorbeeld een certificaat, diploma..."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "Recognition"@en , "Erkenning"@nl .
-
-<http://data.vlaanderen.be/ns/dienst/OutputType/007>
-      a       <http://data.vlaanderen.be/ns/dienst#OutputType> ;
-      rdfs:comment "Een formele uitspraak of document, welke een burger of onderneming officieel toelaat een bepaalde handeling te stellen. Bijvoorbeeld een parkeervergunning, authorisatie, toelating tot een evenement..."@nl , "A formal statement or document, which officially allows a business or citizen to do something. E.g. Admission, Permit, Authorisation..."@en ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/dienst> ;
-      rdfs:label "Permit"@en , "Vergunning"@nl .
-
 <http://data.vlaanderen.be/ns/organisatie#Hoedanigheid>
       a       rdfs:Class ;
       rdfs:label "Hoedanigheid"@nl .
@@ -312,10 +142,6 @@ cpsv:produces
       a       rdf:Property ;
       rdfs:label "produceert"@nl .
 
-skos:Concept
-      a       rdfs:Class ;
-      rdfs:label "Bewijs Type"@nl .
-
 <http://www.w3.org/ns/adms#identifier>
       a       rdf:Property ;
       rdfs:label "referentie"@nl .
@@ -331,6 +157,118 @@ person:Person
 foaf:page
       a       rdf:Property ;
       rdfs:label "documentatie"@nl .
+
+<https://data.vlaanderen.be/ns/transactie>
+      a       owl:Ontology ;
+      rdfs:label "Public Service - Transaction"@en , "Dienst - Transactie"@nl ;
+      dcterms:issued "2017-12-05"^^xsd:date ;
+      dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
+      dcterms:title "Public Service - Transaction"@en , "Dienst - Transactie"@nl ;
+      vann:preferredNamespaceUri
+              "https://data.vlaanderen.be/ns/transactie" .
+
+<https://data.vlaanderen.be/ns/transactie#Status>
+      a       owl:Class ;
+      rdfs:comment "De status die van toepassing is op een entiteit op een bepaald tijdstip."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/transactie> ;
+      rdfs:label "Status"@nl .
+
+<https://data.vlaanderen.be/ns/transactie#actie>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Deze parameter laat toe om aan te geven dat - qua procesverloop van de transactie - de bal expliciet in het kamp van de klant (= de Agent) ligt en dat er dus een actie verwacht wordt van zijn kant."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/transactie#Status> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/transactie> ;
+      rdfs:label "actie"@nl ;
+      rdfs:range xsd:string .
+
+<https://data.vlaanderen.be/ns/transactie#actieNodig>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Indien Actie Nodig 'Ja', dan laat dit veld toe te specifiëren welke Actie van de klant (Agent) wordt verwacht."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/transactie#Status> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/transactie> ;
+      rdfs:label "actie nodig"@nl ;
+      rdfs:range xsd:boolean .
+
+<https://data.vlaanderen.be/ns/transactie#betrouwbaarheidsniveau>
+      a       rdf:Property ;
+      rdfs:comment "Geeft aan hoe betrouwbaar het bewijs is."@nl ;
+      rdfs:domain eu:Evidence ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/transactie> ;
+      rdfs:label "betrouwbaarheidsniveau"@nl ;
+      vann:usageNote "Van een toepassing wordt verwacht dat hier een bepaalde codelijst aan wordt gekoppeld met mogelijke betrouwbaarheidsniveau's. Bijvoorbeeld 0 = 'bewijs verstrekt door de aanvrager', 1 = 'bewijs gevalideerd door een dossierbehandelaar'..."@nl .
+
+<https://data.vlaanderen.be/ns/transactie#heeftStatus>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Link tussen Publieke Dienstverlening en Status."@nl ;
+      rdfs:domain cpsv:PublicService ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/transactie> ;
+      rdfs:label "heeft status"@nl ;
+      rdfs:range <https://data.vlaanderen.be/ns/transactie#Status> .
+
+<https://data.vlaanderen.be/ns/transactie#isGedocumenteerdDoor>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Verwijzing naar een dossier met een logische bundeling van documenten binnen een bepaalde consumptie van een Publieke Dienstverlening."@nl ;
+      rdfs:domain cpsv:PublicService ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/transactie> ;
+      rdfs:label "is gedocumenteerd door"@nl ;
+      rdfs:range <https://lod.milieuinfo.be/ns/dossier> .
+
+<https://data.vlaanderen.be/ns/transactie#isInstantieVan>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Linkt een bepaalde consumptie van een publieke dienstverlening (een transactie) met het product uit het dienstverleningsregister."@nl ;
+      rdfs:domain cpsv:PublicService ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/transactie> ;
+      rdfs:label "is instantie van"@nl ;
+      rdfs:range cpsv:PublicService .
+
+<https://data.vlaanderen.be/ns/transactie#statusEDRL>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De status volgens de Europese Dienstenrichtlijn"@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/transactie#Status> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/transactie> ;
+      rdfs:label "status EDRL"@nl ;
+      rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/transactie#statusVlaamsCode>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Verdere precisering van de status-fase volgens de 'Generieke Vlaamse status'."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/transactie#Status> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/transactie> ;
+      rdfs:label "status Vlaamse code"@nl ;
+      rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/transactie#statusVlaamsFase>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Is het eerste veld van 2 verplichte velden (Fase+Status) die samen de 'Generieke Vlaamse status' specifiëren. De StatusVlaamsFase vormt de eerste en hogere indeling van het dossierverloop (in aanvraag, in behandeling, in beroep, in uitvoering enz). Verdere precisering binnen de Fase gebeurt dan in het veld StatusVlaamsCode."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/transactie#Status> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/transactie> ;
+      rdfs:label "status Vlaams fase"@nl ;
+      rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/transactie#statusWijzigingsdatum>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Is de verplichte vermelding van de datum + tijdstip waarop de betrokken status werd geregistreerd."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/transactie#Status> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/transactie> ;
+      rdfs:label "statusdatum"@nl ;
+      rdfs:range xsd:date .
+
+<https://data.vlaanderen.be/ns/transactie#streefdatum>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Is de datum waarop verwacht wordt dat de volgende stap (status-wijziging) in de transactie zal of zou moeten plaatsvinden. Dit kan in bepaalde gevallen bepaald worden door een wettelijke termijn (van een fase of status)."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/transactie#Status> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/transactie> ;
+      rdfs:label "streefdatum"@nl ;
+      rdfs:range xsd:date .
+
+<https://data.vlaanderen.be/ns/transactie#wordtGeconsumeerdDoor>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De Agent die een bepaalde Publieke Dienstverlening afneemt"@nl ;
+      rdfs:domain cpsv:PublicService ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/transactie> ;
+      rdfs:label "wordt geconsumeerd door"@nl ;
+      rdfs:range dcterms:Agent ;
+      vann:usageNote "Dit is typisch de Agent die de Publieke Dienstverlening heeft aangevraagd of opgestart."@nl .
 
 <https://lod.milieuinfo.be/ns/dossier>
       a       rdfs:Class ;
