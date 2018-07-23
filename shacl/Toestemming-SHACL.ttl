@@ -1,12 +1,20 @@
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
-<http://data.vlaanderen.be/ns/toestemming#VerwerkingsactiviteitShape>
+<https://data.vlaanderen.be/ns/toestemming#VerwerkingsactiviteitShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/toestemming#Verwerkingsactiviteit> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/toestemming#Verwerkingsactiviteit> ;
 	sh:property [
-		sh:name "verwerker" ;
-		sh:description "een natuurlijke persoon of rechtspersoon, een overheidsinstantie, een dienst of een ander orgaan die/dat ten behoeve van de verwerkingsverantwoordelijke persoonsgegevens verwerkt." ;
-		sh:path <http://data.vlaanderen.be/ns/toestemming#verwerker> ;
-		sh:class <http://www.w3.org/ns/org#Organization> ;
+		sh:name "verwerkingsverantwoordelijke" ;
+		sh:description "Een overheidsinstantie, een dienst of een ander orgaan die/dat, alleen of samen met anderen, het doel van en de middelen voor de verwerking van persoonsgegevens vaststelt." ;
+		sh:path <https://data.vlaanderen.be/ns/toestemming#verwerkingsverantwoordelijke> ;
+		sh:class <http://data.europa.eu/m8g/PublicOrganisation> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "extraInformatie" ;
+		sh:description "Verwijzing naar een document met extra informatie over de verwerkingsactiviteit." ;
+		sh:path <https://data.vlaanderen.be/ns/toestemming#extraInformatie> ;
+		sh:class <http://xmlns.com/foaf/0.1/Document> ;
 	] ;
 	sh:property [
 		sh:name "isGerelateerdMet" ;
@@ -16,23 +24,15 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "extraInformatie" ;
-		sh:description "Verwijzing naar een document met extra informatie over de verwerkingsactiviteit." ;
-		sh:path <http://data.vlaanderen.be/ns/toestemming#extraInformatie> ;
-		sh:class <http://xmlns.com/foaf/0.1/Document> ;
-	] ;
-	sh:property [
-		sh:name "verwerkingsverantwoordelijke" ;
-		sh:description "Een overheidsinstantie, een dienst of een ander orgaan die/dat, alleen of samen met anderen, het doel van en de middelen voor de verwerking van persoonsgegevens vaststelt." ;
-		sh:path <http://data.vlaanderen.be/ns/toestemming#verwerkingsverantwoordelijke> ;
-		sh:class <http://data.europa.eu/m8g/PublicOrganisation> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
+		sh:name "verwerker" ;
+		sh:description "een natuurlijke persoon of rechtspersoon, een overheidsinstantie, een dienst of een ander orgaan die/dat ten behoeve van de verwerkingsverantwoordelijke persoonsgegevens verwerkt." ;
+		sh:path <https://data.vlaanderen.be/ns/toestemming#verwerker> ;
+		sh:class <http://www.w3.org/ns/org#Organization> ;
 	] ;
 	sh:property [
 		sh:name "contactkanaal" ;
 		sh:description "Het kanaal of medium langs waar een gebruiker gecontacteerd kan worden. Bijvoorbeeld sms of e-mail." ;
-		sh:path <http://data.vlaanderen.be/ns/toestemming#contactkanaal> ;
+		sh:path <https://data.vlaanderen.be/ns/toestemming#contactkanaal> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 	] ;
@@ -47,7 +47,7 @@
 	sh:property [
 		sh:name "toestemmingsvraag" ;
 		sh:description "De vraag die gesteld wordt aan gebruikers om hun toestemming te verlenen." ;
-		sh:path <http://data.vlaanderen.be/ns/toestemming#toestemmingsvraag> ;
+		sh:path <https://data.vlaanderen.be/ns/toestemming#toestemmingsvraag> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
@@ -63,26 +63,26 @@
 	sh:property [
 		sh:name "verwerkingsgrond" ;
 		sh:description "De rechtsgrond voor de verwerkingsactiviteit." ;
-		sh:path <http://data.vlaanderen.be/ns/toestemming#verwerkingsgrond> ;
+		sh:path <https://data.vlaanderen.be/ns/toestemming#verwerkingsgrond> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/toestemming#CookieverklaringShape>
+<https://data.vlaanderen.be/ns/toestemming#CookieverklaringShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/toestemming#Cookieverklaring> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/toestemming#Cookieverklaring> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/toestemming#PrivacyverklaringShape>
+<https://data.vlaanderen.be/ns/toestemming#PrivacyverklaringShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/toestemming#Privacyverklaring> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/toestemming#Privacyverklaring> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/toestemming#AlgemeneVoorwaardenShape>
+<https://data.vlaanderen.be/ns/toestemming#AlgemeneVoorwaardenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/toestemming#AlgemeneVoorwaarden> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/toestemming#AlgemeneVoorwaarden> ;
 	sh:closed false .
 
 <http://xmlns.com/foaf/0.1/DocumentShape>
@@ -98,9 +98,9 @@
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/toestemming#VerwerkersovereenkomstShape>
+<https://data.vlaanderen.be/ns/toestemming#VerwerkersovereenkomstShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/toestemming#Verwerkersovereenkomst> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/toestemming#Verwerkersovereenkomst> ;
 	sh:closed false .
 
 <http://purl.org/vocab/cpsv#PublicServiceShape>
@@ -114,8 +114,8 @@
 	sh:property [
 		sh:name "heeftVerwerkersovereenkomstMet" ;
 		sh:description "Verwijst naar de verwerkersovereenkomst die is aangegaan tussen de verwerker en de verwerkingsverantwoordelijke." ;
-		sh:path <http://data.vlaanderen.be/ns/toestemming#heeftVerwerkersovereenkomstMet> ;
-		sh:class <http://data.vlaanderen.be/ns/toestemming#Verwerkersovereenkomst> ;
+		sh:path <https://data.vlaanderen.be/ns/toestemming#heeftVerwerkersovereenkomstMet> ;
+		sh:class <https://data.vlaanderen.be/ns/toestemming#Verwerkersovereenkomst> ;
 	] ;
 	sh:closed false .
 
@@ -125,8 +125,8 @@
 	sh:property [
 		sh:name "heeftVerwerkersovereenkomstMet" ;
 		sh:description "Verwijst naar de verwerkersovereenkomst die is aangegaan tussen de verwerker en de verwerkingsverantwoordelijke." ;
-		sh:path <http://data.vlaanderen.be/ns/toestemming#heeftVerwerkersovereenkomstMet> ;
-		sh:class <http://data.vlaanderen.be/ns/toestemming#Verwerkersovereenkomst> ;
+		sh:path <https://data.vlaanderen.be/ns/toestemming#heeftVerwerkersovereenkomstMet> ;
+		sh:class <https://data.vlaanderen.be/ns/toestemming#Verwerkersovereenkomst> ;
 	] ;
 	sh:closed false .
 
@@ -143,29 +143,29 @@
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/toestemming#ToestemmingShape>
+<https://data.vlaanderen.be/ns/toestemming#ToestemmingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/toestemming#Toestemming> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/toestemming#Toestemming> ;
 	sh:property [
-		sh:name "dataSubject" ;
-		sh:description "Verwijst naar de Agent die het onderwerp vormt van de persoonlijke informatie waarvoor toestemming verleend werd." ;
-		sh:path <http://data.vlaanderen.be/ns/toestemming#dataSubject> ;
-		sh:class <http://purl.org/dc/terms/Agent> ;
+		sh:name "gegevenVoor" ;
+		sh:description "Relatie met de verwerkingsactiviteit waarvoor expliciet toestemming werd gegeven." ;
+		sh:path <https://data.vlaanderen.be/ns/toestemming#gegevenVoor> ;
+		sh:class <https://data.vlaanderen.be/ns/toestemming#Verwerkingsactiviteit> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "gegevenVoor" ;
-		sh:description "Relatie met de verwerkingsactiviteit waarvoor expliciet toestemming werd gegeven." ;
-		sh:path <http://data.vlaanderen.be/ns/toestemming#gegevenVoor> ;
-		sh:class <http://data.vlaanderen.be/ns/toestemming#Verwerkingsactiviteit> ;
+		sh:name "dataSubject" ;
+		sh:description "Verwijst naar de Agent die het onderwerp vormt van de persoonlijke informatie waarvoor toestemming verleend werd." ;
+		sh:path <https://data.vlaanderen.be/ns/toestemming#dataSubject> ;
+		sh:class <http://purl.org/dc/terms/Agent> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "contactkanaal" ;
 		sh:description "Het kanaal of medium langs waar een gebruiker gecontacteerd kan worden. Bijvoorbeeld sms of e-mail." ;
-		sh:path <http://data.vlaanderen.be/ns/toestemming#contactkanaal> ;
+		sh:path <https://data.vlaanderen.be/ns/toestemming#contactkanaal> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
@@ -173,14 +173,14 @@
 	sh:property [
 		sh:name "notificatiecategorie" ;
 		sh:description "De notificatie categorie waarvoor de Agent toestemming verleende om gecontacteerd te worden." ;
-		sh:path <http://data.vlaanderen.be/ns/toestemming#notificatiecategorie> ;
+		sh:path <https://data.vlaanderen.be/ns/toestemming#notificatiecategorie> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "gegevenOp" ;
 		sh:description "De datum waarop de toestemming werd verleend." ;
-		sh:path <http://data.vlaanderen.be/ns/toestemming#gegevenOp> ;
+		sh:path <https://data.vlaanderen.be/ns/toestemming#gegevenOp> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
@@ -188,7 +188,7 @@
 	sh:property [
 		sh:name "status" ;
 		sh:description "De status geeft aan of de toestemming al dan niet actief is." ;
-		sh:path <http://data.vlaanderen.be/ns/toestemming#status> ;
+		sh:path <https://data.vlaanderen.be/ns/toestemming#status> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;

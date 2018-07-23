@@ -10,52 +10,55 @@
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/dienst#StatusShape>
+<https://data.vlaanderen.be/ns/transactie#StatusShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/dienst#Status> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/transactie#Status> ;
 	sh:property [
 		sh:name "actie" ;
 		sh:description "Deze parameter laat toe om aan te geven dat - qua procesverloop van de transactie - de bal expliciet in het kamp van de klant (= de Agent) ligt en dat er dus een actie verwacht wordt van zijn kant." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#actie> ;
+		sh:path <https://data.vlaanderen.be/ns/transactie#actie> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "actieNodig" ;
 		sh:description "Indien Actie Nodig 'Ja', dan laat dit veld toe te specifiëren welke Actie van de klant (Agent) wordt verwacht." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#actieNodig> ;
+		sh:path <https://data.vlaanderen.be/ns/transactie#actieNodig> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "statusEDRL" ;
 		sh:description "De status volgens de Europese Dienstenrichtlijn" ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#statusEDRL> ;
+		sh:path <https://data.vlaanderen.be/ns/transactie#statusEDRL> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "statusVlaamsCode" ;
 		sh:description "Verdere precisering van de status-fase volgens de 'Generieke Vlaamse status'." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#statusVlaamsCode> ;
+		sh:path <https://data.vlaanderen.be/ns/transactie#statusVlaamsCode> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "statusVlaamsFase" ;
 		sh:description "Is het eerste veld van 2 verplichte velden (Fase+Status) die samen de 'Generieke Vlaamse status' specifiëren. De StatusVlaamsFase vormt de eerste en hogere indeling van het dossierverloop (in aanvraag, in behandeling, in beroep, in uitvoering enz). Verdere precisering binnen de Fase gebeurt dan in het veld StatusVlaamsCode. " ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#statusVlaamsFase> ;
+		sh:path <https://data.vlaanderen.be/ns/transactie#statusVlaamsFase> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "statusWijzigingsdatum" ;
 		sh:description "Is de verplichte vermelding van de datum + tijdstip waarop de betrokken status werd geregistreerd." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#statusWijzigingsdatum> ;
+		sh:path <https://data.vlaanderen.be/ns/transactie#statusWijzigingsdatum> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "streefdatum" ;
 		sh:description "Is de datum waarop verwacht wordt dat de volgende stap (status-wijziging) in de transactie zal of zou moeten plaatsvinden. Dit kan in bepaalde gevallen bepaald worden door een wettelijke termijn (van een fase of status)." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#streefdatum> ;
+		sh:path <https://data.vlaanderen.be/ns/transactie#streefdatum> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:maxCount 1 ;
 	] ;
@@ -150,18 +153,18 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.europa.eu/m8g/Evidence> ;
 	sh:property [
+		sh:name "uitgegevenDoor" ;
+		sh:description "Verwijst naar de organisatie die het bewijs heeft uitgegeven." ;
+		sh:path <http://data.europa.eu/m8g/issuedByOrganisation> ;
+		sh:class <https://www.w3.org/ns/org#Organization> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
 		sh:name "behoortTotAgent" ;
 		sh:description "Een Bewijs zal behoren tot een Agent. Een criterium kan invloed hebben op verschillende Agents; voor een Bewijs moet daarom gespecifieerd worden tot welke Agent het behoort." ;
 		sh:path <http://data.europa.eu/m8g/belongsToAgent> ;
 		sh:class <http://purl.org/dc/terms/Agent> ;
 		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "uitgegevenDoor" ;
-		sh:description "Verwijst naar de organisatie die het bewijs heeft uitgegeven." ;
-		sh:path <http://data.europa.eu/m8g/issuedByOrganisation> ;
-		sh:class <https://www.w3.org/ns/org#Organization> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -196,7 +199,7 @@
 	sh:property [
 		sh:name "betrouwbaarheidsniveau" ;
 		sh:description "Geeft aan hoe betrouwbaar het bewijs is." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#betrouwbaarheidsniveau> ;
+		sh:path <https://data.vlaanderen.be/ns/transactie#betrouwbaarheidsniveau> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -240,19 +243,13 @@
 		sh:name "type" ;
 		sh:description "Aard van de output." ;
 		sh:path <http://purl.org/dc/terms/type> ;
-		sh:class <http://data.vlaanderen.be/ns/dienst#OutputType> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 	] ;
 	sh:closed false .
 
 <http://purl.org/vocab/cpsv#PublicServiceShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://purl.org/vocab/cpsv#PublicService> ;
-	sh:property [
-		sh:name "heeftParticiperende" ;
-		sh:description "Participatie (van een agent) aan de publieke dienstverlening." ;
-		sh:path <http://data.europa.eu/m8g/hasParticipation> ;
-		sh:class <http://data.europa.eu/m8g/Participation> ;
-	] ;
 	sh:property [
 		sh:name "wordtUitgevoerdDoor" ;
 		sh:description "Agent die de Publieke Dienstverlening verstrekt." ;
@@ -266,18 +263,16 @@
 		sh:class <http://data.europa.eu/m8g/Output> ;
 	] ;
 	sh:property [
-		sh:name "wordtGeconsumeerdDoor" ;
-		sh:description "De Agent die een bepaalde Publieke Dienstverlening afneemt" ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#wordtGeconsumeerdDoor> ;
-		sh:class <http://purl.org/dc/terms/Agent> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
+		sh:name "isGedocumenteerdDoor" ;
+		sh:description "Verwijzing naar een dossier met een logische bundeling van documenten binnen een bepaalde consumptie van een Publieke Dienstverlening." ;
+		sh:path <https://data.vlaanderen.be/ns/transactie#isGedocumenteerdDoor> ;
+		sh:class <https://lod.milieuinfo.be/ns/dossier> ;
 	] ;
 	sh:property [
 		sh:name "heeftStatus" ;
 		sh:description "Link tussen Publieke Dienstverlening en Status." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#heeftStatus> ;
-		sh:class <http://data.vlaanderen.be/ns/dienst#Status> ;
+		sh:path <https://data.vlaanderen.be/ns/transactie#heeftStatus> ;
+		sh:class <https://data.vlaanderen.be/ns/transactie#Status> ;
 	] ;
 	sh:property [
 		sh:name "isGerelateerdMet" ;
@@ -286,10 +281,18 @@
 		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
 	] ;
 	sh:property [
-		sh:name "isGedocumenteerdDoor" ;
-		sh:description "Verwijzing naar een dossier met een logische bundeling van documenten binnen een bepaalde consumptie van een Publieke Dienstverlening." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#isGedocumenteerdDoor> ;
-		sh:class <https://lod.milieuinfo.be/ns/dossier> ;
+		sh:name "heeftParticiperende" ;
+		sh:description "Participatie (van een agent) aan de publieke dienstverlening." ;
+		sh:path <http://data.europa.eu/m8g/hasParticipation> ;
+		sh:class <http://data.europa.eu/m8g/Participation> ;
+	] ;
+	sh:property [
+		sh:name "wordtGeconsumeerdDoor" ;
+		sh:description "De Agent die een bepaalde Publieke Dienstverlening afneemt" ;
+		sh:path <https://data.vlaanderen.be/ns/transactie#wordtGeconsumeerdDoor> ;
+		sh:class <http://purl.org/dc/terms/Agent> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "vereistAlsInput" ;
@@ -300,7 +303,7 @@
 	sh:property [
 		sh:name "isInstantieVan" ;
 		sh:description "Linkt een bepaalde consumptie van een publieke dienstverlening (een transactie) met het product uit het dienstverleningsregister." ;
-		sh:path <http://data.vlaanderen.be/ns/dienst#isInstantieVan> ;
+		sh:path <https://data.vlaanderen.be/ns/transactie#isInstantieVan> ;
 		sh:class <http://purl.org/vocab/cpsv#PublicService> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
@@ -337,18 +340,18 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://data.europa.eu/m8g/RequirementResponse> ;
 	sh:property [
+		sh:name "bewezenDoor" ;
+		sh:description "Het criterium antwoord kan gelinkt zijn aan het bewijs om het antwoord te staven." ;
+		sh:path <http://data.europa.eu/m8g/provenByEvidence> ;
+		sh:class <http://data.europa.eu/m8g/Evidence> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
 		sh:name "valideert" ;
 		sh:description "Relatie naar de criterium vereiste waaraan het antwoord voldoet." ;
 		sh:path <http://data.europa.eu/m8g/validatesCriterionRequirement> ;
 		sh:class <http://data.europa.eu/m8g/CriterionRequirement> ;
 		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "bewezenDoor" ;
-		sh:description "Het criterium antwoord kan gelinkt zijn aan het bewijs om het antwoord te staven." ;
-		sh:path <http://data.europa.eu/m8g/provenByEvidence> ;
-		sh:class <http://data.europa.eu/m8g/Evidence> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
