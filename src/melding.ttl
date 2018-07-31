@@ -22,14 +22,6 @@ eu:PublicOrganisation
       a       rdfs:Class ;
       rdfs:label "Publieke Organisatie"@nl .
 
-<http://data.vlaanderen.be/ns/organisatie#Hoedanigheid>
-      a       rdfs:Class ;
-      rdfs:label "Hoedanigheid"@nl .
-
-<http://data.vlaanderen.be/ns/persoon#GeregistreerdPersoon>
-      a       rdfs:Class ;
-      rdfs:label "Geregistreerd Persoon"@nl .
-
 <http://data.vlaanderen.be/ns/persoon#registratie>
       a       rdf:Property ;
       rdfs:label "registratie"@nl .
@@ -147,10 +139,7 @@ person:Person
       rdfs:comment "De klasse voor het beschrijven van de data velden waaruit een dataset bestaat."@nl ;
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/melding> ;
       rdfs:label "Eigenschap"@nl ;
-      rdfs:subClassOf
-              [] ;
-      rdfs:subClassOf
-              [] .
+      rdfs:subClassOf prov:Entity .
 
 <https://data.vlaanderen.be/ns/melding#Melding>
       a       owl:Class ;
@@ -195,10 +184,10 @@ person:Person
 <https://data.vlaanderen.be/ns/melding#behandelaar>
       a       owl:ObjectProperty ;
       rdfs:comment "Agent die werd aangewezen om de melding en/of het meldingsobject op te volgen en af te handelen."@nl ;
-      rdfs:domain dcterms:Agent ;
+      rdfs:domain rdfs:Resource , dcterms:Agent ;
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/melding> ;
       rdfs:label "behandelaar"@nl ;
-      rdfs:range dcterms:Agent .
+      rdfs:range dcterms:Agent , <https://www.w3.org/ns/org#Organization> .
 
 <https://data.vlaanderen.be/ns/melding#betrokkene>
       a       owl:ObjectProperty ;
@@ -342,7 +331,7 @@ person:Person
       rdfs:comment "Geeft het bereik van mogelijke waarden aan voor de eigenschap."@nl ;
       rdfs:domain <https://data.vlaanderen.be/ns/melding#Eigenschap> ;
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/melding> ;
-      rdfs:label "verwacht type"@nl ;
+      rdfs:label "verplicht"@nl , "verwacht type"@nl ;
       rdfs:range xsd:string ;
       vann:usageNote "Gebruik bij voorkeur een regular expression of primitief datatype zoals een integer, boolean, floating-point nummer, string..."@nl .
 
@@ -362,6 +351,14 @@ person:Person
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/melding> ;
       rdfs:label "webpagina"@nl ;
       rdfs:range xsd:anyURI .
+
+<https://data.vlaanderen.be/ns/organisatie#Hoedanigheid>
+      a       rdfs:Class ;
+      rdfs:label "Hoedanigheid"@nl .
+
+<https://data.vlaanderen.be/ns/persoon#GeregistreerdPersoon>
+      a       rdfs:Class ;
+      rdfs:label "Geregistreerd Persoon"@nl .
 
 <https://www.w3.org/ns/activitystreams#attachment>
       a       rdf:Property ;
