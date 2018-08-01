@@ -60,6 +60,7 @@ The html subjectpage renderer itself is a complicated setup, consisting of serve
 
 Its implementation is based on the mu.semte.ch ecosystem. Using the mu.resources service, for a given resource, the RDF data is retrieved from the 
 SPARQL endpoint and turned into a JSON-API compliant representation. The JSON-API resource api is used in an Ember.js app to create the subject pages.
+For each resource type (e.g. Address, Building, Organisation) a mu.resources configuration has to be made.
 
 
 
