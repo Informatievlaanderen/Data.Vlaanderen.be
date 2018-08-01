@@ -33,9 +33,33 @@ The resulting application is depicted in the figure below.
 
 ![Current Architecture](huidige-architectuur.jpg)
 
+At the infracture layer, descriped by a terraform description,  we have setup a loadbalancer. It is the entrypoint for all 
+traffic between the external world (the Internet) and the internal services.
+To run the services a cluster of 3 nodes has been created. This gives a minimal amount of robustness, currently sufficient for our needs. 
+But it can be easily increased when required by interacting with terraform. Additionally we have added a shared disk on which the current 
+state will be stored. Finally we also added a blobstore for storing large datasets.
+
+The application layer shows the key components of the application.
+A proxy which handles the content-negoration. The proxy is the only service that is accesssible from the public network.
+It also offers access to webservices to render the static html pages. Next it contains the html 
+and RDF renderers for the subjectpages, which data comes from a SPARQL endpoint. The SPARQL endpoint is accessed through a query cache. 
+And then the key data provider: the RDF store, which also serves the SPARQL endpoint. 
+
+The RDFstore data is fed by the data synchronisation service.
+
+To monitor the health of the running services, all logs are shipped to an external system. This enables to follow the activity on the system
+while not loading that on the system itself.
 
 
 
+
+## the html subjectpage renderer 
+The html subjectpage renderer itself is a complicated setup, consisting of serveral services.
+
+![html renderer](html-subjectpagina-rendering.jpg)
+
+Its implementation is based on the mu.semte.ch ecosystem. Using the mu.resources service, for a given resource, the RDF data is retrieved from the 
+SPARQL endpoint and turned into a JSON-API compliant representation. The JSON-API resource api is used in an Ember.js app to create the subject pages.
 
 
 
