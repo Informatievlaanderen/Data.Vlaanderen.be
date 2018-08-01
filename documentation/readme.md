@@ -5,7 +5,7 @@
 Data.vlaanderen.be has been setup to minimize the rollout and maintenance effort of any change to the system in a predicatable way. 
 The figure below shows the four layers of the envoriment. 
 
-![The process](update_process.jpg)
+![The process](update-process.jpg)
 
 The bottom layer is the cloud infrastructure. For Data.vlaanderen.be this is [Azure](https://azure.microsoft.com/). 
 
