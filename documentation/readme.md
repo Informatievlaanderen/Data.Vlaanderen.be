@@ -1,6 +1,6 @@
 # Documentation of the data
 
-## deployment process
+## Deployment process
 
 Data.vlaanderen.be has been setup to minimize the rollout and maintenance effort of any change to the system in a predicatable way. 
 The figure below shows the four layers of the envoriment. 
@@ -23,11 +23,11 @@ docker service can now be activated in the docker-compose description. Any chang
 deployed on the infrastructure.  The use of branches and tags allows to precisely document which service is running on which environment.
 
 The final layer is the data content layer. For having a life system with the correct content the data has to be uploaded. Some data is comming from external systems 
-and will be retrieved by querying them.  But other data such as the static html pages will be retrieved from source control. The service will regulary 
+and will be retrieved by querying them. But other data such as the static html pages will be retrieved from source control. The service will regulary 
 poll for changes; when a change is detected the existing data of the service is replaced. Content editors hence follow the same approach as
 the software development.
 
-## the application architecture
+## The application architecture
 
 The resulting application is depicted in the figure below. 
 
@@ -35,9 +35,14 @@ The resulting application is depicted in the figure below.
 
 At the infracture layer, descriped by a terraform description,  we have setup a loadbalancer. It is the entrypoint for all 
 traffic between the external world (the Internet) and the internal services.
-To run the services a cluster of 3 nodes has been created. This gives a minimal amount of robustness, currently sufficient for our needs. 
-But it can be easily increased when required by interacting with terraform. Additionally we have added a shared disk on which the current 
-state will be stored. Finally we also added a blobstore for storing large datasets.
+To run the services a cluster of 4 nodes has been created. 
+It consists of 3 master nodes and 1 larger worker node. 
+It is the RDFstore component that has substantial different resource requirements (disk, memory) than the other components. 
+By component pinning we enforce that the RDFstore will run on the larger worker node.
+This setup gives a minimal amount of robustness, currently sufficient for our needs. 
+But it can be easily increased when required by interacting with terraform. 
+The shared disk is used to share data across all nodes, such as the tls cerficates. 
+Finally we also added a blobstore for storing large datasets.
 
 The application layer shows the key components of the application.
 A proxy which handles the content-negoration. The proxy is the only service that is accesssible from the public network.
@@ -50,10 +55,10 @@ The RDFstore data is fed by the data synchronisation service.
 To monitor the health of the running services, all logs are shipped to an external system. This enables to follow the activity on the system
 while not loading that on the system itself.
 
+Note that our infrastructure has been setup with a *readonly* system in mind. On disaster, a completely new setup can be created within the hour. The setup hence balances the need for robustness and the amount of work to recover in case of a disaster.
 
 
-
-## the html subjectpage renderer 
+## The html subjectpage renderer 
 The html subjectpage renderer itself is a complicated setup, consisting of serveral services.
 
 ![html renderer](html-subjectpagina-rendering.jpg)
