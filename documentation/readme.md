@@ -3,7 +3,7 @@
 ## Deployment process
 
 Data.vlaanderen.be has been setup to minimize the rollout and maintenance effort of any change to the system in a predicatable way. 
-The figure below shows the four layers of the envoriment. 
+The figure below shows the four layers of the environment. 
 
 ![The process](update-process.jpg)
 
