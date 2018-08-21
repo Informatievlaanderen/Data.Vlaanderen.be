@@ -33,218 +33,208 @@
             foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
             foaf:name "Data Vlaanderen" ] .
 
+<http://purl.org/dc/elements/1.1/contributor> a rdf:Property ;
+    rdfs:label "bijdrager"@nl .
+
 dcterms:description a rdf:Property .
+
+schema:contactPoint a rdf:Property ;
+    rdfs:label "contactinfo"@nl .
 
 <http://www.w3.org/ns/adms#identifier> a rdf:Property .
 
+locn:address a rdf:Property ;
+    rdfs:label "adresvoorstelling"@nl .
+
 <https://data.vlaanderen.be/ns/mobiliteit#GIPODContactInfo.isPubliek> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#GIPODContactInfo> ;
+    rdfs:label "is public"@en,
+        "is publiek"@nl ;
+    rdfs:comment "Duidt aan of de contactinfo door iedereen gezien mag worden."@nl ;
+    rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#ContactinfoVolgensRol> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#GIPODContactInfo.rol> a owl:DatatypeProperty ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#GIPODContactInfo> ;
+    rdfs:label "role"@en,
+        "rol"@nl ;
+    rdfs:comment "Functie die bij de contactinfo hoort, bijvoorbeeld van de hoofdverantwoordelijke"@nl ;
+    rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#ContactinfoVolgensRol> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
     rdfs:range xsd:string .
 
-<https://data.vlaanderen.be/ns/mobiliteit#Inname.adresVoorstelling> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
-    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
-
 <https://data.vlaanderen.be/ns/mobiliteit#Inname.beheerder> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
-    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
-
-<https://data.vlaanderen.be/ns/mobiliteit#Inname.bijdrager> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "administrator"@en,
+        "beheerder"@nl ;
+    rdfs:comment "Beheerder van de inname."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Inname.heeftGevolg> a owl:ObjectProperty ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "has consequence"@en,
+        "heeft gevolg"@nl ;
+    rdfs:comment "Mobiliteitshinder (bv.: afgesloten weg) die ontstaan is door het innemen van de openbare ruimte."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
     rdfs:range <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Inname.openbaarDomein> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
+    rdfs:label "public domain"@en,
+        "openbaar domein"@nl ;
     rdfs:comment "TODO"@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Inname.plaatsbeschrijving> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "description of location"@en,
+        "plaatsbeschrijving"@nl ;
+    rdfs:comment "Tekstuele weergave van de locatie van de inname."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Inname.status> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "status"@en,
+        "status"@nl ;
+    vann:usageNote "Voorbeelden: in ontwerp, gepland"@nl ;
+    rdfs:comment "Status van de inname"@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Inname.tijdsintervalEffectief> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "effective time interval"@en,
+        "effectief tijdsinterval"@nl ;
+    rdfs:comment "Tijd wanneer de inname werkelijk doorgaat."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Inname.tijdsintervalGepland> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "planned time interval"@en,
+        "gepland tijdsinterval"@nl ;
+    rdfs:comment "Tijd wanneer de inname mogelijks door kan gaan."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Inname.type> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "type"@en,
+        "type"@nl ;
+    vann:usageNote "Voorbeelden: markt, werken, wielerwedstrijd, wegeniswerken"@nl ;
+    rdfs:comment "Type van inname"@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Inname.vereist> a owl:ObjectProperty ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "requires"@en,
+        "vereist"@nl ;
+    rdfs:comment "Mobiliteitsmaatregel die vereist is om een inname tot stand te brengen."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
     rdfs:range <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Inname.zone> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "zone"@en,
+        "zone"@nl ;
+    rdfs:comment "Geografische weergave waar de inname doorgaat."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
-<https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder.adresVoorstelling> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder> ;
-    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
-
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder.beheerder> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "administrator"@en,
+        "beheerder"@nl ;
+    rdfs:comment "Beheerder van de mobiliteitshinder."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
-
-<https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder.bijdrager> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder> ;
-    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
-
-<https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder.contactpersoon> a owl:ObjectProperty ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder> ;
-    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
-    rdfs:range <https://data.vlaanderen.be/ns/mobiliteit#GIPODContactInfo> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder.doelgroep> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "target audience"@en,
+        "doelgroep"@nl ;
+    vann:usageNote "Voorbeelden: handelaars, een bedrijf, voetgangers..."@nl ;
+    rdfs:comment "Groep die belang heeft bij de mobiliteitshinder."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder.tijdsinterval> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "time interval"@en,
+        "tijdsinterval"@nl ;
+    rdfs:comment "Tijd wanneer mobiliteitshinder van toepassing is."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder.type> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "type"@en,
+        "type"@nl ;
+    vann:usageNote "In te vullen door business werkgroep GIPOD"@nl ;
+    rdfs:comment "Type mobiliteitshinder."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder.zone> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "zone"@en,
+        "zone"@nl ;
+    rdfs:comment "Geografische weergave van de mobiliteitshinder."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
-<https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel.adresVoorstelling> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> ;
-    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
-
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel.beheerder> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "administrator"@en,
+        "beheerder"@nl ;
+    rdfs:comment "Beheerder van de mobiliteitsmaatregel."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
-
-<https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel.bijdrager> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> ;
-    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
-
-<https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel.contactpersoon> a owl:ObjectProperty ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> ;
-    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
-    rdfs:range <https://data.vlaanderen.be/ns/mobiliteit#GIPODContactInfo> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel.doelgroep> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "target audience"@en,
+        "doelgroep"@nl ;
+    vann:usageNote "Bijvoorbeeld: alle bewoners uit een bepaalde straat"@nl ;
+    rdfs:comment "Groep of categorie die belang hebben bij de mobiliteitsmaatregel."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel.heeftGevolg> a owl:ObjectProperty ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "has consequence"@en,
+        "heeft gevolg"@nl ;
+    rdfs:comment "Mobiliteitshinder (bv.: afgesloten weg) die ontstaan is door het invoeren van een mobiliteitsmaatregel."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
     rdfs:range <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel.plaatsbeschrijving> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "description of location"@en,
+        "plaatsbeschrijving"@nl ;
+    rdfs:comment "Tekstuele beschrijving van de locatie van de mobiliteitsmaatregel."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel.tijdsinterval> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "time interval"@en,
+        "tijdsinterval"@nl ;
+    rdfs:comment "Tijdsinterval van de mobiliteitsmaatregel."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel.type> a rdf:Property ;
     rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    vann:usageNote "Voorbeelden: straat afzetten, trager rijden, extra fietsstallingen, shuttledienst etc."@nl ;
+    rdfs:comment "Type mobiliteitsmaatregel."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel.wordtAangeduidDoor> a owl:ObjectProperty ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "is indicated by"@en,
+        "wordt aangeduid door"@nl ;
+    rdfs:comment "Een signalisatie (bv.: verkeersbord) dat bijdraagt tot de aanduiding van een mobiliteitsmaatregel."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
     rdfs:range <https://data.vlaanderen.be/ns/mobiliteit#Signalisatie> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel.zone> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "zone"@en,
+        "zone"@nl ;
+    rdfs:comment "Geografische weergave van de mobiliteitsmaatregel."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Omleiding> a owl:Class ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "Detour"@en,
+        "Omleiding"@nl ;
+    rdfs:comment "Tijdelijke route die aanbevolen wordt te volgen door de betreffende weggebruiker."@nl ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
     rdfs:subClassOf <https://data.vlaanderen.be/ns/mobiliteit#Verkeersmaatregel> .
 
@@ -273,8 +263,10 @@ dcterms:description a rdf:Property .
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Signalisatie.opschrift> a owl:DatatypeProperty ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "caption"@en,
+        "opschrift"@nl ;
+    vann:usageNote "Bijvoorbeeld voor aanwijzingsbord F1a zal de naam van de gemeente of stad vermeld staan op het bord."@nl ;
+    rdfs:comment "Tekst die op de signalisatie zelf geschreven staat."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Signalisatie> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
     rdfs:range xsd:string .
@@ -299,81 +291,93 @@ dcterms:description a rdf:Property .
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Werken.categorie> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "category"@en,
+        "categorie"@nl ;
+    vann:usageNote "Bijvoorbeeld: categorie 1 - grote werken"@nl ;
+    rdfs:comment "De categorie van de werken (in functie van de grootte van de werf)."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Werken> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Werken.tijdsduur> a owl:DatatypeProperty ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "time length"@en,
+        "tijdsduur"@nl ;
+    rdfs:comment "Aantal minuten dat een werk duurt."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Werken> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
     rdfs:range xsd:integer .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Werken.verplaatsingswerk> a rdf:Property ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "verplaatsingswerk"@nl ;
+    rdfs:comment "Aanduiding of de werkopdracht veroorzaakt wordt door andere werkopdrachten."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Werken> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Werken.voorlopigeOplevering> a owl:DatatypeProperty ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "tentative delivery"@en,
+        "voorlopige oplevering"@nl ;
+    rdfs:comment "Tijdsstip wanneer het werk geacht opgeleverd te worden."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Werken> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
     rdfs:range xsd:dateTime .
 
-<https://data.vlaanderen.be/ns/mobiliteit#contactpersoon> a rdf:Property .
-
 <https://data.vlaanderen.be/ns/mobiliteit#heeftOorzaakWerk> a owl:ObjectProperty ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "caused by work"@en,
+        "heeft oorzaak werk"@nl ;
+    vann:usageNote "Bijvoorbeeld heraanlegging straat na kabelwerken."@nl ;
+    rdfs:comment "Werk die de oorzaak is dat een ander werk uitgevoerd wordt."@nl ;
     rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Werken> ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
     rdfs:range <https://data.vlaanderen.be/ns/mobiliteit#Werken> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Verkeersmaatregel> a owl:Class ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "Traffic Measure"@en,
+        "Verkeersmaatregel"@nl ;
+    rdfs:comment "Maatregel waarvan de aard, omvang en plaatsing zijn omschreven in de wegcode en uitvoeringsbesluiten."@nl ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
     rdfs:subClassOf <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Verkeerssignalisatie> a owl:Class ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "Traffic Signaling"@en,
+        "Verkeerssignalisatie"@nl ;
+    rdfs:comment "Aanwijzing waarvan de aard, omvang en plaatsing zijn omschreven in de wegcode en uitvoeringsbesluiten."@nl ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
     rdfs:subClassOf <https://data.vlaanderen.be/ns/mobiliteit#Signalisatie> .
 
-<https://data.vlaanderen.be/ns/mobiliteit#GIPODContactInfo> a owl:Class ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+<https://data.vlaanderen.be/ns/mobiliteit#ContactinfoVolgensRol> a owl:Class ;
+    rdfs:label "ContactpointByRole"@en,
+        "ContactinfoVolgensRol"@nl ;
+    rdfs:comment "Contactgegevens volgens een bepaalde rol (bv. veiligheidscoördinator)."@nl ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Werken> a owl:Class ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "Work"@en,
+        "Werken"@nl ;
+    rdfs:comment "Inname van het openbaar domein voor de uitvoering van werken"@nl ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
     rdfs:subClassOf <https://data.vlaanderen.be/ns/mobiliteit#Inname> .
 
-<https://data.vlaanderen.be/ns/mobiliteit#Signalisatie> a owl:Class ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
-    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
-
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder> a owl:Class ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "Mobility Hindrance"@en,
+        "Mobiliteitshinder"@nl ;
+    rdfs:comment "Verstoring van de normale mobiliteit op het openbaar domein of privé domein met openbaar karakter."@nl ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
-<https://data.vlaanderen.be/ns/mobiliteit#Inname> a owl:Class ;
-    rdfs:label "Inname"@nl ;
-    rdfs:comment "Een tijdelijke activiteit die een bepaalde ruimte inneemt, met gevolgen voor het openbaar domein of privédomein met openbaar karakter."@nl ;
+<https://data.vlaanderen.be/ns/mobiliteit#Signalisatie> a owl:Class ;
+    rdfs:label "Signaling"@en,
+        "Signalisatie"@nl ;
+    rdfs:comment "Aanwijzing ten behoeve van de weggebruikers."@nl ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> a owl:Class ;
-    rdfs:label "TODO"@nl ;
-    rdfs:comment "TODO"@nl ;
+    rdfs:label "Mobility Measure"@en,
+        "Mobiliteitsmaatregel"@nl ;
+    rdfs:comment "Maatregel om de beweging en verplaatsing van de weggebruiker op het openbaar domein of privé domein met openbaar karakter te organiseren."@nl ;
+    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Inname> a owl:Class ;
+    rdfs:label "intake"@en,
+        "Inname"@nl ;
+    rdfs:comment "Een tijdelijke activiteit die een bepaalde ruimte inneemt, met gevolgen voor het openbaar domein of privédomein met openbaar karakter."@nl ;
     rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> .
 
 <https://data.vlaanderen.be/ns/mobiliteit> a owl:Ontology ;
