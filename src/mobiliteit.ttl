@@ -16,23 +16,65 @@
 @prefix cpsv:    <http://purl.org/vocab/cpsv#> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 
+<http://data.vlaanderen.be/ns/mobiliteit#beheerder>
+      a       rdf:Property .
+
+<http://data.vlaanderen.be/ns/mobiliteit#heeftRoute>
+      a       rdf:Property .
+
+<http://data.vlaanderen.be/ns/weg#TransportLinkSequentie>
+      a       rdfs:Class .
+
 <http://purl.org/dc/elements/1.1/contributor>
       a       rdf:Property ;
       rdfs:label "bijdrager"@nl .
 
+<http://purl.org/dc/elements/1.1/description>
+      a       rdf:Property ;
+      rdfs:label "beschrijving"@nl .
+
 dcterms:description
+      a       rdf:Property .
+
+dcterms:temporal
       a       rdf:Property .
 
 schema:contactPoint
       a       rdf:Property ;
       rdfs:label "contactinfo"@nl .
 
+<http://vocab.gtfs.org/terms#Route>
+      a       rdfs:Class ;
+      rdfs:label "Route"@nl .
+
+<http://vocab.gtfs.org/terms#Stop>
+      a       rdfs:Class ;
+      rdfs:label "Halte"@nl .
+
+rdfs:Resource
+      a       rdfs:Class .
+
+skos:Concept
+      a       rdfs:Class .
+
 <http://www.w3.org/ns/adms#identifier>
       a       rdf:Property .
+
+<http://www.w3.org/ns/adms#status>
+      a       rdf:Property ;
+      rdfs:label "status"@nl .
 
 locn:address
       a       rdf:Property ;
       rdfs:label "adresvoorstelling"@nl .
+
+locn:geometry
+      a       rdf:Property ;
+      rdfs:label "zone"@nl .
+
+org:classification
+      a       rdf:Property ;
+      rdfs:label "classificatie"@nl .
 
 <https://data.vlaanderen.be/ns/mobiliteit>
       a       owl:Ontology ;
@@ -42,6 +84,12 @@ locn:address
       dcterms:title "Mobiliteit"@nl , "Mobility"@en ;
       vann:preferredNamespaceUri
               "https://data.vlaanderen.be/ns/mobiliteit" .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Advies>
+      a       owl:Class ;
+      rdfs:comment "Input van een partij die betrokken is bij het beslissingsproces."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "Advies"@nl .
 
 <https://data.vlaanderen.be/ns/mobiliteit#ContactinfoVolgensRol>
       a       owl:Class ;
@@ -68,14 +116,15 @@ locn:address
       a       owl:Class ;
       rdfs:comment "Een tijdelijke activiteit die een bepaalde ruimte inneemt, met gevolgen voor het openbaar domein of privédomein met openbaar karakter."@nl ;
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
-      rdfs:label "intake"@en , "Inname"@nl .
+      rdfs:label "Inname"@nl , "Intake"@en .
 
-<https://data.vlaanderen.be/ns/mobiliteit#Inname.beheerder>
-      a       rdf:Property ;
-      rdfs:comment "Beheerder van de inname."@nl ;
+<https://data.vlaanderen.be/ns/mobiliteit#Inname.geeftAanleidingTot>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Samenwerkingsaanvraag die het gevolg is van de inname."@nl ;
       rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
-      rdfs:label "beheerder"@nl , "administrator"@en .
+      rdfs:label "geeft aanleiding tot"@nl ;
+      rdfs:range <https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsaanvraag> .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Inname.heeftGevolg>
       a       owl:ObjectProperty ;
@@ -85,12 +134,21 @@ locn:address
       rdfs:label "heeft gevolg"@nl , "has consequence"@en ;
       rdfs:range <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder> .
 
+<https://data.vlaanderen.be/ns/mobiliteit#Inname.innamezone>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Gebied waar de inname doorgaat."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "zone of intake"@en , "innamezone"@nl ;
+      rdfs:range <https://data.vlaanderen.be/ns/mobiliteit#Innamezone> .
+
 <https://data.vlaanderen.be/ns/mobiliteit#Inname.openbaarDomein>
-      a       rdf:Property ;
+      a       owl:DatatypeProperty ;
       rdfs:comment "TODO"@nl ;
       rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
-      rdfs:label "public domain"@en , "openbaar domein"@nl .
+      rdfs:label "public domain"@en , "openbaar domein"@nl ;
+      rdfs:range xsd:boolean .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Inname.plaatsbeschrijving>
       a       rdf:Property ;
@@ -99,27 +157,21 @@ locn:address
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
       rdfs:label "plaatsbeschrijving"@nl , "description of location"@en .
 
-<https://data.vlaanderen.be/ns/mobiliteit#Inname.status>
-      a       rdf:Property ;
-      rdfs:comment "Status van de inname"@nl ;
-      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
-      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
-      rdfs:label "status"@en , "status"@nl ;
-      vann:usageNote "Voorbeelden: in ontwerp, gepland"@nl .
-
 <https://data.vlaanderen.be/ns/mobiliteit#Inname.tijdsintervalEffectief>
       a       rdf:Property ;
       rdfs:comment "Tijd wanneer de inname werkelijk doorgaat."@nl ;
       rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
-      rdfs:label "effectief tijdsinterval"@nl , "effective time interval"@en .
+      rdfs:label "effectief tijdsinterval"@nl , "effective time interval"@en ;
+      rdfs:subPropertyOf dcterms:temporal .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Inname.tijdsintervalGepland>
       a       rdf:Property ;
       rdfs:comment "Tijd wanneer de inname mogelijks door kan gaan."@nl ;
       rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
-      rdfs:label "planned time interval"@en , "gepland tijdsinterval"@nl .
+      rdfs:label "planned time interval"@en , "gepland tijdsinterval"@nl ;
+      rdfs:subPropertyOf dcterms:temporal .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Inname.type>
       a       rdf:Property ;
@@ -137,25 +189,31 @@ locn:address
       rdfs:label "vereist"@nl , "requires"@en ;
       rdfs:range <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> .
 
-<https://data.vlaanderen.be/ns/mobiliteit#Inname.zone>
-      a       rdf:Property ;
-      rdfs:comment "Geografische weergave waar de inname doorgaat."@nl ;
-      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
+<https://data.vlaanderen.be/ns/mobiliteit#Innameverbod>
+      a       owl:Class ;
+      rdfs:comment "Ontzegging van bepaalde innames."@nl ;
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
-      rdfs:label "zone"@en , "zone"@nl .
+      rdfs:label "Intake prohibition"@en , "Innameverbod"@nl ;
+      vann:usageNote "Wordt bijvoorbeeld gebruikt naar aanleiding van evenementen."@nl .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Innamezone>
+      a       owl:Class ;
+      rdfs:comment "Bepaalde zone die deel uitmaakt van een bepaalde inname voor een bepaalde periode."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "Zone of intake"@en , "Innamezone"@nl .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Innamezone.beheerder>
+      a       rdf:Property ;
+      rdfs:comment "Beheerder van de innamezone."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Innamezone> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "beheerder"@nl , "administrator"@en .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder>
       a       owl:Class ;
       rdfs:comment "Verstoring van de normale mobiliteit op het openbaar domein of privé domein met openbaar karakter."@nl ;
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
       rdfs:label "Mobility Hindrance"@en , "Mobiliteitshinder"@nl .
-
-<https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder.beheerder>
-      a       rdf:Property ;
-      rdfs:comment "Beheerder van de mobiliteitshinder."@nl ;
-      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder> ;
-      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
-      rdfs:label "beheerder"@nl , "administrator"@en .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder.doelgroep>
       a       rdf:Property ;
@@ -180,25 +238,11 @@ locn:address
       rdfs:label "type"@en , "type"@nl ;
       vann:usageNote "In te vullen door business werkgroep GIPOD"@nl .
 
-<https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder.zone>
-      a       rdf:Property ;
-      rdfs:comment "Geografische weergave van de mobiliteitshinder."@nl ;
-      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder> ;
-      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
-      rdfs:label "zone"@en , "zone"@nl .
-
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel>
       a       owl:Class ;
       rdfs:comment "Maatregel om de beweging en verplaatsing van de weggebruiker op het openbaar domein of privé domein met openbaar karakter te organiseren."@nl ;
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
       rdfs:label "Mobility Measure"@en , "Mobiliteitsmaatregel"@nl .
-
-<https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel.beheerder>
-      a       rdf:Property ;
-      rdfs:comment "Beheerder van de mobiliteitsmaatregel."@nl ;
-      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> ;
-      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
-      rdfs:label "beheerder"@nl , "administrator"@en .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel.doelgroep>
       a       rdf:Property ;
@@ -223,19 +267,12 @@ locn:address
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
       rdfs:label "plaatsbeschrijving"@nl , "description of location"@en .
 
-<https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel.tijdsinterval>
-      a       rdf:Property ;
-      rdfs:comment "Tijdsinterval van de mobiliteitsmaatregel."@nl ;
-      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> ;
-      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
-      rdfs:label "tijdsinterval"@nl , "time interval"@en .
-
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel.type>
       a       rdf:Property ;
       rdfs:comment "Type mobiliteitsmaatregel."@nl ;
       rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> ;
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
-      rdfs:label "TODO"@nl ;
+      rdfs:label "type"@nl ;
       vann:usageNote "Voorbeelden: straat afzetten, trager rijden, extra fietsstallingen, shuttledienst etc."@nl .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel.wordtAangeduidDoor>
@@ -246,19 +283,103 @@ locn:address
       rdfs:label "wordt aangeduid door"@nl , "is indicated by"@en ;
       rdfs:range <https://data.vlaanderen.be/ns/mobiliteit#Signalisatie> .
 
-<https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel.zone>
-      a       rdf:Property ;
-      rdfs:comment "Geografische weergave van de mobiliteitsmaatregel."@nl ;
-      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> ;
-      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
-      rdfs:label "zone"@en , "zone"@nl .
-
 <https://data.vlaanderen.be/ns/mobiliteit#Omleiding>
       a       owl:Class ;
       rdfs:comment "Tijdelijke route die aanbevolen wordt te volgen door de betreffende weggebruiker."@nl ;
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
       rdfs:label "Omleiding"@nl , "Detour"@en ;
       rdfs:subClassOf <https://data.vlaanderen.be/ns/mobiliteit#Verkeersmaatregel> .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Project>
+      a       owl:Class ;
+      rdfs:comment "Groepering van innames, hinders, mobiliteitsmaatregelen en projecten."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "Project"@nl .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Project.geeftAanleidingTot>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Samenwerkingsaanvraag die het gevolg is van het project."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Project> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "geeft aanleiding tot"@nl ;
+      rdfs:range <https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsaanvraag> .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Project.omvat>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Entiteit dat dit project omvat."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Project> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "omvat"@nl ;
+      rdfs:range rdfs:Resource .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Project.type>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Type van het project."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Project> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "type"@nl ;
+      rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/mobiliteit#RuimtelijkConflict>
+      a       owl:Class ;
+      rdfs:comment "Overlap of dicht bijeen liggen van zones in tijd en ruimte."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "Ruimtelijk Conflict"@nl , "Spatial Conflict"@en .
+
+<https://data.vlaanderen.be/ns/mobiliteit#RuimtelijkConflict.type>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Type ruimtelijk conflict."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#RuimtelijkConflict> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "type"@en , "type"@nl ;
+      rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsaanvraag>
+      a       owl:Class ;
+      rdfs:comment "Verzoek tot samenwerking in een project."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "Samenwerkingsaanvraag"@nl .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsaanvraag.lanceringsdatum>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Datum waarop de samenwerkingsaanvraag uitgestuurd wordt."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsaanvraag> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "lanceringsdatum"@nl , "launch date"@en ;
+      rdfs:range xsd:date ;
+      rdfs:subPropertyOf dcterms:date .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsaanvraag.uitersteAntwoorddatum>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Laatste datum dat er geantwoord kan worden om al dan niet samen te werken."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsaanvraag> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "uiterste antwoorddatum"@nl ;
+      rdfs:range xsd:date ;
+      rdfs:subPropertyOf dcterms:date .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsantwoord>
+      a       owl:Class ;
+      rdfs:comment "Positief antwoord gegeven op een samenwerkingsaanvraag."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "Cooperation response"@en , "Samenwerkingsantwoord"@nl .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsantwoord.antwoordDatum>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Datum waarop het antwoord gegeven werd."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsantwoord> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "response date"@en , "antwoorddatum"@nl ;
+      rdfs:range xsd:date ;
+      rdfs:subPropertyOf dcterms:date .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsantwoord.gaatAkkoord>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Geeft aan of de betrokken organisatie wil samenwerken of niet.."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsantwoord> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "gaat akkoord"@nl , "agrees"@en ;
+      rdfs:range xsd:boolean .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Signalisatie>
       a       owl:Class ;
@@ -318,6 +439,42 @@ locn:address
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
       rdfs:label "TODO"@nl .
 
+<https://data.vlaanderen.be/ns/mobiliteit#Signalisatieplan>
+      a       owl:Class ;
+      rdfs:comment "Grafische weergave van de tijdelijke of permanente signalisatie die nodig is voor de gegeven situatie."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "signaling plan"@en , "Signalisatieplan"@nl .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Synergie>
+      a       owl:Class ;
+      rdfs:comment "Groepering van werkopdrachten van nutsmaatschappijen."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "Synergy"@en , "Synergie"@nl ;
+      rdfs:subClassOf <https://data.vlaanderen.be/ns/mobiliteit#Project> .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Synergie.volgensAfspraken>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Afspraken die gevolgd moeten worden om een synergie uit te voeren."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Synergie> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "according to agreements"@en , "volgens afspraken"@nl ;
+      rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Synergieaanvraag>
+      a       owl:Class ;
+      rdfs:comment "Verzoek tot samenwerking in een synergie."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "Synergieaanvraag"@nl , "Synergy application"@en ;
+      rdfs:subClassOf <https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsaanvraag> .
+
+<https://data.vlaanderen.be/ns/mobiliteit#Synergieaanvraag.volgensAfspraken>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Afspraken die gevolgd moeten worden om de synergie uit te voeren."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Synergieaanvraag> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "volgens afspraken"@nl ;
+      rdfs:range skos:Concept .
+
 <https://data.vlaanderen.be/ns/mobiliteit#Verkeersmaatregel>
       a       owl:Class ;
       rdfs:comment "Maatregel waarvan de aard, omvang en plaatsing zijn omschreven in de wegcode en uitvoeringsbesluiten."@nl ;
@@ -363,11 +520,12 @@ locn:address
       rdfs:range xsd:integer .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Werken.verplaatsingswerk>
-      a       rdf:Property ;
+      a       owl:DatatypeProperty ;
       rdfs:comment "Aanduiding of de werkopdracht veroorzaakt wordt door andere werkopdrachten."@nl ;
       rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Werken> ;
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
-      rdfs:label "verplaatsingswerk"@nl .
+      rdfs:label "verplaatsingswerk"@nl ;
+      rdfs:range xsd:boolean .
 
 <https://data.vlaanderen.be/ns/mobiliteit#Werken.voorlopigeOplevering>
       a       owl:DatatypeProperty ;
@@ -375,7 +533,85 @@ locn:address
       rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Werken> ;
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
       rdfs:label "voorlopige oplevering"@nl , "tentative delivery"@en ;
-      rdfs:range xsd:dateTime .
+      rdfs:range xsd:dateTime ;
+      rdfs:subPropertyOf prov:endedAtTime .
+
+<https://data.vlaanderen.be/ns/mobiliteit#aanvraagStatus>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Status om samen te werken."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsaanvraag> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "request status"@en , "aanvraagstatus"@nl ;
+      rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/mobiliteit#adviseert>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Waarover input wordt gegeven."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Advies> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "adviseert"@nl , "d"@en ;
+      rdfs:range rdfs:Resource .
+
+<https://data.vlaanderen.be/ns/mobiliteit#beheerder>
+      a       rdf:Property ;
+      rdfs:comment "Persoon of organisatie die verantwoordelijk is voor het beheer."@nl ;
+      rdfs:domain rdfs:Resource ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "beheerder"@nl , "administrator"@en .
+
+<https://data.vlaanderen.be/ns/mobiliteit#betrokkenOrganisatie>
+      a       rdf:Property ;
+      rdfs:comment "Organisatie die antwoordt op de samenwerkingsaanvraag."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsantwoord> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "involved organization"@en , "betrokken organisatie"@nl .
+
+<https://data.vlaanderen.be/ns/mobiliteit#bijlage>
+      a       rdf:Property ;
+      rdfs:comment "Extra document die bij de samenwerkingsaanvraag hoort."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsaanvraag> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "bijlage"@nl , "attachment"@en .
+
+<https://data.vlaanderen.be/ns/mobiliteit#categorie>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Verbodscategorie van de innameverbod."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Innameverbod> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "category"@en , "categorie"@nl ;
+      rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/mobiliteit#coordinatieVergaderingsdatum>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Datum ter coördinering van de synergie."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Synergie> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "coordination meeting date"@en , "coördinatievergaderingsdatum"@nl ;
+      rdfs:range xsd:date ;
+      rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date> .
+
+<https://data.vlaanderen.be/ns/mobiliteit#grafischeWeergave>
+      a       rdf:Property ;
+      rdfs:comment "Het signalisatieplan als bijlage."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Signalisatieplan> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "grafischeWeergave"@nl , "graphical view"@en .
+
+<https://data.vlaanderen.be/ns/mobiliteit#heeftAntwoord>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Antwoord van een samenwerkingsaanvraag."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsaanvraag> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "has response"@en , "heeft antwoord"@nl ;
+      rdfs:range <https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsantwoord> .
+
+<https://data.vlaanderen.be/ns/mobiliteit#heeftBetrekkingTot>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Entiteiten die mede-oorzaak zijn van het ruimtelijke conflict."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#RuimtelijkConflict> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "relates to"@en , "heeft betrekking tot"@nl ;
+      rdfs:range rdfs:Resource .
 
 <https://data.vlaanderen.be/ns/mobiliteit#heeftOorzaakWerk>
       a       owl:ObjectProperty ;
@@ -385,3 +621,52 @@ locn:address
       rdfs:label "caused by work"@en , "heeft oorzaak werk"@nl ;
       rdfs:range <https://data.vlaanderen.be/ns/mobiliteit#Werken> ;
       vann:usageNote "Bijvoorbeeld heraanlegging straat na kabelwerken."@nl .
+
+<https://data.vlaanderen.be/ns/mobiliteit#heeftRoute>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Traject dat bij een mobiliteitsmaatregel hoort."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitsmaatregel> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "has route"@en , "heeft route"@nl ;
+      rdfs:range <http://data.vlaanderen.be/ns/weg#TransportLinkSequentie> ;
+      vann:usageNote "[TBC] Bijvoorbeeld bij het invoeren van eenrichting kan hiermee de verzameling netwerkelementen aangeduid worden."@nl .
+
+<https://data.vlaanderen.be/ns/mobiliteit#leidtTot>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Innameverbod dat het gevolg is van een inname."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Inname> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "leidt tot"@nl , "leads to"@en ;
+      rdfs:range <https://data.vlaanderen.be/ns/mobiliteit#Innameverbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit#registratieDatum>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Datum waarop de synergie geregistreerd werd."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Synergie> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "registratiedatum"@nl , "registration date"@en ;
+      rdfs:range xsd:date ;
+      rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date> .
+
+<https://data.vlaanderen.be/ns/mobiliteit#synergieStatus>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Status van de synergie."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Synergie> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "synergiestatus"@nl , "synergy status"@en ;
+      rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/mobiliteit#verhindert>
+      a       rdf:Property ;
+      rdfs:comment "Agents die hinder ondervinden."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "verhindert"@nl , "obstructs"@en .
+
+<https://data.vlaanderen.be/ns/mobiliteit#volgtUit>
+      a       owl:ObjectProperty ;
+      rdfs:comment "Project dat ontstaan is uit een samenwerkingsaanvraag."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit#Project> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit> ;
+      rdfs:label "volgt uit"@nl , "follows"@en ;
+      rdfs:range <https://data.vlaanderen.be/ns/mobiliteit#Samenwerkingsaanvraag> .
