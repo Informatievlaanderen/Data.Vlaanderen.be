@@ -69,6 +69,45 @@ jobs:
           root: /tmp/workspace
           paths:
             - voc/
+  render-voc-rdf:
+    docker:
+      - image: circleci/ruby
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Install dependencies
+          command: gem install linkeddata
+      - run:
+          name: Generate ntriples
+          command: |
+            for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
+              rdf serialize --input-format turtle --output-format ntriples ${model}.ttl > /tmp/workspace/voc/${model}.nt
+            end
+      - run:
+          name: Generate rdfxml
+          command: |
+            for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
+              rdf serialize --input-format turtle --output-format rdfxml ${model}.ttl > /tmp/workspace/voc/${model}.rdf
+            end
+      - run:
+          name: Generate jsonld
+          command: |
+            for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
+              rdf serialize --input-format turtle --output-format jsonld ${model}.ttl > /tmp/workspace/voc/${model}.jsonld
+              cp /tmp/workspace/voc/${model}.jsonld /tmp/workspace/voc/${model}.json
+            end
+      - run:
+         name: Generate turtle
+          command: |
+            for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
+              cp /tmp/workspace/ttl/${model}.ttl /tmp/workspace/voc/${model}.ttl
+            end
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - voc/
   render-ap-html:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:circleci
@@ -120,6 +159,9 @@ workflows:
       - render-voc-html:
           requires:
             - extract-vocabularia
+      - render-voc-rdf:
+          requires:
+            - extract-vocabularia
       - render-ap-html:
           requires:
             - extract-application-profiles
@@ -129,5 +171,6 @@ workflows:
       - create-artifact:
           requires:
             - render-voc-html
+            - render-voc-rdf
             - render-ap-html
             - render-ap-jsonld
