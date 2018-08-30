@@ -15,7 +15,7 @@ jobs:
       - run:
           name: Extract ttl data for each diagram
           command: |
-            awk '{print "java -jar /app/ea-2-rdf.jar convert -i src/OSLO²_vocabularium.EAP -c src/config-voc.json -d OSLO-" $1 " -o /tmp/workspace/ttl/" $1 ".ttl"}' < src/eap-mapping.list | sh
+            awk '{print "java -jar /app/ea-2-rdf.jar convert -i src/OSLO²_vocabularium.EAP -c src/config-voc.json -d OSLO-" $1 " -o /tmp/workspace/ttl/" tolower($1) ".ttl"}' < src/eap-mapping.list | sh
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -35,7 +35,7 @@ jobs:
       - run:
           name: Extract tsv data for each diagram
           command: |
-            grep -v nil src/eap-mapping.list | awk '{print "java -jar /app/ea-2-rdf.jar tsv -i src/" $2 " -c src/config-ap.json -d " $3 " -o /tmp/workspace/tsv/" $1 ".tsv"}' | sh
+            grep -v nil src/eap-mapping.list | awk '{print "java -jar /app/ea-2-rdf.jar tsv -i src/" $2 " -c src/config-ap.json -d " $3 " -o /tmp/workspace/tsv/" tolower($1) ".tsv"}' | sh
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -51,7 +51,7 @@ jobs:
           name: Extract contributors for every vocabulary
           command: |
             for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
-              python /app/specgen/generate_vocabulary.py --contributors --csv src/stakeholders_latest.csv --csv_contributor_role_column ${model} --output /tmp/workspace/contrib/${model}.xml
+              python /app/specgen/generate_vocabulary.py --contributors --csv src/stakeholders_latest.csv --csv_contributor_role_column ${model^} --output /tmp/workspace/contrib/${model}.xml
             done
       - run:
           name: Merge contributors xml with vocabulary ttl
@@ -77,7 +77,12 @@ jobs:
           at: /tmp/workspace
       - run:
           name: Install dependencies
-          command: gem install linkeddata
+          command: |
+            gem install linkeddata && mkdir -p /tmp/workspace/voc 
+            sed -i '/TBD/d' /tmp/workspace/ttl/gebouw.ttl
+      - run:
+          name: Turn TODO into proper URIs
+          command: find /tmp/workspace/ttl -type f | xargs sed -i 's/TODO/http:\/\/example.com\/TODO/g'
       - run:
           name: Generate ntriples
           command: |
@@ -98,7 +103,7 @@ jobs:
               cp /tmp/workspace/voc/${model}.jsonld /tmp/workspace/voc/${model}.json
             done
       - run:
-         name: Generate turtle
+          name: Generate turtle
           command: |
             for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
               cp /tmp/workspace/ttl/${model}.ttl /tmp/workspace/voc/${model}.ttl
@@ -118,7 +123,7 @@ jobs:
           name: Render HTML of AP tsv file
           command: |
             for model in $(ls /tmp/workspace/tsv | sed 's/.tsv//'); do
-              python /app/specgen/generate_vocabulary.py --ap --csv /tmp/workspace/tsv/${model}.tsv --csv_contributor src/stakeholders_latest.csv --title ${model} --output /tmp/workspace/ap/${model}/index.html
+              python /app/specgen/generate_vocabulary.py --ap --csv /tmp/workspace/tsv/${model}.tsv --csv_contributor src/stakeholders_latest.csv --title ${model^} --output /tmp/workspace/ap/${model}/index.html
             done
       - persist_to_workspace:
           root: /tmp/workspace
@@ -147,13 +152,16 @@ jobs:
       - checkout
       - attach_workspace:
           at: /tmp/workspace
+      - add_ssh_keys:
+          fingerprints:
+            - "84:ef:18:e6:4c:b3:fa:38:4e:d2:47:09:e9:be:0f:e6"
       - run:
           name: Checkout target repo
           workdir: /tmp
           command: |
             git clone git@github.com:Informatievlaanderen/OSLO-Generated.git
             cd OSLO-Generated && git checkout -b "${CIRCLE_BRANCH}"
-            mkdir -p OSLO-Generated/ns OSLO-Generated/doc/applicatieprofiel OSLO-Generated/context
+            mkdir -p ns doc/applicatieprofiel context
       - run:
           name: Copy static assets
           command: |
