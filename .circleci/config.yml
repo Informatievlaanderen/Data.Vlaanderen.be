@@ -73,7 +73,6 @@ jobs:
     docker:
       - image: circleci/ruby
     steps:
-      - checkout
       - attach_workspace:
           at: /tmp/workspace
       - run:
@@ -83,27 +82,27 @@ jobs:
           name: Generate ntriples
           command: |
             for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
-              rdf serialize --input-format turtle --output-format ntriples ${model}.ttl > /tmp/workspace/voc/${model}.nt
-            end
+              rdf serialize --input-format turtle --output-format ntriples /tmp/workspace/ttl/${model}.ttl -o /tmp/workspace/voc/${model}.nt
+            done
       - run:
           name: Generate rdfxml
           command: |
             for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
-              rdf serialize --input-format turtle --output-format rdfxml ${model}.ttl > /tmp/workspace/voc/${model}.rdf
-            end
+              rdf serialize --input-format turtle --output-format rdfxml /tmp/workspace/ttl/${model}.ttl -o /tmp/workspace/voc/${model}.rdf
+            done
       - run:
           name: Generate jsonld
           command: |
             for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
-              rdf serialize --input-format turtle --output-format jsonld ${model}.ttl > /tmp/workspace/voc/${model}.jsonld
+              rdf serialize --input-format turtle --output-format jsonld /tmp/workspace/ttl/${model}.ttl -o /tmp/workspace/voc/${model}.jsonld
               cp /tmp/workspace/voc/${model}.jsonld /tmp/workspace/voc/${model}.json
-            end
+            done
       - run:
          name: Generate turtle
           command: |
             for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
               cp /tmp/workspace/ttl/${model}.ttl /tmp/workspace/voc/${model}.ttl
-            end
+            done
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -129,14 +128,13 @@ jobs:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:circleci
     steps:
-      - checkout
       - attach_workspace:
           at: /tmp/workspace
       - run:
           name: Render jsonld version of AP tsv file
           command: |
             for model in $(ls /tmp/workspace/tsv | sed 's/.tsv//'); do
-              python /app/specgen/generate_jsonld.py --input /tmp/workspace/tsv/${model}.tsv --output /tmp/workspace/ap/${model}/context.jsonld
+              python /app/specgen/generate_jsonld.py --input /tmp/workspace/tsv/${model}.tsv --output /tmp/workspace/ap/${model}.jsonld
             done
       - persist_to_workspace:
           root: /tmp/workspace
@@ -144,12 +142,42 @@ jobs:
             - ap/
   create-artifact:
     docker:
-      - image: circleci/node:latest-browsers
+      - image: circleci/node
     steps:
+      - checkout
       - attach_workspace:
           at: /tmp/workspace
-      - store_artifacts:
-          path: /tmp/workspace
+      - run:
+          name: Checkout target repo
+          workdir: /tmp
+          command: |
+            git clone git@github.com:Informatievlaanderen/OSLO-Generated.git
+            cd OSLO-Generated && git checkout -b "${CIRCLE_BRANCH}"
+            mkdir -p OSLO-Generated/ns OSLO-Generated/doc/applicatieprofiel OSLO-Generated/context
+      - run:
+          name: Copy static assets
+          command: |
+            cp index.html /tmp/OSLO-Generated/index.html
+            cp -R cms/ /tmp/OSLO-Generated/cms
+            cp -R shacl/ /tmp/OSLO-Generated/shacl
+            cp ns/index.html /tmp/OSLO-Generated/ns/index.html
+            cp -R doc/conceptscheme/ /tmp/OSLO-Generated/doc/conceptscheme
+      - run:
+          name: Copy generated assets
+          workdir: /tmp/workspace
+          command: |
+            cp -R voc/* /tmp/OSLO-Generated/ns/
+            cp ap/*.jsonld /tmp/OSLO-Generated/context/
+            cp -R ap/* /tmp/OSLO-Generated/doc/applicatieprofiel/
+      - run:
+          name: Push results to github
+          workdir: /tmp/OSLO-Generated
+          command: |
+            git config user.email "dummy@kb.vlaanderen.be"
+            git config user.name "Circle CI Builder"
+            git add .
+            git commit -m "Applying changes from commit ${CIRCLE_SHA1}"
+            git push origin "${CIRCLE_BRANCH}"
 workflows:
   version: 2
   generate_documentation:
