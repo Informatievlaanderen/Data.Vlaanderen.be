@@ -184,7 +184,7 @@ jobs:
             git config user.email "dummy@kb.vlaanderen.be"
             git config user.name "Circle CI Builder"
             git add .
-            git commit -m "Applying changes from commit ${CIRCLE_SHA1}"
+            git commit -m "Applying changes from commit ${CIRCLE_SHA1}" --allow-empty
             git push origin "${CIRCLE_BRANCH}"
 workflows:
   version: 2
