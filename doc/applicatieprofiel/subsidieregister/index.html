@@ -45,7 +45,7 @@
               <div class="head" role="contentinfo" id="respecHeader">
                 <dl>
                   <dt>Laatste aanpassing</dt>
-                  <dd>2018-02-05</dd>
+                  <dd>2018-09-03</dd>
 
                   
                   
@@ -133,7 +133,17 @@
             <div class="region region--no-space-top typography" id="summary">              
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">Samenvatting</h2>
                 
-    <p>Dit is een applicatieprofiel op het <a href="http://data.vlaanderen.be/ns/dienst">OSLO-Dienst vocabularium</a> en de uitbreiding <a href="http://data.vlaanderen.be/ns/subsidie">OSLO-Subsidie vocabularium</a>. Het beschrijft hoe informatie met betrekking tot subsidiemaatregelen kan ontsloten worden in een subsidieregister.</p>
+<p>
+Dit is een applicatieprofiel op de <a href="http://data.vlaanderen.be/ns/dienst">OSLO-Dienst</a>, <a href="http://data.vlaanderen.be/ns/subsidie">OSLO-Subsidie</a> en <a href="http://data.vlaanderen.be/ns/transactie">OSLO-Transactie</a> vocabularia. Deze specificatie beschrijft een informatiemodel voor een <a href="https://overheid.vlaanderen.be/subsidieregister" target="_blank">Subsidieregister</a>. Een subsidieregister helpt entiteiten om een transparant overzicht te cre&#235;ren in het kader van staatssteun. De overheid moet in staat zijn een overzicht te bieden van de steun die ze verleent aan derden. De informatie in dit applicatieprofiel zal typisch niet in &#233;&#233;n databank worden opgeslagen worden, maar verzameld uit dienstverleningsregisters, organisatieregisters en dossierbehandelingssystemen. De geharmoniseerde data kan dienen om het subsidiebeleid te monitoren, dubbele subsidi&#235;ring te detecteren en vlotter informatie uit te wisselen tussen de entiteiten van de Vlaamse overheid. De achterliggende standaarden die gebruikt werden om deze specificatie op te stellen zijn de ISA <a href="https://joinup.ec.europa.eu/solution/core-public-service-vocabulary-application-profile">Core Public Service Application Profile</a> en <a href="https://joinup.ec.europa.eu/news/new-vocabulary-publishing">State Aid Vocabulary</a>.
+</p>
+
+<p>
+De consumptie van een bepaalde Subsidiemaatregel (de concrete aanvraag door een burger of onderneming) is telkens een instantie van een Publieke Dienstverlening langs de aanbodzijde. Concreet betekend dit dat alleen subsidiemaatregelen kunnen geconsumeerd worden die gedefinieerd zijn in een dienstverleningsregister. Naast een consument kunnen tal van andere Agenten een rol spelen in het afleveren van een bepaalde publieke dienst. De Agent die de dienst uitvoert en dus optreed als dienstverlener is expliciet opgenomen in het informatiemodel, maar daarnaast is voorzien in een generieke entiteit 'Participatie' die toelaat om voor een specifieke toepassing of business context een aantal rollen te specifi&#235;ren, mogelijke voorbeelden zijn die van expertencommissie, betrokkene, adviesorgaan... Verder is de consumptie van een Subsidiemaatregel gelinkt aan een rechtsgrond die de toekenning van de subsidiemaatregel aan een bepaalde Agent beschrijft, dit omvat onder meer het toegekend bedrag, de gesubsidieerde activiteit en de gesubsidieerde periode.
+</p>
+
+<p>
+Uiteindelijke zal de dienstverlening leiden tot een bepaalde Output, in de context van subsidies neemt deze Output de vorm aan van een Financieel Voordeel. Naast de uiteindelijke Output van een dienst worden typisch heel wat tussentijdse documenten bijgehouden in de vorm van een Dossier. Een Dossier is in dit informatiemodel voorzien als het geheel aan werk gedaan om tot een bestuurlijke of zakelijke beslissing te komen. Een dossier slaat doorgaans neer in een verzameling documenten. De verdere uitwerking van hoe een Dossier beschreven wordt valt buiten de scope van dit applicatieprofiel, er wordt enkel gespecifieerd dat een dossier een bepaald referentienummer heeft en dat als onderdeel van het onderliggend administratief proces, een bepaald subsidiebedrag kan worden vastgelegd in bijvoorbeeld een boekhoudsystemen voor latere uitbetaling.
+</p>
 
             </div>
     
@@ -189,22 +199,18 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                     <p>In dit document wordt correct gebruik van de volgende entiteiten toegelicht:
                       <br />
                       |
-                      <a href="#"></a> |
                       <a href="#Agent (in de rol van dienstverlener/participant)">Agent (in de rol van dienstverlener/participant)</a> |
-                      <a href="#Bestuursorgaan">Bestuursorgaan</a> |
-                      <a href="#Bewijs">Bewijs</a> |
-                      <a href="#Criteriumvereiste">Criteriumvereiste</a> |
+                      <a href="#Dossier">Dossier</a> |
                       <a href="#Financieel Voordeel">Financieel Voordeel</a> |
-                      <a href="#Formeel Kader">Formeel Kader</a> |
-                      <a href="#Kwalitatief Criteriumvereiste">Kwalitatief Criteriumvereiste</a> |
+                      <a href="#Formele Organisatie">Formele Organisatie</a> |
+                      <a href="#Geregistreerde Organisatie">Geregistreerde Organisatie</a> |
                       <a href="#Organisatie">Organisatie</a> |
-                      <a href="#Output">Output</a> |
-                      <a href="#Parametriseerbaar Criteriumvereiste">Parametriseerbaar Criteriumvereiste</a> |
                       <a href="#Participatie">Participatie</a> |
+                      <a href="#Publieke Dienstverlening">Publieke Dienstverlening</a> |
                       <a href="#Publieke Dienstverlening">Publieke Dienstverlening</a> |
                       <a href="#Publieke Organisatie">Publieke Organisatie</a> |
                       <a href="#Rechtsgrond Toekenning Subsidie">Rechtsgrond Toekenning Subsidie</a> |
-                      <a href="#Richtlijn">Richtlijn</a> |
+                      <a href="#Status">Status</a> |
                     </p>
                   </div>
                   
@@ -214,8 +220,8 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       <br />
                       |
                       <a href="#Adresvoorstelling">Adresvoorstelling</a> |
-                      <a href="#Contactpunt">Contactpunt</a> |
-                      <a href="#Status">Status</a> |
+                      <a href="#Identificator">Identificator</a> |
+                      <a href="#TijdsInterval">TijdsInterval</a> |
                     </p>
                   </div>
                   
@@ -230,55 +236,6 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             </div>
             <div class="region region--no-space-top">
               <h2 class="h2">Entiteiten</h2> 
-            </div>
-            
-            <div class="region region--no-space-top">
-              <h3 class="h3" id=""><a href="http://data.vlaanderen.be/ns/subsidie#Financi&#235;leVerplichting" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#Financi&#235;leVerplichting" data-placement="right"></a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>De verplichting van een burger of organisatie om een bepaald bedrag te betalen aan een publieke administratie of dochtermaatschappij.</dd>
-                    
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#%3Atype">type</a>.</dd>
-                    
-                  </dl>
-                </div>
-                
-                <div class="u-table-overflow">
-                  <table class="data-table">
-                    <thead>
-                      <tr class="data-table__header">
-                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
-                        <th class="data-table__header-title--sortable">Verwacht Type</th>
-                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
-                        <th class="data-table__header-title--sortable">Beschrijving</th>
-                        <th class="data-table__header-title--sortable">Gebruik</th>
-                        <th class="data-table__header-title--sortable">Codelijst</th>
-                      </tr>
-                    </thead>
-        
-                    <tbody class="supertype">
-                    
-                      <tr id="%3Atype" typeof="rdfs:Property" resource="http://purl.org/dc/terms/type">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/type" data-toggle="tooltip" data-content="http://purl.org/dc/terms/type" data-placement="right">
-                            type</a>
-                          </code>
-                        </td>
-                        <td><a href="http://data.vlaanderen.be/ns/subsidie#Financi&#235;leVerplichtingType" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#Financi&#235;leVerplichtingType" data-placement="right">Financi&#235;leVerplichtingType</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Type van de Financi&#235;le Verplichting.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                    </tbody>
-                  </table>
-                </div>
-      			  
             </div>
             
             <div class="region region--no-space-top">
@@ -361,36 +318,18 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Bestuursorgaan"><a href="http://data.vlaanderen.be/ns/besluit#Bestuursorgaan" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/besluit#Bestuursorgaan" data-placement="right">Bestuursorgaan</a></h3>
+              <h3 class="h3" id="Dossier"><a href="https://lod.milieuinfo.be/ns/dossier" data-toggle="tooltip" data-content="https://lod.milieuinfo.be/ns/dossier" data-placement="right">Dossier</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Een formeel orgaan van een rechtspersoon dat bevoegd is om rechtshandelingen te stellen.</dd>
+                    <dt>Beschrijving</dt><dd>Een dossier is het geheel aan werk gedaan om tot een bestuurlijke of zakelijke beslissing te komen. Een dossier slaat doorgaans neer in een verzameling documenten.</dd>
                     
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor deze entiteit zijn geen eigenschappen gedefinieerd.</dd>
-                    
-                  </dl>
-                </div>
-                
-            </div>
-            
-            <div class="region region--no-space-top">
-              <h3 class="h3" id="Bewijs"><a href="http://data.europa.eu/m8g/Evidence" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/Evidence" data-placement="right">Bewijs</a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>Elk stuk waarmee kan worden aangetoond dat men aan een CriteriumVereiste voldoet.</dd>
-                    
-                    <dt>Gebruik</dt><dd>In het kader van publieke dienstverlening gaat het meestal om administratieve documenten of ingevulde aanvraagformulieren. Zonder het nodige Bewijs kan de dienstverlening niet worden afgeleverd. Soms levert de Output van een Publieke Dienstverlening het Bewijs nodig voor een andere Publieke Dienstverlening.</dd>
+                    <dt>Gebruik</dt><dd>Te gebruiken als logische bundeling van documenten binnen een bepaalde publieke dienstverlening.</dd>
                     
                     <dt>Eigenschappen</dt>
                     
                     <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Bewijs%3Abeschrijving">beschrijving</a>, 
-                      <a href="#Bewijs%3Apagina">pagina</a>, 
-                      <a href="#Bewijs%3Ataal">taal</a>, 
-                      <a href="#Bewijs%3Atitel">titel</a>, 
-                      <a href="#Bewijs%3Atype">type</a>.</dd>
+                      <a href="#Dossier%3Areferentie">referentie</a>, 
+                      <a href="#Dossier%3Avastgelegd%20bedrag">vastgelegd bedrag</a>.</dd>
                     
                   </dl>
                 </div>
@@ -410,73 +349,31 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
         
                     <tbody class="supertype">
                     
-                      <tr id="Bewijs%3Abeschrijving" typeof="rdfs:Property" resource="http://purl.org/dc/terms/description">
+                      <tr id="Dossier%3Areferentie" typeof="rdfs:Property" resource="http://www.w3.org/ns/adms#identifier">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/description" data-toggle="tooltip" data-content="http://purl.org/dc/terms/description" data-placement="right">
-                            beschrijving</a>
+                            <a href="http://www.w3.org/ns/adms#identifier" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#identifier" data-placement="right">
+                            referentie</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Beschrijving vh Bewijs.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Bewijs%3Apagina" typeof="rdfs:Property" resource="http://xmlns.com/foaf/0.1/page">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://xmlns.com/foaf/0.1/page" data-toggle="tooltip" data-content="http://xmlns.com/foaf/0.1/page" data-placement="right">
-                            pagina</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#anyURI" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#anyURI" data-placement="right">URI</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Documentatie gerelateerd ah Bewiijs.</td>
-                        <td property="vann:usageNote">Bvb template van een administratief document of aanvraagformulier of aanwijzingen voor het invullen ervan.</td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Bewijs%3Ataal" typeof="rdfs:Property" resource="http://purl.org/dc/terms/language">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/language" data-toggle="tooltip" data-content="http://purl.org/dc/terms/language" data-placement="right">
-                            taal</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">NAL_language</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Taal waarin het aangeboden Bewijs moet zijn gesteld.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Bewijs%3Atitel" typeof="rdfs:Property" resource="http://purl.org/dc/terms/title">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/title" data-toggle="tooltip" data-content="http://purl.org/dc/terms/title" data-placement="right">
-                            titel</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
+                        <td><a href="http://www.w3.org/ns/adms#Identifier" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#Identifier" data-placement="right">Identificator</a></td>
                         <td>1</td>
-                        <td property="rdfs:comment">Offici&#235;le naam vh Bewijs.</td>
-                        <td property="vann:usageNote"></td>
+                        <td property="rdfs:comment">Een identificator voor het dossier.</td>
+                        <td property="vann:usageNote">Bijvoorbeeld het dossiernummer.</td>
                         <td></td>
                       </tr>
                     
-                      <tr id="Bewijs%3Atype" typeof="rdfs:Property" resource="http://purl.org/dc/terms/type">
+                      <tr id="Dossier%3Avastgelegd%20bedrag" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/subsidie#vastgelegdBedrag">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/type" data-toggle="tooltip" data-content="http://purl.org/dc/terms/type" data-placement="right">
-                            type</a>
+                            <a href="https://data.vlaanderen.be/ns/subsidie#vastgelegdBedrag" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/subsidie#vastgelegdBedrag" data-placement="right">
+                            vastgelegd bedrag</a>
                           </code>
                         </td>
-                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">BewijsType</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Aard vh Bewijs.</td>
-                        <td property="vann:usageNote"></td>
+                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Float</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Het bedrag dat werd vastgelegd voor uitbetaling aan de begunstigde van een subsidiemaatregel of een intermediaire betrokkene in een bepaalde periode.</td>
+                        <td property="vann:usageNote">Dit bedrag kan kleiner zijn of gelijk aan het toegekende bedrag.</td>
                         <td></td>
                       </tr>
                     
@@ -487,73 +384,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Criteriumvereiste"><a href="http://data.europa.eu/m8g/CriterionRequirement" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/CriterionRequirement" data-placement="right">Criteriumvereiste</a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>Criterium dat toelaat te bepalen of een gebruiker recht heeft op een dienstverlening of deze mag gebruiken.</dd>
-                    
-                    <dt>Gebruik</dt><dd>Niet elke Publieke Dienstverlening is voor iedereen noodzakelijk of nuttig. Bv werkloosheidsuitkeringen zijn enkel noodzakelijk voor werklozen.</dd>
-                    
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Criteriumvereiste%3Atitel">titel</a>, 
-                      <a href="#Criteriumvereiste%3Atype">type</a>.</dd>
-                    
-                  </dl>
-                </div>
-                
-                <div class="u-table-overflow">
-                  <table class="data-table">
-                    <thead>
-                      <tr class="data-table__header">
-                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
-                        <th class="data-table__header-title--sortable">Verwacht Type</th>
-                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
-                        <th class="data-table__header-title--sortable">Beschrijving</th>
-                        <th class="data-table__header-title--sortable">Gebruik</th>
-                        <th class="data-table__header-title--sortable">Codelijst</th>
-                      </tr>
-                    </thead>
-        
-                    <tbody class="supertype">
-                    
-                      <tr id="Criteriumvereiste%3Atitel" typeof="rdfs:Property" resource="http://purl.org/dc/terms/title">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/title" data-toggle="tooltip" data-content="http://purl.org/dc/terms/title" data-placement="right">
-                            titel</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Offici&#235;le naam vd CriteriumVereiste.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Criteriumvereiste%3Atype" typeof="rdfs:Property" resource="http://purl.org/dc/terms/type">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/type" data-toggle="tooltip" data-content="http://purl.org/dc/terms/type" data-placement="right">
-                            type</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">CriteriumVereisteType</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Aard vd CriteriumVereiste.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                    </tbody>
-                  </table>
-                </div>
-      			  
-            </div>
-            
-            <div class="region region--no-space-top">
-              <h3 class="h3" id="Financieel Voordeel"><a href="http://data.vlaanderen.be/ns/subsidie#FinancieelVoordeel" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#FinancieelVoordeel" data-placement="right">Financieel Voordeel</a></h3>
+              <h3 class="h3" id="Financieel Voordeel"><a href="https://data.vlaanderen.be/ns/subsidie#FinancieelVoordeel" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/subsidie#FinancieelVoordeel" data-placement="right">Financieel Voordeel</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
                     <dt>Beschrijving</dt><dd>De verplichting van een publieke administratie of dochtermaatschappij om een bepaald bedrag te betalen aan een burger of organisatie.</dd>
@@ -561,7 +392,9 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                     <dt>Eigenschappen</dt>
                     
                     <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Financieel%20Voordeel%3Atype">type</a>.</dd>
+                      <a href="#Financieel%20Voordeel%3Adatum">datum</a>, 
+                      <a href="#Financieel%20Voordeel%3Areferentie">referentie</a>, 
+                      <a href="#Financieel%20Voordeel%3Auitgekeerd%20bedrag">uitgekeerd bedrag</a>.</dd>
                     
                   </dl>
                 </div>
@@ -581,373 +414,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
         
                     <tbody class="supertype">
                     
-                      <tr id="Financieel%20Voordeel%3Atype" typeof="rdfs:Property" resource="http://purl.org/dc/terms/type">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/type" data-toggle="tooltip" data-content="http://purl.org/dc/terms/type" data-placement="right">
-                            type</a>
-                          </code>
-                        </td>
-                        <td><a href="http://data.vlaanderen.be/ns/subsidie#FinancieelVoordeelType" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#FinancieelVoordeelType" data-placement="right">FinancieelVoordeelType</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Type van het Financieel Voordeel.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                    </tbody>
-                  </table>
-                </div>
-      			  
-            </div>
-            
-            <div class="region region--no-space-top">
-              <h3 class="h3" id="Formeel Kader"><a href="http://purl.org/vocab/cpsv#FormalFramework" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#FormalFramework" data-placement="right">Formeel Kader</a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>Geheel van formele documenten dat regels, rechten, plichten ten aanzien van burgers, overheden, bedrijven etc beschrijft. </dd>
-                    
-                    <dt>Gebruik</dt><dd>De documenten waarvan sprake zijn wetten, beleidsdocumenten, regulaties, contracten ed.</dd>
-                    
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Formeel%20Kader%3Abeschrijving">beschrijving</a>, 
-                      <a href="#Formeel%20Kader%3Anaam">naam</a>, 
-                      <a href="#Formeel%20Kader%3Aonderwerp">onderwerp</a>, 
-                      <a href="#Formeel%20Kader%3Astatus">status</a>, 
-                      <a href="#Formeel%20Kader%3Ataal">taal</a>, 
-                      <a href="#Formeel%20Kader%3Atoepassingsgebied">toepassingsgebied</a>, 
-                      <a href="#Formeel%20Kader%3Atype">type</a>.</dd>
-                    
-                  </dl>
-                </div>
-                
-                <div class="u-table-overflow">
-                  <table class="data-table">
-                    <thead>
-                      <tr class="data-table__header">
-                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
-                        <th class="data-table__header-title--sortable">Verwacht Type</th>
-                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
-                        <th class="data-table__header-title--sortable">Beschrijving</th>
-                        <th class="data-table__header-title--sortable">Gebruik</th>
-                        <th class="data-table__header-title--sortable">Codelijst</th>
-                      </tr>
-                    </thead>
-        
-                    <tbody class="supertype">
-                    
-                      <tr id="Formeel%20Kader%3Abeschrijving" typeof="rdfs:Property" resource="http://purl.org/dc/terms/description">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/description" data-toggle="tooltip" data-content="http://purl.org/dc/terms/description" data-placement="right">
-                            beschrijving</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Beschrijving van het formeel kader.</td>
-                        <td property="vann:usageNote"> </td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Formeel%20Kader%3Anaam" typeof="rdfs:Property" resource="http://purl.org/dc/terms/title">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/title" data-toggle="tooltip" data-content="http://purl.org/dc/terms/title" data-placement="right">
-                            naam</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Naam vh formeel kader.</td>
-                        <td property="vann:usageNote"> </td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Formeel%20Kader%3Aonderwerp" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/subject">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.europa.eu/m8g/subject" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/subject" data-placement="right">
-                            onderwerp</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Eurovoc</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Onderwerp vh formeel kader.</td>
-                        <td property="vann:usageNote"> </td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Formeel%20Kader%3Astatus" typeof="rdfs:Property" resource="http://www.w3.org/ns/adms#status">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://www.w3.org/ns/adms#status" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#status" data-placement="right">
-                            status</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">ELI_status</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Status vh formeel kader.</td>
-                        <td property="vann:usageNote">Bvb of het kader van kracht is, opgeheven, impliciet herroepen edm.</td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Formeel%20Kader%3Ataal" typeof="rdfs:Property" resource="http://data.europa.eu/eli/ontology#language">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.europa.eu/eli/ontology#language" data-toggle="tooltip" data-content="http://data.europa.eu/eli/ontology#language" data-placement="right">
-                            taal</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">NAL_language</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Taal waarin het formeel kader beschikbaar is.</td>
-                        <td property="vann:usageNote"> </td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Formeel%20Kader%3Atoepassingsgebied" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/territorialApplication">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.europa.eu/m8g/territorialApplication" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/territorialApplication" data-placement="right">
-                            toepassingsgebied</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">NUTS</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Het geografisch bereik vh formeel kader.</td>
-                        <td property="vann:usageNote">Maw of bvb Europees, nationaal, lokaal&#133; is.</td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Formeel%20Kader%3Atype" typeof="rdfs:Property" resource="http://purl.org/dc/terms/type">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/type" data-toggle="tooltip" data-content="http://purl.org/dc/terms/type" data-placement="right">
-                            type</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">NAL_type</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Aard vh formeel kader.</td>
-                        <td property="vann:usageNote">Bvb decreet, wet, ministrieel besluit etc.</td>
-                        <td></td>
-                      </tr>
-                    
-                    </tbody>
-                  </table>
-                </div>
-      			  
-            </div>
-            
-            <div class="region region--no-space-top">
-              <h3 class="h3" id="Kwalitatief Criteriumvereiste"><a href="http://data.vlaanderen.be/ns/subsidie#KwalitatiefCriteriumvereiste" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#KwalitatiefCriteriumvereiste" data-placement="right">Kwalitatief Criteriumvereiste</a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>Criterium dat toelaat te bepalen of een gebruiker recht heeft op een dienstverlening of deze mag gebruiken en een kwalitatieve beoordeling vereist.</dd>
-                    
-                    <dt>Gebruik</dt><dd>De beoordeling in het geval van een kwalitatief criteriumvereiste kan gebeuren door externe experten. </dd>
-                    
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor deze entiteit zijn geen eigenschappen gedefinieerd.</dd>
-                    
-                  </dl>
-                </div>
-                
-            </div>
-            
-            <div class="region region--no-space-top">
-              <h3 class="h3" id="Organisatie"><a href="https://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="https://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>Een aantal mensen georganiseerd in een gemeenschap of andere sociale, commerci&#235;le of politieke structuur. De groep heeft een gemeenschappelijk doel of bestaanreden die de individuele leden ervan overstijgt en kan handelen als Agent. Een organisatie heeft dikwijls een hi&#235;rarchische structuur.</dd>
-                    
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Organisatie%3AAlternatieve%20Naam">Alternatieve Naam</a>, 
-                      <a href="#Organisatie%3Abankrekeningnummer">bankrekeningnummer</a>, 
-                      <a href="#Organisatie%3ABestaanreden%20vd%20Organisatie.">Bestaanreden vd Organisatie.</a>, 
-                      <a href="#Organisatie%3AClassificatie">Classificatie</a>, 
-                      <a href="#Organisatie%3Acontactinfo">contactinfo</a>, 
-                      <a href="#Organisatie%3AVoorkeursnaam">Voorkeursnaam</a>.</dd>
-                    
-                  </dl>
-                </div>
-                
-                <div class="u-table-overflow">
-                  <table class="data-table">
-                    <thead>
-                      <tr class="data-table__header">
-                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
-                        <th class="data-table__header-title--sortable">Verwacht Type</th>
-                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
-                        <th class="data-table__header-title--sortable">Beschrijving</th>
-                        <th class="data-table__header-title--sortable">Gebruik</th>
-                        <th class="data-table__header-title--sortable">Codelijst</th>
-                      </tr>
-                    </thead>
-        
-                    <tbody class="supertype">
-                    
-                      <tr id="Organisatie%3AAlternatieve%20Naam" typeof="rdfs:Property" resource="http://www.w3.org/2004/02/skos/core#altLabel">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://www.w3.org/2004/02/skos/core#altLabel" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#altLabel" data-placement="right">
-                            Alternatieve Naam</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Andere naam waaronder de organisatie bekend is.</td>
-                        <td property="vann:usageNote">Bv commerci&#235;le naam, informele naam&#133;</td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Organisatie%3Abankrekeningnummer" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/subsidie#bankrekeningnummer">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/subsidie#bankrekeningnummer" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#bankrekeningnummer" data-placement="right">
-                            bankrekeningnummer</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Het bankrekeningnummer waarop het bedrag, toegekend als onderdeel van de subsidiemaatregel, moet uitbetaald worden.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Organisatie%3ABestaanreden%20vd%20Organisatie." typeof="rdfs:Property" resource="https://www.w3.org/ns/org#purpose">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="https://www.w3.org/ns/org#purpose" data-toggle="tooltip" data-content="https://www.w3.org/ns/org#purpose" data-placement="right">
-                            Bestaanreden vd Organisatie.</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Bestaanreden vd Organisatie.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Organisatie%3AClassificatie" typeof="rdfs:Property" resource="https://www.w3.org/ns/org#classification">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="https://www.w3.org/ns/org#classification" data-toggle="tooltip" data-content="https://www.w3.org/ns/org#classification" data-placement="right">
-                            Classificatie</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">OrganisatieClassificatie</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Rangschikking van de Organisatie in een classificatiesysteem.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Organisatie%3Acontactinfo" typeof="rdfs:Property" resource="http://schema.org/contactPoint">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://schema.org/contactPoint" data-toggle="tooltip" data-content="http://schema.org/contactPoint" data-placement="right">
-                            contactinfo</a>
-                          </code>
-                        </td>
-                        <td><a href="http://schema.org/ContactPoint" data-toggle="tooltip" data-content="http://schema.org/ContactPoint" data-placement="right">ContactInfo</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Informatie zoals email, telefoon&#133; die toelaat de Organisatie te contacteren.
-</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Organisatie%3AVoorkeursnaam" typeof="rdfs:Property" resource="http://www.w3.org/2004/02/skos/core#prefLabel">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://www.w3.org/2004/02/skos/core#prefLabel" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#prefLabel" data-placement="right">
-                            Voorkeursnaam</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Naam waarmee de Organisatie bij voorkeur wordt aangeduid.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                    </tbody>
-                  </table>
-                </div>
-      			  
-            </div>
-            
-            <div class="region region--no-space-top">
-              <h3 class="h3" id="Output"><a href="http://data.europa.eu/m8g/Output" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/Output" data-placement="right">Output</a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>Resultaat van een Publieke Dienstverlening. Officieel document of ander artefact van de bevoegde instantie (Publieke Organisatie) dat een Agent</dd>
-                    
-                    <dt>Gebruik</dt><dd>Bv toelating verstrekt door of in naam van de bevoegde instantie (Publieke Organisatie) dat een Agent  toelaat om iets bepaald te ondernemen. Eventueel vormt deze Output het noodzakelijk Bewijs, voor te leggen om gebruik te kunnen maken van een Andere Dienstverlening. Dit kan verder gedocumenteerd worden in de Richtlijn geassocieerd met de Publieke Dienstverlening.</dd>
-                    
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Output%3Abedrag">bedrag</a>, 
-                      <a href="#Output%3Abeschrijving">beschrijving</a>, 
-                      <a href="#Output%3Adatum">datum</a>, 
-                      <a href="#Output%3ATitel">Titel</a>, 
-                      <a href="#Output%3Atype">type</a>.</dd>
-                    
-                  </dl>
-                </div>
-                
-                <div class="u-table-overflow">
-                  <table class="data-table">
-                    <thead>
-                      <tr class="data-table__header">
-                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
-                        <th class="data-table__header-title--sortable">Verwacht Type</th>
-                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
-                        <th class="data-table__header-title--sortable">Beschrijving</th>
-                        <th class="data-table__header-title--sortable">Gebruik</th>
-                        <th class="data-table__header-title--sortable">Codelijst</th>
-                      </tr>
-                    </thead>
-        
-                    <tbody class="supertype">
-                    
-                      <tr id="Output%3Abedrag" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/subsidie#bedrag">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/subsidie#bedrag" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#bedrag" data-placement="right">
-                            bedrag</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Float</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Het bedrag dat werd uitbetaald aan de begunstigde van de subsidiemaatregel op een bepaalde datum.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Output%3Abeschrijving" typeof="rdfs:Property" resource="http://purl.org/dc/terms/description">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/description" data-toggle="tooltip" data-content="http://purl.org/dc/terms/description" data-placement="right">
-                            beschrijving</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Beschrijving van de Output.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Output%3Adatum" typeof="rdfs:Property" resource="http://purl.org/dc/terms/date">
+                      <tr id="Financieel%20Voordeel%3Adatum" typeof="rdfs:Property" resource="http://purl.org/dc/terms/date">
                         <td>
                           <code property="rdfs:label">
                             <a href="http://purl.org/dc/terms/date" data-toggle="tooltip" data-content="http://purl.org/dc/terms/date" data-placement="right">
@@ -961,32 +428,32 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                     
-                      <tr id="Output%3ATitel" typeof="rdfs:Property" resource="http://purl.org/dc/terms/title">
+                      <tr id="Financieel%20Voordeel%3Areferentie" typeof="rdfs:Property" resource="http://www.w3.org/ns/adms#identifier">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/title" data-toggle="tooltip" data-content="http://purl.org/dc/terms/title" data-placement="right">
-                            Titel</a>
+                            <a href="http://www.w3.org/ns/adms#identifier" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#identifier" data-placement="right">
+                            referentie</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
+                        <td><a href="http://www.w3.org/ns/adms#Identifier" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#Identifier" data-placement="right">Identificator</a></td>
                         <td>1</td>
-                        <td property="rdfs:comment">Offici&#235;le naam van de Output.</td>
-                        <td property="vann:usageNote"></td>
+                        <td property="rdfs:comment">Identificator voor het dossier.</td>
+                        <td property="vann:usageNote">Bijvoorbeeld het nummer gelinkt aan de overschrijving.</td>
                         <td></td>
                       </tr>
                     
-                      <tr id="Output%3Atype" typeof="rdfs:Property" resource="http://purl.org/dc/terms/type">
+                      <tr id="Financieel%20Voordeel%3Auitgekeerd%20bedrag" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/subsidie#uitgekeerdBedrag">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/type" data-toggle="tooltip" data-content="http://purl.org/dc/terms/type" data-placement="right">
-                            type</a>
+                            <a href="https://data.vlaanderen.be/ns/subsidie#uitgekeerdBedrag" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/subsidie#uitgekeerdBedrag" data-placement="right">
+                            uitgekeerd bedrag</a>
                           </code>
                         </td>
-                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">OutputType</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Aard van de Output.</td>
-                        <td property="vann:usageNote"></td>
-                        <td><a href="http://joinup.ec.europa.eu/asset/cpsv-ap/Distribution/CPSV-AP_Specification_v2.0/PDF">Link</a></td>
+                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Float</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Het bedrag dat werd uitbetaald aan de begunstigde, of een intermediaire betrokkene, van de subsidiemaatregel op een bepaalde datum.</td>
+                        <td property="vann:usageNote">Dit bedrag kan kleiner zijn of gelijk aan het vastgelegde bedrag voor een bepaalde periode.</td>
+                        <td></td>
                       </tr>
                     
                     </tbody>
@@ -996,15 +463,38 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Parametriseerbaar Criteriumvereiste"><a href="http://data.vlaanderen.be/ns/subsidie#ParametriseerbaarCriteriumvereiste" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#ParametriseerbaarCriteriumvereiste" data-placement="right">Parametriseerbaar Criteriumvereiste</a></h3>
+              <h3 class="h3" id="Formele Organisatie"><a href="http://www.w3.org/ns/org#FormalOrganization" data-toggle="tooltip" data-content="http://www.w3.org/ns/org#FormalOrganization" data-placement="right">Formele Organisatie</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Criterium dat toelaat te bepalen of een gebruiker recht heeft op een dienstverlening of deze mag gebruiken en op basis van bepaalde parameters eenduidig (binair) ge&#235;valueerd kan worden. </dd>
+                    <dt>Beschrijving</dt><dd>Een erkende organisatie, erkend in brede zin of  meer specifiek in juridische zin met bijbehorende rechten en plichten.</dd>
+                    
+                    <dt>Gebruik</dt><dd>Bvb een bedrijf,een vzw,een overheidsorgaan,een kerkgemeenschap.</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn geen eigenschappen gedefinieerd.</dd>
+                    
+                  </dl>
+                </div>
+                
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Geregistreerde Organisatie"><a href="http://www.w3.org/ns/regorg#RegisteredOrganization" data-toggle="tooltip" data-content="http://www.w3.org/ns/regorg#RegisteredOrganization" data-placement="right">Geregistreerde Organisatie</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Organisatie met een juridisch statuut vastgelegd door registratie. Vergelijk met een formele organisatie waarbij dit statuut ook op een andere manier verkregen kan zijn.</dd>
+                    
+                    <dt>Gebruik</dt><dd>In Belgi&#235; moeten oa volgende organisaties zich registreren: vennootschap (nv,bvba etc),eenmanszaak,overheidsorgaan,stichting&#133; Bij registratie krijgt de organisatie een ondernemingsnummer en worden zijn gegevens ingevoerd in de KBO.</dd>
                     
                     <dt>Eigenschappen</dt>
                     
                     <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Parametriseerbaar%20Criteriumvereiste%3Aheeft%20authentieke%20bron">heeft authentieke bron</a>.</dd>
+                      <a href="#Geregistreerde%20Organisatie%3Arechtspersoonlijkheid">rechtspersoonlijkheid</a>, 
+                      <a href="#Geregistreerde%20Organisatie%3Arechtstoestand">rechtstoestand</a>, 
+                      <a href="#Geregistreerde%20Organisatie%3Arechtsvorm">rechtsvorm</a>, 
+                      <a href="#Geregistreerde%20Organisatie%3Aregistratie">registratie</a>, 
+                      <a href="#Geregistreerde%20Organisatie%3Awettelijke%20naam">wettelijke naam</a>.</dd>
                     
                   </dl>
                 </div>
@@ -1024,17 +514,124 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
         
                     <tbody class="supertype">
                     
-                      <tr id="Parametriseerbaar%20Criteriumvereiste%3Aheeft%20authentieke%20bron" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/subsidie#heeftAuthentiekeBron">
+                      <tr id="Geregistreerde%20Organisatie%3Arechtspersoonlijkheid" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/organisatie#rechtspersoonlijkheid">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/subsidie#heeftAuthentiekeBron" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#heeftAuthentiekeBron" data-placement="right">
-                            heeft authentieke bron</a>
+                            <a href="http://data.vlaanderen.be/ns/organisatie#rechtspersoonlijkheid" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/organisatie#rechtspersoonlijkheid" data-placement="right">
+                            rechtspersoonlijkheid</a>
                           </code>
                         </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#boolean" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#boolean" data-placement="right">Boolean</a></td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Rechtspersoonlijkheidtype</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Geeft aan of de rechtspersoonlijkheid van de geregistreerde organisatie deze is van een natuurlijk persoon of van een rechtspersoon. </td>
+                        <td property="vann:usageNote">Een rechtspersoon is een juridische constructie die een organisatie dezelfde rechtspersoonlijkheid geeft als een natuurlijk persoon (kan bv ook schulden hebben, contracten afsluiten, aangeklaagd worden etc). Vb privaatrechterlijke rechtspersonen: vennootschappen, vzw's etc.; vb publiekrechterlijke rechtspersonen: steden, gemeenten etc. Een feitelijke vereniging is in principe geen rechtspersoon maar wordt als ze geregistreerd is id KBO toch als dusdanig geklasseerd.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Geregistreerde%20Organisatie%3Arechtstoestand" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/organisatie#rechtstoestand">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/organisatie#rechtstoestand" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/organisatie#rechtstoestand" data-placement="right">
+                            rechtstoestand</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Rechtstoestandtype</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Status van de geregistreerde organisatie.</td>
+                        <td property="vann:usageNote">Stemt in de KBO overeen met rechtstoestand, bvb normale toestand, gerechtelijk akkoord, opening faillissement etc.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Geregistreerde%20Organisatie%3Arechtsvorm" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/organisatie#rechtsvorm">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.vlaanderen.be/ns/organisatie#rechtsvorm" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/organisatie#rechtsvorm" data-placement="right">
+                            rechtsvorm</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Rechtsvormtype</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Juridisch statuut van de geregistreerde organisatie.</td>
+                        <td property="vann:usageNote">Stemt in de KBO overeen met rechtsvorm, bvb NV, VZW, Stad/Gemeente, OCMW etc.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Geregistreerde%20Organisatie%3Aregistratie" typeof="rdfs:Property" resource="http://www.w3.org/ns/regorg#registration">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/ns/regorg#registration" data-toggle="tooltip" data-content="http://www.w3.org/ns/regorg#registration" data-placement="right">
+                            registratie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/ns/adms#Identifier" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#Identifier" data-placement="right">Identificator</a></td>
                         <td>1</td>
-                        <td property="rdfs:comment">Geeft aan of de informatie voor de beoordeling van het criterium via een authentieke bron verkregen kan worden.</td>
-                        <td property="vann:usageNote"></td>
+                        <td property="rdfs:comment">Identificator dat de organisatie verkreeg bij registratie.</td>
+                        <td property="vann:usageNote">In de KBO is dit het ondernemingsnummer.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Geregistreerde%20Organisatie%3Awettelijke%20naam" typeof="rdfs:Property" resource="http://www.w3.org/ns/regorg#legalName">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/ns/regorg#legalName" data-toggle="tooltip" data-content="http://www.w3.org/ns/regorg#legalName" data-placement="right">
+                            wettelijke naam</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">TaalString</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Wettelijk geregistreerde naam vd organisatie.</td>
+                        <td property="vann:usageNote">Evt in verschillende talen.</td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Organisatie"><a href="http://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="http://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Een aantal mensen georganiseerd in een gemeenschap of andere sociale, commerci&#235;le of politieke structuur. De groep heeft een gemeenschappelijk doel of bestaanreden die de individuele leden ervan overstijgt en kan handelen als agent. Een organisatie heeft dikwijls een hi&#235;rarchische structuur.</dd>
+                    
+                    <dt>Gebruik</dt><dd> </dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Organisatie%3Avoorkeursnaam">voorkeursnaam</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Organisatie%3Avoorkeursnaam" typeof="rdfs:Property" resource="http://www.w3.org/2004/02/skos/core#prefLabel">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/2004/02/skos/core#prefLabel" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#prefLabel" data-placement="right">
+                            voorkeursnaam</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">TaalString</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Naam waarmee de organisatie bij voorkeur wordt aangeduid.</td>
+                        <td property="vann:usageNote"> </td>
                         <td></td>
                       </tr>
                     
@@ -1083,7 +680,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             beschrijving</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
+                        <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">TaalString</a></td>
                         <td>1</td>
                         <td property="rdfs:comment">Beschrijving van de Participatie.</td>
                         <td property="vann:usageNote"></td>
@@ -1097,11 +694,11 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             rol</a>
                           </code>
                         </td>
-                        <td><a href="http://data.vlaanderen.be/ns/subsidie#ParticipatieRol" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#ParticipatieRol" data-placement="right">ParticipatieRol</a></td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">ParticipatieRol</a></td>
                         <td>1...*</td>
                         <td property="rdfs:comment">De rol die de deelnemer ad Publieke Organisatie speelt.</td>
                         <td property="vann:usageNote"></td>
-                        <td></td>
+                        <td><a href="https://data.vlaanderen.be/id/conceptscheme/ParticipatieRol">Link</a></td>
                       </tr>
                     
                     </tbody>
@@ -1114,7 +711,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
               <h3 class="h3" id="Publieke Dienstverlening"><a href="http://purl.org/vocab/cpsv#PublicService" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#PublicService" data-placement="right">Publieke Dienstverlening</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Een Publieke Dienstverlening is een geheel van verplichte of optioneel uitgevoerde of uitvoerbare acties door of in naam van een publieke organisatie. De dienstverlening is ten bate van een individu, een bedrijf, een andere publieke organisatie of groepen hiervan.</dd>
+                    <dt>Beschrijving</dt><dd>Een vorm van Publieke Dienstverlening waarbij de overheid fondsen ter beschikking stelt, bedoeld om een prijs te verlagen of een bepaalde uitgave of investering aantrekkelijker te maken.</dd>
                     
                     <dt>Gebruik</dt><dd>De dienstverlening vormt een aanbod (dat dus niet noodzakelijk wordt gebruikt). Ze houdt niet noodzakelijk het opnemen van een recht in,de dienstverlening kan de gebruiker ook toelaten een verplichting te vervullen.</dd>
                     
@@ -1122,20 +719,12 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                     
                     <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
                       <a href="#Publieke%20Dienstverlening%3Adienstverlener">dienstverlener</a>, 
-                      <a href="#Publieke%20Dienstverlening%3Adoelstelling">doelstelling</a>, 
-                      <a href="#Publieke%20Dienstverlening%3Aheeft%20criterium">heeft criterium</a>, 
-                      <a href="#Publieke%20Dienstverlening%3Aheeft%20formeel%20kader">heeft formeel kader</a>, 
-                      <a href="#Publieke%20Dienstverlening%3Aheeft%20input">heeft input</a>, 
                       <a href="#Publieke%20Dienstverlening%3Aheeft%20participatie">heeft participatie</a>, 
                       <a href="#Publieke%20Dienstverlening%3Aheeft%20rechtsgrond">heeft rechtsgrond</a>, 
-                      <a href="#Publieke%20Dienstverlening%3Aheeft%20status">heeft status</a>, 
                       <a href="#Publieke%20Dienstverlening%3Aheeft%20verantwoordelijke%20autoriteit">heeft verantwoordelijke autoriteit</a>, 
-                      <a href="#Publieke%20Dienstverlening%3Ainstrument">instrument</a>, 
-                      <a href="#Publieke%20Dienstverlening%3Aproduceert">produceert</a>, 
-                      <a href="#Publieke%20Dienstverlening%3Arelatie">relatie</a>, 
-                      <a href="#Publieke%20Dienstverlening%3Astaatssteunnummer">staatssteunnummer</a>, 
-                      <a href="#Publieke%20Dienstverlening%3Avereist">vereist</a>, 
-                      <a href="#Publieke%20Dienstverlening%3Avolgt">volgt</a>.</dd>
+                      <a href="#Publieke%20Dienstverlening%3Ais%20instantie%20van">is instantie van</a>, 
+                      <a href="#Publieke%20Dienstverlening%3AisGedocumenteerdDoor">isGedocumenteerdDoor</a>, 
+                      <a href="#Publieke%20Dienstverlening%3Aproduceert">produceert</a>.</dd>
                     
                   </dl>
                 </div>
@@ -1169,62 +758,6 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                     
-                      <tr id="Publieke%20Dienstverlening%3Adoelstelling" typeof="rdfs:Property" resource="http://data.europa.eu/stateaidtransparency/sat#objective">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.europa.eu/stateaidtransparency/sat#objective" data-toggle="tooltip" data-content="http://data.europa.eu/stateaidtransparency/sat#objective" data-placement="right">
-                            doelstelling</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">SubsidieDoelstelling</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Primaire doelstelling, te behalen door de begunstigde met gebruik van de steunmaatregel.</td>
-                        <td property="vann:usageNote"></td>
-                        <td><a href="http://ec.europa.eu/competition/state_aid/register/user_guide.html#annex1">Link</a></td>
-                      </tr>
-                    
-                      <tr id="Publieke%20Dienstverlening%3Aheeft%20criterium" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/hasCriterion">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.europa.eu/m8g/hasCriterion" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/hasCriterion" data-placement="right">
-                            heeft criterium</a>
-                          </code>
-                        </td>
-                        <td><a href="http://data.europa.eu/m8g/CriterionRequirement" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/CriterionRequirement" data-placement="right">CriteriumVereiste</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Criterium waaraan de gebruiker moet voldoen om recht te hebben op een dienstverlening of om een dienstverlening te mogen gebruiken.</td>
-                        <td property="vann:usageNote">Bvb inwoner van de gemeente, meer dan 18 jaar etc.</td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Publieke%20Dienstverlening%3Aheeft%20formeel%20kader" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/hasFormalFramework">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.europa.eu/m8g/hasFormalFramework" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/hasFormalFramework" data-placement="right">
-                            heeft formeel kader</a>
-                          </code>
-                        </td>
-                        <td><a href="http://purl.org/vocab/cpsv#FormalFramework" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#FormalFramework" data-placement="right">FormeelKader</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Het formeel kader (bv de wetgeving) waar de publieke dienstverlening betrekking op heeft of waarbinnen ze werkt of waaraan ze haar wettelijke basis ontleent.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Publieke%20Dienstverlening%3Aheeft%20input" typeof="rdfs:Property" resource="http://purl.org/vocab/cpsv#hasInput">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/vocab/cpsv#hasInput" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#hasInput" data-placement="right">
-                            heeft input</a>
-                          </code>
-                        </td>
-                        <td><a href="http://data.europa.eu/m8g/Evidence" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/Evidence" data-placement="right">Bewijs</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Bewijsstuk dat moeten voorgelegd worden om de Publieke Dienstverlening te kunnen gebruiken.</td>
-                        <td property="vann:usageNote">Als de bewijsstukken afhangen het kanaal waarmee met de Publieke Dienstverlening wordt ge&#239;nterageerd gebruiken we de associatie Kanaal-vereistAlsInput-Bewijs.</td>
-                        <td></td>
-                      </tr>
-                    
                       <tr id="Publieke%20Dienstverlening%3Aheeft%20participatie" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/hasParticipation">
                         <td>
                           <code property="rdfs:label">
@@ -1239,30 +772,16 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                     
-                      <tr id="Publieke%20Dienstverlening%3Aheeft%20rechtsgrond" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/subsidie#heeftRechtsgrond">
+                      <tr id="Publieke%20Dienstverlening%3Aheeft%20rechtsgrond" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/subsidie#heeftRechtsgrond">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/subsidie#heeftRechtsgrond" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#heeftRechtsgrond" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/subsidie#heeftRechtsgrond" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/subsidie#heeftRechtsgrond" data-placement="right">
                             heeft rechtsgrond</a>
                           </code>
                         </td>
-                        <td><a href="http://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie" data-placement="right">RechtsgrondToekenningSubsidie</a></td>
+                        <td><a href="https://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie" data-placement="right">RechtsgrondToekenningSubsidie</a></td>
                         <td>0...*</td>
                         <td property="rdfs:comment">De rechtsgrond op basis waarvan de subsidiemaatregel werd toegekend.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Publieke%20Dienstverlening%3Aheeft%20status" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/dienst#heeftStatus">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/dienst#heeftStatus" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/dienst#heeftStatus" data-placement="right">
-                            heeft status</a>
-                          </code>
-                        </td>
-                        <td><a href="http://data.vlaanderen.be/ns/subsidie#Status" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#Status" data-placement="right">Status</a></td>
-                        <td></td>
-                        <td property="rdfs:comment">Link tussen Publieke Dienstverlening en Status.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -1281,18 +800,32 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                     
-                      <tr id="Publieke%20Dienstverlening%3Ainstrument" typeof="rdfs:Property" resource="http://data.europa.eu/stateaidtransparency/sat#aidInstrument">
+                      <tr id="Publieke%20Dienstverlening%3Ais%20instantie%20van" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/transactie#isInstantieVan">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.europa.eu/stateaidtransparency/sat#aidInstrument" data-toggle="tooltip" data-content="http://data.europa.eu/stateaidtransparency/sat#aidInstrument" data-placement="right">
-                            instrument</a>
+                            <a href="https://data.vlaanderen.be/ns/transactie#isInstantieVan" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/transactie#isInstantieVan" data-placement="right">
+                            is instantie van</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">SubsidieInstrument</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Type van de steunmaatregel. Bv. belastingsvermindering, subsidie, etc.</td>
+                        <td><a href="http://purl.org/vocab/cpsv#PublicService" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#PublicService" data-placement="right">Subsidiemaatregel (aanbod)</a></td>
+                        <td></td>
+                        <td property="rdfs:comment">Linkt een bepaalde consumptie van een subsidiemaatregel (een tansactie) met de subsidiemaatregel uit het dienstverleningsregister.	</td>
                         <td property="vann:usageNote"></td>
-                        <td><a href="http://ec.europa.eu/competition/state_aid/studies_reports/conceptual_remarks.html#categ_aid">Link</a></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Publieke%20Dienstverlening%3AisGedocumenteerdDoor" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/transactie#isGedocumenteerdDoor">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/transactie#isGedocumenteerdDoor" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/transactie#isGedocumenteerdDoor" data-placement="right">
+                            isGedocumenteerdDoor</a>
+                          </code>
+                        </td>
+                        <td><a href="https://lod.milieuinfo.be/ns/dossier" data-toggle="tooltip" data-content="https://lod.milieuinfo.be/ns/dossier" data-placement="right">Dossier</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Verwijzing naar een dossier met een logische bundeling van documenten binnen een bepaalde consumptie van een Subsidiemaatregel.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
                       </tr>
                     
                       <tr id="Publieke%20Dienstverlening%3Aproduceert" typeof="rdfs:Property" resource="http://purl.org/vocab/cpsv#produces">
@@ -1302,66 +835,10 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             produceert</a>
                           </code>
                         </td>
-                        <td><a href="http://data.europa.eu/m8g/Output" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/Output" data-placement="right">Output</a></td>
+                        <td><a href="https://data.vlaanderen.be/ns/subsidie#FinancieelVoordeel" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/subsidie#FinancieelVoordeel" data-placement="right">FinancieelVoordeel</a></td>
                         <td>0...*</td>
                         <td property="rdfs:comment">Het werkelijke resultaat van de uitvoering vd Publieke Dienstverlening.</td>
                         <td property="vann:usageNote">Bvb een erkenning, financieel voordeel, code, fysiek object&#133;</td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Publieke%20Dienstverlening%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
-                            relatie</a>
-                          </code>
-                        </td>
-                        <td><a href="http://purl.org/vocab/cpsv#PublicService" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#PublicService" data-placement="right">Subsidiemaatregel</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Andere Publieke Dienstverlening waarmee de Publieke Dienstverlening gerelateerd is.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Publieke%20Dienstverlening%3Astaatssteunnummer" typeof="rdfs:Property" resource="http://data.europa.eu/stateaidtransparency/sat#aidMeasure">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.europa.eu/stateaidtransparency/sat#aidMeasure" data-toggle="tooltip" data-content="http://data.europa.eu/stateaidtransparency/sat#aidMeasure" data-placement="right">
-                            staatssteunnummer</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Identificatie van de steunmaatregel. Dit is de identificator van het State Aid Case Management systeem van de Europese Commissie.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Publieke%20Dienstverlening%3Avereist" typeof="rdfs:Property" resource="http://purl.org/dc/terms/requires">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/requires" data-toggle="tooltip" data-content="http://purl.org/dc/terms/requires" data-placement="right">
-                            vereist</a>
-                          </code>
-                        </td>
-                        <td><a href="http://purl.org/vocab/cpsv#PublicService" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#PublicService" data-placement="right">Subsidiemaatregel</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Publieke Dienstverlening die voorafgaandelijk moet worden uitgevoerd om van de Publieke Dienstverlening gebruik te kunnen maken.</td>
-                        <td property="vann:usageNote">De Dienstverlening gebruikt soms de Output van een andere Dienstverlening die dan bv het vereiste Bewijsstuk levert. Meer uitleg volgt uit de beschrijving van deze bewijsstukken of in de Richtlijn die met de dienstverlening geassocieerd is.</td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Publieke%20Dienstverlening%3Avolgt" typeof="rdfs:Property" resource="http://purl.org/vocab/cpsv#follows">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/vocab/cpsv#follows" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#follows" data-placement="right">
-                            volgt</a>
-                          </code>
-                        </td>
-                        <td><a href="http://purl.org/vocab/cpsv#Rule" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#Rule" data-placement="right">Richtlijn</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">De Richtlijn die de werking van de Publieke Dienstverlening stuurt.</td>
-                        <td property="vann:usageNote">Typisch implementeert een Richtlijn het beleid van een Publieke Organisatie.</td>
                         <td></td>
                       </tr>
                     
@@ -1372,21 +849,22 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Publieke Organisatie"><a href="http://data.europa.eu/m8g/PublicOrganisation" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/PublicOrganisation" data-placement="right">Publieke Organisatie</a></h3>
+              <h3 class="h3" id="Publieke Dienstverlening"><a href="http://purl.org/vocab/cpsv#PublicService" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#PublicService" data-placement="right">Publieke Dienstverlening</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Een Organisatie die volgens een wettelijk kader behoort tot de publieke sector,ongeacht het bestuursniveau waarop dat kader van kracht is.</dd>
+                    <dt>Beschrijving</dt><dd>Een vorm van Publieke Dienstverlening waarbij de overheid fondsen ter beschikking stelt, bedoeld om een prijs te verlagen of een bepaalde uitgave of investering aantrekkelijker te maken.</dd>
                     
-                    <dt>Gebruik</dt><dd>De overheids- en semioverheidsorganisaties die tot men zo tot de publieke sector kan rekenen worden in Europese richtlijn 2003/98/EG "openbaar lichaam" genoemd en gedefinieerd als: "de staat, zijn territoriale lichamen, publiekrechtelijke instellingen, en verenigingen gevormd door een of meer van deze lichamen of een of meer van deze publiekrechtelijke instellingen". En onder een publiekrechtelijke instelling verstaat men " iedere instelling die a) is opgericht met het specifieke doel te voorzien in behoeften van algemeen belang die niet van industri&#235;le of commerci&#235;le aard zijn, en b) rechtspersoonlijkheid heeft, en c) waarvan hetzij de activiteiten in hoofdzaak door de staat of zijn territoriale lichamen of andere publiekrechtelijke instellingen worden gefinancierd, hetzij het beheer is onderworpen aan toezicht door deze laatste, hetzij de leden van het bestuursorgaan, het leidinggevend orgaan of het toezichthoudend orgaan voor meer dan de helft door de staat, zijn territoriale lichamen of andere publiekrechtelijke instellingen zijn aangewezen.".
-</dd>
+                    <dt>Gebruik</dt><dd>De dienstverlening vormt hier een aanbod (dat dus niet noodzakelijk wordt gebruikt). Ze houdt niet noodzakelijk het opnemen van een recht in,de dienstverlening kan de gebruiker ook toelaten een verplichting te vervullen.</dd>
                     
                     <dt>Eigenschappen</dt>
                     
                     <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Publieke%20Organisatie%3ABeschrijving">Beschrijving</a>, 
-                      <a href="#Publieke%20Organisatie%3AHomepage">Homepage</a>, 
-                      <a href="#Publieke%20Organisatie%3ALogo">Logo</a>, 
-                      <a href="#Publieke%20Organisatie%3AWerkingsgebied">Werkingsgebied</a>.</dd>
+                      <a href="#Publieke%20Dienstverlening%3Abegrotingsartikel">begrotingsartikel</a>, 
+                      <a href="#Publieke%20Dienstverlening%3Ade-minimis">de-minimis</a>, 
+                      <a href="#Publieke%20Dienstverlening%3Asector">sector</a>, 
+                      <a href="#Publieke%20Dienstverlening%3Astaatssteunnummer">staatssteunnummer</a>, 
+                      <a href="#Publieke%20Dienstverlening%3Asubsidie-instrument">subsidie-instrument</a>, 
+                      <a href="#Publieke%20Dienstverlening%3Asubsidiedoelstelling">subsidiedoelstelling</a>.</dd>
                     
                   </dl>
                 </div>
@@ -1406,60 +884,88 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
         
                     <tbody class="supertype">
                     
-                      <tr id="Publieke%20Organisatie%3ABeschrijving" typeof="rdfs:Property" resource="http://purl.org/dc/terms/description">
+                      <tr id="Publieke%20Dienstverlening%3Abegrotingsartikel" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/subsidie#begrotingsartikel">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/description" data-toggle="tooltip" data-content="http://purl.org/dc/terms/description" data-placement="right">
-                            Beschrijving</a>
+                            <a href="https://data.vlaanderen.be/ns/subsidie#begrotingsartikel" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/subsidie#begrotingsartikel" data-placement="right">
+                            begrotingsartikel</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
+                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">Literal</a></td>
                         <td>1</td>
-                        <td property="rdfs:comment">Beschrijving van de Publieke Organisatie.</td>
-                        <td property="vann:usageNote"></td>
+                        <td property="rdfs:comment">Het laagste niveau binnen de Vlaamse begrotingstabel. Begrotingsartikelen vormen de basis bij het opstellen, aanpassen en uitvoeren van de begroting.</td>
+                        <td property="vann:usageNote">Bijvoorbeeld DB0/9DG-C-T-G/OW. Voor meer informatie zie: http://vormingbegroting.fenb.be/handboek-begroting/begrotingsartikelen</td>
                         <td></td>
                       </tr>
                     
-                      <tr id="Publieke%20Organisatie%3AHomepage" typeof="rdfs:Property" resource="http://xmlns.com/foaf/0.1/homepage">
+                      <tr id="Publieke%20Dienstverlening%3Ade-minimis" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/subsidie#de-minimis">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://xmlns.com/foaf/0.1/homepage" data-toggle="tooltip" data-content="http://xmlns.com/foaf/0.1/homepage" data-placement="right">
-                            Homepage</a>
+                            <a href="https://data.vlaanderen.be/ns/subsidie#de-minimis" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/subsidie#de-minimis" data-placement="right">
+                            de-minimis</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Adres vd homepage van de website vd Publieke Organisatie.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Publieke%20Organisatie%3ALogo" typeof="rdfs:Property" resource="http://schema.org/logo">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://schema.org/logo" data-toggle="tooltip" data-content="http://schema.org/logo" data-placement="right">
-                            Logo</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right"></a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Verwijzing naar het logo vd Publieke Organisatie.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Publieke%20Organisatie%3AWerkingsgebied" typeof="rdfs:Property" resource="http://purl.org/dc/terms/spatial">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/spatial" data-toggle="tooltip" data-content="http://purl.org/dc/terms/spatial" data-placement="right">
-                            Werkingsgebied</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">ATU</a></td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#boolean" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#boolean" data-placement="right">Boolean</a></td>
                         <td>1</td>
-                        <td property="rdfs:comment">Administratief gebied dat de Publieke Organisatie dekt.</td>
+                        <td property="rdfs:comment">True wanneer de steun die niet onder een vrijstellingsgrond valt en de subsidiemaatregel onderhevig is aan de de-minimisregel. </td>
                         <td property="vann:usageNote"></td>
-                        <td><a href="ttp://publications.europa.eu/mdr/authority/atu/index.html">Link</a></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Publieke%20Dienstverlening%3Asector" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/sector">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.europa.eu/m8g/sector" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/sector" data-placement="right">
+                            sector</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">NACE</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Sector of bedrijvigheid waarop de publieke dienstverlening betrekking heeft of waarvoor deze is bedoeld.</td>
+                        <td property="vann:usageNote">Bv milieu, veiligheid, wonen... </td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Publieke%20Dienstverlening%3Astaatssteunnummer" typeof="rdfs:Property" resource="http://data.europa.eu/stateaidtransparency/sat#aidMeasure">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.europa.eu/stateaidtransparency/sat#aidMeasure" data-toggle="tooltip" data-content="http://data.europa.eu/stateaidtransparency/sat#aidMeasure" data-placement="right">
+                            staatssteunnummer</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Identificatie van de steunmaatregel. Dit is de identificator van het State Aid Case Management systeem van de Europese Commissie.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Publieke%20Dienstverlening%3Asubsidie-instrument" typeof="rdfs:Property" resource="http://data.europa.eu/stateaidtransparency/sat#aidInstrument">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.europa.eu/stateaidtransparency/sat#aidInstrument" data-toggle="tooltip" data-content="http://data.europa.eu/stateaidtransparency/sat#aidInstrument" data-placement="right">
+                            subsidie-instrument</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Concept</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">	Type van de steunmaatregel. Bv. belastingsvermindering, subsidie, etc.</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="http://ec.europa.eu/competition/state_aid/studies_reports/conceptual_remarks.html#categ_aid">Link</a></td>
+                      </tr>
+                    
+                      <tr id="Publieke%20Dienstverlening%3Asubsidiedoelstelling" typeof="rdfs:Property" resource="http://data.europa.eu/stateaidtransparency/sat#objective">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.europa.eu/stateaidtransparency/sat#objective" data-toggle="tooltip" data-content="http://data.europa.eu/stateaidtransparency/sat#objective" data-placement="right">
+                            subsidiedoelstelling</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Concept</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Primaire doelstelling, te behalen door de begunstigde met gebruik van de steunmaatregel.</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="http://ec.europa.eu/competition/state_aid/register/user_guide.html#annex1">Link</a></td>
                       </tr>
                     
                     </tbody>
@@ -1469,7 +975,24 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Rechtsgrond Toekenning Subsidie"><a href="http://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie" data-placement="right">Rechtsgrond Toekenning Subsidie</a></h3>
+              <h3 class="h3" id="Publieke Organisatie"><a href="http://data.europa.eu/m8g/PublicOrganisation" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/PublicOrganisation" data-placement="right">Publieke Organisatie</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Een Organisatie die volgens een wettelijk kader behoort tot de publieke sector,ongeacht het bestuursniveau waarop dat kader van kracht is.</dd>
+                    
+                    <dt>Gebruik</dt><dd>De overheids- en semioverheidsorganisaties die tot men zo tot de publieke sector kan rekenen worden in Europese richtlijn 2003/98/EG "openbaar lichaam" genoemd en gedefinieerd als: "de staat, zijn territoriale lichamen, publiekrechtelijke instellingen, en verenigingen gevormd door een of meer van deze lichamen of een of meer van deze publiekrechtelijke instellingen". En onder een publiekrechtelijke instelling verstaat men " iedere instelling die a) is opgericht met het specifieke doel te voorzien in behoeften van algemeen belang die niet van industri&#235;le of commerci&#235;le aard zijn, en b) rechtspersoonlijkheid heeft, en c) waarvan hetzij de activiteiten in hoofdzaak door de staat of zijn territoriale lichamen of andere publiekrechtelijke instellingen worden gefinancierd, hetzij het beheer is onderworpen aan toezicht door deze laatste, hetzij de leden van het bestuursorgaan, het leidinggevend orgaan of het toezichthoudend orgaan voor meer dan de helft door de staat, zijn territoriale lichamen of andere publiekrechtelijke instellingen zijn aangewezen.".</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn geen eigenschappen gedefinieerd.</dd>
+                    
+                  </dl>
+                </div>
+                
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Rechtsgrond Toekenning Subsidie"><a href="https://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie" data-placement="right">Rechtsgrond Toekenning Subsidie</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
                     <dt>Beschrijving</dt><dd>De regelgeving, rechtshandeling en/of beleidskeuze waardoor die de legale basis vormt voor de toekenning van een subsidiemaatregel.</dd>
@@ -1477,10 +1000,9 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                     <dt>Eigenschappen</dt>
                     
                     <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Rechtsgrond%20Toekenning%20Subsidie%3Aaangenomen%20door">aangenomen door</a>, 
-                      <a href="#Rechtsgrond%20Toekenning%20Subsidie%3Abedrag">bedrag</a>, 
-                      <a href="#Rechtsgrond%20Toekenning%20Subsidie%3Abuitenwerkingstreding">buitenwerkingstreding</a>, 
-                      <a href="#Rechtsgrond%20Toekenning%20Subsidie%3Ainwerkingstreding">inwerkingstreding</a>, 
+                      <a href="#Rechtsgrond%20Toekenning%20Subsidie%3Agesubsidieerde%20activiteit">gesubsidieerde activiteit</a>, 
+                      <a href="#Rechtsgrond%20Toekenning%20Subsidie%3Agesubsidieerde%20periode">gesubsidieerde periode</a>, 
+                      <a href="#Rechtsgrond%20Toekenning%20Subsidie%3Atoegekend%20bedrag">toegekend bedrag</a>, 
                       <a href="#Rechtsgrond%20Toekenning%20Subsidie%3Atype%20document">type document</a>.</dd>
                     
                   </dl>
@@ -1501,59 +1023,45 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
         
                     <tbody class="supertype">
                     
-                      <tr id="Rechtsgrond%20Toekenning%20Subsidie%3Aaangenomen%20door" typeof="rdfs:Property" resource="http://data.europa.eu/eli/ontology#passed_by">
+                      <tr id="Rechtsgrond%20Toekenning%20Subsidie%3Agesubsidieerde%20activiteit" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/subsidie#gesubsidieerdeActiviteit">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.europa.eu/eli/ontology#passed_by" data-toggle="tooltip" data-content="http://data.europa.eu/eli/ontology#passed_by" data-placement="right">
-                            aangenomen door</a>
+                            <a href="https://data.vlaanderen.be/ns/subsidie#gesubsidieerdeActiviteit" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/subsidie#gesubsidieerdeActiviteit" data-placement="right">
+                            gesubsidieerde activiteit</a>
                           </code>
                         </td>
-                        <td><a href="http://data.vlaanderen.be/ns/besluit#Bestuursorgaan" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/besluit#Bestuursorgaan" data-placement="right">Bestuursorgaan</a></td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
                         <td>1</td>
-                        <td property="rdfs:comment">Het orgaan dat de rechtsgrond (Besluit) heeft goedgekeurd, waardoor er een rechtsgevolg ontstond.</td>
+                        <td property="rdfs:comment">De activiteit die in aanmerking komt voor een bepaalde subsidiemaatregel.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
                     
-                      <tr id="Rechtsgrond%20Toekenning%20Subsidie%3Abedrag" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/subsidie#bedrag">
+                      <tr id="Rechtsgrond%20Toekenning%20Subsidie%3Agesubsidieerde%20periode" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/subsidie#gesubsidieerdePeriode">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/subsidie#bedrag" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#bedrag" data-placement="right">
-                            bedrag</a>
+                            <a href="https://data.vlaanderen.be/ns/subsidie#gesubsidieerdePeriode" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/subsidie#gesubsidieerdePeriode" data-placement="right">
+                            gesubsidieerde periode</a>
+                          </code>
+                        </td>
+                        <td><a href="http://purl.org/dc/terms/PeriodOfTime" data-toggle="tooltip" data-content="http://purl.org/dc/terms/PeriodOfTime" data-placement="right">Tijdsinterval</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De periode waarop de subsidie betrekking heeft.</td>
+                        <td property="vann:usageNote">Beschreven aan de hand van een begin- en einddatum. Dit attribuut kan gebruikt worden om dubbele subsidi&#235;ring op te sporen.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Rechtsgrond%20Toekenning%20Subsidie%3Atoegekend%20bedrag" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/subsidie#toegekendBedrag">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/subsidie#toegekendBedrag" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/subsidie#toegekendBedrag" data-placement="right">
+                            toegekend bedrag</a>
                           </code>
                         </td>
                         <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Float</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">Het bedrag dat werd toegekend aan de begunstigde van de subsidiemaatregel.</td>
+                        <td property="rdfs:comment">Het bedrag dat werd toegekend aan de begunstigde van de subsidiemaatregel en waar deze bijgevolg recht op heeft om te ontvangen.</td>
                         <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Rechtsgrond%20Toekenning%20Subsidie%3Abuitenwerkingstreding" typeof="rdfs:Property" resource="http://data.europa.eu/eli/ontology#date_no_longer_in_force">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.europa.eu/eli/ontology#date_no_longer_in_force" data-toggle="tooltip" data-content="http://data.europa.eu/eli/ontology#date_no_longer_in_force" data-placement="right">
-                            buitenwerkingstreding</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#date" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#date" data-placement="right">Date</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">De laatste dag waarop de regelgeving nog van kracht is.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Rechtsgrond%20Toekenning%20Subsidie%3Ainwerkingstreding" typeof="rdfs:Property" resource="http://data.europa.eu/eli/ontology#first_date_entry_in_force">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.europa.eu/eli/ontology#first_date_entry_in_force" data-toggle="tooltip" data-content="http://data.europa.eu/eli/ontology#first_date_entry_in_force" data-placement="right">
-                            inwerkingstreding</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#date" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#date" data-placement="right">Date</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">De datum waarop de regelgeving van kracht wordt.</td>
-                        <td property="vann:usageNote">Dit is niet hetzelfde als wanneer de regelgeving toepasbaar (in de praktijk uitvoerbaar) wordt. De toepasbaarheid van de regelgeving kan op of na de inwerkingtreding liggen.</td>
                         <td></td>
                       </tr>
                     
@@ -1567,7 +1075,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">ResourceType</a></td>
                         <td>1...*</td>
                         <td property="rdfs:comment">Het type van de rechtsgrond.</td>
-                        <td property="vann:usageNote">Bijvoorbeeld: reglement, wet, voorstel.</td>
+                        <td property="vann:usageNote">Bijvoorbeeld: besluit, reglement, wet, voorstel.</td>
                         <td></td>
                       </tr>
                     
@@ -1578,20 +1086,21 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Richtlijn"><a href="http://purl.org/vocab/cpsv#Rule" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#Rule" data-placement="right">Richtlijn</a></h3>
+              <h3 class="h3" id="Status"><a href="https://data.vlaanderen.be/ns/transactie#Status" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/transactie#Status" data-placement="right">Status</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Vertegenwoordigt de regels,richtlijnen of procedures gevolgd door de Publieke Dienstverlening.</dd>
-                    
-                    <dt>Gebruik</dt><dd>Omvat gebruiksvoorwaarden,licentie- en authenticatievereisten van de Publieke Dienstverlening.</dd>
+                    <dt>Beschrijving</dt><dd>De status van de afname van de publieke dienstverlening.</dd>
                     
                     <dt>Eigenschappen</dt>
                     
                     <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Richtlijn%3Abeschrijving">beschrijving</a>, 
-                      <a href="#Richtlijn%3Aimplementeert">implementeert</a>, 
-                      <a href="#Richtlijn%3Ataal">taal</a>, 
-                      <a href="#Richtlijn%3Atitel">titel</a>.</dd>
+                      <a href="#Status%3Aactie">actie</a>, 
+                      <a href="#Status%3Aactie%20nodig">actie nodig</a>, 
+                      <a href="#Status%3Astatus%20EDRL">status EDRL</a>, 
+                      <a href="#Status%3Astatus%20Vlaams%20fase">status Vlaams fase</a>, 
+                      <a href="#Status%3Astatus%20Vlaamse%20code">status Vlaamse code</a>, 
+                      <a href="#Status%3Astatusdatum">statusdatum</a>, 
+                      <a href="#Status%3Astreefdatum">streefdatum</a>.</dd>
                     
                   </dl>
                 </div>
@@ -1611,58 +1120,101 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
         
                     <tbody class="supertype">
                     
-                      <tr id="Richtlijn%3Abeschrijving" typeof="rdfs:Property" resource="http://purl.org/dc/terms/description">
+                      <tr id="Status%3Aactie" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/transactie#actie">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/description" data-toggle="tooltip" data-content="http://purl.org/dc/terms/description" data-placement="right">
-                            beschrijving</a>
+                            <a href="https://data.vlaanderen.be/ns/transactie#actie" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/transactie#actie" data-placement="right">
+                            actie</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Beschrijving van de Richtlijn.</td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Deze parameter laat toe om aan te geven dat - qua procesverloop van de transactie - de bal expliciet in het kamp van de klant (= de Agent) ligt en dat er dus een actie verwacht wordt van zijn kant.</td>
+                        <td property="vann:usageNote">Dit attribuut laat toe in de front-toepassingen extra aandacht of prioriteit te besteden aan deze transacties.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Status%3Aactie%20nodig" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/transactie#actieNodig">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/transactie#actieNodig" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/transactie#actieNodig" data-placement="right">
+                            actie nodig</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#boolean" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#boolean" data-placement="right">Boolean</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Indien Actie Nodig 'Ja', dan laat dit veld toe te specifi&#235;ren welke Actie van de klant (Agent) wordt verwacht.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
                     
-                      <tr id="Richtlijn%3Aimplementeert" typeof="rdfs:Property" resource="http://purl.org/vocab/cpsv#implements">
+                      <tr id="Status%3Astatus%20EDRL" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/transactie#statusEDRL">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://purl.org/vocab/cpsv#implements" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#implements" data-placement="right">
-                            implementeert</a>
+                            <a href="https://data.vlaanderen.be/ns/transactie#statusEDRL" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/transactie#statusEDRL" data-placement="right">
+                            status EDRL</a>
                           </code>
                         </td>
-                        <td><a href="http://purl.org/vocab/cpsv#FormalFramework" data-toggle="tooltip" data-content="http://purl.org/vocab/cpsv#FormalFramework" data-placement="right">FormeelKader</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Relevante wetgeving of beleid waarbinnen de Richtlijn is gedefinieerd.</td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">StatusEDRL</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">De status volgens de Europese Dienstenrichtlijn</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="https://beta.dosis.vlaanderen.be/api/cl/dosis/v1/codelijsten/StatusEDRL">Link</a></td>
+                      </tr>
+                    
+                      <tr id="Status%3Astatus%20Vlaams%20fase" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/transactie#statusVlaamsFase">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/transactie#statusVlaamsFase" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/transactie#statusVlaamsFase" data-placement="right">
+                            status Vlaams fase</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">StatusVlaamseFase</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Is het eerste veld van 2 verplichte velden (Fase+Status) die samen de 'Generieke Vlaamse status' specifi&#235;ren. De StatusVlaamsFase vormt de eerste en hogere indeling van het dossierverloop (in aanvraag, in behandeling, in beroep, in uitvoering enz). Verdere precisering binnen de Fase gebeurt dan in het veld StatusVlaamsCode.
+</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="https://data.vlaanderen.be/id/conceptscheme/StatusVlaamseFase">Link</a></td>
+                      </tr>
+                    
+                      <tr id="Status%3Astatus%20Vlaamse%20code" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/transactie#statusVlaamsCode">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/transactie#statusVlaamsCode" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/transactie#statusVlaamsCode" data-placement="right">
+                            status Vlaamse code</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">StatusVlaamseCode</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Verdere precisering van de status-fase volgens de 'Generieke Vlaamse status'.</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="https://data.vlaanderen.be/id/conceptscheme/StatusVlaamseCode">Link</a></td>
+                      </tr>
+                    
+                      <tr id="Status%3Astatusdatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/transactie#statusWijzigingsdatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/transactie#statusWijzigingsdatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/transactie#statusWijzigingsdatum" data-placement="right">
+                            statusdatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#date" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#date" data-placement="right">Date</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Is de verplichte vermelding van de datum + tijdstip waarop de betrokken status werd geregistreerd.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
                     
-                      <tr id="Richtlijn%3Ataal" typeof="rdfs:Property" resource="http://purl.org/dc/terms/language">
+                      <tr id="Status%3Astreefdatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/transactie#streefdatum">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/language" data-toggle="tooltip" data-content="http://purl.org/dc/terms/language" data-placement="right">
-                            taal</a>
+                            <a href="https://data.vlaanderen.be/ns/transactie#streefdatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/transactie#streefdatum" data-placement="right">
+                            streefdatum</a>
                           </code>
                         </td>
-                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">NAL_language</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Taal waarin de Richtlijn is gesteld.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Richtlijn%3Atitel" typeof="rdfs:Property" resource="http://purl.org/dc/terms/title">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/title" data-toggle="tooltip" data-content="http://purl.org/dc/terms/title" data-placement="right">
-                            titel</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Naam vd Richtlijn.</td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#date" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#date" data-placement="right">Date</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Is de datum waarop verwacht wordt dat de volgende stap (status-wijziging) in de transactie zal of zou moeten plaatsvinden. Dit kan in bepaalde gevallen bepaald worden door een wettelijke termijn (van een fase of status).</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -1729,7 +1281,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             <a href="http://www.w3.org/ns/locn#adminUnitL1" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#adminUnitL1" data-placement="right">administratieve eenheid niveau 1</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Taalstring</a></td>
+                        <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">Taalstring</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Hoogste Administratieve eenheid vh adres, doorgaans een land.</td>
                         <td property="vann:usageNote"> </td>
@@ -1742,7 +1294,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             <a href="http://www.w3.org/ns/locn#adminUnitL2" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#adminUnitL2" data-placement="right">administratieve eenheid niveau 2</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Taalstring</a></td>
+                        <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">Taalstring</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">De regio vh adres, doorgaans een provincie of deelstaat of gelijkaardig gebied dat typisch meerdere plaatsen omvat.</td>
                         <td property="vann:usageNote"> </td>
@@ -1755,17 +1307,17 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             <a href="http://www.w3.org/ns/locn#addressArea" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#addressArea" data-placement="right">adresgebied</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Taalstring</a></td>
+                        <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">Taalstring</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Naam ve geografisch gebied of plaats die een aantal adresseerbare objecten groepeert om deze te adresseren zonder dat het gebied of de plaats een administratieve eenheid is</td>
                         <td property="vann:usageNote">Bvb de naam vh gehucht waarin het adres ligt.</td>
                         <td></td>
                       </tr>
                       
-                      <tr id="Adresvoorstelling%3Abusnummer" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/subsidie#Adresvoorstelling.busnummer">
+                      <tr id="Adresvoorstelling%3Abusnummer" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/subsidie#Adresvoorstelling.busnummer" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#Adresvoorstelling.busnummer" data-placement="right">busnummer</a>
+                            <a href="http://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer" data-placement="right">busnummer</a>
                           </code>
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
@@ -1775,23 +1327,23 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                       
-                      <tr id="Adresvoorstelling%3Agemeentenaam" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/subsidie#gemeentenaam">
+                      <tr id="Adresvoorstelling%3Agemeentenaam" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#gemeentenaam">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/subsidie#gemeentenaam" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#gemeentenaam" data-placement="right">gemeentenaam</a>
+                            <a href="http://data.vlaanderen.be/ns/adres#gemeentenaam" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#gemeentenaam" data-placement="right">gemeentenaam</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Taalstring</a></td>
+                        <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">Taalstring</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Gemeentenaam vh adres.</td>
                         <td property="vann:usageNote"> </td>
                         <td></td>
                       </tr>
                       
-                      <tr id="Adresvoorstelling%3Ahuisnummer" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/subsidie#Adresvoorstelling.huisnummer">
+                      <tr id="Adresvoorstelling%3Ahuisnummer" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/subsidie#Adresvoorstelling.huisnummer" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#Adresvoorstelling.huisnummer" data-placement="right">huisnummer</a>
+                            <a href="http://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer" data-placement="right">huisnummer</a>
                           </code>
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
@@ -1801,13 +1353,13 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                       
-                      <tr id="Adresvoorstelling%3Aland" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/subsidie#land">
+                      <tr id="Adresvoorstelling%3Aland" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/adres#land">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/subsidie#land" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#land" data-placement="right">land</a>
+                            <a href="http://data.vlaanderen.be/ns/adres#land" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/adres#land" data-placement="right">land</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Taalstring</a></td>
+                        <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">Taalstring</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Land waarin het adres gelegen is.</td>
                         <td property="vann:usageNote"> </td>
@@ -1833,7 +1385,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             <a href="http://www.w3.org/ns/locn#locatorName" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#locatorName" data-placement="right">locatienaam</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Taalstring</a></td>
+                        <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">Taalstring</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Naam of omschrijving vh het geografisch object dat de adreslocator aanduidt.</td>
                         <td property="vann:usageNote"> </td>
@@ -1872,7 +1424,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             <a href="http://www.w3.org/ns/locn#postName" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#postName" data-placement="right">postnaam</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Taalstring</a></td>
+                        <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">Taalstring</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Naam waarmee het geografisch gebied dat adressen voor postale doeleinden groepeert wordt aangeduid.</td>
                         <td property="vann:usageNote"> </td>
@@ -1885,7 +1437,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             <a href="http://www.w3.org/ns/locn#thoroughfare" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#thoroughfare" data-placement="right">straatnaam</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Taalstring</a></td>
+                        <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">Taalstring</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Straatnaam vh adres.</td>
                         <td property="vann:usageNote"> </td>
@@ -1898,7 +1450,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             <a href="http://www.w3.org/ns/locn#fullAddress" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#fullAddress" data-placement="right">volledig adres</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Taalstring</a></td>
+                        <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">Taalstring</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Het complete adres in &#233;&#233;n string, al dan niet geformatteerd.</td>
                         <td property="vann:usageNote">Vermijdt fouten tgv het opsplitsen ve adres in zijn onderdelen. Geeft de voorgeschreven volgorde vd verschillende onderdelen weer. </td>
@@ -1912,25 +1464,20 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Contactpunt"><a href="http://schema.org/ContactPoint" data-toggle="tooltip" data-content="http://schema.org/ContactPoint" data-placement="right">Contactpunt</a></h3>
+              <h3 class="h3" id="Identificator"><a href="http://www.w3.org/ns/adms#Identifier" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#Identifier" data-placement="right">Identificator</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>Informatie zoals email, telefoon, adres die toelaat om iemand of iets te contacteren.</dd>
+                    <dt>Beschrijving</dt><dd>Informatie gebruikt om de instantie ve object uniek te identificeren. </dd>
                     
-                    <dt>Gebruik</dt><dd>Bvb een persoon of organisatie of dienstverlening&#133; Mogelijke vormen van contact: bellen, mailen etc.</dd>
+                    <dt>Gebruik</dt><dd>Uitgangspunt hier is dat deze string door een organisatie wordt toegekend en dat dit gebeurt volgens een welbepaald systeem.</dd>
                     
                     <dt>Eigenschappen</dt>
                     
                     <dd>Voor dit datatype zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Contactpunt%3Aaanschrijfvorm">aanschrijfvorm</a>, 
-                      <a href="#Contactpunt%3Aadres">adres</a>, 
-                      <a href="#Contactpunt%3Abeschikbaarheid">beschikbaarheid</a>, 
-                      <a href="#Contactpunt%3Acontactnaam">contactnaam</a>, 
-                      <a href="#Contactpunt%3Aemail">email</a>, 
-                      <a href="#Contactpunt%3Afax">fax</a>, 
-                      <a href="#Contactpunt%3Aopeningsuren">openingsuren</a>, 
-                      <a href="#Contactpunt%3Atelefoon">telefoon</a>, 
-                      <a href="#Contactpunt%3Awebsite">website</a>.</dd>
+                      <a href="#Identificator%3Aidentificator">identificator</a>, 
+                      <a href="#Identificator%3Atoegekend%20door">toegekend door</a>, 
+                      <a href="#Identificator%3Atoegekend%20door%20%28String%29">toegekend door (String)</a>, 
+                      <a href="#Identificator%3Atoegekend%20op">toegekend op</a>.</dd>
                     
                   </dl>
                 </div>
@@ -1950,119 +1497,54 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
         
                     <tbody class="supertype">
                       
-                      <tr id="Contactpunt%3Aaanschrijfvorm" typeof="rdfs:Property" resource="http://ww.w3.org/2006/vcard/ns#honorific-prefix">
+                      <tr id="Identificator%3Aidentificator" typeof="rdfs:Property" resource="http://www.w3.org/2004/02/skos/core#notation">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://ww.w3.org/2006/vcard/ns#honorific-prefix" data-toggle="tooltip" data-content="http://ww.w3.org/2006/vcard/ns#honorific-prefix" data-placement="right">aanschrijfvorm</a>
+                            <a href="http://www.w3.org/2004/02/skos/core#notation" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#notation" data-placement="right">identificator</a>
                           </code>
                         </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">TaalString</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Titel waarmee iemand wordt aangeschreven of aangesproken of waarmee naar iemand wordt verwezen.</td>
-                        <td property="vann:usageNote">Bvb De heer/Mevrouw, Excellentie, Dokter&#133;</td>
+                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">GetypeerdeString</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">String gebruikt om de instantie ve object uniek te identificeren. </td>
+                        <td property="vann:usageNote">Type vd string slaat op het identificatiesysteem (incl de versie ervan), de string zelf op de eigenlijke identificator.</td>
                         <td></td>
                       </tr>
                       
-                      <tr id="Contactpunt%3Aadres" typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#address">
+                      <tr id="Identificator%3Atoegekend%20door" typeof="rdfs:Property" resource="http://purl.org/dc/terms/creator">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://www.w3.org/ns/locn#address" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#address" data-placement="right">adres</a>
+                            <a href="http://purl.org/dc/terms/creator" data-toggle="tooltip" data-content="http://purl.org/dc/terms/creator" data-placement="right">toegekend door</a>
                           </code>
                         </td>
-                        <td><a href="http://www.w3.org/ns/locn#Address" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#Address" data-placement="right">Adresvoorstelling</a></td>
+                        <td><a href="http://purl.org/dc/terms/Agent" data-toggle="tooltip" data-content="http://purl.org/dc/terms/Agent" data-placement="right">Agent</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">Adres dat men kan aanschrijven of bezoeken.</td>
+                        <td property="rdfs:comment">Link naar de agent die de identificator heeft uitgegeven.</td>
                         <td property="vann:usageNote"> </td>
                         <td></td>
                       </tr>
                       
-                      <tr id="Contactpunt%3Abeschikbaarheid" typeof="rdfs:Property" resource="http://schema.org/hoursAvailable">
+                      <tr id="Identificator%3Atoegekend%20door%20%28String%29" typeof="rdfs:Property" resource="http://www.w3.org/ns/adms#schemaAgency">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://schema.org/hoursAvailable" data-toggle="tooltip" data-content="http://schema.org/hoursAvailable" data-placement="right">beschikbaarheid</a>
-                          </code>
-                        </td>
-                        <td><a href="http://schema.org/OpeningHoursSpecification" data-toggle="tooltip" data-content="http://schema.org/OpeningHoursSpecification" data-placement="right">OpeningsurenSpecificatie</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Periode waarin contact kan worden opgenomen.</td>
-                        <td property="vann:usageNote">Bv aanduiding van het seizoen waarin contact kan worden opgenoment aangeboden. Begin- en einddatum volgens ISO8601 syntax.</td>
-                        <td></td>
-                      </tr>
-                      
-                      <tr id="Contactpunt%3Acontactnaam" typeof="rdfs:Property" resource="http://xmlns.com/foaf/0.1/name">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://xmlns.com/foaf/0.1/name" data-toggle="tooltip" data-content="http://xmlns.com/foaf/0.1/name" data-placement="right">contactnaam</a>
+                            <a href="http://www.w3.org/ns/adms#schemaAgency" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#schemaAgency" data-placement="right">toegekend door (String)</a>
                           </code>
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">Naam van bvb de persoon die men kan contacteren.</td>
+                        <td property="rdfs:comment">Naam vd agent die de identificator heeft toegekend.</td>
                         <td property="vann:usageNote"> </td>
                         <td></td>
                       </tr>
                       
-                      <tr id="Contactpunt%3Aemail" typeof="rdfs:Property" resource="http://schema.org/email">
+                      <tr id="Identificator%3Atoegekend%20op" typeof="rdfs:Property" resource="http://purl.org/dc/terms/issued">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://schema.org/email" data-toggle="tooltip" data-content="http://schema.org/email" data-placement="right">email</a>
+                            <a href="http://purl.org/dc/terms/issued" data-toggle="tooltip" data-content="http://purl.org/dc/terms/issued" data-placement="right">toegekend op</a>
                           </code>
                         </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">Email-adres waarnaar men kan mailen.</td>
-                        <td property="vann:usageNote"> </td>
-                        <td></td>
-                      </tr>
-                      
-                      <tr id="Contactpunt%3Afax" typeof="rdfs:Property" resource="http://schema.org/faxNumber">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://schema.org/faxNumber" data-toggle="tooltip" data-content="http://schema.org/faxNumber" data-placement="right">fax</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Faxnummer waarnaar men kan faxen.</td>
-                        <td property="vann:usageNote"> </td>
-                        <td></td>
-                      </tr>
-                      
-                      <tr id="Contactpunt%3Aopeningsuren" typeof="rdfs:Property" resource="http://schema.org/openingHours">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://schema.org/openingHours" data-toggle="tooltip" data-content="http://schema.org/openingHours" data-placement="right">openingsuren</a>
-                          </code>
-                        </td>
-                        <td><a href="http://schema.org/OpeningHoursSpecification" data-toggle="tooltip" data-content="http://schema.org/OpeningHoursSpecification" data-placement="right">OpeningsurenSpecificatie</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Uren waarbinnen contact kan worden opgenomen.</td>
-                        <td property="vann:usageNote">Syntax volgens schema.org voor openingsuren. Bv als contact kan worden opgenomen tussen 8 en 20u maandag tot zaterdag en tussen 8 en 18u op zondag wordt dit gecodeerd als Ma-za 08:00-20:00, zo 08:00-18:00.</td>
-                        <td></td>
-                      </tr>
-                      
-                      <tr id="Contactpunt%3Atelefoon" typeof="rdfs:Property" resource="http://schema.org/telephone">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://schema.org/telephone" data-toggle="tooltip" data-content="http://schema.org/telephone" data-placement="right">telefoon</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Telefoonnummer waarop men kan bellen.</td>
-                        <td property="vann:usageNote"> </td>
-                        <td></td>
-                      </tr>
-                      
-                      <tr id="Contactpunt%3Awebsite" typeof="rdfs:Property" resource="http://xmlns.com/foaf/0.1/page">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://xmlns.com/foaf/0.1/page" data-toggle="tooltip" data-content="http://xmlns.com/foaf/0.1/page" data-placement="right">website</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#anyURI" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#anyURI" data-placement="right">URI</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Website waarnaar men kan surfen.</td>
+                        <td property="rdfs:comment">Tijdstip waarop de identificator werd uitgegeven.</td>
                         <td property="vann:usageNote"> </td>
                         <td></td>
                       </tr>
@@ -2074,23 +1556,18 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Status"><a href="http://data.vlaanderen.be/ns/subsidie#Status" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#Status" data-placement="right">Status</a></h3>
+              <h3 class="h3" id="TijdsInterval"><a href="http://purl.org/dc/terms/PeriodOfTime" data-toggle="tooltip" data-content="http://purl.org/dc/terms/PeriodOfTime" data-placement="right">TijdsInterval</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>De status van het dossier.</dd>
+                    <dt>Beschrijving</dt><dd>De tijdsperiode tussen twee momenten in de tijd.</dd>
+                    
+                    <dt>Gebruik</dt><dd> </dd>
                     
                     <dt>Eigenschappen</dt>
                     
                     <dd>Voor dit datatype zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Status%3Aactie">actie</a>, 
-                      <a href="#Status%3Aactie%20nodig">actie nodig</a>, 
-                      <a href="#Status%3Astatus%20detail%201">status detail 1</a>, 
-                      <a href="#Status%3Astatus%20detail%202">status detail 2</a>, 
-                      <a href="#Status%3Astatus%20EDRL">status EDRL</a>, 
-                      <a href="#Status%3Astatus%20Vlaamse%20code">status Vlaamse code</a>, 
-                      <a href="#Status%3Astatus%20Vlaamse%20fase">status Vlaamse fase</a>, 
-                      <a href="#Status%3Astatusdatum">statusdatum</a>, 
-                      <a href="#Status%3Astreefdatum">streefdatum</a>.</dd>
+                      <a href="#TijdsInterval%3Abegin">begin</a>, 
+                      <a href="#TijdsInterval%3Aeinde">einde</a>.</dd>
                     
                   </dl>
                 </div>
@@ -2110,120 +1587,29 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
         
                     <tbody class="supertype">
                       
-                      <tr id="Status%3Aactie" typeof="rdfs:Property" resource="https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActie">
+                      <tr id="TijdsInterval%3Abegin" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/generiek#begin">
                         <td>
                           <code property="rdfs:label">
-                            <a href="https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActie" data-toggle="tooltip" data-content="https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActie" data-placement="right">actie</a>
+                            <a href="http://data.vlaanderen.be/ns/generiek#begin" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#begin" data-placement="right">begin</a>
                           </code>
                         </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Omschrijving van de uit te voeren actie.</td>
-                        <td property="vann:usageNote"></td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Moment waarop het tijdsinterval begint.</td>
+                        <td property="vann:usageNote">Moment waarop het tijdsinterval begint.</td>
                         <td></td>
                       </tr>
                       
-                      <tr id="Status%3Aactie%20nodig" typeof="rdfs:Property" resource="https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActieNodig">
+                      <tr id="TijdsInterval%3Aeinde" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/generiek#einde">
                         <td>
                           <code property="rdfs:label">
-                            <a href="https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActieNodig" data-toggle="tooltip" data-content="https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActieNodig" data-placement="right">actie nodig</a>
+                            <a href="http://data.vlaanderen.be/ns/generiek#einde" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/generiek#einde" data-placement="right">einde</a>
                           </code>
                         </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#boolean" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#boolean" data-placement="right">Boolean</a></td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">Aanduiding of de huidige status impliceert dat er actie van burger of onderneming nodig is.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                      
-                      <tr id="Status%3Astatus%20detail%201" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/transactie#statusdetail1">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/transactie#statusdetail1" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/transactie#statusdetail1" data-placement="right">status detail 1</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Dit is de (originele) Status-definitie of -vermelding zoals geregistreerd in de bron.</td>
-                        <td property="vann:usageNote">Indien ingevuld wordt deze informatie meegegeven aan de burger of onderneming.</td>
-                        <td></td>
-                      </tr>
-                      
-                      <tr id="Status%3Astatus%20detail%202" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/transactie#statusdetail2">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/transactie#statusdetail2" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/transactie#statusdetail2" data-placement="right">status detail 2</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Interne status die kan worden meegegeven en die niet wordt getoond aan de burger of onderneming.</td>
-                        <td property="vann:usageNote">Deze interne status kan meegegeven worden omwille van verschillende redenen: inzage door eigen ambtenaren, inzage door andere gemachtigde ambtenaren, of voor B.I.- en/of DWH-doeleinden.</td>
-                        <td></td>
-                      </tr>
-                      
-                      <tr id="Status%3Astatus%20EDRL" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/transactie#statusedrl">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/transactie#statusedrl" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/transactie#statusedrl" data-placement="right">status EDRL</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">StatusEDRL</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">De status volgens de Europese Dienstenrichtlijn</td>
-                        <td property="vann:usageNote"></td>
-                        <td><a href="https://beta.dosis.vlaanderen.be/api/cl/dosis/v1/codelijsten/StatusEDRL">Link</a></td>
-                      </tr>
-                      
-                      <tr id="Status%3Astatus%20Vlaamse%20code" typeof="rdfs:Property" resource="https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusVlaamsCode">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusVlaamsCode" data-toggle="tooltip" data-content="https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusVlaamsCode" data-placement="right">status Vlaamse code</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">StatusVlaamsCode</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">De Vlaamse status - Code. Verplicht in geval van een dossier van het type DossierStatus.</td>
-                        <td property="vann:usageNote"></td>
-                        <td><a href="https://dosis.beta.informatievlaanderen.be/api/help/codelijst?codelijst=StatusVlaamsCode">Link</a></td>
-                      </tr>
-                      
-                      <tr id="Status%3Astatus%20Vlaamse%20fase" typeof="rdfs:Property" resource="https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusVlaamsFase">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusVlaamsFase" data-toggle="tooltip" data-content="https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusVlaamsFase" data-placement="right">status Vlaamse fase</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">StatusVlaamsFase</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">De Vlaamse status - Fase. Verplicht in geval van een dossier van het type DossierStatus.</td>
-                        <td property="vann:usageNote"></td>
-                        <td><a href="https://dosis.beta.informatievlaanderen.be/api/help/codelijst?codelijst=StatusVlaamsFase">Link</a></td>
-                      </tr>
-                      
-                      <tr id="Status%3Astatusdatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/subsidie#statusdatum">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/subsidie#statusdatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#statusdatum" data-placement="right">statusdatum</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#date" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#date" data-placement="right">Date</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">De datum van de Status.</td>
-                        <td property="vann:usageNote">Bijvoorbeeld de status wijzigingsdatum.</td>
-                        <td></td>
-                      </tr>
-                      
-                      <tr id="Status%3Astreefdatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/subsidie#streefdatum">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/subsidie#streefdatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/subsidie#streefdatum" data-placement="right">streefdatum</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#date" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#date" data-placement="right">Date</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">De streefdatum voor het be&#235;indigen van de huidige status.</td>
-                        <td property="vann:usageNote"></td>
+                        <td property="rdfs:comment">Moment waarop het tijdsinterval eindigt.</td>
+                        <td property="vann:usageNote">Moment waarop het tijdsinterval eindigt.</td>
                         <td></td>
                       </tr>
                       
@@ -2323,6 +1709,10 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
       font-size: 1.4rem;
       color: #000;
       background-clip: padding-box;
+    }
+    .data-table {
+      table-layout:fixed;
+      max-width:803px;
     }
   </style>
 </body>

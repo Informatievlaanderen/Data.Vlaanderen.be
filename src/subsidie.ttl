@@ -18,51 +18,16 @@
 @prefix cpsv:    <http://purl.org/vocab/cpsv#> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 
-eli:date_no_longer_in_force
-      a       rdf:Property ;
-      rdfs:label "buitenwerkingstreding"@nl .
-
-eli:first_date_entry_in_force
-      a       rdf:Property ;
-      rdfs:label "inwerkingstreding"@nl .
-
-eli:language
-      a       rdf:Property .
-
-eli:passed_by
-      a       rdf:Property ;
-      rdfs:label "aangenomen door"@nl .
-
 eli:type_document
       a       rdf:Property ;
       rdfs:label "type document"@nl .
-
-eu:CriterionRequirement
-      a       rdfs:Class ;
-      rdfs:label "Criteriumvereiste"@nl .
-
-eu:Evidence
-      a       rdfs:Class ;
-      rdfs:label "Bewijs"@nl .
-
-eu:Output
-      a       rdfs:Class ;
-      rdfs:label "Output"@nl .
 
 eu:Participation
       a       rdfs:Class ;
       rdfs:label "Participatie"@nl .
 
-eu:PublicOrganisation
-      a       rdfs:Class ;
-      rdfs:label "Publieke Organisatie"@nl .
-
 eu:hasAddress
       a       rdf:Property .
-
-eu:hasCriterion
-      a       rdf:Property ;
-      rdfs:label "heeft criterium"@nl .
 
 eu:hasParticipation
       a       rdf:Property ;
@@ -72,15 +37,13 @@ eu:role
       a       rdf:Property ;
       rdfs:label "rol"@nl .
 
-eu:subject
-      a       rdf:Property .
-
-eu:territorialApplication
-      a       rdf:Property .
+eu:sector
+      a       rdf:Property ;
+      rdfs:label "sector"@nl .
 
 sat:aidInstrument
       a       rdf:Property ;
-      rdfs:label "instrument"@nl .
+      rdfs:label "subsidie-instrument"@nl .
 
 sat:aidMeasure
       a       rdf:Property ;
@@ -88,126 +51,11 @@ sat:aidMeasure
 
 sat:objective
       a       rdf:Property ;
-      rdfs:label "doelstelling"@nl .
-
-<http://data.vlaanderen.be/ns/subsidie>
-      a       owl:Ontology ;
-      rdfs:label "Subsidie"@nl , "Subsidy"@en ;
-      dcterms:issued "2017-12-05"^^xsd:date ;
-      dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
-      dcterms:title "Subsidie"@nl , "Subsidy"@en ;
-      vann:preferredNamespaceUri
-              "http://data.vlaanderen.be/ns/subsidie" .
-
-besluit:Bestuursorgaan
-      a       rdfs:Class ;
-      rdfs:label "Bestuursorgaan"@nl .
-
-<http://data.vlaanderen.be/ns/dienst#heeftStatus>
-      a       rdf:Property ;
-      rdfs:label "heeft status"@nl .
-
-<http://data.vlaanderen.be/ns/subsidie#FinancieelVoordeel>
-      a       owl:Class ;
-      rdfs:comment "De verplichting van een publieke administratie of dochtermaatschappij om een bepaald bedrag te betalen aan een burger of organisatie."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/subsidie> ;
-      rdfs:label "Financieel Voordeel"@nl ;
-      rdfs:subClassOf eu:Output .
-
-<http://data.vlaanderen.be/ns/subsidie#FinanciëleVerplichting>
-      a       owl:Class ;
-      rdfs:comment "De verplichting van een burger of organisatie om een bepaald bedrag te betalen aan een publieke administratie of dochtermaatschappij."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/subsidie> ;
-      rdfs:label "TODO"@nl ;
-      rdfs:subClassOf eu:Output .
-
-<http://data.vlaanderen.be/ns/subsidie#KwalitatiefCriteriumvereiste>
-      a       owl:Class ;
-      rdfs:comment "Criterium dat toelaat te bepalen of een gebruiker recht heeft op een dienstverlening of deze mag gebruiken en een kwalitatieve beoordeling vereist."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/subsidie> ;
-      rdfs:label "Kwalitatief Criteriumvereiste"@nl ;
-      rdfs:subClassOf eu:CriterionRequirement .
-
-<http://data.vlaanderen.be/ns/subsidie#ParametriseerbaarCriteriumvereiste>
-      a       owl:Class ;
-      rdfs:comment "Criterium dat toelaat te bepalen of een gebruiker recht heeft op een dienstverlening of deze mag gebruiken en op basis van bepaalde parameters eenduidig (binair) geëvalueerd kan worden."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/subsidie> ;
-      rdfs:label "Parametriseerbaar Criteriumvereiste"@nl ;
-      rdfs:subClassOf eu:CriterionRequirement .
-
-<http://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie>
-      a       owl:Class ;
-      rdfs:comment "De regelgeving,rechtshandeling en/of beleidskeuze waardoor die de legale basis vormt voor de toekenning van een subsidiemaatregel."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/subsidie> ;
-      rdfs:label "Rechtsgrond Toekenning Subsidie"@nl .
-
-<http://data.vlaanderen.be/ns/subsidie#Status>
-      a       owl:Class ;
-      rdfs:comment "De Status die van toepassing is op de Publieke Dienstverlening op een bepaald tijdstip."@nl ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/subsidie> ;
-      rdfs:label "Status"@nl .
-
-<http://data.vlaanderen.be/ns/subsidie#bankrekeningnummer>
-      a       owl:DatatypeProperty ;
-      rdfs:comment "Het bankrekeningnummer waarop het bedrag, toegekend als onderdeel van de subsidiemaatregel, moet uitbetaald worden."@nl ;
-      rdfs:domain <https://www.w3.org/ns/org#Organization> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/subsidie> ;
-      rdfs:label "bankrekeningnummer"@nl ;
-      rdfs:range xsd:string .
-
-<http://data.vlaanderen.be/ns/subsidie#bedrag>
-      a       rdf:Property ;
-      rdfs:comment "Een bedrag in de context van het toekennen en uitkeren van een subsidiemaatregel."@nl ;
-      rdfs:domain rdfs:Resource ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/subsidie> ;
-      rdfs:label "bedrag"@nl .
-
-<http://data.vlaanderen.be/ns/subsidie#heeftAuthentiekeBron>
-      a       owl:DatatypeProperty ;
-      rdfs:comment "Geeft aan of de informatie voor de beoordeling van het criterium via een authentieke bron verkregen kan worden."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/subsidie#ParametriseerbaarCriteriumvereiste> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/subsidie> ;
-      rdfs:label "heeft authentieke bron"@nl ;
-      rdfs:range xsd:boolean .
-
-<http://data.vlaanderen.be/ns/subsidie#heeftRechtsgrond>
-      a       owl:ObjectProperty ;
-      rdfs:comment "De rechtsgrond op basis waarvan de subsidiemaatregel werd toegekend."@nl ;
-      rdfs:domain cpsv:PublicService ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/subsidie> ;
-      rdfs:label "heeft rechtsgrond"@nl ;
-      rdfs:range <http://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie> .
-
-<http://data.vlaanderen.be/ns/subsidie#statusdatum>
-      a       owl:DatatypeProperty ;
-      rdfs:comment "De datum van de Status."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/subsidie#Status> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/subsidie> ;
-      rdfs:label "statusdatum"@nl ;
-      rdfs:range xsd:date .
-
-<http://data.vlaanderen.be/ns/subsidie#streefdatum>
-      a       owl:DatatypeProperty ;
-      rdfs:comment "De streefdatum voor het beëindigen van de huidige status."@nl ;
-      rdfs:domain <http://data.vlaanderen.be/ns/subsidie#Status> ;
-      rdfs:isDefinedBy <http://data.vlaanderen.be/ns/subsidie> ;
-      rdfs:label "streefdatum"@nl ;
-      rdfs:range xsd:date .
-
-<http://data.vlaanderen.be/ns/transactie#statusdetail1>
-      a       rdf:Property ;
-      rdfs:label "status detail 1"@nl .
-
-<http://data.vlaanderen.be/ns/transactie#statusdetail2>
-      a       rdf:Property ;
-      rdfs:label "status detail 2"@nl .
-
-<http://data.vlaanderen.be/ns/transactie#statusedrl>
-      a       rdf:Property ;
-      rdfs:label "status EDRL"@nl .
+      rdfs:label "subsidiedoelstelling"@nl .
 
 dcterms:Agent
-      a       rdfs:Class .
+      a       rdfs:Class ;
+      rdfs:label "Agent"@nl .
 
 dcterms:date
       a       rdf:Property ;
@@ -215,109 +63,116 @@ dcterms:date
 
 dcterms:description
       a       rdf:Property ;
-      rdfs:label "Beschrijving"@nl , "beschrijving"@nl .
-
-dcterms:language
-      a       rdf:Property ;
-      rdfs:label "taal"@nl .
-
-dcterms:relation
-      a       rdf:Property ;
-      rdfs:label "relatie"@nl .
-
-dcterms:requires
-      a       rdf:Property ;
-      rdfs:label "vereist"@nl .
-
-dcterms:spatial
-      a       rdf:Property ;
-      rdfs:label "Werkingsgebied"@nl .
+      rdfs:label "beschrijving"@nl .
 
 dcterms:title
-      a       rdf:Property ;
-      rdfs:label "titel"@nl , "Titel"@nl .
-
-dcterms:type
-      a       rdf:Property ;
-      rdfs:label "type"@nl .
-
-cpsv:FormalFramework
-      a       rdfs:Class .
+      a       rdf:Property .
 
 cpsv:PublicService
       a       rdfs:Class ;
       rdfs:label "Publieke Dienstverlening"@nl .
 
-cpsv:Rule
-      a       rdfs:Class ;
-      rdfs:label "Richtlijn"@nl .
-
-cpsv:follows
-      a       rdf:Property ;
-      rdfs:label "volgt"@nl .
-
-cpsv:hasInput
-      a       rdf:Property ;
-      rdfs:label "heeft input"@nl .
-
 cpsv:produces
       a       rdf:Property ;
       rdfs:label "produceert"@nl .
 
-schema:contactPoint
+<http://www.w3.org/ns/adms#identifier>
       a       rdf:Property ;
-      rdfs:label "Is Te Bereiken Op"@nl .
+      rdfs:label "referentie"@nl .
 
-schema:logo
+<https://data.vlaanderen.be/ns/subsidie>
+      a       owl:Ontology ;
+      rdfs:label "Vocabularium Subsidieregister"@nl ;
+      dcterms:issued "2018-09-04"^^xsd:date ;
+      dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
+      dcterms:title "Vocabularium Subsidieregister"@nl ;
+      vann:preferredNamespaceUri
+              "https://data.vlaanderen.be/ns/subsidie" .
+
+<https://data.vlaanderen.be/ns/subsidie#FinancieelVoordeel>
+      a       owl:Class ;
+      rdfs:comment "De verplichting van een publieke administratie of dochtermaatschappij om een bepaald bedrag te betalen aan een burger of organisatie."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/subsidie> ;
+      rdfs:label "Financieel Voordeel"@nl ;
+      rdfs:subClassOf eu:Output .
+
+<https://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie>
+      a       owl:Class ;
+      rdfs:comment "De regelgeving, rechtshandeling en/of beleidskeuze waardoor die de legale basis vormt voor de toekenning van een subsidiemaatregel."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/subsidie> ;
+      rdfs:label "Rechtsgrond Toekenning Subsidie"@nl ;
+      rdfs:subClassOf eli:LegalResource .
+
+<https://data.vlaanderen.be/ns/subsidie#begrotingsartikel>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Het laagste niveau binnen de Vlaamse begrotingstabel. Begrotingsartikelen vormen de basis bij het opstellen, aanpassen en uitvoeren van de begroting."@nl ;
+      rdfs:domain cpsv:PublicService ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/subsidie> ;
+      rdfs:label "begrotingsartikel"@nl ;
+      rdfs:range rdfs:Literal ;
+      vann:usageNote "Bijvoorbeeld DB0/9DG-C-T-G/OW. Voor meer informatie zie: http://vormingbegroting.fenb.be/handboek-begroting/begrotingsartikelen"@nl .
+
+<https://data.vlaanderen.be/ns/subsidie#de-minimis>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "True wanneer de steun die niet onder een vrijstellingsgrond valt en de subsidiemaatregel onderhevig is aan de de-minimisregel. "@nl ;
+      rdfs:domain cpsv:PublicService ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/subsidie> ;
+      rdfs:label "de-minimis"@nl ;
+      rdfs:range xsd:boolean .
+
+<https://data.vlaanderen.be/ns/subsidie#gesubsidieerdeActiviteit>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "De activiteit die in aanmerking komt voor een bepaalde subsidiemaatregel."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/subsidie> ;
+      rdfs:label "gesubsidieerde activiteit"@nl ;
+      rdfs:range xsd:string .
+
+<https://data.vlaanderen.be/ns/subsidie#gesubsidieerdePeriode>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De periode waarop de subsidie betrekking heeft."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/subsidie> ;
+      rdfs:label "gesubsidieerde periode"@nl ;
+      rdfs:range dcterms:PeriodOfTime .
+
+<https://data.vlaanderen.be/ns/subsidie#heeftRechtsgrond>
+      a       owl:ObjectProperty ;
+      rdfs:comment "De rechtsgrond op basis waarvan de subsidiemaatregel werd toegekend."@nl ;
+      rdfs:domain cpsv:PublicService ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/subsidie> ;
+      rdfs:label "heeft rechtsgrond"@nl ;
+      rdfs:range <https://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie> .
+
+<https://data.vlaanderen.be/ns/subsidie#toegekendBedrag>
       a       rdf:Property ;
-      rdfs:label "Logo"@nl .
+      rdfs:comment "Het bedrag dat werd toegekend aan de begunstigde van de subsidiemaatregel en waar deze bijgevolg recht op heeft om te ontvangen."@nl ;
+      rdfs:domain rdfs:Resource ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/subsidie> ;
+      rdfs:label "toegekend bedrag"@nl .
 
-skos:Concept
-      a       rdfs:Class .
-
-skos:altLabel
+<https://data.vlaanderen.be/ns/subsidie#uitgekeerdBedrag>
       a       rdf:Property ;
-      rdfs:label "Alternatieve Naam"@nl .
+      rdfs:comment "Het bedrag dat werd uitbetaald aan de begunstigde, of een intermediaire betrokkene van de subsidiemaatregel."@nl ;
+      rdfs:domain rdfs:Resource ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/subsidie> ;
+      rdfs:label "uitgekeerd bedrag"@nl .
 
-skos:prefLabel
+<https://data.vlaanderen.be/ns/subsidie#vastgelegdBedrag>
       a       rdf:Property ;
-      rdfs:label "Voorkeursnaam"@nl .
+      rdfs:comment "Het bedrag dat werd vastgelegd voor uitbetaling aan de begunstigde van een subsidiemaatregel of een intermediaire betrokkene in een bepaalde periode."@nl ;
+      rdfs:domain <https://lod.milieuinfo.be/ns/dossier> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/subsidie> ;
+      rdfs:label "vastgelegd bedrag"@nl .
 
-<http://www.w3.org/ns/adms#status>
-      a       rdf:Property .
-
-foaf:homepage
+<https://data.vlaanderen.be/ns/transactie#isGedocumenteerdDoor>
       a       rdf:Property ;
-      rdfs:label "Homepage"@nl .
+      rdfs:label "isGedocumenteerdDoor"@nl .
 
-foaf:page
+<https://data.vlaanderen.be/ns/transactie#isInstantieVan>
       a       rdf:Property ;
-      rdfs:label "pagina"@nl .
+      rdfs:label "is instantie van"@nl .
 
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActie>
-      a       rdf:Property ;
-      rdfs:label "actie"@nl .
-
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusActieNodig>
-      a       rdf:Property ;
-      rdfs:label "actie nodig"@nl .
-
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusVlaamsCode>
-      a       rdf:Property ;
-      rdfs:label "status Vlaamse code"@nl .
-
-<https://beta.dosis.vlaanderen.be/api/help/model?modelnaam=StatusVlaamsFase>
-      a       rdf:Property ;
-      rdfs:label "status Vlaamse fase"@nl .
-
-<https://www.w3.org/ns/org#Organization>
+<https://lod.milieuinfo.be/ns/dossier>
       a       rdfs:Class ;
-      rdfs:label "Organisatie"@nl .
-
-<https://www.w3.org/ns/org#classification>
-      a       rdf:Property ;
-      rdfs:label "Classificatie"@nl .
-
-<https://www.w3.org/ns/org#purpose>
-      a       rdf:Property ;
-      rdfs:label "Bestaanreden vd Organisatie."@nl .
+      rdfs:label "Dossier"@nl .
