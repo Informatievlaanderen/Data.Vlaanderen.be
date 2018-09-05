@@ -10,21 +10,12 @@
 		"Participatie":"http://data.europa.eu/m8g/Participation",
 		"PubliekeOrganisatie":"http://data.europa.eu/m8g/PublicOrganisation",
 		"RechtsgrondToekenningSubsidie":"https://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie",
-		"Status":"https://data.vlaanderen.be/ns/transactie#Status",
 		"Subsidiemaatregel (aanbod)":"http://purl.org/vocab/cpsv#PublicService",
 		"Subsidiemaatregel (consumptie)":"http://purl.org/vocab/cpsv#PublicService",
 
 		"Agent.heeftParticiperende":{
 			"@id":"http://data.europa.eu/m8g/playsRole",
 			"@type":"http://data.europa.eu/m8g/Participation"
-		},
-		"actie":{
-			"@id":"https://data.vlaanderen.be/ns/transactie#actie",
-			"@type":"http://www.w3.org/2001/XMLSchema#string"
-		},
-		"actieNodig":{
-			"@id":"https://data.vlaanderen.be/ns/transactie#actieNodig",
-			"@type":"http://www.w3.org/2001/XMLSchema#boolean"
 		},
 		"administratieveEenheidNiveau1":{
 			"@id":"http://www.w3.org/ns/locn#adminUnitL1",
@@ -74,10 +65,6 @@
 			"@id":"http://data.vlaanderen.be/ns/adres#gemeentenaam",
 			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
 		},
-		"gesubsidieerdeActiviteit":{
-			"@id":"https://data.vlaanderen.be/ns/subsidie#gesubsidieerdeActiviteit",
-			"@type":"http://www.w3.org/2001/XMLSchema#string"
-		},
 		"gesubsidieerdePeriode":{
 			"@id":"https://data.vlaanderen.be/ns/subsidie#gesubsidieerdePeriode",
 			"@type":"http://purl.org/dc/terms/PeriodOfTime"
@@ -88,8 +75,7 @@
 		},
 		"heeftRechtsgrond":{
 			"@id":"https://data.vlaanderen.be/ns/subsidie#heeftRechtsgrond",
-			"@type":"https://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie",
-			"@container":"@set"
+			"@type":"https://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie"
 		},
 		"heeftSuborganisatie":{
 			"@id":"http://www.w3.org/ns/org#hasSubOrganization",
@@ -106,10 +92,6 @@
 		"identificator":{
 			"@id":"http://www.w3.org/2004/02/skos/core#notation",
 			"@type":"http://www.w3.org/2000/01/rdf-schema#Literal"
-		},
-		"isGeassocieerdMet":{
-			"@id":"http://www.w3.org/ns/org#linkedTo",
-			"@type":""
 		},
 		"isGedocumenteerdDoor":{
 			"@id":"https://data.vlaanderen.be/ns/transactie#isGedocumenteerdDoor",
@@ -139,6 +121,10 @@
 			"@id":"http://purl.org/dc/terms/title",
 			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
+		"ondernemingsnummer":{
+			"@id":"http://www.w3.org/ns/regorg#registration",
+			"@type":"http://www.w3.org/ns/adms#Identifier"
+		},
 		"postbus":{
 			"@id":"http://www.w3.org/ns/locn#poBox",
 			"@type":"http://www.w3.org/2001/XMLSchema#string"
@@ -153,8 +139,7 @@
 		},
 		"produceert":{
 			"@id":"http://purl.org/vocab/cpsv#produces",
-			"@type":"https://data.vlaanderen.be/ns/subsidie#FinancieelVoordeel",
-			"@container":"@set"
+			"@type":"https://data.vlaanderen.be/ns/subsidie#FinancieelVoordeel"
 		},
 		"rechtspersoonlijkheid":{
 			"@id":"http://data.vlaanderen.be/ns/organisatie#rechtspersoonlijkheid",
@@ -172,10 +157,6 @@
 			"@id":"http://www.w3.org/ns/adms#identifier",
 			"@type":"http://www.w3.org/ns/adms#Identifier"
 		},
-		"registratie":{
-			"@id":"http://www.w3.org/ns/regorg#registration",
-			"@type":"http://www.w3.org/ns/adms#Identifier"
-		},
 		"rol":{
 			"@id":"http://data.europa.eu/m8g/role",
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept",
@@ -190,36 +171,12 @@
 			"@id":"http://data.europa.eu/stateaidtransparency/sat#aidMeasure",
 			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
-		"statusEDRL":{
-			"@id":"https://data.vlaanderen.be/ns/transactie#statusEDRL",
-			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
-		},
-		"statusVlaamsCode":{
-			"@id":"https://data.vlaanderen.be/ns/transactie#statusVlaamsCode",
-			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
-		},
-		"statusVlaamsFase":{
-			"@id":"https://data.vlaanderen.be/ns/transactie#statusVlaamsFase",
-			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
-		},
-		"statusWijzigingsdatum":{
-			"@id":"https://data.vlaanderen.be/ns/transactie#statusWijzigingsdatum",
-			"@type":"http://www.w3.org/2001/XMLSchema#date"
-		},
 		"straatnaam":{
 			"@id":"http://www.w3.org/ns/locn#thoroughfare",
 			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
 		},
-		"streefdatum":{
-			"@id":"https://data.vlaanderen.be/ns/transactie#streefdatum",
-			"@type":"http://www.w3.org/2001/XMLSchema#date"
-		},
 		"subsidie-instrument":{
 			"@id":"http://data.europa.eu/stateaidtransparency/sat#aidInstrument",
-			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
-		},
-		"subsidiedoelstelling":{
-			"@id":"http://data.europa.eu/stateaidtransparency/sat#objective",
 			"@type":"http://www.w3.org/2004/02/skos/core#Concept"
 		},
 		"toegekendBedrag":{
@@ -238,11 +195,6 @@
 			"@id":"http://purl.org/dc/terms/issued",
 			"@type":"http://www.w3.org/2001/XMLSchema#dateTime"
 		},
-		"type document":{
-			"@id":"http://data.europa.eu/eli/ontology#type_document",
-			"@type":"",
-			"@container":"@set"
-		},
 		"uitgekeerdBedrag":{
 			"@id":"https://data.vlaanderen.be/ns/subsidie#uitgekeerdBedrag",
 			"@type":""
@@ -253,10 +205,6 @@
 		},
 		"volledigAdres":{
 			"@id":"http://www.w3.org/ns/locn#fullAddress",
-			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-		},
-		"voorkeursNaam":{
-			"@id":"http://www.w3.org/2004/02/skos/core#prefLabel",
 			"@type":"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
 		},
 		"wettelijkeNaam":{

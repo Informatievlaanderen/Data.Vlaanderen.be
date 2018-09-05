@@ -18,9 +18,17 @@
 @prefix cpsv:    <http://purl.org/vocab/cpsv#> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 
-eli:type_document
+eli:language
       a       rdf:Property ;
-      rdfs:label "type document"@nl .
+      rdfs:label "taal"@nl .
+
+eli:passed_by
+      a       rdf:Property ;
+      rdfs:label "aangenomen door"@nl .
+
+eu:CriterionRequirement
+      a       rdfs:Class ;
+      rdfs:label "Criteriumvereiste"@nl .
 
 eu:Participation
       a       rdfs:Class ;
@@ -28,6 +36,10 @@ eu:Participation
 
 eu:hasAddress
       a       rdf:Property .
+
+eu:hasCriterion
+      a       rdf:Property ;
+      rdfs:label "heeft criterium"@nl .
 
 eu:hasParticipation
       a       rdf:Property ;
@@ -41,6 +53,14 @@ eu:sector
       a       rdf:Property ;
       rdfs:label "sector"@nl .
 
+eu:subject
+      a       rdf:Property ;
+      rdfs:label "onderwerp"@nl .
+
+eu:territorialApplication
+      a       rdf:Property ;
+      rdfs:label "territoriale toepassing"@nl .
+
 sat:aidInstrument
       a       rdf:Property ;
       rdfs:label "subsidie-instrument"@nl .
@@ -49,9 +69,9 @@ sat:aidMeasure
       a       rdf:Property ;
       rdfs:label "staatssteunnummer"@nl .
 
-sat:objective
-      a       rdf:Property ;
-      rdfs:label "subsidiedoelstelling"@nl .
+besluit:Bestuursorgaan
+      a       rdfs:Class ;
+      rdfs:label "Bestuursorgaan"@nl .
 
 dcterms:Agent
       a       rdfs:Class ;
@@ -65,20 +85,48 @@ dcterms:description
       a       rdf:Property ;
       rdfs:label "beschrijving"@nl .
 
+dcterms:language
+      a       rdf:Property ;
+      rdfs:label "taal"@nl .
+
 dcterms:title
-      a       rdf:Property .
+      a       rdf:Property ;
+      rdfs:label "titel"@nl .
+
+dcterms:type
+      a       rdf:Property ;
+      rdfs:label "type"@nl .
+
+cpsv:FormalFramework
+      a       rdfs:Class ;
+      rdfs:label "Formeel Kader"@nl .
 
 cpsv:PublicService
       a       rdfs:Class ;
       rdfs:label "Publieke Dienstverlening"@nl .
 
+cpsv:Rule
+      a       rdfs:Class ;
+      rdfs:label "Richtlijn"@nl .
+
+cpsv:follows
+      a       rdf:Property ;
+      rdfs:label "volgt"@nl .
+
 cpsv:produces
       a       rdf:Property ;
       rdfs:label "produceert"@nl .
 
+skos:Concept
+      a       rdfs:Class .
+
 <http://www.w3.org/ns/adms#identifier>
       a       rdf:Property ;
       rdfs:label "referentie"@nl .
+
+<http://www.w3.org/ns/adms#status>
+      a       rdf:Property ;
+      rdfs:label "status"@nl .
 
 <https://data.vlaanderen.be/ns/subsidie>
       a       owl:Ontology ;
@@ -95,6 +143,20 @@ cpsv:produces
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/subsidie> ;
       rdfs:label "Financieel Voordeel"@nl ;
       rdfs:subClassOf eu:Output .
+
+<https://data.vlaanderen.be/ns/subsidie#KwalitatiefCriteriumvereiste>
+      a       owl:Class ;
+      rdfs:comment "Criterium dat toelaat te bepalen of een gebruiker recht heeft op een dienstverlening of deze mag gebruiken en een kwalitatieve beoordeling vereist."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/subsidie> ;
+      rdfs:label "Kwalitatief Criteriumvereiste"@nl ;
+      rdfs:subClassOf eu:CriterionRequirement .
+
+<https://data.vlaanderen.be/ns/subsidie#ParametriseerbaarCriteriumvereiste>
+      a       owl:Class ;
+      rdfs:comment "Criterium dat toelaat te bepalen of een gebruiker recht heeft op een dienstverlening of deze mag gebruiken en op basis van bepaalde parameters eenduidig (binair) geëvalueerd kan worden. "@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/subsidie> ;
+      rdfs:label "Parametriseerbaar Criteriumvereiste"@nl ;
+      rdfs:subClassOf eu:CriterionRequirement .
 
 <https://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie>
       a       owl:Class ;
@@ -120,14 +182,6 @@ cpsv:produces
       rdfs:label "de-minimis"@nl ;
       rdfs:range xsd:boolean .
 
-<https://data.vlaanderen.be/ns/subsidie#gesubsidieerdeActiviteit>
-      a       owl:DatatypeProperty ;
-      rdfs:comment "De activiteit die in aanmerking komt voor een bepaalde subsidiemaatregel."@nl ;
-      rdfs:domain <https://data.vlaanderen.be/ns/subsidie#RechtsgrondToekenningSubsidie> ;
-      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/subsidie> ;
-      rdfs:label "gesubsidieerde activiteit"@nl ;
-      rdfs:range xsd:string .
-
 <https://data.vlaanderen.be/ns/subsidie#gesubsidieerdePeriode>
       a       owl:ObjectProperty ;
       rdfs:comment "De periode waarop de subsidie betrekking heeft."@nl ;
@@ -135,6 +189,14 @@ cpsv:produces
       rdfs:isDefinedBy <https://data.vlaanderen.be/ns/subsidie> ;
       rdfs:label "gesubsidieerde periode"@nl ;
       rdfs:range dcterms:PeriodOfTime .
+
+<https://data.vlaanderen.be/ns/subsidie#heeftAuthentiekeBron>
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Geeft aan of de informatie voor de beoordeling van het criterium via een authentieke bron verkregen kan worden."@nl ;
+      rdfs:domain <https://data.vlaanderen.be/ns/subsidie#ParametriseerbaarCriteriumvereiste> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/subsidie> ;
+      rdfs:label "heeft authentieke bron"@nl ;
+      rdfs:range xsd:boolean .
 
 <https://data.vlaanderen.be/ns/subsidie#heeftRechtsgrond>
       a       owl:ObjectProperty ;
