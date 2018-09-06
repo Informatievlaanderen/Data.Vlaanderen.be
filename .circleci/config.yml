@@ -5,17 +5,10 @@ jobs:
       - image: informatievlaanderen/oslo-ea-to-rdf:circleci
     steps:
       - checkout
-      # - run :
-      #   name: Create a list of all diagrams for each EAP file
-      #   command: |
-      #   rm /tmp/diagrams.list
-      #   for model in $(ls src/ | grep .EAP); do
-      #     java -jar ea-2-rdf.jar list -i src/${model} | awk -v model="${model}" '/Diagram/ && /OSLO/ {print model " " $2}' >> /tmp/diagrams.list
-      #   done
       - run:
           name: Extract ttl data for each diagram
           command: |
-            awk '{print "java -jar /app/ea-2-rdf.jar convert -i src/OSLO²_vocabularium.EAP -c src/config-voc.json -d OSLO-" $1 " -o /tmp/workspace/ttl/" tolower($1) ".ttl"}' < src/eap-mapping.list | sh
+            jq -r '.[] | select(.type | contains("voc")) | @sh "java -jar /app/ea-2-rdf.jar convert -i src/\(.eap) -c src/config-voc.json -d \(.diagram) -o /tmp/workspace/ttl/\(.name).ttl"' < src/eap-mapping.json | sh
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -25,21 +18,29 @@ jobs:
       - image: informatievlaanderen/oslo-ea-to-rdf:circleci
     steps:
       - checkout
-      # - run:
-      #   name: Create a list of all diagrams for each EAP file
-      #   command: |
-      #   rm /tmp/diagrams.list
-      #   for model in $(ls src/ | grep .EAP); do
-      #     java -jar ea-2-rdf.jar list -i src/${model} | awk -v model="${model}" '/Diagram/ && /OSLO/ {print model " " $2}' >> /tmp/diagrams.list
-      #   done
       - run:
           name: Extract tsv data for each diagram
           command: |
-            grep -v nil src/eap-mapping.list | awk '{print "java -jar /app/ea-2-rdf.jar tsv -i src/" $2 " -c src/config-ap.json -d " $3 " -o /tmp/workspace/tsv/" tolower($1) ".tsv"}' | sh
+            jq -r '.[] | select(.type | contains("ap")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i src/\(.eap) -c src/config-ap.json -d \(.diagram) -o /tmp/workspace/tsv/\(.name).tsv"' < src/eap-mapping.json | sh
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
             - tsv/
+  add-voc-contributors:
+    docker:
+      - image: informatievlaanderen/oslo-specification-generator:circleci
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Add contributors to vocabulary ttl file
+          command: |
+            jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --add_contributors --rdf /tmp/workspace/ttl/\(.name).ttl --csv src/stakeholders_latest.csv --csv_contributor_role_column \(.contributors) --output /tmp/workspace/ttl/\(.name).ttl"' < src/eap-mapping.json | sh
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - ttl/
   render-voc-html:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:circleci
@@ -48,23 +49,9 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run:
-          name: Extract contributors for every vocabulary
-          command: |
-            for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
-              python /app/specgen/generate_vocabulary.py --contributors --csv src/stakeholders_latest.csv --csv_contributor_role_column ${model^} --output /tmp/workspace/contrib/${model}.xml
-            done
-      - run:
-          name: Merge contributors xml with vocabulary ttl
-          command: |
-            for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
-              python /app/specgen/generate_vocabulary.py --merge --rdf /tmp/workspace/ttl/${model}.ttl --rdf_contributor /tmp/workspace/contrib/${model}.xml --output /tmp/workspace/ttl/${model}.ttl
-            done
-      - run:
           name: Render HTML version of merged ttl file
           command: |
-            for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
-              python /app/specgen/generate_vocabulary.py --rdf /tmp/workspace/ttl/${model}.ttl --output /tmp/workspace/voc/${model}/index.html
-            done
+            jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --schema \(.template) --schema_folder templates/ --rdf /tmp/workspace/ttl/\(.name).ttl --output /tmp/workspace/voc/\(.name)/index.html"' < src/eap-mapping.json | sh
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -80,6 +67,8 @@ jobs:
           command: |
             gem install linkeddata && mkdir -p /tmp/workspace/voc 
             sed -i '/TBD/d' /tmp/workspace/ttl/gebouw.ttl
+            sed -i '/"TODO"^^xsd:date/d' /tmp/workspace/ttl/openbaardomein.ttl
+            #sed -i '/"TODO"^^xsd:date/d' /tmp/workspace/ttl/weg.ttl
       - run:
           name: Turn TODO into proper URIs
           command: find /tmp/workspace/ttl -type f | xargs sed -i 's/TODO/http:\/\/example.com\/TODO/g'
@@ -122,9 +111,7 @@ jobs:
       - run:
           name: Render HTML of AP tsv file
           command: |
-            for model in $(ls /tmp/workspace/tsv | sed 's/.tsv//'); do
-              python /app/specgen/generate_vocabulary.py --ap --csv /tmp/workspace/tsv/${model}.tsv --csv_contributor src/stakeholders_latest.csv --title ${model^} --output /tmp/workspace/ap/${model}/index.html
-            done
+            jq -r '.[] | select(.type | contains("ap")) | @sh "python /app/specgen/generate_vocabulary.py --ap --csv /tmp/workspace/tsv/\(.name).tsv --csv_contributor src/stakeholders_latest.csv --csv_contributor_role_column \(.contributors) --title \(.name) --schema \(.template) --schema_folder templates/ --output /tmp/workspace/ap/\(.name)/index.html"' < src/eap-mapping.json | sh
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -160,7 +147,7 @@ jobs:
           workdir: /tmp
           command: |
             git clone git@github.com:Informatievlaanderen/OSLO-Generated.git
-            cd OSLO-Generated && git checkout -b "${CIRCLE_BRANCH}"
+            cd OSLO-Generated && git checkout -B "${CIRCLE_BRANCH}"
             mkdir -p ns doc/applicatieprofiel context
       - run:
           name: Copy static assets
@@ -192,12 +179,15 @@ workflows:
     jobs:
       - extract-vocabularia
       - extract-application-profiles
+      - add-voc-contributors:
+          requires:
+            - extract-vocabularia
       - render-voc-html:
           requires:
-            - extract-vocabularia
+            - add-voc-contributors
       - render-voc-rdf:
           requires:
-            - extract-vocabularia
+            - add-voc-contributors
       - render-ap-html:
           requires:
             - extract-application-profiles

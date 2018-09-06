@@ -1,0 +1,23 @@
+{% extends "vocabularynlv2.j2" %}
+
+{% block summary %}
+<p>
+The OSLO-Generic vocabulary focuses on terms of general interest: it is referred to in several OSLO vocabularies, or it concerns terms that are useful for domains besides OSLO.
+</p><p>
+OSLO-Generic only adds a Dutch translation for terms from existing vocabularies.
+</p><p>
+A number of terms come from the vocabularies on which OSLO relies. E.g. Formal Framework comes from the <a href="https://joinup.ec.europa.eu/asset/core_public_service/description"> ISA Core Public Service vocabulary </a> and was provided with attributes in the <a href = " https://joinup.ec.europa.eu/asset/cpsv-ap/asset_release/core-public-service-vocabulary-application-profile-v20">application profile for a service catalog</a>, also from ISA.
+</p><p>
+For origin data, OSLO-Generic refers to <a href="https://www.w3.org/TR/prov-o/">W3C PROV-O</a>. Based on that model, properties are provided that describe when, by whom and why a record has been created or deleted. This allows to exchange specific versions of objects (e.g. to update existing data). To that end, the entity Record was also added, defined as the description of an object. OSLO-Generic added another property to indicate on whose authority a record was changed and by which activity.
+</p><p>
+The Object entity maps to <a href="https://www.w3.org/TR/rdf-schema/#ch_resource">Resource</a>, the superclass of all entities in RDF. Every entity in OSLO with a life cycle inherits it. Each object has an identifier that, as in the ISA Core Vocabularies, maps to the datatype Identifier from the <a href="https://www.w3.org/TR/vocab-adms/">W3C ADMS vocabulary</a>.
+</p><p>
+In OSLO-Generic we find a Contact Info entity, which, as in the ISA Core vocabulary, maps to ContactPoint <a href="http://schema.org/ContactPoint">in schema.org</a>. OSLO adds terms such as honorific prefix and (contact) address but also those are borrowed from existing vocabularies.
+</p><p>
+Geographic Position and Geographic Name are entities originally from OSLO-Address, but are placed in OSLO-Generic because they are more of general interest (Geographic Position possibly with a different code list). Geographic Position is specific to OSLO-Generic, Geographic Name was mapped to an existing term in the RDF itself.
+</p><p>
+Jurisdiction could be taken from the <a href="https://joinup.ec.europa.eu/node/42440">ISA Core Person Vocabulary</a> but we added a property that allows to specify to which geographic area the jurisdiction relates.
+</p><p>
+Finally, we mention the entity Geometry, which refers to the corresponding term in ISA Core Location but was further extended with the subclasses Dot, Linestring and Polygon (terms from the <a href = "http://schemas.opengis.net/sf /1.0/simple_features_geometries.rdf">OGC Simple Features vocabulary </a>)to specify the geometry type.
+</p>
+{% endblock %}

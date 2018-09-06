@@ -1,0 +1,46 @@
+{% extends "ap.j2" %}
+
+{% block summary %}
+<p>
+Dit is een applicatieprofiel op bestaande vocabularia m.b.t. adressen waaronder het <a href="http://data.vlaanderen.be/ns/adres">OSLO-Adres vocabularium</a>.
+</p><p>
+De applicatie waarop dit profiel betrekking heeft is een (Belgisch) adresregister. Adresregistratie houdt in dat de beheerders van dit gegeven (in België de gemeenten) adressen en adrescomponenten officieel vaststellen en vastleggen in een register. Het adresregister vormt zo de enige en unieke bron voor adressen.
+</p><p>
+Typisch voor een adresregister is dat de adressen gestructureerd worden. Het adres is een op zichzelf staand object met een eigen identificator en levensloop en bestaat uit adrescomponenten die op hun beurt aan dezelfde kwalificaties voldoen. De adrescomponenten die we hier bedoelen zijn Gemeentenaam, Straatnaam en Postinfo.
+</p><p>
+Het profiel overstijgt het louter registreren van adressen omdat het bijkomend vastlegt hoe adressen er als attribuut van een ander gegeven moeten uitzien (datatype Adresvoorstelling) of welke bijkomende kenmerken (bv. het volledig adres) er nog van het geregistreerd adres kunnen worden uitgewisseld.
+</p><p>
+Adresregistratie vereist bepaalde kardinaliteiten, zo zijn een gemeentenaam en een straatnaam altijd verplicht. Een adres hoeft dan weer niet toegekend te zijn aan een adresseerbaar object, dit moet toelaten om adressen op te voeren nog voor ze officieel zijn gekoppeld aan bv. een gebouweenheid of perceel.
+</p><p>
+Adresregistratie vereist bepaalde kardinaliteiten, zo zijn een gemeentenaam en een straatnaam altijd verplicht. Een adres hoeft dan weer niet toegekend te zijn aan een adresseerbaar object, dit moet toelaten om adressen op te voeren nog voor ze officieel zijn gekoppeld aan bv. een gebouweenheid of perceel.
+</p><p>
+Het datatype Adresvoorstelling is aan weinig restricties onderhevig, enige voorwaarde is dat naar het overeenstemmend gestructureerd adres wordt verwezen in het geval van een Belgisch adres.
+</p><p>
+Het profiel legt ook vast welke codelijsten moeten worden gebruikt. In dit geval betreft het codelijsten die ook door <a href="http://inspire.ec.europa.eu/documents/Data_Specifications/INSPIRE_DataSpecification_AD_v3.0.pdf">INSPIRE-Address</a> worden gebruikt, we hebben enkel de voorkomende waarden vertaald naar het Nederlands.
+</p>
+{% endblock %}
+
+{% block conformance %}
+  <p>Een applicatieprofiel is een specificatie voor gegevensuitwisseling dat bijkomende beperkingen introduceert voor het toepassen van vocabularia.
+        Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
+        <p>
+        <ul>
+        <li>verfijning van de terminologie (klassen en eigenschappen) consistent met de semantiek uit de betreffende specificaties met een welbepaald gebruik als doel;</li>
+        <li>externe terminologie (klassen en eigenschappen) gebruikt voor nieuwe/extra termen die niet in de bestaande vocabularia voorkomen.</li>
+        </ul>
+        </p>
+        <p>Om conform te zijn met dit applicatieprofiel, geldt voor een implementatie dat ze:</p>
+        <p>
+        <ul>
+        <li>MOET Voor elke klasse steeds de eigenschappen bevatten die als minimum kardinaliteit 1 hebben.</li>
+        <li>MAG NIET meer dan 1 instantie bevatten van eigenschappen die 1 als maximum kardinaliteit hebben.</li>
+        <li>MAG terminologie (klassen en eigenschappen) gebruiken op een manier die consistent is met haar semantiek (definitie, gebruik, domein en bereik).</li>
+        <li>MAG NIET terminologie van andere gecontroleerde vocabularia gebruiken dan diegene die gedefinieerd wordt in dit applicatieprofiel.</li>
+        <li>MAG uitgebreid worden met klassen en eigenschappen van andere datamodellen (vocabularia) die niet overlappen met terminologie uit dit applicatieprofiel.</li>
+        </ul>
+        </p> 
+{% endblock %}
+
+{% block jsonld %}
+<p>Een herbruikbare JSON-LD context definitie voor dit applicatieprofiel is terug te vinden op: <a href="http://data.vlaanderen.be/context/adres.jsonld" target="_blank">http://data.vlaanderen.be/context/adres.jsonld</a></p>
+{% endblock %}

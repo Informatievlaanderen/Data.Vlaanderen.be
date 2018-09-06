@@ -1,0 +1,46 @@
+{% extends "ap.j2" %}
+
+{% block summary %}
+<p>
+This is an application profile on existing vocabulary with regards to addresses including the <a href="http://data.vlaanderen.be/ns/adres">OSLO-Address Vocabulary</a>.
+</p><p>
+The application to which this profile relates is a (Belgian) address register. Address registration means that the administrators of this information (in Belgium these are the municipalities) officially identify addresses and address components and register them in a register. The address register is thus the only and unique source for addresses.
+</p><p>
+Typical for an address register is that the addresses are structured. The address is a self-contained object with its own identifier and life cycle and consists of address components that in turn meet the same qualifications. The address components here are City Name, Street Name and Post Info.
+</p><p>
+The profile exceeds the mere registration of addresses because it also specifies how addresses should look like attributes of another data (data type Address Display) or which additional features from the registered address (e.g. the full address) can still be exchanged.
+</p><p>
+Address registration requires certain cardinalities, e.g. a town name and a street name are always required. An address does not have to be assigned to an addressable object, this should allow to enter addresses before they are officially linked to e.g. a building unit or parcel.
+</p><p>
+Address registration requires certain cardinalities, e.g. a town name and a street name are always required. An address does not have to be assigned to an addressable object, this should allow to enter addresses before they are officially linked to e.g. a building unit or parcel.
+</p><p>
+The data type Address Display is subject to few restrictions, the only condition is that reference is made to the corresponding structured address in the case of a Belgian address.
+</p><p>
+The profile also records which code lists to use. In this case it concerns the code lists that are also used by <a href="http://inspire.ec.europa.eu/documents/Data_Specifications/INSPIRE_DataSpecification_AD_v3.0.pdf">INSPIRE-Address</a>, we have only translated the occuring values to dutch.
+</p>
+{% endblock %}
+
+{% block conformance %}
+  <p>An application profile is a data exchange specification that introduces additional restrictions for applying vocabularies.
+        Such additional restrictions may include the following elements:</p>
+        <p>
+        <ul>
+        <li>refinement of the terminology (classes and properties) consistent with the semantics from the relevant specifications with a specific use as target;</li>
+        <li>external terminology (classes and properties) used for new / extra terms that do not exist in the existing vocabulary.</li>
+        </ul>
+        </p>
+        <p>To be conform with this application profile, an implementation:</p>
+        <p>
+        <ul>
+        <li>MUST for each class always contain the properties with minimum cardinality 1.</li>
+        <li>CANNOT contain more than 1 instance of properties with maximum cardinality 1.</li>
+        <li>CAN use terminology (classes and properties) in a way that is consistent with its semantics (definition, use, domain and range).</li>
+        <li>CANNOT use terminology from other controlled vocabularies than the one defined in this application profile.</li>
+        <li>CAN be extended with classes and properties of other data models (vocabularies) that do not overlap with terminology from this application profile.</li>
+        </ul>
+        </p> 
+{% endblock %}
+
+{% block jsonld %}
+<p>A reusable JSON-LD context definition for this application profile can be found at: <a href="http://data.vlaanderen.be/context/adres.jsonld" target="_blank">http://data.vlaanderen.be/context/adres.jsonld</a></p>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "ap.j2" %}
+
+{% block summary %}
+<p>
+The application profile OSLO-Generic merges terms from the <a href="http://data.vlaanderen.be/doc/applicatieprofiel/generiek">OSLO-Generic Vocabulary</a> but also from various other vocabularies in which generic terms occur, terms referred to by other OSLO vocabularies and application profiles.
+</p><p>
+Typical for application profiles, the terms are further restricted by means of cardinalities and prescribed code lists in the context of a certain type of application. We have no specific application here, this profile is a basic profile. Only those terms and restrictions are present so that the applications that work with OSLO vocabularies and profiles function correctly. An example is the data type Identifier that is a mandatory attribute of each OSLO object with a life cycle. Or an attribute that specifies the time at which a record describing this object was created. Or Formal Framework that must have at least one name, a jurisdiction a reference to a geographical area.
+</p><p>
+This application profile also defines some code lists. This usually concerns existing code lists such as the lists for <a href="http://publications.europa.eu/mdr/authority/language/index.html">language</a> and for <a href = "http://publications.europa.eu/mdr/authority/currency/">currency</a>.
+</p>
+{% endblock %}
+
+{% block conformance %}
+<p>An application profile is a data exchange specification that introduces additional restrictions for applying vocabularies.
+Such additional restrictions may include the following elements:</p>
+<p>
+<ul>
+<li>refinement of the terminology (classes and properties) consistent with the semantics from the relevant specifications with a specific use as target;</li>
+<li>external terminology (classes and properties) used for new / extra terms that do not exist in the existing vocabulary.</li>
+</ul>
+</p>
+<p>To be conform with this application profile, an implementation:</p>
+<ul>
+<li>MUST for each class always contain the properties with minimum cardinality 1.</li>
+<li>CANNOT contain more than 1 instance of properties with maximum cardinality 1.</li>
+<li>CAN use terminology (classes and properties) in a way that is consistent with its semantics (definition, use, domain and range).</li>
+<li>CANNOT use terminology from other controlled vocabularies than the one defined in this application profile.</li>
+<li>CAN be extended with classes and properties of other data models (vocabularia) that do not overlap with terminology from this application profile.</li>
+</ul>
+</p>  
+{% endblock %}
+
+{% block jsonld %}
+<p>A reusable JSON-LD context definition for this application profile can be found at: <a href="http://data.vlaanderen.be/context/generiek.jsonld" target="_blank">http://data.vlaanderen.be/context/generiek.jsonld</a></p>
+{% endblock %}
