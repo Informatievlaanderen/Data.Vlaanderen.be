@@ -8,7 +8,7 @@ jobs:
       - run:
           name: Extract ttl data for each diagram
           command: |
-            jq -r '.[] | select(.type | contains("voc")) | @sh "java -jar /app/ea-2-rdf.jar convert -i src/\(.eap) -c src/config-voc.json -d \(.diagram) -o /tmp/workspace/ttl/\(.name).ttl"' < src/eap-mapping.json | sh
+            jq -r '.[] | select(.type | contains("voc")) | @sh "java -jar /app/ea-2-rdf.jar convert -i src/\(.eap) -c config/config-voc.json -d \(.diagram) -o /tmp/workspace/ttl/\(.name).ttl"' < config/eap-mapping.json | sh
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Extract tsv data for each diagram
           command: |
-            jq -r '.[] | select(.type | contains("ap")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i src/\(.eap) -c src/config-ap.json -d \(.diagram) -o /tmp/workspace/tsv/\(.name).tsv"' < src/eap-mapping.json | sh
+            jq -r '.[] | select(.type | contains("ap")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i src/\(.eap) -c config/config-ap.json -d \(.diagram) -o /tmp/workspace/tsv/\(.name).tsv"' < config/eap-mapping.json | sh
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -36,7 +36,7 @@ jobs:
       - run:
           name: Add contributors to vocabulary ttl file
           command: |
-            jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --add_contributors --rdf /tmp/workspace/ttl/\(.name).ttl --csv src/stakeholders_latest.csv --csv_contributor_role_column \(.contributors) --output /tmp/workspace/ttl/\(.name).ttl"' < src/eap-mapping.json | sh
+            jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --add_contributors --rdf /tmp/workspace/ttl/\(.name).ttl --csv src/stakeholders_latest.csv --csv_contributor_role_column \(.contributors) --output /tmp/workspace/ttl/\(.name).ttl"' < config/eap-mapping.json | sh
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -51,7 +51,7 @@ jobs:
       - run:
           name: Render HTML version of merged ttl file
           command: |
-            jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --schema \(.template) --schema_folder templates/ --rdf /tmp/workspace/ttl/\(.name).ttl --output /tmp/workspace/voc/\(.name)/index.html"' < src/eap-mapping.json | sh
+            jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --schema \(.template) --schema_folder templates/ --rdf /tmp/workspace/ttl/\(.name).ttl --output /tmp/workspace/voc/\(.name)/index.html"' < config/eap-mapping.json | sh
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -111,7 +111,7 @@ jobs:
       - run:
           name: Render HTML of AP tsv file
           command: |
-            jq -r '.[] | select(.type | contains("ap")) | @sh "python /app/specgen/generate_vocabulary.py --ap --csv /tmp/workspace/tsv/\(.name).tsv --csv_contributor src/stakeholders_latest.csv --csv_contributor_role_column \(.contributors) --title \(.name) --schema \(.template) --schema_folder templates/ --output /tmp/workspace/ap/\(.name)/index.html"' < src/eap-mapping.json | sh
+            jq -r '.[] | select(.type | contains("ap")) | @sh "python /app/specgen/generate_vocabulary.py --ap --csv /tmp/workspace/tsv/\(.name).tsv --csv_contributor src/stakeholders_latest.csv --csv_contributor_role_column \(.contributors) --title \(.name) --schema \(.template) --schema_folder templates/ --output /tmp/workspace/ap/\(.name)/index.html"' < config/eap-mapping.json | sh
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -148,15 +148,11 @@ jobs:
           command: |
             git clone git@github.com:Informatievlaanderen/OSLO-Generated.git
             cd OSLO-Generated && git checkout -B "${CIRCLE_BRANCH}"
-            mkdir -p ns doc/applicatieprofiel context
+            rm -rf *
       - run:
           name: Copy static assets
           command: |
-            cp index.html /tmp/OSLO-Generated/index.html
-            cp -R cms/ /tmp/OSLO-Generated/cms
-            cp -R shacl/ /tmp/OSLO-Generated/shacl
-            cp ns/index.html /tmp/OSLO-Generated/ns/index.html
-            cp -R doc/conceptscheme/ /tmp/OSLO-Generated/doc/conceptscheme
+            cp -R site-skeleton/* /tmp/OSLO-Generated/
       - run:
           name: Copy generated assets
           workdir: /tmp/workspace
@@ -168,7 +164,7 @@ jobs:
           name: Push results to github
           workdir: /tmp/OSLO-Generated
           command: |
-            git config user.email "dummy@kb.vlaanderen.be"
+            git config user.email "oslo@kb.vlaanderen.be"
             git config user.name "Circle CI Builder"
             git add .
             git commit -m "Applying changes from commit ${CIRCLE_SHA1}" --allow-empty
