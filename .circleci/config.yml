@@ -65,7 +65,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            gem install linkeddata && mkdir -p /tmp/workspace/voc 
+            gem install linkeddata && mkdir -p /tmp/workspace/voc
             sed -i '/TBD/d' /tmp/workspace/ttl/gebouw.ttl
             sed -i '/"TODO"^^xsd:date/d' /tmp/workspace/ttl/openbaardomein.ttl
             #sed -i '/"TODO"^^xsd:date/d' /tmp/workspace/ttl/weg.ttl
@@ -111,7 +111,7 @@ jobs:
       - run:
           name: Render HTML of AP tsv file
           command: |
-            jq -r '.[] | select(.type | contains("ap")) | @sh "python /app/specgen/generate_vocabulary.py --ap --csv /tmp/workspace/tsv/\(.name).tsv --csv_contributor src/stakeholders_latest.csv --csv_contributor_role_column \(.contributors) --title \(.name) --schema \(.template) --schema_folder templates/ --output /tmp/workspace/ap/\(.name)/index.html"' < config/eap-mapping.json | sh
+            jq -r '.[] | select(.type | contains("ap")) | @sh "python /app/specgen/generate_vocabulary.py --ap --csv /tmp/workspace/tsv/\(.name).tsv --csv_contributor src/stakeholders_latest.csv --csv_contributor_role_column \(.contributors) --title \(.title) --name \(.name) --schema \(.template) --schema_folder templates/ --output /tmp/workspace/ap/\(.name)/index.html"' < config/eap-mapping.json | sh
       - persist_to_workspace:
           root: /tmp/workspace
           paths:

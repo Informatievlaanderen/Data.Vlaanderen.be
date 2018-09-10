@@ -4,6 +4,7 @@
 <html xml:lang="nl" lang="nl" dir="ltr" typeof="bibo:Document " about="" property="dcterms:language" content="nl" prefix="dcterms: http://purl.org/dc/terms/ bibo: http://purl.org/ontology/bibo/ schema: http://schema.org/ w3p: http://www.w3.org/2001/02pd/rec54#" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+              {% set folder_name = title.lower().replace(' ', '-') %}
   <title>{{ title }}</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -134,15 +135,15 @@
               {% endblock %}
               </div>
             </div>
-    
-            <div class="region region--no-space-top typography" id="summary">              
+
+            <div class="region region--no-space-top typography" id="summary">
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">Samenvatting</h2>
                 {% block summary %}
                 {% endblock %}
             </div>
-    
+
             <div class="region region--no-space-top typography" id="status">
-              <section class="introductory" id="sotd" typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter">             
+              <section class="introductory" id="sotd" typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter">
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">Status van dit document</h2>
                 {% block status %}
                 <p>
@@ -150,12 +151,12 @@
                 </p>
                 <p>
                 Dit document werd als Kandidaat-standaard gepubliceerd door de werkgroep semantiek en bevindt zich in een evaluatieperiode. Indien de evaluatie positief beoordeeld wordt door het stuurorgaan Vlaams Informatie- en ICT-beleid op basis van een aantal referentie implementaties en het behandelen van eventuele feedback wordt dit document gepromoot tot Standaard in het beschreven domein.
-                </p>                                                          
-                <p>Feedback op deze specificatie kan gegeven worden via de <a href="mailto:oslo@kb.vlaanderen.be">mailing lijst</a> of als een topic in onze <a href="https://github.com/Informatievlaanderen/OSLO-Public-Discussion">publieke reviewdiscussielijst</a>.</p>   
+                </p>
+                <p>Feedback op deze specificatie kan gegeven worden via de <a href="mailto:oslo@kb.vlaanderen.be">mailing lijst</a> of als een topic in onze <a href="https://github.com/Informatievlaanderen/OSLO-Public-Discussion">publieke reviewdiscussielijst</a>.</p>
                 {% endblock %}
               </section>
             </div>
-      
+
             <div class="region region--no-space-top typography" id="license">
               <h2 class="h2">Licentie</h2>
               {% block license %}
@@ -200,13 +201,12 @@
               </div>
             </div>
             <div class="region region--no-space-top">
-              {% set folder_name = title.lower().replace(' ', '-') %}
-              <a href="/cms/ap/{{folder_name}}/overview.jpg" target="_blank">
-                 <img src="/cms/ap/{{ folder_name }}/overview.jpg" />
+              <a href="/cms/ap/{{ name }}/overview.jpg" target="_blank">
+                 <img src="/cms/ap/{{ name }}/overview.jpg" />
               </a>
             </div>
             <div class="region region--no-space-top">
-              <h2 class="h2">Entiteiten</h2> 
+              <h2 class="h2">Entiteiten</h2>
             </div>
             {% for entity in entities_pure %}
             <div class="region region--no-space-top">
@@ -219,7 +219,7 @@
                     {% endif %}
                     <dt>Eigenschappen</dt>
                     {% if entity['properties'] %}
-                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd: 
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
                     {%- for prop in entity['properties'] | sort(attribute='label') %}
                       <a href="#{{ (entity['label'] ~ ':' ~ prop['label']) | urlencode }}">{{ prop['label'] }}</a>{% if not loop.last %}, {% endif %}
                     {%- endfor %}.</dd>
@@ -241,7 +241,7 @@
                         <th class="data-table__header-title--sortable">Codelijst</th>
                       </tr>
                     </thead>
-        
+
                     <tbody class="supertype">
                     {% for prop in entity['properties'] | sort(attribute='label') %}
                       <tr id="{{ (entity['label'] ~ ':' ~ prop['label']) | urlencode }}" typeof="rdfs:Property" resource="{{ prop['uri'] }}">
@@ -264,7 +264,7 @@
       			  {% endif %}
             </div>
             {% endfor %}
-            
+
             {% if datatypes %}
             <div class="region region--no-space-top">
               <h2 class="h2">Datatypes</h2>
@@ -280,7 +280,7 @@
                     {% endif %}
                     <dt>Eigenschappen</dt>
                     {% if entity['properties'] %}
-                    <dd>Voor dit datatype zijn de volgende eigenschappen gedefinieerd: 
+                    <dd>Voor dit datatype zijn de volgende eigenschappen gedefinieerd:
                     {%- for prop in entity['properties'] | sort(attribute='label') %}
                       <a href="#{{ (entity['label'] ~ ':' ~ prop['label']) | urlencode }}">{{ prop['label'] }}</a>{% if not loop.last %}, {% endif %}
                     {%- endfor %}.</dd>
@@ -302,7 +302,7 @@
                         <th class="data-table__header-title--sortable">Codelijst</th>
                       </tr>
                     </thead>
-        
+
                     <tbody class="supertype">
                       {% for prop in entity['properties'] | sort(attribute='label') %}
                       <tr id="{{ (entity['label'] ~ ':' ~ prop['label']) | urlencode }}" typeof="rdfs:Property" resource="{{ prop['uri'] }}">
@@ -325,7 +325,7 @@
             </div>
             {% endfor %}
             {% endif %}
-            <div class="region region--no-space-top" id="jsonld">              
+            <div class="region region--no-space-top" id="jsonld">
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">JSON-LD context</h2>
                 {% block jsonld %}
                 <p>Een herbruikbare JSON-LD context definitie voor dit applicatieprofiel is terug te vinden op: <a href="http://data.vlaanderen.be/context/" target="_blank">http://data.vlaanderen.be/context/</a></p>
@@ -339,30 +339,30 @@
                           <ul>
                               <li class="side-navigation__item">
                                   <a href="#introduction">Inleiding</a>
-                              </li>                                                                              
+                              </li>
                               <li class="side-navigation__item">
                                   <a href="#summary">Samenvatting</a>
-                              </li>                                       
+                              </li>
                               <li class="side-navigation__item">
                                   <a href="#status">Status van dit document</a>
-                              </li>                                       
+                              </li>
                               <li class="side-navigation__item">
                                   <a href="#license">Licentie</a>
-                              </li>                                    
+                              </li>
                               <li class="side-navigation__item">
                                   <a href="#conformance">Conformiteit</a>
-                              </li>                                    
+                              </li>
                               <li class="side-navigation__item">
                                   <a href="#overview">Overzicht</a>
-                              </li>                                     
+                              </li>
                               <li class="side-navigation__item">
                                   <a href="#jsonld">JSON-LD Context</a>
-                              </li>                                  
+                              </li>
                           </ul>
-                      </div>                                
+                      </div>
                   </div>
               </nav>
-          </div>           
+          </div>
     <!-- End page content -->
       </div>
     </div>
