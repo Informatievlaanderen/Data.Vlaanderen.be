@@ -147,7 +147,7 @@ jobs:
           workdir: /tmp
           command: |
             git clone git@github.com:Informatievlaanderen/OSLO-Generated.git
-            cd OSLO-Generated && git checkout -B "${CIRCLE_BRANCH}"
+            cd OSLO-Generated && git fetch origin && git checkout -B "${CIRCLE_BRANCH}" "origin/${CIRCLE_BRANCH}"
             rm -rf *
       - run:
           name: Copy static assets
