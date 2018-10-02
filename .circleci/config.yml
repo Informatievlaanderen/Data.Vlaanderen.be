@@ -8,7 +8,7 @@ jobs:
       - run:
           name: Extract ttl data for each diagram
           command: |
-            jq -r '.[] | select(.type | contains("voc")) | @sh "java -jar /app/ea-2-rdf.jar convert -i src/\(.eap) -c config/config-voc.json -d \(.diagram) -o /tmp/workspace/ttl/\(.name).ttl"' < config/eap-mapping.json | bash -e
+            jq -r '.[] | select(.type | contains("voc")) | @sh "java -jar /app/ea-2-rdf.jar convert -i src/\(.eap) -c config/config-voc.json -d \(.diagram) -o /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl"' config/eap-mapping.json | bash -e
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Extract tsv data for each diagram
           command: |
-            jq -r '.[] | select(.type | contains("ap")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i src/\(.eap) -c config/config-ap.json -d \(.diagram) -o /tmp/workspace/tsv/\(.name).tsv"' < config/eap-mapping.json | bash -e
+            jq -r '.[] | select(.type | contains("ap")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i src/\(.eap) -c config/config-ap.json -d \(.diagram) -o /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv"' < config/eap-mapping.json | bash -e
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -36,7 +36,7 @@ jobs:
       - run:
           name: Add contributors to vocabulary ttl file
           command: |
-            jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --add_contributors --rdf /tmp/workspace/ttl/\(.name).ttl --csv src/stakeholders.csv --csv_contributor_role_column \(.contributors) --output /tmp/workspace/ttl/\(.name).ttl"' < config/eap-mapping.json | bash -e
+            jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --add_contributors --rdf /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl --csv src/stakeholders.csv --csv_contributor_role_column \(.contributors) --output /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl"' < config/eap-mapping.json | bash -e
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -51,7 +51,7 @@ jobs:
       - run:
           name: Render HTML version of merged ttl file
           command: |
-            jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --schema \(.template) --schema_folder templates/ --rdf /tmp/workspace/ttl/\(.name).ttl --output /tmp/workspace/voc/\(.name)/index.html"' < config/eap-mapping.json | bash -e
+            jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --schema \(.template) --schema_folder templates/ --rdf /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl --output /tmp/workspace/voc/\(if .prefix then .prefix + "/" else "" end)\(.name)/index.html"' < config/eap-mapping.json | bash -e
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -60,41 +60,42 @@ jobs:
     docker:
       - image: circleci/ruby
     steps:
+      - checkout
       - attach_workspace:
           at: /tmp/workspace
       - run:
           name: Install dependencies
           command: |
             gem install linkeddata && mkdir -p /tmp/workspace/voc
+            jq -r '.[] | select(has("prefix")) | @sh "mkdir -p /tmp/workspace/voc/\(.prefix)"' config/eap-mapping.json | bash -e
             sed -i '/TBD/d' /tmp/workspace/ttl/gebouw.ttl
             sed -i '/"TODO"^^xsd:date/d' /tmp/workspace/ttl/openbaardomein.ttl
-            #sed -i '/"TODO"^^xsd:date/d' /tmp/workspace/ttl/weg.ttl
       - run:
           name: Turn TODO into proper URIs
           command: find /tmp/workspace/ttl -type f | xargs sed -i 's/TODO/http:\/\/example.com\/TODO/g'
       - run:
           name: Generate ntriples
           command: |
-            for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
+            for model in $(jq -r '.[] | select(.type | contains("voc")) | "\(if .prefix then .prefix + "/" else "" end)\(.name)"' config/eap-mapping.json); do
               rdf serialize --input-format turtle --output-format ntriples /tmp/workspace/ttl/${model}.ttl -o /tmp/workspace/voc/${model}.nt
             done
       - run:
           name: Generate rdfxml
           command: |
-            for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
+            for model in $(jq -r '.[] | select(.type | contains("voc")) | "\(if .prefix then .prefix + "/" else "" end)\(.name)"' config/eap-mapping.json); do
               rdf serialize --input-format turtle --output-format rdfxml /tmp/workspace/ttl/${model}.ttl -o /tmp/workspace/voc/${model}.rdf
             done
       - run:
           name: Generate jsonld
           command: |
-            for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
+            for model in $(jq -r '.[] | select(.type | contains("voc")) | "\(if .prefix then .prefix + "/" else "" end)\(.name)"' config/eap-mapping.json); do
               rdf serialize --input-format turtle --output-format jsonld /tmp/workspace/ttl/${model}.ttl -o /tmp/workspace/voc/${model}.jsonld
               cp /tmp/workspace/voc/${model}.jsonld /tmp/workspace/voc/${model}.json
             done
       - run:
           name: Generate turtle
           command: |
-            for model in $(ls /tmp/workspace/ttl | sed 's/.ttl//'); do
+            for model in $(jq -r '.[] | select(.type | contains("voc")) | "\(if .prefix then .prefix + "/" else "" end)\(.name)"' config/eap-mapping.json); do
               cp /tmp/workspace/ttl/${model}.ttl /tmp/workspace/voc/${model}.ttl
             done
       - persist_to_workspace:
@@ -120,14 +121,13 @@ jobs:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:circleci
     steps:
+      - checkout
       - attach_workspace:
           at: /tmp/workspace
       - run:
           name: Render jsonld version of AP tsv file
           command: |
-            for model in $(ls /tmp/workspace/tsv | sed 's/.tsv//'); do
-              python /app/specgen/generate_jsonld.py --input /tmp/workspace/tsv/${model}.tsv --output /tmp/workspace/ap/${model}.jsonld
-            done
+            jq -r '.[] | select(.type | contains("ap")) | @sh "python /app/specgen/generate_jsonld.py --input /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv --output /tmp/workspace/ap/\(if .prefix then .prefix + "/" else "" end)\(.name).jsonld"' config/eap-mapping.json | bash -e
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
