@@ -1,0 +1,69 @@
+{% extends "ap.j2" %}
+
+{% block introduction %}
+<p>Dit document beschrijft een <strong>applicatieprofiel</strong>, in dit geval <strong>{{ title }}</strong>.
+Het applicatieprofiel is ontwikkeld binnen het project
+<a href="http://lokaalbestuur.vlaanderen.be/lokale-besluiten-als-gelinkte-open-data">Lokale Besluiten als Gelinkte
+Open Data</a> en laat toe om aanvullende reglementen, inname- en signalisatievergunningen gelinkt op te maken en te ontsluiten.
+Het beantwoordt de vraag over hoe het corresponderende domeinmodel in de praktijk kan toegepast worden.
+Daarbij worden de beperkingen (kardinaliteit, codelijsten) toegelicht en de overeenkomstige (RDF) termen opgelijst.
+</p>
+{% endblock %}
+
+{% block conformance %}
+  <p>Een applicatieprofiel is een specificatie voor gegevensuitwisseling dat bijkomende beperkingen introduceert voor het toepassen van vocabularia.
+        Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
+        <p>
+        <ul>
+        <li>verfijning van de terminologie (klassen en eigenschappen) consistent met de semantiek uit de betreffende specificaties met een welbepaald gebruik als doel;</li>
+        <li>externe terminologie (klassen en eigenschappen) gebruikt voor nieuwe/extra termen die niet in de bestaande vocabularia voorkomen.</li>
+        </ul>
+        </p>
+        <p>Om conform te zijn met dit applicatieprofiel, geldt voor een implementatie dat ze:</p>
+        <p>
+        <ul>
+        <li>MOET Voor elke klasse steeds de eigenschappen bevatten die als minimum kardinaliteit 1 hebben.</li>
+        <li>MAG NIET meer dan 1 instantie bevatten van eigenschappen die 1 als maximum kardinaliteit hebben.</li>
+        <li>MAG terminologie (klassen en eigenschappen) gebruiken op een manier die consistent is met haar semantiek (definitie, gebruik, domein en bereik).</li>
+        <li>MAG NIET terminologie van andere gecontroleerde vocabularia gebruiken dan diegene die gedefinieerd wordt in dit applicatieprofiel.</li>
+        <li>MAG uitgebreid worden met klassen en eigenschappen van andere datamodellen (vocabularia) die niet overlappen met terminologie uit dit applicatieprofiel.</li>
+        </ul>
+        </p> 
+{% endblock %}
+
+{% block license %}
+<p>Deze specificatie van
+<a href="https://www.vlaanderen.be/nl/contact/adressengids/administratieve-diensten-van-de-vlaamse-overheid/beleidsdomein-kanselarij-en-bestuur/agentschap-binnenlands-bestuur">
+Agentschap Binnenlands Bestuur</a> is gepubliceerd onder de
+<a href="https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html">
+Modellicentie Gratis Hergebruik - v1.0</a>.</p>
+{% endblock %}
+
+{% block summary %}
+    <p>Dit applicatieprofiel beschrijft een informatiemodel om als lokaal bestuur gestructureerde besluiten inzake mobiliteit op te stellen en te publiceren. Een mobiliteitsbesluit kan momenteel een aanvullend of tijdelijk reglement zijn of een vergunning voor inname en/of signalisatie.</p>
+
+    <p>Een vergunning bestaat ondermeer uit informatie over de aanvrager, datum van aanvraag, de opdrachtgever, uitvoerder en datum waarop de vergunning goedgekeurd wordt. Deze wordt verder opgesplitst in inname- en signalisatievergunning die link bevatten naar de effectieve inname en signalisatie die vergund wordt. Om bepaalde signalisatie te mogen plaatsen moet er een aanvullend reglement opgesteld worden. Merk op dat Signalisatie en Verkeerssignalisatie onderhevig zijn aan veranderingen door het OSLO-traject Verkeersbordendatabank.</p>
+
+    <p>Een aanvullend reglement is een specifiek besluit waarbij de artikelen mobiliteitsmaatregelen beschrijven. Zo'n mobiliteitsmaatregel kan bijvoorbeeld gaan over een zone 30 invoeren of een omleiding invoeren. Waar Mobiliteitsmaatregel de overkoepelende term is, is de Verkeersmaatregel een specifieke invulling van de wegcode, bijvoorbeeld 'zone 30' is de verkeersmaatregel die hoort bij verkeersbord F4a.</p>
+
+    <p>Het "netto"-resultaat van de inname(s) en het toepassen van mobiliteitsmaatregelen kan ervoor zorgen dat er mobiliteitshinder(s) ontstaat. Deze laatste entiteit bevat de link naar specifieke doelgroepen zodat er beter gecommuniceerd kan worden over de mobiliteitshinder.</p>
+{% endblock %}
+
+{% block status %}
+<p>
+  Dit applicatieprofiel dient om het specifieke gebruik van de entiteiten relevant voor de beschreven applicatie te verduidelijken.
+</p>
+<p>
+Dit document werd gepubliceerd als Ontwerpdocument. De specificatie zoals in dit document beschreven is in ontwikkeling. Bijgevolg kan dit document op elk moment aangepast, vervangen of achterhaald worden.
+</p>
+<p>
+Dit document is bedoeld om uit te groeien tot een standaard in het beschreven domein. Desalniettemin heeft het op dit ogenblik geen officieel statuut en vertegenwoordigt het geen consensus binnen OSLO.
+</p>                                                        
+<p>Feedback op deze specificatie kan gegeven worden als een topic in onze <a href="https://github.com/Informatievlaanderen/OSLO-Public-Discussion">publieke reviewdiscussielijst</a>.</p>   
+{% endblock %}
+
+{% block jsonld %}
+<p>Een herbruikbare JSON-LD context definitie voor dit applicatieprofiel is terug te vinden op: <a href="https://test.data.vlaanderen.be/context/besluit-mobiliteit.jsonld" target="_blank">https://test.data.vlaanderen.be/context/besluit-mobiliteit.jsonld</a></p>
+{% endblock %}
+
+

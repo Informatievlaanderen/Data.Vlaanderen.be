@@ -48,3 +48,4 @@ De attributen hebben de volgende betekenis:
 * *contributors*: Is de naam van de kolom in `stakeholders_latest.csv` die gebruikt wordt om contributors toe te voegen.
 * *template*: Is de bestandsnaam van de template die gebruikt wordt om de HTML te genereren. Dit bestand moet aanwezig zijn in `/templates`
 * *title*: Dit is de titel die getoond wordt in de HTML van een applicatieprofiel. Dit attribuut is niet van toepassing voor vocabularia en wordt genegeerd indien er toch een waarde is.
+* *prefix*: Een optioneel prefix voor de url van een vocabularium. Kan ook gebruikt worden in een AP, maar dan zal de resulterende jsonld context file niet beschikbaar zijn onder /context.

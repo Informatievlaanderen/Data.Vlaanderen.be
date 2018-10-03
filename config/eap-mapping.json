@@ -27,7 +27,7 @@
   {
     "name": "persoon",
     "type": "ap",
-    "eap": "OSLO-Persoon-AP.eap",
+    "eap": "OSLO-Persoon-Basis-AP.eap",
     "diagram": "OSLO-Persoon_applicatieprofiel_basisprofiel",
     "contributors": "Persoon",
     "template": "persoon-ap.j2",
@@ -44,7 +44,7 @@
   {
     "name": "organisatie",
     "type": "ap",
-    "eap": "OSLO-Organisatie-AP.eap",
+    "eap": "OSLO-Organisatie-Basis-AP.eap",
     "diagram": "OSLO-Organisatie_applicatieprofiel_basisprofiel",
     "contributors": "Organisatie",
     "template": "organisatie-ap.j2",
@@ -61,7 +61,7 @@
   {
     "name": "generiek",
     "type": "ap",
-    "eap": "OSLO-Generiek-AP.eap",
+    "eap": "OSLO-Generiek-Basis-AP.eap",
     "diagram": "OSLO-Generiek_applicatieprofiel_basisprofiel",
     "contributors": "Generiek",
     "template": "generiek-ap.j2",
@@ -91,6 +91,22 @@
     "diagram": "OSLO-Gebouw",
     "contributors": "Gebouw",
     "template": "gebouw-voc.j2"
+  },
+  {
+    "name": "bestuur",
+    "type": "voc",
+    "eap": "OSLO-Vocabularium.eap",
+    "diagram": "OSLO-Bestuur",
+    "contributors": "Bestuur",
+    "template": "bestuur-voc.j2"
+  },
+  {
+    "name": "wetgeving",
+    "type": "voc",
+    "eap": "OSLO-Vocabularium.eap",
+    "diagram": "OSLO-Wetgeving",
+    "contributors": "Wetgeving",
+    "template": "wetgeving-voc.j2"
   },
   {
     "name": "besluit",
@@ -141,14 +157,6 @@
     "template": "toestemming-voc.j2"
   },
   {
-    "name": "transactie",
-    "type": "voc",
-    "eap": "OSLO-Transactie.eap",
-    "diagram": "Transactie_applicatieprofiel",
-    "contributors": "Transactie",
-    "template": "transactie-voc.j2"
-  },
-  {
     "name": "openbaardomein",
     "type": "voc",
     "eap": "OSLO-OpenbaarDomein.eap",
@@ -186,7 +194,7 @@
   {
     "name": "besluit-publicatie",
     "type": "ap",
-    "eap": "OSLO-Besluit-AP.eap",
+    "eap": "OSLO-Besluit-Publicatie-AP.eap",
     "diagram": "OSLO-Besluit_applicatieprofiel_publicatie",
     "contributors": "Besluit",
     "template": "besluit-publicatie-ap.j2",
@@ -355,7 +363,7 @@
   {
     "name": "mobiliteit",
     "type": "voc",
-    "eap": "OSLO-Mobiliteit.eap",
+    "eap": "OSLO-Vocabularium.eap",
     "diagram": "OSLO-Mobiliteit",
     "contributors": "Mobiliteit",
     "template": "mobiliteit-voc.j2"
@@ -363,11 +371,20 @@
   {
     "name": "inname-openbaar-domein",
     "type": "ap",
-    "eap": "OSLO-Inname-Openbaar-Domain-AP.eap",
+    "eap": "OSLO-Inname-Openbaar-Domein-AP.eap",
     "diagram": "OSLO-Mobiliteit_applicatieprofiel_inname_openbaar_domein",
     "contributors": "Mobiliteit",
     "template": "inname-openbaar-domein-ap.j2",
     "title": "Inname openbaar domein"
+  },
+  {
+    "name": "besluit-mobiliteit",
+    "type": "ap",
+    "eap": "OSLO-Besluit-Mobiliteit-AP.eap",
+    "diagram": "OSLO-Mobiliteit_applicatieprofiel_besluit_mobiliteit",
+    "contributors": "Mobiliteit",
+    "template": "besluit-mobiliteit-ap.j2",
+    "title": "Besluit Mobiliteit"
   },
   {
     "name": "vlaamse-codex",
@@ -377,5 +394,86 @@
     "contributors": "VlaamseCodex",
     "template": "vlaamsecodex-ap.j2",
     "title": "Vlaamse Codex"
+  },
+  {
+    "name": "DCAT-AP-VL",
+    "type": "ap",
+    "eap": "OSLO-DCATAPVL-AP.eap",
+    "diagram": "OSLO-DCATAPVL",
+    "contributors": "DCATAPVL",
+    "template": "dcatapvl-ap.j2",
+    "title": "DCAT-AP VL"
+  },
+  {
+    "name": "begraafplaats",
+    "type": "voc",
+    "prefix": "openbaardomein",
+    "eap": "OSLO-OpenbaarDomein.eap",
+    "diagram": "OSLO-OpenbaarDomein-Taxonomie-Begraafplaatsen",
+    "contributors": "OpenbaarDomein",
+    "template": "openbaardomein-uitbreiding-voc.j2"
+  },
+  {
+    "name": "begroeidvoorkomen",
+    "type": "voc",
+    "prefix": "openbaardomein",
+    "eap": "OSLO-OpenbaarDomein.eap",
+    "diagram": "OSLO-OpenbaarDomein-Taxonomie-OnbegroeidVoorkomen",
+    "contributors": "OpenbaarDomein",
+    "template": "openbaardomein-uitbreiding-voc.j2"
+  },
+  {
+    "name": "gebied",
+    "type": "voc",
+    "prefix": "openbaardomein",
+    "eap": "OSLO-OpenbaarDomein.eap",
+    "diagram": "OSLO-OpenbaarDomein-Taxonomie-Gebied",
+    "contributors": "OpenbaarDomein",
+    "template": "openbaardomein-uitbreiding-voc.j2"
+  },
+  {
+    "name": "infrastructuur",
+    "type": "voc",
+    "prefix": "openbaardomein",
+    "eap": "OSLO-OpenbaarDomein.eap",
+    "diagram": "OSLO-OpenbaarDomein-Taxonomie-InfrastructuurElement",
+    "contributors": "OpenbaarDomein",
+    "template": "openbaardomein-uitbreiding-voc.j2"
+  },
+  {
+    "name": "terreindeel",
+    "type": "voc",
+    "prefix": "openbaardomein",
+    "eap": "OSLO-OpenbaarDomein.eap",
+    "diagram": "OSLO-OpenbaarDomein-Taxonomie-Terreindeel",
+    "contributors": "OpenbaarDomein",
+    "template": "openbaardomein-uitbreiding-voc.j2"
+  },
+  {
+    "name": "vegetatie",
+    "type": "voc",
+    "prefix": "openbaardomein",
+    "eap": "OSLO-OpenbaarDomein.eap",
+    "diagram": "OSLO-OpenbaarDomein-Taxonomie-VegetatieElement",
+    "contributors": "OpenbaarDomein",
+    "template": "openbaardomein-uitbreiding-voc.j2"
+  },
+  {
+    "name": "waterdeel",
+    "type": "voc",
+    "prefix": "openbaardomein",
+    "eap": "OSLO-OpenbaarDomein.eap",
+    "diagram": "OSLO-OpenbaarDomein-Taxonomie-Waterdeel",
+    "contributors": "OpenbaarDomein",
+    "template": "openbaardomein-uitbreiding-voc.j2"
+  },
+  {
+    "name": "watervoorkomen",
+    "type": "voc",
+    "prefix": "openbaardomein",
+    "eap": "OSLO-OpenbaarDomein.eap",
+    "diagram": "OSLO-OpenbaarDomein-Taxonomie-WaterVoorkomen",
+    "contributors": "OpenbaarDomein",
+    "template": "openbaardomein-uitbreiding-voc.j2"
   }
 ]
