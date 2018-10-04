@@ -17,7 +17,7 @@ De volgende componenten zijn van belang in de pipeline:
 * **site-skeleton**
   Deze map bevat alle statische assets, zoals figuren of overzichtspagina's van data.vlaanderen.be. De inhoud van deze map wordt zonder aanpassing gekopieerd naar de finale website
 * **src**
-  Deze map bevat alle eap (enterprise architect project) bestanden. Deze bestanden zijn de "bron der waarheid" voor alle vocabularia en applacieprofielen. Het volstaat een eap file te vervangen om een applicatieprofiel of vocabularium bij te werken. Om nieuwe vocabularia toe te voegen moet de correcte eap file in deze map geplaats worden en de nodige configuratie toegevoegd worden in `config/eap-mapping.json`.
+  Deze map bevat alle eap (enterprise architect project) bestanden. Deze bestanden zijn de "bron der waarheid" voor alle vocabularia en applicatieprofielen. Het volstaat een eap file te vervangen om een applicatieprofiel of vocabularium bij te werken. Om nieuwe vocabularia toe te voegen moet de correcte eap file in deze map geplaats worden en de nodige configuratie toegevoegd worden in `config/eap-mapping.json`.
 * **templates**
   Deze map bevat de jinja / nunjucks templates voor ieder vocabularium en applicatieprofiel. Dit is de plaats waar de HTML beschrijvingen toegevoegd worden.
 * **config**
@@ -40,12 +40,52 @@ De `eap-mapping.json` configuratie is een array met objecten van de volgende vor
   "title": "Wegenregister"
 }
 ```
+
+of
+
+```json
+{
+  "name": "begraafplaats",
+  "type": "voc",
+  "prefix": "openbaardomein",
+  "eap": "OSLO-OpenbaarDomein.eap",
+  "diagram": "OSLO-OpenbaarDomein-Taxonomie-Begraafplaatsen",
+  "contributors": "OpenbaarDomein",
+  "template": "openbaardomein-uitbreiding-voc.j2"
+}
+```
+
 De attributen hebben de volgende betekenis:
-* *name*: Is de naam van het vocabularium / applicatieprofiel zoals hij in uiteindelijke url komt. Voor applicatieprofielen bepaalt dit ook waar overview.jpg gezocht wordt.
+* *name*: Is de naam van het vocabularium / applicatieprofiel zoals hij in uiteindelijke url komt.
 * *type*: Geeft aan of het item een vocabularium (`voc`) of applicatieprofiel (`ap`) is.
 * *eap*: Is de naam van de eap file waar het te converteren diagramma zich bevindt. Dit is hoofdlettergevoelig en het bestand moet aanwezig zijn in `/src`.
 * *diagram*: Is de naam van het diagramma in de eap file dat geconverteerd moet worden. Dit is hoofdlettergevoelig.
 * *contributors*: Is de naam van de kolom in `stakeholders_latest.csv` die gebruikt wordt om contributors toe te voegen.
 * *template*: Is de bestandsnaam van de template die gebruikt wordt om de HTML te genereren. Dit bestand moet aanwezig zijn in `/templates`
-* *title*: Dit is de titel die getoond wordt in de HTML van een applicatieprofiel. Dit attribuut is niet van toepassing voor vocabularia en wordt genegeerd indien er toch een waarde is.
-* *prefix*: Een optioneel prefix voor de url van een vocabularium. Kan ook gebruikt worden in een AP, maar dan zal de resulterende jsonld context file niet beschikbaar zijn onder /context.
+* *title*: Dit is de titel die getoond wordt in de HTML van een applicatieprofiel. Bepaalt (na conversie: allemaal kleine letters, spaties worden '-')ook waar `overview.jpg` gezocht wordt. Dit attribuut is niet van toepassing voor vocabularia en wordt genegeerd indien er toch een waarde is.
+* *prefix*: Een optionele prefix voor de url van een vocabularium, afgestemd met de baseURI van het package zoals gedefinieerd in de eap file. *Zou* ook kunnen gebruikt worden voor een AP, maar dan zou de resulterende jsonld context file niet beschikbaar zijn onder /context.
+
+## Afspraken naamgeving
+
+***Voor vocabularia en applicatieprofielen die geïntegreerd werden in de globale Enterprise Architect structuur van het Agentschap Informatie Vlaanderen,
+gelden volgende afspraken wat betreft naamgeving in `eap-mapping.json` en dus ook voor bestandsnamen. Warm aanbevolen voor alle andere vocabularia en applicatieprofielen.***
+
+### Vocabularia
+Voor een vocabularium met symbolische naam **Persoon** (algemeen:`Abc Def`):
+* *name*: **persoon**; algemeen: `abc-def` (kleine letters, '-' vervangt spatie) 
+* *type*: **voc** (vast)
+* *eap*: **OSLO-Vocabularium.eap** (vast)
+* *diagram*: **OSLO-Persoon**; algemeen: `OSLO-Abc-Def` (begint met `OSLO-`, behoudt hoofdletters / kleine letters, '-' vervangt spatie) 
+* *contributors*: **Persoon**; algemeen: `Abc Def` (meestal gelijk aan symbolische naam) 
+* *template*: **persoon-voc.j2**; algemeen: `abc-def-voc.j2` (kleine letters, '-' vervangt spatie, eindigt met `-voc.j2`)   
+
+### Applicatieprofielen
+Voor een applicatieprofiel met symbolische naam **Persoon Basis** (algemeen: `Ghi Jkl`, bevat noch `AP` noch `Applicatieprofiel`):
+* *name*: **persoon-basis**; algemeen: `ghi-jkl` (kleine letters, '-' vervangt spatie) 
+* *type*: **ap** (vast)
+* *eap*: **OSLO-Persoon-Basis-AP.eap**; algemeen: `OSLO-Ghi-Jkl-AP.eap` (begint met `OSLO-`, behoudt hoofdletters / kleine letters, '-' vervangt spatie, eindigt met `-AP.eap`) 
+* *diagram*: **OSLO-Persoon-Basis**; algemeen: `OSLO-Ghi-Jkl` (begint met `OSLO-`, behoudt hoofdletters / kleine letters, '-' vervangt spatie) 
+* *contributors*: **Persoon**; algemeen: meestal gelijk aan symbolische naam vocabularium ontwikkeld door dezelfde personen die meewerkten aan dit applicatieprofiel 
+* *template*: **persoon-basis-ap.j2**; algemeen: `ghi-jkl-ap.j2` (kleine letters, '-' vervangt spatie, eindigt met `-ap.j2`)   
+* *title*: **Persoon Basis**; algemeen: `Ghi Jkl` (identiek aan symbolische naam) 
+ 
