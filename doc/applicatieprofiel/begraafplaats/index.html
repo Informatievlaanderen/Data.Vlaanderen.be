@@ -68,7 +68,7 @@
               <div class="head" role="contentinfo" id="respecHeader">
                 <dl>
                   <dt>Laatste aanpassing</dt>
-                  <dd>2018-06-08</dd>
+                  <dd>2018-10-03</dd>
 
                   
                   
@@ -89,6 +89,7 @@
               </div>
 
               
+<br />
 De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Gegevensmodel Openbaar Domein. Verscheidene objecten gerelateerd aan begraafplaatsen zijn toegevoegd aan de bestaande objecten uit de verscheidene catalogi en zijn afgeleid van objecten uit het Conceptueel Gegevensmodel.
 
             </div>
@@ -111,6 +112,7 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                     <p>In dit document wordt correct gebruik van de volgende entiteiten toegelicht:
                       <br />
                       |
+                      <a href="#Begraafplaats blok">Begraafplaats blok</a> |
                       <a href="#Begraafplaats rij">Begraafplaats rij</a> |
                       <a href="#Columbarium">Columbarium</a> |
                       <a href="#Graf">Graf</a> |
@@ -140,6 +142,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                     "name": "Terreindeel",
                     "parent": "null",
                     "children": [
+                      {
+                        "name": "Begraafplaats blok",
+                        "parent": "Terreindeel"
+                      },
                       {
                         "name": "Begraafplaats rij",
                         "parent": "Terreindeel"
@@ -328,7 +334,176 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Begraafplaats rij"><a href="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#BegraafplaatsRij" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#BegraafplaatsRij" data-placement="right">Begraafplaats rij</a></h3>
+              <h3 class="h3" id="Begraafplaats blok"><a href="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#BegraafplaatsBlok" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#BegraafplaatsBlok" data-placement="right">Begraafplaats blok</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>Een deel binnen de begraafplaats. Dit blok is op zichzelf staande structuur binnen de begraafplaats en zorgt voor een gebiedsdekkende structuur.</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Begraafplaats%20blok%3Abegindatum">begindatum</a>, 
+                      <a href="#Begraafplaats%20blok%3Abreedte">breedte</a>, 
+                      <a href="#Begraafplaats%20blok%3Aeinddatum">einddatum</a>, 
+                      <a href="#Begraafplaats%20blok%3Ageometrie">geometrie</a>, 
+                      <a href="#Begraafplaats%20blok%3Alengte">lengte</a>, 
+                      <a href="#Begraafplaats%20blok%3Anauwkeurigheid">nauwkeurigheid</a>, 
+                      <a href="#Begraafplaats%20blok%3Aniveau">niveau</a>, 
+                      <a href="#Begraafplaats%20blok%3Aoppervlakte">oppervlakte</a>, 
+                      <a href="#Begraafplaats%20blok%3Arelatie">relatie</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Begraafplaats%20blok%3Abegindatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#begindatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
+                            begindatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het gebied of object in gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Begraafplaats%20blok%3Abreedte" typeof="rdfs:Property" resource="http://schema.org/width">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://schema.org/width" data-toggle="tooltip" data-content="http://schema.org/width" data-placement="right">
+                            breedte</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">De breedte van het object in meter. In geval van een ongelijkmatige breedte wordt de gemiddelde breedte opgenomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Begraafplaats%20blok%3Aeinddatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#einddatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
+                            einddatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het beheerobject uit gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Begraafplaats%20blok%3Ageometrie" typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#geometry">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/ns/locn#geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#geometry" data-placement="right">
+                            geometrie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.opengis.net/ont/geosparql#Geometry" data-toggle="tooltip" data-content="http://www.opengis.net/ont/geosparql#Geometry" data-placement="right">Geometrie</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De geometrie overeenkomstig met een bepaald object.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Begraafplaats%20blok%3Alengte" typeof="rdfs:Property" resource="http://open.vocab.org/terms/length">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://open.vocab.org/terms/length" data-toggle="tooltip" data-content="http://open.vocab.org/terms/length" data-placement="right">
+                            lengte</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">De lineare grootte van het object in meter.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Begraafplaats%20blok%3Anauwkeurigheid" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
+                            nauwkeurigheid</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Nauwkeurigsheidsklassen</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De precisie waarmee het object opgemeten werd.</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="http://data.vlaanderen.be/id/conceptscheme/Nauwkeurigsheidsklassen">Link</a></td>
+                      </tr>
+                    
+                      <tr id="Begraafplaats%20blok%3Aniveau" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#niveau">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
+                            niveau</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#integer" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#integer" data-placement="right">Integer</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten.</td>
+                        <td property="vann:usageNote">Negatieve waarden worden geassocieerd met ondergronds en positieve waarden met bovengronds. Nul wordt beschouwd als een absolute waarde om het maaiveld aan te duiden.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Begraafplaats%20blok%3Aoppervlakte" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#oppervlakte">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-placement="right">
+                            oppervlakte</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right">Double</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">De afmeting van het object in vierkante meter.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Begraafplaats%20blok%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
+                            relatie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Resource" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Resource" data-placement="right">RelatieObject</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Verwijst naar een object in een andere databank dat meer informatie kan verschaffen over het beheerobject.</td>
+                        <td property="vann:usageNote">Bijvoorbeeld een verwijzing naar een object uit het wegenregister of grootschalig referentiebestand.</td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Begraafplaats rij"><a href="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#BegraafplaatsRij" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#BegraafplaatsRij" data-placement="right">Begraafplaats rij</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
                     <dt>Beschrijving</dt><dd>Een rij is een verzameling graven van hetzelfde type. Een rij ligt typisch volledig binnen een bepaald blok. </dd>
@@ -364,10 +539,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
         
                     <tbody class="supertype">
                     
-                      <tr id="Begraafplaats%20rij%3Abegindatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#begindatum">
+                      <tr id="Begraafplaats%20rij%3Abegindatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#begindatum">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
                             begindatum</a>
                           </code>
                         </td>
@@ -392,10 +567,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Begraafplaats%20rij%3Aeinddatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#einddatum">
+                      <tr id="Begraafplaats%20rij%3Aeinddatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#einddatum">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
                             einddatum</a>
                           </code>
                         </td>
@@ -434,10 +609,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Begraafplaats%20rij%3Anauwkeurigheid" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
+                      <tr id="Begraafplaats%20rij%3Anauwkeurigheid" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
                             nauwkeurigheid</a>
                           </code>
                         </td>
@@ -448,10 +623,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td><a href="http://data.vlaanderen.be/id/conceptscheme/Nauwkeurigsheidsklassen">Link</a></td>
                       </tr>
                     
-                      <tr id="Begraafplaats%20rij%3Aniveau" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#niveau">
+                      <tr id="Begraafplaats%20rij%3Aniveau" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#niveau">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
                             niveau</a>
                           </code>
                         </td>
@@ -462,10 +637,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Begraafplaats%20rij%3Aoppervlakte" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte">
+                      <tr id="Begraafplaats%20rij%3Aoppervlakte" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#oppervlakte">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-placement="right">
                             oppervlakte</a>
                           </code>
                         </td>
@@ -497,7 +672,7 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Columbarium"><a href="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Columbarium" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Columbarium" data-placement="right">Columbarium</a></h3>
+              <h3 class="h3" id="Columbarium"><a href="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Columbarium" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Columbarium" data-placement="right">Columbarium</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
                     <dt>Beschrijving</dt><dd>Een columbarium is een muur met nissen waarin urnen geplaatst worden.</dd>
@@ -532,10 +707,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
         
                     <tbody class="supertype">
                     
-                      <tr id="Columbarium%3Abegindatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#begindatum">
+                      <tr id="Columbarium%3Abegindatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#begindatum">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
                             begindatum</a>
                           </code>
                         </td>
@@ -546,10 +721,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Columbarium%3Aeinddatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#einddatum">
+                      <tr id="Columbarium%3Aeinddatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#einddatum">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
                             einddatum</a>
                           </code>
                         </td>
@@ -574,10 +749,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Columbarium%3Anauwkeurigheid" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
+                      <tr id="Columbarium%3Anauwkeurigheid" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
                             nauwkeurigheid</a>
                           </code>
                         </td>
@@ -588,10 +763,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td><a href="http://data.vlaanderen.be/id/conceptscheme/Nauwkeurigsheidsklassen">Link</a></td>
                       </tr>
                     
-                      <tr id="Columbarium%3Aniveau" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#niveau">
+                      <tr id="Columbarium%3Aniveau" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#niveau">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
                             niveau</a>
                           </code>
                         </td>
@@ -623,7 +798,7 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Graf"><a href="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Graf" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Graf" data-placement="right">Graf</a></h3>
+              <h3 class="h3" id="Graf"><a href="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Graf" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Graf" data-placement="right">Graf</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
                     <dt>Beschrijving</dt><dd>Plaats waar iemand begraven ligt.</dd>
@@ -663,10 +838,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
         
                     <tbody class="supertype">
                     
-                      <tr id="Graf%3Abegindatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#begindatum">
+                      <tr id="Graf%3Abegindatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#begindatum">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
                             begindatum</a>
                           </code>
                         </td>
@@ -677,10 +852,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Graf%3Abezetting" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#bezetting">
+                      <tr id="Graf%3Abezetting" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#bezetting">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#bezetting" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#bezetting" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#bezetting" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#bezetting" data-placement="right">
                             bezetting</a>
                           </code>
                         </td>
@@ -705,10 +880,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Graf%3Aeinddatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#einddatum">
+                      <tr id="Graf%3Aeinddatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#einddatum">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
                             einddatum</a>
                           </code>
                         </td>
@@ -733,10 +908,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Graf%3Agrafkelder%20aanwezig" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#grafkelderAanwezig">
+                      <tr id="Graf%3Agrafkelder%20aanwezig" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#grafkelderAanwezig">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#grafkelderAanwezig" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#grafkelderAanwezig" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#grafkelderAanwezig" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#grafkelderAanwezig" data-placement="right">
                             grafkelder aanwezig</a>
                           </code>
                         </td>
@@ -747,10 +922,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Graf%3Agrafteken" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#grafteken">
+                      <tr id="Graf%3Agrafteken" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#grafteken">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#grafteken" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#grafteken" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#grafteken" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#grafteken" data-placement="right">
                             grafteken</a>
                           </code>
                         </td>
@@ -761,10 +936,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Graf%3Agraftype" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#graftype">
+                      <tr id="Graf%3Agraftype" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#graftype">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#graftype" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#graftype" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#graftype" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#graftype" data-placement="right">
                             graftype</a>
                           </code>
                         </td>
@@ -775,10 +950,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td><a href="http://data.vlaanderen.be/id/conceptscheme/Graftypes">Link</a></td>
                       </tr>
                     
-                      <tr id="Graf%3Anauwkeurigheid" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
+                      <tr id="Graf%3Anauwkeurigheid" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
                             nauwkeurigheid</a>
                           </code>
                         </td>
@@ -789,10 +964,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td><a href="http://data.vlaanderen.be/id/conceptscheme/Nauwkeurigsheidsklassen">Link</a></td>
                       </tr>
                     
-                      <tr id="Graf%3Aniveau" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#niveau">
+                      <tr id="Graf%3Aniveau" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#niveau">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
                             niveau</a>
                           </code>
                         </td>
@@ -824,7 +999,7 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Strooiweide"><a href="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Strooiweide" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Strooiweide" data-placement="right">Strooiweide</a></h3>
+              <h3 class="h3" id="Strooiweide"><a href="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Strooiweide" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Strooiweide" data-placement="right">Strooiweide</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
                     <dt>Beschrijving</dt><dd>Plaats, meestal grasperkje, op het kerkhof waar assen van overledenen uitgestrooid worden.</dd>
@@ -860,10 +1035,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
         
                     <tbody class="supertype">
                     
-                      <tr id="Strooiweide%3Abegindatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#begindatum">
+                      <tr id="Strooiweide%3Abegindatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#begindatum">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
                             begindatum</a>
                           </code>
                         </td>
@@ -888,10 +1063,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Strooiweide%3Aeinddatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#einddatum">
+                      <tr id="Strooiweide%3Aeinddatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#einddatum">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
                             einddatum</a>
                           </code>
                         </td>
@@ -930,10 +1105,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Strooiweide%3Anauwkeurigheid" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
+                      <tr id="Strooiweide%3Anauwkeurigheid" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
                             nauwkeurigheid</a>
                           </code>
                         </td>
@@ -944,10 +1119,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td><a href="http://data.vlaanderen.be/id/conceptscheme/Nauwkeurigsheidsklassen">Link</a></td>
                       </tr>
                     
-                      <tr id="Strooiweide%3Aniveau" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#niveau">
+                      <tr id="Strooiweide%3Aniveau" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#niveau">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
                             niveau</a>
                           </code>
                         </td>
@@ -958,10 +1133,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Strooiweide%3Aoppervlakte" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte">
+                      <tr id="Strooiweide%3Aoppervlakte" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#oppervlakte">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-placement="right">
                             oppervlakte</a>
                           </code>
                         </td>
@@ -993,7 +1168,7 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Terreindeel"><a href="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Terreindeel" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Terreindeel" data-placement="right">Terreindeel</a></h3>
+              <h3 class="h3" id="Terreindeel"><a href="https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Terreindeel" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Terreindeel" data-placement="right">Terreindeel</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
                     <dt>Beschrijving</dt><dd>Gedeelte van het aardoppervlak, met een gelijkaardige functie, dat geen deel uitmaakt van 'waterdeel'</dd>
@@ -1029,10 +1204,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
         
                     <tbody class="supertype">
                     
-                      <tr id="Terreindeel%3Abegindatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#begindatum">
+                      <tr id="Terreindeel%3Abegindatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#begindatum">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
                             begindatum</a>
                           </code>
                         </td>
@@ -1057,10 +1232,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Terreindeel%3Aeinddatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#einddatum">
+                      <tr id="Terreindeel%3Aeinddatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#einddatum">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
                             einddatum</a>
                           </code>
                         </td>
@@ -1099,10 +1274,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Terreindeel%3Anauwkeurigheid" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
+                      <tr id="Terreindeel%3Anauwkeurigheid" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
                             nauwkeurigheid</a>
                           </code>
                         </td>
@@ -1113,10 +1288,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td><a href="http://data.vlaanderen.be/id/conceptscheme/Nauwkeurigsheidsklassen">Link</a></td>
                       </tr>
                     
-                      <tr id="Terreindeel%3Aniveau" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#niveau">
+                      <tr id="Terreindeel%3Aniveau" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#niveau">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
                             niveau</a>
                           </code>
                         </td>
@@ -1127,10 +1302,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Terreindeel%3Aoppervlakte" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte">
+                      <tr id="Terreindeel%3Aoppervlakte" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#oppervlakte">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#oppervlakte" data-placement="right">
                             oppervlakte</a>
                           </code>
                         </td>
@@ -1162,7 +1337,7 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="Urnenveld"><a href="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Urnenveld" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Urnenveld" data-placement="right">Urnenveld</a></h3>
+              <h3 class="h3" id="Urnenveld"><a href="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Urnenveld" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein/begraafplaats#Urnenveld" data-placement="right">Urnenveld</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
                     <dt>Beschrijving</dt><dd>Een urnenveld is een constructie in of op de grond met nissen waarin urnen geplaatst worden.</dd>
@@ -1197,10 +1372,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
         
                     <tbody class="supertype">
                     
-                      <tr id="Urnenveld%3Abegindatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#begindatum">
+                      <tr id="Urnenveld%3Abegindatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#begindatum">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
                             begindatum</a>
                           </code>
                         </td>
@@ -1211,10 +1386,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Urnenveld%3Aeinddatum" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#einddatum">
+                      <tr id="Urnenveld%3Aeinddatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#einddatum">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
                             einddatum</a>
                           </code>
                         </td>
@@ -1239,10 +1414,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td></td>
                       </tr>
                     
-                      <tr id="Urnenveld%3Anauwkeurigheid" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
+                      <tr id="Urnenveld%3Anauwkeurigheid" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
                             nauwkeurigheid</a>
                           </code>
                         </td>
@@ -1253,10 +1428,10 @@ De objectcatalogus begraafplaats is een voorbeeld van een uitbreiding op het Geg
                         <td><a href="http://data.vlaanderen.be/id/conceptscheme/Nauwkeurigsheidsklassen">Link</a></td>
                       </tr>
                     
-                      <tr id="Urnenveld%3Aniveau" typeof="rdfs:Property" resource="http://data.vlaanderen.be/ns/openbaardomein#niveau">
+                      <tr id="Urnenveld%3Aniveau" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#niveau">
                         <td>
                           <code property="rdfs:label">
-                            <a href="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="http://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
                             niveau</a>
                           </code>
                         </td>

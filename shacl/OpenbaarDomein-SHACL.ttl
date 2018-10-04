@@ -1,39 +1,39 @@
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
-<http://data.vlaanderen.be/ns/openbaardomein#ObjectShape>
+<https://data.vlaanderen.be/ns/openbaardomein#ObjectShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#Object> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein#Object> ;
 	sh:property [
 		sh:name "beheerder" ;
 		sh:description "Instantie (tot op team- of dienstniveau) die instaat voor het beheer van het object." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#beheerder> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#beheerder> ;
 		sh:class <http://www.w3.org/ns/org#Organization> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "eigenaar" ;
 		sh:description "De entiteit (bv. de gemeente) die eigenaar is van het object." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#eigenaar> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#eigenaar> ;
 		sh:class <http://www.w3.org/ns/org#Organization> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "begindatum" ;
 		sh:description "Datum waarop de huidige versie van het gebied of object in gebruik wordt genomen." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#begindatum> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#begindatum> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "einddatum" ;
 		sh:description "Datum waarop de huidige versie van het beheerobject uit gebruik wordt genomen." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#einddatum> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#einddatum> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "niveau" ;
 		sh:description "Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#niveau> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#niveau> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#integer> ;
 		sh:maxCount 1 ;
 	] ;
@@ -48,7 +48,7 @@
 	sh:property [
 		sh:name "nauwkeurigheid" ;
 		sh:description "De precisie waarmee het object opgemeten werd." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
@@ -61,31 +61,31 @@
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomenShape>
+<https://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomen> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomen> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#BegroeidVoorkomenShape>
+<https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#BegroeidVoorkomenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#BegroeidVoorkomen> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#BegroeidVoorkomen> ;
 	sh:property [
 		sh:name "drassigheid" ;
 		sh:description "Mate waarin de bodem verzadigd is met water." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#drassigheid> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#drassigheid> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "soortcode" ;
 		sh:description "Een unieke identificator voor de soort van het vegetatie-element. " ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#soortcode> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#soortcode> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 	] ;
 	sh:property [
 		sh:name "soortnaamNederlands" ;
 		sh:description "Soortnaam in het Nederlands." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#soortnaamNederlands> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#soortnaamNederlands> ;
 	] ;
 	sh:property [
 		sh:name "soortnaamWetenschappelijk" ;
@@ -94,25 +94,25 @@
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#OnbegroeidVoorkomenShape>
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#OnbegroeidVoorkomenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#OnbegroeidVoorkomen> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#OnbegroeidVoorkomen> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/vegetatie#VegetatieElementShape>
+<https://data.vlaanderen.be/ns/openbaardomein/vegetatie#VegetatieElementShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#VegetatieElement> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/vegetatie#VegetatieElement> ;
 	sh:property [
 		sh:name "plantdatum" ;
 		sh:description "De datum waarop het vegetatie element werd geplant." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#plantdatum> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/vegetatie#plantdatum> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "hoogte" ;
-		sh:description "De hoogte van het object in meter." ;
+		sh:description "De hoogte van het object zelf, in meter." ;
 		sh:path <http://schema.org/height> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
 		sh:maxCount 1 ;
@@ -120,7 +120,7 @@
 	sh:property [
 		sh:name "soortcode" ;
 		sh:description "Een unieke identificator voor de soort van het vegetatie-element. " ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortcode> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortcode> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 	] ;
@@ -133,55 +133,71 @@
 	sh:property [
 		sh:name "soortnaamNederlands" ;
 		sh:description "Soortnaam in het Nederlands." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortnaamNederlands> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortnaamNederlands> ;
 		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#InfrastructuurelementShape>
+<https://data.vlaanderen.be/ns/openbaardomein/infrastructuur#InfrastructuurelementShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#Infrastructuurelement> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/infrastructuur#Infrastructuurelement> ;
 	sh:property [
 		sh:name "materiaal" ;
 		sh:description "Materiaal waar het object uit vervaardigd is." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein/infrastructuurelement#materiaal> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/infrastructuur#materiaal> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein#DeelShape>
+<https://data.vlaanderen.be/ns/openbaardomein#DeelShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#Deel> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein#Deel> ;
 	sh:property [
 		sh:name "voorkomen" ;
 		sh:description "Verwijst naar het fysiek voorkomen van het beheerdeel." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#voorkomen> ;
-		sh:class <http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomen> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#voorkomen> ;
+		sh:class <https://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomen> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "oppervlakte" ;
 		sh:description "De afmeting van het object in vierkante meter." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#oppervlakte> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#oppervlakte> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein#ElementShape>
+<https://data.vlaanderen.be/ns/openbaardomein#ElementShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#Element> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein#Element> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/waterdeel#WaterdeelShape>
+<https://data.vlaanderen.be/ns/openbaardomein/waterdeel#WaterdeelShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/waterdeel#Waterdeel> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/waterdeel#Waterdeel> ;
+	sh:property [
+		sh:name "voorkomen" ;
+		sh:description "Verwijst naar het voorkomen van het waterdeel." ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/waterdeel#voorkomen> ;
+		sh:class <https://data.vlaanderen.be/ns/openbaardomein/waterdeel#WaterVoorkomen> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#TerreindeelShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#TerreindeelShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Terreindeel> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Terreindeel> ;
+	sh:property [
+		sh:name "voorkomen" ;
+		sh:description "Het voorkomen van het terreindeel." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#voorkomen> ;
+		sh:class <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#TerreinVoorkomen> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
 	sh:property [
 		sh:name "breedte" ;
 		sh:description "De breedte van het object in meter. In geval van een ongelijkmatige breedte wordt de gemiddelde breedte opgenomen." ;
@@ -198,34 +214,34 @@
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein#GebiedShape>
+<https://data.vlaanderen.be/ns/openbaardomein#GebiedShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#Gebied> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein#Gebied> ;
 	sh:property [
-		sh:name "eigenaar" ;
-		sh:description "De entiteit (bv. de gemeente) die eigenaar is van het gebied." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#eigenaar> ;
+		sh:name "beheerder" ;
+		sh:description "Instantie (tot op team- of dienstniveau) die instaat voor het beheer van het gebied." ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#beheerder> ;
 		sh:class <http://www.w3.org/ns/org#Organization> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "beheerder" ;
-		sh:description "Instantie (tot op team- of dienstniveau) die instaat voor het beheer van het gebied." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#beheerder> ;
+		sh:name "eigenaar" ;
+		sh:description "De entiteit (bv. de gemeente) die eigenaar is van het gebied." ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#eigenaar> ;
 		sh:class <http://www.w3.org/ns/org#Organization> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "begindatum" ;
 		sh:description "Datum waarop de huidige versie van het beheergebied in gebruik wordt genomen." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#begindatum> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#begindatum> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "einddatum" ;
 		sh:description "Datum waarop de huidige versie van het beheergebied uit gebruik wordt genomen." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#einddatum> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#einddatum> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:maxCount 1 ;
 	] ;
@@ -245,20 +261,20 @@
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein#TerreinVoorkomenShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#TerreinVoorkomenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#TerreinVoorkomen> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#TerreinVoorkomen> ;
 	sh:property [
 		sh:name "obstakels" ;
 		sh:description "Eigenschap die aangeeft of er binnen het beheerdeel  al dan niet objecten voorkomen die de vrije werking van machines of andere werktuigen kan verhinderen" ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#obstakels> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#obstakels> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "talud" ;
 		sh:description "Een talud is het kunstmatig gedeelte van een vlak van de wegbaan, dijken, spoorbanen, vestingswerken, dat een helling (min. 20%, max 80% voor kunstmatig verharde taluds) vertoont en bedoeld voor het opvangen van een hoogteverschil." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#talud> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#talud> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:maxCount 1 ;
 	] ;
@@ -346,14 +362,14 @@
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein#CollectieShape>
+<https://data.vlaanderen.be/ns/openbaardomein#CollectieShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#Collectie> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein#Collectie> ;
 	sh:property [
 		sh:name "bevat" ;
 		sh:description "Relatie naar de objecten die deel uitmaken van de collectie." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#bevat> ;
-		sh:class <http://data.vlaanderen.be/ns/openbaardomein#Object> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#bevat> ;
+		sh:class <https://data.vlaanderen.be/ns/openbaardomein#Object> ;
 	] ;
 	sh:property [
 		sh:name "titel" ;
@@ -365,8 +381,8 @@
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/watervoorkomen#WaterVoorkomenShape>
+<https://data.vlaanderen.be/ns/openbaardomein/waterdeel#WaterVoorkomenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/watervoorkomen#WaterVoorkomen> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/waterdeel#WaterVoorkomen> ;
 	sh:closed false .
 
