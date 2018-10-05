@@ -1,0 +1,371 @@
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit#> .
+@prefix cpsv: <http://purl.org/vocab/cpsv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix eu: <http://data.europa.eu/m8g/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix ns1: <http://www.w3.org/2001/02pd/rec54#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix person: <http://www.w3.org/ns/person#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rov: <http://www.w3.org/ns/regorg#> .
+@prefix sat: <http://data.europa.eu/stateaidtransparency/sat#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+eli:LegalExpression a rdfs:Class ;
+    rdfs:label "Legale Verschijningsvorm"@nl .
+
+eli:LegalResource a rdfs:Class ;
+    rdfs:label "Rechtsgrond"@nl .
+
+eli:LegalResourceSubdivision a rdfs:Class ;
+    rdfs:label "Rechtsgrondonderdeel"@nl .
+
+eli:cites a rdf:Property ;
+    rdfs:label "citeert"@nl .
+
+eli:corrected_by a rdf:Property ;
+    rdfs:label "gecorrigeerd door"@nl .
+
+eli:corrects a rdf:Property ;
+    rdfs:label "corrigeert"@nl .
+
+eli:date_no_longer_in_force a rdf:Property ;
+    rdfs:label "datum buitenwerkingtreding"@nl .
+
+eli:first_date_entry_in_force a rdf:Property ;
+    rdfs:label "datum inwerkingtreding"@nl .
+
+eli:has_part a rdf:Property ;
+    rdfs:label "heeft deel"@nl .
+
+eli:is_part_of a rdf:Property ;
+    rdfs:label "is deel van"@nl .
+
+eli:language a rdf:Property ;
+    rdfs:label "taal"@nl .
+
+eli:realizes a rdf:Property ;
+    rdfs:label "realiseert"@nl .
+
+eli:title a rdf:Property ;
+    rdfs:label "titel"@nl .
+
+eli:type_document a rdf:Property ;
+    rdfs:label "type document"@nl .
+
+prov:value a rdf:Property ;
+    rdfs:label "waarde"@nl .
+
+<https://data.vlaanderen.be/ns/wetgeving#bekrachtigdBij> a owl:ObjectProperty ;
+    rdfs:label "bekrachtigd bij"@nl ;
+    rdfs:comment "Een rechtsgrond of legale verschijningsvorm krijgt volledige rechtskracht door instemming onder opschortende voorwaarde van een andere."@nl ;
+    rdfs:domain <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/wetgeving> ;
+    rdfs:range <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:subPropertyOf eli:changed_by .
+
+<https://data.vlaanderen.be/ns/wetgeving#bekrachtigt> a owl:ObjectProperty ;
+    rdfs:label "bekrachtigt"@nl ;
+    rdfs:comment "Instemming onder opschortende voorwaarde van een rechtsgrond of legale verschijningsvorm op een andere zodat deze laatste volledige rechtskracht krijgt."@nl ;
+    rdfs:domain <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/wetgeving> ;
+    rdfs:range <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:subPropertyOf eli:changes .
+
+<https://data.vlaanderen.be/ns/wetgeving#heftOp> a owl:ObjectProperty ;
+    rdfs:label "heft op"@nl ;
+    rdfs:comment "Geeft aan dat een rechtsgrond of legale verschijningsvorm een andere opheft."@nl ;
+    rdfs:domain <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/wetgeving> ;
+    rdfs:range <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:subPropertyOf eli:repeals .
+
+<https://data.vlaanderen.be/ns/wetgeving#ingetrokkenBij> a owl:ObjectProperty ;
+    rdfs:label "ingetrokken bij"@nl ;
+    rdfs:comment "Geeft aan dat deze rechtsgrond of legale verschijningsvorm ingetrokken is bij een ander."@nl ;
+    rdfs:domain <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/wetgeving> ;
+    rdfs:range <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:subPropertyOf eli:repealed_by .
+
+<https://data.vlaanderen.be/ns/wetgeving#ingevoegdBij> a owl:ObjectProperty ;
+    rdfs:label "ingevoegd bij"@nl ;
+    rdfs:comment "Bij deze rechtsgrond of legale verschijningsvorm is een verandering met legale impact ingevoegd door een andere."@nl ;
+    rdfs:domain <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/wetgeving> ;
+    rdfs:range <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:subPropertyOf eli:amended_by .
+
+<https://data.vlaanderen.be/ns/wetgeving#opgehevenBij> a owl:ObjectProperty ;
+    rdfs:label "opgeheven bij"@nl ;
+    rdfs:comment "Geeft aan dat deze rechtsgrond of legale verschijningsvorm opgeheven is door een ander."@nl ;
+    rdfs:domain <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/wetgeving> ;
+    rdfs:range <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:subPropertyOf eli:repealed_by .
+
+<https://data.vlaanderen.be/ns/wetgeving#trektIn> a owl:ObjectProperty ;
+    rdfs:label "trekt in"@nl ;
+    rdfs:comment "Geeft aan dat een rechtsgrond of legale verschijningsvorm een andere intrekt."@nl ;
+    rdfs:domain <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/wetgeving> ;
+    rdfs:range <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:subPropertyOf eli:repeals .
+
+<https://data.vlaanderen.be/ns/wetgeving#vervangenBij> a owl:ObjectProperty ;
+    rdfs:label "vervangen bij"@nl ;
+    rdfs:comment "Geeft aan dat deze rechtsgrond of legale verschijningsvorm vervangen is bij een ander."@nl ;
+    rdfs:domain <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/wetgeving> ;
+    rdfs:range <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:subPropertyOf eli:repealed_by .
+
+<https://data.vlaanderen.be/ns/wetgeving#vervangt> a owl:ObjectProperty ;
+    rdfs:label "vervangt"@nl ;
+    rdfs:comment "Geeft aan dat een rechtsgrond of legale verschijningsvorm een andere vervangt."@nl ;
+    rdfs:domain <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/wetgeving> ;
+    rdfs:range <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:subPropertyOf eli:repeals .
+
+<https://data.vlaanderen.be/ns/wetgeving#voegtIn> a owl:ObjectProperty ;
+    rdfs:label "voegt in"@nl ;
+    rdfs:comment "Deze rechtsgrond of legale verschijningsvorm voegt een verandering met legale impact in bij een andere."@nl ;
+    rdfs:domain <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/wetgeving> ;
+    rdfs:range <https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> ;
+    rdfs:subPropertyOf eli:amends .
+
+eli:changed_by a rdf:Property ;
+    rdfs:label "veranderd door"@nl .
+
+eli:changes a rdf:Property ;
+    rdfs:label "verandert"@nl .
+
+<https://data.vlaanderen.be/ns/wetgeving> a owl:Ontology ;
+    rdfs:label "Legislation"@en,
+        "Wetgeving"@nl ;
+    dcterms:contributor [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://stad.antwerpen.be> ;
+                    foaf:name "Antwerpen" ] ;
+            foaf:firstName "Lynn" ;
+            foaf:lastName "Lodewyckx" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://Aalst.be> ;
+                    foaf:name "Stad Aalst" ] ;
+            foaf:firstName "Sophie" ;
+            foaf:lastName "Podevyn" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://www.herzele.be> ;
+                    foaf:name "Herzele" ] ;
+            foaf:firstName "Anja" ;
+            foaf:lastName "Cosijns" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://www.kaprijke.be> ;
+                    foaf:name "Kaprijke" ] ;
+            foaf:firstName "Kristel" ;
+            foaf:lastName "Brusselle" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://www.herzele.be> ;
+                    foaf:name "Herzele" ] ;
+            foaf:firstName "Miranda" ;
+            foaf:lastName "Van Bockstaele" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://binnenland.vlaanderen.be> ;
+                    foaf:name "ABB" ] ;
+            foaf:firstName "Geert" ;
+            foaf:lastName "Van Campenhout" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://www.herzele.be> ;
+                    foaf:name "Herzele" ] ;
+            foaf:firstName "Marijke" ;
+            foaf:lastName "Versteels" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://www.herzele.be> ;
+                    foaf:name "Herzele" ] ;
+            foaf:firstName "Daniël" ;
+            foaf:lastName "Adriaens" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://www.niel.be> ;
+                    foaf:name "Niel" ] ;
+            foaf:firstName "Eric" ;
+            foaf:lastName "Vermeiren" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://www.cipalschaubroeck.be> ;
+                    foaf:name "Cipal Schaubroeck" ] ;
+            foaf:firstName "Jonas" ;
+            foaf:lastName "Tamsyn" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://stad.gent> ;
+                    foaf:name "Stad Gent" ] ;
+            foaf:firstName "Ines" ;
+            foaf:lastName "Acke" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://www.vlaamsparlement.be> ;
+                    foaf:name "Vlaams parlement" ] ;
+            foaf:firstName "Tom" ;
+            foaf:lastName "Cocquyt" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://msi.nl> ;
+                    foaf:name "iBabs BV" ] ;
+            foaf:firstName "Niels" ;
+            foaf:lastName "Manshanden" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://www.cipalschaubroeck.be> ;
+                    foaf:name "Cipal Schaubroeck" ] ;
+            foaf:firstName "Reynder" ;
+            foaf:lastName "Bierens" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://www.vlaamsparlement.be> ;
+                    foaf:name "Vlaams Parlement" ] ;
+            foaf:firstName "Luc" ;
+            foaf:lastName "Vanpaemel" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://stad.gent> ;
+                    foaf:name "Stad Gent" ] ;
+            foaf:firstName "Sylvie" ;
+            foaf:lastName "Roos" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://www.v-ict-or.be> ;
+                    foaf:name "V-ICT-OR" ] ;
+            foaf:firstName "Johan" ;
+            foaf:lastName "Van der Waal" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://www.cevi.be> ;
+                    foaf:name "CEVI" ] ;
+            foaf:firstName "Micheline" ;
+            foaf:lastName "Van Bogaert" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://Aalst.be> ;
+                    foaf:name "Stad Aalst" ] ;
+            foaf:firstName "Chris" ;
+            foaf:lastName "Van Molle" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://www.vvsg.be> ;
+                    foaf:name "VVSG" ] ;
+            foaf:firstName "Marian" ;
+            foaf:lastName "Verbeek" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://www.vlaamsparlement.be> ;
+                    foaf:name "Vlaams Parlement" ] ;
+            foaf:firstName "Renée" ;
+            foaf:lastName "Cambré" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://www.maldegem.be> ;
+                    foaf:name "Maldegem" ] ;
+            foaf:firstName "Heidi" ;
+            foaf:lastName "Van Deynse" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://digipolis.be> ;
+                    foaf:name "Digipolis" ] ;
+            foaf:firstName "Katrien" ;
+            foaf:lastName "Behiels" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://www.remmicom.be> ;
+                    foaf:name "Remmicom" ] ;
+            foaf:firstName "Jef" ;
+            foaf:lastName "Peeters" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://www.raadvanstate.be/> ;
+                    foaf:name "Raad Van State" ] ;
+            foaf:firstName "Wouter" ;
+            foaf:lastName "De Cock" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://lier.be> ;
+                    foaf:name "Lier" ] ;
+            foaf:firstName "Danny" ;
+            foaf:lastName "Dewelde" ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://stad.Antwerpen.be> ;
+                    foaf:name "Antwerpen" ] ;
+            foaf:firstName "Melissa" ;
+            foaf:lastName "Merckx" ] ;
+    dcterms:issued "2018-06-26"^^xsd:date ;
+    dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
+    dcterms:mediator [ foaf:homepage <https://data.vlaanderen.be> ;
+            foaf:mbox <mailto:oslo@kb.vlaanderen.be> ;
+            foaf:name "Data Vlaanderen" ] ;
+    dcterms:title "Legislation"@en,
+        "Wetgeving"@nl ;
+    vann:preferredNamespaceUri "https://data.vlaanderen.be/ns/wetgeving" ;
+    ns1:editor [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
+                    foaf:name "imec-IDLab-UGent" ] ;
+            foaf:firstName "Laurens" ;
+            foaf:lastName "De Vocht" ;
+            foaf:mbox <mailto:laurens.devocht@ugent.be> ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen> ;
+                    foaf:name "Informatie Vlaanderen" ] ;
+            foaf:firstName "Raf" ;
+            foaf:lastName "Buyle" ;
+            foaf:mbox <mailto:raf.buyle@kb.vlaanderen.be> ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <https://www.ugent.be/ps/communicatiewetenschappen/mict> ;
+                    foaf:name "imec-MICT-UGent" ] ;
+            foaf:firstName "Mathias" ;
+            foaf:lastName "Van Compernolle" ;
+            foaf:mbox <mailto:mathias.vancompernolle@ugent.be> ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <https://www.ugent.be/ps/communicatiewetenschappen/mict> ;
+                    foaf:name "imec-MICT-UGent" ] ;
+            foaf:firstName "Fie" ;
+            foaf:lastName "Vandamme" ;
+            foaf:mbox <mailto:fie.vandamme@ugent.be> ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
+                    foaf:name "imec-IDLab-UGent" ] ;
+            foaf:firstName "Erik" ;
+            foaf:lastName "Mannens" ;
+            foaf:mbox <mailto:erik.mannens@ugent.be> ] ;
+    foaf:maker [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
+                    foaf:name "imec-IDLab-UGent" ] ;
+            foaf:firstName "Dieter" ;
+            foaf:lastName "De Paepe" ;
+            foaf:mbox <mailto:dieter.depaepe@ugent.be> ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
+                    foaf:name "imec - UGent" ] ;
+            foaf:firstName "Brecht" ;
+            foaf:lastName "Van de Vyvere" ;
+            foaf:mbox <mailto:brecht.vandevyvere@ugent.be> ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://binnenland.vlaanderen.be/> ;
+                    foaf:name "Agentschap Binnenlands Bestuur" ] ;
+            foaf:firstName "Katrien" ;
+            foaf:lastName "De Smet" ;
+            foaf:mbox <mailto:katrien.desmet@bz.vlaanderen.be> ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://binnenland.vlaanderen.be/> ;
+                    foaf:name "Agentschap Binnenlands Bestuur" ] ;
+            foaf:firstName "Heidi" ;
+            foaf:lastName "Godderis" ;
+            foaf:mbox <mailto:heidi.godderis@bz.vlaanderen.be> ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://idlab.ugent.be> ;
+                    foaf:name "imec - UGent" ] ;
+            foaf:firstName "Dieter" ;
+            foaf:lastName "De Paepe" ;
+            foaf:mbox <mailto:dieter.depaepe@ugent.be> ],
+        [ a foaf:person ;
+            schema:affiliation [ foaf:homepage <http://binnenland.vlaanderen.be/> ;
+                    foaf:name "Agentschap Binnenlands Bestuur" ] ;
+            foaf:firstName "Veronique" ;
+            foaf:lastName "Volders" ;
+            foaf:mbox <mailto:veronique.volders@bz.vlaanderen.be> ] .
+
+<https://data.vlaanderen.be/ns/wetgeving#UnieRGLV> a owl:Class ;
+    rdfs:label "Unie RG LV"@nl ;
+    rdfs:comment "Unie van Rechtsgrond en Legale Verschijningsvorm"@nl ;
+    rdfs:isDefinedBy <https://data.vlaanderen.be/ns/wetgeving> .
+
