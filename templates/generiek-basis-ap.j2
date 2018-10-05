@@ -1,0 +1,43 @@
+{% extends "ap.j2" %}
+
+{% block summary %}
+<p>
+Het applicatieprofiel OSLO-Generiek brengt termen samen uit het <a href="http://data.vlaanderen.be/doc/applicatieprofiel/generiek">OSLO-Generiek vocabularium</a> maar ook uit diverse andere vocabularia waarin algemeen bruikbare termen voorkomen, termen waarnaar andere OSLO-vocabularia en -applicatieprofielen verwijzen.
+</p><p>
+Typisch voor applicatieprofielen is dat de termen verder worden beperkt d.m.v. kardnaliteiten en voorgeschreven codelijsten in het kader van een bepaald soort toepassingen. Hier hebben we geen specifieke toepassing voor ogen, dit profiel is een basisprofiel. Enkel die termen en restricties zijn aanwezig opdat toepassingen die met OSLO-vocabularia en -profielen werken correct zouden functioneren. Een voorbeeld is het datatype Identificator dat een verplicht attribuut is van elk OSLO-object met een levensloop. Of een attribuut dat het tijdstip vastlegt waarop een Versie van een object werd gecreëerd. Of Formeel Kader dat ten minste een naam moet hebben of een Jurisdictie een verwijzing naar een geografisch gebied.
+</p><p>
+Dit applicatieprofiel schrijft ook enkele codelijsten voor. Het gaat meestal om al bestaande codelijsten zoals voor <a href="http://publications.europa.eu/mdr/authority/language/index.html">taal</a>.
+</p>
+{% endblock %}
+
+{% block status %}
+<p>Dit applicatieprofiel dient om het specifieke gebruik van de entiteiten relevant voor de beschreven applicatie te verduidelijken.</p>
+<p>Op 04/10/2018 werd dit document als Standaard gepubliceerd door de werkgroep Datastandaarden OSLO, bekrachtigd door het stuurorgaan Vlaams Informatie- en ICT-beleid op 03/07/2018.
+Deze standaard heeft het statuut van ‘vrijwillig toe te passen’.</p>
+<p>Feedback op deze specificatie kan gegeven worden als een topic in onze <a href="https://github.com/Informatievlaanderen/OSLO-Public-Discussion">publieke reviewdiscussielijst</a>.</p>
+{% endblock %}
+
+{% block conformance %}
+<p>Een applicatieprofiel is een specificatie voor gegevensuitwisseling dat bijkomende beperkingen introduceert voor het toepassen van vocabularia.
+Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
+<p>
+<ul>
+<li>verfijning van de terminologie (klassen en eigenschappen) consistent met de semantiek uit de betreffende specificaties met een welbepaald gebruik als doel;</li>
+<li>externe terminologie (klassen en eigenschappen) gebruikt voor nieuwe/extra termen die niet in de bestaande vocabularia voorkomen.</li>
+</ul>
+</p>
+<p>Om conform te zijn met dit applicatieprofiel, geldt voor een implementatie dat ze:</p>
+<p>
+<ul>
+<li>MOET Voor elke klasse steeds de eigenschappen bevatten die als minimum kardinaliteit 1 hebben.</li>
+<li>MAG NIET meer dan 1 instantie bevatten van eigenschappen die 1 als maximum kardinaliteit hebben.</li>
+<li>MAG terminologie (klassen en eigenschappen) gebruiken op een manier die consistent is met haar semantiek (definitie, gebruik, domein en bereik).</li>
+<li>MAG NIET terminologie van andere gecontroleerde vocabularia gebruiken dan diegene die gedefinieerd wordt in dit applicatieprofiel.</li>
+<li>MAG uitgebreid worden met klassen en eigenschappen van andere datamodellen (vocabularia) die niet overlappen met terminologie uit dit applicatieprofiel.</li>
+</ul>
+</p>  
+{% endblock %}
+
+{% block jsonld %}
+<p>Een herbruikbare JSON-LD context definitie voor dit applicatieprofiel is terug te vinden op: <a href="http://data.vlaanderen.be/context/generiek.jsonld" target="_blank">http://data.vlaanderen.be/context/generiek.jsonld</a></p>
+{% endblock %}

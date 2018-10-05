@@ -1,0 +1,38 @@
+{% extends "ap.j2" %}
+
+{% block summary %}
+<p>
+The OSLO-Organisation application profile is a profile based on existing vocabularies related to organisations such as the <a href="http://data.vlaanderen.be/ns/organisatie">OSLO-Organisation Vocabulary</a>.
+</p><p>
+Normally, an application profile merges terms that are needed for a certain application (including additional constraints such as cardinalities and code lists). In this case, we do not envisage a specific application but this is rather a basic profile. It indicates which terms are deemed relevant within OSLO for the exchange of information about organisations.
+</p><p>
+This means that it should be possible to describe organisations as well as registered organisations and especially public organisations. It should also be possible to exchange information about the (organisation) branches. Additionally, we also paid attention to the relation of persons (and organisations) with an organisation, possibly within a certain capacity. Finally, the lifecycle of an organisation should also be documented, from foundation to cessation and the possible succession of organisations in time (e.g. through a merger).
+</p><p>
+The cardinalities are not very restrictive, only the absolute minimum is mandatory. However, there are some mandatory attributes added for certain subclasses, e.g. the registration number for registered organisations is mandatory and for public organisations a change event of the type 'foundation' is necessary. 
+</p><p>
+The values of the code lists to be used should for the most part still be defined.
+</p>
+{% endblock %}
+
+{% block conformance %}
+<p>An application profile is a data exchange specification that introduces additional restrictions for applying vocabularies.
+Such additional restrictions may include the following elements:</p>
+<p>
+<ul>
+<li>refinement of the terminology (classes and properties) consistent with the semantics from the relevant specifications with a specific use as target;</li>
+<li>external terminology (classes and properties) used for new / extra terms that do not exist in the existing vocabulary.</li>
+</ul>
+</p>
+<p>To be conform with this application profile, an implementation:</p>
+<ul>
+<li>MUST for each class always contain the properties with minimum cardinality 1.</li>
+<li>CANNOT contain more than 1 instance of properties with maximum cardinality 1.</li>
+<li>CAN use terminology (classes and properties) in a way that is consistent with its semantics (definition, use, domain and range).</li>
+<li>CANNOT use terminology from other controlled vocabularies than the one defined in this application profile.</li>
+<li>CAN be extended with classes and properties of other data models (vocabularia) that do not overlap with terminology from this application profile.</li>
+</ul> 
+{% endblock %}
+
+{% block jsonld %}
+<p>A reusable JSON-LD context definition for this application profile can be found at: <a href="http://data.vlaanderen.be/context/dienst.jsonld" target="_blank">http://data.vlaanderen.be/context/dienst.jsonld</a></p>
+{% endblock %}
