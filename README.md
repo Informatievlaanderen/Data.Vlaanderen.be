@@ -62,30 +62,42 @@ De attributen hebben de volgende betekenis:
 * *diagram*: Is de naam van het diagramma in de eap file dat geconverteerd moet worden. Dit is hoofdlettergevoelig.
 * *contributors*: Is de naam van de kolom in `stakeholders_latest.csv` die gebruikt wordt om contributors toe te voegen.
 * *template*: Is de bestandsnaam van de template die gebruikt wordt om de HTML te genereren. Dit bestand moet aanwezig zijn in `/templates`
-* *title*: Dit is de titel die getoond wordt in de HTML van een applicatieprofiel. Bepaalt (na conversie: allemaal kleine letters, spaties worden '-')ook waar `overview.jpg` gezocht wordt. Dit attribuut is niet van toepassing voor vocabularia en wordt genegeerd indien er toch een waarde is.
-* *prefix*: Een optionele prefix voor de url van een vocabularium, afgestemd met de baseURI van het package zoals gedefinieerd in de eap file. *Zou* ook kunnen gebruikt worden voor een AP, maar dan zou de resulterende jsonld context file niet beschikbaar zijn onder /context.
+* *title*: Dit is de titel die getoond wordt in de HTML van een applicatieprofiel. Dit attribuut is niet van toepassing voor vocabularia en wordt genegeerd indien er toch een waarde is. Bepaalt, na conversie naar kleine letters en vervanging van spaties door '-', het pad waar `overview.jpg` gezocht wordt.
+* *prefix*: Een optionele prefix voor de url van een vocabularium, afgestemd met de baseURI van het package, gedefinieerd in de eap file. *Zou* ook kunnen gebruikt worden voor een AP, maar dan zou de resulterende jsonld context file niet beschikbaar zijn onder /context.
 
 ## Afspraken naamgeving
 
 ***Voor vocabularia en applicatieprofielen die geïntegreerd werden in de globale Enterprise Architect structuur van het Agentschap Informatie Vlaanderen,
-gelden volgende afspraken wat betreft naamgeving in `eap-mapping.json` en dus ook voor bestandsnamen. Warm aanbevolen voor alle andere vocabularia en applicatieprofielen.***
+gelden volgende afspraken wat betreft naamgeving in de attributen van  eap-mapping.json en dus ook voor bestandsnamen. Gelieve ook te gebruiken voor andere vocabularia en applicatieprofielen.***
+
+In wat volgt staat **Woord1** voor een eerste woord, beginnend met hoofdletter en **Woordx** voor elk optioneel volgend woord, ook beginnend met hoofdletter.
+
+De varianten **woord1** en **woordx** stellen de overeenkomstige woorden voor, beginnend met kleine letter. 
+
 
 ### Vocabularia
-Voor een vocabularium met symbolische naam **Persoon** (algemeen:`Abc Def`):
-* *name*: **persoon**; algemeen: `abc-def` (kleine letters, '-' vervangt spatie) 
-* *type*: **voc** (vast)
-* *eap*: **OSLO-Vocabularium.eap** (vast)
-* *diagram*: **OSLO-Persoon**; algemeen: `OSLO-Abc-Def` (begint met `OSLO-`, behoudt hoofdletters / kleine letters, '-' vervangt spatie) 
-* *contributors*: **Persoon**; algemeen: `Abc Def` (meestal gelijk aan symbolische naam) 
-* *template*: **persoon-voc.j2**; algemeen: `abc-def-voc.j2` (kleine letters, '-' vervangt spatie, eindigt met `-voc.j2`)   
+Voor een vocabularium met symbolische naam **Woord1 Woordx**:
+
+attribuut | waarde | voorbeeld | opmerking
+--------- | ------ | --------- | ---------
+name | `woord1-woordx` | **persoon** | de meeste vocabularia bestaan uit één woord
+eap  | `OSLO-Vocabularium.eap` | **OSLO-Vocabularium.eap** | begint met 'OSLO-', eindigt met '.eap'; alle geïntegreerde vocabularia zitten samen in één vocabularium met deze naam
+diagram | `OSLO-Woord1-Woordx` | **OSLO-Persoon** | begint met 'OSLO-' 
+contributors | `Woord1-Woordx` | **Persoon** | 
+template | `woord1-woordx-voc.j2` | **persoon-voc.j2** | eindigt met '-voc.j2'   
+
 
 ### Applicatieprofielen
-Voor een applicatieprofiel met symbolische naam **Persoon Basis** (algemeen: `Ghi Jkl`, bevat noch `AP` noch `Applicatieprofiel`):
-* *name*: **persoon-basis**; algemeen: `ghi-jkl` (kleine letters, '-' vervangt spatie) 
-* *type*: **ap** (vast)
-* *eap*: **OSLO-Persoon-Basis-AP.eap**; algemeen: `OSLO-Ghi-Jkl-AP.eap` (begint met `OSLO-`, behoudt hoofdletters / kleine letters, '-' vervangt spatie, eindigt met `-AP.eap`) 
-* *diagram*: **OSLO-Persoon-Basis**; algemeen: `OSLO-Ghi-Jkl` (begint met `OSLO-`, behoudt hoofdletters / kleine letters, '-' vervangt spatie) 
-* *contributors*: **Persoon**; algemeen: meestal gelijk aan symbolische naam vocabularium ontwikkeld door dezelfde personen die meewerkten aan dit applicatieprofiel 
-* *template*: **persoon-basis-ap.j2**; algemeen: `ghi-jkl-ap.j2` (kleine letters, '-' vervangt spatie, eindigt met `-ap.j2`)   
-* *title*: **Persoon Basis**; algemeen: `Ghi Jkl` (identiek aan symbolische naam) 
+Voor een applicatieprofiel met symbolische naam **Woord1 Woordx**, waarvoor bovendien geldt:
+* bevat noch 'AP' noch 'Applicatieprofiel'
+* voor een basisprofiel is er slechts één 'Woordx', gelijk aan 'Basis'
+
+attribuut | waarde | voorbeeld | opmerking
+--------- | ------ | --------- | ---------
+name | `woord1-woordx` | **persoon-basis** | 
+eap | `OSLO-Woord1-Woordx-AP.eap` | **OSLO-Persoon-Basis-AP.eap** | begint met 'OSLO-', eindigt met '-AP.eap' 
+diagram | `OSLO-Woord1-Woordx` | **OSLO-Persoon-Basis** | begint met 'OSLO-' 
+contributors | `Woord1-Woordx` | **Persoon** | meestal worden Woord1, Woordx hier vervangen door hun waarden uit een vocabularium ontwikkeld door dezelfde personen die meewerkten aan dit applicatieprofiel 
+template | `woord1-woordx-ap.j2` | **persoon-basis-ap.j2** | eindigt met '-ap.j2'   
+title | `Woord1 Woordx` | **Persoon Basis** | identiek aan symbolische naam 
  
