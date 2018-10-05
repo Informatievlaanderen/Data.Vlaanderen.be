@@ -1,68 +1,175 @@
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
-<http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomenShape>
+<https://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomen> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein#FysiekVoorkomen> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein#TerreinVoorkomenShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#TerreinVoorkomenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#TerreinVoorkomen> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#TerreinVoorkomen> ;
 	sh:property [
 		sh:name "obstakels" ;
 		sh:description "Eigenschap die aangeeft of er binnen het beheerdeel  al dan niet objecten voorkomen die de vrije werking van machines of andere werktuigen kan verhinderen" ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#obstakels> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#obstakels> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "talud" ;
 		sh:description "Een talud is het kunstmatig gedeelte van een vlak van de wegbaan, dijken, spoorbanen, vestingswerken, dat een helling (min. 20%, max 80% voor kunstmatig verharde taluds) vertoont en bedoeld voor het opvangen van een hoogteverschil." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#talud> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#talud> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#BedekkingOnbegroeidVoorkomenShape>
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#OnbegroeidVoorkomenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#BedekkingOnbegroeidVoorkomen> ;
-	sh:property [
-		sh:name "bedekkingtype" ;
-		sh:description "Het type bedekking." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#bedekkingtype> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#OnbegroeidVoorkomen> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#BestratingOnbegroeidVoorkomenShape>
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#BitumineuzeVerhardingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#BestratingOnbegroeidVoorkomen> ;
-	sh:property [
-		sh:name "bestratingVerhardingType" ;
-		sh:description "Het type bestrating." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#bestratingVerhardingType> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#BitumineuzeVerharding> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#GeslotenOnbegroeidVoorkomenShape>
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#CementbetonverhardingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#GeslotenOnbegroeidVoorkomen> ;
-	sh:property [
-		sh:name "geslotenVerhardingType" ;
-		sh:description "Het type gesloten verharding." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#geslotenVerhardingType> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Cementbetonverharding> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#OnbegroeidVoorkomenShape>
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#BestratingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#OnbegroeidVoorkomen> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Bestrating> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#AndereVerhardingenShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#AndereVerhardingen> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#GrasbetontegelShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Grasbetontegel> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#BetonstraatsteenShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Betonstraatsteen> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#BetontegelShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Betontegel> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#GebakkenStraatstenenShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#GebakkenStraatstenen> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#GrasKunststofplaatShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#GrasKunststofplaat> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#KasseiShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Kassei> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#MozaiekkeiShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Mozaiekkei> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#NatuursteentegelShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Natuursteentegel> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#WaterdoorlatendeBssShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#WaterdoorlatendeBss> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#DolomietverhardingShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Dolomietverharding> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#SteenslagverhardingShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Steenslagverharding> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#TernairMengselVerhardingShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#TernairMengselVerharding> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#WalsbetonverhardingShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Walsbetonverharding> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#GravelShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Gravel> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#GrondShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Grond> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#MulchShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Mulch> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#RubberenMattenTegelsShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#RubberenMattenTegels> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#SchelpenShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Schelpen> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#SteenslagRolgrindShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#SteenslagRolgrind> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#ZandShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Zand> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#KunstgrasShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Kunstgras> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#GrindgazonShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Grindgazon> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#TegelsMetGroenvoegShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#TegelsMetGroenvoeg> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#GeslotenKunststofverhardingShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#GeslotenKunststofverharding> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#SchorsShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/onbegroeidvoorkomen#Schors> ;
 	sh:closed false .
 

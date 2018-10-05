@@ -1,0 +1,301 @@
+@prefix schema:  <http://schema.org/> .
+@prefix odv:     <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen#> .
+@prefix eli:     <http://data.europa.eu/eli/ontology#> .
+@prefix org:     <http://www.w3.org/ns/org#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix besluit:  <http://data.vlaanderen.be/ns/besluit#> .
+@prefix sat:     <http://data.europa.eu/stateaidtransparency/sat#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix eu:      <http://data.europa.eu/m8g/> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix person:  <http://www.w3.org/ns/person#> .
+@prefix rov:     <http://www.w3.org/ns/regorg#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix locn:    <http://www.w3.org/ns/locn#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix cpsv:    <http://purl.org/vocab/cpsv#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+
+<
+http://schema.org/height>
+      a       rdf:Property ;
+      rdfs:label "hoogte"@nl .
+
+<http://open.vocab.org/terms/length>
+      a       rdf:Property ;
+      rdfs:label "lengte"@nl .
+
+<http://rs.tdwg.org/dwc/terms/scientificName>
+      a       rdf:Property ;
+      rdfs:label "wetenschappelijke soortnaam"@nl .
+
+schema:width
+      a       rdf:Property ;
+      rdfs:label "breedte"@nl .
+
+<https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen>
+      a       owl:Ontology ;
+      rdfs:label "Vocabularium begroeid voorkomen"@nl ;
+      dcterms:issued "2018-10-04"^^xsd:date ;
+      dcterms:license <https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html> ;
+      dcterms:title "Vocabularium begroeid voorkomen"@nl ;
+      vann:preferredNamespacePrefix
+              "odv" ;
+      vann:preferredNamespaceUri
+              "https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen" .
+
+odv:BegroeidVoorkomen
+      a       owl:Class ;
+      rdfs:comment "De ruimtelijke massa van planten-individuen, in samenhang met de plaats waar zij groeien. "@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Begroeid Voorkomen"@nl ;
+      rdfs:subClassOf <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#TerreinVoorkomen> .
+
+odv:Bloemenakker
+      a       owl:Class ;
+      rdfs:comment "Grasland dat is ingezaaid met wilde- of half wilde soorten waarvan de bodem elk jaar moet geschoffeld of geploegd worden."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Bloemenakker"@nl ;
+      rdfs:subClassOf odv:Grasachtigen .
+
+odv:Bloemenweide
+      a       owl:Class ;
+      rdfs:comment "Grasland dat is ingezaaid met wilde- of half wilde soorten"@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Bloemenweide"@nl ;
+      rdfs:subClassOf odv:Grasachtigen .
+
+odv:Bodembedekkers
+      a       owl:Class ;
+      rdfs:comment "Aangelegd begroeiingstype, doorgaans met vaste planten, die bedoeld is om snel de bodem af te dekken."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Bodembedekkers"@nl ;
+      rdfs:subClassOf odv:Kruidachtigen .
+
+odv:BolEnKnolgewassen
+      a       owl:Class ;
+      rdfs:comment "Bol- en knolgewassen beschikken over een ondergronds voedselreservoir in de vorm van een bol of een knol. Veelal verschijnen de bovengrondse delen in een specifieke periode van het jaar en kennen zij een geweldige bloei."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Bol- en knolgewassen"@nl ;
+      rdfs:subClassOf odv:Kruidachtigen .
+
+odv:Bollengrasland
+      a       owl:Class ;
+      rdfs:comment "Grasland met planten die bloeien voor de groei van de graszode goed op gang komt."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Bollengrasland"@nl ;
+      rdfs:subClassOf odv:Grasachtigen .
+
+odv:Bomen
+      a       owl:Class ;
+      rdfs:comment "Opgaande beplanting van houtachtige gewassen die boomvormend zijn."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Bomen"@nl ;
+      rdfs:subClassOf odv:Houtachtigen ;
+      vann:usageNote "Bron definitie: vrij naar CROW in Gegevenscatalogus IMGeo 2.1.1 (definitie BOSPLANTSOEN)"@nl .
+
+odv:Braakland
+      a       owl:Class ;
+      rdfs:comment "Tijdelijke eenheid die ongebruikt blijft liggen en nog niet tot ruigte of bos geëvolueerd is."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Braakland"@nl ;
+      rdfs:subClassOf odv:BegroeidVoorkomen .
+
+odv:Gazon
+      a       owl:Class ;
+      rdfs:comment "Grasland zonder bloeiende grassen noch planten, gekenmerkt door een monotoon groen uiterlijk, lage soortendiversiteit en een kort vegetatiedek (enkele centimers hoogte) Een gazon wordt in stand gehouden door een intensief beheer (hoge maaifrequentie)"@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Gazon"@nl ;
+      rdfs:subClassOf odv:Grasachtigen .
+
+odv:Grasachtigen
+      a       owl:Class ;
+      rdfs:comment "Begroeiingen die overheersend bestaat uit grassen (behorende tot de Grassenfamilie, Poaceae)."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Grasachtigen"@nl ;
+      rdfs:subClassOf odv:BegroeidVoorkomen .
+
+odv:Grasdals
+      a       owl:Class ;
+      rdfs:comment "Gras- en kruidachtig vegetatietype dat voorzien is van een rastervormig kunststof verstevigingsmateriaal en bedoeld om de bodem te verstevigen."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Grasdals"@nl ;
+      rdfs:subClassOf odv:Grasachtigen ;
+      vann:usageNote "Ook gekend onder de term 'grasbetontegel', NOTE cf. GRB-skeletaanvulling detail: WSV1003: grasdal"@nl .
+
+odv:Grindgazon
+      a       owl:Class ;
+      rdfs:comment "Gazontype specifiek op een gestabiliseerde ondergrond."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Grindgazon"@nl ;
+      rdfs:subClassOf odv:Gazon .
+
+odv:Haag
+      a       owl:Class ;
+      rdfs:comment "Hagen zijn lijnvormige elementen en onderscheiden zich van een heestermassief doordat zowel de bovenkant als de zijkanten geschoren worden."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Haag"@nl ;
+      rdfs:subClassOf odv:Houtachtigen .
+
+odv:Heestermassief
+      a       owl:Class ;
+      rdfs:comment "Heestertype gekenmerkt door een gesloten, massieve structuur, waarbij de individuele heesters moeilijk te onderscheiden zijn."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Heestermassief"@nl ;
+      rdfs:subClassOf odv:Houtachtigen ;
+      vann:usageNote "In functie van bijvoorbeeld de vrije doorgang kan wel beslist worden om een of twee kanten te scheren."@nl .
+
+odv:Hooiland
+      a       owl:Class ;
+      rdfs:comment "Een grasland gebruikt wordt om hooi te oogsten met hoofdzakelijk inheemse planten en dat extensief gemaaid wordt."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Hooiland"@nl ;
+      rdfs:subClassOf odv:Grasachtigen .
+
+odv:Houtachtigen
+      a       owl:Class ;
+      rdfs:comment "Houtige planten of houtige gewassen (planta lignosa) zijn overblijvende planten die worden gekenmerkt door secundaire diktegroei, waardoor de takken, stammen en wortels veel hout bevatten."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Houtachtigen"@nl ;
+      rdfs:subClassOf odv:BegroeidVoorkomen .
+
+odv:Houtkant
+      a       owl:Class ;
+      rdfs:comment "Ongeschoren haag of mantelvegetatie, die soms als hakhout wordt behandeld, maar niet op een door de mens aangelegde wal (verhoging)."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Houtkant"@nl ;
+      rdfs:subClassOf odv:Houtachtigen ;
+      vann:usageNote "Bron definitie: Vlaams agentschap voor Natuur en Bos"@nl .
+
+odv:Houtwal
+      a       owl:Class ;
+      rdfs:comment "Houtkant op een door de mens aangelegde wal (verhoging)."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Houtwal"@nl ;
+      rdfs:subClassOf odv:Houtachtigen ;
+      vann:usageNote "Bron definitie: Vlaams agentschap voor Natuur en Bos"@nl .
+
+odv:Kruidachtigen
+      a       owl:Class ;
+      rdfs:comment "Planten die geen blijvende houtige stengel vormen. Eenjarige, tweejarige of vaste planten, die in de winter tot de grond toe afsterven."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Kruidachtigen"@nl ;
+      rdfs:subClassOf odv:BegroeidVoorkomen .
+
+odv:NietBegroeid
+      a       owl:Class ;
+      rdfs:comment "(Deel van) een begroeiingstype dat door een bepaalde reden niet begroeid is."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Niet begroeid"@nl ;
+      rdfs:subClassOf odv:BegroeidVoorkomen ;
+      vann:usageNote "Bijvoorbeeld door systematische betreding ontstane open plekken in gazon."@nl .
+
+odv:Ruigte
+      a       owl:Class ;
+      rdfs:comment "Terrein of zoomvegetatie gedomineerd door ruigtekruiden of riet."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Ruigte"@nl ;
+      rdfs:subClassOf odv:Kruidachtigen .
+
+odv:RuwGras
+      a       owl:Class ;
+      rdfs:comment "Grasland zonder bloeiende grassen noch planten, gekenmerkt door een monotoon groen uiterlijk en een extensief beheer."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Ruw gras"@nl ;
+      rdfs:subClassOf odv:Grasachtigen .
+
+odv:Siergazon
+      a       owl:Class ;
+      rdfs:comment "Gazon aangelegd vanwege decoratieve waarde."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Siergazon"@nl ;
+      rdfs:subClassOf odv:Gazon .
+
+odv:Siergrassen
+      a       owl:Class ;
+      rdfs:comment "Grasachtige planten met een decoratieve waarde."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Siergrassen"@nl ;
+      rdfs:subClassOf odv:Kruidachtigen ;
+      vann:usageNote "Niet geplant als gazon (zie siergazon)"@nl .
+
+odv:Speelgazon
+      a       owl:Class ;
+      rdfs:comment "Gazon gebruikt als speelterrein."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Speelgazon"@nl ;
+      rdfs:subClassOf odv:Gazon .
+
+odv:Sportgazon
+      a       owl:Class ;
+      rdfs:comment "Gazon gebruikt als sportterrein."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Sportgazon"@nl ;
+      rdfs:subClassOf odv:Gazon .
+
+odv:VastePlanten
+      a       owl:Class ;
+      rdfs:comment "Begroeiingstype met planten die een kruidachtige stengel hebben en overblijvend zijn."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Vaste planten"@nl ;
+      rdfs:subClassOf odv:Kruidachtigen ;
+      vann:usageNote "Bron definitie: naar Technisch Vademecum Kruidachtigen Harmonisch Park- en Groenbeheer. De term vaste plant wordt niet gebruikt in de biologie. De term komt uit de kwekerijsector. Onder vaste planten (s.s.) worden in kwekerscatalogi planten verstaan die een kruidachtige stengel hebben en overblijvend zijn. De meeste soorten sterven in de winter bovengronds af (levensvorm: hemicryptofyten) en vormen elk jaar nieuwe stengels, bladeren, bloemen en zaad. Hun overwinteringsknoppen zitten gewoonlijk op het maaiveld. Soorten die hun overwinteringsknoppen boven het maaiveld hebben onder de 50 cm, behoren tot de chamefyten en zijn meestal verhout., De term vaste plant (s.l.) wordt dus gebruikt voor alle kruidachtige vaatplanten, met uitzondering van eenjarige en tweejarige kruidachtige soorten."@nl .
+
+odv:Weiland
+      a       owl:Class ;
+      rdfs:comment "Open grasland dat gebruikt wordt om vee te laten grazen."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Weiland"@nl ;
+      rdfs:subClassOf odv:Grasachtigen .
+
+odv:Wisselperk
+      a       owl:Class ;
+      rdfs:comment "	Jaarlijks opnieuw aangelegd begroeiingstype waarbij de sierwaarde centraal staat. De sierwaarde bestaat uit rijkelijk bloeiende planten."@nl ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "Wisselperk"@nl ;
+      rdfs:subClassOf odv:Kruidachtigen ;
+      vann:usageNote "Bron definitie: Technisch Vademecum Kruidachtigen Harmonisch Park- en Groenbeheer (ANB). Typische BLOEMPERKEN horen eveneens bij WISSELPERKEN."@nl .
+
+odv:drassigheid
+      a       owl:ObjectProperty ;
+      rdfs:comment "Mate waarin de bodem verzadigd is met water."@nl ;
+      rdfs:domain odv:BegroeidVoorkomen ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "drassigheid"@nl ;
+      rdfs:range skos:Concept ;
+      vann:usageNote "De drassigheid geeft hierbij aan in welke mate de normale werking van types machines zou kunnen verstoord worden."@nl .
+
+odv:knipoppervlak
+      a       owl:DatatypeProperty ;
+      rdfs:comment "De afmeting van het object in vierkante meter dat geschoren moet worden."@nl ;
+      rdfs:domain odv:Houtachtigen ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "knipoppervlak"@nl ;
+      rdfs:range xsd:double .
+
+odv:soortcode
+      a       owl:ObjectProperty ;
+      rdfs:comment "Een unieke identificator voor de soort van het vegetatie-element. "@nl ;
+      rdfs:domain rdfs:Resource ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "soortcode"@nl ;
+      rdfs:range skos:Concept ;
+      vann:usageNote "De soortcode wordt opgenomen onder de vorm van de 'GBIF Key'."@nl .
+
+odv:soortnaamNederlands
+      a       rdf:Property ;
+      rdfs:comment "Soortnaam in het Nederlands."@nl ;
+      rdfs:domain rdfs:Resource ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "soortnaam Nederlands"@nl .
+
+odv:vrijUitgroeiend
+      a       owl:DatatypeProperty ;
+      rdfs:comment "Geeft aan of de vegetatie of begroeiing al dan niet snoei vereist."@nl ;
+      rdfs:domain <http://data.vlaanderen.be/ns/openbaardomein#Object> ;
+      rdfs:isDefinedBy <https://data.vlaanderen.be/ns/openbaardomein/begroeidvoorkomen> ;
+      rdfs:label "vrij uitgroeiend"@nl ;
+      rdfs:range xsd:boolean .

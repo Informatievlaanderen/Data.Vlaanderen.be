@@ -1,7 +1,15 @@
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#TerreindeelShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#TerreindeelShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Terreindeel> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Terreindeel> ;
+	sh:property [
+		sh:name "voorkomen" ;
+		sh:description "Het voorkomen van het terreindeel." ;
+		sh:path <http://data.vlaanderen.be/ns/openbaardomein#voorkomen> ;
+		sh:class <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#TerreinVoorkomen> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
 	sh:property [
 		sh:name "breedte" ;
 		sh:description "De breedte van het object in meter. In geval van een ongelijkmatige breedte wordt de gemiddelde breedte opgenomen." ;
@@ -18,39 +26,39 @@
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein#DeelShape>
+<https://data.vlaanderen.be/ns/openbaardomein#DeelShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#Deel> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein#Deel> ;
 	sh:property [
 		sh:name "oppervlakte" ;
 		sh:description "De afmeting van het object in vierkante meter." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#oppervlakte> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#oppervlakte> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein#ObjectShape>
+<https://data.vlaanderen.be/ns/openbaardomein#ObjectShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein#Object> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein#Object> ;
 	sh:property [
 		sh:name "begindatum" ;
 		sh:description "Datum waarop de huidige versie van het gebied of object in gebruik wordt genomen." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#begindatum> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#begindatum> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "einddatum" ;
 		sh:description "Datum waarop de huidige versie van het beheerobject uit gebruik wordt genomen." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#einddatum> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#einddatum> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "niveau" ;
 		sh:description "Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#niveau> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#niveau> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#integer> ;
 		sh:maxCount 1 ;
 	] ;
@@ -65,7 +73,7 @@
 	sh:property [
 		sh:name "nauwkeurigheid" ;
 		sh:description "De precisie waarmee het object opgemeten werd." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
@@ -78,93 +86,119 @@
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#WegbaanShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#WegbaanShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Wegbaan> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Wegbaan> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#RijbaanShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#RijbaanShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Rijbaan> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Rijbaan> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#OpritShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#OpritShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Oprit> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Oprit> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#SpoorwegbermShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#SpoorwegbermShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Spoorwegberm> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Spoorwegberm> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#VoetwegShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#VoetwegShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Voetweg> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Voetweg> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#HondentoiletShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#HondentoiletShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Hondentoilet> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Hondentoilet> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#HondenuitlaatplaatsShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#HondenloopzoneShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Hondenuitlaatplaats> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Hondenloopzone> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#HorecaterreinShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#HorecaterreinShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Horecaterrein> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Horecaterrein> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#RecreatieveRuimteShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#RecreatieveRuimteShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#RecreatieveRuimte> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#RecreatieveRuimte> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#WegbermShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#WegbermShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Wegberm> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#EigenBeddingShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#EigenBedding> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#TrottoirShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Trottoir> ;
-	sh:closed false .
-
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#FietspadShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Fietspad> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Wegberm> ;
 	sh:property [
-		sh:name "vrijliggend" ;
+		sh:name "boordsteen" ;
 		sh:description "Geeft aan of de verharding fysiek gescheiden is van de rijbaan door een veiligheidsstrook die niet door rijdend verkeer mag en kan worden gebruikt." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#vrijliggend> ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#boordsteen> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
-		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#BushaltehavenShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#EigenBeddingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Bushaltehaven> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#EigenBedding> ;
+	sh:property [
+		sh:name "boordsteen" ;
+		sh:description "Geeft aan of de verharding fysiek gescheiden is van de rijbaan door een veiligheidsstrook die niet door rijdend verkeer mag en kan worden gebruikt." ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#boordsteen> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:maxCount 1 ;
+	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#ParkeervlakShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#TrottoirShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Parkeervlak> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Trottoir> ;
+	sh:property [
+		sh:name "boordsteen" ;
+		sh:description "Geeft aan of de verharding fysiek gescheiden is van de rijbaan door een veiligheidsstrook die niet door rijdend verkeer mag en kan worden gebruikt." ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#boordsteen> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#FietspadShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Fietspad> ;
+	sh:property [
+		sh:name "vrijliggend" ;
+		sh:description "Geeft aan of de boordsteen al dan niet mee is opgenomen in de geometrie van het object." ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#vrijliggend> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "boordsteen" ;
+		sh:description "Geeft aan of de verharding fysiek gescheiden is van de rijbaan door een veiligheidsstrook die niet door rijdend verkeer mag en kan worden gebruikt." ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#boordsteen> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#BushaltehavenShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Bushaltehaven> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#ParkeervlakShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Parkeervlak> ;
 	sh:property [
 		sh:name "autodelen" ;
-		sh:description "Duidt aan of het parkeervlak al dan niet gebruikt wordt voor autodelen." ;
-		sh:path <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#autodelen> ;
+		sh:description "Geeft aan of de verharding fysiek gescheiden is van de rijbaan door een veiligheidsstrook die niet door rijdend verkeer mag en kan worden gebruikt." ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#autodelen> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
-		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -172,118 +206,150 @@
 		sh:description "Geeft aan hoeveel auto's geparkeerd kunnen worden op het parkeervlak." ;
 		sh:path <http://data.vlaanderen.be/ns/openbaardomein#capaciteit> ;
 		sh:datatype <http://www.w3.org/2001/XMLSchema#int> ;
-		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "boordseen" ;
+		sh:description "Duidt aan of het parkeervlak al dan niet gebruikt wordt voor autodelen." ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#boordseen> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#ZijbermShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#ZijbermShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Zijberm> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Zijberm> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#TussenbermShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#TussenbermShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Tussenberm> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Tussenberm> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#MiddenbermShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#MiddenbermShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Middenberm> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Middenberm> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#SpeelterreinShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#SpeelterreinShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Speelterrein> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Speelterrein> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#SportterreinShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#SportterreinShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Sportterrein> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Sportterrein> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#StraatgootShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#StraatgootShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Straatgoot> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Straatgoot> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#BoordsteenShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#BoordsteenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Boordsteen> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Boordsteen> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#LigweideShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#LigweideShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Ligweide> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Ligweide> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#SpeelruimteShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#SpeelruimteShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Speelruimte> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Speelruimte> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#GroenvlakShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#GroenvlakShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Groenvlak> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Groenvlak> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#MoestuinShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#MoestuinShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Moestuin> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Moestuin> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#LaagstamboomgaardShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#LaagstamboomgaardShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Laagstamboomgaard> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Laagstamboomgaard> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#DierenloopweideShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#DierenloopweideShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Dierenloopweide> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Dierenloopweide> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#GroendakShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#GroendakShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Groendak> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Groendak> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#AkkerShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#AkkerShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Akker> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Akker> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#TijdelijkGroenShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#TijdelijkGroenShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#TijdelijkGroen> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#TijdelijkGroen> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#TuinbouwgrondShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#TuinbouwgrondShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Tuinbouwgrond> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Tuinbouwgrond> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#OeverShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#OeverShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Oever> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Oever> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#HoogstamboomgaardShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#HoogstamboomgaardShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Hoogstamboomgaard> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Hoogstamboomgaard> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#BijzondereOverrijdbareBeddingShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#BijzondereOverrijdbareBeddingShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#BijzondereOverrijdbareBedding> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#BijzondereOverrijdbareBedding> ;
+	sh:property [
+		sh:name "boordsteen" ;
+		sh:description "Geeft aan of de verharding fysiek gescheiden is van de rijbaan door een veiligheidsstrook die niet door rijdend verkeer mag en kan worden gebruikt." ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#boordsteen> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:maxCount 1 ;
+	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#TrapShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#TrapShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Trap> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Trap> ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/openbaardomein/terreindeel#BoomplantplaatsShape>
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#BoomplantplaatsShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/openbaardomein/terreindeel#Boomplantplaats> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#Boomplantplaats> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/ns/openbaardomein/terreindeel#TerreinVoorkomenShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#TerreinVoorkomen> ;
+	sh:property [
+		sh:name "obstakels" ;
+		sh:description "Eigenschap die aangeeft of er binnen het beheerdeel  al dan niet objecten voorkomen die de vrije werking van machines of andere werktuigen kan verhinderen" ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#obstakels> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "talud" ;
+		sh:description "Een talud is het kunstmatig gedeelte van een vlak van de wegbaan, dijken, spoorbanen, vestingswerken, dat een helling (min. 20%, max 80% voor kunstmatig verharde taluds) vertoont en bedoeld voor het opvangen van een hoogteverschil." ;
+		sh:path <https://data.vlaanderen.be/ns/openbaardomein/terreindeel#talud> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:maxCount 1 ;
+	] ;
 	sh:closed false .
 
