@@ -1,794 +1,1434 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-         xmlns:owl="http://www.w3.org/2002/07/owl#"
-         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-         xmlns:ns0="http://purl.org/vocab/vann/"
-         xmlns:dc="http://purl.org/dc/terms/"
-         xmlns:foaf="http://xmlns.com/foaf/0.1/"
-         xmlns:ns1="http://www.w3.org/2001/02pd/rec54#"
-         xmlns:schema="http://schema.org/">
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Domicilie">
-    <rdfs:label xml:lang="nl">Domicilie</rdfs:label>
-    <ns0:usageNote xml:lang="nl">Plaats waar de persoon het grootste deel vd tijd verblijft binnen de jurisdictie waarvan hij Inwoner is. Dit wordt doorgaans officieel vastgesteld en geregistreerd ih bevolkingsregister. Kan in praktijk verschillend vd feitelijke verblijfplaats.</ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Hoofdverblijfplaats ve persoon.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:subClassOf rdf:resource="http://data.vlaanderen.be/ns/persoon#Verblijfplaats"/>
-  </owl:Class>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#GeenInwoner">
-    <rdfs:label xml:lang="nl">Geen Inwoner</rdfs:label>
-    <ns0:usageNote xml:lang="nl">Plaats of land wordt hier vertegenwoordigd door de entiteit jurisdictie.</ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Persoon die niet in een bepaalde plaats of land woont.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:subClassOf rdf:resource="http://data.vlaanderen.be/ns/persoon#Inwonerschap"/>
-  </owl:Class>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Huwelijk">
-    <rdfs:label xml:lang="nl">Huwelijk</rdfs:label>
-    <ns0:usageNote xml:lang="nl">Kan, net als bv samenwonen, de basis vormen van een gezin.</ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Een door burgerlijk of religieus recht geregelde samenlevingsvorm van twee personen.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:subClassOf rdf:resource="http://data.vlaanderen.be/ns/persoon#Persoonsrelatie"/>
-  </owl:Class>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#PermanentInwoner">
-    <rdfs:label xml:lang="nl">Permanent Inwoner</rdfs:label>
-    <ns0:usageNote xml:lang="nl">Is een verblijfsrecht dat in principe officieel moet worden toegekend als de persoon geen staatsburger is.</ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Persoon die permanent in een bepaalde plaats of land woont.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:subClassOf rdf:resource="http://data.vlaanderen.be/ns/persoon#Inwoner"/>
-  </owl:Class>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Samenwonen">
-    <rdfs:label xml:lang="nl">Samenwonen</rdfs:label>
-    <ns0:usageNote xml:lang="nl">Kan, net als bv een huwelijk, de basis vormen van een gezin.</ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Regeling waarbij twee personen die niet getrouwd zijn samenleven.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:subClassOf rdf:resource="http://data.vlaanderen.be/ns/persoon#Persoonsrelatie"/>
-  </owl:Class>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Staatsburger">
-    <rdfs:label xml:lang="nl">Staatsburger</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Persoon die juridisch verbonden is met een staat.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:subClassOf rdf:resource="http://data.vlaanderen.be/ns/persoon#Staatsburgerschap"/>
-  </owl:Class>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#TijdelijkInwoner">
-    <rdfs:label xml:lang="nl">Tijdelijk Inwoner</rdfs:label>
-    <ns0:usageNote xml:lang="nl">Is een verblijfsrecht dat in principe enkel wordt toegekend omwille ve zeer specifieke reden bv werken of studeren. Exclusief personen met kort verblijf, bv als toerist.</ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Persoon die tijdelijk in een plaats of land woont.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:subClassOf rdf:resource="http://data.vlaanderen.be/ns/persoon#Inwoner"/>
-  </owl:Class>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Voogdij">
-    <rdfs:label xml:lang="nl">Voogdij</rdfs:label>
-    <ns0:usageNote xml:lang="nl">Dit is bv het geval voor minderjarigen die hun ouders zijn verloren of voor meerderjarigen die hun verstandelijke vermogens zijn verloren.</ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Situatie waarbij een persoon die optreedt als voogd ve ander persoon en in die hoedanigheid instaat voor deze persoon en zijn goederen.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:subClassOf rdf:resource="http://data.vlaanderen.be/ns/persoon#Persoonsrelatie"/>
-  </owl:Class>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Vreemdeling">
-    <rdfs:label xml:lang="nl">Vreemdeling</rdfs:label>
-    <ns0:usageNote xml:lang="nl">Daardoor kan de persoon geen staatsburger worden genoemd. In praktijk geniet de Vreemdeling als Inwoner een subset vd burgerrechten die een Staatsbutger wel heeft. Bv wel godsdienstvrijheid maar geen stemrecht.</ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Persoon die niet de nationaliteit bezit vh land waar hij verblijft.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:subClassOf rdf:resource="http://data.vlaanderen.be/ns/persoon#Staatsburgerschap"/>
-  </owl:Class>
-
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/persoon#afstammingsType">
-    <rdfs:label xml:lang="nl">Type Afstamming</rdfs:label>
-    <ns0:usageNote xml:lang="nl">Bv geadopteerd, kind uit huwelijk, erkend door de vader etc.</ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Aard vd afstamming.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/persoon#Afstamming"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-  </owl:ObjectProperty>
-
-  <rdf:Property rdf:about="http://data.vlaanderen.be/ns/persoon#datum">
-    <rdfs:label xml:lang="nl">datum</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Datum waarop de gebeurtenis plaatsvond.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/persoon#Persoonsgebeurtenis"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/vocab/bio/0.1/date"/>
-  </rdf:Property>
-
-  <rdf:Property rdf:about="http://data.vlaanderen.be/ns/persoon#datumVanAfstamming">
-    <rdfs:label xml:lang="nl">Datum Van Afstamming</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">De datum waarop de afstamming wordt vastgesteld.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/persoon#Afstamming"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
-  </rdf:Property>
-
-  <owl:DatatypeProperty rdf:about="http://data.vlaanderen.be/ns/persoon#gebruikteVoornaam">
-    <rdfs:label xml:lang="nl">gebruikte voornaam</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Belangrijkste vd voornamen ve persoon.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/person#Person"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-    <rdfs:subPropertyOf>
-      <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/givenName">
-        <rdfs:label xml:lang="nl">gegeven naam</rdfs:label>
-      </rdf:Description>
-    </rdfs:subPropertyOf>
-
-  </owl:DatatypeProperty>
-
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/persoon#geslacht">
-    <rdfs:label xml:lang="nl">geslacht</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Het feit of de persoon een man of een vrouw is.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/person#Person"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-  </owl:ObjectProperty>
-
-  <rdf:Property rdf:about="http://data.vlaanderen.be/ns/persoon#gezinsadres">
-    <rdfs:label xml:lang="nl">gezinsadres</rdfs:label>
-    <ns0:usageNote xml:lang="nl">Dikwijls een criterium om te bepalen of personen deel uitmaken van eenzelfde gezin.</ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Verblijfplaats vh gezin.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/persoon#Gezin"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-  </rdf:Property>
-
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/persoon#gezinsrelatietype">
-    <rdfs:label xml:lang="nl">gezinsrelatietype</rdfs:label>
-    <ns0:usageNote xml:lang="nl">Wordt typisch bepaald tov het gezinshoofd. Bv als de vader gezinshoofd is en een gezinslid is zoon, dan zou als de grootvader gezinshoofd was datzelfde gezinslid kleinzoon zijn.</ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Aard vd relatie.</rdfs:comment>
-    <rdfs:domain>
-      <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Gezinsrelatie">
-        <rdfs:label xml:lang="nl">Gezinsrelatie</rdfs:label>
-        <ns0:usageNote xml:lang="nl">Bv echtgenoot, zoon, schoonmoeder.</ns0:usageNote>
-        <rdfs:comment xml:lang="nl">Relatie tussen leden van eenzelfde gezin.</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-        <rdfs:subClassOf rdf:resource="http://data.vlaanderen.be/ns/persoon#Persoonsrelatie"/>
-      </owl:Class>
-    </rdfs:domain>
-
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-  </owl:ObjectProperty>
-
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/persoon#heeftBurgerlijkeStaat">
-    <rdfs:label xml:lang="nl">heeft burgerlijke staat</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Burgerlijke staat vd Persoon.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/person#Person"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/persoon#BurgerlijkeStaat"/>
-  </owl:ObjectProperty>
-
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/persoon#heeftGeboorte">
-    <rdfs:label xml:lang="nl">heeft geboorte</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Verwijst naar de geboortegegevens vd persoon.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/person#Person"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:range>
-      <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Geboorte">
-        <rdfs:label xml:lang="nl">Geboorte</rdfs:label>
-        <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-        <rdfs:comment xml:lang="nl">Het ter wereld komen vd persoon.</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-        <rdfs:subClassOf rdf:resource="http://data.vlaanderen.be/ns/persoon#Persoonsgebeurtenis"/>
-        <owl:equivalentClass xml:lang="en">http://purl.org/vocab/bio/0.1/Birth</owl:equivalentClass>
-      </owl:Class>
-    </rdfs:range>
-
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/vocab/bio/0.1/birth"/>
-  </owl:ObjectProperty>
-
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/persoon#heeftNationaliteit">
-    <rdfs:label xml:lang="nl">heeft nationaliteit</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Nationaliteit vd persoon.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/person#Person"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/persoon#Nationaliteit"/>
-  </owl:ObjectProperty>
-
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/persoon#heeftOverlijden">
-    <rdfs:label xml:lang="nl">heeft overlijden</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Verwijst naar de overlijdensgegevens vd persoon.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/person#Person"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:range>
-      <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Overlijden">
-        <rdfs:label xml:lang="nl">Overlijden</rdfs:label>
-        <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-        <rdfs:comment xml:lang="nl">Het doodgaan vd Persoon.</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-        <rdfs:subClassOf rdf:resource="http://data.vlaanderen.be/ns/persoon#Persoonsgebeurtenis"/>
-        <owl:equivalentClass xml:lang="en">http://purl.org/vocab/bio/0.1/Death</owl:equivalentClass>
-      </owl:Class>
-    </rdfs:range>
-
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/vocab/bio/0.1/death"/>
-  </owl:ObjectProperty>
-
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/persoon#heeftPersoonsrelatie">
-    <rdfs:label xml:lang="nl">heeft persoonsrelatie</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Relatie van een persoon (met een ander persoon).</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/person#Person"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/persoon#Persoonsrelatie"/>
-  </owl:ObjectProperty>
-
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/persoon#heeftVerblijfplaats">
-    <rdfs:label xml:lang="nl">heeft verblijfplaats</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Plaats waar een persoon verblijft.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/persoon#Inwonerschap"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/persoon#Verblijfplaats"/>
-  </owl:ObjectProperty>
-
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/persoon#isHoofdVan">
-    <rdfs:label xml:lang="nl">is hoofd van</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Persoon die standaard het gezin vertegenwoordigt.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/person#Person"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/persoon#Gezin"/>
-    <rdfs:subPropertyOf>
-      <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/persoon#isLidVan">
-        <rdfs:label xml:lang="nl">is lid van</rdfs:label>
-        <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-        <rdfs:comment xml:lang="nl">Persoon die tot een gezin behoort.</rdfs:comment>
-        <rdfs:domain rdf:resource="http://www.w3.org/ns/person#Person"/>
-        <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-        <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/persoon#Gezin"/>
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/org#memberOf"/>
-      </owl:ObjectProperty>
-    </rdfs:subPropertyOf>
-
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/org#headOf"/>
-  </owl:ObjectProperty>
-
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/persoon#isRelatieMet">
-    <rdfs:label xml:lang="nl">is relatie met</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Persoon waarmee de persoon gerelateerd is.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/persoon#Persoonsrelatie"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:range rdf:resource="http://www.w3.org/ns/person#Person"/>
-  </owl:ObjectProperty>
-
-  <rdf:Property rdf:about="http://data.vlaanderen.be/ns/persoon#nationaliteit">
-    <rdfs:label xml:lang="nl">TODO</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">De nationaliteit vd persoon.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/persoon#Nationaliteit"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-  </rdf:Property>
-
-  <rdf:Property rdf:about="http://data.vlaanderen.be/ns/persoon#plaats">
-    <rdfs:label xml:lang="nl">plaats</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Plaats waar de gebeurtenis plaatsvond.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/persoon#Persoonsgebeurtenis"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/vocab/bio/0.1/place"/>
-  </rdf:Property>
-
-  <rdf:Property rdf:about="http://data.vlaanderen.be/ns/persoon#registratie">
-    <rdfs:label xml:lang="nl">registratie</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Identificatiecode vd persoon ih register.</rdfs:comment>
-    <rdfs:domain>
-      <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#GeregistreerdPersoon">
-        <rdfs:label xml:lang="nl">Geregistreerd Persoon</rdfs:label>
-        <ns0:usageNote xml:lang="nl">Doorgaans is dit register een bevolkingsregister maar het kan bv ook een kiesregister zijn. De ingeschreven gegevens hebben betrekking op de identeit (vb naam en voornaam) en de Verblijfplaats vd persoon en op belangrijke levensgebeurtenissen zoals geboorte, huwelijk, overlijden etc. Deze gegevens worden typisch geregistreerd door de overheid, ze bieden de ingeschreven persoon wettelijke bescherming en laten de overheid toe om basisstatistieken op te stellen over zijn bevolking.</ns0:usageNote>
-        <rdfs:comment xml:lang="nl">Persoon waarvan de gegevens zijn ingeschreven in een register.</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/person#Person"/>
-      </owl:Class>
-    </rdfs:domain>
-
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
-  </rdf:Property>
-
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/persoon#type">
-    <rdfs:label xml:lang="nl">type</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Aard vd burgerlijke staat.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/persoon#BurgerlijkeStaat"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/type"/>
-  </owl:ObjectProperty>
-
-  <rdf:Property rdf:about="http://data.vlaanderen.be/ns/persoon#verblijfsadres">
-    <rdfs:label xml:lang="nl">verblijfsadres</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Plaats waar een persoon al dan niet tijdelijk woont of logeert.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/persoon#Verblijfplaats"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-  </rdf:Property>
-
-  <owl:DatatypeProperty rdf:about="http://data.vlaanderen.be/ns/persoon#volledigeNaam">
-    <rdfs:label xml:lang="nl">volledige naam</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">De volledige naam vd persoon, doorgaans de combinatie van voornamen en achternaam.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/person#Person"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-    <rdfs:subPropertyOf>
-      <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/name">
-        <rdfs:label xml:lang="nl">naam</rdfs:label>
-      </rdf:Description>
-    </rdfs:subPropertyOf>
-
-  </owl:DatatypeProperty>
-
-  <rdf:Description rdf:about="http://schema.org/contactPoint">
-    <rdfs:label xml:lang="nl">contactpunt</rdfs:label>
-  </rdf:Description>
-
-  <rdf:Description rdf:about="http://www.w3.org/ns/person#birthName">
-    <rdfs:label xml:lang="nl">geboortenaam</rdfs:label>
-  </rdf:Description>
-
-  <rdf:Description rdf:about="http://www.w3.org/ns/person#patronymicName">
-    <rdfs:label xml:lang="nl">patroniem</rdfs:label>
-  </rdf:Description>
-
-  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/familyName">
-    <rdfs:label xml:lang="nl">familienaam</rdfs:label>
-  </rdf:Description>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Afstamming">
-    <rdfs:label xml:lang="nl">Afstamming</rdfs:label>
-    <ns0:usageNote xml:lang="nl">De afstamming kan ook niet-biologisch zijn, bv adoptie. Afstamming kan ook in opgaande lijn worden bekeken. Het begrip is enger dan verwantschap dat oa ook huwelijk inhoudt.</ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Afstamming is de dalende lijn van bloedverwantschap tussen verschillende generaties.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:subClassOf rdf:resource="http://data.vlaanderen.be/ns/persoon#Persoonsrelatie"/>
-  </owl:Class>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#BurgerlijkeStaat">
-    <rdfs:label xml:lang="nl">Burgerlijke Staat</rdfs:label>
-    <ns0:usageNote xml:lang="nl">Slaat op huwelijk, partnerregistratie, afstamming, voogdij etc. Is maw de toestand van bepaalde verhoudingen tussen personen.</ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Burgerrechtelijke toestand van een persoon.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-  </owl:Class>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Inwoner">
-    <rdfs:label xml:lang="nl">Inwoner</rdfs:label>
-    <ns0:usageNote xml:lang="nl">Plaats of land wordt hier vertegenwoordigd door de entiteit jurisdictie.</ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Persoon die in een bepaalde plaats of land woont.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-    <rdfs:subClassOf rdf:resource="http://data.vlaanderen.be/ns/persoon#Inwonerschap"/>
-  </owl:Class>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Nationaliteit">
-    <rdfs:label xml:lang="nl">Nationaliteit</rdfs:label>
-    <ns0:usageNote xml:lang="nl">Merk op dat dit begrip ruimer is dan staatsburgerschap (dat zich beperkt tot de relatie met een staat). Wie de nationaliteit ve bepaald land heeft is er doorgaans ook automatisch staatsburger van. Nationaliteit wordt doorgaans autamatisch verkregen door geboorte: men krijgt hetzij de nationaliteit van zijn ouders of men krijgt deze vh land waar men Inwoner van is. Men kan een bepaalde nationaliteit ook verkrijgen door naturalisatie. In principe verliest men dan zijn oorspronkelijke nationaliteit, maar dat is niet altijd zo (meervoudige nationaliteit).</ns0:usageNote>
-    <rdfs:comment xml:lang="nl">De relatie tussen een persoon en een staat, cultuur of loyaliteit.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-  </owl:Class>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Staatsburgerschap">
-    <rdfs:label xml:lang="nl">Staatburgerschap</rdfs:label>
-    <ns0:usageNote xml:lang="nl">Vloeit meestal voort uit de nationaliteit ve persoon. De rechten en plichten waarvan sprake zijn burgerrechten (vb godsdienstvrijheid) of van politieke (vb stemrecht) of sociale aard (bv recht op een uitkering).  </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Juridische band ve persoon met een staat, waaraan bepaalde rechten en plichten verbonden zijn</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-  </owl:Class>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Gezin">
-    <rdfs:label xml:lang="nl">Gezin</rdfs:label>
-    <ns0:usageNote xml:lang="nl">Ruimer begrip dan familie waar het gezin louter bestaat uit nabije bloedverwanten, bv een enpersoonsgezin of living apart together. Gezinsleden hebben doorgaans dezelfde Verblijfplaats.</ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Samenwerkingsvorm die een herkenbare sociale eenheid vormt (bv tgv huwelijk), met al dan niet verwante personen die duurzame banden hebben en elkaar onderling steun en verzorging verlenen.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-  </owl:Class>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Inwonerschap">
-    <rdfs:label xml:lang="nl">Inwonerschap</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Het feit dat een persoon verblijf houdt in een plaats of land.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-  </owl:Class>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Verblijfplaats">
-    <rdfs:label xml:lang="nl">Verblijfplaats</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Plaats waar een persoon al dan niet tijdelijk woont of logeert.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-  </owl:Class>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Persoonsgebeurtenis">
-    <rdfs:label xml:lang="nl">Persoonsgebeurtenis</rdfs:label>
-    <ns0:usageNote xml:lang="nl"> </ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Belangrijke gebeurtenis ih leven ve persoon.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-  </owl:Class>
-
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/persoon#Persoonsrelatie">
-    <rdfs:label xml:lang="nl">Persoonsrelatie</rdfs:label>
-    <ns0:usageNote xml:lang="nl">Typisch zijn dit burgerrechtelijke relaties (zie burgerlijke staat) maar niet noodzakelijk daartoe beperkt.</ns0:usageNote>
-    <rdfs:comment xml:lang="nl">Relatie tussen twee of meer personen.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/persoon"/>
-  </owl:Class>
-
-  <rdf:Description rdf:about="http://www.w3.org/ns/person#Person">
-    <rdfs:label xml:lang="nl">Persoon</rdfs:label>
-  </rdf:Description>
-
-  <owl:Ontology rdf:about="http://data.vlaanderen.be/ns/persoon">
-    <rdfs:label xml:lang="en">Person</rdfs:label>
-    <rdfs:label xml:lang="nl">Persoon</rdfs:label>
-    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-03-31</dc:issued>
-    <dc:mediator>
-      <rdf:Description>
-        <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/producten-diensten/OSLO2"/>
-        <foaf:mbox rdf:resource="mailto:oslo@kb.vlaanderen.be"/>
-        <foaf:name>OSLO Werkgroepen</foaf:name>
-      </rdf:Description>
-    </dc:mediator>
-
-    <dc:title xml:lang="en">Person</dc:title>
-    <dc:title xml:lang="nl">Persoon</dc:title>
-    <ns0:preferredNamespaceUri>http://data.vlaanderen.be/ns/persoon</ns0:preferredNamespaceUri>
-    <ns1:editor>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://idlab.ugent.be"/>
-            <foaf:name>imec - UGent</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:erik.mannens@ugent.be"/>
-        <foaf:name>Mannens, Erik</foaf:name>
-      </rdf:Description>
-    </ns1:editor>
-
-    <ns1:editor>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://idlab.ugent.be"/>
-            <foaf:name>imec - UGent</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:laurens.devocht@ugent.be"/>
-        <foaf:name>De Vocht, Laurens</foaf:name>
-      </rdf:Description>
-    </ns1:editor>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/informatie-vlaanderen"/>
-            <foaf:name>Informatie Vlaanderen</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:dries.beheydt@kb.vlaanderen.be"/>
-        <foaf:name>Beheydt, Dries</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://hpe.com"/>
-            <foaf:name>HPE</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:lieven.verreycken@hpe.com"/>
-        <foaf:name>Verreycken, Lieven</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/informatie-vlaanderen"/>
-            <foaf:name>Informatie Vlaanderen</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:Siegfried.Vanlishout@kb.vlaanderen.be"/>
-        <foaf:name>Van Lishout, Ziggy</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://www.DGDigitaleTransformatie.belgium.be/"/>
-            <foaf:name>DG Digitale Transformatie</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:liesbet.dhondt@DGDigitaleTransformatie.be"/>
-        <foaf:name>D'Hondt, Liesbet</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/"/>
-            <foaf:name>AgO</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:gijs.martens@bz.vlaanderen.be"/>
-        <foaf:name>Martens, Gijs</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/informatie-vlaanderen"/>
-            <foaf:name>Informatie Vlaanderen</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:Geert.Thijs@kb.vlaanderen.be"/>
-        <foaf:name>Thijs, Geert</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://binnenland.vlaanderen.be/"/>
-            <foaf:name>ABB</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:heidi.godderis@kb.vlaanderen.be"/>
-        <foaf:name>Godderis, Heidi</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://www.belgium.be"/>
-            <foaf:name>FOD Binnenlandse Zaken - Rijksregister</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:marc.ruymen@rrn.fgov.be"/>
-        <foaf:name>Ruymen, Marc</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/informatie-vlaanderen"/>
-            <foaf:name>Soprasteria/IV</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:an.boes@kb.vlaanderen.be"/>
-        <foaf:name>Boes, An</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://cipalschaubroeck.be"/>
-            <foaf:name>Cipal Schaubroeck</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:ward.beynaerts@cipalschaubroeck.be"/>
-        <foaf:name>Beynaerts, Ward</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://hpe.com"/>
-            <foaf:name>HPE</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:michael.loedts@hpe.com"/>
-        <foaf:name>Loedts, Michael</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/"/>
-            <foaf:name>Informatie Vlaanderen</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:bruno.devrieze@kb.vlaanderen.be"/>
-        <foaf:name>De Vrieze, Bruno</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/"/>
-            <foaf:name>Informatie Vlaanderen</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:valere.bouserie@bz.vlaanderen.be"/>
-        <foaf:name>Bouserie, Valere</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://idlab.ugent.be"/>
-            <foaf:name>imec - UGent</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:dieter.depaepe@ugent.be"/>
-        <foaf:name>De Paepe, Dieter</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://cipalschaubroeck.be"/>
-            <foaf:name>Cipal Schaubroeck</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:jelle.devreese@cipalschaubroeck.be"/>
-        <foaf:name>Devreese, Jelle</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/informatie-vlaanderen"/>
-            <foaf:name>Informatie Vlaanderen</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:raf.buyle@kb.vlaanderen.be"/>
-        <foaf:name>Buyle, Raf</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://www.lne.be/"/>
-            <foaf:name>LNE</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:geert.vanhaute@lne.vlaanderen.be"/>
-        <foaf:name>Van Haute, Geert</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://digipolis.be"/>
-            <foaf:name>Digipolis Gent</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:Katrien.leire@digipolis.gent"/>
-        <foaf:name>Leire, Katrien</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://cipalschaubroeck.be"/>
-            <foaf:name>Cipal Schaubroeck</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:willem.vanhoecke@cipalschaubroeck.be"/>
-        <foaf:name>Van Hoecke, Willem</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/informatie-vlaanderen"/>
-            <foaf:name>Informatie Vlaanderen</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:bjorn.devidts@kb.vlaanderen.be"/>
-        <foaf:name>De Vidts, Björn</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://geosolutions.be"/>
-            <foaf:name>Geosolutions</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:tinne.cahy@geosolutions.be"/>
-        <foaf:name>Cahy, Tinne</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/"/>
-            <foaf:name>Informatie Vlaanderen</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:henk.vanderstraeten@bz.vlaanderen.be"/>
-        <foaf:name>Vanderstraeten, Henk</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-    <foaf:maker>
-      <rdf:Description>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://www.belgium.be"/>
-            <foaf:name>Kruispuntbank Sociale Zekerheid</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-
-        <foaf:mbox rdf:resource="mailto:mark.demol@ksz-bcss.fgov.be"/>
-        <foaf:name>Demol, Mark</foaf:name>
-      </rdf:Description>
-    </foaf:maker>
-
-  </owl:Ontology>
+<?xml version='1.0' encoding='utf-8' ?>
+<rdf:RDF xmlns:dc11='http://purl.org/dc/elements/1.1/' xmlns:dc='http://purl.org/dc/terms/' xmlns:foaf='http://xmlns.com/foaf/0.1/' xmlns:ns0='http://purl.org/vocab/vann/' xmlns:ns1='http://www.w3.org/2001/02pd/rec54#' xmlns:org='http://www.w3.org/ns/org#' xmlns:owl='http://www.w3.org/2002/07/owl#' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' xmlns:rdfs='http://www.w3.org/2000/01/rdf-schema#' xmlns:schema='http://schema.org/' xmlns:skos='http://www.w3.org/2004/02/skos/core#' xmlns:xsd='http://www.w3.org/2001/XMLSchema#'>
+<rdfs:Class rdf:about='http://www.w3.org/2004/02/skos/core#Concept'>
+</rdfs:Class>
+
+<rdfs:Class rdf:about='http://www.w3.org/ns/person#Person'>
+<rdfs:label xml:lang='nl'>Persoon</rdfs:label>
+
+</rdfs:Class>
+
+<rdf:Property rdf:about='http://schema.org/contactPoint'>
+<rdfs:label xml:lang='nl'>contactpunt</rdfs:label>
+
+</rdf:Property>
+
+<rdf:Property rdf:about='http://www.w3.org/ns/person#birthName'>
+<rdfs:label xml:lang='nl'>geboortenaam</rdfs:label>
+
+</rdf:Property>
+
+<rdf:Property rdf:about='http://www.w3.org/ns/person#citizenship'>
+<rdfs:label xml:lang='nl'>staatsburgerschap</rdfs:label>
+
+</rdf:Property>
+
+<rdf:Property rdf:about='http://www.w3.org/ns/person#patronymicName'>
+<rdfs:label xml:lang='nl'>patroniem</rdfs:label>
+
+</rdf:Property>
+
+<rdf:Property rdf:about='http://www.w3.org/ns/person#residency'>
+<rdfs:label xml:lang='nl'>inwonerschap</rdfs:label>
+
+</rdf:Property>
+
+<rdf:Property rdf:about='http://xmlns.com/foaf/0.1/familyName'>
+<rdfs:label xml:lang='nl'>familienaam</rdfs:label>
+
+</rdf:Property>
+
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Domicilie'>
+<rdfs:label xml:lang='nl'>Domicilie</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Plaats waar de persoon het grootste deel vd tijd verblijft binnen de jurisdictie waarvan hij Inwoner is. Dit wordt doorgaans officieel vastgesteld en geregistreerd ih bevolkingsregister. Kan in praktijk verschillend vd feitelijke verblijfplaats.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Hoofdverblijfplaats ve persoon.</rdfs:comment>
+
+<rdfs:isDefinedBy>
+<owl:Ontology rdf:about='https://data.vlaanderen.be/ns/persoon'>
+<rdfs:label xml:lang='en'>Person</rdfs:label>
+ <rdfs:label xml:lang='nl'>Persoon</rdfs:label>
+
+<dc:title xml:lang='en'>Person</dc:title>
+ <dc:title xml:lang='nl'>Persoon</dc:title>
+
+<dc:contributor>
+<foaf:person rdf:nodeID='g47329743633180'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329746755900'>
+<foaf:homepage rdf:resource='https://www.lne.be/' />
+
+<foaf:name>LNE</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Kris</foaf:firstName>
+
+<foaf:lastName>Peirelinck</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:kris.peirelinck@lne.vlaanderen.be' />
+
+</foaf:person>
+
+</dc:contributor>
+ <dc:contributor>
+<foaf:person rdf:nodeID='g47329743965680'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329743958440'>
+<foaf:homepage rdf:resource='http://binnenland.vlaanderen.be/' />
+
+<foaf:name>ABB</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Wim</foaf:firstName>
+
+<foaf:lastName>Devroey</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:wim.devroey@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</dc:contributor>
+ <dc:contributor>
+<foaf:person rdf:nodeID='g47329743820060'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329743772460'>
+<foaf:homepage rdf:resource='http://digipolis.be' />
+
+<foaf:name>Digipolis Antwerpen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Jos</foaf:firstName>
+
+<foaf:lastName>Mostmans</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:Jos.Mostmans@digipolis.be' />
+
+</foaf:person>
+
+</dc:contributor>
+ <dc:contributor>
+<foaf:person rdf:nodeID='g47329746836600'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329746852560'>
+<foaf:homepage rdf:resource='http://vlm.be' />
+
+<foaf:name>VLM</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Annita</foaf:firstName>
+
+<foaf:lastName>Stevens</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:Annita.Stevens@vlm.be' />
+
+</foaf:person>
+
+</dc:contributor>
+
+<dc:issued rdf:datatype='http://www.w3.org/2001/XMLSchema#date'>2017-03-31</dc:issued>
+
+<dc:license rdf:resource='https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html' />
+ <dc:license rdf:resource='file:///tmp/workspace/ttl/http://example.com/TODO' />
+
+<dc:mediator>
+<rdf:Description rdf:nodeID='g47329743070820'>
+<foaf:homepage rdf:resource='https://data.vlaanderen.be' />
+
+<foaf:mbox rdf:resource='mailto:oslo@kb.vlaanderen.be' />
+
+<foaf:name>Data Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</dc:mediator>
+
+<ns0:preferredNamespaceUri>https://data.vlaanderen.be/ns/persoon</ns0:preferredNamespaceUri>
+
+<ns1:editor>
+<foaf:person rdf:nodeID='g47329747101160'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329747110720'>
+<foaf:homepage rdf:resource='http://idlab.ugent.be' />
+
+<foaf:name>imec - UGent</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Erik</foaf:firstName>
+
+<foaf:lastName>Mannens</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:erik.mannens@ugent.be' />
+
+</foaf:person>
+
+</ns1:editor>
+ <ns1:editor>
+<foaf:person rdf:nodeID='g47329747019800'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329747036000'>
+<foaf:homepage rdf:resource='http://idlab.ugent.be' />
+
+<foaf:name>imec - UGent</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Laurens</foaf:firstName>
+
+<foaf:lastName>De Vocht</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:laurens.devocht@ugent.be' />
+
+</foaf:person>
+
+</ns1:editor>
+
+<foaf:maker>
+<foaf:person rdf:nodeID='g47329746193600'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329746180520'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/' />
+
+<foaf:name>Informatie Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Bruno</foaf:firstName>
+
+<foaf:lastName>De Vrieze</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:bruno.devrieze@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329740425820'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329739990700'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/informatie-vlaanderen' />
+
+<foaf:name>Soprasteria/IV</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>An</foaf:firstName>
+
+<foaf:lastName>Boes</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:an.boes@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329747276920'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329747289780'>
+<foaf:homepage rdf:resource='http://www.belgium.be' />
+
+<foaf:name>FOD Binnenlandse Zaken - Rijksregister</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Marc</foaf:firstName>
+
+<foaf:lastName>Ruymen</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:marc.ruymen@rrn.fgov.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329746666780'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329746637300'>
+<foaf:homepage rdf:resource='http://hpe.com' />
+
+<foaf:name>HPE</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Michael</foaf:firstName>
+
+<foaf:lastName>Loedts</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:michael.loedts@hpe.com' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329742949120'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329742915220'>
+<foaf:homepage rdf:resource='http://cipalschaubroeck.be' />
+
+<foaf:name>Cipal Schaubroeck</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Jelle</foaf:firstName>
+
+<foaf:lastName>De Vreese</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:jelle.devreese@cipalschaubroeck.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329737788560'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329737049300'>
+<foaf:homepage rdf:resource='http://www.DGDigitaleTransformatie.belgium.be/' />
+
+<foaf:name>DG Digitale Transformatie</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Liesbet</foaf:firstName>
+
+<foaf:lastName>D'Hondt</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:liesbet.dhondt@DGDigitaleTransformatie.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329746413040'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329746391680'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/' />
+
+<foaf:name>AgO</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Gijs</foaf:firstName>
+
+<foaf:lastName>Martens</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:gijs.martens@bz.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329746128500'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329746115340'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/informatie-vlaanderen' />
+
+<foaf:name>Informatie Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Ziggy</foaf:firstName>
+
+<foaf:lastName>Vanlishout</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:Siegfried.Vanlishout@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329744521500'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329744491040'>
+<foaf:homepage rdf:resource='http://cipalschaubroeck.be' />
+
+<foaf:name>Cipal Schaubroeck</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Ward</foaf:firstName>
+
+<foaf:lastName>Beynaerts</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:ward.beynaerts@cipalschaubroeck.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329747148320'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329747135240'>
+<foaf:homepage rdf:resource='http://digipolis.be' />
+
+<foaf:name>Digipolis Gent</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Katrien</foaf:firstName>
+
+<foaf:lastName>Leire</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:Katrien.leire@digipolis.gent' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329747279000'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329747257400'>
+<foaf:homepage rdf:resource='http://hpe.com' />
+
+<foaf:name>HPE</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Lieven</foaf:firstName>
+
+<foaf:lastName>Verreycken</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:lieven.verreycken@hpe.com' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329746544140'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329746514340'>
+<foaf:homepage rdf:resource='http://geosolutions.be' />
+
+<foaf:name>Geosolutions</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Tinne</foaf:firstName>
+
+<foaf:lastName>Cahy</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:tinne.cahy@geosolutions.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329743977820'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329744031920'>
+<foaf:homepage rdf:resource='http://cipalschaubroeck.be' />
+
+<foaf:name>Cipal Schaubroeck</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Willem</foaf:firstName>
+
+<foaf:lastName>Van Hoecke</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:willem.vanhoecke@cipalschaubroeck.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329745128940'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329745122500'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/informatie-vlaanderen' />
+
+<foaf:name>Informatie Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Dries</foaf:firstName>
+
+<foaf:lastName>Beheydt</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:dries.beheydt@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329746912340'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329746882660'>
+<foaf:homepage rdf:resource='http://idlab.ugent.be' />
+
+<foaf:name>imec - UGent</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Dieter</foaf:firstName>
+
+<foaf:lastName>De Paepe</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:dieter.depaepe@ugent.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329747034760'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329747005420'>
+<foaf:homepage rdf:resource='http://binnenland.vlaanderen.be/' />
+
+<foaf:name>ABB</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Heidi</foaf:firstName>
+
+<foaf:lastName>Godderis</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:heidi.godderis@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329746789660'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329746760020'>
+<foaf:homepage rdf:resource='http://www.belgium.be' />
+
+<foaf:name>Kruispuntbank Sociale Zekerheid</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Mark</foaf:firstName>
+
+<foaf:lastName>Demol</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:mark.demol@ksz-bcss.fgov.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329740489760'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329740058120'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/informatie-vlaanderen' />
+
+<foaf:name>Informatie Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Raf</foaf:firstName>
+
+<foaf:lastName>Buyle</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:raf.buyle@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329747274780'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329747244140'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/' />
+
+<foaf:name>Informatie Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Valere</foaf:firstName>
+
+<foaf:lastName>Bouserie</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:valere.bouserie@bz.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329746291240'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329746269860'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/informatie-vlaanderen' />
+
+<foaf:name>Informatie Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Geert</foaf:firstName>
+
+<foaf:lastName>Thijs</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:Geert.Thijs@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329743343760'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329743148300'>
+<foaf:homepage rdf:resource='https://www.lne.be/' />
+
+<foaf:name>LNE</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Geert</foaf:firstName>
+
+<foaf:lastName>Van Haute</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:geert.vanhaute@lne.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329737786600'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329736949580'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/' />
+
+<foaf:name>Informatie Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Henk</foaf:firstName>
+
+<foaf:lastName>Vanderstraeten</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:henk.vanderstraeten@bz.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47329743606640'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47329743185960'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/informatie-vlaanderen' />
+
+<foaf:name>Informatie Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Björn</foaf:firstName>
+
+<foaf:lastName>De Vidts</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:bjorn.devidts@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+
+</owl:Ontology>
+
+</rdfs:isDefinedBy>
+
+<rdfs:subClassOf>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Verblijfplaats'>
+<rdfs:label xml:lang='nl'>Verblijfplaats</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Plaats waar een persoon al dan niet tijdelijk woont of logeert.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+</owl:Class>
+
+</rdfs:subClassOf>
+
+</owl:Class>
+
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#GeenInwoner'>
+<rdfs:label xml:lang='nl'>Geen Inwoner</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Plaats of land wordt hier vertegenwoordigd door de entiteit jurisdictie.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Persoon die niet in een bepaalde plaats of land woont.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:subClassOf>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Inwonerschap'>
+<rdfs:label xml:lang='nl'>Inwonerschap</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Het feit dat een persoon verblijf houdt in een plaats of land.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+</owl:Class>
+
+</rdfs:subClassOf>
+
+</owl:Class>
+
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Huwelijk'>
+<rdfs:label xml:lang='nl'>Huwelijk</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Kan, net als bv samenwonen, de basis vormen van een gezin.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Een door burgerlijk of religieus recht geregelde samenlevingsvorm van twee personen.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:subClassOf>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Persoonsrelatie'>
+<rdfs:label xml:lang='nl'>Persoonsrelatie</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Typisch zijn dit burgerrechtelijke relaties (zie burgerlijke staat) maar niet noodzakelijk daartoe beperkt.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Relatie tussen twee of meer personen.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+</owl:Class>
+
+</rdfs:subClassOf>
+
+</owl:Class>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#Inwonerschap.binnenJurisdictie'>
+<rdfs:label xml:lang='nl'>binnen jurisdictie</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Jurisdictie waarbinnen het inwonerschap (ve persoon) is gedefineerd.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/persoon#Inwonerschap' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='http://purl.org/dc/terms/Jurisdiction' />
+
+</owl:ObjectProperty>
+
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#PermanentInwoner'>
+<rdfs:label xml:lang='nl'>Permanent Inwoner</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Is een verblijfsrecht dat in principe officieel moet worden toegekend als de persoon geen staatsburger is.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Persoon die permanent in een bepaalde plaats of land woont.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:subClassOf>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Inwoner'>
+<rdfs:label xml:lang='nl'>Inwoner</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Plaats of land wordt hier vertegenwoordigd door de entiteit jurisdictie.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Persoon die in een bepaalde plaats of land woont.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:subClassOf rdf:resource='https://data.vlaanderen.be/ns/persoon#Inwonerschap' />
+
+</owl:Class>
+
+</rdfs:subClassOf>
+
+</owl:Class>
+
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Samenwonen'>
+<rdfs:label xml:lang='nl'>Samenwonen</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Kan, net als bv een huwelijk, de basis vormen van een gezin.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Regeling waarbij twee personen die niet getrouwd zijn samenleven.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:subClassOf rdf:resource='https://data.vlaanderen.be/ns/persoon#Persoonsrelatie' />
+
+</owl:Class>
+
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Staatsburger'>
+<rdfs:label xml:lang='nl'>Staatsburger</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Persoon die juridisch verbonden is met een staat.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:subClassOf>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Staatsburgerschap'>
+<rdfs:label xml:lang='nl'>Staatburgerschap</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Vloeit meestal voort uit de nationaliteit ve persoon. De rechten en plichten waarvan sprake zijn burgerrechten (vb godsdienstvrijheid) of van politieke (vb stemrecht) of sociale aard (bv recht op een uitkering).</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Juridische band ve persoon met een staat, waaraan bepaalde rechten en plichten verbonden zijn</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+</owl:Class>
+
+</rdfs:subClassOf>
+
+</owl:Class>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#Staatsburgerschap.binnenJurisdictie'>
+<rdfs:label xml:lang='nl'>binnen jurisdictie</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Jurisdictie waarbinnen het staatsburgerschap (ve persoon) is gedefineerd.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/persoon#Staatsburgerschap' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='http://purl.org/dc/terms/Jurisdiction' />
+
+</owl:ObjectProperty>
+
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#TijdelijkInwoner'>
+<rdfs:label xml:lang='nl'>Tijdelijk Inwoner</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Is een verblijfsrecht dat in principe enkel wordt toegekend omwille ve zeer specifieke reden bv werken of studeren. Exclusief personen met kort verblijf, bv als toerist.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Persoon die tijdelijk in een plaats of land woont.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:subClassOf rdf:resource='https://data.vlaanderen.be/ns/persoon#Inwoner' />
+
+</owl:Class>
+
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Voogdij'>
+<rdfs:label xml:lang='nl'>Voogdij</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Dit is bv het geval voor minderjarigen die hun ouders zijn verloren of voor meerderjarigen die hun verstandelijke vermogens zijn verloren.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Situatie waarbij een persoon die optreedt als voogd ve ander persoon en in die hoedanigheid instaat voor deze persoon en zijn goederen.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:subClassOf rdf:resource='https://data.vlaanderen.be/ns/persoon#Persoonsrelatie' />
+
+</owl:Class>
+
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Vreemdeling'>
+<rdfs:label xml:lang='nl'>Vreemdeling</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Daardoor kan de persoon geen staatsburger worden genoemd. In praktijk geniet de Vreemdeling als Inwoner een subset vd burgerrechten die een Staatsbutger wel heeft. Bv wel godsdienstvrijheid maar geen stemrecht.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Persoon die niet de nationaliteit bezit vh land waar hij verblijft.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:subClassOf rdf:resource='https://data.vlaanderen.be/ns/persoon#Staatsburgerschap' />
+
+</owl:Class>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#afstammingsType'>
+<rdfs:label xml:lang='nl'>afstammingstype</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Bv geadopteerd, kind uit huwelijk, erkend door de vader etc.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Aard vd afstamming.</rdfs:comment>
+
+<rdfs:domain>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Afstamming'>
+<rdfs:label xml:lang='nl'>Afstamming</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>De afstamming kan ook niet-biologisch zijn, bv adoptie. Afstamming kan ook in opgaande lijn worden bekeken. Het begrip is enger dan verwantschap dat oa ook huwelijk inhoudt.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Afstamming is de dalende lijn van bloedverwantschap tussen verschillende generaties.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:subClassOf rdf:resource='https://data.vlaanderen.be/ns/persoon#Persoonsrelatie' />
+
+</owl:Class>
+
+</rdfs:domain>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='http://www.w3.org/2004/02/skos/core#Concept' />
+
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about='https://data.vlaanderen.be/ns/persoon#alternatieveNaam'>
+<rdfs:label xml:lang='nl'>alternatieve naam</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Alternatief voor de volledige naam vd persoon.</rdfs:comment>
+
+<rdfs:domain rdf:resource='http://www.w3.org/ns/person#Person' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='http://www.w3.org/2001/XMLSchema#string' />
+
+<rdfs:subPropertyOf rdf:resource='http://xmlns.com/foaf/0.1/name' />
+
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about='https://data.vlaanderen.be/ns/persoon#datum'>
+<rdfs:label xml:lang='nl'>datum</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Datum waarop de gebeurtenis plaatsvond.</rdfs:comment>
+
+<rdfs:domain>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Persoonsgebeurtenis'>
+<rdfs:label xml:lang='nl'>Persoonsgebeurtenis</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Belangrijke gebeurtenis ih leven ve persoon.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+</owl:Class>
+
+</rdfs:domain>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='http://www.w3.org/2000/01/rdf-schema#Literal' />
+
+<rdfs:subPropertyOf rdf:resource='http://purl.org/vocab/bio/0.1/date' />
+
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about='https://data.vlaanderen.be/ns/persoon#datumVanAfstamming'>
+<rdfs:label xml:lang='nl'>datum van afstamming</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>De datum waarop de afstamming wordt vastgesteld.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/persoon#Afstamming' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='http://www.w3.org/2000/01/rdf-schema#Literal' />
+
+<rdfs:subPropertyOf rdf:resource='http://purl.org/dc/terms/date' />
+
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about='https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam'>
+<rdfs:label xml:lang='nl'>gebruikte voornaam</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Belangrijkste vd voornamen ve persoon.</rdfs:comment>
+
+<rdfs:domain rdf:resource='http://www.w3.org/ns/person#Person' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='http://www.w3.org/2001/XMLSchema#string' />
+
+<rdfs:subPropertyOf>
+<rdf:Property rdf:about='http://xmlns.com/foaf/0.1/givenName'>
+<rdfs:label xml:lang='nl'>gegeven naam</rdfs:label>
+
+</rdf:Property>
+
+</rdfs:subPropertyOf>
+
+</owl:DatatypeProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#geslacht'>
+<rdfs:label xml:lang='nl'>geslacht</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Het feit of de persoon een man of een vrouw is.</rdfs:comment>
+
+<rdfs:domain rdf:resource='http://www.w3.org/ns/person#Person' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='http://www.w3.org/2004/02/skos/core#Concept' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#gezinsadres'>
+<rdfs:label xml:lang='nl'>gezinsadres</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Dikwijls een criterium om te bepalen of personen deel uitmaken van eenzelfde gezin.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Verblijfplaats vh gezin.</rdfs:comment>
+
+<rdfs:domain>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Gezin'>
+<rdfs:label xml:lang='nl'>Gezin</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Ruimer begrip dan familie waar het gezin louter bestaat uit nabije bloedverwanten, bv een eenpersoonsgezin of living apart together. Gezinsleden hebben doorgaans dezelfde verblijfplaats.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Samenwerkingsvorm die een herkenbare sociale eenheid vormt (bv tgv huwelijk), met al dan niet verwante personen die duurzame banden hebben en elkaar onderling steun en verzorging verlenen.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:subClassOf rdf:resource='http://www.w3.org/ns/org#Organization' />
+
+</owl:Class>
+
+</rdfs:domain>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='http://www.w3.org/ns/locn#Address' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#gezinsrelatietype'>
+<rdfs:label xml:lang='nl'>gezinsrelatietype</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Wordt typisch bepaald tov het gezinshoofd. Bv als de vader gezinshoofd is en een gezinslid is zoon, dan zou als de grootvader gezinshoofd was datzelfde gezinslid kleinzoon zijn.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Aard vd relatie.</rdfs:comment>
+
+<rdfs:domain>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Gezinsrelatie'>
+<rdfs:label xml:lang='nl'>Gezinsrelatie</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Bv echtgenoot, zoon, schoonmoeder.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Relatie tussen leden van eenzelfde gezin.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:subClassOf rdf:resource='https://data.vlaanderen.be/ns/persoon#Persoonsrelatie' />
+
+</owl:Class>
+
+</rdfs:domain>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='http://www.w3.org/2004/02/skos/core#Concept' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#heeftBurgerlijkeStaat'>
+<rdfs:label xml:lang='nl'>heeft burgerlijke staat</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Burgerlijke staat vd Persoon.</rdfs:comment>
+
+<rdfs:domain rdf:resource='http://www.w3.org/ns/person#Person' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#BurgerlijkeStaat'>
+<rdfs:label xml:lang='nl'>Burgerlijke Staat</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Slaat op huwelijk, partnerregistratie, afstamming, voogdij etc. Is maw de toestand van bepaalde verhoudingen tussen personen.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Burgerrechtelijke toestand van een persoon.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+</owl:Class>
+
+</rdfs:range>
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#heeftGeboorte'>
+<rdfs:label xml:lang='nl'>heeft geboorte</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Verwijst naar de geboortegegevens vd persoon.</rdfs:comment>
+
+<rdfs:domain rdf:resource='http://www.w3.org/ns/person#Person' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Geboorte'>
+<rdfs:label xml:lang='nl'>Geboorte</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Het ter wereld komen vd persoon.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:subClassOf rdf:resource='https://data.vlaanderen.be/ns/persoon#Persoonsgebeurtenis' />
+
+<owl:equivalentClass rdf:resource='http://purl.org/vocab/bio/0.1/Birth' />
+
+</owl:Class>
+
+</rdfs:range>
+
+<rdfs:subPropertyOf rdf:resource='http://purl.org/vocab/bio/0.1/birth' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#heeftInwonerschap'>
+<rdfs:label xml:lang='nl'>heeft inwonerschap</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>De entiteit inwonerschap beschrijft het inwonerschap in meer detail (oa de jurisdictie waarbinnen het gedefinieerd is).</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Inwonerschap vd persoon.</rdfs:comment>
+
+<rdfs:domain rdf:resource='http://www.w3.org/ns/person#Person' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='https://data.vlaanderen.be/ns/persoon#Inwonerschap' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#heeftNationaliteit'>
+<rdfs:label xml:lang='nl'>heeft nationaliteit</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Nationaliteit vd persoon.</rdfs:comment>
+
+<rdfs:domain rdf:resource='http://www.w3.org/ns/person#Person' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Nationaliteit'>
+<rdfs:label xml:lang='nl'>Nationaliteit</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Merk op dat dit begrip ruimer is dan staatsburgerschap (dat zich beperkt tot de relatie met een staat). Wie de nationaliteit ve bepaald land heeft is er doorgaans ook automatisch staatsburger van. Nationaliteit wordt doorgaans automatisch verkregen door geboorte: men krijgt hetzij de nationaliteit van zijn ouders of men krijgt deze vh land waar men Inwoner van is. Men kan een bepaalde nationaliteit ook verkrijgen door naturalisatie. In principe verliest men dan zijn oorspronkelijke nationaliteit, maar dat is niet altijd zo (meervoudige nationaliteit).</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>De relatie tussen een persoon en een staat, cultuur of loyaliteit.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+</owl:Class>
+
+</rdfs:range>
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#heeftOverlijden'>
+<rdfs:label xml:lang='nl'>heeft overlijden</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Verwijst naar de overlijdensgegevens vd persoon.</rdfs:comment>
+
+<rdfs:domain rdf:resource='http://www.w3.org/ns/person#Person' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#Overlijden'>
+<rdfs:label xml:lang='nl'>Overlijden</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Het doodgaan vd Persoon.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:subClassOf rdf:resource='https://data.vlaanderen.be/ns/persoon#Persoonsgebeurtenis' />
+
+<owl:equivalentClass rdf:resource='http://purl.org/vocab/bio/0.1/Death' />
+
+</owl:Class>
+
+</rdfs:range>
+
+<rdfs:subPropertyOf rdf:resource='http://purl.org/vocab/bio/0.1/death' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#heeftPersoonsrelatie'>
+<rdfs:label xml:lang='nl'>heeft persoonsrelatie</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Relatie van een persoon (met een ander persoon).</rdfs:comment>
+
+<rdfs:domain rdf:resource='http://www.w3.org/ns/person#Person' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='https://data.vlaanderen.be/ns/persoon#Persoonsrelatie' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#heeftStaatsburgerschap'>
+<rdfs:label xml:lang='nl'>heeft staatsburgerschap</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>De entiteit staatsburgerschap beschrijft het staatsburgerschap in meer detail (oa de jurisdictie waarbinnen het gedefinieerd is).</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Staatsburgerschap vd persoon.</rdfs:comment>
+
+<rdfs:domain rdf:resource='http://www.w3.org/ns/person#Person' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='https://data.vlaanderen.be/ns/persoon#Staatsburgerschap' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#heeftVerblijfplaats'>
+<rdfs:label xml:lang='nl'>heeft verblijfplaats</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Plaats waar een persoon verblijft.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/persoon#Inwonerschap' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='https://data.vlaanderen.be/ns/persoon#Verblijfplaats' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#isHoofdVan'>
+<rdfs:label xml:lang='nl'>is hoofd van</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Persoon die standaard het gezin vertegenwoordigt.</rdfs:comment>
+
+<rdfs:domain rdf:resource='http://www.w3.org/ns/person#Person' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='https://data.vlaanderen.be/ns/persoon#Gezin' />
+
+<rdfs:subPropertyOf rdf:resource='http://www.w3.org/ns/org#headOf' />
+ <rdfs:subPropertyOf rdf:resource='http://data.vlaanderen.be/ns/persoon#isLidVan' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#isLidVan'>
+<rdfs:label xml:lang='nl'>is lid van</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Persoon die tot een gezin behoort.</rdfs:comment>
+
+<rdfs:domain rdf:resource='http://www.w3.org/ns/person#Person' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='https://data.vlaanderen.be/ns/persoon#Gezin' />
+
+<rdfs:subPropertyOf rdf:resource='http://www.w3.org/ns/org#memberOf' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#isRelatieMet'>
+<rdfs:label xml:lang='nl'>is relatie met</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Persoon waarmee de persoon gerelateerd is.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/persoon#Persoonsrelatie' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='http://www.w3.org/ns/person#Person' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#land'>
+<rdfs:label xml:lang='nl'>land</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Land waar de gebeurtenis plaatsvond.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/persoon#Persoonsgebeurtenis' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='http://purl.org/dc/terms/Location' />
+
+<rdfs:subPropertyOf rdf:resource='http://purl.org/vocab/bio/0.1/place' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#nationaliteit'>
+<rdfs:label xml:lang='nl'>nationaliteit</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>De nationaliteit vd persoon.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/persoon#Nationaliteit' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='https://data.vlaanderen.be/ns/persoon#Nationaliteitscode' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#plaats'>
+<rdfs:label xml:lang='nl'>plaats</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Plaats in een land waar de gebeurtenis plaatsvond.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/persoon#Persoonsgebeurtenis' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='http://purl.org/dc/terms/Location' />
+
+<rdfs:subPropertyOf rdf:resource='http://purl.org/vocab/bio/0.1/place' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#registratie'>
+<rdfs:label xml:lang='nl'>registratie</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Identificatiecode vd persoon ih register.</rdfs:comment>
+
+<rdfs:domain>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/persoon#GeregistreerdPersoon'>
+<rdfs:label xml:lang='nl'>Geregistreerd Persoon</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Doorgaans is dit register een bevolkingsregister maar het kan bv ook een kiesregister zijn. De ingeschreven gegevens hebben betrekking op de identeit (vb Naam en Voornaam) en de Verblijfplaats vd Persoon en op belangrijke levensgebeurtenissen zoals Geboorte, Huwelijk, Overlijden etc. Deze gegevens worden typisch geregistreerd door de overheid, ze bieden de ingeschreven Persoon wettelijke bescherming en laten de overheid toe om basisstatistieken op te stellen over zijn bevolking.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Persoon waarvan de gegevens zijn ingeschreven in een register.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:subClassOf rdf:resource='http://www.w3.org/ns/person#Person' />
+
+</owl:Class>
+
+</rdfs:domain>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='http://www.w3.org/ns/adms#Identifier' />
+
+<rdfs:subPropertyOf rdf:resource='http://www.w3.org/ns/adms#Identifier' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#type'>
+<rdfs:label xml:lang='nl'>type</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Aard vd burgerlijke staat.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/persoon#BurgerlijkeStaat' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='http://www.w3.org/2004/02/skos/core#Concept' />
+
+<rdfs:subPropertyOf rdf:resource='http://purl.org/dc/elements/1.1/type' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/persoon#verblijfsadres'>
+<rdfs:label xml:lang='nl'>verblijfsadres</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Plaats waar een persoon al dan niet tijdelijk woont of logeert.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/persoon#Verblijfplaats' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='http://www.w3.org/ns/locn#Address' />
+
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about='https://data.vlaanderen.be/ns/persoon#volledigeNaam'>
+<rdfs:label xml:lang='nl'>volledige naam</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'></ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>De volledige naam vd persoon, doorgaans de combinatie van voornamen en achternaam.</rdfs:comment>
+
+<rdfs:domain rdf:resource='http://www.w3.org/ns/person#Person' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/persoon' />
+
+<rdfs:range rdf:resource='http://www.w3.org/2001/XMLSchema#string' />
+
+<rdfs:subPropertyOf rdf:resource='http://xmlns.com/foaf/0.1/name' />
+
+</owl:DatatypeProperty>
 
 </rdf:RDF>
