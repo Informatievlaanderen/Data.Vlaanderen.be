@@ -2,21 +2,18 @@
 	"@context":
 	{
 		"Agent":"http://purl.org/dc/terms/Agent",
-		"Rechtsgrond":"http://data.europa.eu/eli/ontology#LegalResource",
-		"RechtsgrondSubdivisie":"http://data.europa.eu/eli/ontology#LegalResourceSubdivision",
+		"RegelgevendDocument":"http://data.europa.eu/eli/ontology#LegalResource",
+		"RegelgevendDocumentSubdivisie":"http://data.europa.eu/eli/ontology#LegalResourceSubdivision",
 		"Verschijningsvorm":"http://data.europa.eu/eli/ontology#LegalExpression",
 
 		"bekrachtigdBij":{
 			"@id":"https://data.vlaanderen.be/ns/wetgeving#bekrachtigdBij",
-			"@type":""
+			"@type":"http://data.europa.eu/eli/ontology#LegalResource",
+			"@container":"@set"
 		},
 		"bekrachtigt":{
 			"@id":"https://data.vlaanderen.be/ns/wetgeving#bekrachtigt",
-			"@type":""
-		},
-		"beschrijving":{
-			"@id":"http://purl.org/dc/terms/description",
-			"@type":"http://www.w3.org/2001/XMLSchema#string",
+			"@type":"http://data.europa.eu/eli/ontology#LegalResource",
 			"@container":"@set"
 		},
 		"buitenwerkingtreding":{
@@ -24,13 +21,14 @@
 			"@type":"http://www.w3.org/2001/XMLSchema#date"
 		},
 		"citeeropschrift":{
-			"@id":"http://data.europa.eu/eli/ontology#title",
+			"@id":"http://data.europa.eu/eli/ontology#title_short",
 			"@type":"http://www.w3.org/2001/XMLSchema#string",
 			"@container":"@set"
 		},
 		"citeert":{
 			"@id":"http://data.europa.eu/eli/ontology#cites",
-			"@type":""
+			"@type":"http://data.europa.eu/eli/ontology#LegalResource",
+			"@container":"@set"
 		},
 		"consolideert":{
 			"@id":"http://data.europa.eu/eli/ontology#consolidates",
@@ -54,6 +52,16 @@
 			"@id":"http://data.vlaanderen.be/ns/generiek#gestructureerdedentificator",
 			"@type":"http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator"
 		},
+		"gewijzigd bij":{
+			"@id":"http://data.europa.eu/eli/ontology#amended_by",
+			"@type":"http://data.europa.eu/eli/ontology#LegalResource",
+			"@container":"@set"
+		},
+		"gezienDoor":{
+			"@id":"http://data.europa.eu/eli/ontology#related_to",
+			"@type":"http://data.europa.eu/eli/ontology#LegalResource",
+			"@container":"@set"
+		},
 		"heeftOnderdeel":{
 			"@id":"http://purl.org/dc/terms/hasPart",
 			"@type":"http://data.europa.eu/eli/ontology#LegalResourceSubdivision",
@@ -61,7 +69,8 @@
 		},
 		"heftOp":{
 			"@id":"https://data.vlaanderen.be/ns/wetgeving#heftOp",
-			"@type":""
+			"@type":"http://data.europa.eu/eli/ontology#LegalResource",
+			"@container":"@set"
 		},
 		"identificator":{
 			"@id":"http://www.w3.org/2004/02/skos/core#notation",
@@ -69,14 +78,21 @@
 		},
 		"ingetrokkenBij":{
 			"@id":"https://data.vlaanderen.be/ns/wetgeving#ingetrokkenBij",
-			"@type":""
+			"@type":"http://data.europa.eu/eli/ontology#LegalResource",
+			"@container":"@set"
 		},
 		"ingevoegdBij":{
 			"@id":"https://data.vlaanderen.be/ns/wetgeving#ingevoegdBij",
-			"@type":""
+			"@type":"http://data.europa.eu/eli/ontology#LegalResource",
+			"@container":"@set"
 		},
 		"inhoud":{
 			"@id":"http://www.w3.org/ns/prov#value",
+			"@type":"http://www.w3.org/2001/XMLSchema#string",
+			"@container":"@set"
+		},
+		"inhoudstafel":{
+			"@id":"http://purl.org/dc/terms/description",
 			"@type":"http://www.w3.org/2001/XMLSchema#string",
 			"@container":"@set"
 		},
@@ -109,15 +125,12 @@
 		},
 		"nummer":{
 			"@id":"http://data.europa.eu/eli/ontology#number",
-			"@type":"http://www.w3.org/2001/XMLSchema#double"
+			"@type":"http://www.w3.org/2001/XMLSchema#string"
 		},
 		"opgehevenBij":{
 			"@id":"https://data.vlaanderen.be/ns/wetgeving#opgehevenBij",
-			"@type":""
-		},
-		"opgehevenDoor":{
-			"@id":"http://data.europa.eu/eli/ontology#cited_by",
-			"@type":""
+			"@type":"http://data.europa.eu/eli/ontology#LegalResource",
+			"@container":"@set"
 		},
 		"publicatieDatum":{
 			"@id":"http://data.europa.eu/eli/ontology#date_publication",
@@ -155,7 +168,8 @@
 		},
 		"trektIn":{
 			"@id":"https://data.vlaanderen.be/ns/wetgeving#trektIn",
-			"@type":""
+			"@type":"http://data.europa.eu/eli/ontology#LegalResource",
+			"@container":"@set"
 		},
 		"typeDocument":{
 			"@id":"http://data.europa.eu/eli/ontology#type_document",
@@ -164,15 +178,12 @@
 		},
 		"typeRechtsgrondSubdivisie":{
 			"@id":"https://data.vlaanderen.be/ns/wetgeving#typeRechtsgrondSubdivisie",
-			"@type":"http://fixme.com#TypeRechtsgrondSubdivisie"
-		},
-		"veranderdDoor":{
-			"@id":"http://data.europa.eu/eli/ontology#amended_by",
 			"@type":""
 		},
-		"verandert":{
-			"@id":"http://data.europa.eu/eli/ontology#amends",
-			"@type":""
+		"verantwoordelijke":{
+			"@id":"http://data.europa.eu/eli/ontology#responsibility_of",
+			"@type":"http://purl.org/dc/terms/Agent",
+			"@container":"@set"
 		},
 		"versieIdentificator":{
 			"@id":"http://data.vlaanderen.be/ns/generiek#versieIdentificator",
@@ -180,23 +191,28 @@
 		},
 		"vervangenBij":{
 			"@id":"https://data.vlaanderen.be/ns/wetgeving#vervangenBij",
-			"@type":""
+			"@type":"http://data.europa.eu/eli/ontology#LegalResource",
+			"@container":"@set"
 		},
 		"vervangt":{
 			"@id":"https://data.vlaanderen.be/ns/wetgeving#vervangt",
-			"@type":""
+			"@type":"http://data.europa.eu/eli/ontology#LegalResource",
+			"@container":"@set"
 		},
 		"voegtIn":{
 			"@id":"https://data.vlaanderen.be/ns/wetgeving#voegtIn",
-			"@type":""
+			"@type":"http://data.europa.eu/eli/ontology#LegalResource",
+			"@container":"@set"
+		},
+		"wijzigt":{
+			"@id":"http://data.europa.eu/eli/ontology#amends",
+			"@type":"http://data.europa.eu/eli/ontology#LegalResource",
+			"@container":"@set"
 		},
 		"zetOm":{
 			"@id":"http://data.europa.eu/eli/ontology#transposes",
-			"@type":""
-		},
-		"zieOok":{
-			"@id":"http://data.europa.eu/eli/ontology#related_to",
-			"@type":""
+			"@type":"http://data.europa.eu/eli/ontology#LegalResource",
+			"@container":"@set"
 		}
 	}
 }
