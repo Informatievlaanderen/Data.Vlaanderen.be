@@ -1,5 +1,6 @@
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
-<https://data.vlaanderen.be/ns/toestemming#VerwerkingsactiviteitShape>
+@prefix qb:      <http://purl.org/linked-data/cube#> .
+<https://data.vlaanderen.be/shacl/contactvoorkeuren#VerwerkingsactiviteitShape>
 	a sh:NodeShape ;
 	sh:targetClass <https://data.vlaanderen.be/ns/toestemming#Verwerkingsactiviteit> ;
 	sh:property [
@@ -40,7 +41,7 @@
 		sh:name "label" ;
 		sh:description "Een label voor de ToestemmingDescriptor." ;
 		sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -48,7 +49,7 @@
 		sh:name "toestemmingsvraag" ;
 		sh:description "De vraag die gesteld wordt aan gebruikers om hun toestemming te verlenen." ;
 		sh:path <https://data.vlaanderen.be/ns/toestemming#toestemmingsvraag> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -59,6 +60,7 @@
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
+		qb:codeList <https://data.vlaanderen.be/id/conceptscheme/Nauwkeurigsheidsklassen/Verwerkingstypes> ;
 	] ;
 	sh:property [
 		sh:name "verwerkingsgrond" ;
@@ -67,48 +69,49 @@
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
+		qb:codeList <https://data.vlaanderen.be/id/conceptscheme/Verwerkingsgronden> ;
 	] ;
 	sh:closed false .
 
-<https://data.vlaanderen.be/ns/toestemming#CookieverklaringShape>
+<https://data.vlaanderen.be/shacl/contactvoorkeuren#CookieverklaringShape>
 	a sh:NodeShape ;
 	sh:targetClass <https://data.vlaanderen.be/ns/toestemming#Cookieverklaring> ;
 	sh:closed false .
 
-<https://data.vlaanderen.be/ns/toestemming#PrivacyverklaringShape>
+<https://data.vlaanderen.be/shacl/contactvoorkeuren#PrivacyverklaringShape>
 	a sh:NodeShape ;
 	sh:targetClass <https://data.vlaanderen.be/ns/toestemming#Privacyverklaring> ;
 	sh:closed false .
 
-<https://data.vlaanderen.be/ns/toestemming#AlgemeneVoorwaardenShape>
+<https://data.vlaanderen.be/shacl/contactvoorkeuren#AlgemeneVoorwaardenShape>
 	a sh:NodeShape ;
 	sh:targetClass <https://data.vlaanderen.be/ns/toestemming#AlgemeneVoorwaarden> ;
 	sh:closed false .
 
-<http://xmlns.com/foaf/0.1/DocumentShape>
+<https://data.vlaanderen.be/shacl/contactvoorkeuren#DocumentShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://xmlns.com/foaf/0.1/Document> ;
 	sh:property [
 		sh:name "url" ;
 		sh:description "Een doorverwijzing naar een webpagina." ;
 		sh:path <http://schema.org/url> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#anyURI> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#anyURI> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<https://data.vlaanderen.be/ns/toestemming#VerwerkersovereenkomstShape>
+<https://data.vlaanderen.be/shacl/contactvoorkeuren#VerwerkersovereenkomstShape>
 	a sh:NodeShape ;
 	sh:targetClass <https://data.vlaanderen.be/ns/toestemming#Verwerkersovereenkomst> ;
 	sh:closed false .
 
-<http://purl.org/vocab/cpsv#PublicServiceShape>
+<https://data.vlaanderen.be/shacl/contactvoorkeuren#PubliekeDienstverleningShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://purl.org/vocab/cpsv#PublicService> ;
 	sh:closed false .
 
-<http://www.w3.org/ns/org#OrganizationShape>
+<https://data.vlaanderen.be/shacl/contactvoorkeuren#OrganisatieShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://www.w3.org/ns/org#Organization> ;
 	sh:property [
@@ -119,7 +122,7 @@
 	] ;
 	sh:closed false .
 
-<http://data.europa.eu/m8g/PublicOrganisationShape>
+<https://data.vlaanderen.be/shacl/contactvoorkeuren#PubliekeOrganisatieShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.europa.eu/m8g/PublicOrganisation> ;
 	sh:property [
@@ -130,7 +133,7 @@
 	] ;
 	sh:closed false .
 
-<http://purl.org/dc/terms/AgentShape>
+<https://data.vlaanderen.be/shacl/contactvoorkeuren#AgentShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://purl.org/dc/terms/Agent> ;
 	sh:property [
@@ -143,7 +146,7 @@
 	] ;
 	sh:closed false .
 
-<https://data.vlaanderen.be/ns/toestemming#ToestemmingShape>
+<https://data.vlaanderen.be/shacl/contactvoorkeuren#ToestemmingShape>
 	a sh:NodeShape ;
 	sh:targetClass <https://data.vlaanderen.be/ns/toestemming#Toestemming> ;
 	sh:property [
@@ -169,6 +172,7 @@
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
+		qb:codeList <https://data.vlaanderen.be/id/conceptscheme/Contactkanaal> ;
 	] ;
 	sh:property [
 		sh:name "notificatiecategorie" ;
@@ -176,12 +180,13 @@
 		sh:path <https://data.vlaanderen.be/ns/toestemming#notificatiecategorie> ;
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:maxCount 1 ;
+		qb:codeList <https://data.vlaanderen.be/id/conceptscheme/Notificatiecategorie> ;
 	] ;
 	sh:property [
 		sh:name "gegevenOp" ;
 		sh:description "De datum waarop de toestemming werd verleend." ;
 		sh:path <https://data.vlaanderen.be/ns/toestemming#gegevenOp> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -192,17 +197,18 @@
 		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
+		qb:codeList <https://data.vlaanderen.be/id/conceptscheme/ToestemmingStatus> ;
 	] ;
 	sh:property [
 		sh:name "vervalt" ;
 		sh:description "De datum waarop de toestemming vervalt." ;
 		sh:path <http://schema.org/expires> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://schema.org/ContactPointShape>
+<https://data.vlaanderen.be/shacl/contactvoorkeuren#ContactInfoShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://schema.org/ContactPoint> ;
 	sh:property [
@@ -222,33 +228,33 @@
 		sh:name "contactnaam" ;
 		sh:description "Naam van de persoon die men kan contacteren." ;
 		sh:path <http://xmlns.com/foaf/0.1/name> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "email" ;
 		sh:description "Email-adres waarnaar men kan mailen." ;
 		sh:path <http://schema.org/email> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "telefoon" ;
 		sh:description "Telefoonnummer waarop men kan bellen of smsen." ;
 		sh:path <http://schema.org/telephone> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://www.w3.org/ns/locn#AddressShape>
+<https://data.vlaanderen.be/shacl/contactvoorkeuren#AdresvoorstellingShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://www.w3.org/ns/locn#Address> ;
 	sh:property [
 		sh:name "busnummer" ;
 		sh:description "Officieel toegekende alfanumerieke code die wordt toegevoegd aan het huisnummer om meerdere gebouweenheden, standplaatsen, ligplaatsen of percelen te onderscheiden die eenzelfde huisnummer hebben." ;
 		sh:path <http://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -261,7 +267,7 @@
 		sh:name "huisnummer" ;
 		sh:description "Alfanumerieke code officieel toegekend aan gebouweenheden, ligplaatsen, standplaatsen of percelen." ;
 		sh:path <http://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -275,7 +281,7 @@
 		sh:name "postcode" ;
 		sh:description "Code waarmee het geografisch gebied dat adressen voor postale doeleinden groepeert wordt aangeduid." ;
 		sh:path <http://www.w3.org/ns/locn#postCode> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;

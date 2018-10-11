@@ -1,10 +1,11 @@
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
-<http://purl.org/dc/terms/AgentShape>
+@prefix qb:      <http://purl.org/linked-data/cube#> .
+<https://data.vlaanderen.be/shacl/vlaamse-codex#AgentShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://purl.org/dc/terms/Agent> ;
 	sh:closed false .
 
-<http://www.w3.org/ns/adms#IdentifierShape>
+<https://data.vlaanderen.be/shacl/vlaamse-codex#IdentificatorShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://www.w3.org/ns/adms#Identifier> ;
 	sh:property [
@@ -18,7 +19,7 @@
 		sh:name "identificator" ;
 		sh:description "String gebruikt om het object uniek te identificeren. " ;
 		sh:path <http://www.w3.org/2004/02/skos/core#notation> ;
-		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
+		sh:class <http://www.w3.org/2000/01/rdf-schema#Literal> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -33,26 +34,26 @@
 		sh:name "toegekendDoorString" ;
 		sh:description "Naam vd agent die de identificator heeft toegekend." ;
 		sh:path <http://www.w3.org/ns/adms#schemaAgency> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "toegekendOp" ;
 		sh:description "Tijdstip waarop de identificator werd uitgegeven." ;
 		sh:path <http://purl.org/dc/terms/issued> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificatorShape>
+<https://data.vlaanderen.be/shacl/vlaamse-codex#GestructureerdeIdentificatorShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
 	sh:property [
 		sh:name "lokaleIdentificator" ;
 		sh:description "String gebruikt om het object uniek te identificeren binnen de naamruimte." ;
 		sh:path <http://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -60,7 +61,7 @@
 		sh:name "naamruimte" ;
 		sh:description "String die toegvoegd wordt aan de lokaleidentificator om deze globaal uniek te maken." ;
 		sh:path <http://data.vlaanderen.be/ns/generiek#naamruimte> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -68,12 +69,12 @@
 		sh:name "versieIdentificator" ;
 		sh:description "Identificator van de specifieke versie van een object." ;
 		sh:path <http://data.vlaanderen.be/ns/generiek#versieIdentificator> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.europa.eu/eli/ontology#LegalResourceSubdivisionShape>
+<https://data.vlaanderen.be/shacl/vlaamse-codex#RegelgevendDocumentSubdivisieShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.europa.eu/eli/ontology#LegalResourceSubdivision> ;
 	sh:property [
@@ -83,23 +84,24 @@
 		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
 	] ;
 	sh:property [
-		sh:name "nummer" ;
-		sh:description "Een ID of een ander onderscheidend kenmerk voor een juridische bron of juridische uitdrukking." ;
-		sh:path <http://data.europa.eu/eli/ontology#number> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
 		sh:name "typeRechtsgrondSubdivisie" ;
 		sh:description "Het type van de rechtsgrond subdivsie." ;
 		sh:path <https://data.vlaanderen.be/ns/wetgeving#typeRechtsgrondSubdivisie> ;
-		sh:class <http://fixme.com#TypeRechtsgrondSubdivisie> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+		qb:codeList <https://data.vlaanderen.be/id/conceptscheme/TypeRechtsgrondSubdivisie> ;
+	] ;
+	sh:property [
+		sh:name "nummer" ;
+		sh:description "Een ID of een ander onderscheidend kenmerk voor een juridische bron of juridische uitdrukking." ;
+		sh:path <http://data.europa.eu/eli/ontology#number> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.europa.eu/eli/ontology#LegalExpressionShape>
+<https://data.vlaanderen.be/shacl/vlaamse-codex#VerschijningsvormShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.europa.eu/eli/ontology#LegalExpression> ;
 	sh:property [
@@ -111,7 +113,7 @@
 	] ;
 	sh:property [
 		sh:name "realiseert" ;
-		sh:description "Heeft betrekking op een rechtsgrond van de verschijningsvorm die door die verschijningsvorm is gerealiseerd." ;
+		sh:description "Heeft betrekking op een regelgevend document van de verschijningsvorm die door die verschijningsvorm is gerealiseerd." ;
 		sh:path <http://data.europa.eu/eli/ontology#realizes> ;
 		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
 		sh:minCount 1 ;
@@ -124,24 +126,24 @@
 		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
 	] ;
 	sh:property [
-		sh:name "beschrijving" ;
-		sh:description "Een beschrijving van de bron. Beschrijving kan omvatten, maar is niet beperkt tot: een abstract, een inhoudsopgave, een grafische weergave of een vrije beschrijving van de bron." ;
+		sh:name "inhoudstafel" ;
+		sh:description "Een beschrijving van de verschijningsvorm. Beschrijving kan omvatten, maar is niet beperkt tot: een abstract, een inhoudsopgave, een grafische weergave of een vrije beschrijving van de verschijningsvorm." ;
 		sh:path <http://purl.org/dc/terms/description> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 	] ;
 	sh:property [
-		sh:name "citeeropschrift" ;
+		sh:name "opschrift" ;
 		sh:description "De beknopte titel of officiële korte naam van een decreet, wet, besluit... Deze wordt officieel vastgelegd. Deze benaming wordt in de praktijk gebruikt om naar de rechtsgrond te verwijzen." ;
 		sh:path <http://data.europa.eu/eli/ontology#title> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 	] ;
 	sh:property [
 		sh:name "commentaar" ;
 		sh:description "Een verslag van de bron." ;
 		sh:path <http://purl.org/dc/terms/description> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -149,7 +151,7 @@
 		sh:name "inhoud" ;
 		sh:description "Geeft een waarde die een directe weergave is van een entiteit." ;
 		sh:path <http://www.w3.org/ns/prov#value> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 	] ;
 	sh:property [
 		sh:name "lokaleID" ;
@@ -162,14 +164,14 @@
 		sh:name "publicatieDatum" ;
 		sh:description "De officiële publicatiedatum van het besluit." ;
 		sh:path <http://data.europa.eu/eli/ontology#date_publication> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "taal" ;
 		sh:description "De taal van een uitdrukking." ;
 		sh:path <http://data.europa.eu/eli/ontology#language> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -177,11 +179,38 @@
 		sh:name "trefwoord" ;
 		sh:description "Éen of meerdere onderwerpen van de bron." ;
 		sh:path <http://purl.org/dc/terms/subject> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+	] ;
+	sh:property [
+		sh:name "buitenwerkingtreding" ;
+		sh:description "De laatste dag waarop de regelgeving nog van kracht is." ;
+		sh:path <http://data.europa.eu/eli/ontology#date_no_longer_in_force> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "datumToepasbaarheid" ;
+		sh:description "De datum waarop de wetgeving van toepassing wordt." ;
+		sh:path <http://data.europa.eu/eli/ontology#date_applicability> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "inwerkingtreding" ;
+		sh:description "De datum waarop de regelgeving van kracht wordt." ;
+		sh:path <http://data.europa.eu/eli/ontology#first_date_entry_in_force> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "thema" ;
+		sh:description "Het onderwerp van deze juridische hulpbron." ;
+		sh:path <http://data.europa.eu/eli/ontology#is_about> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 	] ;
 	sh:closed false .
 
-<http://data.europa.eu/eli/ontology#LegalResourceShape>
+<https://data.vlaanderen.be/shacl/vlaamse-codex#RegelgevendDocumentShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.europa.eu/eli/ontology#LegalResource> ;
 	sh:property [
@@ -197,45 +226,19 @@
 		sh:class <http://data.europa.eu/eli/ontology#LegalResourceSubdivision> ;
 	] ;
 	sh:property [
-		sh:name "buitenwerkingtreding" ;
-		sh:description "De laatste dag waarop de regelgeving nog van kracht is." ;
-		sh:path <http://data.europa.eu/eli/ontology#date_no_longer_in_force> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
 		sh:name "datumDocument" ;
 		sh:description "Adoptiedatum of handtekendatum (in de vorm jjjj-mm-dd)." ;
 		sh:path <http://data.europa.eu/eli/ontology#date_document> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "datumToepasbaarheid" ;
-		sh:description "De datum waarop de wetgeving van toepassing wordt." ;
-		sh:path <http://data.europa.eu/eli/ontology#date_applicability> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "inwerkingtreding" ;
-		sh:description "De datum waarop de regelgeving van kracht wordt." ;
-		sh:path <http://data.europa.eu/eli/ontology#first_date_entry_in_force> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "thema" ;
-		sh:description "Het onderwerp van deze juridische hulpbron." ;
-		sh:path <http://data.europa.eu/eli/ontology#is_about> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 	] ;
 	sh:property [
 		sh:name "typeDocument" ;
-		sh:description "Het type van de rechtsgrond." ;
+		sh:description "Het type van het regelgevend document." ;
 		sh:path <http://data.europa.eu/eli/ontology#type_document> ;
 		sh:class <http://fixme.com#AardWetgeving> ;
 		sh:minCount 1 ;
+		qb:codeList <https://data.vlaanderen.be/id/conceptscheme/AardWetgeving> ;
 	] ;
 	sh:closed false .
 
