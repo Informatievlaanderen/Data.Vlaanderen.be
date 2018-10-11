@@ -1,0 +1,447 @@
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix qb:      <http://purl.org/linked-data/cube#> .
+<https://data.vlaanderen.be/shacl/adresregister#PlaatsShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://purl.org/dc/terms/Location> ;
+	sh:property [
+		sh:name "geometrie" ;
+		sh:description "Geometrie van de plaats of het gebied." ;
+		sh:path <http://www.w3.org/ns/locn#geometry> ;
+		sh:class <https://data.vlaanderen.be/ns/generiek#Geometrie> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "plaatsnaam" ;
+		sh:description "Naam van de plaats of van het gebied." ;
+		sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/shacl/adresregister#AdministratieveEenheidShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/generiek#AdministratieveEenheid> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/shacl/adresregister#BestuurseenheidShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/bestuur#Bestuurseenheid> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/shacl/adresregister#GeografischeNaamShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/shacl/adresregister#GeografischePositieShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/generiek#GeografischePositie> ;
+	sh:property [
+		sh:name "default" ;
+		sh:description "Geeft aan of de positie een default positie is." ;
+		sh:path <https://data.vlaanderen.be/ns/generiek#default> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "geometrie" ;
+		sh:description "De cartografische coöordinaten vh punt." ;
+		sh:path <http://www.w3.org/ns/locn#geometry> ;
+		sh:class <http://www.opengis.net/ont/sf#Point> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "methode" ;
+		sh:description "De manier waarop het punt werd bepaald." ;
+		sh:path <https://data.vlaanderen.be/ns/generiek#methode> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "specificatie" ;
+		sh:description "Het type object op basis waarvan het punt werd bepaald.	" ;
+		sh:path <https://data.vlaanderen.be/ns/generiek#specificatie> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/shacl/adresregister#AdreslocatorShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/adres#Adreslocator> ;
+	sh:property [
+		sh:name "aanduiding" ;
+		sh:description "Alfanumerieke code die de locator uniek identificeert binnen de straat, administratieve eenheid etc." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#aanduiding> ;
+		sh:class <https://data.vlaanderen.be/ns/adres#Locatieaanduiding> ;
+	] ;
+	sh:property [
+		sh:name "naam" ;
+		sh:description "Naam of omschrijving vh het geografisch object dat de locator aanduidt." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#naam> ;
+		sh:class <https://data.vlaanderen.be/ns/adres#Locatienaam> ;
+	] ;
+	sh:property [
+		sh:name "niveau" ;
+		sh:description "Het niveau waarnaar de locator verwijst." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#niveau> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/shacl/adresregister#LocatienaamShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/adres#Locatienaam> ;
+	sh:property [
+		sh:name "naam" ;
+		sh:description "Naam vh geografisch object." ;
+		sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:minCount 1 ;
+	] ;
+	sh:property [
+		sh:name "type" ;
+		sh:description "Aard vh geografisch object." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#Locatienaam.type> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/shacl/adresregister#LocatieaanduidingShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/adres#Locatieaanduiding> ;
+	sh:property [
+		sh:name "aanduiding" ;
+		sh:description "Alfanumerieke code waarmee het identificerend deel van een adreslocator wordt aangeduid." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#Locatieaanduiding.aanduiding> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "type" ;
+		sh:description "Aard vd locatieaanduiding." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#Locatieaanduiding.type> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/shacl/adresregister#AdresvoorstellingShape>
+	a sh:NodeShape ;
+	sh:targetClass <http://www.w3.org/ns/locn#Address> ;
+	sh:property [
+		sh:name "verwijstNaar" ;
+		sh:description "Adres waarvan de adresvoorstelling is afgeleid." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#verwijstNaar> ;
+		sh:class <https://data.vlaanderen.be/ns/adres#Adres> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "administratieveEenheidNiveau1" ;
+		sh:description "Hoogste Administratieve eenheid vh adres, doorgaans een land." ;
+		sh:path <http://www.w3.org/ns/locn#adminUnitL1> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "administratieveEenheidNiveau2" ;
+		sh:description "De regio vh adres, doorgaans een provincie of deelstaat of gelijkaardig gebied dat typisch meerdere plaatsen omvat." ;
+		sh:path <http://www.w3.org/ns/locn#adminUnitL2> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "adresgebied" ;
+		sh:description "Naam ve geografisch gebied of plaats die een aantal adresseerbare objecten groepeert om deze te adresseren zonder dat het gebied of de plaats een administratieve eenheid is" ;
+		sh:path <http://www.w3.org/ns/locn#addressArea> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "busnummer" ;
+		sh:description "Officieel toegekende alfanumerieke code die wordt toegevoegd aan het huisnummer om meerdere gebouweenheden, standplaatsen, ligplaatsen of percelen te onderscheiden die eenzelfde huisnummer hebben." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "gemeentenaam" ;
+		sh:description "Gemeentenaam vh adres." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#gemeentenaam> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "huisnummer" ;
+		sh:description "Alfanumerieke code officieel toegekend aan gebouweenheden, ligplaatsen, standplaatsen of percelen." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "land" ;
+		sh:description "Land waarin het adres gelegen is." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#land> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "locatieaanduiding" ;
+		sh:description "Alfanumerieke code die de adreslocator uniek identificeert binnen de straat, administratieve eenheid etc." ;
+		sh:path <http://www.w3.org/ns/locn#locatorDesignator> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+	] ;
+	sh:property [
+		sh:name "locatienaam" ;
+		sh:description "Naam of omschrijving vh het geografisch object dat de adreslocator aanduidt." ;
+		sh:path <http://www.w3.org/ns/locn#locatorName> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+	] ;
+	sh:property [
+		sh:name "postbus" ;
+		sh:description "Postbusnummer in een postkantoor." ;
+		sh:path <http://www.w3.org/ns/locn#poBox> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "postcode" ;
+		sh:description "Code waarmee het geografisch gebied dat adressen voor postale doeleinden groepeert wordt aangeduid." ;
+		sh:path <http://www.w3.org/ns/locn#postCode> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "postnaam" ;
+		sh:description "Naam waarmee het geografisch gebied dat adressen voor postale doeleinden groepeert wordt aangeduid." ;
+		sh:path <http://www.w3.org/ns/locn#postName> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "straatnaam" ;
+		sh:description "Straatnaam vh adres." ;
+		sh:path <http://www.w3.org/ns/locn#thoroughfare> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "volledigAdres" ;
+		sh:description "Het complete adres in één string, al dan niet geformatteerd." ;
+		sh:path <http://www.w3.org/ns/locn#fullAddress> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/shacl/adresregister#GemeentenaamShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/adres#Gemeentenaam> ;
+	sh:property [
+		sh:name "isAfgeleidVan" ;
+		sh:description "Gemeente waarvan de gemeentenaam is afgeleid." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#isAfgeleidVan> ;
+		sh:class <https://data.vlaanderen.be/ns/generiek#AdministratieveEenheid> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "gemeentenaam" ;
+		sh:description "Naam vd gemeente." ;
+		sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:minCount 1 ;
+	] ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/shacl/adresregister#LigplaatsShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/adres#Ligplaats> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/shacl/adresregister#StandplaatsShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/adres#Standplaats> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/shacl/adresregister#PostinfoShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/adres#Postinfo> ;
+	sh:property [
+		sh:name "postcode" ;
+		sh:description "Code waarmee het geografisch gebied dat de adressen voor postale doeleinden groepeert aanduidt." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#postcode> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "postnaam" ;
+		sh:description "Naam waarmee het geografisch gebied dat de adressen voor postale doeleinden groepeert kan worden aangeduid." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#postnaam> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+	] ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/shacl/adresregister#AdresuitbreidingShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/adres#Adresuitbreiding> ;
+	sh:property [
+		sh:name "adresIsGelegenIn" ;
+		sh:description "Plaats of gebied waarbinnen het Adres gelegen is." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#adresIsGelegenIn> ;
+		sh:class <http://purl.org/dc/terms/Location> ;
+	] ;
+	sh:property [
+		sh:name "adreslocator" ;
+		sh:description "Bijkomende adreslocator." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#adreslocator> ;
+		sh:class <https://data.vlaanderen.be/ns/adres#Adreslocator> ;
+	] ;
+	sh:property [
+		sh:name "volledigAdres" ;
+		sh:description "Het complete adres in één string, al dan niet geformatteerd." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#volledigAdres> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+	] ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/shacl/adresregister#StraatnaamShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/adres#Straatnaam> ;
+	sh:property [
+		sh:name "isToegekendDoor" ;
+		sh:description "Agent die de straatnaam heeft toegekend." ;
+		sh:path <http://www.w3.org/ns/prov#wasAttributedTo> ;
+		sh:class <https://data.vlaanderen.be/ns/bestuur#Bestuurseenheid> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "homoniemToevoeging" ;
+		sh:description "Toevoeging om dubbele straatnamen (straatnamen met dezelfde naam maar andere ligging in de gemeente en eigen adressen) van elkaar te onderscheiden." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#homoniemToevoeging> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "status" ;
+		sh:description "Actuele toestand van de straatnaam." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#Straatnaam.status> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "straatnaam" ;
+		sh:description "Naam vd straat." ;
+		sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
+		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:minCount 1 ;
+	] ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/shacl/adresregister#AdresseerbaarObjectShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/adres#AdresseerbaarObject> ;
+	sh:closed false .
+
+<https://data.vlaanderen.be/shacl/adresregister#AdresShape>
+	a sh:NodeShape ;
+	sh:targetClass <https://data.vlaanderen.be/ns/adres#Adres> ;
+	sh:property [
+		sh:name "heeftGemeentenaam" ;
+		sh:description "Gemeentenaamcomponent van het adres." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#heeftGemeentenaam> ;
+		sh:class <https://data.vlaanderen.be/ns/adres#Gemeentenaam> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "heeftStraatnaam" ;
+		sh:description "Straatnaamcomponent van het adres." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#heeftStraatnaam> ;
+		sh:class <https://data.vlaanderen.be/ns/adres#Straatnaam> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "heeftPostinfo" ;
+		sh:description "Postinfocomponent van het adres." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#heeftPostinfo> ;
+		sh:class <https://data.vlaanderen.be/ns/adres#Postinfo> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "isToegekendAan" ;
+		sh:description "Adresseerbaar object waaraan het adres is toegekend." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#isToegekendAan> ;
+		sh:class <https://data.vlaanderen.be/ns/adres#AdresseerbaarObject> ;
+	] ;
+	sh:property [
+		sh:name "isToegekendDoor" ;
+		sh:description "Agent die het adres heeft toegekend." ;
+		sh:path <http://www.w3.org/ns/prov#wasAttributedTo> ;
+		sh:class <https://data.vlaanderen.be/ns/bestuur#Bestuurseenheid> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "isVerrijktMet" ;
+		sh:description "Verwijzing naar een adresuitbreiding. " ;
+		sh:path <https://data.vlaanderen.be/ns/adres#isVerrijktMet> ;
+		sh:class <https://data.vlaanderen.be/ns/adres#Adresuitbreiding> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "busnummer" ;
+		sh:description "Officieel toegekende alfanumerieke code die wordt toegevoegd aan het huisnummer om meerdere gebouweenheden, standplaatsen, ligplaatsen of percelen te onderscheiden die eenzelfde huisnummer hebben." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#busnummer> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "huisnummer" ;
+		sh:description "Alfanumerieke code officieel toegekend aan gebouweenheden, ligplaatsen, standplaatsen of percelen." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#huisnummer> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "officieelToegekend" ;
+		sh:description "Geeft aan of het adres officieel door de adresbeheerder is toegekend." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#officieelToegekend> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "positie" ;
+		sh:description "Positie van een karakeristiek punt dat de positie van het adres vertegenwoordigt volgens een bepaalde specificatie en inclusief informatie over de herkomst van de positie." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#positie> ;
+		sh:class <https://data.vlaanderen.be/ns/generiek#GeografischePositie> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "status" ;
+		sh:description "Actuele toestand van het adres." ;
+		sh:path <https://data.vlaanderen.be/ns/adres#Adres.status> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
+	sh:closed false .
+

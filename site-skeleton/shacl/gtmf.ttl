@@ -1,12 +1,28 @@
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
-<https://data.vlaanderen.be/ns/melding#TerugmeldingShape>
+@prefix qb:      <http://purl.org/linked-data/cube#> .
+<https://data.vlaanderen.be/shacl/gtmf#TerugmeldingShape>
 	a sh:NodeShape ;
 	sh:targetClass <https://data.vlaanderen.be/ns/melding#Terugmelding> ;
+	sh:property [
+		sh:name "indiener" ;
+		sh:description "Agent die de Melding heeft aangemaakt en/of ingediend." ;
+		sh:path <https://data.vlaanderen.be/ns/melding#indiener> ;
+		sh:class <http://purl.org/dc/terms/Agent> ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+	] ;
 	sh:property [
 		sh:name "meldingsapplicatie" ;
 		sh:description "De applicatie dat de Melding creëerde." ;
 		sh:path <https://data.vlaanderen.be/ns/melding#meldingsapplicatie> ;
 		sh:class <https://data.vlaanderen.be/ns/melding#Applicatie> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "melder" ;
+		sh:description "De Agent die het probleem waarover gemeld wordt opmerkte." ;
+		sh:path <https://data.vlaanderen.be/ns/melding#melder> ;
+		sh:class <http://purl.org/dc/terms/Agent> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -16,12 +32,10 @@
 		sh:class <http://purl.org/dc/terms/Agent> ;
 	] ;
 	sh:property [
-		sh:name "indiener" ;
-		sh:description "Agent die de Melding heeft aangemaakt en/of ingediend." ;
-		sh:path <https://data.vlaanderen.be/ns/melding#indiener> ;
-		sh:class <http://purl.org/dc/terms/Agent> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
+		sh:name "heeftDoelwit" ;
+		sh:description "De relatie tussen de Melding en het doelwit, het Meldingsobject waarop de melding slaat." ;
+		sh:path <http://www.w3.org/ns/oa#hasTarget> ;
+		sh:class <https://data.vlaanderen.be/ns/melding#Meldingsobject> ;
 	] ;
 	sh:property [
 		sh:name "meldingsorganisatie" ;
@@ -37,19 +51,6 @@
 		sh:class <http://purl.org/dc/terms/Agent> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "melder" ;
-		sh:description "De Agent die het probleem waarover gemeld wordt opmerkte." ;
-		sh:path <https://data.vlaanderen.be/ns/melding#melder> ;
-		sh:class <http://purl.org/dc/terms/Agent> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "heeftDoelwit" ;
-		sh:description "De relatie tussen de Melding en het doelwit, het Meldingsobject waarop de melding slaat." ;
-		sh:path <http://www.w3.org/ns/oa#hasTarget> ;
-		sh:class <https://data.vlaanderen.be/ns/melding#Meldingsobject> ;
 	] ;
 	sh:property [
 		sh:name "heeftBody" ;
@@ -74,14 +75,14 @@
 		sh:name "samenvatting" ;
 		sh:description "Een samenvatting van de Melding." ;
 		sh:path <https://www.w3.org/ns/activitystreams#summary> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "titel" ;
 		sh:description "De titel van de Melding." ;
 		sh:path <http://purl.org/dc/terms/title> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -89,19 +90,19 @@
 		sh:name "webpagina" ;
 		sh:description "Een doorverwijzing naar een webpagina over deze Melding." ;
 		sh:path <https://data.vlaanderen.be/ns/melding#webpagina> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#anyURI> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#anyURI> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://www.w3.org/ns/locn#GeometryShape>
+<https://data.vlaanderen.be/shacl/gtmf#GeometrieShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://www.w3.org/ns/locn#Geometry> ;
 	sh:property [
 		sh:name "gml" ;
 		sh:description "Geometrie uitgedrukt in gml-formaat." ;
 		sh:path <http://www.opengis.net/ont/geosparql#asGML> ;
-		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
+		sh:class <http://www.w3.org/2000/01/rdf-schema#Literal> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -109,18 +110,18 @@
 		sh:name "wkt" ;
 		sh:description "Geometrie uitgedrukt in wkt-formaat." ;
 		sh:path <http://www.opengis.net/ont/geosparql#asWKT> ;
-		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
+		sh:class <http://www.w3.org/2000/01/rdf-schema#Literal> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.europa.eu/m8g/PublicOrganisationShape>
+<https://data.vlaanderen.be/shacl/gtmf#PubliekeOrganisatieShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.europa.eu/m8g/PublicOrganisation> ;
 	sh:closed false .
 
-<http://www.w3.org/ns/org#OrganizationalUnitShape>
+<https://data.vlaanderen.be/shacl/gtmf#OrganisatieEenheidShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://www.w3.org/ns/org#OrganizationalUnit> ;
 	sh:property [
@@ -133,9 +134,9 @@
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/persoon#GeregistreerdPersoonShape>
+<https://data.vlaanderen.be/shacl/gtmf#GeregistreerdPersoonShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/persoon#GeregistreerdPersoon> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/persoon#GeregistreerdPersoon> ;
 	sh:property [
 		sh:name "registratie" ;
 		sh:description "Identificatiecode van de persoon in het register." ;
@@ -146,19 +147,19 @@
 	] ;
 	sh:closed false .
 
-<https://data.vlaanderen.be/ns/melding#ApplicatieShape>
+<https://data.vlaanderen.be/shacl/gtmf#ApplicatieShape>
 	a sh:NodeShape ;
 	sh:targetClass <https://data.vlaanderen.be/ns/melding#Applicatie> ;
 	sh:closed false .
 
-<https://data.vlaanderen.be/ns/melding#MeldingstatusShape>
+<https://data.vlaanderen.be/shacl/gtmf#MeldingstatusShape>
 	a sh:NodeShape ;
 	sh:targetClass <https://data.vlaanderen.be/ns/melding#Meldingstatus> ;
 	sh:property [
 		sh:name "beschrijving" ;
 		sh:description "Een beschrijving van de Status." ;
 		sh:path <http://purl.org/dc/terms/description> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -166,7 +167,7 @@
 		sh:name "statusdatum" ;
 		sh:description "De datum van een Status." ;
 		sh:path <https://data.vlaanderen.be/ns/melding#statusdatum> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -188,7 +189,7 @@
 	] ;
 	sh:closed false .
 
-<https://data.vlaanderen.be/ns/melding#MeldingsobjectAttribuutShape>
+<https://data.vlaanderen.be/shacl/gtmf#MeldingsobjectAttribuutShape>
 	a sh:NodeShape ;
 	sh:targetClass <https://data.vlaanderen.be/ns/melding#MeldingsobjectAttribuut> ;
 	sh:property [
@@ -201,7 +202,7 @@
 		sh:name "huidigeWaarde" ;
 		sh:description "De huidige waarde van een Eigenschap." ;
 		sh:path <https://data.vlaanderen.be/ns/melding#huidigeWaarde> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -209,12 +210,12 @@
 		sh:name "voorgesteldeWaarde" ;
 		sh:description "De voorgestelde waarde van een Eigenschap." ;
 		sh:path <https://data.vlaanderen.be/ns/melding#voorgesteldeWaarde> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://www.w3.org/2004/02/skos/core#ConceptShape>
+<https://data.vlaanderen.be/shacl/gtmf#ConceptShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://www.w3.org/2004/02/skos/core#Concept> ;
 	sh:property [
@@ -228,27 +229,27 @@
 		sh:name "label" ;
 		sh:description "Het geprefereerde label voor het Concept." ;
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<https://data.vlaanderen.be/ns/melding#MeldingBodyShape>
+<https://data.vlaanderen.be/shacl/gtmf#MeldingBodyShape>
 	a sh:NodeShape ;
 	sh:targetClass <https://data.vlaanderen.be/ns/melding#MeldingBody> ;
 	sh:property [
 		sh:name "beschrijving" ;
 		sh:description "Een tekstuele beschrijving van de melding." ;
 		sh:path <http://purl.org/dc/terms/description> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "bijlage" ;
 		sh:description "Identificeert een resource die aan de MeldingsBody verbonden is en mogelijks speciale verwerking vraagt. " ;
 		sh:path <https://www.w3.org/ns/activitystreams#attachment> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#anyURI> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#anyURI> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -260,12 +261,12 @@
 	] ;
 	sh:closed false .
 
-<http://www.w3.org/ns/person#PersonShape>
+<https://data.vlaanderen.be/shacl/gtmf#PersoonShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://www.w3.org/ns/person#Person> ;
 	sh:closed false .
 
-<https://www.w3.org/ns/org#OrganizationShape>
+<https://data.vlaanderen.be/shacl/gtmf#OrganisatieShape>
 	a sh:NodeShape ;
 	sh:targetClass <https://www.w3.org/ns/org#Organization> ;
 	sh:property [
@@ -276,7 +277,7 @@
 	] ;
 	sh:closed false .
 
-<https://data.vlaanderen.be/ns/melding#EigenschapShape>
+<https://data.vlaanderen.be/shacl/gtmf#EigenschapShape>
 	a sh:NodeShape ;
 	sh:targetClass <https://data.vlaanderen.be/ns/melding#Eigenschap> ;
 	sh:property [
@@ -296,7 +297,7 @@
 		sh:name "label" ;
 		sh:description "Een label voor de Eigenschap." ;
 		sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -304,7 +305,7 @@
 		sh:name "meldbaar" ;
 		sh:description "Geeft aan of op de eigenschap kan teruggemeld worden (true) of deze louter ter informatie van de gebruiker wordt getoond (false). " ;
 		sh:path <https://data.vlaanderen.be/ns/melding#meldbaar> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -312,29 +313,29 @@
 		sh:name "verplicht" ;
 		sh:description "True als de eigenschap verplicht mee te sturen is ter informatie van de behandelaar en bronhouder, anders false." ;
 		sh:path <https://www.w3.org/ns/hydra/core#required> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "verwachtType" ;
 		sh:description "Geeft het bereik van mogelijke waarden aan voor de eigenschap." ;
 		sh:path <https://data.vlaanderen.be/ns/melding#verwachtType> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://data.vlaanderen.be/ns/organisatie#HoedanigheidShape>
+<https://data.vlaanderen.be/shacl/gtmf#HoedanigheidShape>
 	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/organisatie#Hoedanigheid> ;
+	sh:targetClass <https://data.vlaanderen.be/ns/organisatie#Hoedanigheid> ;
 	sh:closed false .
 
-<http://purl.org/dc/terms/AgentShape>
+<https://data.vlaanderen.be/shacl/gtmf#AgentShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://purl.org/dc/terms/Agent> ;
 	sh:closed false .
 
-<http://purl.org/dc/dcmitype/DatasetShape>
+<https://data.vlaanderen.be/shacl/gtmf#DatasetShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://purl.org/dc/dcmitype/Dataset> ;
 	sh:property [
@@ -354,7 +355,7 @@
 		sh:name "beschrijving" ;
 		sh:description "Een beschrijving van de Dataset." ;
 		sh:path <http://purl.org/dc/terms/description> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -362,41 +363,41 @@
 		sh:name "titel" ;
 		sh:description "De titel van een Dataset." ;
 		sh:path <http://purl.org/dc/terms/title> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<http://www.w3.org/ns/oa#TimeStateShape>
+<https://data.vlaanderen.be/shacl/gtmf#TijdToestandShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://www.w3.org/ns/oa#TimeState> ;
 	sh:property [
 		sh:name "cachedBron" ;
 		sh:description "Een cached momentopname van de bron op het moment van de vaststelling van de fout of onvolledigheid." ;
 		sh:path <http://www.w3.org/ns/oa#cachedSource> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#anyURI> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#anyURI> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "datumVaststelling" ;
 		sh:description "De datum en het tijdstip waarop het Meldingsobject moet geïnterpreteerd worden als zijnde van toepassing op de Melding." ;
 		sh:path <http://www.w3.org/ns/oa#sourceDate> ;
-		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:class <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<https://data.vlaanderen.be/ns/melding#MeldingsobjectShape>
+<https://data.vlaanderen.be/shacl/gtmf#MeldingsobjectShape>
 	a sh:NodeShape ;
 	sh:targetClass <https://data.vlaanderen.be/ns/melding#Meldingsobject> ;
 	sh:property [
-		sh:name "heeftToestand" ;
-		sh:description "De relatie tussen het Meldingsobject en een TijdToestand." ;
-		sh:path <http://www.w3.org/ns/oa#hasState> ;
-		sh:class <http://www.w3.org/ns/oa#TimeState> ;
-		sh:maxCount 1 ;
+		sh:name "behandelaar" ;
+		sh:description "Agent die werd aangewezen om het meldingsobject op te volgen en af te handelen." ;
+		sh:path <https://data.vlaanderen.be/ns/melding#behandelaar> ;
+		sh:class <https://www.w3.org/ns/org#Organization> ;
+		sh:minCount 1 ;
 	] ;
 	sh:property [
 		sh:name "heeftBron" ;
@@ -407,11 +408,11 @@
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "behandelaar" ;
-		sh:description "Agent die werd aangewezen om het meldingsobject op te volgen en af te handelen." ;
-		sh:path <https://data.vlaanderen.be/ns/melding#behandelaar> ;
-		sh:class <https://www.w3.org/ns/org#Organization> ;
-		sh:minCount 1 ;
+		sh:name "heeftToestand" ;
+		sh:description "De relatie tussen het Meldingsobject en een TijdToestand." ;
+		sh:path <http://www.w3.org/ns/oa#hasState> ;
+		sh:class <http://www.w3.org/ns/oa#TimeState> ;
+		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "gerelateerdeBody" ;
