@@ -22,8 +22,8 @@ De volgende componenten zijn van belang in de pipeline:
   Deze map bevat de jinja / nunjucks templates voor ieder vocabularium en applicatieprofiel. Dit is de plaats waar de HTML beschrijvingen toegevoegd worden.
 * **config**
   Deze map bevat verscheidene configuratie bestanden voor de toolchain:
-  * *config-ap.json*: Bevat de applicatieprofiel specifieke configuratie voor ea-2-rdf (gebruikt in de pipeline)
-  * *config-voc.json*: Bevat de vocabularium specifieke configuratie voor ea-2-rdf
+  * *config-ap.json*: Bevat de applicatieprofiel specifieke configuratie voor EA-2-RDF (gebruikt in de pipeline)
+  * *config-voc.json*: Bevat de vocabularium specifieke configuratie voor EA-2-RDF
   * *shacl-validator-config.json*: Bevat de configuratie van https://data.vlaanderen.be/shacl-validator. De validator laadt deze in vanop de github URL. Indien nieuwe shacl files beschikbaar gemaakt moeten worden aan de validator, moet dit bestand aangepast worden.
   * *eap-mapping.json*: Bevat de configuratie van de pipeline zelf.
 
