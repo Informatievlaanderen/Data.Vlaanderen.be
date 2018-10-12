@@ -18,14 +18,14 @@
 		sh:name "actie" ;
 		sh:description "Deze parameter laat toe om aan te geven dat - qua procesverloop van de transactie - de bal expliciet in het kamp van de klant (= de Agent) ligt en dat er dus een actie verwacht wordt van zijn kant." ;
 		sh:path <https://data.vlaanderen.be/ns/transactie#actie> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "actieNodig" ;
 		sh:description "Indien Actie Nodig 'Ja', dan laat dit veld toe te specifiëren welke Actie van de klant (Agent) wordt verwacht." ;
 		sh:path <https://data.vlaanderen.be/ns/transactie#actieNodig> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -56,14 +56,14 @@
 		sh:name "statusWijzigingsdatum" ;
 		sh:description "Is de verplichte vermelding van de datum + tijdstip waarop de betrokken status werd geregistreerd." ;
 		sh:path <https://data.vlaanderen.be/ns/transactie#statusWijzigingsdatum> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "streefdatum" ;
 		sh:description "Is de datum waarop verwacht wordt dat de volgende stap (status-wijziging) in de transactie zal of zou moeten plaatsvinden. Dit kan in bepaalde gevallen bepaald worden door een wettelijke termijn (van een fase of status)." ;
 		sh:path <https://data.vlaanderen.be/ns/transactie#streefdatum> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
@@ -75,7 +75,7 @@
 		sh:name "beschrijving" ;
 		sh:description "Beschrijving van de participatie." ;
 		sh:path <http://purl.org/dc/terms/description> ;
-		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -94,7 +94,7 @@
 		sh:name "beschrijving" ;
 		sh:description "Beschrijving van de kost." ;
 		sh:path <http://purl.org/dc/terms/description> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -108,7 +108,7 @@
 		sh:name "waarde" ;
 		sh:description "Omvang van de kost, uitgedrukt in de opgegeven munteenheid." ;
 		sh:path <http://data.europa.eu/m8g/value> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#double> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#double> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
@@ -175,13 +175,13 @@
 		sh:name "documentatie" ;
 		sh:description "Documentatie gerelateerd aan het Bewiijs." ;
 		sh:path <http://xmlns.com/foaf/0.1/page> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#anyURI> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#anyURI> ;
 	] ;
 	sh:property [
 		sh:name "naam" ;
 		sh:description "Officiële naam vh Bewijs." ;
 		sh:path <http://purl.org/dc/terms/title> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -217,14 +217,14 @@
 		sh:name "beschrijving" ;
 		sh:description "Beschrijving van de Output." ;
 		sh:path <http://purl.org/dc/terms/description> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "datum" ;
 		sh:description "De datum waarop de output werd toegekend of het financieel voordeel werd uitebetaald. " ;
 		sh:path <http://purl.org/dc/terms/date> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -232,7 +232,7 @@
 		sh:name "naam" ;
 		sh:description "Officiële naam van de Output." ;
 		sh:path <http://purl.org/dc/terms/title> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -325,7 +325,7 @@
 		sh:name "naam" ;
 		sh:description "Officiële naam van de publieke dienstverlening." ;
 		sh:path <http://purl.org/dc/terms/title> ;
-		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -372,14 +372,14 @@
 		sh:name "beschrijving" ;
 		sh:description "Een beschrijving van het antwoord op de vereiste." ;
 		sh:path <http://purl.org/dc/terms/description> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "waarde" ;
 		sh:description "Een beantwoorde vereiste moet een waarde bevatten als antwoord op een criterium vereiste. Om de criterium vereiste te vervullen, wanneer de criterium vereiste een verwachte waarde of drempel heeft, moet de waarde gelijk zijn aan de verwachte waarden of binnen het bereik liggen dat bepaald werd door de drempelwaarden." ;
 		sh:path <http://data.europa.eu/m8g/value> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -404,7 +404,7 @@
 		sh:name "begin" ;
 		sh:description "Moment waarop het tijdsinterval begint." ;
 		sh:path <http://data.vlaanderen.be/ns/generiek#begin> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -412,7 +412,7 @@
 		sh:name "einde" ;
 		sh:description "Moment waarop het tijdsinterval eindigt." ;
 		sh:path <http://data.vlaanderen.be/ns/generiek#einde> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
@@ -424,7 +424,7 @@
 		sh:name "identificator" ;
 		sh:description "String gebruikt om de instantie ve object uniek te identificeren. " ;
 		sh:path <http://www.w3.org/2004/02/skos/core#notation> ;
-		sh:class <http://www.w3.org/2000/01/rdf-schema#Literal> ;
+		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -439,14 +439,14 @@
 		sh:name "toegekendDoorString" ;
 		sh:description "Naam vd agent die de identificator heeft toegekend." ;
 		sh:path <http://www.w3.org/ns/adms#schemaAgency> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "toegekendOp" ;
 		sh:description "Tijdstip waarop de identificator werd uitgegeven." ;
 		sh:path <http://purl.org/dc/terms/issued> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .

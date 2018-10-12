@@ -75,14 +75,14 @@
 		sh:name "samenvatting" ;
 		sh:description "Een samenvatting van de Melding." ;
 		sh:path <https://www.w3.org/ns/activitystreams#summary> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "titel" ;
 		sh:description "De titel van de Melding." ;
 		sh:path <http://purl.org/dc/terms/title> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -90,7 +90,7 @@
 		sh:name "webpagina" ;
 		sh:description "Een doorverwijzing naar een webpagina over deze Melding." ;
 		sh:path <https://data.vlaanderen.be/ns/melding#webpagina> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#anyURI> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#anyURI> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
@@ -102,7 +102,7 @@
 		sh:name "gml" ;
 		sh:description "Geometrie uitgedrukt in gml-formaat." ;
 		sh:path <http://www.opengis.net/ont/geosparql#asGML> ;
-		sh:class <http://www.w3.org/2000/01/rdf-schema#Literal> ;
+		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -110,7 +110,7 @@
 		sh:name "wkt" ;
 		sh:description "Geometrie uitgedrukt in wkt-formaat." ;
 		sh:path <http://www.opengis.net/ont/geosparql#asWKT> ;
-		sh:class <http://www.w3.org/2000/01/rdf-schema#Literal> ;
+		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -159,7 +159,7 @@
 		sh:name "beschrijving" ;
 		sh:description "Een beschrijving van de Status." ;
 		sh:path <http://purl.org/dc/terms/description> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -167,7 +167,7 @@
 		sh:name "statusdatum" ;
 		sh:description "De datum van een Status." ;
 		sh:path <https://data.vlaanderen.be/ns/melding#statusdatum> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -202,7 +202,7 @@
 		sh:name "huidigeWaarde" ;
 		sh:description "De huidige waarde van een Eigenschap." ;
 		sh:path <https://data.vlaanderen.be/ns/melding#huidigeWaarde> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -210,7 +210,7 @@
 		sh:name "voorgesteldeWaarde" ;
 		sh:description "De voorgestelde waarde van een Eigenschap." ;
 		sh:path <https://data.vlaanderen.be/ns/melding#voorgesteldeWaarde> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
@@ -229,7 +229,7 @@
 		sh:name "label" ;
 		sh:description "Het geprefereerde label voor het Concept." ;
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -242,14 +242,14 @@
 		sh:name "beschrijving" ;
 		sh:description "Een tekstuele beschrijving van de melding." ;
 		sh:path <http://purl.org/dc/terms/description> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "bijlage" ;
 		sh:description "Identificeert een resource die aan de MeldingsBody verbonden is en mogelijks speciale verwerking vraagt. " ;
 		sh:path <https://www.w3.org/ns/activitystreams#attachment> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#anyURI> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#anyURI> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -297,7 +297,7 @@
 		sh:name "label" ;
 		sh:description "Een label voor de Eigenschap." ;
 		sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -305,7 +305,7 @@
 		sh:name "meldbaar" ;
 		sh:description "Geeft aan of op de eigenschap kan teruggemeld worden (true) of deze louter ter informatie van de gebruiker wordt getoond (false). " ;
 		sh:path <https://data.vlaanderen.be/ns/melding#meldbaar> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -313,14 +313,14 @@
 		sh:name "verplicht" ;
 		sh:description "True als de eigenschap verplicht mee te sturen is ter informatie van de behandelaar en bronhouder, anders false." ;
 		sh:path <https://www.w3.org/ns/hydra/core#required> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#boolean> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#boolean> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "verwachtType" ;
 		sh:description "Geeft het bereik van mogelijke waarden aan voor de eigenschap." ;
 		sh:path <https://data.vlaanderen.be/ns/melding#verwachtType> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
@@ -355,7 +355,7 @@
 		sh:name "beschrijving" ;
 		sh:description "Een beschrijving van de Dataset." ;
 		sh:path <http://purl.org/dc/terms/description> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -363,7 +363,7 @@
 		sh:name "titel" ;
 		sh:description "De titel van een Dataset." ;
 		sh:path <http://purl.org/dc/terms/title> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -376,14 +376,14 @@
 		sh:name "cachedBron" ;
 		sh:description "Een cached momentopname van de bron op het moment van de vaststelling van de fout of onvolledigheid." ;
 		sh:path <http://www.w3.org/ns/oa#cachedSource> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#anyURI> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#anyURI> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "datumVaststelling" ;
 		sh:description "De datum en het tijdstip waarop het Meldingsobject moet geïnterpreteerd worden als zijnde van toepassing op de Melding." ;
 		sh:path <http://www.w3.org/ns/oa#sourceDate> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
