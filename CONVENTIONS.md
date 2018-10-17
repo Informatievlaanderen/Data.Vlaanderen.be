@@ -7,28 +7,26 @@ De varianten `woord1` en `woordx` stellen de overeenkomstige woorden voor, begin
 
 ### Vocabularia
 
-* symbolische naam
-  * attribuut in eap-mapping.json: -
-  * formaat: `Woord1Woordx`
-  * voorbeeld: **OpenbaarDomein**
-  * opmerking: Bevat niet het woord 'Vocabularium'.
+Voor een vocabularium met symbolische naam `Woord1 Woordx`:
+
+* algemeen
+  * In de symbolische naam is het woord 'Vocabularium' niet inbegrepen.
 
 * slugname
-  * attribuut in eap-mapping.json: "name", optioneel: "prefix"
+  * attribuut in eap-mapping.json: "name" en indien nodig ook "prefix"
   * formaat: `woord1-woordx`
-  * voorbeeld: **openbaar-domein**
-  * opmerking: De slugname komt voor in de uiteindeljke url van de specifiatie en in de uri's van alle begrippen gedefinieerd in dit vocabularium.
+  * voorbeelden: **persoon**, **openbaar-domein**
+  * opmerking: De slugname komt voor in de uiteindeljke url van de specificatie en in de uri's van alle begrippen gedefinieerd in dit vocabularium. Daartoe moet de slugname afgestemd zijn met de baseURI die vastgelegd is in de package tags. 
 
 * eap bestandsnaam, normaal geval
   * attribuut in eap-mapping.json: "eap"
   * formaat: `OSLO-Woord1-Woordx-VOC.eap`
-  * voorbeeld: **OSLO-Openbaar-Domein-VOC.eap**
+  * voorbeeld: **OSLO-Persoon-VOC.eap**
 
-* eap bestandsnaam, bijzonder geval; komt voor indien het vocabularium vervat zit in één eap bestand, samen met de er bij horende applicatieprofielen
+* eap bestandsnaam, bijzonder geval; komt voor indien het vocabularium vervat zit in één eap bestand, samen met de bijhorende applicatieprofielen
   * attribuut in eap-mapping.json: "eap"
-  * formaat: `OSLO-Woord1-Woordx.eap` (-VOC ontbreekt)
+  * formaat: `OSLO-Woord1-Woordx.eap` ('-VOC' ontbreekt)
   * voorbeeld: **OSLO-Openbaar-Domein.eap**
-  * opmerking: Afwijkende waarden voor Woord1 Woordx, aangezien deze naar een (groep van) applicatieprofiel(en) verwijst.
 
 * eap bestandsnaam, bijzonder geval; geldt voor alle geïntegreerde vocabularia samen in één eap bestand
   * attribuut in eap-mapping.json: "eap"
@@ -38,31 +36,36 @@ De varianten `woord1` en `woordx` stellen de overeenkomstige woorden voor, begin
 * diagramnaam
   * attribuut in eap-mapping.json: "diagram"
   * formaat: `OSLO-Woord1-Woordx`
-  * voorbeeld: **OSLO-Persoon**
+  * voorbeelden: **OSLO-Persoon**, **OSLO-Openbaar-Domein**
 
 * kolomnaam medewerkers
   * attribuut in eap-mapping.json: "contributors"
   * formaat: `Woord1Woordx`
   * voorbeeld: **OpenbaarDomein**
-  * opmerking: Eventueel afwijkende afwijkende waarden voor Woord1 Woordx om te verwijzen naar de personen die meewerkten aan een bijhorend vocabularium en/of reeks appicatieprofielen.
 
 * template bestandsnaam
   * attribuut in eap-mapping.json: "template"
   * formaat: `woord1-woordx-voc.j2`
-  * voorbeeld: **persoon-voc.j2**
+  * voorbeelden: **persoon-voc.j2**, **openbaar-domein-voc.j2**
+
+* titel
+  * attribuut in eap-mapping.json: -
+  * formaat: `Woord1 Woordx`
+  * voorbeelden: **Persoon**, **Openbaar Domein**
+  * opmerking: Voor een vocabularium wordt de titel vastgelegd in de package tags; er is geen attribuut in eap-mapping.json. 
 
 ### Applicatieprofielen
 
-* symbolische naam
-  * attribuut in eap-mapping.json: - 
-  * formaat: `Woord1Woordx`
-  * voorbeeld: **PersoonBasis**
-  * opmerking: Bevat niet het woord 'Applicatieprofiel' (ook niet afgekort tot 'AP'); voor een basisprofiel: één Woordx, gelijk aan 'Basis'.
+Voor een applicatieprofiel met symbolische naam `Woord1 Woordx`:
+
+* algemeen
+  * In de symbolische naam is het woord 'Applicatieprofiel' niet inbegrepen, ook niet afgekort tot 'AP'.
+  * Voor een basisprofiel is de symbolische naam de symbolische naam van het vocabularium gevolgd door ' Basis'.
 
 * slugname
   * attribuut in eap-mapping.json: "name"
   * formaat: `woord1-woordx`
-  * voorbeeld: **persoon-basis**
+  * voorbeelden: **persoon-basis**, **objectcatalogus-begraafplaats**
   * opmerking: De slugname komt voor in de uiteindeljke url van de specifiatie.
 
 * eap bestandsnaam, normaal geval
@@ -72,21 +75,20 @@ De varianten `woord1` en `woordx` stellen de overeenkomstige woorden voor, begin
 
 * eap bestandsnaam, bijzonder geval; komt voor indien het applicatieprofiel vervat zit in één eap bestand, samen met het vocabularium waarop het gebaseerd is en/of samen met verwante applicatieprofielen
   * attribuut in eap-mapping.json: "eap"
-  * formaat: `OSLO-Woord1-Woordx.eap` (-AP ontbreekt)
+  * formaat: `OSLO-Woord1-Woordx.eap` ('-AP' ontbreekt)
   * voorbeeld: **OSLO-Openbaar-Domein.eap**
-  * opmerking: Afwijkende waarden voor Woord1 Woordx, aangezien deze naar een vocabularium of een groep applicatieprofielen verwijst.
+  * opmerking: Woord1 Woordx in de bestandsnaam kan hier afwijken t.o.v. de symbolische naam van dit applicatieprofiel.
 
 * diagramnaam
   * attribuut in eap-mapping.json: "diagram"
-  * formaat: `OSLO²_applicatieprofiel_Woord1_Woordx`
-  * voorbeeld: **OSLO²_applicatieprofiel_Persoon_Basis**
-  * opmerking: Onnodig met terugwerkende kracht toe te passen op bestaande applicatieprofielen.
+  * formaat: `OSLO-Woord1-Woordx`
+  * voorbeelden: **OSLO-Persoon-Basis**, **OSLO-Objectcatalogus-Begraafplaats**
  
 * kolomnaam medewerkers
   * attribuut in eap-mapping.json: "contributors"
   * formaat: `Woord1Woordx`
-  * voorbeeld: **OpenbaarDomein**
-  * opmerking: Eventueel afwijkende afwijkende waarden voor Woord1 Woordx om te verwijzen naar de personen die meewerkten aan een bijhorend vocabularium en/of reeks appicatieprofielen.
+  * voorbeelden: **Persoon**, **OpenbaarDomein**
+  * opmerking: Woord1 Woordx in de kolomnaam kan hier afwijken t.o.v. de symbolische naam van dit applicatieprofiel, aangezien deze hier kunnen verwijzen naar het bijhorende vocabularium of naar een groep applicatieprofielen.
  
 * template bestandsnaam
   * attribuut in eap-mapping.json: "template"
@@ -96,4 +98,5 @@ De varianten `woord1` en `woordx` stellen de overeenkomstige woorden voor, begin
 * titel
   * attribuut in eap-mapping.json: "title"
   * formaat: `Woord1 Woordx`
-  * voorbeeld: **Persoon Basis**
+  * voorbeelden: **Persoon Basis**, **Objectcatalogus Begraafplaats**
+
