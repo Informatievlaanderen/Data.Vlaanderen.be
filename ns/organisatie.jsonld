@@ -2,36 +2,35 @@
   "@context": {
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "org": "http://www.w3.org/ns/org#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "owl": "http://www.w3.org/2002/07/owl#",
     "dc": "http://purl.org/dc/terms/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "foaf": "http://xmlns.com/foaf/0.1/",
     "schema": "http://schema.org/",
     "skos": "http://www.w3.org/2004/02/skos/core#"
   },
   "@graph": [
     {
-      "@id": "org:Organization",
+      "@id": "org:OrganizationalCollaboration",
       "@type": "rdfs:Class",
       "rdfs:label": {
-        "@value": "Organisatie",
+        "@value": "Samenwerking van Organisaties",
         "@language": "nl"
       }
     },
     {
-      "@id": "org:organization",
+      "@id": "_:g47306494789660",
+      "foaf:name": "DOV",
+      "foaf:homepage": {
+        "@id": "http://onderwijs.vlaanderen.be/"
+      }
+    },
+    {
+      "@id": "org:linkedTo",
       "@type": "rdf:Property",
       "rdfs:label": {
-        "@value": "is lidmaatschap bij",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "http://data.europa.eu/m8g/FoundationEvent",
-      "@type": "rdfs:Class",
-      "rdfs:label": {
-        "@value": "Oprichtingsgebeurtenis",
+        "@value": "gelinkt met",
         "@language": "nl"
       }
     },
@@ -44,10 +43,17 @@
       }
     },
     {
-      "@id": "https://data.vlaanderen.be/ns/organisatie#Stopzetting",
-      "rdfs:comment": {
-        "@value": "Gebeurtenis waarbij een organisatie is stopgezet.",
+      "@id": "http://data.europa.eu/m8g/hasFormalFramework",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "heeft formeel kader",
         "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/organisatie#Stopzetting",
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/organisatie"
       },
       "@type": "owl:Class",
       "rdfs:subClassOf": {
@@ -57,13 +63,153 @@
         "@value": "Stopzetting",
         "@language": "nl"
       },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/organisatie"
-      },
       "http://purl.org/vocab/vann/usageNote": {
         "@value": " ",
         "@language": "nl"
+      },
+      "rdfs:comment": {
+        "@value": "Gebeurtenis waarbij een organisatie is stopgezet.",
+        "@language": "nl"
       }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/organisatie",
+      "dc:mediator": {
+        "@id": "_:g47306491369320"
+      },
+      "dc:issued": {
+        "@value": "2017-03-31",
+        "@type": "xsd:date"
+      },
+      "dc:contributor": [
+        {
+          "@id": "_:g47306498482840"
+        },
+        {
+          "@id": "_:g47306498150080"
+        },
+        {
+          "@id": "_:g47306497831400"
+        },
+        {
+          "@id": "_:g47306497494620"
+        },
+        {
+          "@id": "_:g47306497539860"
+        },
+        {
+          "@id": "_:g47306490379320"
+        },
+        {
+          "@id": "_:g47306497594580"
+        },
+        {
+          "@id": "_:g47306497752580"
+        },
+        {
+          "@id": "_:g47306497663020"
+        },
+        {
+          "@id": "_:g47306494817900"
+        },
+        {
+          "@id": "_:g47306498399920"
+        },
+        {
+          "@id": "_:g47306498231520"
+        },
+        {
+          "@id": "_:g47306497901600"
+        },
+        {
+          "@id": "_:g47306498079900"
+        }
+      ],
+      "foaf:maker": [
+        {
+          "@id": "_:g47306497924340"
+        },
+        {
+          "@id": "_:g47306494872660"
+        },
+        {
+          "@id": "_:g47306498169440"
+        },
+        {
+          "@id": "_:g47306497801980"
+        },
+        {
+          "@id": "_:g47306498291120"
+        },
+        {
+          "@id": "_:g47306497573120"
+        },
+        {
+          "@id": "_:g47306493930860"
+        },
+        {
+          "@id": "_:g47306498047220"
+        },
+        {
+          "@id": "_:g47306498413620"
+        },
+        {
+          "@id": "_:g47306495879300"
+        },
+        {
+          "@id": "_:g47306497434400"
+        },
+        {
+          "@id": "_:g47306497679320"
+        },
+        {
+          "@id": "_:g47306497499360"
+        },
+        {
+          "@id": "_:g47306494589760"
+        },
+        {
+          "@id": "_:g47306495565740"
+        }
+      ],
+      "@type": "owl:Ontology",
+      "dc:title": [
+        {
+          "@value": "Organisation",
+          "@language": "en"
+        },
+        {
+          "@value": "Organisatie",
+          "@language": "nl"
+        }
+      ],
+      "http://purl.org/vocab/vann/preferredNamespaceUri": "https://data.vlaanderen.be/ns/organisatie",
+      "rdfs:label": [
+        {
+          "@value": "Organisation",
+          "@language": "en"
+        },
+        {
+          "@value": "Organisatie",
+          "@language": "nl"
+        }
+      ],
+      "dc:license": [
+        {
+          "@id": "file:///tmp/workspace/ttl/http://example.com/TODO"
+        },
+        {
+          "@id": "https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html"
+        }
+      ],
+      "http://www.w3.org/2001/02pd/rec54#editor": [
+        {
+          "@id": "_:g47306489438640"
+        },
+        {
+          "@id": "_:g47306498548740"
+        }
+      ]
     },
     {
       "@id": "org:ChangeEvent",
@@ -74,187 +220,61 @@
       }
     },
     {
-      "@id": "https://data.vlaanderen.be/ns/organisatie",
-      "dc:issued": {
-        "@value": "2017-03-31",
-        "@type": "xsd:date"
-      },
-      "dc:contributor": [
-        {
-          "@id": "_:g47171897280360"
-        },
-        {
-          "@id": "_:g47171898237040"
-        },
-        {
-          "@id": "_:g47171897381660"
-        },
-        {
-          "@id": "_:g47171898360840"
-        },
-        {
-          "@id": "_:g47171896835460"
-        },
-        {
-          "@id": "_:g47171898546740"
-        },
-        {
-          "@id": "_:g47171897784900"
-        },
-        {
-          "@id": "_:g47171897839980"
-        },
-        {
-          "@id": "_:g47171896579700"
-        },
-        {
-          "@id": "_:g47171893681160"
-        },
-        {
-          "@id": "_:g47171889349540"
-        },
-        {
-          "@id": "_:g47171893332380"
-        },
-        {
-          "@id": "_:g47171896689160"
-        },
-        {
-          "@id": "_:g47171896733760"
-        }
-      ],
-      "foaf:maker": [
-        {
-          "@id": "_:g47171900298840"
-        },
-        {
-          "@id": "_:g47171900217060"
-        },
-        {
-          "@id": "_:g47171898114360"
-        },
-        {
-          "@id": "_:g47171898679540"
-        },
-        {
-          "@id": "_:g47171900062920"
-        },
-        {
-          "@id": "_:g47171899988860"
-        },
-        {
-          "@id": "_:g47171897421460"
-        },
-        {
-          "@id": "_:g47171891476700"
-        },
-        {
-          "@id": "_:g47171898517660"
-        },
-        {
-          "@id": "_:g47171896530960"
-        },
-        {
-          "@id": "_:g47171899712140"
-        },
-        {
-          "@id": "_:g47171900369600"
-        },
-        {
-          "@id": "_:g47171898135860"
-        },
-        {
-          "@id": "_:g47171900142180"
-        },
-        {
-          "@id": "_:g47171899808000"
-        }
-      ],
-      "dc:mediator": {
-        "@id": "_:g47171898505920"
-      },
-      "dc:license": [
-        {
-          "@id": "https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html"
-        },
-        {
-          "@id": "file:///tmp/workspace/ttl/http://example.com/TODO"
-        }
-      ],
-      "http://www.w3.org/2001/02pd/rec54#editor": [
-        {
-          "@id": "_:g47171897394500"
-        },
-        {
-          "@id": "_:g47171896866840"
-        }
-      ],
-      "@type": "owl:Ontology",
-      "rdfs:label": [
-        {
-          "@value": "Organisatie",
-          "@language": "nl"
-        },
-        {
-          "@value": "Organisation",
-          "@language": "en"
-        }
-      ],
-      "dc:title": [
-        {
-          "@value": "Organisatie",
-          "@language": "nl"
-        },
-        {
-          "@value": "Organisation",
-          "@language": "en"
-        }
-      ],
-      "http://purl.org/vocab/vann/preferredNamespaceUri": "https://data.vlaanderen.be/ns/organisatie"
+      "@id": "org:headOf",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "hoofd van",
+        "@language": "nl"
+      }
     },
     {
-      "@id": "_:g47171896503840",
+      "@id": "_:g47306497494620",
+      "schema:affiliation": {
+        "@id": "_:g47306497502620"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Vandenneucker",
+      "foaf:firstName": "Peter",
+      "foaf:mbox": {
+        "@id": "mailto:peter.vandenneucker@fb.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306497502620",
       "foaf:name": "DFB",
       "foaf:homepage": {
         "@id": "https://www.vlaanderen.be/nl/contact/adressengids/diensten-van-de-vlaamse-overheid/administratieve-diensten-van-de-vlaamse-overheid/beleidsdomein-financien-en-begroting/departement-financien-en-begroting"
       }
     },
     {
-      "@id": "_:g47171898093200",
-      "foaf:name": "AgO",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/"
-      }
-    },
-    {
-      "@id": "org:siteAddress",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "vestigingsadres",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "org:Membership",
+      "@id": "http://data.europa.eu/m8g/FoundationEvent",
       "@type": "rdfs:Class",
       "rdfs:label": {
-        "@value": "Lidmaatschap",
+        "@value": "Oprichtingsgebeurtenis",
         "@language": "nl"
       }
     },
     {
-      "@id": "org:linkedTo",
+      "@id": "org:organization",
       "@type": "rdf:Property",
       "rdfs:label": {
-        "@value": "gelinkt met",
+        "@value": "is lidmaatschap bij",
         "@language": "nl"
       }
     },
     {
-      "@id": "http://data.europa.eu/m8g/PublicOrganisation",
-      "@type": "rdfs:Class",
+      "@id": "org:hasMembership",
+      "@type": "rdf:Property",
       "rdfs:label": {
-        "@value": "Publieke Organisatie",
+        "@value": "heeft lidmaatschap",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "dc:date",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "datum",
         "@language": "nl"
       }
     },
@@ -267,37 +287,42 @@
       }
     },
     {
-      "@id": "org:OrganizationalCollaboration",
-      "@type": "rdfs:Class",
+      "@id": "http://www.w3.org/ns/regorg#hasRegisteredOrganization",
+      "@type": "rdf:Property",
       "rdfs:label": {
-        "@value": "Samenwerking van Organisaties",
+        "@value": "heeft geregistreerde organisatie",
         "@language": "nl"
       }
     },
     {
-      "@id": "_:g47171898546740",
-      "foaf:lastName": "Devroey",
-      "foaf:firstName": "Wim",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:wim.devroey@kb.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171898578140"
+      "@id": "schema:logo",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "logo",
+        "@language": "nl"
       }
     },
     {
-      "@id": "_:g47171898578140",
-      "foaf:name": "ABB",
-      "foaf:homepage": {
-        "@id": "http://binnenland.vlaanderen.be/"
+      "@id": "org:hasRegisteredSite",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "heeft geregistreerde vestiging",
+        "@language": "nl"
       }
     },
     {
-      "@id": "org:FormalOrganization",
+      "@id": "http://data.europa.eu/m8g/PublicOrganisation",
       "@type": "rdfs:Class",
       "rdfs:label": {
-        "@value": "Formele Organisatie",
+        "@value": "Publieke Organisatie",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "org:Post",
+      "@type": "rdfs:Class",
+      "rdfs:label": {
+        "@value": "Positie",
         "@language": "nl"
       }
     },
@@ -310,49 +335,45 @@
       }
     },
     {
-      "@id": "_:g47171897839980",
-      "foaf:lastName": "Lombaert",
-      "foaf:firstName": "Hannes",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:hannes.lombaert@bz.vlaanderen.be"
-      },
+      "@id": "org:hasSubOrganization",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "heeft suborganisatie",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "org:Site",
+      "@type": "rdfs:Class",
+      "rdfs:label": {
+        "@value": "Vestiging",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47306495879300",
       "schema:affiliation": {
-        "@id": "_:g47171897709440"
+        "@id": "_:g47306495943400"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Bemelmans",
+      "foaf:firstName": "Ward",
+      "foaf:mbox": {
+        "@id": "mailto:ward.bemelmans@fb.vlaanderen.be"
       }
     },
     {
-      "@id": "_:g47171897709440",
-      "foaf:name": "ABB",
+      "@id": "_:g47306495943400",
+      "foaf:name": "DFB",
       "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/"
+        "@id": "https://www.vlaanderen.be/nl/contact/adressengids/diensten-van-de-vlaamse-overheid/administratieve-diensten-van-de-vlaamse-overheid/beleidsdomein-financien-en-begroting/departement-financien-en-begroting"
       }
     },
     {
-      "@id": "skos:Concept",
-      "@type": "rdfs:Class"
-    },
-    {
-      "@id": "dc:description",
-      "@type": "rdf:Property",
+      "@id": "org:Organization",
+      "@type": "rdfs:Class",
       "rdfs:label": {
-        "@value": "beschrijving",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "org:basedAt",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "heeft standplaats",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "schema:contactPoint",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "contactpunt",
+        "@value": "Organisatie",
         "@language": "nl"
       }
     },
@@ -373,904 +394,10 @@
       }
     },
     {
-      "@id": "dc:date",
+      "@id": "dc:description",
       "@type": "rdf:Property",
       "rdfs:label": {
-        "@value": "datum",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "schema:logo",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "logo",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "org:Site",
-      "@type": "rdfs:Class",
-      "rdfs:label": {
-        "@value": "Vestiging",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "org:originalOrganization",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "originele organisatie",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "org:hasPost",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "heeft positie",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "org:reportsTo",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "rapporteert aan",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "skos:altLabel",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "alternatieve label",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "org:Post",
-      "@type": "rdfs:Class",
-      "rdfs:label": {
-        "@value": "Positie",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "org:role",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "rol",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "dc:spatial",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "ruimtelijk",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "http://data.europa.eu/m8g/hasFormalFramework",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "heeft formeel kader",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "_:g47171900298840",
-      "foaf:lastName": "Buyle",
-      "foaf:firstName": "Raf",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:raf.buyle@kb.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171900314580"
-      }
-    },
-    {
-      "@id": "_:g47171900314580",
-      "foaf:name": "Informatie Vlaanderen",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      }
-    },
-    {
-      "@id": "org:purpose",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "doel",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/organisatie#rechtstoestand",
-      "rdfs:range": {
-        "@id": "skos:Concept"
-      },
-      "rdfs:comment": {
-        "@value": "Status van de geregistreerde organisatie.",
-        "@language": "nl"
-      },
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "http://www.w3.org/ns/regorg#orgStatus"
-      },
-      "rdfs:domain": {
-        "@id": "http://www.w3.org/ns/regorg#RegisteredOrganization"
-      },
-      "rdfs:label": {
-        "@value": "rechtstoestand",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/organisatie"
-      },
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Stemt in de KBO overeen met rechtstoestand, bvb normale toestand, gerechtelijk akkoord, opening faillissement etc.",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "http://www.w3.org/ns/regorg#orgStatus",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "organisatiestatus",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "_:g47171897280360",
-      "foaf:lastName": "Vermeiren",
-      "foaf:firstName": "Geert",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:geert.vermeiren@lne.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171897227300"
-      }
-    },
-    {
-      "@id": "_:g47171897227300",
-      "foaf:name": "ANB",
-      "foaf:homepage": {
-        "@id": "https://www.lne.be/"
-      }
-    },
-    {
-      "@id": "_:g47171896693100",
-      "foaf:name": "VLM",
-      "foaf:homepage": {
-        "@id": "http://vlm.be"
-      }
-    },
-    {
-      "@id": "_:g47171893681160",
-      "foaf:lastName": "Vermeyen",
-      "foaf:firstName": "Maarten",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:maarten.vermeyen@rwo.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171893245960"
-      }
-    },
-    {
-      "@id": "_:g47171893245960",
-      "foaf:name": "OE",
-      "foaf:homepage": {
-        "@id": "https://www.rwo.be/"
-      }
-    },
-    {
-      "@id": "skos:prefLabel",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "voorkeurslabel",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "_:g47171898237040",
-      "foaf:lastName": "Verschooren",
-      "foaf:firstName": "Luk",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:luk.verschooren@bz.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171898093200"
-      }
-    },
-    {
-      "@id": "http://www.w3.org/ns/regorg#orgActivity",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "organisatieactiviteit",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "_:g47171900384260",
-      "foaf:name": "LNE",
-      "foaf:homepage": {
-        "@id": "https://www.lne.be/"
-      }
-    },
-    {
-      "@id": "_:g47171900217060",
-      "foaf:lastName": "Oeyen",
-      "foaf:firstName": "Quincy",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:quincy.oeyen@bz.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171900233640"
-      }
-    },
-    {
-      "@id": "_:g47171900233640",
-      "foaf:name": "Informatie Vlaanderen",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/"
-      }
-    },
-    {
-      "@id": "_:g47171896580300",
-      "foaf:name": "AgO",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/"
-      }
-    },
-    {
-      "@id": "_:g47171897596560",
-      "foaf:name": "Informatie Vlaanderen",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      }
-    },
-    {
-      "@id": "_:g47171899815180",
-      "foaf:name": "Cipal Schaubroeck",
-      "foaf:homepage": {
-        "@id": "http://cipalschaubroeck.be"
-      }
-    },
-    {
-      "@id": "_:g47171897381660",
-      "foaf:lastName": "Dussart",
-      "foaf:firstName": "Pascal",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:pascal.dussart@lne.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171897372760"
-      }
-    },
-    {
-      "@id": "_:g47171897372760",
-      "foaf:name": "LNE",
-      "foaf:homepage": {
-        "@id": "https://www.lne.be/"
-      }
-    },
-    {
-      "@id": "_:g47171900079600",
-      "foaf:name": "Informatie Vlaanderen",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      }
-    },
-    {
-      "@id": "_:g47171898114360",
-      "foaf:lastName": "Vanderstraeten",
-      "foaf:firstName": "Henk",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:henk.vanderstraeten@bz.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171898091120"
-      }
-    },
-    {
-      "@id": "_:g47171898091120",
-      "foaf:name": "Informatie Vlaanderen",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/"
-      }
-    },
-    {
-      "@id": "_:g47171896607680",
-      "foaf:name": "imec - UGent",
-      "foaf:homepage": {
-        "@id": "http://idlab.ugent.be"
-      }
-    },
-    {
-      "@id": "_:g47171897394500",
-      "foaf:lastName": "De Vocht",
-      "foaf:firstName": "Laurens",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:laurens.devocht@ugent.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171897376060"
-      }
-    },
-    {
-      "@id": "_:g47171897376060",
-      "foaf:name": "imec - UGent",
-      "foaf:homepage": {
-        "@id": "http://idlab.ugent.be"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/organisatie#contactinfo",
-      "rdfs:range": {
-        "@id": "schema:ContactPoint"
-      },
-      "rdfs:comment": {
-        "@value": "Informatie zoals email, telefoon die toelaat de hoedanigheid te contacteren.",
-        "@language": "nl"
-      },
-      "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/organisatie#Hoedanigheid"
-      },
-      "rdfs:label": {
-        "@value": "contactinfo",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/organisatie"
-      },
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/organisatie#Hoedanigheid",
-      "rdfs:comment": {
-        "@value": "Agent met een positie.",
-        "@language": "nl"
-      },
-      "@type": "owl:Class",
-      "rdfs:subClassOf": [
-        {
-          "@id": "dc:Agent"
-        },
-        {
-          "@id": "org:Post"
-        }
-      ],
-      "rdfs:label": {
-        "@value": "Hoedanigheid",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/organisatie"
-      },
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Laat een functie toe om te handelen,bv ihkv een dienstverlening (bv diversiteitsplan wordt opgemaakt door diversiteitsambtenaar).",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "_:g47171898360840",
-      "foaf:lastName": "Decamps",
-      "foaf:firstName": "Farah",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:farah.decamps@fb.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171898130920"
-      }
-    },
-    {
-      "@id": "_:g47171898130920",
-      "foaf:name": "DFB",
-      "foaf:homepage": {
-        "@id": "https://www.vlaanderen.be/nl/contact/adressengids/diensten-van-de-vlaamse-overheid/administratieve-diensten-van-de-vlaamse-overheid/beleidsdomein-financien-en-begroting/departement-financien-en-begroting"
-      }
-    },
-    {
-      "@id": "_:g47171898679540",
-      "foaf:lastName": "D'haenens",
-      "foaf:firstName": "Thomas",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:thomas.dhaenens@bz.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171899775960"
-      }
-    },
-    {
-      "@id": "_:g47171899775960",
-      "foaf:name": "Informatie Vlaanderen",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/"
-      }
-    },
-    {
-      "@id": "_:g47171896835460",
-      "foaf:lastName": "Stevens",
-      "foaf:firstName": "Annita",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:Annita.Stevens@vlm.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171896693100"
-      }
-    },
-    {
-      "@id": "org:postIn",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "positie bij",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "org:resultedFrom",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "gevolg van",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "org:subOrganizationOf",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "suborganisatie van",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "foaf:homepage",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "homepage",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "_:g47171900006000",
-      "foaf:name": "imec - UGent",
-      "foaf:homepage": {
-        "@id": "http://idlab.ugent.be"
-      }
-    },
-    {
-      "@id": "_:g47171900369600",
-      "foaf:lastName": "Van Haute",
-      "foaf:firstName": "Geert",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:geert.vanhaute@lne.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171900384260"
-      }
-    },
-    {
-      "@id": "_:g47171900062920",
-      "foaf:lastName": "Thijs",
-      "foaf:firstName": "Geert",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:Geert.Thijs@kb.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171900079600"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/organisatie#Vervanging",
-      "rdfs:comment": {
-        "@value": "Gebeurtenis waarbij een organisatie wordt vervangen door een andere.",
-        "@language": "nl"
-      },
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "org:ChangeEvent"
-      },
-      "rdfs:label": {
-        "@value": "Vervanging",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/organisatie"
-      },
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Bvb doorstart ve bedrijf na technisch faillissement.",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "org:hasRegisteredSite",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "heeft geregistreerde vestiging",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "_:g47171893480100",
-      "foaf:name": "ANB",
-      "foaf:homepage": {
-        "@id": "https://www.lne.be/"
-      }
-    },
-    {
-      "@id": "_:g47171898743060",
-      "foaf:name": "Informatie Vlaanderen",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/"
-      }
-    },
-    {
-      "@id": "_:g47171889349540",
-      "foaf:lastName": "Samson",
-      "foaf:firstName": "Yvan",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:yvan.samson@bz.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171898743060"
-      }
-    },
-    {
-      "@id": "_:g47171896656220",
-      "foaf:name": "DWVG",
-      "foaf:homepage": {
-        "@id": "http://vlaanderen.be/welzijnengezondheid"
-      }
-    },
-    {
-      "@id": "_:g47171893332380",
-      "foaf:lastName": "Vandensande",
-      "foaf:firstName": "Raf",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:raf.vandensande@lne.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171893480100"
-      }
-    },
-    {
-      "@id": "_:g47171896866840",
-      "foaf:lastName": "Mannens",
-      "foaf:firstName": "Erik",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:erik.mannens@ugent.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171896607680"
-      }
-    },
-    {
-      "@id": "_:g47171896689160",
-      "foaf:lastName": "Roos",
-      "foaf:firstName": "Sammy",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:sammy.roos@wvg.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171896656220"
-      }
-    },
-    {
-      "@id": "_:g47171897784900",
-      "foaf:lastName": "Vertriest",
-      "foaf:firstName": "Jerry",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:jerry.vertriest@ond.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171897441780"
-      }
-    },
-    {
-      "@id": "_:g47171897441780",
-      "foaf:name": "DOV",
-      "foaf:homepage": {
-        "@id": "http://onderwijs.vlaanderen.be/"
-      }
-    },
-    {
-      "@id": "http://www.w3.org/ns/regorg#hasRegisteredOrganization",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "heeft geregistreerde organisatie",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "org:classification",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "classificatie",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "_:g47171898505920",
-      "foaf:name": "Data Vlaanderen",
-      "foaf:homepage": {
-        "@id": "https://data.vlaanderen.be"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:oslo@kb.vlaanderen.be"
-      }
-    },
-    {
-      "@id": "_:g47171899988860",
-      "foaf:lastName": "De Paepe",
-      "foaf:firstName": "Dieter",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:dieter.depaepe@ugent.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171900006000"
-      }
-    },
-    {
-      "@id": "_:g47171896733760",
-      "foaf:lastName": "Martens",
-      "foaf:firstName": "Gijs",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:gijs.martens@bz.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171896580300"
-      }
-    },
-    {
-      "@id": "org:memberDuring",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "lid gedurende",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "_:g47171897421460",
-      "foaf:lastName": "De Vidts",
-      "foaf:firstName": "Björn",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:bjorn.devidts@kb.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171897596560"
-      }
-    },
-    {
-      "@id": "_:g47171898135860",
-      "foaf:lastName": "Vanlishout",
-      "foaf:firstName": "Ziggy",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:Siegfried.Vanlishout@kb.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171898127840"
-      }
-    },
-    {
-      "@id": "_:g47171898127840",
-      "foaf:name": "Informatie Vlaanderen",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      }
-    },
-    {
-      "@id": "_:g47171900142180",
-      "foaf:lastName": "Van der Meersch",
-      "foaf:firstName": "Marie-Kristine",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:mariekristine.vandermeersch@lne.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171900158200"
-      }
-    },
-    {
-      "@id": "_:g47171900158200",
-      "foaf:name": "ANB",
-      "foaf:homepage": {
-        "@id": "https://www.lne.be/"
-      }
-    },
-    {
-      "@id": "_:g47171891476700",
-      "foaf:lastName": "Beynaerts",
-      "foaf:firstName": "Ward",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:ward.beynaerts@cipalschaubroeck.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171891156520"
-      }
-    },
-    {
-      "@id": "_:g47171891156520",
-      "foaf:name": "Cipal Schaubroeck",
-      "foaf:homepage": {
-        "@id": "http://cipalschaubroeck.be"
-      }
-    },
-    {
-      "@id": "org:member",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "lid",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/organisatie#rechtsvorm",
-      "rdfs:range": {
-        "@id": "skos:Concept"
-      },
-      "rdfs:comment": {
-        "@value": "Juridisch statuut van de geregistreerde organisatie.",
-        "@language": "nl"
-      },
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "http://www.w3.org/ns/regorg#orgType"
-      },
-      "rdfs:domain": {
-        "@id": "http://www.w3.org/ns/regorg#RegisteredOrganization"
-      },
-      "rdfs:label": {
-        "@value": "rechtsvorm",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/organisatie"
-      },
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Stemt in de KBO overeen met rechtsvorm, bvb NV, VZW, Stad/Gemeente, OCMW etc.",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "http://www.w3.org/ns/regorg#orgType",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "organisatietype",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "org:headOf",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "hoofd van",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "_:g47171898517660",
-      "foaf:lastName": "Favere",
-      "foaf:firstName": "Suzy",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:suzie.favere@bz.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171898544600"
-      }
-    },
-    {
-      "@id": "_:g47171898544600",
-      "foaf:name": "ABB",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/organisatie#redenStopzetting",
-      "rdfs:range": {
-        "@id": "skos:Concept"
-      },
-      "rdfs:comment": {
-        "@value": "Reden waarom de organisatie is stopgezet.",
-        "@language": "nl"
-      },
-      "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/organisatie#Stopzetting"
-      },
-      "rdfs:label": {
-        "@value": "reden stopzetting",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/organisatie"
-      },
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Bvb pensionering, faillissement",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "_:g47171899720000",
-      "foaf:name": "DFB",
-      "foaf:homepage": {
-        "@id": "https://www.vlaanderen.be/nl/contact/adressengids/diensten-van-de-vlaamse-overheid/administratieve-diensten-van-de-vlaamse-overheid/beleidsdomein-financien-en-begroting/departement-financien-en-begroting"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/organisatie#Splitsing",
-      "rdfs:comment": {
-        "@value": "Gebeurtenis waarbij uit één organisatie twee organisaties worden gevormd.",
-        "@language": "nl"
-      },
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "org:ChangeEvent"
-      },
-      "rdfs:label": {
-        "@value": "Splitsing",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/organisatie"
-      },
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/adres#AdresseerbaarObject"
-      },
-      "rdfs:comment": {
-        "@value": "Adresseerbaar object dat met de vestiging overeenstemt.",
-        "@language": "nl"
-      },
-      "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "org:Site"
-      },
-      "rdfs:label": {
-        "@value": "bestaat uit",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/organisatie"
-      },
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
+        "@value": "beschrijving",
         "@language": "nl"
       }
     },
@@ -1283,11 +410,122 @@
       }
     },
     {
-      "@id": "org:hasSite",
+      "@id": "skos:prefLabel",
       "@type": "rdf:Property",
       "rdfs:label": {
-        "@value": "heeft vestiging",
+        "@value": "voorkeurslabel",
         "@language": "nl"
+      }
+    },
+    {
+      "@id": "dc:spatial",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "ruimtelijk",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "skos:Concept",
+      "@type": "rdfs:Class"
+    },
+    {
+      "@id": "org:basedAt",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "heeft standplaats",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "org:FormalOrganization",
+      "@type": "rdfs:Class",
+      "rdfs:label": {
+        "@value": "Formele Organisatie",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47306498482840",
+      "schema:affiliation": {
+        "@id": "_:g47306498520760"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Decamps",
+      "foaf:firstName": "Farah",
+      "foaf:mbox": {
+        "@id": "mailto:farah.decamps@fb.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306498520760",
+      "foaf:name": "DFB",
+      "foaf:homepage": {
+        "@id": "https://www.vlaanderen.be/nl/contact/adressengids/diensten-van-de-vlaamse-overheid/administratieve-diensten-van-de-vlaamse-overheid/beleidsdomein-financien-en-begroting/departement-financien-en-begroting"
+      }
+    },
+    {
+      "@id": "_:g47306488549960",
+      "foaf:name": "imec - UGent",
+      "foaf:homepage": {
+        "@id": "http://idlab.ugent.be"
+      }
+    },
+    {
+      "@id": "_:g47306489438640",
+      "schema:affiliation": {
+        "@id": "_:g47306488549960"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "De Vocht",
+      "foaf:firstName": "Laurens",
+      "foaf:mbox": {
+        "@id": "mailto:laurens.devocht@ugent.be"
+      }
+    },
+    {
+      "@id": "http://www.w3.org/ns/regorg#legalName",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "wettelijke naam",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47306498392320",
+      "foaf:name": "Informatie Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      }
+    },
+    {
+      "@id": "org:hasPost",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "heeft positie",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47306497609720",
+      "foaf:name": "DWVG",
+      "foaf:homepage": {
+        "@id": "http://vlaanderen.be/welzijnengezondheid"
+      }
+    },
+    {
+      "@id": "schema:contactPoint",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "contactpunt",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47306497768780",
+      "foaf:name": "ABB",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/"
       }
     },
     {
@@ -1299,78 +537,428 @@
       }
     },
     {
-      "@id": "org:hasSubOrganization",
-      "@type": "rdf:Property",
+      "@id": "https://data.vlaanderen.be/ns/organisatie#rechtspersoonlijkheid",
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/organisatie"
+      },
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "http://www.w3.org/ns/regorg#orgType"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:domain": {
+        "@id": "http://www.w3.org/ns/regorg#RegisteredOrganization"
+      },
       "rdfs:label": {
-        "@value": "heeft suborganisatie",
+        "@value": "rechtspersoonlijkheid",
+        "@language": "nl"
+      },
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Een rechtspersoon is een juridische constructie die een organisatie dezelfde rechtspersoonlijkheid geeft als een natuurlijk persoon (kan bv ook schulden hebben, contracten afsluiten, aangeklaagd worden etc). Vb privaatrechterlijke rechtspersonen: vennootschappen, vzw's etc.; vb publiekrechterlijke rechtspersonen: steden, gemeenten etc. Een feitelijke vereniging is in principe geen rechtspersoon maar wordt als ze geregistreerd is id KBO toch als dusdanig geklasseerd.",
+        "@language": "nl"
+      },
+      "rdfs:comment": {
+        "@value": "Geeft aan of de rechtspersoonlijkheid van de geregistreerde organisatie deze is van een natuurlijk persoon of van een rechtspersoon. ",
         "@language": "nl"
       }
     },
     {
-      "@id": "_:g47171896530960",
-      "foaf:lastName": "Beheydt",
-      "foaf:firstName": "Dries",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:dries.beheydt@kb.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171896986980"
+      "@id": "http://www.w3.org/ns/regorg#orgType",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "organisatietype",
+        "@language": "nl"
       }
     },
     {
-      "@id": "_:g47171896986980",
+      "@id": "org:reportsTo",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "rapporteert aan",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "org:resultedFrom",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "gevolg van",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47306497924340",
+      "schema:affiliation": {
+        "@id": "_:g47306497902960"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Vanderstraeten",
+      "foaf:firstName": "Henk",
+      "foaf:mbox": {
+        "@id": "mailto:henk.vanderstraeten@bz.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306497902960",
+      "foaf:name": "Informatie Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/"
+      }
+    },
+    {
+      "@id": "_:g47306494048620",
+      "foaf:name": "ABB",
+      "foaf:homepage": {
+        "@id": "http://binnenland.vlaanderen.be/"
+      }
+    },
+    {
+      "@id": "_:g47306497547080",
+      "foaf:name": "OE",
+      "foaf:homepage": {
+        "@id": "https://www.rwo.be/"
+      }
+    },
+    {
+      "@id": "_:g47306498237440",
+      "foaf:name": "VLM",
+      "foaf:homepage": {
+        "@id": "http://vlm.be"
+      }
+    },
+    {
+      "@id": "_:g47306498412700",
+      "foaf:name": "AgO",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/"
+      }
+    },
+    {
+      "@id": "_:g47306498150080",
+      "schema:affiliation": {
+        "@id": "_:g47306498164580"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Vandensande",
+      "foaf:firstName": "Raf",
+      "foaf:mbox": {
+        "@id": "mailto:raf.vandensande@lne.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306498164580",
+      "foaf:name": "ANB",
+      "foaf:homepage": {
+        "@id": "https://www.lne.be/"
+      }
+    },
+    {
+      "@id": "_:g47306498548740",
+      "schema:affiliation": {
+        "@id": "_:g47306498519240"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Mannens",
+      "foaf:firstName": "Erik",
+      "foaf:mbox": {
+        "@id": "mailto:erik.mannens@ugent.be"
+      }
+    },
+    {
+      "@id": "_:g47306498519240",
+      "foaf:name": "imec - UGent",
+      "foaf:homepage": {
+        "@id": "http://idlab.ugent.be"
+      }
+    },
+    {
+      "@id": "_:g47306497831400",
+      "schema:affiliation": {
+        "@id": "_:g47306497847080"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Vermeiren",
+      "foaf:firstName": "Geert",
+      "foaf:mbox": {
+        "@id": "mailto:geert.vermeiren@lne.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306497847080",
+      "foaf:name": "ANB",
+      "foaf:homepage": {
+        "@id": "https://www.lne.be/"
+      }
+    },
+    {
+      "@id": "_:g47306497918220",
+      "foaf:name": "LNE",
+      "foaf:homepage": {
+        "@id": "https://www.lne.be/"
+      }
+    },
+    {
+      "@id": "_:g47306494872660",
+      "schema:affiliation": {
+        "@id": "_:g47306494823560"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "D'haenens",
+      "foaf:firstName": "Thomas",
+      "foaf:mbox": {
+        "@id": "mailto:thomas.dhaenens@bz.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306494823560",
+      "foaf:name": "Informatie Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/"
+      }
+    },
+    {
+      "@id": "org:subOrganizationOf",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "suborganisatie van",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47306491369320",
+      "foaf:name": "Data Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://data.vlaanderen.be"
+      },
+      "foaf:mbox": {
+        "@id": "mailto:oslo@kb.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "org:memberDuring",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "lid gedurende",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47306498169440",
+      "schema:affiliation": {
+        "@id": "_:g47306498148340"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Buyle",
+      "foaf:firstName": "Raf",
+      "foaf:mbox": {
+        "@id": "mailto:raf.buyle@kb.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306498148340",
       "foaf:name": "Informatie Vlaanderen",
       "foaf:homepage": {
         "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
       }
     },
     {
-      "@id": "https://data.vlaanderen.be/ns/organisatie#Fusie",
-      "rdfs:comment": {
-        "@value": "Gebeurtenis waarbij twee organisaties samen een nieuwe organisatie vormen.",
-        "@language": "nl"
-      },
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "org:ChangeEvent"
-      },
-      "rdfs:label": {
-        "@value": "Fusie",
-        "@language": "nl"
-      },
+      "@id": "_:g47306497780540",
+      "foaf:name": "Cipal Schaubroeck",
+      "foaf:homepage": {
+        "@id": "http://cipalschaubroeck.be"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/organisatie"
+      },
+      "@type": "owl:ObjectProperty",
+      "rdfs:range": {
+        "@id": "https://data.vlaanderen.be/ns/adres#AdresseerbaarObject"
+      },
+      "rdfs:domain": {
+        "@id": "org:Site"
+      },
+      "rdfs:label": {
+        "@value": "bestaat uit",
+        "@language": "nl"
       },
       "http://purl.org/vocab/vann/usageNote": {
         "@value": " ",
         "@language": "nl"
-      }
-    },
-    {
-      "@id": "org:resultingOrganization",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "resulterende organisatie",
+      },
+      "rdfs:comment": {
+        "@value": "Adresseerbaar object dat met de vestiging overeenstemt.",
         "@language": "nl"
       }
     },
     {
+      "@id": "_:g47306494589760",
+      "schema:affiliation": {
+        "@id": "_:g47306494472440"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Van der Meersch",
+      "foaf:firstName": "Marie-Kristine",
+      "foaf:mbox": {
+        "@id": "mailto:mariekristine.vandermeersch@lne.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306494472440",
+      "foaf:name": "ANB",
+      "foaf:homepage": {
+        "@id": "https://www.lne.be/"
+      }
+    },
+    {
+      "@id": "_:g47306495309340",
+      "foaf:name": "AgO",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/"
+      }
+    },
+    {
+      "@id": "_:g47306497665900",
+      "foaf:name": "ABB",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/"
+      }
+    },
+    {
+      "@id": "_:g47306497801980",
+      "schema:affiliation": {
+        "@id": "_:g47306497780540"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Van Hoecke",
+      "foaf:firstName": "Willem",
+      "foaf:mbox": {
+        "@id": "mailto:willem.vanhoecke@cipalschaubroeck.be"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/organisatie#rechtstoestand",
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/organisatie"
+      },
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "http://www.w3.org/ns/regorg#orgStatus"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:domain": {
+        "@id": "http://www.w3.org/ns/regorg#RegisteredOrganization"
+      },
+      "rdfs:label": {
+        "@value": "rechtstoestand",
+        "@language": "nl"
+      },
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Stemt in de KBO overeen met rechtstoestand, bvb normale toestand, gerechtelijk akkoord, opening faillissement etc.",
+        "@language": "nl"
+      },
+      "rdfs:comment": {
+        "@value": "Status van de geregistreerde organisatie.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "http://www.w3.org/ns/regorg#orgStatus",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "organisatiestatus",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/organisatie#rechtsvorm",
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/organisatie"
+      },
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "http://www.w3.org/ns/regorg#orgType"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:domain": {
+        "@id": "http://www.w3.org/ns/regorg#RegisteredOrganization"
+      },
+      "rdfs:label": {
+        "@value": "rechtsvorm",
+        "@language": "nl"
+      },
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Stemt in de KBO overeen met rechtsvorm, bvb NV, VZW, Stad/Gemeente, OCMW etc.",
+        "@language": "nl"
+      },
+      "rdfs:comment": {
+        "@value": "Juridisch statuut van de geregistreerde organisatie.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "http://www.w3.org/ns/regorg#orgActivity",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "organisatieactiviteit",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47306497539860",
+      "schema:affiliation": {
+        "@id": "_:g47306497547080"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Vermeyen",
+      "foaf:firstName": "Maarten",
+      "foaf:mbox": {
+        "@id": "mailto:maarten.vermeyen@rwo.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306491930960",
+      "foaf:name": "Cipal Schaubroeck",
+      "foaf:homepage": {
+        "@id": "http://cipalschaubroeck.be"
+      }
+    },
+    {
+      "@id": "_:g47306498291120",
+      "schema:affiliation": {
+        "@id": "_:g47306498269640"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Thijs",
+      "foaf:firstName": "Geert",
+      "foaf:mbox": {
+        "@id": "mailto:Geert.Thijs@kb.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306498269640",
+      "foaf:name": "Informatie Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      }
+    },
+    {
       "@id": "https://data.vlaanderen.be/ns/organisatie#aantalHouders",
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/organisatie"
+      },
+      "@type": "owl:DatatypeProperty",
       "rdfs:range": {
         "@id": "xsd:integer"
       },
-      "rdfs:comment": [
-        {
-          "@value": "Maximale aantal agents die tegelijk deze positie kunnen invullen.",
-          "@language": "nl"
-        },
-        {
-          "@value": "Maximum number of agents that can hold this post at the same time.",
-          "@language": "en"
-        }
-      ],
-      "@type": "owl:DatatypeProperty",
       "rdfs:domain": {
         "@id": "org:Post"
       },
@@ -1384,88 +972,354 @@
           "@language": "en"
         }
       ],
+      "rdfs:comment": [
+        {
+          "@value": "Maximum number of agents that can hold this post at the same time.",
+          "@language": "en"
+        },
+        {
+          "@value": "Maximale aantal agents die tegelijk deze positie kunnen invullen.",
+          "@language": "nl"
+        }
+      ]
+    },
+    {
+      "@id": "_:g47306490379320",
+      "schema:affiliation": {
+        "@id": "_:g47306494048620"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Devroey",
+      "foaf:firstName": "Wim",
+      "foaf:mbox": {
+        "@id": "mailto:wim.devroey@kb.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306497594580",
+      "schema:affiliation": {
+        "@id": "_:g47306497609720"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Roos",
+      "foaf:firstName": "Sammy",
+      "foaf:mbox": {
+        "@id": "mailto:sammy.roos@wvg.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306497752580",
+      "schema:affiliation": {
+        "@id": "_:g47306497768780"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Lombaert",
+      "foaf:firstName": "Hannes",
+      "foaf:mbox": {
+        "@id": "mailto:hannes.lombaert@bz.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306497663020",
+      "schema:affiliation": {
+        "@id": "_:g47306495309340"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Martens",
+      "foaf:firstName": "Gijs",
+      "foaf:mbox": {
+        "@id": "mailto:gijs.martens@bz.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306494817900",
+      "schema:affiliation": {
+        "@id": "_:g47306494789660"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Vertriest",
+      "foaf:firstName": "Jerry",
+      "foaf:mbox": {
+        "@id": "mailto:jerry.vertriest@ond.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306498399920",
+      "schema:affiliation": {
+        "@id": "_:g47306498412700"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Verschooren",
+      "foaf:firstName": "Luk",
+      "foaf:mbox": {
+        "@id": "mailto:luk.verschooren@bz.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306498231520",
+      "schema:affiliation": {
+        "@id": "_:g47306498237440"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Stevens",
+      "foaf:firstName": "Annita",
+      "foaf:mbox": {
+        "@id": "mailto:Annita.Stevens@vlm.be"
+      }
+    },
+    {
+      "@id": "_:g47306497901600",
+      "schema:affiliation": {
+        "@id": "_:g47306497918220"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Dussart",
+      "foaf:firstName": "Pascal",
+      "foaf:mbox": {
+        "@id": "mailto:pascal.dussart@lne.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306498079900",
+      "schema:affiliation": {
+        "@id": "_:g47306498096260"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Samson",
+      "foaf:firstName": "Yvan",
+      "foaf:mbox": {
+        "@id": "mailto:yvan.samson@bz.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306497573120",
+      "schema:affiliation": {
+        "@id": "_:g47306497551580"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Beheydt",
+      "foaf:firstName": "Dries",
+      "foaf:mbox": {
+        "@id": "mailto:dries.beheydt@kb.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306493930860",
+      "schema:affiliation": {
+        "@id": "_:g47306491930960"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Beynaerts",
+      "foaf:firstName": "Ward",
+      "foaf:mbox": {
+        "@id": "mailto:ward.beynaerts@cipalschaubroeck.be"
+      }
+    },
+    {
+      "@id": "_:g47306498047220",
+      "schema:affiliation": {
+        "@id": "_:g47306498025680"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "De Vidts",
+      "foaf:firstName": "Björn",
+      "foaf:mbox": {
+        "@id": "mailto:bjorn.devidts@kb.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306498413620",
+      "schema:affiliation": {
+        "@id": "_:g47306498392320"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Vanlishout",
+      "foaf:firstName": "Ziggy",
+      "foaf:mbox": {
+        "@id": "mailto:Siegfried.Vanlishout@kb.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306497434400",
+      "schema:affiliation": {
+        "@id": "_:g47306497421100"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "De Paepe",
+      "foaf:firstName": "Dieter",
+      "foaf:mbox": {
+        "@id": "mailto:dieter.depaepe@ugent.be"
+      }
+    },
+    {
+      "@id": "_:g47306497679320",
+      "schema:affiliation": {
+        "@id": "_:g47306497665900"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Favere",
+      "foaf:firstName": "Suzy",
+      "foaf:mbox": {
+        "@id": "mailto:suzie.favere@bz.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306497499360",
+      "schema:affiliation": {
+        "@id": "_:g47306497486380"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Oeyen",
+      "foaf:firstName": "Quincy",
+      "foaf:mbox": {
+        "@id": "mailto:quincy.oeyen@bz.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47306495565740",
+      "schema:affiliation": {
+        "@id": "_:g47306495473440"
+      },
+      "@type": "foaf:person",
+      "foaf:lastName": "Van Haute",
+      "foaf:firstName": "Geert",
+      "foaf:mbox": {
+        "@id": "mailto:geert.vanhaute@lne.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "org:purpose",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "doel",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "org:member",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "lid",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "org:hasSite",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "heeft vestiging",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "org:Membership",
+      "@type": "rdfs:Class",
+      "rdfs:label": {
+        "@value": "Lidmaatschap",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/organisatie#Splitsing",
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/organisatie"
-      }
-    },
-    {
-      "@id": "http://www.w3.org/ns/regorg#legalName",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "wettelijke naam",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "org:hasPrimarySite",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "heeft primaire vestiging",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "_:g47171899808000",
-      "foaf:lastName": "Van Hoecke",
-      "foaf:firstName": "Willem",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:willem.vanhoecke@cipalschaubroeck.be"
       },
-      "schema:affiliation": {
-        "@id": "_:g47171899815180"
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "org:ChangeEvent"
+      },
+      "rdfs:label": {
+        "@value": "Splitsing",
+        "@language": "nl"
+      },
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:comment": {
+        "@value": "Gebeurtenis waarbij uit één organisatie twee organisaties worden gevormd.",
+        "@language": "nl"
       }
     },
     {
-      "@id": "https://data.vlaanderen.be/ns/organisatie#rechtspersoonlijkheid",
+      "@id": "https://data.vlaanderen.be/ns/organisatie#Hoedanigheid",
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/organisatie"
+      },
+      "@type": "owl:Class",
+      "rdfs:subClassOf": [
+        {
+          "@id": "org:Post"
+        },
+        {
+          "@id": "dc:Agent"
+        }
+      ],
+      "rdfs:label": {
+        "@value": "Hoedanigheid",
+        "@language": "nl"
+      },
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Laat een functie toe om te handelen,bv ihkv een dienstverlening (bv diversiteitsplan wordt opgemaakt door diversiteitsambtenaar).",
+        "@language": "nl"
+      },
+      "rdfs:comment": {
+        "@value": "Agent met een positie.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47306497551580",
+      "foaf:name": "Informatie Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      }
+    },
+    {
+      "@id": "_:g47306498096260",
+      "foaf:name": "Informatie Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/"
+      }
+    },
+    {
+      "@id": "_:g47306498025680",
+      "foaf:name": "Informatie Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/organisatie#redenStopzetting",
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/organisatie"
+      },
+      "@type": "owl:ObjectProperty",
       "rdfs:range": {
         "@id": "skos:Concept"
       },
-      "rdfs:comment": {
-        "@value": "Geeft aan of de rechtspersoonlijkheid van de geregistreerde organisatie deze is van een natuurlijk persoon of van een rechtspersoon. ",
-        "@language": "nl"
-      },
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "http://www.w3.org/ns/regorg#orgType"
-      },
       "rdfs:domain": {
-        "@id": "http://www.w3.org/ns/regorg#RegisteredOrganization"
+        "@id": "https://data.vlaanderen.be/ns/organisatie#Stopzetting"
       },
       "rdfs:label": {
-        "@value": "rechtspersoonlijkheid",
+        "@value": "reden stopzetting",
         "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/organisatie"
       },
       "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Een rechtspersoon is een juridische constructie die een organisatie dezelfde rechtspersoonlijkheid geeft als een natuurlijk persoon (kan bv ook schulden hebben, contracten afsluiten, aangeklaagd worden etc). Vb privaatrechterlijke rechtspersonen: vennootschappen, vzw's etc.; vb publiekrechterlijke rechtspersonen: steden, gemeenten etc. Een feitelijke vereniging is in principe geen rechtspersoon maar wordt als ze geregistreerd is id KBO toch als dusdanig geklasseerd.",
+        "@value": "Bvb pensionering, faillissement",
+        "@language": "nl"
+      },
+      "rdfs:comment": {
+        "@value": "Reden waarom de organisatie is stopgezet.",
         "@language": "nl"
       }
     },
     {
-      "@id": "_:g47171899712140",
-      "foaf:lastName": "Bemelmans",
-      "foaf:firstName": "Ward",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:ward.bemelmans@fb.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171899720000"
-      }
-    },
-    {
-      "@id": "_:g47171896579700",
-      "foaf:lastName": "Vandenneucker",
-      "foaf:firstName": "Peter",
-      "@type": "foaf:person",
-      "foaf:mbox": {
-        "@id": "mailto:peter.vandenneucker@fb.vlaanderen.be"
-      },
-      "schema:affiliation": {
-        "@id": "_:g47171896503840"
+      "@id": "foaf:homepage",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "homepage",
+        "@language": "nl"
       }
     },
     {
@@ -1473,6 +1327,44 @@
       "@type": "rdf:Property",
       "rdfs:label": {
         "@value": "veranderd door",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47306495473440",
+      "foaf:name": "LNE",
+      "foaf:homepage": {
+        "@id": "https://www.lne.be/"
+      }
+    },
+    {
+      "@id": "skos:altLabel",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "alternatieve label",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "org:originalOrganization",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "originele organisatie",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47306497421100",
+      "foaf:name": "imec - UGent",
+      "foaf:homepage": {
+        "@id": "http://idlab.ugent.be"
+      }
+    },
+    {
+      "@id": "org:postIn",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "positie bij",
         "@language": "nl"
       }
     },
@@ -1485,6 +1377,114 @@
       }
     },
     {
+      "@id": "https://data.vlaanderen.be/ns/organisatie#contactinfo",
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/organisatie"
+      },
+      "@type": "owl:ObjectProperty",
+      "rdfs:range": {
+        "@id": "schema:ContactPoint"
+      },
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/organisatie#Hoedanigheid"
+      },
+      "rdfs:label": {
+        "@value": "contactinfo",
+        "@language": "nl"
+      },
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:comment": {
+        "@value": "Informatie zoals email, telefoon die toelaat de hoedanigheid te contacteren.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "org:classification",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "classificatie",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "org:hasPrimarySite",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "heeft primaire vestiging",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/organisatie#Vervanging",
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/organisatie"
+      },
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "org:ChangeEvent"
+      },
+      "rdfs:label": {
+        "@value": "Vervanging",
+        "@language": "nl"
+      },
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Bvb doorstart ve bedrijf na technisch faillissement.",
+        "@language": "nl"
+      },
+      "rdfs:comment": {
+        "@value": "Gebeurtenis waarbij een organisatie wordt vervangen door een andere.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "org:siteAddress",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "vestigingsadres",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47306497486380",
+      "foaf:name": "Informatie Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/organisatie#Fusie",
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/organisatie"
+      },
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "org:ChangeEvent"
+      },
+      "rdfs:label": {
+        "@value": "Fusie",
+        "@language": "nl"
+      },
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:comment": {
+        "@value": "Gebeurtenis waarbij twee organisaties samen een nieuwe organisatie vormen.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "org:resultingOrganization",
+      "@type": "rdf:Property",
+      "rdfs:label": {
+        "@value": "resulterende organisatie",
+        "@language": "nl"
+      }
+    },
+    {
       "@id": "org:unitOf",
       "@type": "rdf:Property",
       "rdfs:label": {
@@ -1493,10 +1493,10 @@
       }
     },
     {
-      "@id": "org:hasMembership",
+      "@id": "org:role",
       "@type": "rdf:Property",
       "rdfs:label": {
-        "@value": "heeft lidmaatschap",
+        "@value": "rol",
         "@language": "nl"
       }
     }

@@ -1,453 +1,777 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:cpsv="http://purl.org/vocab/cpsv#"
-   xmlns:dcat="http://www.w3.org/ns/dcat#"
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:eu="http://data.europa.eu/m8g/"
-   xmlns:foaf="http://xmlns.com/foaf/0.1/"
-   xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
-   xmlns:gsp="http://www.opengis.net/ont/geosparql#"
-   xmlns:locn="http://www.w3.org/ns/locn#"
-   xmlns:org="http://www.w3.org/ns/org#"
-   xmlns:owl="http://www.w3.org/2002/07/owl#"
-   xmlns:person="http://www.w3.org/ns/person#"
-   xmlns:prov="http://www.w3.org/ns/prov#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-   xmlns:rec="http://www.w3.org/2001/02pd/rec54#"
-   xmlns:rov="http://www.w3.org/ns/regorg#"
-   xmlns:schema="http://schema.org/"
-   xmlns:sf="http://www.opengis.net/ont/sf#"
-   xmlns:sioc="http://rdfs.org/sioc/ns#"
-   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-   xmlns:vann="http://purl.org/vocab/vann/"
-   xmlns:voaf="http://purl.org/vocommons/voaf#"
-   xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
-   xmlns:wdrs="http://www.w3.org/2007/05/powder-s#"
-   xmlns:xml="http://www.w3.org/XML/1998/namespace"
-   xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
-  <owl:Ontology rdf:about="http://data.vlaanderen.be/ns/gebouw">
-    <dcterms:contributor>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/informatie-vlaanderen"/>
-            <foaf:name>Informatie Vlaanderen</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Hans</foaf:firstName>
-        <foaf:lastName>Vliebergh</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:hans.vliebergh@kb.vlaanderen.be"/>
-      </person:Person>
-    </dcterms:contributor>
-    <dcterms:contributor>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/informatie-vlaanderen"/>
-            <foaf:name>Informatie Vlaanderen</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Veerle</foaf:firstName>
-        <foaf:lastName>Beyaert</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:veerle.beyaert@kb.vlaanderen.be"/>
-      </person:Person>
-    </dcterms:contributor>
-    <dcterms:contributor>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://cirb.brussels/"/>
-            <foaf:name>CIRB</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Francois</foaf:firstName>
-        <foaf:lastName>Du Mortier</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:communication@cirb.brussels"/>
-      </person:Person>
-    </dcterms:contributor>
-    <dcterms:contributor>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://vea.be"/>
-            <foaf:name>VEA</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Tine</foaf:firstName>
-        <foaf:lastName>Vandecasteele</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:tine.vandecasteele@vea.be"/>
-      </person:Person>
-    </dcterms:contributor>
-    <dcterms:contributor>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/informatie-vlaanderen"/>
-            <foaf:name>Informatie Vlaanderen</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Barbara</foaf:firstName>
-        <foaf:lastName>Van Broeckhoven</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:Barbara.vanbroeckhoven@kb.vlaanderen.be"/>
-      </person:Person>
-    </dcterms:contributor>
-    <dcterms:contributor>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://vea.be"/>
-            <foaf:name>VEA</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Johan</foaf:firstName>
-        <foaf:lastName>Declercq</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:johan.declercq@vea.be"/>
-      </person:Person>
-    </dcterms:contributor>
-    <dcterms:contributor>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://vea.be"/>
-            <foaf:name>VEA</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Luk</foaf:firstName>
-        <foaf:lastName>Verhelst</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:luk.verhelst@vea.be"/>
-      </person:Person>
-    </dcterms:contributor>
-    <dcterms:contributor>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://vlm.be"/>
-            <foaf:name>VLM</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Annita</foaf:firstName>
-        <foaf:lastName>Stevens</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:Annita.Stevens@vlm.be"/>
-      </person:Person>
-    </dcterms:contributor>
-    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">TBD</dcterms:issued>
-    <dcterms:license rdf:resource="https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html"/>
-    <dcterms:mediator>
-      <rdf:Description>
-        <foaf:homepage rdf:resource="https://data.vlaanderen.be"/>
-        <foaf:mbox rdf:resource="mailto:oslo@kb.vlaanderen.be"/>
-        <foaf:name>Data Vlaanderen</foaf:name>
-      </rdf:Description>
-    </dcterms:mediator>
-    <dcterms:title xml:lang="en">Building</dcterms:title>
-    <dcterms:title xml:lang="nl">Gebouw</dcterms:title>
-    <vann:preferredNamespaceUri>http://data.vlaanderen.be/ns/gebouw</vann:preferredNamespaceUri>
-    <rdfs:label xml:lang="en">Building</rdfs:label>
-    <rdfs:label xml:lang="nl">Gebouw</rdfs:label>
-    <rec:editor>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://idlab.ugent.be"/>
-            <foaf:name>imec - UGent</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Laurens</foaf:firstName>
-        <foaf:lastName>De Vocht</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:laurens.devocht@ugent.be"/>
-      </person:Person>
-    </rec:editor>
-    <rec:editor>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://idlab.ugent.be"/>
-            <foaf:name>imec - UGent</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Erik</foaf:firstName>
-        <foaf:lastName>Mannens</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:erik.mannens@ugent.be"/>
-      </person:Person>
-    </rec:editor>
-    <foaf:maker>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://www.lne.be/"/>
-            <foaf:name>LNE</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Geert</foaf:firstName>
-        <foaf:lastName>Van Haute</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:geert.vanhaute@lne.vlaanderen.be"/>
-      </person:Person>
-    </foaf:maker>
-    <foaf:maker>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/informatie-vlaanderen"/>
-            <foaf:name>Informatie Vlaanderen</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Raf</foaf:firstName>
-        <foaf:lastName>Buyle</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:raf.buyle@kb.vlaanderen.be"/>
-      </person:Person>
-    </foaf:maker>
-    <foaf:maker>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/informatie-vlaanderen"/>
-            <foaf:name>Informatie Vlaanderen</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Ruben</foaf:firstName>
-        <foaf:lastName>Capiau</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:ruben.capiau@kb.vlaanderen.be"/>
-      </person:Person>
-    </foaf:maker>
-    <foaf:maker>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/informatie-vlaanderen"/>
-            <foaf:name>Informatie Vlaanderen</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Dries</foaf:firstName>
-        <foaf:lastName>Beheydt</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:dries.beheydt@kb.vlaanderen.be"/>
-      </person:Person>
-    </foaf:maker>
-    <foaf:maker>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://tenforce.com"/>
-            <foaf:name>Tenforce</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Bert</foaf:firstName>
-        <foaf:lastName>Van Nuffelen</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:Bert.Van.Nuffelen@tenforce.com"/>
-      </person:Person>
-    </foaf:maker>
-    <foaf:maker>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://idlab.ugent.be"/>
-            <foaf:name>imec - UGent</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Dieter</foaf:firstName>
-        <foaf:lastName>De Paepe</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:dieter.depaepe@ugent.be"/>
-      </person:Person>
-    </foaf:maker>
-    <foaf:maker>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="http://proCml.be"/>
-            <foaf:name>ProCML</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Paul</foaf:firstName>
-        <foaf:lastName>Hermans</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:paul@proCml.be"/>
-      </person:Person>
-    </foaf:maker>
-    <foaf:maker>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/informatie-vlaanderen"/>
-            <foaf:name>Informatie Vlaanderen</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Björn</foaf:firstName>
-        <foaf:lastName>De Vidts</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:bjorn.devidts@kb.vlaanderen.be"/>
-      </person:Person>
-    </foaf:maker>
-    <foaf:maker>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/informatie-vlaanderen"/>
-            <foaf:name>Informatie Vlaanderen</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Ziggy</foaf:firstName>
-        <foaf:lastName>Vanlishout</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:Siegfried.Vanlishout@kb.vlaanderen.be"/>
-      </person:Person>
-    </foaf:maker>
-    <foaf:maker>
-      <person:Person>
-        <schema:affiliation>
-          <rdf:Description>
-            <foaf:homepage rdf:resource="https://overheid.vlaanderen.be/informatie-vlaanderen"/>
-            <foaf:name>Informatie Vlaanderen</foaf:name>
-          </rdf:Description>
-        </schema:affiliation>
-        <foaf:firstName>Geert</foaf:firstName>
-        <foaf:lastName>Thijs</foaf:lastName>
-        <foaf:mbox rdf:resource="mailto:Geert.Thijs@kb.vlaanderen.be"/>
-      </person:Person>
-    </foaf:maker>
-  </owl:Ontology>
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie">
-    <rdfs:comment xml:lang="nl">Geometrie van het gebouw en metadata over welk deel van het gebouw door de geometrie wordt voorgesteld en hoe deze werd bepaald.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">2D Gebouwgeometrie</rdfs:label>
-  </owl:Class>
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/gebouw#Gebouw">
-    <rdfs:comment xml:lang="nl">Een gesloten en/of overdekt, bovengronds of ondergronds bouwwerk, dat dient of bestemd is, ofwel om mensen, dieren en voorwerpen onder te brengen, ofwel om economische goederen te vervaardigen of diensten te verstrekken. Een gebouw verwijst naar gelijk welke structuur die op blijvende wijze op een terrein opgetrokken of gebouwd wordt.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">Gebouw</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-  </owl:Class>
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#Gebouw.adres">
-    <rdfs:comment xml:lang="nl">Adres van het gebouw.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#Gebouw"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">adres</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/ns/locn#Address"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#Gebouw.geometrie">
-    <rdfs:comment xml:lang="nl">2D geometrische voorstelling van het gebouw.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#Gebouw"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">geometrie</rdfs:label>
-    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie"/>
-  </owl:ObjectProperty>
-  <owl:Class rdf:about="http://data.vlaanderen.be/ns/gebouw#Gebouweenheid">
-    <rdfs:comment xml:lang="nl">De kleinste eenheid binnen een gebouw die geschikt is voor woon-, bedrijfsmatige, of recreatieve doeleinden en die ontsloten wordt via een eigen afsluitbare toegang vanaf de openbare weg, een erf of een gedeelde circulatieruimte. Een gebouweenheid is in functioneel opzicht zelfstandig. Daarnaast kan een gebouweenheid ook een gemeenschappelijk deel zijn.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">Gebouweenheid</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://data.vlaanderen.be/ns/adres#AdresseerbaarObject"/>
-    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-  </owl:Class>
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#Gebouweenheid.adres">
-    <rdfs:comment xml:lang="nl">Adres vd gebouweenheid.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#Gebouweenheid"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">adres</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/ns/locn#Address"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#Gebouweenheid.geometrie">
-    <rdfs:comment xml:lang="nl">2D geometrische voorstelling van de gebouweenheid.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#Gebouweenheid"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">geometrie</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/ns/locn#Geometry"/>
-  </owl:ObjectProperty>
-  <owl:DatatypeProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#aantalVerdiepingen">
-    <rdfs:comment xml:lang="nl">Totaal van het aantal boven- en ondergrondse gebouwlagen, bekeken over alle gebouwdelen heen.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#Gebouw"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">aantal verdiepingen</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-  </owl:DatatypeProperty>
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#bestaatUit">
-    <rdfs:comment xml:lang="nl">De percelen waarmee het gebouw officieel geassocieerd is.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#Gebouw"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">bestaat uit</rdfs:label>
-    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/gebouw#Gebouweenheid"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#bouwjaar">
-    <rdfs:comment xml:lang="nl">Datum waarop het gebouw werd voltooid.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#Gebouw"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">bouwjaar</rdfs:label>
-    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum"/>
-  </owl:ObjectProperty>
-  <owl:DatatypeProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#default">
-    <rdfs:comment xml:lang="nl">Geometrie die moet worden gebruikt bv bij voorstelling op kaart.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">default</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-  </owl:DatatypeProperty>
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#functie">
-    <rdfs:comment xml:lang="nl">Functie waarvoor de gebouweenheid in de realiteit (zoals vastgesteld op het terrein) gebruikt wordt.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#Gebouweenheid"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">functie</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#gebouweenheidstatus">
-    <rdfs:comment xml:lang="nl">Fase van de levensloop waarin de gebouweenheid zich bevindt.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#Gebouweenheid"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">gebouweenheidstatus</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-  </owl:ObjectProperty>
-  <owl:DatatypeProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#gebouwnaam">
-    <rdfs:comment xml:lang="nl">Naam van het gebouw.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#Gebouw"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">gebouwnaam</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
-  </owl:DatatypeProperty>
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#gebouwstatus">
-    <rdfs:comment xml:lang="nl">Fase van de levensloop waarin het gebouw zich bevindt.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#Gebouw"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">gebouwstatus</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#geometrie">
-    <rdfs:comment xml:lang="nl">2D geometrische voorstelling van het gebouw.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">geometrie</rdfs:label>
-    <rdfs:range rdf:resource="http://www.opengis.net/ont/sf#Polygon"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#laatsteRenovatie">
-    <rdfs:comment xml:lang="nl">Datum waarop het gebouw laatst gerenoveerd werd.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#Gebouw"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">laatste renovatie</rdfs:label>
-    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#ligtOp">
-    <rdfs:comment xml:lang="nl">De gebouweenheden die tot het gebouw behoren.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#Gebouw"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">ligt op</rdfs:label>
-    <rdfs:range rdf:resource="http://fixme.com#Perceel"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#locatieAanduiding">
-    <rdfs:comment xml:lang="nl">Alfanumerieke code die een adreslocator uniek identificeert binnen de straat, administratieve eenheid etc.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#Gebouweenheid"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">locatie-aanduiding</rdfs:label>
-    <rdfs:range rdf:resource="http://data.vlaanderen.be/ns/adres#Locatieaanduiding"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#methode">
-    <rdfs:comment xml:lang="nl">Beschrijving van de manier waarop de geometrie aangemaakt werd.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">methode</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://data.vlaanderen.be/ns/gebouw#specificatie">
-    <rdfs:comment xml:lang="nl">Deel van het gebouw dat door de xy-coördinaten wordt voorgesteld.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie"/>
-    <rdfs:isDefinedBy rdf:resource="http://data.vlaanderen.be/ns/gebouw"/>
-    <rdfs:label xml:lang="nl">specificatie</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-  </owl:ObjectProperty>
-  <rdfs:Class rdf:about="http://www.w3.org/2004/02/skos/core#Concept">
-    <rdfs:comment xml:lang="nl">Waarden die de status van een constructie weergeven.</rdfs:comment>
-    <rdfs:comment xml:lang="nl">Waarden die het huidig gebruik weergeven.</rdfs:comment>
-  </rdfs:Class>
+<?xml version='1.0' encoding='utf-8' ?>
+<rdf:RDF xmlns:dc='http://purl.org/dc/terms/' xmlns:foaf='http://xmlns.com/foaf/0.1/' xmlns:ns0='http://purl.org/vocab/vann/' xmlns:ns1='http://www.w3.org/2001/02pd/rec54#' xmlns:owl='http://www.w3.org/2002/07/owl#' xmlns:prov='http://www.w3.org/ns/prov#' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' xmlns:rdfs='http://www.w3.org/2000/01/rdf-schema#' xmlns:schema='http://schema.org/' xmlns:skos='http://www.w3.org/2004/02/skos/core#' xmlns:xsd='http://www.w3.org/2001/XMLSchema#'>
+<rdfs:Class rdf:about='http://www.w3.org/2004/02/skos/core#Concept'>
+</rdfs:Class>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#Gebouw.adres'>
+<rdfs:label xml:lang='nl'>adres</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Adres van het gebouw.</rdfs:comment>
+
+<rdfs:domain>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/gebouw#Gebouw'>
+<rdfs:label xml:lang='nl'>Gebouw</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Een gesloten en/of overdekt, bovengronds of ondergronds bouwwerk, dat dient of bestemd is, ofwel om mensen, dieren en voorwerpen onder te brengen, ofwel om economische goederen te vervaardigen of diensten te verstrekken. Een gebouw verwijst naar gelijk welke structuur die op blijvende wijze op een terrein opgetrokken of gebouwd wordt.</rdfs:comment>
+
+<rdfs:isDefinedBy>
+<owl:Ontology rdf:about='https://data.vlaanderen.be/ns/gebouw'>
+<rdfs:label xml:lang='en'>Building</rdfs:label>
+ <rdfs:label xml:lang='nl'>Gebouw</rdfs:label>
+
+<dc:title xml:lang='en'>Building</dc:title>
+ <dc:title xml:lang='nl'>Gebouw</dc:title>
+
+<dc:contributor>
+<foaf:person rdf:nodeID='g47399117594840'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399119519180'>
+<foaf:homepage rdf:resource='http://cirb.brussels/' />
+
+<foaf:name>CIRB</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Francois</foaf:firstName>
+
+<foaf:lastName>Du Mortier</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:communication@cirb.brussels' />
+
+</foaf:person>
+
+</dc:contributor>
+ <dc:contributor>
+<foaf:person rdf:nodeID='g47399119938260'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399116661280'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/informatie-vlaanderen' />
+
+<foaf:name>Informatie Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Barbara</foaf:firstName>
+
+<foaf:lastName>Van Broeckhoven</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:Barbara.vanbroeckhoven@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</dc:contributor>
+ <dc:contributor>
+<foaf:person rdf:nodeID='g47399116973640'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399119904560'>
+<foaf:homepage rdf:resource='http://vea.be' />
+
+<foaf:name>VEA</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Tine</foaf:firstName>
+
+<foaf:lastName>Vandecasteele</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:tine.vandecasteele@vea.be' />
+
+</foaf:person>
+
+</dc:contributor>
+ <dc:contributor>
+<foaf:person rdf:nodeID='g47399119802720'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399119810860'>
+<foaf:homepage rdf:resource='http://vlm.be' />
+
+<foaf:name>VLM</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Annita</foaf:firstName>
+
+<foaf:lastName>Stevens</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:Annita.Stevens@vlm.be' />
+
+</foaf:person>
+
+</dc:contributor>
+ <dc:contributor>
+<foaf:person rdf:nodeID='g47399119722140'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399119738180'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/informatie-vlaanderen' />
+
+<foaf:name>Informatie Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Hans</foaf:firstName>
+
+<foaf:lastName>Vliebergh</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:hans.vliebergh@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</dc:contributor>
+ <dc:contributor>
+<foaf:person rdf:nodeID='g47399117409820'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399117357200'>
+<foaf:homepage rdf:resource='http://vea.be' />
+
+<foaf:name>VEA</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Luk</foaf:firstName>
+
+<foaf:lastName>Verhelst</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:luk.verhelst@vea.be' />
+
+</foaf:person>
+
+</dc:contributor>
+ <dc:contributor>
+<foaf:person rdf:nodeID='g47399119470340'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399117644820'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/informatie-vlaanderen' />
+
+<foaf:name>Informatie Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Veerle</foaf:firstName>
+
+<foaf:lastName>Beyaert</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:veerle.beyaert@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</dc:contributor>
+ <dc:contributor>
+<foaf:person rdf:nodeID='g47399119623700'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399119636960'>
+<foaf:homepage rdf:resource='http://vea.be' />
+
+<foaf:name>VEA</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Johan</foaf:firstName>
+
+<foaf:lastName>Declercq</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:johan.declercq@vea.be' />
+
+</foaf:person>
+
+</dc:contributor>
+
+<dc:license rdf:resource='file:///tmp/workspace/ttl/http://example.com/TODO' />
+ <dc:license rdf:resource='https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html' />
+
+<dc:mediator>
+<rdf:Description rdf:nodeID='g47399120053240'>
+<foaf:homepage rdf:resource='https://data.vlaanderen.be' />
+
+<foaf:mbox rdf:resource='mailto:oslo@kb.vlaanderen.be' />
+
+<foaf:name>Data Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</dc:mediator>
+
+<ns0:preferredNamespaceUri>https://data.vlaanderen.be/ns/gebouw</ns0:preferredNamespaceUri>
+
+<ns1:editor>
+<foaf:person rdf:nodeID='g47399120140000'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399120145700'>
+<foaf:homepage rdf:resource='http://idlab.ugent.be' />
+
+<foaf:name>imec - UGent</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Erik</foaf:firstName>
+
+<foaf:lastName>Mannens</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:erik.mannens@ugent.be' />
+
+</foaf:person>
+
+</ns1:editor>
+ <ns1:editor>
+<foaf:person rdf:nodeID='g47399120209420'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399120225560'>
+<foaf:homepage rdf:resource='http://idlab.ugent.be' />
+
+<foaf:name>imec - UGent</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Laurens</foaf:firstName>
+
+<foaf:lastName>De Vocht</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:laurens.devocht@ugent.be' />
+
+</foaf:person>
+
+</ns1:editor>
+
+<foaf:maker>
+<foaf:person rdf:nodeID='g47399120142500'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399120113080'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/informatie-vlaanderen' />
+
+<foaf:name>Informatie Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Ziggy</foaf:firstName>
+
+<foaf:lastName>Vanlishout</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:Siegfried.Vanlishout@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47399113389880'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399113354820'>
+<foaf:homepage rdf:resource='http://tenforce.com' />
+
+<foaf:name>Tenforce</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Bert</foaf:firstName>
+
+<foaf:lastName>Van Nuffelen</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:Bert.Van.Nuffelen@tenforce.com' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47399120404100'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399120417420'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/informatie-vlaanderen' />
+
+<foaf:name>Informatie Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Dries</foaf:firstName>
+
+<foaf:lastName>Beheydt</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:dries.beheydt@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47399111331140'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399107901200'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/informatie-vlaanderen' />
+
+<foaf:name>Informatie Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Raf</foaf:firstName>
+
+<foaf:lastName>Buyle</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:raf.buyle@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47399120020680'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399119991080'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/informatie-vlaanderen' />
+
+<foaf:name>Informatie Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Björn</foaf:firstName>
+
+<foaf:lastName>De Vidts</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:bjorn.devidts@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47399120264080'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399120242920'>
+<foaf:homepage rdf:resource='https://www.lne.be/' />
+
+<foaf:name>LNE</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Geert</foaf:firstName>
+
+<foaf:lastName>Van Haute</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:geert.vanhaute@lne.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47399120516920'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399120495660'>
+<foaf:homepage rdf:resource='http://proxml.be' />
+
+<foaf:name>ProXML</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Paul</foaf:firstName>
+
+<foaf:lastName>Hermans</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:paul@proxml.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47399120313480'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399120328800'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/informatie-vlaanderen' />
+
+<foaf:name>Informatie Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Ruben</foaf:firstName>
+
+<foaf:lastName>Capiau</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:ruben.capiau@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47399120495200'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399113831020'>
+<foaf:homepage rdf:resource='https://overheid.vlaanderen.be/informatie-vlaanderen' />
+
+<foaf:name>Informatie Vlaanderen</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Geert</foaf:firstName>
+
+<foaf:lastName>Thijs</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:Geert.Thijs@kb.vlaanderen.be' />
+
+</foaf:person>
+
+</foaf:maker>
+ <foaf:maker>
+<foaf:person rdf:nodeID='g47399120386560'>
+<schema:affiliation>
+<rdf:Description rdf:nodeID='g47399120365200'>
+<foaf:homepage rdf:resource='http://idlab.ugent.be' />
+
+<foaf:name>imec - UGent</foaf:name>
+
+</rdf:Description>
+
+</schema:affiliation>
+
+<foaf:firstName>Dieter</foaf:firstName>
+
+<foaf:lastName>De Paepe</foaf:lastName>
+
+<foaf:mbox rdf:resource='mailto:dieter.depaepe@ugent.be' />
+
+</foaf:person>
+
+</foaf:maker>
+
+</owl:Ontology>
+
+</rdfs:isDefinedBy>
+
+<rdfs:subClassOf rdf:resource='http://www.w3.org/ns/prov#Entity' />
+
+</owl:Class>
+
+</rdfs:domain>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range rdf:resource='http://www.w3.org/ns/locn#Address' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#Gebouw.geometrie'>
+<rdfs:label xml:lang='nl'>geometrie</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>2D geometrische voorstelling van het gebouw.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#Gebouw' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie'>
+<rdfs:label xml:lang='nl'>2D Gebouwgeometrie</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Geometrie van het gebouw en metadata over welk deel van het gebouw door de geometrie wordt voorgesteld en hoe deze werd bepaald.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+</owl:Class>
+
+</rdfs:range>
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#Gebouw.status'>
+<rdfs:label xml:lang='nl'>status</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Fase van de levensloop waarin het gebouw zich bevindt.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#Gebouw' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range rdf:resource='http://www.w3.org/2004/02/skos/core#Concept' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#Gebouweenheid.adres'>
+<rdfs:label xml:lang='nl'>adres</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Adres vd gebouweenheid.</rdfs:comment>
+
+<rdfs:domain>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/gebouw#Gebouweenheid'>
+<rdfs:label xml:lang='nl'>Gebouweenheid</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>De kleinste eenheid binnen een gebouw die geschikt is voor woon-, bedrijfsmatige, of recreatieve doeleinden en die ontsloten wordt via een eigen afsluitbare toegang vanaf de openbare weg, een erf of een gedeelde circulatieruimte. Een gebouweenheid is in functioneel opzicht zelfstandig. Daarnaast kan een gebouweenheid ook een gemeenschappelijk deel zijn.</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:subClassOf rdf:resource='http://www.w3.org/ns/prov#Entity' />
+ <rdfs:subClassOf rdf:resource='https://data.vlaanderen.be/ns/adres#AdresseerbaarObject' />
+
+</owl:Class>
+
+</rdfs:domain>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range rdf:resource='http://www.w3.org/ns/locn#Address' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#Gebouweenheid.geometrie'>
+<rdfs:label xml:lang='nl'>geometrie</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>2D geometrische voorstelling van de gebouweenheid.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#Gebouweenheid' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range rdf:resource='http://www.w3.org/ns/locn#Geometry' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#Gebouweenheid.status'>
+<rdfs:label xml:lang='nl'>gebouweenheidstatus</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Fase van de levensloop waarin de gebouweenheid zich bevindt.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#Gebouweenheid' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/gebouw#GebouweenheidstatusWaarde'>
+<rdfs:label xml:lang='nl'>http://example.com/TODO</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>http://example.com/TODO</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<owl:oneOf rdf:resource='http://www.w3.org/1999/02/22-rdf-syntax-ns#nil' />
+
+</owl:Class>
+
+</rdfs:range>
+
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#aantalBovengrondseVerdiepingen'>
+<rdfs:label xml:lang='nl'>aantal bovengrondse verdiepingen</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Totaal van het aantal bovengrondse gebouwlagen, bekeken over alle gebouwdelen heen.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#Gebouw' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range rdf:resource='http://www.w3.org/2001/XMLSchema#integer' />
+
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#aantalOndergrondseVerdiepingen'>
+<rdfs:label xml:lang='nl'>aantal ondergrondse verdiepingen</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Totaal van het aantal ondergrondse gebouwlagen, bekeken over alle gebouwdelen heen.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#Gebouw' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range rdf:resource='http://www.w3.org/2001/XMLSchema#integer' />
+
+</owl:DatatypeProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#bestaatUit'>
+<rdfs:label xml:lang='nl'>bestaat uit</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>De percelen waarmee het gebouw officieel geassocieerd is.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#Gebouw' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range rdf:resource='https://data.vlaanderen.be/ns/gebouw#Gebouweenheid' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#bouwjaar'>
+<rdfs:label xml:lang='nl'>bouwjaar</rdfs:label>
+
+<ns0:usageNote xml:lang='nl'>Verbouwingen en renovaties na initiële oplevering worden niet meegeteld.</ns0:usageNote>
+
+<rdfs:comment xml:lang='nl'>Datum waarop het gebouw voltooid werd.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#Gebouw' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range rdf:resource='https://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum' />
+
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#default'>
+<rdfs:label xml:lang='nl'>default</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Geometrie die moet worden gebruikt bv bij voorstelling op kaart.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range rdf:resource='http://www.w3.org/2001/XMLSchema#boolean' />
+
+</owl:DatatypeProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#functie'>
+<rdfs:label xml:lang='nl'>functie</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Functie waarvoor de gebouweenheid in de realiteit (zoals vastgesteld op het terrein) gebruikt wordt.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#Gebouweenheid' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range rdf:resource='http://www.w3.org/2004/02/skos/core#Concept' />
+
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#gebouwnaam'>
+<rdfs:label xml:lang='nl'>gebouwnaam</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Naam van het gebouw.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#Gebouw' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range rdf:resource='http://www.w3.org/1999/02/22-rdf-syntax-ns#langString' />
+
+</owl:DatatypeProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#geometrie'>
+<rdfs:label xml:lang='nl'>geometrie</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>2D geometrische voorstelling van het gebouw.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range rdf:resource='http://www.w3.org/ns/locn#Geometry' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#horizontaleReferentie'>
+<rdfs:label xml:lang='nl'>horizontale referentie</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Aspect van het object dat door de xy-coördinaten wordt voorgesteld.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range rdf:resource='http://www.w3.org/2004/02/skos/core#Concept' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#laatsteRenovatie'>
+<rdfs:label xml:lang='nl'>laatste renovatie</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Datum waarop het gebouw het laatst gerenoveerd werd.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#Gebouw' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range rdf:resource='https://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#ligtOp'>
+<rdfs:label xml:lang='nl'>ligt op</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>De gebouweenheden die tot het gebouw behoren.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#Gebouw' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range rdf:resource='https://data.vlaanderen.be/ns/perceel#Perceel' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#locatieAanduiding'>
+<rdfs:label xml:lang='nl'>locatie-aanduiding</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Alfanumerieke code die een adreslocator uniek identificeert binnen de straat, administratieve eenheid etc.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#Gebouweenheid' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range rdf:resource='https://data.vlaanderen.be/ns/adres#Locatieaanduiding' />
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#methode'>
+<rdfs:label xml:lang='nl'>methode</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Beschrijving van de manier waarop de geometrie aangemaakt werd.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range>
+<owl:Class rdf:about='https://data.vlaanderen.be/ns/gebouw#2DGeometrieMethodeWaarde'>
+<rdfs:label xml:lang='nl'>http://example.com/TODO</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>http://example.com/TODO</rdfs:comment>
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<owl:oneOf rdf:resource='http://www.w3.org/1999/02/22-rdf-syntax-ns#nil' />
+
+</owl:Class>
+
+</rdfs:range>
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about='https://data.vlaanderen.be/ns/gebouw#verticaleReferentie'>
+<rdfs:label xml:lang='nl'>verticale referentie</rdfs:label>
+
+<rdfs:comment xml:lang='nl'>Aspect van het object dat door de z-coördinaten wordt voorgesteld.</rdfs:comment>
+
+<rdfs:domain rdf:resource='https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie' />
+
+<rdfs:isDefinedBy rdf:resource='https://data.vlaanderen.be/ns/gebouw' />
+
+<rdfs:range rdf:resource='http://www.w3.org/2004/02/skos/core#Concept' />
+
+</owl:ObjectProperty>
+
 </rdf:RDF>

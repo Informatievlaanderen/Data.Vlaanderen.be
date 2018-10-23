@@ -45,7 +45,7 @@
               <div class="head" role="contentinfo" id="respecHeader">
                 <dl>
                   <dt>Laatste aanpassing</dt>
-                  <dd>2018-10-03</dd>
+                  <dd>2018-10-23</dd>
 
                   
                   
@@ -171,10 +171,10 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       <a href="#Collectie">Collectie</a> |
                       <a href="#Deel">Deel</a> |
                       <a href="#Element">Element</a> |
+                      <a href="#Fysiek Object">Fysiek Object</a> |
                       <a href="#Fysiek Voorkomen">Fysiek Voorkomen</a> |
                       <a href="#Gebied">Gebied</a> |
                       <a href="#Infrastructuurelement">Infrastructuurelement</a> |
-                      <a href="#Object">Object</a> |
                       <a href="#Onbegroeid Voorkomen">Onbegroeid Voorkomen</a> |
                       <a href="#Organisatie">Organisatie</a> |
                       <a href="#Terrein Voorkomen">Terrein Voorkomen</a> |
@@ -344,7 +344,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             bevat</a>
                           </code>
                         </td>
-                        <td><a href="https://data.vlaanderen.be/ns/openbaardomein#Object" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#Object" data-placement="right">Object</a></td>
+                        <td><a href="https://data.vlaanderen.be/ns/openbaardomein#FysiekObject" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#FysiekObject" data-placement="right">FysiekObject</a></td>
                         <td>0...*</td>
                         <td property="rdfs:comment">Relatie naar de objecten die deel uitmaken van de collectie.</td>
                         <td property="vann:usageNote"></td>
@@ -448,6 +448,160 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                   </dl>
                 </div>
                 
+            </div>
+            
+            <div class="region region--no-space-top">
+              <h3 class="h3" id="Fysiek Object"><a href="https://data.vlaanderen.be/ns/openbaardomein#FysiekObject" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#FysiekObject" data-placement="right">Fysiek Object</a></h3>
+                <div class="region region--no-space-top">
+                  <dl>
+                    <dt>Beschrijving</dt><dd>De hoofdklasse waar alle objecten die ge&#239;nventariseerd kunnen worden van afgeleid worden.</dd>
+                    
+                    <dt>Eigenschappen</dt>
+                    
+                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
+                      <a href="#Fysiek%20Object%3Abegindatum">begindatum</a>, 
+                      <a href="#Fysiek%20Object%3Abeheerder">beheerder</a>, 
+                      <a href="#Fysiek%20Object%3Aeigenaar">eigenaar</a>, 
+                      <a href="#Fysiek%20Object%3Aeinddatum">einddatum</a>, 
+                      <a href="#Fysiek%20Object%3Ageometrie">geometrie</a>, 
+                      <a href="#Fysiek%20Object%3Anauwkeurigheid">nauwkeurigheid</a>, 
+                      <a href="#Fysiek%20Object%3Aniveau">niveau</a>, 
+                      <a href="#Fysiek%20Object%3Arelatie">relatie</a>.</dd>
+                    
+                  </dl>
+                </div>
+                
+                <div class="u-table-overflow">
+                  <table class="data-table">
+                    <thead>
+                      <tr class="data-table__header">
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
+                        <th class="data-table__header-title--sortable">Verwacht Type</th>
+                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
+                        <th class="data-table__header-title--sortable">Beschrijving</th>
+                        <th class="data-table__header-title--sortable">Gebruik</th>
+                        <th class="data-table__header-title--sortable">Codelijst</th>
+                      </tr>
+                    </thead>
+        
+                    <tbody class="supertype">
+                    
+                      <tr id="Fysiek%20Object%3Abegindatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#begindatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
+                            begindatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het gebied of object in gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Fysiek%20Object%3Abeheerder" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#beheerder">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#beheerder" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#beheerder" data-placement="right">
+                            beheerder</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="http://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Instantie (tot op team- of dienstniveau) die instaat voor het beheer van het object.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Fysiek%20Object%3Aeigenaar" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#eigenaar">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#eigenaar" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#eigenaar" data-placement="right">
+                            eigenaar</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="http://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">De entiteit (bv. de gemeente) die eigenaar is van het object.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Fysiek%20Object%3Aeinddatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#einddatum">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
+                            einddatum</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Datum waarop de huidige versie van het beheerobject uit gebruik wordt genomen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Fysiek%20Object%3Ageometrie" typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#geometry">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://www.w3.org/ns/locn#geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#geometry" data-placement="right">
+                            geometrie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.opengis.net/ont/geosparql#Geometry" data-toggle="tooltip" data-content="http://www.opengis.net/ont/geosparql#Geometry" data-placement="right">Geometrie</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De geometrie overeenkomstig met een bepaald object.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Fysiek%20Object%3Anauwkeurigheid" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
+                            nauwkeurigheid</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Nauwkeurigsheidsklassen</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">De precisie waarmee het object opgemeten werd.</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="http://data.vlaanderen.be/id/conceptscheme/Nauwkeurigsheidsklassen">Link</a></td>
+                      </tr>
+                    
+                      <tr id="Fysiek%20Object%3Aniveau" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#niveau">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
+                            niveau</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#integer" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#integer" data-placement="right">Integer</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten.</td>
+                        <td property="vann:usageNote">Negatieve waarden worden geassocieerd met ondergronds en positieve waarden met bovengronds. Nul wordt beschouwd als een absolute waarde om het maaiveld aan te duiden.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Fysiek%20Object%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
+                            relatie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Resource" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Resource" data-placement="right">RelatieObject</a></td>
+                        <td>0...*</td>
+                        <td property="rdfs:comment">Verwijst naar een object in een andere databank dat meer informatie kan verschaffen over het beheerobject.</td>
+                        <td property="vann:usageNote">Bijvoorbeeld een verwijzing naar een object uit het wegenregister of grootschalig referentiebestand.</td>
+                        <td></td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+      			  
             </div>
             
             <div class="region region--no-space-top">
@@ -632,160 +786,6 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td property="rdfs:comment">Materiaal waar het object uit vervaardigd is.</td>
                         <td property="vann:usageNote"></td>
                         <td><a href="https://thesaurus.onroerenderfgoed.be/conceptschemes/MATERIALEN">Link</a></td>
-                      </tr>
-                    
-                    </tbody>
-                  </table>
-                </div>
-      			  
-            </div>
-            
-            <div class="region region--no-space-top">
-              <h3 class="h3" id="Object"><a href="https://data.vlaanderen.be/ns/openbaardomein#Object" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#Object" data-placement="right">Object</a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>De hoofdklasse waar alle objecten die ge&#239;nventariseerd kunnen worden van afgeleid worden.</dd>
-                    
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Object%3Abegindatum">begindatum</a>, 
-                      <a href="#Object%3Abeheerder">beheerder</a>, 
-                      <a href="#Object%3Aeigenaar">eigenaar</a>, 
-                      <a href="#Object%3Aeinddatum">einddatum</a>, 
-                      <a href="#Object%3Ageometrie">geometrie</a>, 
-                      <a href="#Object%3Anauwkeurigheid">nauwkeurigheid</a>, 
-                      <a href="#Object%3Aniveau">niveau</a>, 
-                      <a href="#Object%3Arelatie">relatie</a>.</dd>
-                    
-                  </dl>
-                </div>
-                
-                <div class="u-table-overflow">
-                  <table class="data-table">
-                    <thead>
-                      <tr class="data-table__header">
-                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Eigenschap</th>
-                        <th class="data-table__header-title--sortable">Verwacht Type</th>
-                        <th class="data-table__header-title--sortable">Kardinaliteit</th>
-                        <th class="data-table__header-title--sortable">Beschrijving</th>
-                        <th class="data-table__header-title--sortable">Gebruik</th>
-                        <th class="data-table__header-title--sortable">Codelijst</th>
-                      </tr>
-                    </thead>
-        
-                    <tbody class="supertype">
-                    
-                      <tr id="Object%3Abegindatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#begindatum">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#begindatum" data-placement="right">
-                            begindatum</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Datum waarop de huidige versie van het gebied of object in gebruik wordt genomen.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Object%3Abeheerder" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#beheerder">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="https://data.vlaanderen.be/ns/openbaardomein#beheerder" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#beheerder" data-placement="right">
-                            beheerder</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="http://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Instantie (tot op team- of dienstniveau) die instaat voor het beheer van het object.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Object%3Aeigenaar" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#eigenaar">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="https://data.vlaanderen.be/ns/openbaardomein#eigenaar" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#eigenaar" data-placement="right">
-                            eigenaar</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="http://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">De entiteit (bv. de gemeente) die eigenaar is van het object.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Object%3Aeinddatum" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#einddatum">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#einddatum" data-placement="right">
-                            einddatum</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Datum waarop de huidige versie van het beheerobject uit gebruik wordt genomen.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Object%3Ageometrie" typeof="rdfs:Property" resource="http://www.w3.org/ns/locn#geometry">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://www.w3.org/ns/locn#geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#geometry" data-placement="right">
-                            geometrie</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.opengis.net/ont/geosparql#Geometry" data-toggle="tooltip" data-content="http://www.opengis.net/ont/geosparql#Geometry" data-placement="right">Geometrie</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">De geometrie overeenkomstig met een bepaald object.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Object%3Anauwkeurigheid" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid" data-placement="right">
-                            nauwkeurigheid</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Nauwkeurigsheidsklassen</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">De precisie waarmee het object opgemeten werd.</td>
-                        <td property="vann:usageNote"></td>
-                        <td><a href="http://data.vlaanderen.be/id/conceptscheme/Nauwkeurigsheidsklassen">Link</a></td>
-                      </tr>
-                    
-                      <tr id="Object%3Aniveau" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein#niveau">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#niveau" data-placement="right">
-                            niveau</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#integer" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#integer" data-placement="right">Integer</a></td>
-                        <td>0...1</td>
-                        <td property="rdfs:comment">Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten.</td>
-                        <td property="vann:usageNote">Negatieve waarden worden geassocieerd met ondergronds en positieve waarden met bovengronds. Nul wordt beschouwd als een absolute waarde om het maaiveld aan te duiden.</td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Object%3Arelatie" typeof="rdfs:Property" resource="http://purl.org/dc/terms/relation">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://purl.org/dc/terms/relation" data-toggle="tooltip" data-content="http://purl.org/dc/terms/relation" data-placement="right">
-                            relatie</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Resource" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Resource" data-placement="right">RelatieObject</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Verwijst naar een object in een andere databank dat meer informatie kan verschaffen over het beheerobject.</td>
-                        <td property="vann:usageNote">Bijvoorbeeld een verwijzing naar een object uit het wegenregister of grootschalig referentiebestand.</td>
-                        <td></td>
                       </tr>
                     
                     </tbody>
@@ -1041,10 +1041,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                     
                     <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
                       <a href="#Vegetatie%20Element%3Ahoogte">hoogte</a>, 
-                      <a href="#Vegetatie%20Element%3Aplantdatum">plantdatum</a>, 
-                      <a href="#Vegetatie%20Element%3Asoortcode">soortcode</a>, 
-                      <a href="#Vegetatie%20Element%3Asoortnaam%20Nederlands">soortnaam Nederlands</a>, 
-                      <a href="#Vegetatie%20Element%3Awetenschappelijke%20soortnaam">wetenschappelijke soortnaam</a>.</dd>
+                      <a href="#Vegetatie%20Element%3Aplantdatum">plantdatum</a>.</dd>
                     
                   </dl>
                 </div>
@@ -1088,48 +1085,6 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td><a href="http://www.w3.org/2001/XMLSchema#dateTime" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#dateTime" data-placement="right">DateTime</a></td>
                         <td>1</td>
                         <td property="rdfs:comment">De datum waarop het vegetatie element werd geplant.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Vegetatie%20Element%3Asoortcode" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortcode">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortcode" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortcode" data-placement="right">
-                            soortcode</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">GBIFcode</a></td>
-                        <td>1...*</td>
-                        <td property="rdfs:comment">Een unieke identificator voor de soort van het vegetatie-element. </td>
-                        <td property="vann:usageNote">De soortcode wordt opgenomen onder de vorm van de 'GBIF Key'.</td>
-                        <td><a href="https://www.gbif.org/species/6">Link</a></td>
-                      </tr>
-                    
-                      <tr id="Vegetatie%20Element%3Asoortnaam%20Nederlands" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortnaamNederlands">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortnaamNederlands" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#soortnaamNederlands" data-placement="right">
-                            soortnaam Nederlands</a>
-                          </code>
-                        </td>
-                        <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">LangString</a></td>
-                        <td>0...*</td>
-                        <td property="rdfs:comment">Soortnaam in het Nederlands.</td>
-                        <td property="vann:usageNote"></td>
-                        <td></td>
-                      </tr>
-                    
-                      <tr id="Vegetatie%20Element%3Awetenschappelijke%20soortnaam" typeof="rdfs:Property" resource="http://rs.tdwg.org/dwc/terms/scientificName">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://rs.tdwg.org/dwc/terms/scientificName" data-toggle="tooltip" data-content="http://rs.tdwg.org/dwc/terms/scientificName" data-placement="right">
-                            wetenschappelijke soortnaam</a>
-                          </code>
-                        </td>
-                        <td><a href="" data-toggle="tooltip" data-content="" data-placement="right">Concept</a></td>
-                        <td>1...*</td>
-                        <td property="rdfs:comment">De wetenschappelijke soortnaam van het vegetatie-element.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>

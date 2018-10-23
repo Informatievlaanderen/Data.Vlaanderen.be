@@ -1,90 +1,95 @@
 {
   "@context": {
-    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
     "dc": "http://purl.org/dc/terms/",
     "foaf": "http://xmlns.com/foaf/0.1/",
-    "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "prov": "http://www.w3.org/ns/prov#",
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "schema": "http://schema.org/",
-    "skos": "http://www.w3.org/2004/02/skos/core#"
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "http://schema.org/"
   },
   "@graph": [
     {
-      "@id": "https://data.vlaanderen.be/ns/adres#naam",
-      "rdfs:comment": {
-        "@value": "Naam of omschrijving vh het geografisch object dat de locator aanduidt.",
+      "@id": "http://www.w3.org/ns/locn#fullAddress",
+      "rdfs:label": {
+        "@value": "volledig adres",
         "@language": "nl"
       },
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Locatienaam"
+      "@type": "rdf:Property"
+    },
+    {
+      "@id": "http://www.w3.org/ns/locn#locatorName",
+      "rdfs:label": {
+        "@value": "locatienaam",
+        "@language": "nl"
       },
-      "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Adreslocator"
-      },
+      "@type": "rdf:Property"
+    },
+    {
+      "@id": "rdfs:label",
       "rdfs:label": {
         "@value": "label",
         "@language": "nl"
       },
+      "@type": "rdf:Property"
+    },
+    {
+      "@id": "http://www.w3.org/ns/locn#addressArea",
+      "rdfs:label": {
+        "@value": "adresgebied",
+        "@language": "nl"
+      },
+      "@type": "rdf:Property"
+    },
+    {
+      "@id": "prov:wasAttributedTo",
+      "rdfs:label": {
+        "@value": "toegeschreven aan",
+        "@language": "nl"
+      },
+      "@type": "rdf:Property"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer",
+      "rdfs:domain": {
+        "@id": "http://www.w3.org/ns/locn#Address"
+      },
+      "rdfs:label": {
+        "@value": "busnummer",
+        "@language": "nl"
+      },
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:DatatypeProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "http://www.w3.org/ns/locn#locatorDesignator"
+      },
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Specialisatie van Adresvoorstelling:locatieaanduiding tbv Belgische adressen.",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      },
+      "rdfs:comment": {
+        "@value": "Officieel toegekende alfanumerieke code die wordt toegevoegd aan het huisnummer om meerdere gebouweenheden, standplaatsen, ligplaatsen of percelen te onderscheiden die eenzelfde huisnummer hebben.",
+        "@language": "nl"
       }
     },
     {
-      "@id": "https://data.vlaanderen.be/ns/adres#Locatienaam",
-      "rdfs:comment": {
-        "@value": "Naam of omschrijving vh het geografisch object dat een adreslocator aanduidt.",
-        "@language": "nl"
-      },
-      "@type": "owl:Class",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Bvb de naam ve gebouw of deel ve gebouw of de naam ve kamer in een gebouw.",
-        "@language": "nl"
-      },
+      "@id": "http://www.w3.org/ns/locn#Address",
       "rdfs:label": {
-        "@value": "Locatienaam",
+        "@value": "Adresvoorstelling",
         "@language": "nl"
       },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#Adreslocator",
-      "rdfs:comment": {
-        "@value": "Menselijk leesbare aanduiding of naam die een gebruiker of applicatie toelaat om het adres te onderscheiden van naburige adressen in de straat, de administratieve eenheid etc waarin het adres ligt.",
-        "@language": "nl"
-      },
-      "@type": "owl:Class",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "Adreslocator",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      }
+      "@type": "rdfs:Class"
     },
     {
       "@id": "https://data.vlaanderen.be/ns/adres",
-      "http://www.w3.org/2001/02pd/rec54#editor": [
-        {
-          "@id": "_:g47224064539340"
-        },
-        {
-          "@id": "_:g47224061495560"
-        }
-      ],
-      "@type": "owl:Ontology",
-      "dc:mediator": {
-        "@id": "_:g47224064382320"
-      },
-      "rdfs:label": [
+      "dc:title": [
         {
           "@value": "Adres",
           "@language": "nl"
@@ -94,33 +99,7 @@
           "@language": "en"
         }
       ],
-      "dc:contributor": [
-        {
-          "@id": "_:g47224062923080"
-        },
-        {
-          "@id": "_:g47224062380740"
-        },
-        {
-          "@id": "_:g47224064278320"
-        },
-        {
-          "@id": "_:g47224064204540"
-        },
-        {
-          "@id": "_:g47224063954640"
-        },
-        {
-          "@id": "_:g47224063915880"
-        },
-        {
-          "@id": "_:g47224062908960"
-        },
-        {
-          "@id": "_:g47224064129880"
-        }
-      ],
-      "dc:title": [
+      "rdfs:label": [
         {
           "@value": "Adres",
           "@language": "nl"
@@ -138,149 +117,196 @@
           "@id": "https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html"
         }
       ],
-      "http://purl.org/vocab/vann/preferredNamespaceUri": "https://data.vlaanderen.be/ns/adres",
-      "foaf:maker": [
-        {
-          "@id": "_:g47224060940520"
-        },
-        {
-          "@id": "_:g47224058618600"
-        },
-        {
-          "@id": "_:g47224065009600"
-        },
-        {
-          "@id": "_:g47224064782240"
-        },
-        {
-          "@id": "_:g47224064938020"
-        },
-        {
-          "@id": "_:g47224064857840"
-        },
-        {
-          "@id": "_:g47224064887960"
-        },
-        {
-          "@id": "_:g47224064700800"
-        },
-        {
-          "@id": "_:g47224055331760"
-        },
-        {
-          "@id": "_:g47224057861080"
-        }
-      ],
       "dc:issued": {
         "@value": "2017-03-31",
         "@type": "xsd:date"
+      },
+      "@type": "owl:Ontology",
+      "http://www.w3.org/2001/02pd/rec54#editor": [
+        {
+          "@id": "_:g47384033376160"
+        },
+        {
+          "@id": "_:g47384032129800"
+        }
+      ],
+      "dc:contributor": [
+        {
+          "@id": "_:g47384037463080"
+        },
+        {
+          "@id": "_:g47384039202660"
+        },
+        {
+          "@id": "_:g47384037066320"
+        },
+        {
+          "@id": "_:g47384039324820"
+        },
+        {
+          "@id": "_:g47384039439020"
+        },
+        {
+          "@id": "_:g47384039561120"
+        },
+        {
+          "@id": "_:g47384039121220"
+        },
+        {
+          "@id": "_:g47384039056200"
+        }
+      ],
+      "dc:mediator": {
+        "@id": "_:g47384036422380"
+      },
+      "http://purl.org/vocab/vann/preferredNamespaceUri": "https://data.vlaanderen.be/ns/adres",
+      "foaf:maker": [
+        {
+          "@id": "_:g47384040013860"
+        },
+        {
+          "@id": "_:g47384027705300"
+        },
+        {
+          "@id": "_:g47384040140100"
+        },
+        {
+          "@id": "_:g47384039754080"
+        },
+        {
+          "@id": "_:g47384039503180"
+        },
+        {
+          "@id": "_:g47384039620400"
+        },
+        {
+          "@id": "_:g47384039260260"
+        },
+        {
+          "@id": "_:g47384039887980"
+        },
+        {
+          "@id": "_:g47384039377680"
+        },
+        {
+          "@id": "_:g47384039143140"
+        }
+      ]
+    },
+    {
+      "@id": "http://www.w3.org/ns/locn#locatorDesignator",
+      "rdfs:label": {
+        "@value": "locatieaanduiding",
+        "@language": "nl"
+      },
+      "@type": "rdf:Property"
+    },
+    {
+      "@id": "http://www.w3.org/ns/locn#adminUnitL2",
+      "rdfs:label": {
+        "@value": "administratieve eenheid niveau 2",
+        "@language": "nl"
+      },
+      "@type": "rdf:Property"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#Gemeentenaam",
+      "rdfs:label": {
+        "@value": "Gemeentenaam",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:Class",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      },
+      "rdfs:comment": {
+        "@value": "Adrescomponent die verwijst naar de naam ve gemeente, ttz het kleinste administratieve deel van het Belgisch grondgebied waarvan de grenzen enkel door de wetgever kunnen worden gewijzigd.",
+        "@language": "nl"
       }
     },
     {
-      "@id": "https://data.vlaanderen.be/ns/adres#adreslocator",
-      "rdfs:comment": {
-        "@value": "Bijkomende adreslocator.",
+      "@id": "http://www.w3.org/ns/locn#thoroughfare",
+      "rdfs:label": {
+        "@value": "straatnaam",
         "@language": "nl"
       },
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Adreslocator"
+      "@type": "rdf:Property"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#isVerrijktMet",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
+      },
+      "rdfs:label": {
+        "@value": "is verrijkt met",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
       },
       "@type": "owl:ObjectProperty",
       "http://purl.org/vocab/vann/usageNote": {
         "@value": " ",
         "@language": "nl"
       },
-      "rdfs:domain": {
+      "rdfs:range": {
         "@id": "https://data.vlaanderen.be/ns/adres#Adresuitbreiding"
       },
+      "rdfs:comment": {
+        "@value": "Verwijzing naar een adresuitbreiding. ",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#Adres",
       "rdfs:label": {
-        "@value": "adreslocator",
+        "@value": "Belgisch Adres",
         "@language": "nl"
       },
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:Class",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "De definitie heeft betrekking op Belgische adressen. In andere landen kan een adres eventueel verwijzen naar andere geografisch objecten (niet gebouweenheid of perceel) of bestaan uit andere aanduidingen (verschillend van huisnummer en busnummer) of uit andere componenten dan straatnaam, gemeentenaam of postcode. Alternatieve adresaanduidingen dan huisnummer of busnummer (bv ingangaanduiding, trapaanduiding, verdiepaanduiding...) of een gebouwnaam of kamernaam ed zijn mogelijk dmv een associatie met adresuitbreiding. Uitwisseling van buitenlandse adressen moet gebeuren mbv het object adresvoorstelling.",
+        "@language": "nl"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      },
+      "rdfs:comment": {
+        "@value": "Informatie die toelaat om op een gestructureerde en unieke manier te verwijzen naar een gebouweenheid, een ligplaats, een standplaats of een perceel op basis van een gemeentenaam, een straatnaam, een huisnummer en eventueel een busnummer en een postcode.",
+        "@language": "nl"
       }
     },
     {
       "@id": "https://data.vlaanderen.be/ns/adres#Adresuitbreiding",
-      "rdfs:comment": {
-        "@value": "Bijkomende gegevens mbt het adres.",
-        "@language": "nl"
-      },
-      "@type": "owl:Class",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Gegevens die officieel geen deel uitmaken ve adres, bv de verdieping of de provincie",
-        "@language": "nl"
-      },
       "rdfs:label": {
         "@value": "Adresuitbreiding",
         "@language": "nl"
       },
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#Postinfo",
-      "rdfs:comment": {
-        "@value": "Adrescomponent die verwijst naar informatie toegekend door de aanbieder van de universele postdienst voor de identificatie van een groepering van adressen in een geografisch gebied voor postale doeleinden.",
-        "@language": "nl"
       },
       "@type": "owl:Class",
       "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
+        "@value": "Gegevens die officieel geen deel uitmaken ve adres, bv de verdieping of de provincie",
         "@language": "nl"
       },
-      "rdfs:label": {
-        "@value": "Postinfo",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      },
-      "rdfs:subClassOf": {
-        "@id": "prov:Entity"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#postcode",
       "rdfs:comment": {
-        "@value": "Code waarmee het geografisch gebied dat de adressen voor postale doeleinden groepeert aanduidt.",
+        "@value": "Bijkomende gegevens mbt het adres.",
         "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "xsd:string"
-      },
-      "@type": "owl:DatatypeProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Postinfo"
-      },
-      "rdfs:label": {
-        "@value": "postcode",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
       }
     },
     {
       "@id": "https://data.vlaanderen.be/ns/adres#isAfgeleidVan",
-      "rdfs:comment": {
-        "@value": "Gemeente waarvan de gemeentenaam is afgeleid.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/generiek#AdministratieveEenheid"
-      },
-      "@type": "owl:ObjectProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      },
       "rdfs:domain": {
         "@id": "https://data.vlaanderen.be/ns/adres#Gemeentenaam"
       },
@@ -290,44 +316,243 @@
       },
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#Gemeentenaam",
-      "rdfs:comment": {
-        "@value": "Adrescomponent die verwijst naar de naam ve gemeente, ttz het kleinste administratieve deel van het Belgisch grondgebied waarvan de grenzen enkel door de wetgever kunnen worden gewijzigd.",
-        "@language": "nl"
-      },
-      "@type": "owl:Class",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "Gemeentenaam",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      },
-      "rdfs:subClassOf": {
-        "@id": "prov:Entity"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#aanduiding",
-      "rdfs:comment": {
-        "@value": "Alfanumerieke code die de locator uniek identificeert binnen de straat, administratieve eenheid etc.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Locatieaanduiding"
       },
       "@type": "owl:ObjectProperty",
       "http://purl.org/vocab/vann/usageNote": {
         "@value": " ",
         "@language": "nl"
       },
+      "rdfs:range": {
+        "@id": "https://data.vlaanderen.be/ns/generiek#AdministratieveEenheid"
+      },
+      "rdfs:comment": {
+        "@value": "Gemeente waarvan de gemeentenaam is afgeleid.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "http://www.w3.org/ns/locn#poBox",
+      "rdfs:label": {
+        "@value": "postbus",
+        "@language": "nl"
+      },
+      "@type": "rdf:Property"
+    },
+    {
+      "@id": "_:g47384039108100",
+      "foaf:name": "Informatie Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#postcode",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Postinfo"
+      },
+      "rdfs:label": {
+        "@value": "postcode",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:DatatypeProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      },
+      "rdfs:comment": {
+        "@value": "Code waarmee het geografisch gebied dat de adressen voor postale doeleinden groepeert aanduidt.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#Postinfo",
+      "rdfs:label": {
+        "@value": "Postinfo",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:Class",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      },
+      "rdfs:comment": {
+        "@value": "Adrescomponent die verwijst naar informatie toegekend door de aanbieder van de universele postdienst voor de identificatie van een groepering van adressen in een geografisch gebied voor postale doeleinden.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#Standplaats",
+      "rdfs:label": {
+        "@value": "Standplaats",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:Class",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Bv plaats voor stacaravan.",
+        "@language": "nl"
+      },
+      "rdfs:subClassOf": [
+        {
+          "@id": "https://data.vlaanderen.be/ns/adres#AdresseerbaarObject"
+        },
+        {
+          "@id": "prov:Entity"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "Een door het bevoegde gemeentelijke orgaan als zodanig aangewezen terrein of gedeelte daarvan dat bestemd is voor het permanent plaatsen van een niet direct en niet duurzaam met de aarde verbonden en voor woon -, bedrijfsmatige, of recreatieve doeleinden ",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#AdresseerbaarObject",
+      "rdfs:label": {
+        "@value": "Adresseerbaar Object",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:Class",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Is abstract, ttz het type adresseerbaar object moet altijd worden opgegeven (vb gebouweenheid, perceel).",
+        "@language": "nl"
+      },
+      "rdfs:comment": {
+        "@value": "Geografisch object dat met een adres kan worden geïdentificeerd.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#Adres.status",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
+      },
+      "rdfs:label": {
+        "@value": "status",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:ObjectProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:comment": {
+        "@value": "Actuele toestand van het adres.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "skos:Concept",
+      "@type": "rdfs:Class"
+    },
+    {
+      "@id": "_:g47384026906640",
+      "foaf:name": "Informatie Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      }
+    },
+    {
+      "@id": "_:g47384039503180",
+      "foaf:mbox": {
+        "@id": "mailto:dries.beheydt@kb.vlaanderen.be"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384039472860"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Dries",
+      "foaf:lastName": "Beheydt"
+    },
+    {
+      "@id": "_:g47384039472860",
+      "foaf:name": "Informatie Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#volledigAdres",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Adresuitbreiding"
+      },
+      "rdfs:label": {
+        "@value": "volledig adres",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:DatatypeProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Vermijdt fouten tgv het opsplitsen ve adres in zijn onderdelen. Geeft de voorgeschreven volgorde vd verschillende onderdelen weer. ",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "rdf:langString"
+      },
+      "rdfs:comment": {
+        "@value": "Het complete adres in één string, al dan niet geformatteerd.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "http://www.w3.org/ns/locn#postCode",
+      "rdfs:label": {
+        "@value": "postcode",
+        "@language": "nl"
+      },
+      "@type": "rdf:Property"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#busnummer",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
+      },
+      "rdfs:label": {
+        "@value": "busnummer",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:DatatypeProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      },
+      "rdfs:comment": {
+        "@value": "Officieel toegekende alfanumerieke code die wordt toegevoegd aan het huisnummer om meerdere gebouweenheden, standplaatsen, ligplaatsen of percelen te onderscheiden die eenzelfde huisnummer hebben.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#aanduiding",
       "rdfs:domain": {
         "@id": "https://data.vlaanderen.be/ns/adres#Adreslocator"
       },
@@ -337,93 +562,143 @@
       },
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:ObjectProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Locatieaanduiding"
+      },
+      "rdfs:comment": {
+        "@value": "Alfanumerieke code die de locator uniek identificeert binnen de straat, administratieve eenheid etc.",
+        "@language": "nl"
       }
     },
     {
-      "@id": "https://data.vlaanderen.be/ns/adres#Locatieaanduiding",
-      "rdfs:comment": {
-        "@value": "Alfanumerieke code die een adreslocator uniek identificeert binnen de straat, administratieve eenheid etc.",
+      "@id": "https://data.vlaanderen.be/ns/adres#Adreslocator",
+      "rdfs:label": {
+        "@value": "Adreslocator",
         "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
       },
       "@type": "owl:Class",
       "http://purl.org/vocab/vann/usageNote": {
         "@value": " ",
         "@language": "nl"
       },
+      "rdfs:comment": {
+        "@value": "Menselijk leesbare aanduiding of naam die een gebruiker of applicatie toelaat om het adres te onderscheiden van naburige adressen in de straat, de administratieve eenheid etc waarin het adres ligt.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#Locatieaanduiding",
       "rdfs:label": {
         "@value": "Locatieaanduiding",
         "@language": "nl"
       },
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "http://www.w3.org/ns/locn#postName",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "postnaam",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer",
-      "rdfs:comment": {
-        "@value": "Alfanumerieke code officieel toegekend aan gebouweenheden, ligplaatsen, standplaatsen of percelen.",
-        "@language": "nl"
       },
-      "rdfs:range": {
-        "@id": "xsd:string"
-      },
-      "@type": "owl:DatatypeProperty",
+      "@type": "owl:Class",
       "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Specialisatie van Adresvoorstelling:locatieaanduiding tbv Belgische adressen.",
+        "@value": " ",
         "@language": "nl"
       },
+      "rdfs:comment": {
+        "@value": "Alfanumerieke code die een adreslocator uniek identificeert binnen de straat, administratieve eenheid etc.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#adreslocator",
       "rdfs:domain": {
-        "@id": "http://www.w3.org/ns/locn#Address"
+        "@id": "https://data.vlaanderen.be/ns/adres#Adresuitbreiding"
       },
       "rdfs:label": {
-        "@value": "huisnummer",
+        "@value": "adreslocator",
         "@language": "nl"
       },
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/adres"
       },
-      "rdfs:subPropertyOf": {
-        "@id": "http://www.w3.org/ns/locn#locatorDesignator"
-      }
-    },
-    {
-      "@id": "http://www.w3.org/ns/locn#Address",
-      "@type": "rdfs:Class",
-      "rdfs:label": {
-        "@value": "Adresvoorstelling",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "http://www.w3.org/ns/locn#locatorDesignator",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "locatieaanduiding",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#land",
-      "rdfs:comment": {
-        "@value": "Land waarin het adres gelegen is.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "rdf:langString"
-      },
-      "@type": "owl:DatatypeProperty",
+      "@type": "owl:ObjectProperty",
       "http://purl.org/vocab/vann/usageNote": {
         "@value": " ",
         "@language": "nl"
       },
+      "rdfs:range": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Adreslocator"
+      },
+      "rdfs:comment": {
+        "@value": "Bijkomende adreslocator.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#Locatienaam",
+      "rdfs:label": {
+        "@value": "Locatienaam",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:Class",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Bvb de naam ve gebouw of deel ve gebouw of de naam ve kamer in een gebouw.",
+        "@language": "nl"
+      },
+      "rdfs:comment": {
+        "@value": "Naam of omschrijving vh het geografisch object dat een adreslocator aanduidt.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47384039539740",
+      "foaf:name": "Informatie Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#niveau",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Adreslocator"
+      },
+      "rdfs:label": {
+        "@value": "niveau",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:ObjectProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Waarbij het niveau staat voor de geografische granulariteit vd locator: zo verwijzen locators vh type huisnummer doorgaans naar het gebouw terwijl busnummers naar een deel vh gebouw verwijzen.",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:comment": {
+        "@value": "Het niveau waarnaar de locator verwijst.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47384039042920",
+      "foaf:name": "Informatie Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#land",
       "rdfs:domain": {
         "@id": "http://www.w3.org/ns/locn#Address"
       },
@@ -434,283 +709,32 @@
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/adres"
       },
+      "@type": "owl:DatatypeProperty",
       "rdfs:subPropertyOf": {
         "@id": "http://www.w3.org/ns/locn#adminUnitL1"
-      }
-    },
-    {
-      "@id": "http://www.w3.org/ns/locn#adminUnitL1",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "administratieve eenheid niveau 1",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "http://www.w3.org/ns/locn#fullAddress",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "volledig adres",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "_:g47224061495560",
-      "schema:affiliation": {
-        "@id": "_:g47224061437740"
       },
-      "foaf:mbox": {
-        "@id": "mailto:laurens.devocht@ugent.be"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "De Vocht",
-      "foaf:firstName": "Laurens"
-    },
-    {
-      "@id": "_:g47224061437740",
-      "foaf:homepage": {
-        "@id": "http://idlab.ugent.be"
-      },
-      "foaf:name": "imec - UGent"
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#isToegekendAan",
-      "rdfs:comment": {
-        "@value": "Adresseerbaar object waaraan het adres is toegekend.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/adres#AdresseerbaarObject"
-      },
-      "@type": "owl:ObjectProperty",
       "http://purl.org/vocab/vann/usageNote": {
         "@value": " ",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
-      },
-      "rdfs:label": {
-        "@value": "is toegekend aan",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#AdresseerbaarObject",
-      "rdfs:comment": {
-        "@value": "Geografisch object dat met een adres kan worden geïdentificeerd.",
-        "@language": "nl"
-      },
-      "@type": "owl:Class",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Is abstract, ttz het type adresseerbaar object moet altijd worden opgegeven (vb gebouweenheid, perceel).",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "Adresseerbaar Object",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#Adres",
-      "rdfs:comment": {
-        "@value": "Informatie die toelaat om op een gestructureerde en unieke manier te verwijzen naar een gebouweenheid, een ligplaats, een standplaats of een perceel op basis van een gemeentenaam, een straatnaam, een huisnummer en eventueel een busnummer en een postcode.",
-        "@language": "nl"
-      },
-      "@type": "owl:Class",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "De definitie heeft betrekking op Belgische adressen. In andere landen kan een adres eventueel verwijzen naar andere geografisch objecten (niet gebouweenheid of perceel) of bestaan uit andere aanduidingen (verschillend van huisnummer en busnummer) of uit andere componenten dan straatnaam, gemeentenaam of postcode. Alternatieve adresaanduidingen dan huisnummer of busnummer (bv ingangaanduiding, trapaanduiding, verdiepaanduiding...) of een gebouwnaam of kamernaam ed zijn mogelijk dmv een associatie met adresuitbreiding. Uitwisseling van buitenlandse adressen moet gebeuren mbv het object adresvoorstelling.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "Belgisch Adres",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      },
-      "rdfs:subClassOf": {
-        "@id": "prov:Entity"
-      }
-    },
-    {
-      "@id": "skos:Concept",
-      "@type": "rdfs:Class"
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#heeftPostinfo",
-      "rdfs:comment": {
-        "@value": "Postinfocomponent van het adres.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Postinfo"
-      },
-      "@type": "owl:ObjectProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
-      },
-      "rdfs:label": {
-        "@value": "heeft postinfo",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#volledigAdres",
-      "rdfs:comment": {
-        "@value": "Het complete adres in één string, al dan niet geformatteerd.",
         "@language": "nl"
       },
       "rdfs:range": {
         "@id": "rdf:langString"
       },
-      "@type": "owl:DatatypeProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Vermijdt fouten tgv het opsplitsen ve adres in zijn onderdelen. Geeft de voorgeschreven volgorde vd verschillende onderdelen weer. ",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Adresuitbreiding"
-      },
-      "rdfs:label": {
-        "@value": "volledig adres",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "http://www.w3.org/ns/locn#thoroughfare",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "straatnaam",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "http://www.w3.org/ns/locn#addressArea",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "adresgebied",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#Adres.status",
       "rdfs:comment": {
-        "@value": "Actuele toestand van het adres.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "skos:Concept"
-      },
-      "@type": "owl:ObjectProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
-      },
-      "rdfs:label": {
-        "@value": "status",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "prov:wasAttributedTo",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "toegeschreven aan",
+        "@value": "Land waarin het adres gelegen is.",
         "@language": "nl"
       }
     },
     {
-      "@id": "rdfs:label",
-      "@type": "rdf:Property",
+      "@id": "http://www.w3.org/ns/locn#adminUnitL1",
       "rdfs:label": {
-        "@value": "label",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#heeftStraatnaam",
-      "rdfs:comment": {
-        "@value": "Straatnaamcomponent van het adres.",
+        "@value": "administratieve eenheid niveau 1",
         "@language": "nl"
       },
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Straatnaam"
-      },
-      "@type": "owl:ObjectProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
-      },
-      "rdfs:label": {
-        "@value": "heeft straatnaam",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#Straatnaam",
-      "rdfs:comment": {
-        "@value": "Adrescomponent met de naam die officieel werd toegekend aan een straat (baan, doorgang, plein) of aan een gehucht en waaraan adressen kunnen zijn gekoppeld.",
-        "@language": "nl"
-      },
-      "@type": "owl:Class",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "Straatnaam",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      },
-      "rdfs:subClassOf": {
-        "@id": "prov:Entity"
-      }
+      "@type": "rdf:Property"
     },
     {
       "@id": "https://data.vlaanderen.be/ns/adres#Locatieaanduiding.aanduiding",
-      "rdfs:comment": {
-        "@value": "Alfanumerieke code waarmee het identificerend deel van een adreslocator wordt aangeduid.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "rdfs:Literal"
-      },
-      "@type": "owl:DatatypeProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      },
       "rdfs:domain": {
         "@id": "https://data.vlaanderen.be/ns/adres#Locatieaanduiding"
       },
@@ -720,743 +744,55 @@
       },
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#Straatnaam.status",
-      "rdfs:comment": {
-        "@value": "Actuele toestand van de straatnaam.",
-        "@language": "nl"
       },
-      "rdfs:range": {
-        "@id": "skos:Concept"
-      },
-      "@type": "owl:ObjectProperty",
+      "@type": "owl:DatatypeProperty",
       "http://purl.org/vocab/vann/usageNote": {
         "@value": " ",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Straatnaam"
-      },
-      "rdfs:label": {
-        "@value": "status",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "http://www.w3.org/ns/locn#locatorName",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "locatienaam",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#homoniemToevoeging",
-      "rdfs:comment": {
-        "@value": "Toevoeging om dubbele straatnamen (straatnamen met dezelfde naam maar andere ligging in de gemeente en eigen adressen) van elkaar te onderscheiden.",
         "@language": "nl"
       },
       "rdfs:range": {
         "@id": "xsd:string"
       },
-      "@type": "owl:DatatypeProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Straatnaam"
-      },
-      "rdfs:label": {
-        "@value": "homoniem toevoeging",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "http://www.w3.org/ns/locn#poBox",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "postbus",
-        "@language": "nl"
-      }
-    },
-    {
-      "@id": "_:g47224064875320",
-      "foaf:homepage": {
-        "@id": "https://www.lne.be/"
-      },
-      "foaf:name": "LNE"
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#isVerrijktMet",
       "rdfs:comment": {
-        "@value": "Verwijzing naar een adresuitbreiding. ",
+        "@value": "Alfanumerieke code waarmee het identificerend deel van een adreslocator wordt aangeduid.",
         "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Adresuitbreiding"
-      },
-      "@type": "owl:ObjectProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
-      },
-      "rdfs:label": {
-        "@value": "is verrijkt met",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
       }
     },
     {
-      "@id": "https://data.vlaanderen.be/ns/adres#busnummer",
-      "rdfs:comment": {
-        "@value": "Officieel toegekende alfanumerieke code die wordt toegevoegd aan het huisnummer om meerdere gebouweenheden, standplaatsen, ligplaatsen of percelen te onderscheiden die eenzelfde huisnummer hebben.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "xsd:string"
-      },
-      "@type": "owl:DatatypeProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
-      },
-      "rdfs:label": {
-        "@value": "busnummer",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#Locatieaanduiding.type",
-      "rdfs:comment": {
-        "@value": "Aard vd locatieaanduiding.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "skos:Concept"
-      },
-      "@type": "owl:ObjectProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Locatieaanduiding"
-      },
-      "rdfs:label": {
-        "@value": "type",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "_:g47224062908960",
-      "schema:affiliation": {
-        "@id": "_:g47224063884700"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:communication@cirb.brussels"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "Du Mortier",
-      "foaf:firstName": "Francois"
-    },
-    {
-      "@id": "_:g47224063884700",
-      "foaf:homepage": {
-        "@id": "http://cirb.brussels/"
-      },
-      "foaf:name": "CIRB"
-    },
-    {
-      "@id": "_:g47224062923080",
-      "schema:affiliation": {
-        "@id": "_:g47224062807040"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:Barbara.vanbroeckhoven@kb.vlaanderen.be"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "Van Broeckhoven",
-      "foaf:firstName": "Barbara"
-    },
-    {
-      "@id": "_:g47224062807040",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      },
-      "foaf:name": "Informatie Vlaanderen"
-    },
-    {
-      "@id": "_:g47224063923460",
-      "foaf:homepage": {
-        "@id": "http://vlm.be"
-      },
-      "foaf:name": "VLM"
-    },
-    {
-      "@id": "_:g47224064988300",
-      "foaf:homepage": {
-        "@id": "http://proxml.be"
-      },
-      "foaf:name": "ProXML"
-    },
-    {
-      "@id": "_:g47224064539340",
-      "schema:affiliation": {
-        "@id": "_:g47224064553700"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:erik.mannens@ugent.be"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "Mannens",
-      "foaf:firstName": "Erik"
-    },
-    {
-      "@id": "_:g47224064553700",
-      "foaf:homepage": {
-        "@id": "http://idlab.ugent.be"
-      },
-      "foaf:name": "imec - UGent"
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#heeftGemeentenaam",
-      "rdfs:comment": {
-        "@value": "Gemeentenaamcomponent van het adres.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Gemeentenaam"
-      },
-      "@type": "owl:ObjectProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
-      },
-      "rdfs:label": {
-        "@value": "heeft gemeentenaam",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "_:g47224064129880",
-      "schema:affiliation": {
-        "@id": "_:g47224064138320"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:johan.declercq@vea.be"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "Declercq",
-      "foaf:firstName": "Johan"
-    },
-    {
-      "@id": "_:g47224064138320",
-      "foaf:homepage": {
-        "@id": "http://vea.be"
-      },
-      "foaf:name": "VEA"
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#verwijstNaar",
-      "rdfs:comment": {
-        "@value": "Adres waarvan de adresvoorstelling is afgeleid.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
-      },
-      "@type": "owl:ObjectProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Dit kan enkel voor Belgische adressen aangezien onder adres een Belgisch adres wordt verstaan.",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "http://www.w3.org/ns/locn#Address"
-      },
-      "rdfs:label": {
-        "@value": "verwijst naar",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "_:g47224062380740",
-      "schema:affiliation": {
-        "@id": "_:g47224062288480"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:veerle.beyaert@kb.vlaanderen.be"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "Beyaert",
-      "foaf:firstName": "Veerle"
-    },
-    {
-      "@id": "_:g47224062288480",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      },
-      "foaf:name": "Informatie Vlaanderen"
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#gemeentenaam",
-      "rdfs:comment": {
-        "@value": "Gemeentenaam vh adres.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "rdf:langString"
-      },
-      "@type": "owl:DatatypeProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "http://www.w3.org/ns/locn#Address"
-      },
-      "rdfs:label": {
-        "@value": "gemeentenaam",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "http://www.w3.org/ns/locn#postName"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#niveau",
-      "rdfs:comment": {
-        "@value": "Het niveau waarnaar de locator verwijst.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "skos:Concept"
-      },
-      "@type": "owl:ObjectProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Waarbij het niveau staat voor de geografische granulariteit vd locator: zo verwijzen locators vh type huisnummer doorgaans naar het gebouw terwijl busnummers naar een deel vh gebouw verwijzen.",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Adreslocator"
-      },
-      "rdfs:label": {
-        "@value": "niveau",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "_:g47224064278320",
-      "schema:affiliation": {
-        "@id": "_:g47224064293940"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:tine.vandecasteele@vea.be"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "Vandecasteele",
-      "foaf:firstName": "Tine"
-    },
-    {
-      "@id": "_:g47224064293940",
-      "foaf:homepage": {
-        "@id": "http://vea.be"
-      },
-      "foaf:name": "VEA"
-    },
-    {
-      "@id": "_:g47224060940520",
-      "schema:affiliation": {
-        "@id": "_:g47224064646200"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:bjorn.devidts@kb.vlaanderen.be"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "De Vidts",
-      "foaf:firstName": "Björn"
-    },
-    {
-      "@id": "_:g47224064646200",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      },
-      "foaf:name": "Informatie Vlaanderen"
-    },
-    {
-      "@id": "_:g47224058618600",
-      "schema:affiliation": {
-        "@id": "_:g47224065045020"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:dries.beheydt@kb.vlaanderen.be"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "Beheydt",
-      "foaf:firstName": "Dries"
-    },
-    {
-      "@id": "_:g47224065045020",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      },
-      "foaf:name": "Informatie Vlaanderen"
-    },
-    {
-      "@id": "_:g47224064204540",
-      "schema:affiliation": {
-        "@id": "_:g47224064220600"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:hans.vliebergh@kb.vlaanderen.be"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "Vliebergh",
-      "foaf:firstName": "Hans"
-    },
-    {
-      "@id": "_:g47224064220600",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      },
-      "foaf:name": "Informatie Vlaanderen"
-    },
-    {
-      "@id": "_:g47224063968300",
-      "foaf:homepage": {
-        "@id": "http://vea.be"
-      },
-      "foaf:name": "VEA"
-    },
-    {
-      "@id": "_:g47224063954640",
-      "schema:affiliation": {
-        "@id": "_:g47224063968300"
-      },
+      "@id": "_:g47384037463080",
       "foaf:mbox": {
         "@id": "mailto:luk.verhelst@vea.be"
       },
+      "schema:affiliation": {
+        "@id": "_:g47384037436080"
+      },
       "@type": "foaf:person",
-      "foaf:lastName": "Verhelst",
-      "foaf:firstName": "Luk"
+      "foaf:firstName": "Luk",
+      "foaf:lastName": "Verhelst"
     },
     {
-      "@id": "_:g47224064858440",
+      "@id": "_:g47384037436080",
+      "foaf:name": "VEA",
+      "foaf:homepage": {
+        "@id": "http://vea.be"
+      }
+    },
+    {
+      "@id": "_:g47384039732020",
+      "foaf:name": "Informatie Vlaanderen",
       "foaf:homepage": {
         "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      },
-      "foaf:name": "Informatie Vlaanderen"
-    },
-    {
-      "@id": "_:g47224065009600",
-      "schema:affiliation": {
-        "@id": "_:g47224064988300"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:paul@proxml.be"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "Hermans",
-      "foaf:firstName": "Paul"
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer",
-      "rdfs:comment": {
-        "@value": "Officieel toegekende alfanumerieke code die wordt toegevoegd aan het huisnummer om meerdere gebouweenheden, standplaatsen, ligplaatsen of percelen te onderscheiden die eenzelfde huisnummer hebben.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "xsd:string"
-      },
-      "@type": "owl:DatatypeProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Specialisatie van Adresvoorstelling:locatieaanduiding tbv Belgische adressen.",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "http://www.w3.org/ns/locn#Address"
-      },
-      "rdfs:label": {
-        "@value": "busnummer",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "http://www.w3.org/ns/locn#locatorDesignator"
       }
     },
     {
-      "@id": "_:g47224064716820",
+      "@id": "_:g47384039189420",
+      "foaf:name": "VLM",
       "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      },
-      "foaf:name": "Informatie Vlaanderen"
-    },
-    {
-      "@id": "http://www.w3.org/ns/locn#adminUnitL2",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "administratieve eenheid niveau 2",
-        "@language": "nl"
+        "@id": "http://vlm.be"
       }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#officieelToegekend",
-      "rdfs:comment": {
-        "@value": "Geeft aan of het adres officieel door de adresbeheerder is toegekend.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "xsd:boolean"
-      },
-      "@type": "owl:DatatypeProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Een adres is niet-officieel wanneer het bestaan ervan niet gekend was vanuit de administratieve procedures, maar pas nadat nadat het feitelijk is vastgesteld op het terrein.",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
-      },
-      "rdfs:label": {
-        "@value": "officieel toegekend",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "_:g47224057861080",
-      "schema:affiliation": {
-        "@id": "_:g47224057425640"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:raf.buyle@kb.vlaanderen.be"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "Buyle",
-      "foaf:firstName": "Raf"
-    },
-    {
-      "@id": "_:g47224057425640",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      },
-      "foaf:name": "Informatie Vlaanderen"
-    },
-    {
-      "@id": "_:g47224064782240",
-      "schema:affiliation": {
-        "@id": "_:g47224064797060"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:ruben.capiau@kb.vlaanderen.be"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "Capiau",
-      "foaf:firstName": "Ruben"
-    },
-    {
-      "@id": "_:g47224064797060",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      },
-      "foaf:name": "Informatie Vlaanderen"
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#Locatienaam.type",
-      "rdfs:comment": {
-        "@value": "Aard vh geografisch object.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "skos:Concept"
-      },
-      "@type": "owl:ObjectProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/adres#Locatienaam"
-      },
-      "rdfs:label": {
-        "@value": "type",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#Standplaats",
-      "rdfs:comment": {
-        "@value": "Een door het bevoegde gemeentelijke orgaan als zodanig aangewezen terrein of gedeelte daarvan dat bestemd is voor het permanent plaatsen van een niet direct en niet duurzaam met de aarde verbonden en voor woon -, bedrijfsmatige, of recreatieve doeleinden ",
-        "@language": "nl"
-      },
-      "@type": "owl:Class",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Bv plaats voor stacaravan.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "Standplaats",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/adres"
-      },
-      "rdfs:subClassOf": [
-        {
-          "@id": "https://data.vlaanderen.be/ns/adres#AdresseerbaarObject"
-        },
-        {
-          "@id": "prov:Entity"
-        }
-      ]
-    },
-    {
-      "@id": "_:g47224064938020",
-      "schema:affiliation": {
-        "@id": "_:g47224064955200"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:dieter.depaepe@ugent.be"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "De Paepe",
-      "foaf:firstName": "Dieter"
-    },
-    {
-      "@id": "_:g47224064955200",
-      "foaf:homepage": {
-        "@id": "http://idlab.ugent.be"
-      },
-      "foaf:name": "imec - UGent"
-    },
-    {
-      "@id": "_:g47224064382320",
-      "foaf:homepage": {
-        "@id": "https://data.vlaanderen.be"
-      },
-      "foaf:name": "Data Vlaanderen",
-      "foaf:mbox": {
-        "@id": "mailto:oslo@kb.vlaanderen.be"
-      }
-    },
-    {
-      "@id": "_:g47224063915880",
-      "schema:affiliation": {
-        "@id": "_:g47224063923460"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:Annita.Stevens@vlm.be"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "Stevens",
-      "foaf:firstName": "Annita"
-    },
-    {
-      "@id": "_:g47224064857840",
-      "schema:affiliation": {
-        "@id": "_:g47224064875320"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:geert.vanhaute@lne.vlaanderen.be"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "Van Haute",
-      "foaf:firstName": "Geert"
-    },
-    {
-      "@id": "_:g47224064887960",
-      "schema:affiliation": {
-        "@id": "_:g47224064858440"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:Siegfried.Vanlishout@kb.vlaanderen.be"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "Vanlishout",
-      "foaf:firstName": "Ziggy"
-    },
-    {
-      "@id": "_:g47224064700800",
-      "schema:affiliation": {
-        "@id": "_:g47224064716820"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:Geert.Thijs@kb.vlaanderen.be"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "Thijs",
-      "foaf:firstName": "Geert"
-    },
-    {
-      "@id": "_:g47224055331760",
-      "schema:affiliation": {
-        "@id": "_:g47224053801080"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:Bert.Van.Nuffelen@tenforce.com"
-      },
-      "@type": "foaf:person",
-      "foaf:lastName": "Van Nuffelen",
-      "foaf:firstName": "Bert"
     },
     {
       "@id": "https://data.vlaanderen.be/ns/adres#positie",
-      "rdfs:comment": {
-        "@value": "Positie van een karakeristiek punt dat de positie van het adres vertegenwoordigt volgens een bepaalde specificatie en inclusief informatie over de herkomst van de positie.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/generiek#GeografischePositie"
-      },
-      "@type": "owl:ObjectProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Moet een punt zijn.",
-        "@language": "nl"
-      },
       "rdfs:domain": {
         "@id": "https://data.vlaanderen.be/ns/adres#Adres"
       },
@@ -1467,24 +803,387 @@
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/adres"
       },
+      "@type": "owl:ObjectProperty",
       "rdfs:subPropertyOf": {
         "@id": "http://www.w3.org/ns/locn#geometry"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#adresIsGelegenIn",
-      "rdfs:comment": {
-        "@value": "Plaats of gebied waarbinnen het Adres gelegen is.",
+      },
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Moet een punt zijn.",
         "@language": "nl"
       },
       "rdfs:range": {
-        "@id": "dc:Location"
+        "@id": "https://data.vlaanderen.be/ns/generiek#GeografischePositie"
+      },
+      "rdfs:comment": {
+        "@value": "Positie van een karakeristiek punt dat de positie van het adres vertegenwoordigt volgens een bepaalde specificatie en inclusief informatie over de herkomst van de positie.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#Ligplaats",
+      "rdfs:label": {
+        "@value": "Ligplaats",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:Class",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Bv plaats voor woonboot.",
+        "@language": "nl"
+      },
+      "rdfs:subClassOf": [
+        {
+          "@id": "https://data.vlaanderen.be/ns/adres#AdresseerbaarObject"
+        },
+        {
+          "@id": "prov:Entity"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "Een door het bevoegde gemeentelijke orgaan als zodanig aangewezen plaats in het water al dan niet aangevuld met een op de oever aanwezig terrein of een gedeelte daarvan, die bestemd is voor het permanent afmeren van een voor woon-, bedrijfsmatige of recreatieve doeleinden geschikt vaartuig.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47384039303460",
+      "foaf:name": "CIRB",
+      "foaf:homepage": {
+        "@id": "http://cirb.brussels/"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#officieelToegekend",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
+      },
+      "rdfs:label": {
+        "@value": "officieel toegekend",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:DatatypeProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Een adres is niet-officieel wanneer het bestaan ervan niet gekend was vanuit de administratieve procedures, maar pas nadat nadat het feitelijk is vastgesteld op het terrein.",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "xsd:boolean"
+      },
+      "rdfs:comment": {
+        "@value": "Geeft aan of het adres officieel door de adresbeheerder is toegekend.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer",
+      "rdfs:domain": {
+        "@id": "http://www.w3.org/ns/locn#Address"
+      },
+      "rdfs:label": {
+        "@value": "huisnummer",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:DatatypeProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "http://www.w3.org/ns/locn#locatorDesignator"
+      },
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Specialisatie van Adresvoorstelling:locatieaanduiding tbv Belgische adressen.",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      },
+      "rdfs:comment": {
+        "@value": "Alfanumerieke code officieel toegekend aan gebouweenheden, ligplaatsen, standplaatsen of percelen.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47384039606120",
+      "foaf:name": "Informatie Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      }
+    },
+    {
+      "@id": "_:g47384040013860",
+      "foaf:mbox": {
+        "@id": "mailto:dieter.depaepe@ugent.be"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384039991620"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Dieter",
+      "foaf:lastName": "De Paepe"
+    },
+    {
+      "@id": "_:g47384039991620",
+      "foaf:name": "imec - UGent",
+      "foaf:homepage": {
+        "@id": "http://idlab.ugent.be"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#Locatieaanduiding.type",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Locatieaanduiding"
+      },
+      "rdfs:label": {
+        "@value": "type",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
       },
       "@type": "owl:ObjectProperty",
       "http://purl.org/vocab/vann/usageNote": {
         "@value": " ",
         "@language": "nl"
       },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:comment": {
+        "@value": "Aard vd locatieaanduiding.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#Locatienaam.type",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Locatienaam"
+      },
+      "rdfs:label": {
+        "@value": "type",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:ObjectProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:comment": {
+        "@value": "Aard vh geografisch object.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#naam",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Adreslocator"
+      },
+      "rdfs:label": {
+        "@value": "label",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:ObjectProperty",
+      "rdfs:range": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Locatienaam"
+      },
+      "rdfs:comment": {
+        "@value": "Naam of omschrijving vh het geografisch object dat de locator aanduidt.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47384039229920",
+      "foaf:name": "Tenforce",
+      "foaf:homepage": {
+        "@id": "http://tenforce.com"
+      }
+    },
+    {
+      "@id": "_:g47384033376160",
+      "foaf:mbox": {
+        "@id": "mailto:laurens.devocht@ugent.be"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384032981980"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Laurens",
+      "foaf:lastName": "De Vocht"
+    },
+    {
+      "@id": "_:g47384032981980",
+      "foaf:name": "imec - UGent",
+      "foaf:homepage": {
+        "@id": "http://idlab.ugent.be"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#verwijstNaar",
+      "rdfs:domain": {
+        "@id": "http://www.w3.org/ns/locn#Address"
+      },
+      "rdfs:label": {
+        "@value": "verwijst naar",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:ObjectProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Dit kan enkel voor Belgische adressen aangezien onder adres een Belgisch adres wordt verstaan.",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
+      },
+      "rdfs:comment": {
+        "@value": "Adres waarvan de adresvoorstelling is afgeleid.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#Straatnaam",
+      "rdfs:label": {
+        "@value": "Straatnaam",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:Class",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      },
+      "rdfs:comment": {
+        "@value": "Adrescomponent met de naam die officieel werd toegekend aan een straat (baan, doorgang, plein) of aan een gehucht en waaraan adressen kunnen zijn gekoppeld.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47384027705300",
+      "foaf:mbox": {
+        "@id": "mailto:Siegfried.Vanlishout@kb.vlaanderen.be"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384026906640"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Ziggy",
+      "foaf:lastName": "Vanlishout"
+    },
+    {
+      "@id": "_:g47384039202660",
+      "foaf:mbox": {
+        "@id": "mailto:Annita.Stevens@vlm.be"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384039189420"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Annita",
+      "foaf:lastName": "Stevens"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#Straatnaam.status",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Straatnaam"
+      },
+      "rdfs:label": {
+        "@value": "status",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:ObjectProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:comment": {
+        "@value": "Actuele toestand van de straatnaam.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47384040140100",
+      "foaf:mbox": {
+        "@id": "mailto:bjorn.devidts@kb.vlaanderen.be"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384040109440"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Björn",
+      "foaf:lastName": "De Vidts"
+    },
+    {
+      "@id": "_:g47384040109440",
+      "foaf:name": "Informatie Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      }
+    },
+    {
+      "@id": "_:g47384037066320",
+      "foaf:mbox": {
+        "@id": "mailto:johan.declercq@vea.be"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384036699460"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Johan",
+      "foaf:lastName": "Declercq"
+    },
+    {
+      "@id": "_:g47384036699460",
+      "foaf:name": "VEA",
+      "foaf:homepage": {
+        "@id": "http://vea.be"
+      }
+    },
+    {
+      "@id": "_:g47384039754080",
+      "foaf:mbox": {
+        "@id": "mailto:raf.buyle@kb.vlaanderen.be"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384039732020"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Raf",
+      "foaf:lastName": "Buyle"
+    },
+    {
+      "@id": "_:g47384035719200",
+      "foaf:name": "imec - UGent",
+      "foaf:homepage": {
+        "@id": "http://idlab.ugent.be"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#adresIsGelegenIn",
       "rdfs:domain": {
         "@id": "https://data.vlaanderen.be/ns/adres#Adresuitbreiding"
       },
@@ -1494,64 +1193,145 @@
       },
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:ObjectProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "dc:Location"
+      },
+      "rdfs:comment": {
+        "@value": "Plaats of gebied waarbinnen het Adres gelegen is.",
+        "@language": "nl"
       }
     },
     {
-      "@id": "https://data.vlaanderen.be/ns/adres#Ligplaats",
-      "rdfs:comment": {
-        "@value": "Een door het bevoegde gemeentelijke orgaan als zodanig aangewezen plaats in het water al dan niet aangevuld met een op de oever aanwezig terrein of een gedeelte daarvan, die bestemd is voor het permanent afmeren van een voor woon-, bedrijfsmatige of recre",
-        "@language": "nl"
-      },
-      "@type": "owl:Class",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Bv plaats voor woonboot.",
-        "@language": "nl"
+      "@id": "https://data.vlaanderen.be/ns/adres#heeftPostinfo",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
       },
       "rdfs:label": {
-        "@value": "Ligplaats",
+        "@value": "heeft postinfo",
         "@language": "nl"
       },
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/adres"
       },
-      "rdfs:subClassOf": [
-        {
-          "@id": "https://data.vlaanderen.be/ns/adres#AdresseerbaarObject"
-        },
-        {
-          "@id": "prov:Entity"
-        }
-      ]
-    },
-    {
-      "@id": "http://www.w3.org/ns/locn#postCode",
-      "@type": "rdf:Property",
-      "rdfs:label": {
-        "@value": "postcode",
+      "@type": "owl:ObjectProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Postinfo"
+      },
+      "rdfs:comment": {
+        "@value": "Postinfocomponent van het adres.",
         "@language": "nl"
       }
     },
     {
-      "@id": "_:g47224053801080",
-      "foaf:homepage": {
-        "@id": "http://tenforce.com"
+      "@id": "https://data.vlaanderen.be/ns/adres#gemeentenaam",
+      "rdfs:domain": {
+        "@id": "http://www.w3.org/ns/locn#Address"
       },
-      "foaf:name": "Tenforce"
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/adres#postnaam",
-      "rdfs:comment": {
-        "@value": "Naam waarmee het geografisch gebied dat de adressen voor postale doeleinden groepeert kan worden aangeduid.",
+      "rdfs:label": {
+        "@value": "gemeentenaam",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:DatatypeProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "http://www.w3.org/ns/locn#postName"
+      },
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
         "@language": "nl"
       },
       "rdfs:range": {
         "@id": "rdf:langString"
       },
-      "@type": "owl:DatatypeProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Typisch de namen van vroegere gemeenten waarmee het gebied samenvalt.",
+      "rdfs:comment": {
+        "@value": "Gemeentenaam vh adres.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "http://www.w3.org/ns/locn#postName",
+      "rdfs:label": {
+        "@value": "postnaam",
         "@language": "nl"
       },
+      "@type": "rdf:Property"
+    },
+    {
+      "@id": "_:g47384039324820",
+      "foaf:mbox": {
+        "@id": "mailto:communication@cirb.brussels"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384039303460"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Francois",
+      "foaf:lastName": "Du Mortier"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#isToegekendAan",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
+      },
+      "rdfs:label": {
+        "@value": "is toegekend aan",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:ObjectProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "https://data.vlaanderen.be/ns/adres#AdresseerbaarObject"
+      },
+      "rdfs:comment": {
+        "@value": "Adresseerbaar object waaraan het adres is toegekend.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#heeftStraatnaam",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
+      },
+      "rdfs:label": {
+        "@value": "heeft straatnaam",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:ObjectProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Straatnaam"
+      },
+      "rdfs:comment": {
+        "@value": "Straatnaamcomponent van het adres.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#postnaam",
       "rdfs:domain": {
         "@id": "https://data.vlaanderen.be/ns/adres#Postinfo"
       },
@@ -1561,22 +1341,67 @@
       },
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:DatatypeProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Typisch de namen van vroegere gemeenten waarmee het gebied samenvalt.",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "rdf:langString"
+      },
+      "rdfs:comment": {
+        "@value": "Naam waarmee het geografisch gebied dat de adressen voor postale doeleinden groepeert kan worden aangeduid.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47384039347580",
+      "foaf:name": "Informatie Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      }
+    },
+    {
+      "@id": "_:g47384039377680",
+      "foaf:mbox": {
+        "@id": "mailto:ruben.capiau@kb.vlaanderen.be"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384039347580"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Ruben",
+      "foaf:lastName": "Capiau"
+    },
+    {
+      "@id": "_:g47384039439020",
+      "foaf:mbox": {
+        "@id": "mailto:tine.vandecasteele@vea.be"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384039417540"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Tine",
+      "foaf:lastName": "Vandecasteele"
+    },
+    {
+      "@id": "_:g47384039417540",
+      "foaf:name": "VEA",
+      "foaf:homepage": {
+        "@id": "http://vea.be"
+      }
+    },
+    {
+      "@id": "_:g47384039857960",
+      "foaf:name": "ProXML",
+      "foaf:homepage": {
+        "@id": "http://proxml.be"
       }
     },
     {
       "@id": "https://data.vlaanderen.be/ns/adres#huisnummer",
-      "rdfs:comment": {
-        "@value": "Alfanumerieke code officieel toegekend aan gebouweenheden, ligplaatsen, standplaatsen of percelen.",
-        "@language": "nl"
-      },
-      "rdfs:range": {
-        "@id": "xsd:string"
-      },
-      "@type": "owl:DatatypeProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": " ",
-        "@language": "nl"
-      },
       "rdfs:domain": {
         "@id": "https://data.vlaanderen.be/ns/adres#Adres"
       },
@@ -1586,6 +1411,181 @@
       },
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:DatatypeProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      },
+      "rdfs:comment": {
+        "@value": "Alfanumerieke code officieel toegekend aan gebouweenheden, ligplaatsen, standplaatsen of percelen.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47384039561120",
+      "foaf:mbox": {
+        "@id": "mailto:veerle.beyaert@kb.vlaanderen.be"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384039539740"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Veerle",
+      "foaf:lastName": "Beyaert"
+    },
+    {
+      "@id": "_:g47384032129800",
+      "foaf:mbox": {
+        "@id": "mailto:erik.mannens@ugent.be"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384035719200"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Erik",
+      "foaf:lastName": "Mannens"
+    },
+    {
+      "@id": "_:g47384039620400",
+      "foaf:mbox": {
+        "@id": "mailto:Geert.Thijs@kb.vlaanderen.be"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384039606120"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Geert",
+      "foaf:lastName": "Thijs"
+    },
+    {
+      "@id": "_:g47384039121220",
+      "foaf:mbox": {
+        "@id": "mailto:hans.vliebergh@kb.vlaanderen.be"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384039108100"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Hans",
+      "foaf:lastName": "Vliebergh"
+    },
+    {
+      "@id": "_:g47384039129340",
+      "foaf:name": "LNE",
+      "foaf:homepage": {
+        "@id": "https://www.lne.be/"
+      }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#homoniemToevoeging",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Straatnaam"
+      },
+      "rdfs:label": {
+        "@value": "homoniemtoevoeging",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:DatatypeProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      },
+      "rdfs:comment": {
+        "@value": "Toevoeging om dubbele straatnamen (straatnamen met dezelfde naam maar andere ligging in de gemeente en eigen adressen) van elkaar te onderscheiden.",
+        "@language": "nl"
+      }
+    },
+    {
+      "@id": "_:g47384039143140",
+      "foaf:mbox": {
+        "@id": "mailto:geert.vanhaute@lne.vlaanderen.be"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384039129340"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Geert",
+      "foaf:lastName": "Van Haute"
+    },
+    {
+      "@id": "_:g47384039260260",
+      "foaf:mbox": {
+        "@id": "mailto:Bert.Van.Nuffelen@tenforce.com"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384039229920"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Bert",
+      "foaf:lastName": "Van Nuffelen"
+    },
+    {
+      "@id": "_:g47384039887980",
+      "foaf:mbox": {
+        "@id": "mailto:paul@proxml.be"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384039857960"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Paul",
+      "foaf:lastName": "Hermans"
+    },
+    {
+      "@id": "_:g47384036422380",
+      "foaf:mbox": {
+        "@id": "mailto:oslo@kb.vlaanderen.be"
+      },
+      "foaf:name": "Data Vlaanderen",
+      "foaf:homepage": {
+        "@id": "https://data.vlaanderen.be"
+      }
+    },
+    {
+      "@id": "_:g47384039056200",
+      "foaf:mbox": {
+        "@id": "mailto:Barbara.vanbroeckhoven@kb.vlaanderen.be"
+      },
+      "schema:affiliation": {
+        "@id": "_:g47384039042920"
+      },
+      "@type": "foaf:person",
+      "foaf:firstName": "Barbara",
+      "foaf:lastName": "Van Broeckhoven"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/adres#heeftGemeentenaam",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Adres"
+      },
+      "rdfs:label": {
+        "@value": "heeft gemeentenaam",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/adres"
+      },
+      "@type": "owl:ObjectProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": " ",
+        "@language": "nl"
+      },
+      "rdfs:range": {
+        "@id": "https://data.vlaanderen.be/ns/adres#Gemeentenaam"
+      },
+      "rdfs:comment": {
+        "@value": "Gemeentenaamcomponent van het adres.",
+        "@language": "nl"
       }
     }
   ]
