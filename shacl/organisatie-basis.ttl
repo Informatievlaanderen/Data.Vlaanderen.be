@@ -1,4 +1,3 @@
-<<<<<<< HEAD:site-skeleton/shacl/organisatie-basis.ttl
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
 @prefix qb:      <http://purl.org/linked-data/cube#> .
 <https://data.vlaanderen.be/shacl/organisatie-basis#PlaatsShape>
@@ -15,7 +14,7 @@
 		sh:name "plaatsnaam" ;
 		sh:description "Naam van de plaats of van het gebied." ;
 		sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
-		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -90,7 +89,7 @@
 		sh:name "naam" ;
 		sh:description "Naam vh formeel kader." ;
 		sh:path <http://purl.org/dc/terms/title> ;
-		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -160,7 +159,7 @@
 		sh:name "wettelijkeNaam" ;
 		sh:description "Wettelijk geregistreerde naam vd organisatie." ;
 		sh:path <http://www.w3.org/ns/regorg#legalName> ;
-		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -401,13 +400,13 @@
 		sh:name "alternatieveNaam" ;
 		sh:description "Andere naam waaronder de organisatie bekend is." ;
 		sh:path <http://www.w3.org/2004/02/skos/core#altLabel> ;
-		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
 	] ;
 	sh:property [
 		sh:name "beschrijving" ;
 		sh:description "Beschrijving van de organisatie." ;
 		sh:path <http://purl.org/dc/terms/description> ;
-		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -420,19 +419,19 @@
 		sh:name "contactinfo" ;
 		sh:description "Informatie zoals email, telefoon... die toelaat de Organisatie te contacteren." ;
 		sh:path <http://schema.org/contactPoint> ;
-		sh:class <http://schema.org/ContactPoint> ;
+		sh:datatype <http://schema.org/ContactPoint> ;
 	] ;
 	sh:property [
 		sh:name "doel" ;
 		sh:description "Bestaansreden vd organisatie." ;
 		sh:path <http://www.w3.org/ns/org#purpose> ;
-		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
 	] ;
 	sh:property [
 		sh:name "homepage" ;
 		sh:description "Adres vd homepage van de website vd organisatie." ;
 		sh:path <http://xmlns.com/foaf/0.1/homepage> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
@@ -457,475 +456,8 @@
 		sh:name "voorkeursnaam" ;
 		sh:description "Naam waarmee de organisatie bij voorkeur wordt aangeduid." ;
 		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
-		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+		sh:datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
-
-=======
-@prefix sh:      <http://www.w3.org/ns/shacl#> .
-@prefix qb:      <http://purl.org/linked-data/cube#> .
-<https://data.vlaanderen.be/shacl/organisatie-basis#PlaatsShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://purl.org/dc/terms/Location> ;
-	sh:property [
-		sh:name "geometrie" ;
-		sh:description "Geometrie van de plaats of het gebied." ;
-		sh:path <http://www.w3.org/ns/locn#geometry> ;
-		sh:class <http://www.w3.org/ns/locn#Geometry> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "plaatsnaam" ;
-		sh:description "Naam van de plaats of van het gebied." ;
-		sh:path <http://www.w3.org/2000/01/rdf-schema#label> ;
-		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#VervangingShape>
-	a sh:NodeShape ;
-	sh:targetClass <https://data.vlaanderen.be/ns/organisatie#Vervanging> ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#FusieShape>
-	a sh:NodeShape ;
-	sh:targetClass <https://data.vlaanderen.be/ns/organisatie#Fusie> ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#SplitsingShape>
-	a sh:NodeShape ;
-	sh:targetClass <https://data.vlaanderen.be/ns/organisatie#Splitsing> ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#HoedanigheidShape>
-	a sh:NodeShape ;
-	sh:targetClass <https://data.vlaanderen.be/ns/organisatie#Hoedanigheid> ;
-	sh:property [
-		sh:name "contactinfo" ;
-		sh:description "Informatie zoals email, telefoon die toelaat de hoedanigheid te contacteren." ;
-		sh:path <https://data.vlaanderen.be/ns/organisatie#contactinfo> ;
-		sh:class <http://schema.org/ContactPoint> ;
-	] ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#PositieShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://www.w3.org/ns/org#Post> ;
-	sh:property [
-		sh:name "isPositieIn" ;
-		sh:description "Organisatie waar de positie bestaat." ;
-		sh:path <http://www.w3.org/ns/org#postIn> ;
-		sh:class <http://www.w3.org/ns/org#Organization> ;
-	] ;
-	sh:property [
-		sh:name "rapporteertAan" ;
-		sh:description "Verwijst naar de positie waaraan een positie verantwoording aflegt." ;
-		sh:path <http://www.w3.org/ns/org#reportsTo> ;
-		sh:class <http://www.w3.org/ns/org#Post> ;
-	] ;
-	sh:property [
-		sh:name "wordtIngevuldDoor" ;
-		sh:description "Geeft aan welke agent een positie heeft (typisch bij de organisatie waar de positie is gedefinieerd)." ;
-		sh:path <http://www.w3.org/ns/org#heldBy> ;
-		sh:class <http://purl.org/dc/terms/Agent> ;
-	] ;
-	sh:property [
-		sh:name "rol" ;
-		sh:description "Geeft de aard weer vd functie." ;
-		sh:path <http://www.w3.org/ns/org#role> ;
-		sh:class <http://www.w3.org/ns/org#Role> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#ContactInfoShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://schema.org/ContactPoint> ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#FormeelKaderShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://purl.org/vocab/cpsv#FormalFramework> ;
-	sh:property [
-		sh:name "naam" ;
-		sh:description "Naam vh formeel kader." ;
-		sh:path <http://purl.org/dc/terms/title> ;
-		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#StopzettingShape>
-	a sh:NodeShape ;
-	sh:targetClass <https://data.vlaanderen.be/ns/organisatie#Stopzetting> ;
-	sh:property [
-		sh:name "redenStopzetting" ;
-		sh:description "Reden waarom de organisatie is stopgezet." ;
-		sh:path <https://data.vlaanderen.be/ns/organisatie#redenStopzetting> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#OprichtingShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.europa.eu/m8g/FoundationEvent> ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#PubliekeOrganisatieShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.europa.eu/m8g/PublicOrganisation> ;
-	sh:property [
-		sh:name "werkingsgebied" ;
-		sh:description "Administratief gebied dat de Publieke Organisatie dekt." ;
-		sh:path <http://purl.org/dc/terms/spatial> ;
-		sh:class <http://purl.org/dc/terms/Location> ;
-	] ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#GeregistreerdeOrganisatieShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://www.w3.org/ns/regorg#RegisteredOrganization> ;
-	sh:property [
-		sh:name "rechtspersoonlijkheid" ;
-		sh:description "Geeft aan of de rechtspersoonlijkheid van de geregistreerde organisatie deze is van een natuurlijk persoon of van een rechtspersoon. " ;
-		sh:path <https://data.vlaanderen.be/ns/organisatie#rechtspersoonlijkheid> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "rechtstoestand" ;
-		sh:description "Status van de geregistreerde organisatie." ;
-		sh:path <https://data.vlaanderen.be/ns/organisatie#rechtstoestand> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "rechtsvorm" ;
-		sh:description "Juridisch statuut van de geregistreerde organisatie." ;
-		sh:path <https://data.vlaanderen.be/ns/organisatie#rechtsvorm> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "registratie" ;
-		sh:description "Identificator dat de organisatie verkreeg bij registratie." ;
-		sh:path <http://www.w3.org/ns/regorg#registration> ;
-		sh:class <http://www.w3.org/ns/adms#Identifier> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "wettelijkeNaam" ;
-		sh:description "Wettelijk geregistreerde naam vd organisatie." ;
-		sh:path <http://www.w3.org/ns/regorg#legalName> ;
-		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#SamenwerkingsverbandShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://www.w3.org/ns/org#OrganizationalCollaboration> ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#VeranderingsgebeurtenisShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://www.w3.org/ns/org#ChangeEvent> ;
-	sh:property [
-		sh:name "heeftOorspronkelijkeOrganisatie" ;
-		sh:description "Organisatie voor deze de verandering onderging." ;
-		sh:path <http://www.w3.org/ns/org#originalOrganization> ;
-		sh:class <http://www.w3.org/ns/org#Organization> ;
-	] ;
-	sh:property [
-		sh:name "heeftResulterendeOrganisatie" ;
-		sh:description "Organisatie die uit de verandering voortkwam." ;
-		sh:path <http://www.w3.org/ns/org#resultingOrganization> ;
-		sh:class <http://www.w3.org/ns/org#Organization> ;
-	] ;
-	sh:property [
-		sh:name "vindtPlaatsBinnen" ;
-		sh:description "Verwijst naar het formeel kader dat tot het veranderingsmoment heeft geleid." ;
-		sh:path <http://data.europa.eu/m8g/hasFormalFramework> ;
-		sh:class <http://purl.org/vocab/cpsv#FormalFramework> ;
-	] ;
-	sh:property [
-		sh:name "datum" ;
-		sh:description "Datum waarop de gebeurtenis plaatsvond." ;
-		sh:path <http://purl.org/dc/terms/date> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#dateTime> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#PersoonShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://www.w3.org/ns/person#Person> ;
-	sh:property [
-		sh:name "heeftStandplaats" ;
-		sh:description "Verwijzing naar een vestiging waar een persoon gestationeerd is." ;
-		sh:path <http://www.w3.org/ns/org#basedAt> ;
-		sh:class <http://www.w3.org/ns/org#Site> ;
-	] ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#AdresseerbaarObjectShape>
-	a sh:NodeShape ;
-	sh:targetClass <https://data.vlaanderen.be/ns/adres#AdresseerbaarObject> ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#VestigingShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://www.w3.org/ns/org#Site> ;
-	sh:property [
-		sh:name "bestaatUit" ;
-		sh:description "Adresseerbaar object dat met de vestiging overeenstemt." ;
-		sh:path <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ;
-		sh:class <https://data.vlaanderen.be/ns/adres#AdresseerbaarObject> ;
-	] ;
-	sh:property [
-		sh:name "vestigingsAdres" ;
-		sh:description "Adres vd vestiging." ;
-		sh:path <http://www.w3.org/ns/org#siteAddress> ;
-		sh:class <http://schema.org/ContactPoint> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#LidmaatschapShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://www.w3.org/ns/org#Membership> ;
-	sh:property [
-		sh:name "isLidVan" ;
-		sh:description "Agent die lid is (van een organisatie)." ;
-		sh:path <http://www.w3.org/ns/org#member> ;
-		sh:class <http://purl.org/dc/terms/Agent> ;
-	] ;
-	sh:property [
-		sh:name "isLidVan" ;
-		sh:description "Organisatie waarop het lidmaatschap (van een agent) betrekking heeft." ;
-		sh:path <http://www.w3.org/ns/org#organization> ;
-		sh:class <http://www.w3.org/ns/org#Organization> ;
-	] ;
-	sh:property [
-		sh:name "lidVanTot" ;
-		sh:description "Periode waarin de agent lid was vd organisatie." ;
-		sh:path <http://www.w3.org/ns/org#memberDuring> ;
-		sh:class <http://data.europa.eu/m8g/PeriodOfTime> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "rol" ;
-		sh:description "Rol die de agent vervult als lid van de organisatie." ;
-		sh:path <http://www.w3.org/ns/org#role> ;
-		sh:class <http://www.w3.org/ns/org#Role> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#AgentShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://purl.org/dc/terms/Agent> ;
-	sh:property [
-		sh:name "isLidVan" ;
-		sh:description "Niet nader bepaald lidmaatschap van een agent van een organisatie." ;
-		sh:path <http://www.w3.org/ns/org#memberOf> ;
-		sh:class <http://www.w3.org/ns/org#Organization> ;
-	] ;
-	sh:property [
-		sh:name "isLidVan" ;
-		sh:description "Lidmaatschap van een agent (van een organisatie)." ;
-		sh:path <http://www.w3.org/ns/org#hasMembership> ;
-		sh:class <http://www.w3.org/ns/org#Membership> ;
-	] ;
-	sh:property [
-		sh:name "rapporteertAan" ;
-		sh:description "Verwijst naar de Agent waaraan de Agent verantwoording aflegt." ;
-		sh:path <http://www.w3.org/ns/org#reportsTo> ;
-		sh:class <http://purl.org/dc/terms/Agent> ;
-	] ;
-	sh:property [
-		sh:name "houdt" ;
-		sh:description "Geeft aan welke positie een agent heeft (typisch bij de organisatie waar de positie is gedefinieerd)." ;
-		sh:path <http://www.w3.org/ns/org#holds> ;
-		sh:class <http://www.w3.org/ns/org#Post> ;
-	] ;
-	sh:property [
-		sh:name "heeftGeregistreerdeOrganisatie" ;
-		sh:description "Verwijst naar de geregistreerde organisatie waarmee de agent geassocieerd is." ;
-		sh:path <http://www.w3.org/ns/regorg#hasRegisteredOrganization> ;
-		sh:class <http://www.w3.org/ns/regorg#RegisteredOrganization> ;
-	] ;
-	sh:property [
-		sh:name "isHoofdVan" ;
-		sh:description "Verwijst naar de organisatie waaraan een agent aan het hoofd staat of leiding geeft." ;
-		sh:path <http://www.w3.org/ns/org#headOf> ;
-		sh:class <http://www.w3.org/ns/org#Organization> ;
-	] ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#FormeleOrganisatieShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://www.w3.org/ns/org#FormalOrganization> ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#OrganisatieEenheidShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://www.w3.org/ns/org#OrganizationalUnit> ;
-	sh:property [
-		sh:name "isEenheidVan" ;
-		sh:description "Organisatie waarvan de organisatie-eenheid deel uitmaakt." ;
-		sh:path <http://www.w3.org/ns/org#unitOf> ;
-		sh:class <http://www.w3.org/ns/org#Organization> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/organisatie-basis#OrganisatieShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://www.w3.org/ns/org#Organization> ;
-	sh:property [
-		sh:name "heeft" ;
-		sh:description "Verwijst naar een positie in de organisatie." ;
-		sh:path <http://www.w3.org/ns/org#hasPost> ;
-		sh:class <http://www.w3.org/ns/org#Post> ;
-	] ;
-	sh:property [
-		sh:name "heeftGeregistreerdeVestiging" ;
-		sh:description "Verwijst naar de wettelijk geregistreerde vestiging van de organisatie. Is voor een formele organisatie doorgaans verplicht." ;
-		sh:path <http://www.w3.org/ns/org#hasRegisteredSite> ;
-		sh:class <http://www.w3.org/ns/org#Site> ;
-	] ;
-	sh:property [
-		sh:name "isVeranderdDoor" ;
-		sh:description "Verwijst naar het veranderingsmoment dat deze organisatie heeft veranderd." ;
-		sh:path <http://www.w3.org/ns/org#changedBy> ;
-		sh:class <http://www.w3.org/ns/org#ChangeEvent> ;
-	] ;
-	sh:property [
-		sh:name "isSuborganisatieVan" ;
-		sh:description "Organisatie die deze organisatie omvat." ;
-		sh:path <http://www.w3.org/ns/org#subOrganizationOf> ;
-		sh:class <http://www.w3.org/ns/org#Organization> ;
-	] ;
-	sh:property [
-		sh:name "heeftSuborganisatie" ;
-		sh:description "Organisatie die dochter of onderdeel is van de organisatie." ;
-		sh:path <http://www.w3.org/ns/org#hasSubOrganization> ;
-		sh:class <http://www.w3.org/ns/org#Organization> ;
-	] ;
-	sh:property [
-		sh:name "heeftPrimaireVestiging" ;
-		sh:description "Verwijst naar de belangrijkste vestiging van de organisatie, niet noodzakelijk het formele hoofdkwartier maar wel de vestiging waarop de organisatie standaard kan worden gecontacteerd." ;
-		sh:path <http://www.w3.org/ns/org#hasPrimarySite> ;
-		sh:class <http://www.w3.org/ns/org#Site> ;
-	] ;
-	sh:property [
-		sh:name "heeftEenheid" ;
-		sh:description "Verwijst naar een organisatie-eenheid die deel uitmaakt van de organisatie, bv een afdeling." ;
-		sh:path <http://www.w3.org/ns/org#hasUnit> ;
-		sh:class <http://www.w3.org/ns/org#OrganizationalUnit> ;
-	] ;
-	sh:property [
-		sh:name "isGeassocieerdMet" ;
-		sh:description "Niet nader bepaalde relatie met een andere organisatie." ;
-		sh:path <http://www.w3.org/ns/org#linkedTo> ;
-		sh:class <http://www.w3.org/ns/org#Organization> ;
-	] ;
-	sh:property [
-		sh:name "isHetResultaatVan" ;
-		sh:description "Verwijst naar het veranderingsmoment dat tot de huidige organisatie heeft geleid." ;
-		sh:path <http://www.w3.org/ns/org#resultedFrom> ;
-		sh:class <http://www.w3.org/ns/org#ChangeEvent> ;
-	] ;
-	sh:property [
-		sh:name "heeftVestiging" ;
-		sh:description "Verwijst naar een plek waar de organisatie op een of andere manier, desnoods indirect, aanwezig is." ;
-		sh:path <http://www.w3.org/ns/org#hasSite> ;
-		sh:class <http://www.w3.org/ns/org#Site> ;
-	] ;
-	sh:property [
-		sh:name "activiteit" ;
-		sh:description "Type activiteit die door de organisatie wordt uitgeoefend." ;
-		sh:path <http://www.w3.org/ns/regorg#orgActivity> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "alternatieveNaam" ;
-		sh:description "Andere naam waaronder de organisatie bekend is." ;
-		sh:path <http://www.w3.org/2004/02/skos/core#altLabel> ;
-		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
-	] ;
-	sh:property [
-		sh:name "beschrijving" ;
-		sh:description "Beschrijving van de organisatie." ;
-		sh:path <http://purl.org/dc/terms/description> ;
-		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "classificatie" ;
-		sh:description "Rangschikking van de organisatie in een classificatiesysteem." ;
-		sh:path <http://www.w3.org/ns/org#classification> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
-	] ;
-	sh:property [
-		sh:name "contactinfo" ;
-		sh:description "Informatie zoals email, telefoon... die toelaat de Organisatie te contacteren." ;
-		sh:path <http://schema.org/contactPoint> ;
-		sh:class <http://schema.org/ContactPoint> ;
-	] ;
-	sh:property [
-		sh:name "doel" ;
-		sh:description "Bestaansreden vd organisatie." ;
-		sh:path <http://www.w3.org/ns/org#purpose> ;
-		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
-	] ;
-	sh:property [
-		sh:name "homepage" ;
-		sh:description "Adres vd homepage van de website vd organisatie." ;
-		sh:path <http://xmlns.com/foaf/0.1/homepage> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "logo" ;
-		sh:description "Verwijzing naar het logo vd organisatie." ;
-		sh:path <http://schema.org/logo> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "status" ;
-		sh:description "Toestand vd organisatie." ;
-		sh:path <http://www.w3.org/ns/regorg#orgStatus> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
-	] ;
-	sh:property [
-		sh:name "type" ;
-		sh:description "Soort organisatie." ;
-		sh:path <http://www.w3.org/ns/regorg#orgType> ;
-		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
-	] ;
-	sh:property [
-		sh:name "voorkeursnaam" ;
-		sh:description "Naam waarmee de organisatie bij voorkeur wordt aangeduid." ;
-		sh:path <http://www.w3.org/2004/02/skos/core#prefLabel> ;
-		sh:class <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
->>>>>>> b8d5e14aa9b07c9d8ff3d86822bef67d1bfed797:site-skeleton/shacl/Organisatie-SHACL.ttl
