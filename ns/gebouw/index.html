@@ -45,7 +45,7 @@
                         
                         <dt>Laatste aanpassing</dt>
 
-                        <dd>2018-10-23
+                        <dd>2018-11-06
                         </dd>
                         
 
@@ -353,11 +353,11 @@
                                 <div class="region region--no-space-top typography" id="summary"> 
 				
 <p>
-Het vocabularium OSLO-Gebouw focust op termen die betrekking hebben op gebouwen en gebouweenheden. Vertrekpunt vormden termen gedefinieerd voor deze entiteiten in de <a href="https://overheid.vlaanderen.be/communicatiefiche-bouwsteen-vlaamse-basisregisters-gebouwenregister">Vlaamse Basisregisters</a> (VBR). Echter gebeurde ook afstemming met <a href="https://inspire.ec.europa.eu/data-specifications/2892">INSPIRE-Building</a> en met de federale werkgroep rond gebouwen (GT-BUNI).
+Het vocabularium OSLO-Gebouw focust op termen die betrekking hebben op gebouwen en gebouweenheden. Vertrekpunt vormden termen gedefinieerd voor deze entiteiten in het <a href="https://overheid.vlaanderen.be/producten-diensten/gebouwen-adressenregister">Gebouwenregister</a> (VBR). Echter gebeurde ook afstemming met <a href="https://inspire.ec.europa.eu/data-specifications/2892">INSPIRE-Building</a> en met de federale werkgroep rond gebouwen (GT-BUNI).
 </p><p>
-Bij de afstemming op INSPIRE vormden de termen van het VBR het uitgangspunt, d.w.z. naast de termen die verplicht worden door INSPIRE werd enkel voor de overblijvende VBR-termen een equivalent gezocht. INSPIRE-building bevat veel meer termen dan deze die we voor OSLO-Gebouw hebben weerhouden. VBR beperkt zich bv. tot 2D-gebouwgeometrie terwijl INSPIRE ook terminologie heeft voor 2.5D of 3D gebouwgeometrie.  
+Bij de afstemming op INSPIRE vormden de termen van het Gebouwenregister het uitgangspunt, d.w.z. naast de termen die verplicht worden door INSPIRE werd enkel voor de overblijvende Gebouwenregister-termen een equivalent gezocht. INSPIRE-building bevat veel meer termen dan deze die we voor OSLO-Gebouw hebben weerhouden. OSLO-Gebouw beperkt zich bv. tot een 2D/2.5D-gebouwgeometrie terwijl INSPIRE ook 3D-gebouwgeometrieën heeft uitgemodelleerd.  
 </p><p>
-Officieel bestaat er nog geen RDF-vocabularium waarop we de termen konden mappen of waarop de termen in dit vocabularium een aanvulling konden vormen. Niettemin voerden we bij de afstemming op INSPIRE-Building al een tentatieve mapping uit op de <a href="https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies">RDF-termen</a>  in ontwikkeling.
+Officieel bestaat er nog geen RDF-vocabularium waarop we de termen konden mappen of waarop de termen in dit vocabularium een aanvulling konden vormen. Niettemin voerden we bij de afstemming op INSPIRE-Building al een tentatieve mapping uit op de <a href="https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies">RDF-termen</a> in ontwikkeling.
 </p>
 
 				</div>
@@ -375,11 +375,11 @@ Officieel bestaat er nog geen RDF-vocabularium waarop we de termen konden mappen
 <p>Dit document is de specificatie van een vocabularium en biedt een gedeeld begrippenkader voor bepaalde concepten.</p>
 
 <p>
-Dit document werd gepubliceerd door de werkgroep Gebouwen- en Adressenregister als Ontwerpdocument. Dit impliceert dat de standaard die in dit document beschreven wordt in ontwikkeling is. Bijgevolg kan dit document op elk moment aangepast, vervangen of achterhaald worden.
+Dit document werd gepubliceerd door de werkgroep Gebouwen- en Adressenregister als ontwerpdocument. Dit impliceert dat de standaard die in dit document beschreven wordt in ontwikkeling is. Bijgevolg kan dit document op elk moment aangepast, vervangen of achterhaald worden.
 Dit document is bedoeld om uit te groeien tot een standaard in het beschreven domein.
 </p>
 
-<p>Feedback op deze specificatie kan gegeven worden als een topic in onze <a href="https://github.com/Informatievlaanderen/OSLO-Public-Discussion">publieke reviewdiscussielijst</a>.</p>
+<p>Feedback op deze specificatie kan gegeven worden als een topic in onze <a href="https://github.com/Informatievlaanderen/OSLO-Discussion">publieke-review-discussielijst</a>.</p>
 
 				</div>
                             </section>
@@ -464,9 +464,9 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                             
                                             <a href="#aantalOndergrondseVerdiepingen" rel="property">aantal ondergrondse verdiepingen (Gebouw)</a> |
                                             
-                                            <a href="#Gebouw.adres" rel="property">adres (Gebouw)</a> |
-                                            
                                             <a href="#Gebouweenheid.adres" rel="property">adres (Gebouweenheid)</a> |
+                                            
+                                            <a href="#Gebouw.adres" rel="property">adres (Gebouw)</a> |
                                             
                                             <a href="#bestaatUit" rel="property">bestaat uit (Gebouw)</a> |
                                             
@@ -480,11 +480,11 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                             
                                             <a href="#gebouwnaam" rel="property">gebouwnaam (Gebouw)</a> |
                                             
-                                            <a href="#geometrie" rel="property">geometrie (2D Gebouwgeometrie)</a> |
+                                            <a href="#Gebouweenheid.geometrie" rel="property">geometrie (Gebouweenheid)</a> |
                                             
                                             <a href="#Gebouw.geometrie" rel="property">geometrie (Gebouw)</a> |
                                             
-                                            <a href="#Gebouweenheid.geometrie" rel="property">geometrie (Gebouweenheid)</a> |
+                                            <a href="#geometrie" rel="property">geometrie (2D Gebouwgeometrie)</a> |
                                             
                                             <a href="#horizontaleReferentie" rel="property">horizontale referentie (2D Gebouwgeometrie)</a> |
                                             
@@ -750,42 +750,6 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                 
                                 
                                 <div class="region region--no-space-top">
-                                    <h3 class="h3"  id="Gebouw.adres">Eigenschap <em>adres</em></h3>
-                                    <table class="definition">
-                                        <tbody>
-                                          <tr>
-                                            <th>Type</th>
-                                            <td>Eigenschap</td>
-                                          </tr>
-                                          
-                                          <tr>
-                                            <th>URI</th>
-                                            <td><code>https://data.vlaanderen.be/ns/gebouw#Gebouw.adres</code></td>
-                                          </tr>
-                                          
-                                          <tr>
-                                            <th>Domein</th>
-                                            <td><code>https://data.vlaanderen.be/ns/gebouw#Gebouw</code></td>
-                                          </tr>
-                                          
-                                          
-                                          <tr>
-                                            <th>Bereik</th>
-                                            <td><code>http://www.w3.org/ns/locn#Address</code></td>
-                                          </tr>
-                                          
-                                          
-                                          <tr>
-                                            <th>Definitie</th>
-                                            <td>Adres van het gebouw.</td>
-                                          </tr>
-                                          
-                                        </tbody>
-                                    </table>
-                                </div>
-                                
-                                
-                                <div class="region region--no-space-top">
                                     <h3 class="h3"  id="Gebouweenheid.adres">Eigenschap <em>adres</em></h3>
                                     <table class="definition">
                                         <tbody>
@@ -814,6 +778,42 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           <tr>
                                             <th>Definitie</th>
                                             <td>Adres vd gebouweenheid.</td>
+                                          </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3"  id="Gebouw.adres">Eigenschap <em>adres</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Eigenschap</td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>https://data.vlaanderen.be/ns/gebouw#Gebouw.adres</code></td>
+                                          </tr>
+                                          
+                                          <tr>
+                                            <th>Domein</th>
+                                            <td><code>https://data.vlaanderen.be/ns/gebouw#Gebouw</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Bereik</th>
+                                            <td><code>http://www.w3.org/ns/locn#Address</code></td>
+                                          </tr>
+                                          
+                                          
+                                          <tr>
+                                            <th>Definitie</th>
+                                            <td>Adres van het gebouw.</td>
                                           </tr>
                                           
                                         </tbody>
@@ -1043,7 +1043,7 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                 
                                 
                                 <div class="region region--no-space-top">
-                                    <h3 class="h3"  id="geometrie">Eigenschap <em>geometrie</em></h3>
+                                    <h3 class="h3"  id="Gebouweenheid.geometrie">Eigenschap <em>geometrie</em></h3>
                                     <table class="definition">
                                         <tbody>
                                           <tr>
@@ -1053,12 +1053,12 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           
                                           <tr>
                                             <th>URI</th>
-                                            <td><code>https://data.vlaanderen.be/ns/gebouw#geometrie</code></td>
+                                            <td><code>https://data.vlaanderen.be/ns/gebouw#Gebouweenheid.geometrie</code></td>
                                           </tr>
                                           
                                           <tr>
                                             <th>Domein</th>
-                                            <td><code>https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie</code></td>
+                                            <td><code>https://data.vlaanderen.be/ns/gebouw#Gebouweenheid</code></td>
                                           </tr>
                                           
                                           
@@ -1070,7 +1070,7 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           
                                           <tr>
                                             <th>Definitie</th>
-                                            <td>2D geometrische voorstelling van het gebouw.</td>
+                                            <td>2D geometrische voorstelling van de gebouweenheid.</td>
                                           </tr>
                                           
                                         </tbody>
@@ -1115,7 +1115,7 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                 
                                 
                                 <div class="region region--no-space-top">
-                                    <h3 class="h3"  id="Gebouweenheid.geometrie">Eigenschap <em>geometrie</em></h3>
+                                    <h3 class="h3"  id="geometrie">Eigenschap <em>geometrie</em></h3>
                                     <table class="definition">
                                         <tbody>
                                           <tr>
@@ -1125,12 +1125,12 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           
                                           <tr>
                                             <th>URI</th>
-                                            <td><code>https://data.vlaanderen.be/ns/gebouw#Gebouweenheid.geometrie</code></td>
+                                            <td><code>https://data.vlaanderen.be/ns/gebouw#geometrie</code></td>
                                           </tr>
                                           
                                           <tr>
                                             <th>Domein</th>
-                                            <td><code>https://data.vlaanderen.be/ns/gebouw#Gebouweenheid</code></td>
+                                            <td><code>https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie</code></td>
                                           </tr>
                                           
                                           
@@ -1142,7 +1142,7 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
                                           
                                           <tr>
                                             <th>Definitie</th>
-                                            <td>2D geometrische voorstelling van de gebouweenheid.</td>
+                                            <td>2D geometrische voorstelling van het gebouw.</td>
                                           </tr>
                                           
                                         </tbody>
