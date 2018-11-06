@@ -2,116 +2,151 @@
   "@context": {
     "owl": "http://www.w3.org/2002/07/owl#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "dc": "http://purl.org/dc/terms/",
-    "foaf": "http://xmlns.com/foaf/0.1/",
     "prov": "http://www.w3.org/ns/prov#",
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "dc": "http://purl.org/dc/terms/",
     "schema": "http://schema.org/",
-    "skos": "http://www.w3.org/2004/02/skos/core#"
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   },
   "@graph": [
     {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#default",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:comment": {
-        "@value": "Geometrie die moet worden gebruikt bv bij voorstelling op kaart.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "default",
-        "@language": "nl"
-      },
+      "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouweenheid.status",
       "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie"
+        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouweenheid"
       },
       "rdfs:range": {
-        "@id": "xsd:boolean"
+        "@id": "https://data.vlaanderen.be/ns/gebouw#GebouweenheidstatusWaarde"
+      },
+      "rdfs:comment": {
+        "@value": "Fase van de levensloop waarin de gebouweenheid zich bevindt.",
+        "@language": "nl"
       },
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie",
-      "@type": "owl:Class",
-      "rdfs:comment": {
-        "@value": "Geometrie van het gebouw en metadata over welk deel van het gebouw door de geometrie wordt voorgesteld en hoe deze werd bepaald.",
-        "@language": "nl"
       },
       "rdfs:label": {
-        "@value": "2D Gebouwgeometrie",
+        "@value": "gebouweenheidstatus",
+        "@language": "nl"
+      },
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouweenheid",
+      "rdfs:comment": {
+        "@value": "De kleinste eenheid binnen een gebouw die geschikt is voor woon-, bedrijfsmatige, of recreatieve doeleinden en die ontsloten wordt via een eigen afsluitbare toegang vanaf de openbare weg, een erf of een gedeelde circulatieruimte. Een gebouweenheid is in functioneel opzicht zelfstandig. Daarnaast kan een gebouweenheid ook een gemeenschappelijk deel zijn.",
         "@language": "nl"
       },
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
+      },
+      "rdfs:label": {
+        "@value": "Gebouweenheid",
+        "@language": "nl"
+      },
+      "rdfs:subClassOf": [
+        {
+          "@id": "prov:Entity"
+        },
+        {
+          "@id": "https://data.vlaanderen.be/ns/adres#AdresseerbaarObject"
+        }
+      ],
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#GebouweenheidstatusWaarde",
+      "rdfs:comment": {
+        "@value": "http://example.com/TODO",
+        "@language": "nl"
+      },
+      "owl:oneOf": {
+        "@list": [
+
+        ]
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "http://example.com/TODO",
+        "@language": "nl"
+      },
+      "@type": "owl:Class"
     },
     {
       "@id": "https://data.vlaanderen.be/ns/gebouw",
-      "@type": "owl:Ontology",
       "http://purl.org/vocab/vann/preferredNamespaceUri": "https://data.vlaanderen.be/ns/gebouw",
-      "rdfs:label": [
+      "foaf:maker": [
         {
-          "@value": "Gebouw",
-          "@language": "nl"
+          "@id": "_:g47235996209040"
         },
         {
-          "@value": "Building",
-          "@language": "en"
+          "@id": "_:g47235989286180"
+        },
+        {
+          "@id": "_:g47235996450080"
+        },
+        {
+          "@id": "_:g47235996377220"
+        },
+        {
+          "@id": "_:g47235986109540"
+        },
+        {
+          "@id": "_:g47235996492920"
+        },
+        {
+          "@id": "_:g47235996205460"
+        },
+        {
+          "@id": "_:g47235996288140"
+        },
+        {
+          "@id": "_:g47235996091020"
+        },
+        {
+          "@id": "_:g47235996327720"
         }
       ],
       "dc:mediator": {
-        "@id": "_:g47042775602220"
+        "@id": "_:g47235995972300"
       },
-      "dc:title": [
+      "dc:contributor": [
         {
-          "@value": "Gebouw",
-          "@language": "nl"
+          "@id": "_:g47235995314780"
         },
+        {
+          "@id": "_:g47235995854600"
+        },
+        {
+          "@id": "_:g47235995454700"
+        },
+        {
+          "@id": "_:g47235993182780"
+        },
+        {
+          "@id": "_:g47235993605720"
+        },
+        {
+          "@id": "_:g47235995528800"
+        },
+        {
+          "@id": "_:g47235995781700"
+        },
+        {
+          "@id": "_:g47235995703380"
+        }
+      ],
+      "rdfs:label": [
         {
           "@value": "Building",
           "@language": "en"
-        }
-      ],
-      "http://www.w3.org/2001/02pd/rec54#editor": [
-        {
-          "@id": "_:g47042771908180"
         },
         {
-          "@id": "_:g47042775758980"
-        }
-      ],
-      "foaf:maker": [
-        {
-          "@id": "_:g47042775786320"
-        },
-        {
-          "@id": "_:g47042776022440"
-        },
-        {
-          "@id": "_:g47042768755680"
-        },
-        {
-          "@id": "_:g47042769553360"
-        },
-        {
-          "@id": "_:g47042775663820"
-        },
-        {
-          "@id": "_:g47042766658300"
-        },
-        {
-          "@id": "_:g47042775908600"
-        },
-        {
-          "@id": "_:g47042775532980"
-        },
-        {
-          "@id": "_:g47042771434400"
-        },
-        {
-          "@id": "_:g47042776035060"
+          "@value": "Gebouw",
+          "@language": "nl"
         }
       ],
       "dc:license": [
@@ -122,910 +157,875 @@
           "@id": "https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html"
         }
       ],
-      "dc:contributor": [
+      "@type": "owl:Ontology",
+      "dc:title": [
         {
-          "@id": "_:g47042775093020"
+          "@value": "Building",
+          "@language": "en"
         },
         {
-          "@id": "_:g47042772346640"
+          "@value": "Gebouw",
+          "@language": "nl"
+        }
+      ],
+      "http://www.w3.org/2001/02pd/rec54#editor": [
+        {
+          "@id": "_:g47235988290640"
         },
         {
-          "@id": "_:g47042775177520"
-        },
-        {
-          "@id": "_:g47042775410460"
-        },
-        {
-          "@id": "_:g47042775008820"
-        },
-        {
-          "@id": "_:g47042772296480"
-        },
-        {
-          "@id": "_:g47042775049840"
-        },
-        {
-          "@id": "_:g47042775493360"
+          "@id": "_:g47235996047780"
         }
       ]
     },
     {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw.adres",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": {
-        "@value": "Adres van het gebouw.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "adres",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
-      },
-      "rdfs:range": {
-        "@id": "http://www.w3.org/ns/locn#Address"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw",
-      "@type": "owl:Class",
-      "rdfs:comment": {
-        "@value": "Een gesloten en/of overdekt, bovengronds of ondergronds bouwwerk, dat dient of bestemd is, ofwel om mensen, dieren en voorwerpen onder te brengen, ofwel om economische goederen te vervaardigen of diensten te verstrekken. Een gebouw verwijst naar gelijk welke structuur die op blijvende wijze op een terrein opgetrokken of gebouwd wordt.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "Gebouw",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      },
-      "rdfs:subClassOf": {
-        "@id": "prov:Entity"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#2DGeometrieMethodeWaarde",
-      "@type": "owl:Class",
-      "rdfs:comment": {
-        "@value": "http://example.com/TODO",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "http://example.com/TODO",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      },
-      "owl:oneOf": {
-        "@list": [
-
-        ]
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#gebouwnaam",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:comment": {
-        "@value": "Naam van het gebouw.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "gebouwnaam",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
-      },
-      "rdfs:range": {
-        "@id": "rdf:langString"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#methode",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": {
-        "@value": "Beschrijving van de manier waarop de geometrie aangemaakt werd.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "methode",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie"
-      },
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#2DGeometrieMethodeWaarde"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "_:g47042775177520",
-      "@type": "foaf:person",
-      "foaf:lastName": "Declercq",
-      "foaf:firstName": "Johan",
+      "@id": "_:g47235996209040",
       "schema:affiliation": {
-        "@id": "_:g47042775191340"
+        "@id": "_:g47235996225540"
       },
-      "foaf:mbox": {
-        "@id": "mailto:johan.declercq@vea.be"
-      }
-    },
-    {
-      "@id": "_:g47042775191340",
-      "foaf:name": "VEA",
-      "foaf:homepage": {
-        "@id": "http://vea.be"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#aantalOndergrondseVerdiepingen",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:comment": {
-        "@value": "Totaal van het aantal ondergrondse gebouwlagen, bekeken over alle gebouwdelen heen.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "aantal ondergrondse verdiepingen",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
-      },
-      "rdfs:range": {
-        "@id": "xsd:integer"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#geometrie",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": {
-        "@value": "2D geometrische voorstelling van het gebouw.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "geometrie",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie"
-      },
-      "rdfs:range": {
-        "@id": "http://www.w3.org/ns/locn#Geometry"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#GebouweenheidstatusWaarde",
-      "@type": "owl:Class",
-      "rdfs:comment": {
-        "@value": "http://example.com/TODO",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "http://example.com/TODO",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      },
-      "owl:oneOf": {
-        "@list": [
-
-        ]
-      }
-    },
-    {
-      "@id": "_:g47042775774320",
-      "foaf:name": "imec - UGent",
-      "foaf:homepage": {
-        "@id": "http://idlab.ugent.be"
-      }
-    },
-    {
-      "@id": "_:g47042775098620",
-      "foaf:name": "VEA",
-      "foaf:homepage": {
-        "@id": "http://vea.be"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#horizontaleReferentie",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": {
-        "@value": "Aspect van het object dat door de xy-coördinaten wordt voorgesteld.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "horizontale referentie",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie"
-      },
-      "rdfs:range": {
-        "@id": "skos:Concept"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "skos:Concept",
-      "@type": "rdfs:Class"
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#bouwjaar",
-      "@type": "owl:ObjectProperty",
-      "http://purl.org/vocab/vann/usageNote": {
-        "@value": "Verbouwingen en renovaties na initiële oplevering worden niet meegeteld.",
-        "@language": "nl"
-      },
-      "rdfs:comment": {
-        "@value": "Datum waarop het gebouw voltooid werd.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "bouwjaar",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
-      },
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "_:g47042775008820",
-      "@type": "foaf:person",
-      "foaf:lastName": "Beyaert",
-      "foaf:firstName": "Veerle",
-      "schema:affiliation": {
-        "@id": "_:g47042775018060"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:veerle.beyaert@kb.vlaanderen.be"
-      }
-    },
-    {
-      "@id": "_:g47042775018060",
-      "foaf:name": "Informatie Vlaanderen",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw.geometrie",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": {
-        "@value": "2D geometrische voorstelling van het gebouw.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "geometrie",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
-      },
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#verticaleReferentie",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": {
-        "@value": "Aspect van het object dat door de z-coördinaten wordt voorgesteld.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "verticale referentie",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie"
-      },
-      "rdfs:range": {
-        "@id": "skos:Concept"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouweenheid.adres",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": {
-        "@value": "Adres vd gebouweenheid.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "adres",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouweenheid"
-      },
-      "rdfs:range": {
-        "@id": "http://www.w3.org/ns/locn#Address"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouweenheid",
-      "@type": "owl:Class",
-      "rdfs:comment": {
-        "@value": "De kleinste eenheid binnen een gebouw die geschikt is voor woon-, bedrijfsmatige, of recreatieve doeleinden en die ontsloten wordt via een eigen afsluitbare toegang vanaf de openbare weg, een erf of een gedeelde circulatieruimte. Een gebouweenheid is in functioneel opzicht zelfstandig. Daarnaast kan een gebouweenheid ook een gemeenschappelijk deel zijn.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "Gebouweenheid",
-        "@language": "nl"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      },
-      "rdfs:subClassOf": [
-        {
-          "@id": "prov:Entity"
-        },
-        {
-          "@id": "https://data.vlaanderen.be/ns/adres#AdresseerbaarObject"
-        }
-      ]
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#ligtOp",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": {
-        "@value": "De gebouweenheden die tot het gebouw behoren.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "ligt op",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
-      },
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/perceel#Perceel"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "_:g47042775758980",
-      "@type": "foaf:person",
-      "foaf:lastName": "De Vocht",
-      "foaf:firstName": "Laurens",
-      "schema:affiliation": {
-        "@id": "_:g47042775774320"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:laurens.devocht@ugent.be"
-      }
-    },
-    {
-      "@id": "_:g47042775493360",
-      "@type": "foaf:person",
-      "foaf:lastName": "Van Broeckhoven",
-      "foaf:firstName": "Barbara",
-      "schema:affiliation": {
-        "@id": "_:g47042775507120"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:Barbara.vanbroeckhoven@kb.vlaanderen.be"
-      }
-    },
-    {
-      "@id": "_:g47042775507120",
-      "foaf:name": "Informatie Vlaanderen",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw.status",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": {
-        "@value": "Fase van de levensloop waarin het gebouw zich bevindt.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "status",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
-      },
-      "rdfs:range": {
-        "@id": "skos:Concept"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#aantalBovengrondseVerdiepingen",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:comment": {
-        "@value": "Totaal van het aantal bovengrondse gebouwlagen, bekeken over alle gebouwdelen heen.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "aantal bovengrondse verdiepingen",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
-      },
-      "rdfs:range": {
-        "@id": "xsd:integer"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "_:g47042775602220",
-      "foaf:name": "Data Vlaanderen",
-      "foaf:homepage": {
-        "@id": "https://data.vlaanderen.be"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:oslo@kb.vlaanderen.be"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouweenheid.geometrie",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": {
-        "@value": "2D geometrische voorstelling van de gebouweenheid.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "geometrie",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouweenheid"
-      },
-      "rdfs:range": {
-        "@id": "http://www.w3.org/ns/locn#Geometry"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "_:g47042776035060",
-      "@type": "foaf:person",
-      "foaf:lastName": "Thijs",
-      "foaf:firstName": "Geert",
-      "schema:affiliation": {
-        "@id": "_:g47042776048200"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:Geert.Thijs@kb.vlaanderen.be"
-      }
-    },
-    {
-      "@id": "_:g47042776048200",
-      "foaf:name": "Informatie Vlaanderen",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      }
-    },
-    {
-      "@id": "_:g47042775694580",
-      "foaf:name": "imec - UGent",
-      "foaf:homepage": {
-        "@id": "http://idlab.ugent.be"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#laatsteRenovatie",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": {
-        "@value": "Datum waarop het gebouw het laatst gerenoveerd werd.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "laatste renovatie",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
-      },
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "_:g47042775879040",
-      "foaf:name": "imec - UGent",
-      "foaf:homepage": {
-        "@id": "http://idlab.ugent.be"
-      }
-    },
-    {
-      "@id": "_:g47042775786320",
-      "@type": "foaf:person",
-      "foaf:lastName": "Van Haute",
-      "foaf:firstName": "Geert",
-      "schema:affiliation": {
-        "@id": "_:g47042775757100"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:geert.vanhaute@lne.vlaanderen.be"
-      }
-    },
-    {
-      "@id": "_:g47042775757100",
-      "foaf:name": "LNE",
-      "foaf:homepage": {
-        "@id": "https://www.lne.be/"
-      }
-    },
-    {
-      "@id": "_:g47042776022440",
-      "@type": "foaf:person",
-      "foaf:lastName": "Hermans",
-      "foaf:firstName": "Paul",
-      "schema:affiliation": {
-        "@id": "_:g47042776009140"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:paul@proxml.be"
-      }
-    },
-    {
-      "@id": "_:g47042776009140",
-      "foaf:name": "ProXML",
-      "foaf:homepage": {
-        "@id": "http://proxml.be"
-      }
-    },
-    {
-      "@id": "_:g47042771908180",
-      "@type": "foaf:person",
-      "foaf:lastName": "Mannens",
-      "foaf:firstName": "Erik",
-      "schema:affiliation": {
-        "@id": "_:g47042775694580"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:erik.mannens@ugent.be"
-      }
-    },
-    {
-      "@id": "_:g47042768755680",
-      "@type": "foaf:person",
-      "foaf:lastName": "Van Nuffelen",
-      "foaf:firstName": "Bert",
-      "schema:affiliation": {
-        "@id": "_:g47042768747960"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:Bert.Van.Nuffelen@tenforce.com"
-      }
-    },
-    {
-      "@id": "_:g47042769553360",
-      "@type": "foaf:person",
-      "foaf:lastName": "Beheydt",
-      "foaf:firstName": "Dries",
-      "schema:affiliation": {
-        "@id": "_:g47042775962660"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:dries.beheydt@kb.vlaanderen.be"
-      }
-    },
-    {
-      "@id": "_:g47042775663820",
-      "@type": "foaf:person",
-      "foaf:lastName": "Vanlishout",
-      "foaf:firstName": "Ziggy",
-      "schema:affiliation": {
-        "@id": "_:g47042775626060"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:Siegfried.Vanlishout@kb.vlaanderen.be"
-      }
-    },
-    {
-      "@id": "_:g47042766658300",
-      "@type": "foaf:person",
-      "foaf:lastName": "Buyle",
-      "foaf:firstName": "Raf",
-      "schema:affiliation": {
-        "@id": "_:g47042765608780"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:raf.buyle@kb.vlaanderen.be"
-      }
-    },
-    {
-      "@id": "_:g47042775908600",
-      "@type": "foaf:person",
-      "foaf:lastName": "De Paepe",
-      "foaf:firstName": "Dieter",
-      "schema:affiliation": {
-        "@id": "_:g47042775879040"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:dieter.depaepe@ugent.be"
-      }
-    },
-    {
-      "@id": "_:g47042775532980",
-      "@type": "foaf:person",
       "foaf:lastName": "De Vidts",
       "foaf:firstName": "Björn",
-      "schema:affiliation": {
-        "@id": "_:g47042775511440"
-      },
       "foaf:mbox": {
         "@id": "mailto:bjorn.devidts@kb.vlaanderen.be"
-      }
-    },
-    {
-      "@id": "_:g47042771434400",
-      "@type": "foaf:person",
-      "foaf:lastName": "Capiau",
-      "foaf:firstName": "Ruben",
-      "schema:affiliation": {
-        "@id": "_:g47042771398400"
       },
-      "foaf:mbox": {
-        "@id": "mailto:ruben.capiau@kb.vlaanderen.be"
-      }
+      "@type": "foaf:person"
     },
     {
-      "@id": "_:g47042775093020",
-      "@type": "foaf:person",
-      "foaf:lastName": "Verhelst",
-      "foaf:firstName": "Luk",
-      "schema:affiliation": {
-        "@id": "_:g47042775098620"
+      "@id": "_:g47235996225540",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
       },
-      "foaf:mbox": {
-        "@id": "mailto:luk.verhelst@vea.be"
-      }
+      "foaf:name": "Informatie Vlaanderen"
     },
     {
-      "@id": "_:g47042772346640",
-      "@type": "foaf:person",
-      "foaf:lastName": "Vliebergh",
-      "foaf:firstName": "Hans",
+      "@id": "_:g47235995314780",
       "schema:affiliation": {
-        "@id": "_:g47042775285040"
+        "@id": "_:g47235995379920"
       },
-      "foaf:mbox": {
-        "@id": "mailto:hans.vliebergh@kb.vlaanderen.be"
-      }
-    },
-    {
-      "@id": "_:g47042775410460",
-      "@type": "foaf:person",
       "foaf:lastName": "Vandecasteele",
       "foaf:firstName": "Tine",
-      "schema:affiliation": {
-        "@id": "_:g47042775426220"
-      },
       "foaf:mbox": {
         "@id": "mailto:tine.vandecasteele@vea.be"
-      }
-    },
-    {
-      "@id": "_:g47042772296480",
-      "@type": "foaf:person",
-      "foaf:lastName": "Stevens",
-      "foaf:firstName": "Annita",
-      "schema:affiliation": {
-        "@id": "_:g47042772615360"
       },
-      "foaf:mbox": {
-        "@id": "mailto:Annita.Stevens@vlm.be"
-      }
+      "@type": "foaf:person"
     },
     {
-      "@id": "_:g47042775049840",
-      "@type": "foaf:person",
-      "foaf:lastName": "Du Mortier",
-      "foaf:firstName": "Francois",
-      "schema:affiliation": {
-        "@id": "_:g47042775058280"
-      },
-      "foaf:mbox": {
-        "@id": "mailto:communication@cirb.brussels"
-      }
-    },
-    {
-      "@id": "_:g47042775058280",
-      "foaf:name": "CIRB",
-      "foaf:homepage": {
-        "@id": "http://cirb.brussels/"
-      }
-    },
-    {
-      "@id": "_:g47042772615360",
-      "foaf:name": "VLM",
-      "foaf:homepage": {
-        "@id": "http://vlm.be"
-      }
-    },
-    {
-      "@id": "_:g47042775285040",
-      "foaf:name": "Informatie Vlaanderen",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      }
-    },
-    {
-      "@id": "_:g47042775426220",
-      "foaf:name": "VEA",
+      "@id": "_:g47235995379920",
       "foaf:homepage": {
         "@id": "http://vea.be"
-      }
-    },
-    {
-      "@id": "_:g47042768747960",
-      "foaf:name": "Tenforce",
-      "foaf:homepage": {
-        "@id": "http://tenforce.com"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#bestaatUit",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": {
-        "@value": "De percelen waarmee het gebouw officieel geassocieerd is.",
-        "@language": "nl"
       },
-      "rdfs:label": {
-        "@value": "bestaat uit",
-        "@language": "nl"
-      },
-      "rdfs:domain": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
-      },
-      "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouweenheid"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "_:g47042775626060",
-      "foaf:name": "Informatie Vlaanderen",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      }
-    },
-    {
-      "@id": "_:g47042775962660",
-      "foaf:name": "Informatie Vlaanderen",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      }
-    },
-    {
-      "@id": "_:g47042765608780",
-      "foaf:name": "Informatie Vlaanderen",
-      "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      }
+      "foaf:name": "VEA"
     },
     {
       "@id": "https://data.vlaanderen.be/ns/gebouw#locatieAanduiding",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": {
-        "@value": "Alfanumerieke code die een adreslocator uniek identificeert binnen de straat, administratieve eenheid etc.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "locatie-aanduiding",
-        "@language": "nl"
-      },
       "rdfs:domain": {
         "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouweenheid"
       },
       "rdfs:range": {
         "@id": "https://data.vlaanderen.be/ns/adres#Locatieaanduiding"
       },
+      "rdfs:comment": {
+        "@value": "Alfanumerieke code die een adreslocator uniek identificeert binnen de straat, administratieve eenheid etc.",
+        "@language": "nl"
+      },
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
+      },
+      "rdfs:label": {
+        "@value": "locatie-aanduiding",
+        "@language": "nl"
+      },
+      "@type": "owl:ObjectProperty"
     },
     {
-      "@id": "_:g47042775511440",
-      "foaf:name": "Informatie Vlaanderen",
+      "@id": "_:g47235995719320",
       "foaf:homepage": {
         "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      }
+      },
+      "foaf:name": "Informatie Vlaanderen"
+    },
+    {
+      "@id": "_:g47235995796360",
+      "foaf:homepage": {
+        "@id": "http://vea.be"
+      },
+      "foaf:name": "VEA"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw.status",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:comment": {
+        "@value": "Fase van de levensloop waarin het gebouw zich bevindt.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "status",
+        "@language": "nl"
+      },
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw",
+      "rdfs:comment": {
+        "@value": "Een gesloten en/of overdekt, bovengronds of ondergronds bouwwerk, dat dient of bestemd is, ofwel om mensen, dieren en voorwerpen onder te brengen, ofwel om economische goederen te vervaardigen of diensten te verstrekken. Een gebouw verwijst naar gelijk welke structuur die op blijvende wijze op een terrein opgetrokken of gebouwd wordt.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "Gebouw",
+        "@language": "nl"
+      },
+      "rdfs:subClassOf": {
+        "@id": "prov:Entity"
+      },
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "skos:Concept",
+      "@type": "rdfs:Class"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#methode",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie"
+      },
+      "rdfs:range": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#2DGeometrieMethodeWaarde"
+      },
+      "rdfs:comment": {
+        "@value": "Beschrijving van de manier waarop de geometrie aangemaakt werd.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "methode",
+        "@language": "nl"
+      },
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie",
+      "rdfs:comment": {
+        "@value": "Geometrie van het gebouw en metadata over welk deel van het gebouw door de geometrie wordt voorgesteld en hoe deze werd bepaald.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "2D Gebouwgeometrie",
+        "@language": "nl"
+      },
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#2DGeometrieMethodeWaarde",
+      "rdfs:comment": {
+        "@value": "http://example.com/TODO",
+        "@language": "nl"
+      },
+      "owl:oneOf": {
+        "@list": [
+
+        ]
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "http://example.com/TODO",
+        "@language": "nl"
+      },
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#geometrie",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie"
+      },
+      "rdfs:range": {
+        "@id": "http://www.w3.org/ns/locn#Geometry"
+      },
+      "rdfs:comment": {
+        "@value": "2D geometrische voorstelling van het gebouw.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "geometrie",
+        "@language": "nl"
+      },
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "_:g47235995639380",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      },
+      "foaf:name": "Informatie Vlaanderen"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#ligtOp",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
+      },
+      "rdfs:range": {
+        "@id": "https://data.vlaanderen.be/ns/perceel#Perceel"
+      },
+      "rdfs:comment": {
+        "@value": "De gebouweenheden die tot het gebouw behoren.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "ligt op",
+        "@language": "nl"
+      },
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "_:g47235995854600",
+      "schema:affiliation": {
+        "@id": "_:g47235995869460"
+      },
+      "foaf:lastName": "Du Mortier",
+      "foaf:firstName": "Francois",
+      "foaf:mbox": {
+        "@id": "mailto:communication@cirb.brussels"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "_:g47235995869460",
+      "foaf:homepage": {
+        "@id": "http://cirb.brussels/"
+      },
+      "foaf:name": "CIRB"
+    },
+    {
+      "@id": "_:g47235996047780",
+      "schema:affiliation": {
+        "@id": "_:g47235996061780"
+      },
+      "foaf:lastName": "De Vocht",
+      "foaf:firstName": "Laurens",
+      "foaf:mbox": {
+        "@id": "mailto:laurens.devocht@ugent.be"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "_:g47235996061780",
+      "foaf:homepage": {
+        "@id": "http://idlab.ugent.be"
+      },
+      "foaf:name": "imec - UGent"
+    },
+    {
+      "@id": "_:g47235995454700",
+      "schema:affiliation": {
+        "@id": "_:g47235995461080"
+      },
+      "foaf:lastName": "Stevens",
+      "foaf:firstName": "Annita",
+      "foaf:mbox": {
+        "@id": "mailto:Annita.Stevens@vlm.be"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "_:g47235995461080",
+      "foaf:homepage": {
+        "@id": "http://vlm.be"
+      },
+      "foaf:name": "VLM"
+    },
+    {
+      "@id": "_:g47235996492920",
+      "schema:affiliation": {
+        "@id": "_:g47235996530920"
+      },
+      "foaf:lastName": "Vanlishout",
+      "foaf:firstName": "Ziggy",
+      "foaf:mbox": {
+        "@id": "mailto:Siegfried.Vanlishout@kb.vlaanderen.be"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "_:g47235996530920",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      },
+      "foaf:name": "Informatie Vlaanderen"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#aantalOndergrondseVerdiepingen",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
+      },
+      "rdfs:range": {
+        "@id": "xsd:integer"
+      },
+      "rdfs:comment": {
+        "@value": "Totaal van het aantal ondergrondse gebouwlagen, bekeken over alle gebouwdelen heen.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "aantal ondergrondse verdiepingen",
+        "@language": "nl"
+      },
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "_:g47235993182780",
+      "schema:affiliation": {
+        "@id": "_:g47235995639380"
+      },
+      "foaf:lastName": "Beyaert",
+      "foaf:firstName": "Veerle",
+      "foaf:mbox": {
+        "@id": "mailto:veerle.beyaert@kb.vlaanderen.be"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw.geometrie",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
+      },
+      "rdfs:range": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie"
+      },
+      "rdfs:comment": {
+        "@value": "2D geometrische voorstelling van het gebouw.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "geometrie",
+        "@language": "nl"
+      },
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "_:g47235996288140",
+      "schema:affiliation": {
+        "@id": "_:g47235996304260"
+      },
+      "foaf:lastName": "Beheydt",
+      "foaf:firstName": "Dries",
+      "foaf:mbox": {
+        "@id": "mailto:dries.beheydt@kb.vlaanderen.be"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "_:g47235996304260",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      },
+      "foaf:name": "Informatie Vlaanderen"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#laatsteRenovatie",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
+      },
+      "rdfs:range": {
+        "@id": "https://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum"
+      },
+      "rdfs:comment": {
+        "@value": "Datum waarop het gebouw het laatst gerenoveerd werd.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "laatste renovatie",
+        "@language": "nl"
+      },
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "_:g47235993605720",
+      "schema:affiliation": {
+        "@id": "_:g47235995418720"
+      },
+      "foaf:lastName": "Van Broeckhoven",
+      "foaf:firstName": "Barbara",
+      "foaf:mbox": {
+        "@id": "mailto:Barbara.vanbroeckhoven@kb.vlaanderen.be"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "_:g47235995418720",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      },
+      "foaf:name": "Informatie Vlaanderen"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouweenheid.geometrie",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouweenheid"
+      },
+      "rdfs:range": {
+        "@id": "http://www.w3.org/ns/locn#Geometry"
+      },
+      "rdfs:comment": {
+        "@value": "2D geometrische voorstelling van de gebouweenheid.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "geometrie",
+        "@language": "nl"
+      },
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#horizontaleReferentie",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:comment": {
+        "@value": "Aspect van het object dat door de xy-coördinaten wordt voorgesteld.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "horizontale referentie",
+        "@language": "nl"
+      },
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#gebouwnaam",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
+      },
+      "rdfs:range": {
+        "@id": "rdf:langString"
+      },
+      "rdfs:comment": {
+        "@value": "Naam van het gebouw.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "gebouwnaam",
+        "@language": "nl"
+      },
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "_:g47235995781700",
+      "schema:affiliation": {
+        "@id": "_:g47235995796360"
+      },
+      "foaf:lastName": "Declercq",
+      "foaf:firstName": "Johan",
+      "foaf:mbox": {
+        "@id": "mailto:johan.declercq@vea.be"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw.adres",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
+      },
+      "rdfs:range": {
+        "@id": "http://www.w3.org/ns/locn#Address"
+      },
+      "rdfs:comment": {
+        "@value": "Adres van het gebouw.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "adres",
+        "@language": "nl"
+      },
+      "@type": "owl:ObjectProperty"
     },
     {
       "@id": "https://data.vlaanderen.be/ns/gebouw#functie",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": {
-        "@value": "Functie waarvoor de gebouweenheid in de realiteit (zoals vastgesteld op het terrein) gebruikt wordt.",
-        "@language": "nl"
-      },
-      "rdfs:label": {
-        "@value": "functie",
-        "@language": "nl"
-      },
       "rdfs:domain": {
         "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouweenheid"
       },
       "rdfs:range": {
         "@id": "skos:Concept"
       },
+      "rdfs:comment": {
+        "@value": "Functie waarvoor de gebouweenheid in de realiteit (zoals vastgesteld op het terrein) gebruikt wordt.",
+        "@language": "nl"
+      },
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/gebouw"
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouweenheid.status",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": {
-        "@value": "Fase van de levensloop waarin de gebouweenheid zich bevindt.",
-        "@language": "nl"
       },
       "rdfs:label": {
-        "@value": "gebouweenheidstatus",
+        "@value": "functie",
         "@language": "nl"
       },
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "_:g47235984625400",
+      "foaf:homepage": {
+        "@id": "http://idlab.ugent.be"
+      },
+      "foaf:name": "imec - UGent"
+    },
+    {
+      "@id": "_:g47235996414760",
+      "foaf:homepage": {
+        "@id": "http://tenforce.com"
+      },
+      "foaf:name": "Tenforce"
+    },
+    {
+      "@id": "_:g47235988290640",
+      "schema:affiliation": {
+        "@id": "_:g47235996124200"
+      },
+      "foaf:lastName": "Mannens",
+      "foaf:firstName": "Erik",
+      "foaf:mbox": {
+        "@id": "mailto:erik.mannens@ugent.be"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "_:g47235996124200",
+      "foaf:homepage": {
+        "@id": "http://idlab.ugent.be"
+      },
+      "foaf:name": "imec - UGent"
+    },
+    {
+      "@id": "_:g47235995972300",
+      "foaf:mbox": {
+        "@id": "mailto:oslo@kb.vlaanderen.be"
+      },
+      "foaf:homepage": {
+        "@id": "https://data.vlaanderen.be"
+      },
+      "foaf:name": "Data Vlaanderen"
+    },
+    {
+      "@id": "_:g47235989119120",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      },
+      "foaf:name": "Informatie Vlaanderen"
+    },
+    {
+      "@id": "_:g47235996175700",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      },
+      "foaf:name": "Informatie Vlaanderen"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouweenheid.adres",
       "rdfs:domain": {
         "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouweenheid"
       },
       "rdfs:range": {
-        "@id": "https://data.vlaanderen.be/ns/gebouw#GebouweenheidstatusWaarde"
+        "@id": "http://www.w3.org/ns/locn#Address"
+      },
+      "rdfs:comment": {
+        "@value": "Adres vd gebouweenheid.",
+        "@language": "nl"
       },
       "rdfs:isDefinedBy": {
         "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "adres",
+        "@language": "nl"
+      },
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "_:g47235989286180",
+      "schema:affiliation": {
+        "@id": "_:g47235989119120"
+      },
+      "foaf:lastName": "Buyle",
+      "foaf:firstName": "Raf",
+      "foaf:mbox": {
+        "@id": "mailto:raf.buyle@kb.vlaanderen.be"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "_:g47235996450080",
+      "schema:affiliation": {
+        "@id": "_:g47235996428820"
+      },
+      "foaf:lastName": "Capiau",
+      "foaf:firstName": "Ruben",
+      "foaf:mbox": {
+        "@id": "mailto:ruben.capiau@kb.vlaanderen.be"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "_:g47235996428820",
+      "foaf:homepage": {
+        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
+      },
+      "foaf:name": "Informatie Vlaanderen"
+    },
+    {
+      "@id": "_:g47235996377220",
+      "schema:affiliation": {
+        "@id": "_:g47235996414760"
+      },
+      "foaf:lastName": "Van Nuffelen",
+      "foaf:firstName": "Bert",
+      "foaf:mbox": {
+        "@id": "mailto:Bert.Van.Nuffelen@tenforce.com"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "_:g47235996091020",
+      "schema:affiliation": {
+        "@id": "_:g47235996061500"
+      },
+      "foaf:lastName": "Van Haute",
+      "foaf:firstName": "Geert",
+      "foaf:mbox": {
+        "@id": "mailto:geert.vanhaute@lne.vlaanderen.be"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "_:g47235996061500",
+      "foaf:homepage": {
+        "@id": "https://www.lne.be/"
+      },
+      "foaf:name": "LNE"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#bouwjaar",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
+      },
+      "rdfs:range": {
+        "@id": "https://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum"
+      },
+      "rdfs:comment": {
+        "@value": "Datum waarop het gebouw voltooid werd.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "bouwjaar",
+        "@language": "nl"
+      },
+      "@type": "owl:ObjectProperty",
+      "http://purl.org/vocab/vann/usageNote": {
+        "@value": "Verbouwingen en renovaties na initiële oplevering worden niet meegeteld.",
+        "@language": "nl"
       }
     },
     {
-      "@id": "_:g47042771398400",
-      "foaf:name": "Informatie Vlaanderen",
+      "@id": "_:g47235986109540",
+      "schema:affiliation": {
+        "@id": "_:g47235984625400"
+      },
+      "foaf:lastName": "De Paepe",
+      "foaf:firstName": "Dieter",
+      "foaf:mbox": {
+        "@id": "mailto:dieter.depaepe@ugent.be"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "_:g47235996205460",
+      "schema:affiliation": {
+        "@id": "_:g47235996175700"
+      },
+      "foaf:lastName": "Thijs",
+      "foaf:firstName": "Geert",
+      "foaf:mbox": {
+        "@id": "mailto:Geert.Thijs@kb.vlaanderen.be"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "_:g47235996327720",
+      "schema:affiliation": {
+        "@id": "_:g47235996306160"
+      },
+      "foaf:lastName": "Hermans",
+      "foaf:firstName": "Paul",
+      "foaf:mbox": {
+        "@id": "mailto:paul@proxml.be"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "_:g47235995528800",
+      "schema:affiliation": {
+        "@id": "_:g47235995543980"
+      },
+      "foaf:lastName": "Verhelst",
+      "foaf:firstName": "Luk",
+      "foaf:mbox": {
+        "@id": "mailto:luk.verhelst@vea.be"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "_:g47235995703380",
+      "schema:affiliation": {
+        "@id": "_:g47235995719320"
+      },
+      "foaf:lastName": "Vliebergh",
+      "foaf:firstName": "Hans",
+      "foaf:mbox": {
+        "@id": "mailto:hans.vliebergh@kb.vlaanderen.be"
+      },
+      "@type": "foaf:person"
+    },
+    {
+      "@id": "_:g47235996306160",
       "foaf:homepage": {
-        "@id": "https://overheid.vlaanderen.be/informatie-vlaanderen"
-      }
+        "@id": "http://proxml.be"
+      },
+      "foaf:name": "ProXML"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#verticaleReferentie",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie"
+      },
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:comment": {
+        "@value": "Aspect van het object dat door de z-coördinaten wordt voorgesteld.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "verticale referentie",
+        "@language": "nl"
+      },
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#default",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie"
+      },
+      "rdfs:range": {
+        "@id": "xsd:boolean"
+      },
+      "rdfs:comment": {
+        "@value": "Geometrie die moet worden gebruikt bv bij voorstelling op kaart.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "default",
+        "@language": "nl"
+      },
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#bestaatUit",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
+      },
+      "rdfs:range": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouweenheid"
+      },
+      "rdfs:comment": {
+        "@value": "De percelen waarmee het gebouw officieel geassocieerd is.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "bestaat uit",
+        "@language": "nl"
+      },
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/gebouw#aantalBovengrondseVerdiepingen",
+      "rdfs:domain": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
+      },
+      "rdfs:range": {
+        "@id": "xsd:integer"
+      },
+      "rdfs:comment": {
+        "@value": "Totaal van het aantal bovengrondse gebouwlagen, bekeken over alle gebouwdelen heen.",
+        "@language": "nl"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://data.vlaanderen.be/ns/gebouw"
+      },
+      "rdfs:label": {
+        "@value": "aantal bovengrondse verdiepingen",
+        "@language": "nl"
+      },
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "_:g47235995543980",
+      "foaf:homepage": {
+        "@id": "http://vea.be"
+      },
+      "foaf:name": "VEA"
     }
   ]
 }

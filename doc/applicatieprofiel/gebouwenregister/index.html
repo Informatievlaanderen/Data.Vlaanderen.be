@@ -48,7 +48,7 @@
               <div class="head" role="contentinfo" id="respecHeader">
                 <dl>
                   <dt>Laatste aanpassing</dt>
-                  <dd>2018-10-23</dd>
+                  <dd>2018-11-06</dd>
 
                   
                   
@@ -279,7 +279,7 @@ Dit is een applicatieprofiel op het <a href="http://data.vlaanderen.be/ns/gebouw
 </p><p>
 De applicatie waarop dit profiel betrekking heeft is een Gebouwenregister. Gebouwregistratie houdt in dat de beheerders van dit gegeven gebouwen en gebouweenheden officieel vaststellen en vastleggen in een register. Het Gebouwenregister vormt zo de enige en unieke bron voor gebouwinformatie.
 </p><p>
-De kardinaliteiten op attributen en associaties in het model van het <a href="https://overheid.vlaanderen.be/producten-diensten/gebouwen-adressenregister">Gebouwenregister</a> waarop OSLO-Gebouw is gebaseerd werden overgenomen en bleken maar op een paar punten af te wijken van deze in <a href="https://inspire.ec.europa.eu/data-specifications/2892">INSPIRE-Building</a>. Zo laat het Gebouwenregister slechts één geometrie toe (de referentiegeometrie) en zijn de gebouw- en gebouweenheidstatus verplicht, wat logisch is gezien de registratie-opdracht van het register.
+De kardinaliteiten op attributen en associaties in het model van het <a href="https://overheid.vlaanderen.be/producten-diensten/gebouwen-adressenregister">Gebouwenregister</a> waarop OSLO-Gebouw is gebaseerd werden overgenomen en bleken maar op een paar punten af te wijken van deze in <a href="https://inspire.ec.europa.eu/data-specifications/2892">INSPIRE-Building</a>. Zo laat het Gebouwenregister slechts één geometrie toe (de referentiegeometrie) en zijn de gebouw- en gebouweenheidstatus verplicht, wat logisch is gezien de registratieopdracht van het register.
 </p><p>
 Voor de codelijsten wordt zoveel mogelijk verwezen naar de overeenstemmende lijsten in INSPIRE. Echter waar deze codelijsten niet 100% overeenstemmen en moeten worden uitgebreid/ingeperkt/afgestemd, kon nog geen verwijzing gebeuren.
 </p>
@@ -292,10 +292,10 @@ Voor de codelijsten wordt zoveel mogelijk verwezen naar de overeenstemmende lijs
                 
 <p>Dit applicatieprofiel dient om het specifieke gebruik van de entiteiten relevant voor de beschreven applicatie te verduidelijken.</p>
 
-<p>Dit document werd gepubliceerd door de werkgroep Gebouwen- en Adressenregister als Ontwerpdocument. Dit impliceert dat de standaard die in dit document beschreven wordt in ontwikkeling is. Bijgevolg kan dit document op elk moment aangepast, vervangen of achterhaald worden.
+<p>Dit document werd gepubliceerd door de werkgroep Gebouwen- en Adressenregister als ontwerpdocument. Dit impliceert dat de standaard die in dit document beschreven wordt in ontwikkeling is. Bijgevolg kan dit document op elk moment aangepast, vervangen of achterhaald worden.
 Dit document is bedoeld om uit te groeien tot een standaard in het beschreven domein.</p>
 
-<p>Feedback op deze specificatie kan gegeven worden als een topic in onze <a href="https://github.com/Informatievlaanderen/OSLO-Public-Discussion">publieke reviewdiscussielijst</a>.</p>
+<p>Feedback op deze specificatie kan gegeven worden als een topic in onze <a href="https://github.com/Informatievlaanderen/OSLO-Discussion">publieke-review-discussielijst</a>.</p>
 
               </section>
             </div>
@@ -353,12 +353,11 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                     <p> In dit document worden de volgende datatypes toegelicht:
                       <br />
                       |
-                      <a href="#2D Gebouwgeometrie">2D Gebouwgeometrie</a> |
+                      <a href="#2D-Gebouwgeometrie">2D-Gebouwgeometrie</a> |
                       <a href="#Adresvoorstelling">Adresvoorstelling</a> |
                       <a href="#Gebeurtenisdatum">Gebeurtenisdatum</a> |
                       <a href="#Geometrie">Geometrie</a> |
                       <a href="#Locatieaanduiding">Locatieaanduiding</a> |
-                      <a href="#Polygoon">Polygoon</a> |
                     </p>
                   </div>
                   
@@ -447,7 +446,8 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                     <dt>Eigenschappen</dt>
                     
                     <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#Gebouw%3Aaantal%20verdiepingen">aantal verdiepingen</a>, 
+                      <a href="#Gebouw%3Aaantal%20bovengrondse%20verdiepingen">aantal bovengrondse verdiepingen</a>, 
+                      <a href="#Gebouw%3Aaantal%20ondergrondse%20verdiepingen">aantal ondergrondse verdiepingen</a>, 
                       <a href="#Gebouw%3Aadres">adres</a>, 
                       <a href="#Gebouw%3Abestaat%20uit">bestaat uit</a>, 
                       <a href="#Gebouw%3Abouwjaar">bouwjaar</a>, 
@@ -475,16 +475,30 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
 
                     <tbody class="supertype">
                     
-                      <tr id="Gebouw%3Aaantal%20verdiepingen" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#aantalVerdiepingen">
+                      <tr id="Gebouw%3Aaantal%20bovengrondse%20verdiepingen" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#aantalBovengrondseVerdiepingen">
                         <td>
                           <code property="rdfs:label">
-                            <a href="https://data.vlaanderen.be/ns/gebouw#aantalVerdiepingen" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#aantalVerdiepingen" data-placement="right">
-                            aantal verdiepingen</a>
+                            <a href="https://data.vlaanderen.be/ns/gebouw#aantalBovengrondseVerdiepingen" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#aantalBovengrondseVerdiepingen" data-placement="right">
+                            aantal bovengrondse verdiepingen</a>
                           </code>
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#integer" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#integer" data-placement="right">Integer</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">Totaal van het aantal boven- en ondergrondse gebouwlagen, bekeken over alle gebouwdelen heen.</td>
+                        <td property="rdfs:comment">Totaal van het aantal bovengrondse gebouwlagen, bekeken over alle gebouwdelen heen.</td>
+                        <td property="vann:usageNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Gebouw%3Aaantal%20ondergrondse%20verdiepingen" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#aantalOndergrondseVerdiepingen">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/gebouw#aantalOndergrondseVerdiepingen" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#aantalOndergrondseVerdiepingen" data-placement="right">
+                            aantal ondergrondse verdiepingen</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2001/XMLSchema#integer" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#integer" data-placement="right">Integer</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Totaal van het aantal ondergrondse gebouwlagen, bekeken over alle gebouwdelen heen.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -498,7 +512,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         </td>
                         <td><a href="http://www.w3.org/ns/locn#Address" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#Address" data-placement="right">Adresvoorstelling</a></td>
                         <td>0...*</td>
-                        <td property="rdfs:comment">Adres van het gebouw.</td>
+                        <td property="rdfs:comment">Adresvoorstelling die bij het gebouw hoort.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -512,7 +526,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         </td>
                         <td><a href="https://data.vlaanderen.be/ns/gebouw#Gebouweenheid" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#Gebouweenheid" data-placement="right">Gebouweenheid</a></td>
                         <td>0...*</td>
-                        <td property="rdfs:comment">De percelen waarmee het gebouw officieel geassocieerd is.</td>
+                        <td property="rdfs:comment">De gebouweenheden die tot het gebouw behoren.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -526,7 +540,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         </td>
                         <td><a href="https://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum" data-placement="right">Gebeurtenisdatum</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">Datum waarop het gebouw werd voltooid.</td>
+                        <td property="rdfs:comment">Datum waarop het gebouw voltooid werd.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -545,14 +559,14 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                     
-                      <tr id="Gebouw%3Agebouwstatus" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#gebouwstatus">
+                      <tr id="Gebouw%3Agebouwstatus" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#Gebouw.status">
                         <td>
                           <code property="rdfs:label">
-                            <a href="https://data.vlaanderen.be/ns/gebouw#gebouwstatus" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#gebouwstatus" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/gebouw#Gebouw.status" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#Gebouw.status" data-placement="right">
                             gebouwstatus</a>
                           </code>
                         </td>
-                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">ConstructieStatusWaarde</a></td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">GebouwstatusWaarde</a></td>
                         <td>1</td>
                         <td property="rdfs:comment">Fase van de levensloop waarin het gebouw zich bevindt.</td>
                         <td property="vann:usageNote"></td>
@@ -568,7 +582,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         </td>
                         <td><a href="https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie" data-placement="right">2DGebouwgeometrie</a></td>
                         <td>1</td>
-                        <td property="rdfs:comment">2D geometrische voorstelling van het gebouw.</td>
+                        <td property="rdfs:comment">2D- of 2.5D-geometrische voorstelling van het gebouw.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -582,7 +596,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         </td>
                         <td><a href="https://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/generiek#Gebeurtenisdatum" data-placement="right">Gebeurtenisdatum</a></td>
                         <td>0...1</td>
-                        <td property="rdfs:comment">Datum waarop het gebouw laatst gerenoveerd werd.</td>
+                        <td property="rdfs:comment">Datum waarop het gebouw het laatst gerenoveerd werd.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -596,7 +610,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         </td>
                         <td><a href="https://data.vlaanderen.be/ns/perceel#Perceel" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/perceel#Perceel" data-placement="right">Perceel</a></td>
                         <td>0...*</td>
-                        <td property="rdfs:comment">De gebouweenheden die tot het gebouw behoren.</td>
+                        <td property="rdfs:comment">De percelen waarmee het gebouw officieel geassocieerd is.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -620,7 +634,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       <a href="#Gebouweenheid%3Afunctie">functie</a>, 
                       <a href="#Gebouweenheid%3Agebouweenheidstatus">gebouweenheidstatus</a>, 
                       <a href="#Gebouweenheid%3Ageometrie">geometrie</a>, 
-                      <a href="#Gebouweenheid%3Alocatie-aanduiding">locatie-aanduiding</a>.</dd>
+                      <a href="#Gebouweenheid%3Alocatieaanduiding">locatieaanduiding</a>.</dd>
                     
                   </dl>
                 </div>
@@ -649,7 +663,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         </td>
                         <td><a href="http://www.w3.org/ns/locn#Address" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#Address" data-placement="right">Adresvoorstelling</a></td>
                         <td>0...*</td>
-                        <td property="rdfs:comment">Adres vd gebouweenheid.</td>
+                        <td property="rdfs:comment">Adresvoorstelling die bij de gebouweenheid hoort.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
@@ -661,21 +675,21 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             functie</a>
                           </code>
                         </td>
-                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">FunctieCode</a></td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">FunctieWaarde</a></td>
                         <td>0...1</td>
                         <td property="rdfs:comment">Functie waarvoor de gebouweenheid in de realiteit (zoals vastgesteld op het terrein) gebruikt wordt.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
                     
-                      <tr id="Gebouweenheid%3Agebouweenheidstatus" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#gebouweenheidstatus">
+                      <tr id="Gebouweenheid%3Agebouweenheidstatus" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#Gebouweenheid.status">
                         <td>
                           <code property="rdfs:label">
-                            <a href="https://data.vlaanderen.be/ns/gebouw#gebouweenheidstatus" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#gebouweenheidstatus" data-placement="right">
+                            <a href="https://data.vlaanderen.be/ns/gebouw#Gebouweenheid.status" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#Gebouweenheid.status" data-placement="right">
                             gebouweenheidstatus</a>
                           </code>
                         </td>
-                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">ConstructieStatusWaarde</a></td>
+                        <td><a href="https://data.vlaanderen.be/ns/gebouw#GebouweenheidstatusWaarde" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#GebouweenheidstatusWaarde" data-placement="right">GebouweenheidstatusWaarde</a></td>
                         <td>1</td>
                         <td property="rdfs:comment">Fase van de levensloop waarin de gebouweenheid zich bevindt.</td>
                         <td property="vann:usageNote"></td>
@@ -691,16 +705,16 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         </td>
                         <td><a href="http://www.w3.org/ns/locn#Geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#Geometry" data-placement="right">Geometrie</a></td>
                         <td>1</td>
-                        <td property="rdfs:comment">2D geometrische voorstelling van de gebouweenheid.</td>
+                        <td property="rdfs:comment">2D-geometrische voorstelling van de gebouweenheid.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
                     
-                      <tr id="Gebouweenheid%3Alocatie-aanduiding" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#locatieAanduiding">
+                      <tr id="Gebouweenheid%3Alocatieaanduiding" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#locatieAanduiding">
                         <td>
                           <code property="rdfs:label">
                             <a href="https://data.vlaanderen.be/ns/gebouw#locatieAanduiding" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#locatieAanduiding" data-placement="right">
-                            locatie-aanduiding</a>
+                            locatieaanduiding</a>
                           </code>
                         </td>
                         <td><a href="https://data.vlaanderen.be/ns/adres#Locatieaanduiding" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/adres#Locatieaanduiding" data-placement="right">Locatieaanduiding</a></td>
@@ -738,7 +752,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
             </div>
             
             <div class="region region--no-space-top">
-              <h3 class="h3" id="2D Gebouwgeometrie"><a href="https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie" data-placement="right">2D Gebouwgeometrie</a></h3>
+              <h3 class="h3" id="2D-Gebouwgeometrie"><a href="https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#2DGebouwgeometrie" data-placement="right">2D-Gebouwgeometrie</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
                     <dt>Beschrijving</dt><dd>Geometrie van het gebouw en metadata over welk deel van het gebouw door de geometrie wordt voorgesteld en hoe deze werd bepaald.</dd>
@@ -746,10 +760,11 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                     <dt>Eigenschappen</dt>
                     
                     <dd>Voor dit datatype zijn de volgende eigenschappen gedefinieerd:
-                      <a href="#2D%20Gebouwgeometrie%3Adefault">default</a>, 
-                      <a href="#2D%20Gebouwgeometrie%3Ageometrie">geometrie</a>, 
-                      <a href="#2D%20Gebouwgeometrie%3Amethode">methode</a>, 
-                      <a href="#2D%20Gebouwgeometrie%3Aspecificatie">specificatie</a>.</dd>
+                      <a href="#2D-Gebouwgeometrie%3Adefault">default</a>, 
+                      <a href="#2D-Gebouwgeometrie%3Ageometrie">geometrie</a>, 
+                      <a href="#2D-Gebouwgeometrie%3Ahorizontale%20referentie">horizontale referentie</a>, 
+                      <a href="#2D-Gebouwgeometrie%3Amethode">methode</a>, 
+                      <a href="#2D-Gebouwgeometrie%3Averticale%20referentie">verticale referentie</a>.</dd>
                     
                   </dl>
                 </div>
@@ -769,7 +784,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
 
                     <tbody class="supertype">
                       
-                      <tr id="2D%20Gebouwgeometrie%3Adefault" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#default">
+                      <tr id="2D-Gebouwgeometrie%3Adefault" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#default">
                         <td>
                           <code property="rdfs:label">
                             <a href="https://data.vlaanderen.be/ns/gebouw#default" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#default" data-placement="right">default</a>
@@ -782,43 +797,56 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                         <td></td>
                       </tr>
                       
-                      <tr id="2D%20Gebouwgeometrie%3Ageometrie" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#geometrie">
+                      <tr id="2D-Gebouwgeometrie%3Ageometrie" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#geometrie">
                         <td>
                           <code property="rdfs:label">
                             <a href="https://data.vlaanderen.be/ns/gebouw#geometrie" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#geometrie" data-placement="right">geometrie</a>
                           </code>
                         </td>
-                        <td><a href="http://www.opengis.net/ont/sf#Polygon" data-toggle="tooltip" data-content="http://www.opengis.net/ont/sf#Polygon" data-placement="right">Polygoon</a></td>
+                        <td><a href="http://www.w3.org/ns/locn#Geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#Geometry" data-placement="right">Geometrie</a></td>
                         <td>1</td>
-                        <td property="rdfs:comment">2D geometrische voorstelling van het gebouw.</td>
+                        <td property="rdfs:comment">2D of 2.5D geometrische voorstelling van het gebouw.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
                       
-                      <tr id="2D%20Gebouwgeometrie%3Amethode" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#methode">
+                      <tr id="2D-Gebouwgeometrie%3Ahorizontale%20referentie" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#horizontaleReferentie">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="https://data.vlaanderen.be/ns/gebouw#horizontaleReferentie" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#horizontaleReferentie" data-placement="right">horizontale referentie</a>
+                          </code>
+                        </td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">HorizontaleReferentieWaarde</a></td>
+                        <td>1</td>
+                        <td property="rdfs:comment">Aspect van het object dat door de xy-coördinaten wordt voorgesteld.</td>
+                        <td property="vann:usageNote"></td>
+                        <td><a href="http://inspire.ec.europa.eu/codelist/HorizontalGeometryReferenceValue">Link</a></td>
+                      </tr>
+                      
+                      <tr id="2D-Gebouwgeometrie%3Amethode" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#methode">
                         <td>
                           <code property="rdfs:label">
                             <a href="https://data.vlaanderen.be/ns/gebouw#methode" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#methode" data-placement="right">methode</a>
                           </code>
                         </td>
-                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">GeometrieMethodeWaarde</a></td>
+                        <td><a href="https://data.vlaanderen.be/ns/gebouw#2DGeometrieMethodeWaarde" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#2DGeometrieMethodeWaarde" data-placement="right">2DGeometrieMethodeWaarde</a></td>
                         <td>1</td>
                         <td property="rdfs:comment">Beschrijving van de manier waarop de geometrie aangemaakt werd.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
                       </tr>
                       
-                      <tr id="2D%20Gebouwgeometrie%3Aspecificatie" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#specificatie">
+                      <tr id="2D-Gebouwgeometrie%3Averticale%20referentie" typeof="rdfs:Property" resource="https://data.vlaanderen.be/ns/gebouw#verticaleReferentie">
                         <td>
                           <code property="rdfs:label">
-                            <a href="https://data.vlaanderen.be/ns/gebouw#specificatie" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#specificatie" data-placement="right">specificatie</a>
+                            <a href="https://data.vlaanderen.be/ns/gebouw#verticaleReferentie" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/gebouw#verticaleReferentie" data-placement="right">verticale referentie</a>
                           </code>
                         </td>
-                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">GeometrieSpecificatieWaarde</a></td>
-                        <td>1</td>
-                        <td property="rdfs:comment">Deel van het gebouw dat door de xy-coördinaten wordt voorgesteld.</td>
+                        <td><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">VerticaleReferentieWaarde</a></td>
+                        <td>0...1</td>
+                        <td property="rdfs:comment">Aspect van het object dat door de z-coördinaten wordt voorgesteld.</td>
                         <td property="vann:usageNote"></td>
-                        <td><a href="http://inspire.ec.europa.eu/codelist/HorizontalGeometryReferenceValue">Link</a></td>
+                        <td><a href="http://inspire.ec.europa.eu/codelist/VerticalReferenceValue">Link</a></td>
                       </tr>
                       
                     </tbody>
@@ -968,7 +996,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                           </code>
                         </td>
                         <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
-                        <td>0...1</td>
+                        <td>0...*</td>
                         <td property="rdfs:comment">Alfanumerieke code die de adreslocator uniek identificeert binnen de straat, administratieve eenheid etc.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
@@ -981,7 +1009,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                           </code>
                         </td>
                         <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-toggle="tooltip" data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString" data-placement="right">TaalString</a></td>
-                        <td>0...1</td>
+                        <td>0...*</td>
                         <td property="rdfs:comment">Naam of omschrijving vh het geografisch object dat de adreslocator aanduidt.</td>
                         <td property="vann:usageNote"></td>
                         <td></td>
@@ -1247,7 +1275,7 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                             <a href="https://data.vlaanderen.be/ns/adres#Locatieaanduiding.aanduiding" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/adres#Locatieaanduiding.aanduiding" data-placement="right">aanduiding</a>
                           </code>
                         </td>
-                        <td><a href="http://www.w3.org/2001/XMLSchema#string" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#string" data-placement="right">String</a></td>
+                        <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" data-toggle="tooltip" data-content="http://www.w3.org/2000/01/rdf-schema#Literal" data-placement="right">GetypeerdeString</a></td>
                         <td>1</td>
                         <td property="rdfs:comment">Alfanumerieke code waarmee het identificerend deel van een adreslocator wordt aangeduid.</td>
                         <td property="vann:usageNote"></td>
@@ -1269,23 +1297,6 @@ Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
                       
                     </tbody>
                   </table>
-                </div>
-                
-            </div>
-            
-            <div class="region region--no-space-top">
-              <h3 class="h3" id="Polygoon"><a href="http://www.opengis.net/ont/sf#Polygon" data-toggle="tooltip" data-content="http://www.opengis.net/ont/sf#Polygon" data-placement="right">Polygoon</a></h3>
-                <div class="region region--no-space-top">
-                  <dl>
-                    <dt>Beschrijving</dt><dd>Oppervlak bestaande uit 1 buitengrens en 0 of meer binnengrenzen. Elke binnengrens vormt een gat in de polygoon.</dd>
-                    
-                    <dt>Gebruik</dt><dd>De grenzen zijn zgn lineaire ringen, ttz het zijn gesloten (niet zelfsnijdende) lijnstringen. De buitengrens wordt onderscheiden vd binnengrens door resp de kloksgewijze en tegenkloksgewijze richting waarin de ring loopt.</dd>
-                    
-                    <dt>Eigenschappen</dt>
-                    
-                    <dd>Voor dit datatype zijn geen eigenschappen gedefinieerd.</dd>
-                    
-                  </dl>
                 </div>
                 
             </div>
