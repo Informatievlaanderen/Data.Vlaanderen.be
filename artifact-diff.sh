@@ -8,8 +8,14 @@ echo " arg2 = the directory containing the OSLO-generated test branch"
 PRODUCTION=$1
 TEST=$2
 DETAIL=$3
+DETAIL=${DETAIL:-"global"}
 
-# diff -r -q -x .git -x .gitkeep $PRODUCTION $TEST
+
+if [ $DETAIL == "global" ] ; then
+echo "global compare "
+ diff -r -q -x .git -x .gitkeep $PRODUCTION $TEST
+
+fi
 
 if [ $DETAIL == "rdf" ] ; then
 echo "compare RDF"
