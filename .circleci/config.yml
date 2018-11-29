@@ -189,8 +189,12 @@ workflows:
   generate_documentation:
     jobs:
       - checkout
-      - extract-vocabularia
-      - extract-application-profiles
+      - extract-vocabularia:
+      	  requires:
+	    - checkout
+      - extract-application-profiles:
+      	  requires:
+	    - checkout
       - add-voc-contributors:
           requires:
             - extract-vocabularia
