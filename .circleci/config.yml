@@ -190,14 +190,14 @@ workflows:
     jobs:
       - checkout
       - extract-vocabularia:
-      	  requires:
+          requires:
             - checkout
       - extract-application-profiles:
-      	  requires:
-            - checkout
+          requires:
+           - checkout
       - add-voc-contributors:
           requires:
-            - extract-vocabularia
+	   - extract-vocabularia
       - render-voc-html:
           requires:
             - add-voc-contributors
@@ -215,4 +215,4 @@ workflows:
             - render-voc-html
             - render-voc-rdf
             - render-ap-html
-            - render-ap-jsonld
+	    - render-ap-jsonld
