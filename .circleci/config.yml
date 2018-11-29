@@ -15,9 +15,9 @@ jobs:
           name: command
           command: $PWD/scripts/checkout.sh $PWD/scripts/publication.config
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: /tmp/target
           paths:
-             - target/
+             - workspace/
   extract-vocabularia:
     docker:
       - image: informatievlaanderen/oslo-ea-to-rdf:circleci
