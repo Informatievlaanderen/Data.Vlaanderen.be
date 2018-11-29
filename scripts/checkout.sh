@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PUBCONFIG=scripts/publication.config
+PUBCONFIG=$1
 ROOTDIR=/tmp
 
 # some test calls
@@ -35,29 +35,35 @@ ROOTDIR=/tmp
 # publicationpoints for that month. That would reduce the runtime
 # drastically.
 
+if [ ! -f "${PUBCONFIG}" ] ; then
+    echo  "file doesn't exist - ${PUBCONFIG}"
+    exit -1
+fi
 
-create_dir_structure() {
+if cat ${PUBCONFIG} | jq -e . > /dev/null 2>&1
+then
+    # only iterate over those that have a repository
+    for row in $(jq -r '.[] | select(.repository)  | @base64 ' ${PUBCONFIG}) ; do
+	_jq() {
+	    echo ${row} | base64 --decode | jq -r ${1}
+	}
+	
+	echo "start processing (repository): $(_jq '.urlref')"
+
+	DIR=$(_jq '.urlref')
+	mkdir -p $ROOTDIR/src/$DIR
+	mkdir -p $ROOTDIR/target/$DIR
+	git clone --depth=1 $(_jq '.repository') $ROOTDIR/$DIR
+	pushd $ROOTDIR/$DIR
+    	echo "git checkout $(_jq '.branchtag')"
+	popd
+    done
+
+    for row in $(jq -r '.[] | select(.seealso)  | @base64 ' ${PUBCONFIG}) ;
+    do
+	echo "start processing (see also): $(_jq '.urlref')"
+    done
+else
+    echo "problem in processing ${PUBCONFIG}"
+fi
     
-}
-
-# only iterate over those that have a repository
-
-for row in $(jq -r '.[] | select(.repository)  | @base64 ' ${PUBCONFIG}) ; do
-    _jq() {
-     echo ${row} | base64 --decode | jq -r ${1}
-    }
-   
-   echo "start processing (repository): $(_jq '.urlref')"
-
-   DIR=$(_jq '.urlref')
-   mkdir -p $ROOTDIR/src/$DIR
-   mkdir -p $ROOTDIR/target/$DIR
-   git clone --depth=1 $(_jq '.repository') $ROOTDIR/$DIR
-   pushd $ROOTDIR/$DIR
-      echo "git checkout $(_jq '.branchtag')"
-   popd
-done
-
-for row in $(jq -r '.[] | select(.seealso)  | @base64 ' ${PUBCONFIG}) ; do
-    echo "start processing (see also): $(_jq '.urlref')"
-done
