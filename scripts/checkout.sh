@@ -1,7 +1,7 @@
 #!/bin/bash
 
-PUBCONFIG=$1
-ROOTDIR=/tmp
+PUBCONFIG=$2
+ROOTDIR=$1
 
 # some test calls
 #jq -r '.[] | @sh "echo \(.urlref)"' publication.config | bash -e
@@ -48,14 +48,16 @@ then
 	    echo ${row} | base64 --decode | jq -r ${1}
 	}
 	
-	echo "start processing (repository): $(_jq '.urlref')"
+	echo "start processing (repository): $(_jq '.repository') $(_jq '.urlref')"
 
 	DIR=$(_jq '.urlref')
-	mkdir -p $ROOTDIR/src/$DIR
-	mkdir -p $ROOTDIR/target/$DIR
-	git clone --depth=1 $(_jq '.repository') $ROOTDIR/$DIR
-	pushd $ROOTDIR/$DIR
-    	echo "git checkout $(_jq '.branchtag')"
+	RDIR=${DIR#'/'}
+	mkdir -p $ROOTDIR/src/$RDIR
+	mkdir -p $ROOTDIR/target/$RDIR
+	git clone --depth=1 $(_jq '.repository') $ROOTDIR/src/$RDIR
+	
+	pushd $ROOTDIR/src/$RDIR
+    	   git checkout $(_jq '.branchtag')
 	popd
     done
 

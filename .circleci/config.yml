@@ -5,20 +5,14 @@ jobs:
       - image: circleci/node:4.8.2
     steps:
       - checkout
-      - run:
-          name: Echo Directory
-          command: echo $PWD; ls -al
-      - run:
-          name: chmod it
-          command: chmod 744 $PWD/scripts/checkout.sh
-      - run:
-          name: command
-          command: $PWD/scripts/checkout.sh $PWD/scripts/publication.config
+      - run: mkdir -p workspace
+      - run: ls -al workspace
+      - run: $PWD/scripts/checkout.sh workspace $PWD/scripts/publication.config
       - persist_to_workspace:
-          root: /tmp
+          root: workspace
           paths:
-            - target
             - src
+            - target
   extract-vocabularia:
     docker:
       - image: informatievlaanderen/oslo-ea-to-rdf:circleci
