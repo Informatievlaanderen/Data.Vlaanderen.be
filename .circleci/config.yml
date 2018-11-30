@@ -131,6 +131,25 @@ jobs:
           root: /tmp/workspace
           paths:
             - ap/
+  create-shacl:
+    docker:
+      - image: informatievlaanderen/oslo-specification-generator:circleci
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: create the target dir
+          command: |
+             mkdir -p /tmp/workspace/shacl
+      - run:
+          name: create the SHACL files
+          command: |
+            jq -r '.[] | select(.type | contains("ap")) | @sh "python /app/specgen/generate_shacl.py --input /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv --output /tmp/workspace/shacl/\(if .prefix then .prefix + "/" else "" end)\(.name)-SHACL.ttl --name \(.name)"' config/eap-mapping.json | bash -e
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - shacl/
   create-artifact:
     docker:
       - image: circleci/node
@@ -159,6 +178,7 @@ jobs:
             cp -R voc/* /tmp/OSLO-Generated/ns/
             cp ap/*.jsonld /tmp/OSLO-Generated/context/
             cp -R ap/* /tmp/OSLO-Generated/doc/applicatieprofiel/
+            cp -R shacl/* /tmp/OSLO-Generated/shacl/
       - run:
           name: Push results to github
           workdir: /tmp/OSLO-Generated
@@ -189,9 +209,13 @@ workflows:
       - render-ap-jsonld:
           requires:
             - extract-application-profiles
+      - create-shacl:
+          requires:
+            - extract-application-profiles
       - create-artifact:
           requires:
             - render-voc-html
             - render-voc-rdf
             - render-ap-html
             - render-ap-jsonld
+            - create-shacl
