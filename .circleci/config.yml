@@ -139,6 +139,10 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run:
+          name: create the target dir
+          command: |
+             mkdir -p /tmp/workspace/shacl
+      - run:
           name: create the SHACL files
           command: |
             jq -r '.[] | select(.type | contains("ap")) | @sh "python /app/specgen/generate_shacl.py --input /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv --output /tmp/workspace/shacl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl --name \(.name)"' config/eap-mapping.json | bash -e
