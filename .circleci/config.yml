@@ -141,8 +141,8 @@ jobs:
       - run:
           name: create the SHACL files
           command: |
-            jq -r '.[] | select(.type | contains("ap")) | @sh "python /app/specgen/generate_shacl.py --input /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv --output /tmp/workspace/shacl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl --name \(.name\)"' config/eap-mapping.json | bash -e
-     - persist_to_workspace:
+            jq -r '.[] | select(.type | contains("ap")) | @sh "python /app/specgen/generate_shacl.py --input /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv --output /tmp/workspace/shacl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl --name \(.name)"' config/eap-mapping.json | bash -e
+      - persist_to_workspace:
           root: /tmp/workspace
           paths:
             - ap/
