@@ -145,7 +145,7 @@ jobs:
       - run:
           name: create the SHACL files
           command: |
-            jq -r '.[] | select(.type | contains("ap")) | @sh "python /app/specgen/generate_shacl.py --input /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv --output /tmp/workspace/shacl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl --name \(.name)"' config/eap-mapping.json | bash -e
+            jq -r '.[] | select(.type | contains("ap")) | @sh "python /app/specgen/generate_shacl.py --input /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv --output /tmp/workspace/shacl/\(if .prefix then .prefix + "/" else "" end)\(.name)-SHACL.ttl --name \(.name)"' config/eap-mapping.json | bash -e
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -178,6 +178,7 @@ jobs:
             cp -R voc/* /tmp/OSLO-Generated/ns/
             cp ap/*.jsonld /tmp/OSLO-Generated/context/
             cp -R ap/* /tmp/OSLO-Generated/doc/applicatieprofiel/
+            cp -R shacl/* /tmp/OSLO-Generated/shacl/
       - run:
           name: Push results to github
           workdir: /tmp/OSLO-Generated
