@@ -18,6 +18,8 @@ jobs:
       - image: informatievlaanderen/oslo-ea-to-rdf:circleci
     steps:
       - checkout
+      - attach_workspace:
+          at: /tmp/workspace
       - run:
           name: Extract ttl data for each diagram
           command: |
@@ -31,6 +33,8 @@ jobs:
       - image: informatievlaanderen/oslo-ea-to-rdf:circleci
     steps:
       - checkout
+      - attach_workspace:
+          at: /tmp/workspace
       - run:
           name: Extract tsv data for each diagram
           command: |
