@@ -10,7 +10,7 @@ jobs:
       - run: $PWD/scripts/checkout.sh /tmp/workspace $PWD/scripts/publication.config
       - run: cat /tmp/workspace/checkouts.txt
       - persist_to_workspace:
-          root: workspace
+          root: /tmp/workspace
           paths:
             - checkouts.txt
             - src
