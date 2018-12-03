@@ -8,7 +8,13 @@ CHECKOUTFILE=/tmp/workspace/checkouts.txt
 # extraction commands
 
 extract_tsv() {
+    # Extract tsv data for each diagram    
     jq -r '.[] | select(.type | contains("ap")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i src/\(.eap) -c config/config-ap.json -d \(.diagram) -o /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv"' < config/eap-mapping.json | bash
+}
+
+extract_ttl() {
+    # Extract ttl data for each diagram
+    jq -r '.[] | select(.type | contains("voc")) | @sh "java -jar /app/ea-2-rdf.jar convert -i src/\(.eap) -c config/config-voc.json -d \(.diagram) -o /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl"' config/eap-mapping.json | bash
 }
 
 # do the conversions
@@ -27,6 +33,8 @@ do
       pushd $line
         case $extractwhat in
      	    tsv) extract_tsv >> log.txt
+		 ;;
+     	    ttl) extract_ttl >> log.txt
 		 ;;
               *) echo "towhat not defined"
         esac 	   
