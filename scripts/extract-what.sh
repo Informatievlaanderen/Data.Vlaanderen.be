@@ -12,22 +12,27 @@ extract_tsv() {
 
 # do the conversions
 
-if [ ! -f "checkout.txt" ]
+if [ ! -f "checkouts.txt" ]
 then
     # normalise the functioning
-    echo $CWD > checkout.txt
+    echo $PWD > checkouts.txt
 fi
 
-cat checkout.txt | while read line
+cat checkouts.txt | while read line
 do
     echo "Processing line: $line"
-    pushd $line
-      case $extractwhat in
-	tsv) extract_tsv
-	     ;;
-          *) echo "towhat not defined"
-      esac 	   
-    popd
+    if [ -d "$line" ]
+    then
+      pushd $line
+        case $extractwhat in
+     	    tsv) extract_tsv >> log.txt
+		 ;;
+              *) echo "towhat not defined"
+        esac 	   
+      popd
+    else
+      echo "Error: $line" >> log.txt
+    fi
 done
 
     
