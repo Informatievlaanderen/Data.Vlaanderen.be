@@ -193,16 +193,12 @@ workflows:
       - extract-vocabularia:
           requires:
             - checkout
-      - extract-vocabularia-new:
-          requires:
-            - checkout
       - extract-application-profiles:
           requires:
             - checkout
       - add-voc-contributors:
           requires:
             - extract-vocabularia
-            - extract-vocabularia-new
       - render-voc-html:
           requires:
             - add-voc-contributors
