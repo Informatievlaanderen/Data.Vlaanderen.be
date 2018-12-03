@@ -23,12 +23,12 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run:
-          name: Extract ttl data for each diagram
+          name: Extract TSV data for each diagram (via script)
           command: $PWD/scripts/extract-what.sh tsv
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
-            - ttl/
+            - tsv/
   extract-vocabularia:
     docker:
       - image: informatievlaanderen/oslo-ea-to-rdf:circleci

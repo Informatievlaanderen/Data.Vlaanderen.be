@@ -35,5 +35,3 @@ do
       echo "Error: $line" >> log.txt
     fi
 done
-
-    
