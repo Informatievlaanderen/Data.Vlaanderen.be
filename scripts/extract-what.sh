@@ -15,7 +15,7 @@ extract_tsv() {
 if [ ! -f "checkouts.txt" ]
 then
     # normalise the functioning
-    echo $PWD > checkouts.txt
+    echo $CWD > checkouts.txt
 fi
 
 cat checkouts.txt | while read line
