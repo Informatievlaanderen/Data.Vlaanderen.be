@@ -7,11 +7,12 @@ jobs:
       - checkout
       - run: mkdir -p workspace
       - run: ls -al workspace
-      - run: $PWD/scripts/checkout.sh workspace $PWD/scripts/publication.config
-      - run: ls -al workspace      
+      - run: $PWD/scripts/checkout.sh /tmp/workspace $PWD/scripts/publication.config
+      - run: cat /tmp/workspace/checkouts.txt
       - persist_to_workspace:
           root: workspace
           paths:
+	    - checkouts.txt
             - src
             - target
   extract-vocabularia-new:
