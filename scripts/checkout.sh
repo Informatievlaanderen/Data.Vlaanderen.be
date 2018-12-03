@@ -31,7 +31,7 @@ ROOTDIR=$1
 # consider to create a docker with the to-be-generated situation in a
 # previous state and start form that one.  The build of a new docker
 # should than be done on regular time (not on every commit) e.g. 1 /
-# month. And then the publication would only chekcout additional
+# month. And then the publication would only chekcout additonal
 # publicationpoints for that month. That would reduce the runtime
 # drastically.
 
@@ -59,6 +59,7 @@ then
 	pushd $ROOTDIR/src/$RDIR
     	   git checkout $(_jq '.branchtag')
 	popd
+	echo "$ROOTDIR/src/$RDIR" >> $ROOTDIR/checkouts.txt
     done
 
     for row in $(jq -r '.[] | select(.seealso)  | @base64 ' ${PUBCONFIG}) ;
@@ -68,4 +69,3 @@ then
 else
     echo "problem in processing ${PUBCONFIG}"
 fi
-    

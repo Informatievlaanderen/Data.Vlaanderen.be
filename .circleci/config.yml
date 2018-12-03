@@ -8,11 +8,26 @@ jobs:
       - run: mkdir -p workspace
       - run: ls -al workspace
       - run: $PWD/scripts/checkout.sh workspace $PWD/scripts/publication.config
+      - run: ls -al workspace      
       - persist_to_workspace:
           root: workspace
           paths:
             - src
             - target
+  extract-vocabularia-new:
+    docker:
+      - image: informatievlaanderen/oslo-ea-to-rdf:circleci
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Extract ttl data for each diagram
+          command: $PWD/scripts/extract-what.sh tsv
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - ttl/
   extract-vocabularia:
     docker:
       - image: informatievlaanderen/oslo-ea-to-rdf:circleci
@@ -23,7 +38,7 @@ jobs:
       - run:
           name: Extract ttl data for each diagram
           command: |
-            jq -r '.[] | select(.type | contains("voc")) | @sh "java -jar /app/ea-2-rdf.jar convert -i src/\(.eap) -c config/config-voc.json -d \(.diagram) -o /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl"' config/eap-mapping.json | bash -e
+            jq -r '.[] | select(.type | contains("voc")) | @sh "java -jar /app/ea-2-rdf.jar convert -i src/\(.eap) -c config/config-voc.json -d \(.diagram) -o /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl"' config/eap-mapping.json | bash
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -38,7 +53,7 @@ jobs:
       - run:
           name: Extract tsv data for each diagram
           command: |
-            jq -r '.[] | select(.type | contains("ap")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i src/\(.eap) -c config/config-ap.json -d \(.diagram) -o /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv"' < config/eap-mapping.json | bash -e
+            jq -r '.[] | select(.type | contains("ap")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i src/\(.eap) -c config/config-ap.json -d \(.diagram) -o /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv"' < config/eap-mapping.json | bash
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -53,7 +68,7 @@ jobs:
       - run:
           name: Add contributors to vocabulary ttl file
           command: |
-            jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --add_contributors --rdf /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl --csv src/stakeholders.csv --csv_contributor_role_column \(.contributors) --output /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl"' < config/eap-mapping.json | bash -e
+            jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --add_contributors --rdf /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl --csv src/stakeholders.csv --csv_contributor_role_column \(.contributors) --output /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl"' < config/eap-mapping.json | bash
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -193,12 +208,16 @@ workflows:
       - extract-vocabularia:
           requires:
             - checkout
+      - extract-vocabularia-new:
+          requires:
+            - checkout
       - extract-application-profiles:
           requires:
             - checkout
       - add-voc-contributors:
           requires:
             - extract-vocabularia
+	    - extract-vocabularia-new
       - render-voc-html:
           requires:
             - add-voc-contributors
