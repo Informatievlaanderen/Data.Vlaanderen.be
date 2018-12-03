@@ -3,6 +3,7 @@
 set -x
 
 extractwhat=$1
+CHECKOUTFILE=/tmp/workspace/checkouts.txt
 
 # extraction commands
 
@@ -12,13 +13,13 @@ extract_tsv() {
 
 # do the conversions
 
-if [ ! -f "checkouts.txt" ]
+if [ ! -f "${CHECKOUTFILE}" ]
 then
     # normalise the functioning
-    echo $CWD > checkouts.txt
+    echo $CWD > ${CHECKOUTFILE}
 fi
 
-cat checkouts.txt | while read line
+cat ${CHECKOUTFILE} | while read line
 do
     echo "Processing line: $line"
     if [ -d "$line" ]
