@@ -60,7 +60,10 @@ then
 	
 	pushd $ROOTDIR/src/$RDIR
     	   git checkout $(_jq '.branchtag')
-	   echo "check name $NAME is present"
+	   if [ ! -z "$NAME" ]
+	   then
+	       echo "check name $NAME is present"
+	   fi
         popd
         	   
 	echo "$ROOTDIR/src/$RDIR" >> $ROOTDIR/checkouts.txt
