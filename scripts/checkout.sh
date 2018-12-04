@@ -64,14 +64,14 @@ then
 
 	pushd $ROOTDIR/src/$RDIR
     	   git checkout $(_jq '.branchtag')
-        popd
 
-	# Save the Name points to be processed
-	if [ ! -z "$NAME" ]
-	then
-	    echo "check name $NAME is present"
-            echo "$ROOTDIR/src/$RDIR $NAME" >> $ROOTDIR/names.txt
-	fi
+	   # Save the Name points to be processed
+	   if [ ! -z "$NAME" -and "$NAME" != "null" ]
+	   then
+	       echo "check name $NAME is present"
+               echo "$ROOTDIR/src/$RDIR $NAME" >> .names.txt
+	   fi
+        popd
 	echo "$ROOTDIR/src/$RDIR" >> $ROOTDIR/checkouts.txt
     done
 
