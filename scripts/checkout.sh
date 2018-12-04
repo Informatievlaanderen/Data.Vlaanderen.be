@@ -51,7 +51,8 @@ then
 	echo "start processing (repository): $(_jq '.repository') $(_jq '.urlref')"
 
 	DIR=$(_jq '.urlref')
-	NAME=$(_jq, '.name')
+	NAME=$(_jq '.name')
+	
 	RDIR=${DIR#'/'}
 	mkdir -p $ROOTDIR/src/$RDIR
 	mkdir -p $ROOTDIR/target/$RDIR
