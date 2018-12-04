@@ -17,7 +17,8 @@ extract_ttl() {
     MAPPINGFILE = "config/eap-mapping.json"
     if [ -f ".names.txt" ]
     then
-	jq -r '.[] | select(.type | contains("$(cat .names.txt)"))' .names.json
+	echo "name: $(cat .names.txt)"
+	jq -r '.[] | select(.type | contains("$(cat .names.txt)"))' ${MAPPINGFILE} > .names.json
 	MAPPINGFILE=".names.json"
     fi
     jq -r '.[] | select(.type | contains("voc")) | @sh "java -jar /app/ea-2-rdf.jar convert -i \(.eap) -c config/config-voc.json -d \(.diagram) -o /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl"' $MAPPINGFILE | bash
