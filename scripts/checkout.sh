@@ -66,7 +66,7 @@ then
            if ! git checkout $(_jq '.branchtag')
  	   then
 	       # branch could not be checked out for some reason
-	       echo "failed: $ROOTDIR/src/$RDIR $(_jq '.branchtag') >> $ROOTDIR/failed.txt
+	       echo "failed: $ROOTDIR/src/$RDIR $(_jq '.branchtag')" >> $ROOTDIR/failed.txt
 	   fi
 
 	   # Save the Name points to be processed
