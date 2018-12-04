@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+# set -x
 
 extractwhat=$1
 CHECKOUTFILE=/tmp/workspace/checkouts.txt

@@ -63,7 +63,13 @@ then
 	git clone --depth=1 $(_jq '.repository') $ROOTDIR/src/$RDIR
 
 	pushd $ROOTDIR/src/$RDIR
-    	   git checkout $(_jq '.branchtag')
+           if git checkout $(_jq '.branchtag')
+ 	   then
+	       echo ""
+	   else
+	       # branch could not be checked out for some reason
+	       echo "failed: $ROOTDIR/src/$RDIR $(_jq '.branchtag') >> failed.txt
+	   fi
 
 	   # Save the Name points to be processed
 	   if [ ! -z "$NAME" -a "$NAME" != "null" ]
