@@ -14,7 +14,13 @@ extract_tsv() {
 
 extract_ttl() {
     # Extract ttl data for each diagram
-    jq -r '.[] | select(.type | contains("voc")) | @sh "java -jar /app/ea-2-rdf.jar convert -i \(.eap) -c config/config-voc.json -d \(.diagram) -o /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl"' config/eap-mapping.json | bash
+    MAPPINGFILE = "config/eap-mapping.json"
+    if [ -f ".names.txt" ]
+    then
+	jq -r '.[] | select(.type | contains("$(cat .names.txt)"))' .names.json
+	MAPPINGFILE=".names.json"
+    fi
+    jq -r '.[] | select(.type | contains("voc")) | @sh "java -jar /app/ea-2-rdf.jar convert -i \(.eap) -c config/config-voc.json -d \(.diagram) -o /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl"' $MAPPINGFILE | bash
 }
 
 # do the conversions
