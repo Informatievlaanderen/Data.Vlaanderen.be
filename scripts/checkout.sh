@@ -66,7 +66,7 @@ then
     	   git checkout $(_jq '.branchtag')
 
 	   # Save the Name points to be processed
-	   if [ ! -z "$NAME" -and "$NAME" != "null" ]
+	   if [ ! -z "$NAME" -a "$NAME" != "null" ]
 	   then
 	       echo "check name $NAME is present"
                echo "$NAME" >> .names.txt
