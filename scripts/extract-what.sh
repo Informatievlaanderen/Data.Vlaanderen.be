@@ -18,7 +18,7 @@ extract_ttl() {
     if [ -f ".names.txt" ]
     then
 	echo "name: $(cat .names.txt)"
-	STR="'.[] | select(.name | contains(\"$(cat .names.txt)\"))'"
+	STR=".[] | select(.name | contains(\"$(cat .names.txt)\"))"
 	jq -r "${STR}" ${MAPPINGFILE} > .names.json
 	MAPPINGFILE=".names.json"
     fi
