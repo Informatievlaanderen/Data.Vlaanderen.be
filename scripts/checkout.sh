@@ -63,12 +63,10 @@ then
 	git clone --depth=1 $(_jq '.repository') $ROOTDIR/src/$RDIR
 
 	pushd $ROOTDIR/src/$RDIR
-           if git checkout $(_jq '.branchtag')
+           if ! git checkout $(_jq '.branchtag')
  	   then
-	       echo ""
-	   else
 	       # branch could not be checked out for some reason
-	       echo "failed: $ROOTDIR/src/$RDIR $(_jq '.branchtag') >> failed.txt
+	       echo "failed: $ROOTDIR/src/$RDIR $(_jq '.branchtag') >> $ROOTDIR/failed.txt
 	   fi
 
 	   # Save the Name points to be processed
@@ -85,6 +83,13 @@ then
     do
 	echo "link $(_jq '.urlref') $(_jq '.seealso')" >> $ROOTDIR/links.txt
     done
+
+    if [ -f "$ROOTDIR/failed.txt" ]
+    then
+       echo "failed checking out branches"
+       cat $ROOTDIR/failed.txt
+       exit -1
+    fi
 else
     echo "problem in processing ${PUBCONFIG}"
 fi
