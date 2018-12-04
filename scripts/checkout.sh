@@ -60,7 +60,7 @@ then
 	RDIR=${DIR#'/'}
 	mkdir -p $ROOTDIR/src/$RDIR
 	mkdir -p $ROOTDIR/target/$RDIR
-	git clone --depth=1 $(_jq '.repository') $ROOTDIR/src/$RDIR
+	git clone $(_jq '.repository') $ROOTDIR/src/$RDIR
 
 	pushd $ROOTDIR/src/$RDIR
            if ! git checkout $(_jq '.branchtag')
