@@ -32,9 +32,9 @@ do
     then
       pushd $line
         case $extractwhat in
-     	    tsv) extract_tsv >> log.txt
+     	    tsv) extract_tsv
 		 ;;
-     	    ttl) extract_ttl >> log.txt
+     	    ttl) extract_ttl
 		 ;;
               *) echo "towhat not defined"
         esac 	   

@@ -64,7 +64,7 @@ then
 
     for row in $(jq -r '.[] | select(.seealso)  | @base64 ' ${PUBCONFIG}) ;
     do
-	echo "start processing (see also): $(_jq '.urlref')"
+	echo "link: $(_jq '.urlref') $(_jq '.urlref')" >> $ROOTDIR/links.txt
     done
 else
     echo "problem in processing ${PUBCONFIG}"

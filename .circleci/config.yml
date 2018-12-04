@@ -148,6 +148,19 @@ jobs:
           root: /tmp/workspace
           paths:
             - ap/
+  expand-links:
+    docker: 
+      - image: circleci/node:4.8.2
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run: $PWD/scripts/expand-links.sh /tmp/workspace
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - src
+            - target
   create-artifact:
     docker:
       - image: circleci/node
@@ -211,9 +224,12 @@ workflows:
       - render-ap-jsonld:
           requires:
             - extract-application-profiles
-      - create-artifact:
+      - expand-links:	   
           requires:
             - render-voc-html
             - render-voc-rdf
             - render-ap-html
             - render-ap-jsonld
+      - create-artifact:
+          requires:
+            - expand-links
