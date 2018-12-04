@@ -51,6 +51,7 @@ then
 	echo "start processing (repository): $(_jq '.repository') $(_jq '.urlref')"
 
 	DIR=$(_jq '.urlref')
+	NAME=$(_jq, '.name')
 	RDIR=${DIR#'/'}
 	mkdir -p $ROOTDIR/src/$RDIR
 	mkdir -p $ROOTDIR/target/$RDIR
@@ -58,7 +59,9 @@ then
 	
 	pushd $ROOTDIR/src/$RDIR
     	   git checkout $(_jq '.branchtag')
-	popd
+	   echo "check name $NAME is present"
+        popd
+        	   
 	echo "$ROOTDIR/src/$RDIR" >> $ROOTDIR/checkouts.txt
     done
 
