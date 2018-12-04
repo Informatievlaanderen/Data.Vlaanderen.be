@@ -69,7 +69,7 @@ then
 	   if [ ! -z "$NAME" -and "$NAME" != "null" ]
 	   then
 	       echo "check name $NAME is present"
-               echo "$ROOTDIR/src/$RDIR $NAME" >> .names.txt
+               echo "$NAME" >> .names.txt
 	   fi
         popd
 	echo "$ROOTDIR/src/$RDIR" >> $ROOTDIR/checkouts.txt

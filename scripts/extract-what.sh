@@ -14,7 +14,7 @@ extract_tsv() {
 
 extract_ttl() {
     # Extract ttl data for each diagram
-    MAPPINGFILE = "config/eap-mapping.json"
+    local MAPPINGFILE="config/eap-mapping.json"
     if [ -f ".names.txt" ]
     then
 	echo "name: $(cat .names.txt)"
