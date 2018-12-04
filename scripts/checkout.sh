@@ -35,11 +35,15 @@ ROOTDIR=$1
 # publicationpoints for that month. That would reduce the runtime
 # drastically.
 
+# Cleanup root (just in case)
+rm -rf $ROOTDIR/*.txt
+
 if [ ! -f "${PUBCONFIG}" ] ; then
     echo  "file doesn't exist - ${PUBCONFIG}"
     exit -1
 fi
 
+# Process the publications.config file
 if cat ${PUBCONFIG} | jq -e . > /dev/null 2>&1
 then
     # only iterate over those that have a repository
@@ -57,15 +61,17 @@ then
 	mkdir -p $ROOTDIR/src/$RDIR
 	mkdir -p $ROOTDIR/target/$RDIR
 	git clone --depth=1 $(_jq '.repository') $ROOTDIR/src/$RDIR
-	
+
 	pushd $ROOTDIR/src/$RDIR
     	   git checkout $(_jq '.branchtag')
-	   if [ ! -z "$NAME" ]
-	   then
-	       echo "check name $NAME is present"
-	   fi
         popd
-        	   
+
+	# Save the Name points to be processed
+	if [ ! -z "$NAME" ]
+	then
+	    echo "check name $NAME is present"
+            echo "$ROOTDIR/src/$RDIR $NAME" >> $ROOTDIR/names.txt
+	fi
 	echo "$ROOTDIR/src/$RDIR" >> $ROOTDIR/checkouts.txt
     done
 
