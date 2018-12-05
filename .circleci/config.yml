@@ -11,7 +11,7 @@ jobs:
       - run: cat /tmp/workspace/checkouts.txt
       - run:
           name: List the files which have been created
-          command: ls -al /tmp/workspace/t*  /tmp/workspace/*.txt
+          command: ls -al /tmp/workspace/*
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -31,7 +31,7 @@ jobs:
           command: $PWD/scripts/extract-what.sh ttl
       - run:
           name: List the files which have been created
-          command: ls -al /tmp/workspace/t*  /tmp/workspace/*.txt
+          command: ls -al /tmp/workspace/ttl*
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -48,7 +48,7 @@ jobs:
           command: $PWD/scripts/extract-what.sh tsv
       - run:
           name: List the files which have been created
-          command: ls -al /tmp/workspace/t*  /tmp/workspace/*.txt
+          command: ls -al /tmp/workspace/tsv*
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
