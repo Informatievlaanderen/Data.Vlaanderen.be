@@ -12,13 +12,23 @@ CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 extract_tsv() {
     local TDIR=${TARGETDIR}/tsv
     mkdir -p ${TDIR}
+    # Extract ttl data for each diagram
+    local MAPPINGFILE="config/eap-mapping.json"
+    if [ -f ".names.txt" ]
+    then
+	echo "name: $(cat .names.txt)"
+	STR=".[] | select(.name | contains(\"$(cat .names.txt)\")) | [.]"
+	jq "${STR}" ${MAPPINGFILE} > .names.json
+	MAPPINGFILE=".names.json"
+    fi
     # Extract tsv data for each diagram    
-    jq -r '.[] | select(.type | contains("ap")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i \(.eap) -c config/config-ap.json -d \(.diagram) -o ${TDIR}/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv"' < config/eap-mapping.json | bash
+    jq -r '.[] | select(.type | contains("ap")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i \(.eap) -c config/config-ap.json -d \(.diagram) -o ${TDIR}/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv"' < $MAPPINGFILE | bash
 }
 
 extract_ttl() {
     local TDIR=${TARGETDIR}/ttl
     mkdir -p ${TDIR}
+    
     # Extract ttl data for each diagram
     local MAPPINGFILE="config/eap-mapping.json"
     if [ -f ".names.txt" ]
