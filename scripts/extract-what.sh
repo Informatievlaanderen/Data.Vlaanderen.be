@@ -67,3 +67,7 @@ do
       echo "Error: $line" >> log.txt
     fi
 done
+
+# List the files which have been created
+ls -al /tmp/workplace/t*  /tmp/workplace/*.txt
+
