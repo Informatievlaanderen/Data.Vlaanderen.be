@@ -9,7 +9,7 @@ CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 #############################################################################################
 # extraction command functions
 
-mappings_file() {
+get_mapping_file() {
     local MAPPINGFILE="config/eap-mapping.json"
     if [ -f ".names.txt" ]
     then
@@ -57,7 +57,7 @@ do
     if [ -d "$line" ]
     then
       pushd $line
-       local MAPPINGFILE=$(mapping_file)    
+       MAPPINGFILE=$(get_mapping_file)   
        case $extractwhat in
      	         tsv) extract_tsv $MAPPINGFILE
 		      ;;
