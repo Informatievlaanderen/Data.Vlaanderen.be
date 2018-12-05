@@ -28,7 +28,7 @@ jobs:
             - tsv/
   add-voc-contributors:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:circleci
+      - image: informatievlaanderen/oslo-specification-generator:v1.2-circleci
     steps:
       - checkout
       - attach_workspace:
@@ -43,7 +43,7 @@ jobs:
             - ttl/
   render-voc-html:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:circleci
+      - image: informatievlaanderen/oslo-specification-generator:v1.2-circleci
     steps:
       - checkout
       - attach_workspace:
@@ -103,7 +103,7 @@ jobs:
             - voc/
   render-ap-html:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:circleci
+      - image: informatievlaanderen/oslo-specification-generator:v1.2-circleci
     steps:
       - checkout
       - attach_workspace:
@@ -116,9 +116,24 @@ jobs:
           root: /tmp/workspace
           paths:
             - ap/
+  render-oj-html:
+    docker:
+      - image: informatievlaanderen/oslo-specification-generator:v1.2-circleci
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Render HTML of OJ tsv file
+          command: |
+            jq -r '.[] | select(.type | contains("oj")) | @sh "python /app/specgen/generate_vocabulary.py --ap --csv /tmp/workspace/tsv/\(.name).tsv --csv_contributor src/stakeholders.csv --csv_contributor_role_column \(.contributors) --title \(.title) --name \(.name) --schema \(.template) --schema_folder templates/ --output /tmp/workspace/ap/\(.name)/index.html"' < config/eap-mapping.json | bash -e
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - ap/
   render-ap-jsonld:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:circleci
+      - image: informatievlaanderen/oslo-specification-generator:v1.2-circleci
     steps:
       - checkout
       - attach_workspace:
@@ -133,7 +148,7 @@ jobs:
             - ap/
   create-shacl:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:circleci
+      - image: informatievlaanderen/oslo-specification-generator:v1.2-circleci
     steps:
       - checkout
       - attach_workspace:
