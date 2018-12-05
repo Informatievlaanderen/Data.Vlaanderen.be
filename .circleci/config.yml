@@ -62,8 +62,10 @@ jobs:
           at: /tmp/workspace
       - run:
           name: Add contributors to vocabulary ttl file
-          command: |
-            jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --add_contributors --rdf /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl --csv src/stakeholders.csv --csv_contributor_role_column \(.contributors) --output /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl"' < config/eap-mapping.json | bash
+          command: $PWD/scripts/extract-what.sh stakeholders
+      - run:
+          name: List the files which have been created
+          command: ls -al /tmp/workspace/ttl
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
