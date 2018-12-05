@@ -3,7 +3,7 @@
 set -x
 
 extractwhat=$1
-TARGETDIR=${TARGETDIR}
+TARGETDIR=/tmp/workspace
 CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 
 #############################################################################################
