@@ -13,7 +13,7 @@ get_mapping_file() {
     local MAPPINGFILE="config/eap-mapping.json"
     if [ -f ".names.txt" ]
     then
-	STR=".[] | select(.name | contains(\"$(cat .names.txt)\")) | [.]"
+	STR=".[] | select(.name == \"$(cat .names.txt)\") | [.]"
 	jq "${STR}" ${MAPPINGFILE} > .names.json
 	MAPPINGFILE=".names.json"
     fi
@@ -50,7 +50,7 @@ extract_json() {
     mkdir -p ${TDIR}
     
     # Extract tsv data for each diagram
-    jq -r '.[] | select(.type | contains("voc")) | @sh "java -jar /app/ea-2-rdf.jar convert -i \(.eap) -c config/config-voc.json -d \(.diagram) -o /tmp/workspace/json/\(if .prefix then .prefix + "/" else "" end)\(.name).json"' $MAPPINGFILE | bash -e    
+    java -jar /app/ea-2-rdf.jar jsonld -c $MAPPINGFILE -n $(cat .names.txt) > output.json | bash -e    
 }
 
 # do the conversions
