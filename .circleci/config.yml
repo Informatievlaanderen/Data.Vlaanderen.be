@@ -2,7 +2,7 @@ version: 2
 jobs:
   checkout:
     docker: 
-      - image: circleci/node:4.8.2
+      - image: circleci/python
     steps:
       - checkout
       - run: mkdir -p workspace
@@ -20,14 +20,14 @@ jobs:
             - src
   extract-jsonld-details:
     docker:
-      - image: informatievlaanderen/ear2rdf:circleci
+      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-circleci
     steps:
       - checkout
       - attach_workspace:
           at: /tmp/workspace
       - run:
-          name: Extract json details required
-          command: $PWD/scripts/extract-what.sh json
+          name: Extract json details required (part1)
+          command: $PWD/scripts/extract-json.sh json
       - run:
           name: List the files which have been created
           command: ls -al /tmp/workspace/json*
@@ -35,57 +35,6 @@ jobs:
           root: /tmp/workspace
           paths:
             - json/
-  extract-vocabularia:
-    docker:
-      - image: informatievlaanderen/oslo-ea-to-rdf:circleci
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          name: Extract TTL data from each diagram (via script)
-          command: $PWD/scripts/extract-what.sh ttl
-      - run:
-          name: List the files which have been created
-          command: ls -al /tmp/workspace/ttl*
-      - persist_to_workspace:
-          root: /tmp/workspace
-          paths:
-            - ttl/
-  extract-application-profiles:
-    docker:
-      - image: informatievlaanderen/oslo-ea-to-rdf:circleci
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          name: Extract TSV data from each diagram (via script)
-          command: $PWD/scripts/extract-what.sh tsv
-      - run:
-          name: List the files which have been created
-          command: ls -al /tmp/workspace/tsv*
-      - persist_to_workspace:
-          root: /tmp/workspace
-          paths:
-            - tsv/
-  add-voc-contributors:
-    docker:
-      - image: informatievlaanderen/oslo-specification-generator:circleci
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          name: Add contributors to vocabulary ttl file
-          command: $PWD/scripts/extract-what.sh stakeholders
-      - run:
-          name: List the files which have been created
-          command: ls -al /tmp/workspace/ttl
-      - persist_to_workspace:
-          root: /tmp/workspace
-          paths:
-            - ttl/
   render-details:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:circleci
@@ -94,22 +43,7 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run:
-          name: Render HTML version of merged ttl file
-          command: |
-            jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --schema \(.template) --schema_folder templates/ --rdf /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl --output /tmp/workspace/voc/\(if .prefix then .prefix + "/" else "" end)\(.name)/index.html"' < config/eap-mapping.json | bash -e
-      - persist_to_workspace:
-          root: /tmp/workspace
-          paths:
-            - voc/
-  render-voc-html:
-    docker:
-      - image: informatievlaanderen/oslo-specification-generator:circleci
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          name: Render HTML version of merged ttl file
+          name: Render HTML version of merged ttl file (part2 wait for feedback)
           command: |
             jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --schema \(.template) --schema_folder templates/ --rdf /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl --output /tmp/workspace/voc/\(if .prefix then .prefix + "/" else "" end)\(.name)/index.html"' < config/eap-mapping.json | bash -e
       - persist_to_workspace:
