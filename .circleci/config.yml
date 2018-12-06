@@ -18,7 +18,23 @@ jobs:
             - checkouts.txt
             - links.txt
             - src
-            - target
+  extract-jsonld-details:
+    docker:
+      - image: informatievlaanderen/ear2rdf:circleci
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Extract json details required
+          command: $PWD/scripts/extract-what.sh json
+      - run:
+          name: List the files which have been created
+          command: ls -al /tmp/workspace/json*
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - json/
   extract-vocabularia:
     docker:
       - image: informatievlaanderen/oslo-ea-to-rdf:circleci
@@ -70,6 +86,21 @@ jobs:
           root: /tmp/workspace
           paths:
             - ttl/
+  render-details:
+    docker:
+      - image: informatievlaanderen/oslo-specification-generator:circleci
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Render HTML version of merged ttl file
+          command: |
+            jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --schema \(.template) --schema_folder templates/ --rdf /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl --output /tmp/workspace/voc/\(if .prefix then .prefix + "/" else "" end)\(.name)/index.html"' < config/eap-mapping.json | bash -e
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - voc/
   render-voc-html:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:circleci
@@ -220,31 +251,15 @@ workflows:
       - extract-vocabularia:
           requires:
             - checkout
-      - extract-application-profiles:
+      - extract-jsonld-details:
           requires:
             - checkout
-      - add-voc-contributors:
+      - render-details:
           requires:
-            - extract-vocabularia
-      - render-voc-html:
-          requires:
-            - add-voc-contributors
-      - render-voc-rdf:
-          requires:
-            - add-voc-contributors
-      - render-ap-html:
-          requires:
-            - extract-application-profiles
-      - render-ap-jsonld:
-          requires:
-            - extract-application-profiles
+            - extract-jsonld-details	  
       - expand-links:
           requires:
-            - checkout
-            - render-voc-html
-            - render-voc-rdf
-            - render-ap-html
-            - render-ap-jsonld
+            - render-details
       - create-artifact:
           requires:
             - expand-links
