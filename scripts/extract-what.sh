@@ -50,8 +50,8 @@ extract_json() {
     mkdir -p ${TDIR}
     # Extract tsv data for each diagram
     java -jar /app/ea-2-rdf.jar jsonld -c $MAPPINGFILE -n $(cat .names.txt)
-    cp $(cat .names.txt).json ${TDIR}
-    cp $(cat .names.txt).results ${TDIR}
+    cp $(cat .names.txt).jsonld ${TDIR}
+    cp $(cat .names.txt).result ${TDIR}
 }
 
 # do the conversions
