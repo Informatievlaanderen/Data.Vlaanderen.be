@@ -130,11 +130,12 @@ jobs:
       - run:
           name: Render HTML of OJ tsv file
           command: |
-            jq -r '.[] | select(.type | contains("oj")) | @sh "python /app/specgen/generate_vocabulary.py --oj --csv /tmp/workspace/tsv/\(.name).tsv --csv_contributor src/stakeholders.csv --csv_contributor_role_column \(.contributors) --title \(.title) --name \(.name) --schema \(.template) --schema_folder templates/ --output /tmp/workspace/ap/\(.name)/index.html"' < config/eap-mapping.json | bash -x
+            jq -r '.[] | select(.type | contains("oj")) | @sh "python /app/specgen/generate_vocabulary.py --oj --csv /tmp/workspace/tsv/\(.name).tsv --csv_contributor src/stakeholders.csv --csv_contributor_role_column \(.contributors) --title \(.title) --name \(.name) --schema \(.template) --schema_folder templates/ --output /tmp/workspace/oj/\(.name)/index.html"' < config/eap-mapping.json | bash -x
+           ls /tmp/workspace/oj/*
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
-            - ap/
+            - oj/
   render-ap-jsonld:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:v1.2-circleci
@@ -195,9 +196,11 @@ jobs:
           workdir: /tmp/workspace
           command: |
             ls ap/*
+            ls oj/*
             cp -R voc/* /tmp/OSLO-Generated/ns/
             cp ap/*.jsonld /tmp/OSLO-Generated/context/
             cp -R ap/* /tmp/OSLO-Generated/doc/applicatieprofiel/
+            cp -R oj/* /tmp/OSLO-Generated/doc/applicatieprofiel/
             cp -R shacl/* /tmp/OSLO-Generated/shacl/
       - run:
           name: Push results to github
