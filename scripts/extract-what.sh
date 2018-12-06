@@ -73,7 +73,7 @@ do
 		      ;;
                  ttl) extract_ttl $MAPPINGFILE
 		      ;;
-                json) extract_json $MAPPINGFILE
+	      jsonld) extract_json $MAPPINGFILE
 		      ;;
         stakeholders) extract_stakeholder $MAPPINGFILE
 		      ;;
