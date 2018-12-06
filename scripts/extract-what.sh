@@ -49,8 +49,8 @@ extract_json() {
     local TDIR=${TARGETDIR}/tsv
     mkdir -p ${TDIR}
     
-    # Extract tsv data for each diagram    
-    jq -r '.[] | select(.type | contains("ap")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i \(.eap) -c config/config-ap.json -d \(.diagram) -o /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv"' < $MAPPINGFILE | bash -e
+    # Extract tsv data for each diagram
+    jq -r '.[] | select(.type | contains("voc")) | @sh "java -jar /app/ea-2-rdf.jar convert -i \(.eap) -c config/config-voc.json -d \(.diagram) -o /tmp/workspace/json/\(if .prefix then .prefix + "/" else "" end)\(.name).json"' $MAPPINGFILE | bash -e    
 }
 
 # do the conversions
