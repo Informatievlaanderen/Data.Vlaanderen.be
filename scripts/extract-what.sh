@@ -46,11 +46,12 @@ extract_stakeholder() {
 
 extract_json() {
     local MAPPINGFILE=$1
-    local TDIR=${TARGETDIR}/tsv
+    local TDIR=${TARGETDIR}/json
     mkdir -p ${TDIR}
-    
     # Extract tsv data for each diagram
-    java -jar /app/ea-2-rdf.jar jsonld -c $MAPPINGFILE -n $(cat .names.txt) > output.json | bash -e    
+    java -jar /app/ea-2-rdf.jar jsonld -c $MAPPINGFILE -n $(cat .names.txt)
+    cp $(cat .names.txt).json ${TDIR}
+    cp $(cat .names.txt).results ${TDIR}
 }
 
 # do the conversions
