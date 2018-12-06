@@ -91,5 +91,5 @@ then
        exit -1
     fi
 else
-    echo "problem in processing ${PUBCONFIG}"
+    echo "problem in processing: ${PUBCONFIG}"
 fi
