@@ -28,7 +28,7 @@ Voor een vocabularium met symbolische naam `Woord1 Woordx`:
   * formaat: `OSLO-Woord1-Woordx.eap` ('-VOC' ontbreekt)
   * voorbeeld: **OSLO-Openbaar-Domein.eap**
 
-* eap bestandsnaam, bijzonder geval; geldt voor alle geïntegreerde vocabularia samen in één eap bestand
+* eap bestandsnaam, **TIJDELIJK** bijzonder geval voor geïntegreerde vocabularia uit de centrale EA repo, die nog niet in een afzonderlijk eap bestand (zie normaal geval hoger) beschikbaar staan
   * attribuut in eap-mapping.json: "eap"
   * formaat: `OSLO-Vocabularium.eap` (vaste naam)
   * voorbeeld: **OSLO-Vocabularium.eap**
