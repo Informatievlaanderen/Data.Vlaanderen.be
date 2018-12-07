@@ -6,7 +6,7 @@ TEMPLATE=unknown
 
 echo "render-details: starting with $1 $2 $3"
 
-for $i in ${WORkDIR}/${SUBDIR}/*.jsonld
+for $i in ${WORKDIR}/${SUBDIR}/*.jsonld
 do
     echo "render-details: convert $i to html"
     OUTFILE=$(basename $i .jsonld).html
