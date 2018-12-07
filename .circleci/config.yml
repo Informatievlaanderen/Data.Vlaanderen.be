@@ -31,6 +31,9 @@ jobs:
       - run:
           name: List the files which have been created
           command: ls -al /tmp/workspace/json*
+      - run:
+          name: Show the report (for debugging purposes)
+          command: cat /tmp/workspace/json/*.report
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
