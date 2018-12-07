@@ -52,6 +52,7 @@ extract_json() {
     java -jar /app/ea-2-rdf.jar jsonld -c $MAPPINGFILE -n $(cat .names.txt)
     cp $(cat .names.txt).jsonld ${TDIR}
     cp $(cat .names.txt).report ${TDIR}
+    ( echo $PWD ; cat $(cat .names.txt).report ) >> ${TDIR}/ALL.report
 }
 
 # do the conversions
