@@ -27,7 +27,7 @@ jobs:
           at: /tmp/workspace
       - run:
           name: Extract json details required (part1)
-          command: $PWD/scripts/extract-what.sh json
+          command: $PWD/scripts/extract-what.sh jsonld
       - run:
           name: List the files which have been created
           command: ls -al /tmp/workspace/json*
@@ -47,7 +47,7 @@ jobs:
           at: /tmp/workspace
       - run:
           name: Render HTML version of merged ttl file (part2 wait for feedback)
-          command: $PWD/scripts/render-details.sh /tmp/workspace jsonld
+          command: $PWD/scripts/render-details.sh /tmp/workspace json
       - run:
           name: List the files which have been created
           command: ls -al /tmp/workspace/json*
@@ -58,10 +58,10 @@ jobs:
           root: /tmp/workspace
           paths:
             - json/
-            - tsv
-            - ttl	    
-            - src
-            - target
+            - html/
+            - tsv/
+            - ttl/	    
+            - src/
   expand-links:
     docker: 
       - image: circleci/node:4.8.2
