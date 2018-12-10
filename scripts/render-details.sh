@@ -1,12 +1,12 @@
 #!/bin/bash
 
-WORKDIR=$1
+TARGETDIR=$1
 SUBDIR=$2
 CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 
 echo "render-details: starting with $1 $2 $3"
 
-mkdir -p ${WORKDIR}/html
+mkdir -p ${TARGETDIR}/html
 
 cat ${CHECKOUTFILE} | while read line
 do
@@ -19,7 +19,7 @@ do
 	    echo "render-details: convert $i to html"
 	    OUTFILE=$(basename $i .jsonld).html
 	    TEMPLATE=$(basename $i .jsonld).j2
-	    node cls.js $i ${TEMPLATE} ${WORKDIR}/html/${OUTFILE}
+	    node cls.js $i ${TEMPLATE} ${TARGETDIR}/html/${OUTFILE}
 	done
 	popd
     else
