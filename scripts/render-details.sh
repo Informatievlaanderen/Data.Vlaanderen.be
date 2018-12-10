@@ -13,18 +13,16 @@ do
     echo "Processing line: $line"
     if [ -d "$line" ]
     then
-	pushd $line
-	for i in *.jsonld
+	for i in ${line}/*.jsonld
 	do
 	    echo "render-details: convert $i to html"
 	    BASENAME=$(basename $i .jsonld)
 	    OUTFILE=${BASENAME}.html
 	    COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.template')
 	    TEMPLATE=$(jq -r "${COMMAND}" .names.json)
-	    echo "node /app/cls.js $i templates/${TEMPLATE} ${TARGETDIR}/html/${OUTFILE}"
-	    node /app/cls.js $i templates/${TEMPLATE} ${TARGETDIR}/html/${OUTFILE}
+	    echo "node /app/cls.js $i ${line}/templates/${TEMPLATE} ${TARGETDIR}/html/${OUTFILE}"
+	    node /app/cls.js $i ${line}/templates/${TEMPLATE} ${TARGETDIR}/html/${OUTFILE}
 	done
-	popd
     else
 	echo "Error: $line"
     fi
