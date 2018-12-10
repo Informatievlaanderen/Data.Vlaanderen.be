@@ -5,7 +5,6 @@ SUBDIR=$2
 CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 
 echo "render-details: starting with $1 $2 $3"
-npm install jsonld
 
 mkdir -p ${TARGETDIR}/html
 
@@ -22,6 +21,7 @@ do
 	    OUTFILE=${BASENAME}.html
 	    COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.template')
 	    TEMPLATE=$(jq -r "${COMMAND}" .names.json)
+	    echo "node /app/cls.js $i templates/${TEMPLATE} ${TARGETDIR}/html/${OUTFILE}"
 	    node /app/cls.js $i templates/${TEMPLATE} ${TARGETDIR}/html/${OUTFILE}
 	done
 	popd
