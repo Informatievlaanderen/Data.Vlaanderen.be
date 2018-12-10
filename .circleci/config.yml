@@ -20,7 +20,7 @@ jobs:
             - src
   extract-jsonld-details:
     docker:
-      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-circleci
+      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format
     steps:
       - checkout
       - attach_workspace:
@@ -40,7 +40,7 @@ jobs:
             - src	    
   render-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
+      - image: informatievlaanderen/oslo-specification-generator:javascript
     steps:
       - checkout
       - attach_workspace:
