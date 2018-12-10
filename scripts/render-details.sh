@@ -21,8 +21,7 @@ do
 	    echo "render-details: convert $i to html"
 	    BASENAME=$(basename $i .jsonld)
 	    OUTFILE=${BASENAME}.html
-	    TYPE=$(jq -r '.[]|select(.name | contains("${BASENAME}"))|.type' .names.json)
-	    TEMPLATE=${BASENAME}.j2
+	    TEMPLATE=$(jq -r '.[]|select(.name | contains("${BASENAME}"))|.template' .names.json)
 	    node cls.js $i templates/${BASENAME}-${TYPE}.j2 ${TARGETDIR}/html/${OUTFILE}
 	done
 	popd
