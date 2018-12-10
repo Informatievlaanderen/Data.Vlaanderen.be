@@ -22,7 +22,7 @@ do
 	    BASENAME=$(basename $i .jsonld)
 	    OUTFILE=${BASENAME}.html
 	    TEMPLATE=$(jq -r '.[]|select(.name | contains("${BASENAME}"))|.template' .names.json)
-	    node cls.js $i templates/${BASENAME}-${TYPE}.j2 ${TARGETDIR}/html/${OUTFILE}
+	    node cls.js $i templates/${TEMPLATE} ${TARGETDIR}/html/${OUTFILE}
 	done
 	popd
     else
