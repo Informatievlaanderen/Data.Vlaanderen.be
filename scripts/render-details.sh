@@ -3,6 +3,7 @@
 TARGETDIR=$1
 SUBDIR=$2
 CHECKOUTFILE=${TARGETDIR}/checkouts.txt
+NODE_PATH=/app/node_modules
 
 echo "render-details: starting with $1 $2 $3"
 
