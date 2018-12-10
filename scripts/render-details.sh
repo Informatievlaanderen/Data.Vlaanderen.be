@@ -5,8 +5,7 @@ SUBDIR=$2
 CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 
 echo "render-details: starting with $1 $2 $3"
-
-set -x
+npm install jsonld
 
 mkdir -p ${TARGETDIR}/html
 
@@ -21,8 +20,8 @@ do
 	    echo "render-details: convert $i to html"
 	    BASENAME=$(basename $i .jsonld)
 	    OUTFILE=${BASENAME}.html
-	    COMMAND=$(echo "'"'.[]|select(.name | contains("'${BASENAME}'"))|.template'"'")
-	    TEMPLATE=$(jq -r ${COMMAND} .names.json)
+	    COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.template')
+	    TEMPLATE=$(jq -r "${COMMAND}" .names.json)
 	    node /app/cls.js $i templates/${TEMPLATE} ${TARGETDIR}/html/${OUTFILE}
 	done
 	popd
@@ -30,4 +29,3 @@ do
 	echo "Error: $line"
     fi
 done
-
