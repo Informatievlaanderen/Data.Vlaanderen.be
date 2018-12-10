@@ -19,7 +19,7 @@ do
 	    BASENAME=$(basename $i .jsonld)
 	    OUTFILE=${BASENAME}.html
 	    COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.template')
-	    TEMPLATE=$(jq -r "${COMMAND}" ${line}.names.json)
+	    TEMPLATE=$(jq -r "${COMMAND}" ${line}/.names.json)
 	    echo "node /app/cls.js $i ${line}/templates/${TEMPLATE} ${TARGETDIR}/html/${OUTFILE}"
 	    node /app/cls.js $i ${line}/templates/${TEMPLATE} ${TARGETDIR}/html/${OUTFILE}
 	done
