@@ -46,6 +46,9 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run:
+          name: Install jq
+          command: apt-get update && apt-get install jq
+      - run:
           name: Render HTML version of merged ttl file (part2 wait for feedback)
           command: $PWD/scripts/render-details.sh /tmp/workspace json
       - run:
