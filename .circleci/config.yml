@@ -37,7 +37,10 @@ jobs:
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
-            - json/
+            - checkouts.txt
+            - links.txt
+            - reports
+            - src	    
   render-details:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:javascript
@@ -57,7 +60,7 @@ jobs:
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
-            - json/
+            - html/
             - html/
             - tsv/
             - ttl/	    

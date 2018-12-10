@@ -2,16 +2,28 @@
 
 WORKDIR=$1
 SUBDIR=$2
-TEMPLATE=unknown
+CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 
 echo "render-details: starting with $1 $2 $3"
 
 mkdir -p ${WORKDIR}/html
 
-for i in ${WORKDIR}/${SUBDIR}/*.jsonld
+cat ${CHECKOUTFILE} | while read line
 do
-    echo "render-details: convert $i to html"
-    OUTFILE=$(basename $i .jsonld).html
-    echo "node cls.js $i ${TEMPLATE} ${WORKDIR}/html/${OUTFILE}"
+    echo "Processing line ($extractwhat): $line"
+    if [ -d "$line" ]
+    then
+	pushd $line
+	for i in *.jsonld
+	do
+	    echo "render-details: convert $i to html"
+	    OUTFILE=$(basename $i .jsonld).html
+	    TEMPLATE=$(basename $i .jsonld).j2
+	    node cls.js $i ${TEMPLATE} ${WORKDIR}/html/${OUTFILE}
+	done
+	popd
+    else
+	echo "Error: $line"
+    fi
 done
 

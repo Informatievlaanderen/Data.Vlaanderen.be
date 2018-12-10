@@ -52,11 +52,11 @@ extract_stakeholder() {
 extract_json() {
     local MAPPINGFILE=$1
     local TDIR=${TARGETDIR}/json
-    mkdir -p ${TDIR}
-    # Extract tsv data for each diagram
+    local RDIR=${TARGETDIR}/report
+    mkdir -p ${TDIR} ${RDIR}
     java -jar /app/ea-2-rdf.jar jsonld -c $MAPPINGFILE -n $(cat .names.txt)
     cp $(cat .names.txt).jsonld ${TDIR}
-    cp $(cat .names.txt).report ${TDIR}
+    cp $(cat .names.txt).report ${RDIR}
     ( echo $PWD ; cat $(cat .names.txt).report ) >> ${TDIR}/ALL.report
 }
 
