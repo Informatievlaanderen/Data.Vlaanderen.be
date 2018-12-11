@@ -170,6 +170,7 @@ jobs:
           name: Copy generated assets
           workdir: /tmp/workspace
           command: |
+            cp -R voc/* /tmp/OSLO-Generated/ns/
             cp -R html/* /tmp/OSLO-Generated/ns/
             cp -R report /tmp/OSLO-Generated/report
             cp -R json /tmp/OSLO-Generated/report
@@ -202,3 +203,4 @@ workflows:
       - create-artifact:
           requires:
             - expand-links
+            - render-voc-rdf
