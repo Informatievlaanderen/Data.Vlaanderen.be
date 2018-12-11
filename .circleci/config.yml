@@ -37,6 +37,7 @@ jobs:
             - checkouts.txt
             - links.txt
             - report/
+            - json/
             - src/	    
   render-details:
     docker:
@@ -62,7 +63,7 @@ jobs:
           paths:
             - html/
             - report/
-            - ttl/
+            - json/
             - src/
   expand-links:
     docker: 
@@ -76,6 +77,7 @@ jobs:
           root: /tmp/workspace
           paths:
             - html/
+            - json/
             - report/	    
             - src/
   create-artifact:
@@ -98,7 +100,7 @@ jobs:
           workdir: /tmp/OSLO-Generated
           command: |
             git fetch origin
-            git branch "${CIRCLE_BRANCH}" "origin/${CIRCLE_BRANCH}"
+            git branch "${CIRCLE_BRANCH}"
             git checkout "${CIRCLE_BRANCH}"
             rm -rf *
       - run:
@@ -109,8 +111,8 @@ jobs:
           name: Copy generated assets
           workdir: /tmp/workspace
           command: |
-            cp -R voc/* /tmp/OSLO-Generated/ns/
-            cp ap/*.jsonld /tmp/OSLO-Generated/context/
+            cp -R html/* /tmp/OSLO-Generated/ns/
+            cp -R report/*.jsonld /tmp/OSLO-Generated/context/
             cp -R ap/* /tmp/OSLO-Generated/doc/applicatieprofiel/
       - run:
           name: Push results to github
