@@ -38,8 +38,8 @@ jobs:
             - links.txt
             - report/
             - json/
-            - src/	    
-  render-details:
+            - src/ 
+  render-details-orig:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:javascript
     steps:
@@ -52,6 +52,26 @@ jobs:
       - run:
           name: clean up
           command: cd /app; rm -rf /app/node_modules; npm install
+      - run:
+          name: Render HTML version of merged json file
+          command: $PWD/scripts/render-details.sh /tmp/workspace json
+      - run:
+          name: List the files which have been created
+          command: ls -al /tmp/workspace/html/*
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - html/
+            - report/
+            - json/
+            - src/
+  render-details:
+    docker:
+      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
       - run:
           name: Render HTML version of merged json file
           command: $PWD/scripts/render-details.sh /tmp/workspace json
