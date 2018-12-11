@@ -21,12 +21,15 @@ do
 	    OUTFILE=${BASENAME}.html
 	    COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.template')
 	    TEMPLATE=$(jq -r "${COMMAND}" ${line}/.names.json)
+	    # determine the location of the template to be used.
 	    FTEMPLATE=/app/views/${TEMPLATE}
 	    if [ ! -f "${FTEMPLATE}" ] ; then
 	       FTEMPLATE=${line}/template/${TEMPLATE}
 	    fi
 	    echo "node /app/cls.js $i ${FTEMPLATE} ${TARGETDIR}/html/${OUTFILE}"
-	    node /app/cls.js $i ${FTEMPLATE} ${TARGETDIR}/html/${OUTFILE}
+	    pushd /app
+	      node /app/cls.js $i ${FTEMPLATE} ${TARGETDIR}/html/${OUTFILE}
+	    popd
 	done
     else
 	echo "Error: $line"
