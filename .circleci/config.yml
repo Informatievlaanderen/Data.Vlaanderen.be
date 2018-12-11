@@ -98,7 +98,8 @@ jobs:
           workdir: /tmp/OSLO-Generated
           command: |
             git fetch origin
-            git checkout -B "${CIRCLE_BRANCH}" "origin/${CIRCLE_BRANCH}"
+            git branch "${CIRCLE_BRANCH}" "origin/${CIRCLE_BRANCH}"
+	    git checkout "${CIRCLE_BRANCH}"
             rm -rf *
       - run:
           name: Copy static assets
