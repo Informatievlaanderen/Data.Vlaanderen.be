@@ -104,7 +104,6 @@ jobs:
             git branch "${CIRCLE_BRANCH}"
             git checkout "${CIRCLE_BRANCH}"
             rm -rf *
-            git pull
       - run:
           name: Copy static assets
           command: |
@@ -124,7 +123,7 @@ jobs:
             git config user.name "Circle CI Builder"
             git add .
             git commit -m "Applying changes from commit ${CIRCLE_SHA1}" --allow-empty
-            git push origin "${CIRCLE_BRANCH}"
+            git push --force origin "${CIRCLE_BRANCH}"
 workflows:
   version: 2
   generate_documentation:
