@@ -93,7 +93,14 @@ jobs:
           workdir: /tmp
           command: |
             git clone git@github.com:Informatievlaanderen/OSLO-Generated.git
-            cd OSLO-Generated && git fetch origin && git checkout -B "${CIRCLE_BRANCH}" "origin/${CIRCLE_BRANCH}"
+            cd  && git fetch origin && git checkout -B "${CIRCLE_BRANCH}" "origin/${CIRCLE_BRANCH}"
+            rm -rf *
+      - run:
+          name: clean the generated directory
+          workdir: /tmp/OSLO-Generated
+          command: |
+            git fetch origin
+	    git checkout -B "${CIRCLE_BRANCH}" "origin/${CIRCLE_BRANCH}"
             rm -rf *
       - run:
           name: Copy static assets
