@@ -37,7 +37,7 @@ jobs:
             - checkouts.txt
             - links.txt
             - report/
-            - json/
+           - json/
             - src/	    
   render-details:
     docker:
@@ -112,8 +112,9 @@ jobs:
           workdir: /tmp/workspace
           command: |
             cp -R html/* /tmp/OSLO-Generated/ns/
-            cp -R report/*.jsonld /tmp/OSLO-Generated/context/
-            cp -R ap/* /tmp/OSLO-Generated/doc/applicatieprofiel/
+            cp -R json/*.jsonld /tmp/OSLO-Generated/context/
+#           cp -R ap/* /tmp/OSLO-Generated/doc/applicatieprofiel/
+            cp -R report/* /tmp/OSLO-Generated/report/
       - run:
           name: Push results to github
           workdir: /tmp/OSLO-Generated
