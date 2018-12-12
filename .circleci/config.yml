@@ -54,9 +54,8 @@ jobs:
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
-            - checkouts.txt
             - src/
-            - target/
+            - json/
   render-html-details:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
@@ -67,6 +66,10 @@ jobs:
       - run:
           name: Render HTML version of merged json file
           command: $PWD/scripts/render-details.sh /tmp/workspace html
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - target/
   render-context-details:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
@@ -77,6 +80,10 @@ jobs:
       - run:
           name: Render Context Details
           command: $PWD/scripts/render-details.sh /tmp/workspace context
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - target/
   render-shacl-details:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
@@ -87,6 +94,10 @@ jobs:
       - run:
           name: Render Shacl details
           command: $PWD/scripts/render-details.sh /tmp/workspace shacl
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - target/
   expand-links:
     docker: 
       - image: circleci/node:4.8.2
@@ -95,6 +106,10 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run: $PWD/scripts/expand-links.sh /tmp/workspace
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - target/
   render-voc-rdf-orig:
     docker:
       - image: circleci/ruby
@@ -145,6 +160,11 @@ jobs:
           name: list results 
           command: |
             ls /tmp/workspace/voc
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - target/
+            - voc/	    
   create-artifact:
     docker:
       - image: circleci/node

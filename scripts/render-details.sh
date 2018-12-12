@@ -68,7 +68,7 @@ do
     then
 	for i in ${SLINE}/*.jsonld
 	do
-	    echo "render-details: convert $i to ${DETAILS} ($CWD)"
+	    echo "render-details: convert $i to ${DETAILS} ($PWD)"
 	    case ${DETAILS} in
 		html) render_html $SLINE $TLINE $i
 		      ;;
