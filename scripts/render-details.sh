@@ -1,9 +1,16 @@
 #!/bin/bash
 
 TARGETDIR=$1
-SUBDIR=$2
+DETAILS=$2
 CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 export NODE_PATH=/app/node_modules
+
+process_json() {
+    echo "node /app/cls.js $i ${FTEMPLATE} ${SLINE}/html/${OUTFILE}"
+    pushd /app
+    mkdir -p ${TLINE}/html
+    node /app/cls.js $i ${FTEMPLATE} ${TLINE}/html/${OUTFILE}
+}
 
 echo "render-details: starting with $1 $2 $3"
 
@@ -28,11 +35,15 @@ do
 	    if [ ! -f "${FTEMPLATE}" ] ; then
 	       FTEMPLATE=${SLINE}/template/${TEMPLATE}
 	    fi
-	    echo "node /app/cls.js $i ${FTEMPLATE} ${SLINE}/html/${OUTFILE}"
-	    pushd /app
-	      mkdir -p ${TLINE}/html
-	      node /app/cls.js $i ${FTEMPLATE} ${TLINE}/html/${OUTFILE}
-	    popd
+	    case $DETAILS in
+		json)  echo "node /app/cls.js $i ${FTEMPLATE} ${SLINE}/html/${OUTFILE}"
+		       pushd /app
+		         mkdir -p ${TLINE}/html
+			 node /app/cls.js $i ${FTEMPLATE} ${TLINE}/html/${OUTFILE}
+		       popd
+   		       ;;
+		*)  echo "$DETAILS not handled yet"
+	    esac
 	done
     else
 	echo "Error: ${SLINE}"

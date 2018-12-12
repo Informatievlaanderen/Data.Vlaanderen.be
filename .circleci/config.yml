@@ -41,19 +41,13 @@ jobs:
             - json/
             - src/
             - target/
-  render-details-orig:
+  render-html-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:javascript
+      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
     steps:
       - checkout
       - attach_workspace:
           at: /tmp/workspace
-      - run:
-          name: Install jq (should be in docker)
-          command: apt-get update && apt-get install jq
-      - run:
-          name: clean up
-          command: cd /app; rm -rf /app/node_modules; npm install
       - run:
           name: Render HTML version of merged json file
           command: $PWD/scripts/render-details.sh /tmp/workspace json
@@ -68,7 +62,7 @@ jobs:
             - json/
             - src/
             - target/
-  render-details:
+  render-context-details:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
     steps:
@@ -76,11 +70,26 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run:
-          name: Render HTML version of merged json file
-          command: $PWD/scripts/render-details.sh /tmp/workspace json
+          name: Render Context Details
+          command: $PWD/scripts/render-details.sh /tmp/workspace contextjson
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - html/
+            - report/
+            - json/
+            - src/
+            - target/
+  render-shacl-details:
+    docker:
+      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
       - run:
-          name: List the files which have been created
-          command: ls -al /tmp/workspace/html/*
+          name: Render Shacl details
+          command: $PWD/scripts/render-details.sh /tmp/workspace shac
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -217,15 +226,23 @@ workflows:
       - extract-jsonld-details:
           requires:
             - checkout
-      - render-details:
+      - render-html-details:
           requires:
             - extract-jsonld-details  
-      - expand-links:
-          requires:
-            - render-details
       - render-voc-rdf:
           requires:
             - extract-jsonld-details  
+      - render-shacl-rdf:
+          requires:
+            - extract-jsonld-details
+      - render-voc-rdf:
+          requires:
+            - extract-context-details  
+      - expand-links:
+          requires:
+            - render-html-details
+            - render-context-details
+            - render-shacl-details
       - create-artifact:
           requires:
             - expand-links
