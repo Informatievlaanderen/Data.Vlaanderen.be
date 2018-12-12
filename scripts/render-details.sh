@@ -28,14 +28,32 @@ render_html() { # SLINE TLINE JSON
     popd
 }
 
-render_context() {
-    echo "render_context: entered"
-    ls /app    
+render_context() { # SLINE TLINE JSON
+    echo "render_context: entered" 
+    local SLINE=$1
+    local TLINE=$2
+    local JSONI=$3
+    BASENAME=$(basename ${JSONI} .jsonld)
+    OUTFILE=${BASENAME}.html
+    echo "node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/json/${OUTFILE}"
+    pushd /app
+      mkdir -p ${TLINE}/json
+      node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/json/${OUTFILE}
+    popd
 }
 		 
 render_shacl() {
     echo "render_context: entered"
-    ls /app
+    local SLINE=$1
+    local TLINE=$2
+    local JSONI=$3
+    BASENAME=$(basename ${JSONI} .jsonld)
+    OUTFILE=${BASENAME}.html
+    echo "node /app/shacl-generator.js -i ${JSONI} -o ${TLINE}/shacl/${OUTFILE}"
+    pushd /app
+      mkdir -p ${TLINE}/shacl
+      node /app/shacl-generator.js -i ${JSONI} -o ${TLINE}/shacl/${OUTFILE}
+    popd
 }
 		 
 
