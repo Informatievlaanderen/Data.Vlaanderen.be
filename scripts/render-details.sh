@@ -11,8 +11,8 @@ mkdir -p ${TARGETDIR}/html
 
 cat ${CHECKOUTFILE} | while read line
 do
-    SLINE=${TARGETDIR}/src${line}
-    TLINE=${TARGETDIR}/target${line}
+    SLINE=${TARGETDIR}/src/${line}
+    TLINE=${TARGETDIR}/target/${line}
     echo "Processing line: ${SLINE} => ${TLINE}"
     if [ -d "${SLINE}" ]
     then
