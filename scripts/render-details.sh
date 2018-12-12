@@ -25,18 +25,21 @@ do
     then
 	for i in ${SLINE}/*.jsonld
 	do
-	    echo "render-details: convert $i to html"
+	    echo "render-details: convert $i to html ($CWD)"
 	    BASENAME=$(basename $i .jsonld)
 	    OUTFILE=${BASENAME}.html
 	    COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.template')
 	    TEMPLATE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 	    # determine the location of the template to be used.
+
+	    echo "render-details: ${TEMPLATE}"	    
 	    FTEMPLATE=/app/views/${TEMPLATE}
 	    if [ ! -f "${FTEMPLATE}" ] ; then
 	       FTEMPLATE=${SLINE}/template/${TEMPLATE}
 	    fi
+	    
 	    case $DETAILS in
-		json)  echo "node /app/cls.js $i ${FTEMPLATE} ${SLINE}/html/${OUTFILE}"
+		json)  echo "node /app/cls.js $i ${FTEMPLATE} ${TLINE}/html/${OUTFILE}"
 		       pushd /app
 		         mkdir -p ${TLINE}/html
 			 node /app/cls.js $i ${FTEMPLATE} ${TLINE}/html/${OUTFILE}
