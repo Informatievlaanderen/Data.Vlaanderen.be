@@ -5,16 +5,38 @@ DETAILS=$2
 CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 export NODE_PATH=/app/node_modules
 
-process_json() {
-    echo "node /app/cls.js $i ${FTEMPLATE} ${SLINE}/html/${OUTFILE}"
+render_html() {
+    BASENAME=$(basename $i .jsonld)
+    OUTFILE=${BASENAME}.html
+    COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.template')
+    TEMPLATE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
+    # determine the location of the template to be used.
+
+    echo "render-details: ${TEMPLATE}"	    
+    FTEMPLATE=/app/views/${TEMPLATE}
+    if [ ! -f "${FTEMPLATE}" ] ; then
+	FTEMPLATE=${SLINE}/template/${TEMPLATE}
+    fi
+    
+    echo "node /app/cls.js $i ${FTEMPLATE} ${TLINE}/html/${OUTFILE}"
     pushd /app
-    mkdir -p ${TLINE}/html
-    node /app/cls.js $i ${FTEMPLATE} ${TLINE}/html/${OUTFILE}
+      mkdir -p ${TLINE}/html
+      node /app/cls.js $i ${FTEMPLATE} ${TLINE}/html/${OUTFILE}
+    popd
 }
 
-echo "render-details: starting with $1 $2 $3"
+render_context() {
+    echo "render_context: entered"
+    ls /app    
+}
+		 
+render_shacl() {
+    echo "render_context: entered"
+    ls /app
+}
+		 
 
-mkdir -p ${TARGETDIR}/html
+echo "render-details: starting with $1 $2 $3"
 
 cat ${CHECKOUTFILE} | while read line
 do
@@ -25,27 +47,15 @@ do
     then
 	for i in ${SLINE}/*.jsonld
 	do
-	    echo "render-details: convert $i to html ($CWD)"
-	    BASENAME=$(basename $i .jsonld)
-	    OUTFILE=${BASENAME}.html
-	    COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.template')
-	    TEMPLATE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
-	    # determine the location of the template to be used.
-
-	    echo "render-details: ${TEMPLATE}"	    
-	    FTEMPLATE=/app/views/${TEMPLATE}
-	    if [ ! -f "${FTEMPLATE}" ] ; then
-	       FTEMPLATE=${SLINE}/template/${TEMPLATE}
-	    fi
-	    
-	    case $DETAILS in
-		json)  echo "node /app/cls.js $i ${FTEMPLATE} ${TLINE}/html/${OUTFILE}"
-		       pushd /app
-		         mkdir -p ${TLINE}/html
-			 node /app/cls.js $i ${FTEMPLATE} ${TLINE}/html/${OUTFILE}
-		       popd
-   		       ;;
-		*)  echo "$DETAILS not handled yet"
+	    echo "render-details: convert $i to ${DETAILS} ($CWD)"
+	    case ${DETAILS} in
+		html) render_html $SLINE $TLINE
+		      ;;
+               shacl) render_shacl $SLINE $TLINE
+		      ;;
+	     context) render_context $SLINE $TLINE
+		      ;;
+		   *)  echo "${DETAILS} not handled yet"
 	    esac
 	done
     else

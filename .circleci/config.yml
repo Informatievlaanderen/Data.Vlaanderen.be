@@ -66,7 +66,7 @@ jobs:
           at: /tmp/workspace
       - run:
           name: Render HTML version of merged json file
-          command: $PWD/scripts/render-details.sh /tmp/workspace json
+          command: $PWD/scripts/render-details.sh /tmp/workspace html
       - run:
           name: List the files which have been created
           command: ls -al /tmp/workspace/html/*
@@ -87,7 +87,7 @@ jobs:
           at: /tmp/workspace
       - run:
           name: Render Context Details
-          command: $PWD/scripts/render-details.sh /tmp/workspace contextjson
+          command: $PWD/scripts/render-details.sh /tmp/workspace context
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -105,7 +105,7 @@ jobs:
           at: /tmp/workspace
       - run:
           name: Render Shacl details
-          command: $PWD/scripts/render-details.sh /tmp/workspace shac
+          command: $PWD/scripts/render-details.sh /tmp/workspace shacl
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
