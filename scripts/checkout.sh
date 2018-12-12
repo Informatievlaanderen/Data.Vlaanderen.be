@@ -76,7 +76,7 @@ then
                echo "$NAME" >> .names.txt
 	   fi
         popd
-	echo "$ROOTDIR/src/$RDIR" >> $ROOTDIR/checkouts.txt
+	echo "$RDIR" >> $ROOTDIR/checkouts.txt
     done
 
     for row in $(jq -r '.[] | select(.seealso)  | @base64 ' ${PUBCONFIG}) ;

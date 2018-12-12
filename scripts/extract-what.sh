@@ -51,10 +51,11 @@ extract_stakeholder() {
 # main one being worked on
 extract_json() {
     local MAPPINGFILE=$1
+    local SRCDIR=$2
     local TDIR=${TARGETDIR}/json
     local RDIR=${TARGETDIR}/report
     mkdir -p ${TDIR} ${RDIR}
-    java -jar /app/ea-2-rdf.jar jsonld -c $MAPPINGFILE -n $(cat .names.txt)
+    java -jar /app/ea-2-rdf.jar jsonld -c $$MAPPINGFILE -n $(cat .names.txt)
     cp $(cat .names.txt).jsonld ${TDIR}
     cp $(cat .names.txt).report ${RDIR}
     ( echo $PWD ; cat $(cat .names.txt).report ) >> ${TDIR}/ALL.report
@@ -80,7 +81,7 @@ do
 		      ;;
                  ttl) extract_ttl $MAPPINGFILE
 		      ;;
-	      jsonld) extract_json $MAPPINGFILE
+	      jsonld) extract_json $MAPPINGFILE $line 
 		      ;;
         stakeholders) extract_stakeholder $MAPPINGFILE
 		      ;;
