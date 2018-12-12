@@ -63,7 +63,7 @@ extract_json() {
     fi
     cp $(cat .names.txt).jsonld ${TDIR}
     cp $(cat .names.txt).report ${RDIR}
-    ( echo $PWD ; cat $(cat .names.txt).report ) >> ${TDIR}/ALL.report
+    ( echo $PWD ; cat $(cat .names.txt).report ) >> ${RDIR}/ALL.report
 }
 
 # do the conversions
