@@ -67,14 +67,6 @@ jobs:
       - run:
           name: Render HTML version of merged json file
           command: $PWD/scripts/render-details.sh /tmp/workspace html
-      - persist_to_workspace:
-          root: /tmp/workspace
-          paths:
-            - html/
-            - report/
-            - json/
-            - src/
-            - target/
   render-context-details:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
@@ -85,14 +77,6 @@ jobs:
       - run:
           name: Render Context Details
           command: $PWD/scripts/render-details.sh /tmp/workspace context
-      - persist_to_workspace:
-          root: /tmp/workspace
-          paths:
-            - html/
-            - report/
-            - json/
-            - src/
-            - target/
   render-shacl-details:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
@@ -103,14 +87,6 @@ jobs:
       - run:
           name: Render Shacl details
           command: $PWD/scripts/render-details.sh /tmp/workspace shacl
-      - persist_to_workspace:
-          root: /tmp/workspace
-          paths:
-            - html/
-            - report/
-            - json/
-            - src/
-            - target/
   expand-links:
     docker: 
       - image: circleci/node:4.8.2
@@ -119,10 +95,6 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run: $PWD/scripts/expand-links.sh /tmp/workspace
-      - persist_to_workspace:
-          root: /tmp/workspace
-          paths:
-            - target/
   render-voc-rdf-orig:
     docker:
       - image: circleci/ruby
@@ -154,10 +126,6 @@ jobs:
             for model in $(jq -r '.[] | select(.type | contains("voc")) | "\(if .prefix then .prefix + "/" else "" end)\(.name)"' config/eap-mapping.json); do
               rdf serialize --input-format jsonld --processingMode json-ld-1.1 /tmp/workspace/.json --output-format rdfxml -o /tmp/workspace/voc/.rdf
             done
-      - persist_to_workspace:
-          root: /tmp/workspace
-          paths:
-            - voc/
   render-voc-rdf:
     docker:
       - image: circleci/ruby
@@ -177,11 +145,6 @@ jobs:
           name: list results 
           command: |
             ls /tmp/workspace/voc
-      - persist_to_workspace:
-          root: /tmp/workspace
-          paths:
-            - voc/
-            - target/
   create-artifact:
     docker:
       - image: circleci/node
