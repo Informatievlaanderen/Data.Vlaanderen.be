@@ -56,6 +56,11 @@ extract_json() {
     local RDIR=${TARGETDIR}/report
     mkdir -p ${TDIR} ${RDIR} ${TARGETDIR}/target/${LINE}
     java -jar /app/ea-2-rdf.jar jsonld -c ${MAPPINGFILE} -n $(cat .names.txt)
+    if [ ! -f "$(cat .names.txt).jsonld" ]
+    then
+	echo "extract_json: $(cat .names.txt).jsonld was not created"
+	exit -1;
+    fi
     cp $(cat .names.txt).jsonld ${TDIR}
     cp $(cat .names.txt).report ${RDIR}
     ( echo $PWD ; cat $(cat .names.txt).report ) >> ${TDIR}/ALL.report
