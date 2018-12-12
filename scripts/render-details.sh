@@ -5,23 +5,26 @@ DETAILS=$2
 CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 export NODE_PATH=/app/node_modules
 
-render_html() {
-    BASENAME=$(basename $i .jsonld)
+render_html() { # SLINE TLINE JSON
+    local SLINE=$1
+    local TLINE=$2
+    local JSONI=$3
+    BASENAME=$(basename ${JSONI} .jsonld)
     OUTFILE=${BASENAME}.html
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.template')
     TEMPLATE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
     # determine the location of the template to be used.
 
-    echo "render-details: ${TEMPLATE}"	    
+    echo "render-details: ${TEMPLATE} ${PWD}"	    
     FTEMPLATE=/app/views/${TEMPLATE}
     if [ ! -f "${FTEMPLATE}" ] ; then
 	FTEMPLATE=${SLINE}/template/${TEMPLATE}
     fi
     
-    echo "node /app/cls.js $i ${FTEMPLATE} ${TLINE}/html/${OUTFILE}"
+    echo "node /app/cls.js ${JSONI} ${FTEMPLATE} ${TLINE}/html/${OUTFILE}"
     pushd /app
       mkdir -p ${TLINE}/html
-      node /app/cls.js $i ${FTEMPLATE} ${TLINE}/html/${OUTFILE}
+      node /app/cls.js ${JSONI} ${FTEMPLATE} ${TLINE}/html/${OUTFILE}
     popd
 }
 
@@ -49,11 +52,11 @@ do
 	do
 	    echo "render-details: convert $i to ${DETAILS} ($CWD)"
 	    case ${DETAILS} in
-		html) render_html $SLINE $TLINE
+		html) render_html $SLINE $TLINE $i
 		      ;;
-               shacl) render_shacl $SLINE $TLINE
+               shacl) render_shacl $SLINE $TLINE $i
 		      ;;
-	     context) render_context $SLINE $TLINE
+	     context) render_context $SLINE $TLINE $i
 		      ;;
 		   *)  echo "${DETAILS} not handled yet"
 	    esac
