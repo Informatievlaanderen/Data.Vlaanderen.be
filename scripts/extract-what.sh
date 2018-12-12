@@ -51,12 +51,12 @@ extract_stakeholder() {
 # main one being worked on
 extract_json() {
     local MAPPINGFILE=$1
-    local SRCDIR=$2
+    local LINE=$2
     local TDIR=${TARGETDIR}/json
     local RDIR=${TARGETDIR}/report
     mkdir -p ${TDIR} ${RDIR}
-    java -jar /app/ea-2-rdf.jar jsonld -c $$MAPPINGFILE -n $(cat .names.txt)
-    cp $(cat .names.txt).jsonld ${TDIR}
+    java -jar /app/ea-2-rdf.jar jsonld -c ${TARGETDIR}/src/$$MAPPINGFILE -n $(cat .names.txt)
+    cp $(cat .names.txt).jsonld ${TARGETDIR}/target${LINE}
     cp $(cat .names.txt).report ${RDIR}
     ( echo $PWD ; cat $(cat .names.txt).report ) >> ${TDIR}/ALL.report
 }
@@ -71,17 +71,18 @@ fi
 
 cat ${CHECKOUTFILE} | while read line
 do
+    SRCDIR=${TARGETDIR}/src${line}
     echo "Processing line ($extractwhat): $line"
-    if [ -d "$line" ]
+    if [ -d "${SRCDIR}" ]
     then
-      pushd $line
+      pushd ${SRCDIR}
        MAPPINGFILE=$(get_mapping_file)   
        case $extractwhat in
      	         tsv) extract_tsv $MAPPINGFILE
 		      ;;
                  ttl) extract_ttl $MAPPINGFILE
 		      ;;
-	      jsonld) extract_json $MAPPINGFILE $line 
+	      jsonld) extract_json $MAPPINGFILE $line
 		      ;;
         stakeholders) extract_stakeholder $MAPPINGFILE
 		      ;;
