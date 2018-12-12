@@ -71,11 +71,11 @@ fi
 
 cat ${CHECKOUTFILE} | while read line
 do
-    SRCDIR=${TARGETDIR}/src${line}
-    echo "Processing line ($extractwhat): $line"
-    if [ -d "${SRCDIR}" ]
+    SLINE=${TARGETDIR}/src/${line}
+    echo "Processing line ($extractwhat): ${SLINE}"
+    if [ -d "${SLINE}" ]
     then
-      pushd ${SRCDIR}
+      pushd ${SLINE}
        MAPPINGFILE=$(get_mapping_file)   
        case $extractwhat in
      	         tsv) extract_tsv $MAPPINGFILE
@@ -90,7 +90,7 @@ do
         esac 	   
       popd
     else
-      echo "Error: $line" >> log.txt
+      echo "Error: ${SLINE}" >> log.txt
     fi
 done
 
