@@ -47,8 +47,11 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run:
+          name: Make sure pretty print is runnable
+          command: cd /app/pretty-print ; npm install
+      - run:
           name: Normalise the recovered JSON-LD files (in the src directory)
-          command: echo "pretty print the files"
+          command: $PWD/scripts/pretty-print-jsonfiles.sh /tmp/workspace
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
