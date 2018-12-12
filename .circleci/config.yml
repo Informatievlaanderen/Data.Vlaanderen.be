@@ -55,7 +55,6 @@ jobs:
           root: /tmp/workspace
           paths:
             - src/
-            - json/
   render-html-details:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
@@ -164,7 +163,6 @@ jobs:
           root: /tmp/workspace
           paths:
             - target/
-            - voc/	    
   create-artifact:
     docker:
       - image: circleci/node
@@ -233,10 +231,10 @@ workflows:
             - normalise-jsonld
       - expand-links:
           requires:
+            - render-shacl-details
+            - render-context-details
+            - render-voc-rdf
             - render-html-details
       - create-artifact:
           requires:
             - expand-links
-            - render-context-details
-            - render-shacl-details
-            - render-voc-rdf
