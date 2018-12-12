@@ -122,10 +122,6 @@ jobs:
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
-            - html/
-            - json/
-            - report/    
-            - src/
             - target/
   render-voc-rdf-orig:
     docker:
@@ -258,9 +254,9 @@ workflows:
       - expand-links:
           requires:
             - render-html-details
-            - render-context-details
-            - render-shacl-details
       - create-artifact:
           requires:
             - expand-links
+            - render-context-details
+            - render-shacl-details
             - render-voc-rdf
