@@ -67,9 +67,6 @@ jobs:
       - run:
           name: Render HTML version of merged json file
           command: $PWD/scripts/render-details.sh /tmp/workspace html
-      - run:
-          name: List the files which have been created
-          command: ls -al /tmp/workspace/html/*
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -221,6 +218,7 @@ jobs:
           name: Copy generated assets
           workdir: /tmp/workspace
           command: |
+	    cp -R target/* /tmp/OSLO-Generated
             cp -R voc/* /tmp/OSLO-Generated/ns/
             cp -R html/* /tmp/OSLO-Generated/ns/
             cp -R report /tmp/OSLO-Generated/report
