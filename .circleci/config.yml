@@ -41,6 +41,22 @@ jobs:
             - json/
             - src/
             - target/
+  normalise-jsonld:
+    docker:
+      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-circleci
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Normalise the recovered JSON-LD files
+          command: echo "pretty print the files"
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - checkouts.txt
+            - src/
+            - target/
   render-html-details:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
@@ -226,18 +242,21 @@ workflows:
       - extract-jsonld-details:
           requires:
             - checkout
+      - normalise-jsonld:
+          requires:
+            - extract-jsonld-details          
       - render-html-details:
           requires:
-            - extract-jsonld-details  
+            - normalise-jsonld
       - render-voc-rdf:
           requires:
-            - extract-jsonld-details  
+            - normalise-jsonld
       - render-shacl-details:
           requires:
-            - extract-jsonld-details
+            - normalise-jsonld
       - render-context-details:
           requires:
-            - extract-jsonld-details  
+            - normalise-jsonld
       - expand-links:
           requires:
             - render-html-details
