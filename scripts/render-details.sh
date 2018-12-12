@@ -6,6 +6,7 @@ CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 export NODE_PATH=/app/node_modules
 
 render_html() { # SLINE TLINE JSON
+    echo "render_htm: $1 $2 $3"     
     local SLINE=$1
     local TLINE=$2
     local JSONI=$3
@@ -29,12 +30,12 @@ render_html() { # SLINE TLINE JSON
 }
 
 render_context() { # SLINE TLINE JSON
-    echo "render_context: entered" 
+    echo "render_context: $1 $2 $3" 
     local SLINE=$1
     local TLINE=$2
     local JSONI=$3
     BASENAME=$(basename ${JSONI} .jsonld)
-    OUTFILE=${BASENAME}.html
+    OUTFILE=${BASENAME}.jsonld
     echo "node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/json/${OUTFILE}"
     pushd /app
       mkdir -p ${TLINE}/json
@@ -43,12 +44,12 @@ render_context() { # SLINE TLINE JSON
 }
 		 
 render_shacl() {
-    echo "render_context: entered"
+    echo "render_shacl: $1 $2 $3"
     local SLINE=$1
     local TLINE=$2
     local JSONI=$3
     BASENAME=$(basename ${JSONI} .jsonld)
-    OUTFILE=${BASENAME}.html
+    OUTFILE=${BASENAME}.shacl.jsonld
     echo "node /app/shacl-generator.js -i ${JSONI} -o ${TLINE}/shacl/${OUTFILE}"
     pushd /app
       mkdir -p ${TLINE}/shacl
