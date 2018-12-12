@@ -25,7 +25,7 @@ render_html() { # SLINE TLINE JSON
     echo "node /app/cls.js ${JSONI} ${FTEMPLATE} ${TLINE}/html/${OUTFILE}"
     pushd /app
       mkdir -p ${TLINE}/html
-      node /app/cls.js ${JSONI} ${FTEMPLATE} ${TLINE}/html/${OUTFILE}
+      node /app/cls.js ${JSONI} ${FTEMPLATE} ${TLINE}/html/${OUTFILE} || exit -1
     popd
 }
 
@@ -39,7 +39,7 @@ render_context() { # SLINE TLINE JSON
     echo "node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/json/${OUTFILE}"
     pushd /app
       mkdir -p ${TLINE}/json
-      node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/json/${OUTFILE}
+      node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/json/${OUTFILE} || exit -1
     popd
 }
 		 
@@ -53,7 +53,7 @@ render_shacl() {
     echo "node /app/shacl-generator.js -i ${JSONI} -o ${TLINE}/shacl/${OUTFILE}"
     pushd /app
       mkdir -p ${TLINE}/shacl
-      node /app/shacl-generator.js -i ${JSONI} -o ${TLINE}/shacl/${OUTFILE}
+      node /app/shacl-generator.js -i ${JSONI} -o ${TLINE}/shacl/${OUTFILE} || exit -1
     popd
 }
 		 
