@@ -80,6 +80,9 @@ jobs:
       - run:
           name: Render Context Details
           command: $PWD/scripts/render-details.sh /tmp/workspace context
+      - run:
+          name: List the context files found
+          command: find /tmp/workspace/target -name \*.jsonld -type f
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -94,6 +97,9 @@ jobs:
       - run:
           name: Render Shacl details
           command: $PWD/scripts/render-details.sh /tmp/workspace shacl
+      - run:
+          name: List the shacl files found
+          command: find /tmp/workspace/target -name \*.shacl.json -type f
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
