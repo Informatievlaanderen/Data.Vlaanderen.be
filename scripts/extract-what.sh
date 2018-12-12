@@ -92,7 +92,7 @@ do
         stakeholders) extract_stakeholder $MAPPINGFILE
 		      ;;
                    *) echo "ERROR: $extractwhat not defined"
-        esac 	   
+        esac
       popd
     else
       echo "Error: ${SLINE}" >> log.txt
