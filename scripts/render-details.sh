@@ -22,7 +22,7 @@ do
 	    BASENAME=$(basename $i .jsonld)
 	    OUTFILE=${BASENAME}.html
 	    COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.template')
-	    TEMPLATE=$(jq -r "${COMMAND}" ${SRCDIR}/.names.json)
+	    TEMPLATE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 	    # determine the location of the template to be used.
 	    FTEMPLATE=/app/views/${TEMPLATE}
 	    if [ ! -f "${FTEMPLATE}" ] ; then

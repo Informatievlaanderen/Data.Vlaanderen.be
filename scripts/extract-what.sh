@@ -54,9 +54,9 @@ extract_json() {
     local LINE=$2
     local TDIR=${TARGETDIR}/json
     local RDIR=${TARGETDIR}/report
-    mkdir -p ${TDIR} ${RDIR}
-    java -jar /app/ea-2-rdf.jar jsonld -c ${TARGETDIR}/src/$$MAPPINGFILE -n $(cat .names.txt)
-    cp $(cat .names.txt).jsonld ${TARGETDIR}/target${LINE}
+    mkdir -p ${TDIR} ${RDIR} ${TARGETDIR}/target/${LINE}
+    java -jar /app/ea-2-rdf.jar jsonld -c ${TARGETDIR}/src/${MAPPINGFILE} -n $(cat .names.txt)
+    cp $(cat .names.txt).jsonld ${TARGETDIR}/target/${LINE}
     cp $(cat .names.txt).report ${RDIR}
     ( echo $PWD ; cat $(cat .names.txt).report ) >> ${TDIR}/ALL.report
 }
