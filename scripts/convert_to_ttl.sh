@@ -12,6 +12,7 @@ do
     then
 	mkdir -p ${BASEDIR}/jsonld
         rdf serialize --input-format jsonld --processingMode json-ld-1.1 $line --output-format turtle -o ${OUTFILE}
+	echo "mv ${line} ${BASEDIR}/jsonld"
 	mv ${line} ${BASEDIR}/jsonld
     else
 	echo "Error: ${line}"
