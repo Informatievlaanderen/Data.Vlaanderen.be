@@ -9,9 +9,10 @@ do
     OUTFILE=${BASEDIR}/${BASENAME}.ttl
     echo "converting file: ${line} => ${OUTFILE}"
     if [ -f "${line}" ]
-    then	
+    then
+	mkdir -p ${BASEDIR}/jsonld
         rdf serialize --input-format jsonld --processingMode json-ld-1.1 $line --output-format turtle -o ${OUTFILE}
-	rm -f ${line}
+	mv ${line} ${BASEDIR}/jsonld
     else
 	echo "Error: ${line}"
     fi
