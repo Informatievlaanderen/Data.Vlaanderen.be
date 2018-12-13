@@ -187,11 +187,11 @@ jobs:
           command: |
             gem install linkeddata
       - run:
-          name: Convert to ttl form
+          name: Convert -SHACL.jsonld file to -SHACL.ttl files
           command: |
             find /tmp/workspace/target -name \*-SHACL.jsonld -type f | $PWD/scripts/convert_to_ttl.sh
       - run:
-          name: List the html files found
+          name: List the -SHACL.ttl files found
           command: find /tmp/workspace/target -name \*-SHACL.ttl -type f
       - persist_to_workspace:
           root: /tmp/workspace
