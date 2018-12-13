@@ -25,7 +25,10 @@ render_html() { # SLINE TLINE JSON
     echo "node /app/cls.js ${JSONI} ${FTEMPLATE} ${TLINE}/html/${OUTFILE}"
     pushd /app
       mkdir -p ${TLINE}/html
-      node /app/cls.js ${JSONI} ${FTEMPLATE} ${TLINE}/html/${OUTFILE} || exit -1
+      if ! node /app/cls.js ${JSONI} ${FTEMPLATE} ${TLINE}/html/${OUTFILE}
+      then
+	  exit -1
+      fi
     popd
 }
 
