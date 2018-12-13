@@ -52,7 +52,7 @@ render_shacl() {
     local TLINE=$2
     local JSONI=$3
     BASENAME=$(basename ${JSONI} .jsonld)
-    OUTFILE=${BASENAME}-SHACL.ttl
+    OUTFILE=${BASENAME}-SHACL.jsonld
     echo "node /app/shacl-generator.js -i ${JSONI} -o ${TLINE}/shacl/${OUTFILE}"
     pushd /app
       mkdir -p ${TLINE}/shacl
@@ -60,7 +60,6 @@ render_shacl() {
     popd
 }
 		 
-
 echo "render-details: starting with $1 $2 $3"
 
 cat ${CHECKOUTFILE} | while read line

@@ -104,7 +104,7 @@ jobs:
           command: $PWD/scripts/render-details.sh /tmp/workspace shacl
       - run:
           name: List the shacl files found
-          command: find /tmp/workspace/target -name \*-SHACL.ttl -type f
+          command: find /tmp/workspace/target -name \*-SHACL.jsonld -type f
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -175,6 +175,28 @@ jobs:
           root: /tmp/workspace
           paths:
             - target/
+  convert-shacl-json-to-ttl:
+    docker:
+      - image: circleci/ruby
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Install dependencies
+          command: |
+            gem install linkeddata
+      - run:
+          name: Convert to ttl form
+          command: |
+            find /tmp/workspace/target -name \*-SHACL.jsonld -type f | $PWD/scripts/convert-to-ttl.sh
+      - run:
+          name: List the html files found
+          command: find /tmp/workspace/target -name \*-SHACL.ttl -type f
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - target/
   create-artifact:
     docker:
       - image: circleci/node
@@ -239,12 +261,15 @@ workflows:
       - render-shacl-details:
           requires:
             - normalise-jsonld
+      - convert-shacl-json-to-ttl:
+          requires:
+            - render-shacl-details
       - render-context-details:
           requires:
             - normalise-jsonld
       - expand-links:
           requires:
-            - render-shacl-details
+            - convert-shacl-json-to-ttl
             - render-context-details
             - render-voc-rdf
             - render-html-details
