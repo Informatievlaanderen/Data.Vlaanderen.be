@@ -10,10 +10,9 @@ PID=$$
 pushd /app/pretty-print
  cat /tmp/files.txt | while read line
  do
-     echo "not yet working"
-     echo node pretty-print.js --input $line --output $line.out "foaf:last_name" "foaf:first_name"     
-     echo node pretty-print.js --input $line --output $line.out "foaf:last_name" "foaf:first_name"
-     echo mv $line.out $line
+     echo node pretty-print.js --input $line --output $line.out -s "foaf:last_name" -s "foaf:first_name"     
+     node pretty-print.js --input $line --output $line.out -s "foaf:last_name" -s "foaf:first_name"
+     mv $line.out $line
  done
 popd
 
