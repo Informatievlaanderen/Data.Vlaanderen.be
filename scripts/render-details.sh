@@ -52,7 +52,7 @@ render_shacl() {
     local TLINE=$2
     local JSONI=$3
     BASENAME=$(basename ${JSONI} .jsonld)
-    OUTFILE=${BASENAME}.shacl.ttl
+    OUTFILE=${BASENAME}-SHACL.ttl
     echo "node /app/shacl-generator.js -i ${JSONI} -o ${TLINE}/shacl/${OUTFILE}"
     pushd /app
       mkdir -p ${TLINE}/shacl

@@ -104,7 +104,7 @@ jobs:
           command: $PWD/scripts/render-details.sh /tmp/workspace shacl
       - run:
           name: List the shacl files found
-          command: find /tmp/workspace/target -name \*.shacl.json -type f
+          command: find /tmp/workspace/target -name \*-SHACL.ttl -type f
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
