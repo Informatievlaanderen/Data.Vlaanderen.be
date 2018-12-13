@@ -2,7 +2,7 @@
 
 WORKDIR=$1
 SRCDIR=${WORKDIR}/src
-JSONDIR=${WORKDIR}/report/json
+JSONDIR=${WORKDIR}/json
 PID=$$
 
 ( find ${SRCDIR} -name \*.jsonld -type f ; find ${JSONDIR} -name \*.jsonld -type f ) > /tmp/files.txt
