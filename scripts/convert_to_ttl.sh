@@ -5,7 +5,8 @@ CLEANUP=$1
 while read line
 do
     BASENAME=$(basename ${line} .jsonld)
-    OUTFILE=${BASENAME}.ttl
+    BASEDIR=$(dirname ${line})
+    OUTFILE=${BASEDIR}/${BASENAME}.ttl
     echo "converting file: ${line} => ${OUTFILE}"
     if [ -f "${line}" ]
     then	
