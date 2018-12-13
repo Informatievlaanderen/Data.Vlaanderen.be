@@ -105,6 +105,24 @@ jobs:
       - run:
           name: List the shacl files found
           command: find /tmp/workspace/target -name \*-SHACL.jsonld -type f
+  convert-shacl-json-to-ttl:
+    docker:
+      - image: circleci/ruby
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Install dependencies
+          command: |
+            gem install linkeddata
+      - run:
+          name: Convert -SHACL.jsonld file to -SHACL.ttl files
+          command: |
+            find /tmp/workspace/target -name \*-SHACL.jsonld -type f | $PWD/scripts/convert_to_ttl.sh
+      - run:
+          name: List the -SHACL.ttl files found
+          command: find /tmp/workspace/target -name \*-SHACL.ttl -type f
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -171,28 +189,6 @@ jobs:
           name: list results 
           command: |
             ls /tmp/workspace/voc
-      - persist_to_workspace:
-          root: /tmp/workspace
-          paths:
-            - target/
-  convert-shacl-json-to-ttl:
-    docker:
-      - image: circleci/ruby
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          name: Install dependencies
-          command: |
-            gem install linkeddata
-      - run:
-          name: Convert -SHACL.jsonld file to -SHACL.ttl files
-          command: |
-            find /tmp/workspace/target -name \*-SHACL.jsonld -type f | $PWD/scripts/convert_to_ttl.sh
-      - run:
-          name: List the -SHACL.ttl files found
-          command: find /tmp/workspace/target -name \*-SHACL.ttl -type f
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
