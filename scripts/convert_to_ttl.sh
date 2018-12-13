@@ -10,10 +10,9 @@ do
     echo "converting file: ${line} => ${OUTFILE}"
     if [ -f "${line}" ]
     then
-	mkdir -p ${BASEDIR}/jsonld
         rdf serialize --input-format jsonld --processingMode json-ld-1.1 $line --output-format turtle -o ${OUTFILE}
-	echo "mv ${line} ${BASEDIR}/jsonld"
-	mv ${line} ${BASEDIR}/jsonld
+	echo "rm -rf ${line}"
+	rm -rf ${line}
     else
 	echo "Error: ${line}"
     fi

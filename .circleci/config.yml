@@ -105,6 +105,10 @@ jobs:
       - run:
           name: List the shacl files found
           command: find /tmp/workspace/target -name \*-SHACL.jsonld -type f
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - target/
   convert-shacl-json-to-ttl:
     docker:
       - image: circleci/ruby
