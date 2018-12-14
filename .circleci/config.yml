@@ -125,8 +125,10 @@ jobs:
           command: |
             find /tmp/workspace/target -name \*-SHACL.jsonld -type f | $PWD/scripts/convert_to_ttl.sh
       - run:
-          name: List the -SHACL.ttl files found
-          command: find /tmp/workspace/target -name \*-SHACL.ttl -type f
+          name: List the -SHACL.ttl and context files found
+          command: |
+            find /tmp/workspace/target -name \*-SHACL.ttl -type f
+            find /tmp/workspace/target -name \*.ttl -type f	    
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
