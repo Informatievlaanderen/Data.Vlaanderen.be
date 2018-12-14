@@ -109,7 +109,7 @@ jobs:
           root: /tmp/workspace
           paths:
             - target/
-  convert-shacl-json-to-ttl:
+  convert-json-to-ttl:
     docker:
       - image: circleci/ruby
     steps:
@@ -261,16 +261,16 @@ workflows:
       - render-shacl-details:
           requires:
             - normalise-jsonld
-      - convert-shacl-json-to-ttl:
+      - convert-json-to-ttl:
           requires:
             - render-shacl-details
+            - render-context-details	    
       - render-context-details:
           requires:
             - normalise-jsonld
       - expand-links:
           requires:
-            - convert-shacl-json-to-ttl
-            - render-context-details
+            - convert-json-to-ttl
             - render-voc-rdf
             - render-html-details
       - create-artifact:
