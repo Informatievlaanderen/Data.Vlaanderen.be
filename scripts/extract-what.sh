@@ -82,6 +82,7 @@ do
     then
       pushd ${SLINE}
        MAPPINGFILE=$(get_mapping_file)   
+       cat $MAPPINGFILE
        case $extractwhat in
      	         tsv) extract_tsv $MAPPINGFILE
 		      ;;
