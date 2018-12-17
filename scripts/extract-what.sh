@@ -51,6 +51,7 @@ extract_stakeholder() {
 # main one being worked on
 extract_json() {
     local MAPPINGFILE=$1
+    cat $MAPPINGFILE
     local LINE=$2
     local TDIR=${TARGETDIR}/json
     local RDIR=${TARGETDIR}/report
