@@ -55,7 +55,9 @@ extract_raw() {
 #	echo "extract_what(tsv): $(cat .names.txt).tsv was not created"
 #	exit -1;
 #    fi
+    ls -l
     cp $(cat .names.txt).raw ${TDIR}    
+    cp /tmp/workspace/raw/$(cat .names.txt).raw ${TDIR}    
 }
 #############################################################################################
 extract_ttl() {
