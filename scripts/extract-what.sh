@@ -56,6 +56,7 @@ extract_raw() {
 #	exit -1;
 #    fi
     ls -l
+    ls -l /tmp/workspace/raw
     cp $(cat .names.txt).raw ${TDIR}    
     cp /tmp/workspace/raw/$(cat .names.txt).raw ${TDIR}    
 }
