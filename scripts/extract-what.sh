@@ -44,11 +44,11 @@ extract_raw() {
     local MAPPINGFILE=$1
     local LINE=$2
     local TDIR=${TARGETDIR}/report/${LINE}/raw
-    mkdir -p ${TDIR}
+    mkdir -p ${TDIR} ${TARGETDIR}/raw
     
     # Extract tsv data for each diagram    
     #jq -r '.[] | select(.type | contains("ap")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i \(.eap) -c config/config-ap.json -d \(.diagram) -o /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv"' < $MAPPINGFILE | bash -e
-    jq -r '.[] | @sh "java -jar /app/ea-2-rdf.jar list -i \(.eap) --full --format json > /tmp/workspace/raw/\(.name).tsv"' < $MAPPINGFILE | bash -e
+    jq -r '.[] | @sh "java -jar /app/ea-2-rdf.jar list -i \(.eap) --full --format json > /tmp/workspace/raw/\(.name).raw"' < $MAPPINGFILE | bash -e
 
 #    if [ ! -f "$(cat .names.txt).tsv" ]
 #    then
