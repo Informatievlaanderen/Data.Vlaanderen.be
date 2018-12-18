@@ -250,7 +250,9 @@ jobs:
             cp -R tsv    /tmp/OSLO-Generated/report
       - run:
           name: List the files which have been created
-          command: ls -al /tmp/OSLO-Generated/report/*
+          command: |
+            ls -al /tmp/OSLO-Generated/report/*
+            find /tmp/OSLO-Generated/report
       - run:
           name: Push results to github
           workdir: /tmp/OSLO-Generated
