@@ -27,7 +27,15 @@ extract_tsv() {
     mkdir -p ${TDIR}
     
     # Extract tsv data for each diagram    
-    jq -r '.[] | select(.type | contains("ap")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i \(.eap) -c config/config-ap.json -d \(.diagram) -o /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv"' < $MAPPINGFILE | bash -e
+    #jq -r '.[] | select(.type | contains("ap")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i \(.eap) -c config/config-ap.json -d \(.diagram) -o /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv"' < $MAPPINGFILE | bash -e
+    jq -r '.[] | @sh "java -jar /app/ea-2-rdf.jar tsv -i \(.eap) -c config/config-ap.json -d \(.diagram) -o /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv"' < $MAPPINGFILE | bash -e
+
+#    if [ ! -f "$(cat .names.txt).tsv" ]
+#    then
+#	echo "extract_what(tsv): $(cat .names.txt).tsv was not created"
+#	exit -1;
+#    fi
+    cp /tmp/workspace/tsv/$(cat .names.txt).tsv ${TDIR}    
 }
 
 #############################################################################################

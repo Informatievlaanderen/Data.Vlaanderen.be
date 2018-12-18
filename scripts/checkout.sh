@@ -60,6 +60,7 @@ then
 	RDIR=${DIR#'/'}
 	mkdir -p $ROOTDIR/src/$RDIR
 	mkdir -p $ROOTDIR/target/$RDIR
+	mkdir -p $ROOTDIR/report/$RDIR
 	git clone $(_jq '.repository') $ROOTDIR/src/$RDIR
 
 	pushd $ROOTDIR/src/$RDIR

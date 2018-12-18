@@ -39,11 +39,17 @@ render_context() { # SLINE TLINE JSON
     local JSONI=$3
     BASENAME=$(basename ${JSONI} .jsonld)
     OUTFILE=${BASENAME}.jsonld
-    echo "node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/json/${OUTFILE}"
-    pushd /app
-      mkdir -p ${TLINE}/json
-      node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/json/${OUTFILE} || exit -1
-    popd
+
+    COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
+    TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
+
+    if [ $TYPE == "ap" ]; then
+      echo "node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/json/${OUTFILE}"
+      pushd /app
+        mkdir -p ${TLINE}/json
+        node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/json/${OUTFILE} || exit -1
+      popd
+    fi
 }
 		 
 render_shacl() {
@@ -53,11 +59,17 @@ render_shacl() {
     local JSONI=$3
     BASENAME=$(basename ${JSONI} .jsonld)
     OUTFILE=${BASENAME}-SHACL.jsonld
-    echo "node /app/shacl-generator.js -i ${JSONI} -o ${TLINE}/shacl/${OUTFILE}"
-    pushd /app
-      mkdir -p ${TLINE}/shacl
-      node /app/shacl-generator.js -i ${JSONI} -o ${TLINE}/shacl/${OUTFILE} || exit -1
-    popd
+
+    COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
+    TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
+
+    if [ $TYPE == "ap" ]; then
+      echo "node /app/shacl-generator.js -i ${JSONI} -o ${TLINE}/shacl/${OUTFILE}"
+      pushd /app
+        mkdir -p ${TLINE}/shacl
+        node /app/shacl-generator.js -i ${JSONI} -o ${TLINE}/shacl/${OUTFILE} || exit -1
+      popd
+    fi
 }
 		 
 echo "render-details: starting with $1 $2 $3"

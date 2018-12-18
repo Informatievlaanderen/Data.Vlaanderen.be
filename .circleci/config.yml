@@ -29,6 +29,9 @@ jobs:
           name: Extract json details required (part1)
           command: $PWD/scripts/extract-what.sh jsonld
       - run:
+          name: Extract json details required (part1)
+          command: $PWD/scripts/extract-what.sh ttl
+      - run:
           name: Show the report (for debugging purposes)
           command: cat /tmp/workspace/report/*.report
       - persist_to_workspace:
@@ -266,7 +269,6 @@ workflows:
       - convert-json-to-ttl:
           requires:
             - render-shacl-details
-            - render-context-details	    
       - render-context-details:
           requires:
             - normalise-jsonld
