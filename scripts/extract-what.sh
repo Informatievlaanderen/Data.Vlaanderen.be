@@ -23,7 +23,8 @@ get_mapping_file() {
 #############################################################################################
 extract_tsv() {
     local MAPPINGFILE=$1
-    local TDIR=${TARGETDIR}/tsv
+    local LINE=$2
+    local TDIR=${TARGETDIR}/report/${LINE}/tsv
     mkdir -p ${TDIR}
     
     # Extract tsv data for each diagram    
@@ -35,7 +36,7 @@ extract_tsv() {
 #	echo "extract_what(tsv): $(cat .names.txt).tsv was not created"
 #	exit -1;
 #    fi
-    cp /tmp/workspace/tsv/$(cat .names.txt).tsv ${TDIR}    
+    cp $(cat .names.txt).tsv ${TDIR}    
 }
 
 #############################################################################################
@@ -63,6 +64,7 @@ extract_json() {
     local LINE=$2
     local TDIR=${TARGETDIR}/json
     local RDIR=${TARGETDIR}/report
+    local TTDIR=${TARGETDIR}/report/${LINE}
     mkdir -p ${TDIR} ${RDIR} ${TARGETDIR}/target/${LINE}
     java -jar /app/ea-2-rdf.jar jsonld -c ${MAPPINGFILE} -n $(cat .names.txt)
     if [ ! -f "$(cat .names.txt).jsonld" ]
@@ -71,6 +73,7 @@ extract_json() {
 	exit -1;
     fi
     cp $(cat .names.txt).jsonld ${TDIR}    
+    cp $(cat .names.txt).jsonld ${TTDIR}    
     cp $(cat .names.txt).report ${RDIR}
     ( echo $PWD ; cat $(cat .names.txt).report ) >> ${RDIR}/ALL.report
 }
@@ -93,9 +96,9 @@ do
        MAPPINGFILE=$(get_mapping_file)   
        cat $MAPPINGFILE
        case $extractwhat in
-     	         tsv) extract_tsv $MAPPINGFILE
+     	         tsv) extract_tsv $MAPPINGFILE $line
 		      ;;
-                 ttl) extract_ttl $MAPPINGFILE
+                 ttl) extract_ttl $MAPPINGFILE 
 		      ;;
 	      jsonld) extract_json $MAPPINGFILE $line
 		      ;;
