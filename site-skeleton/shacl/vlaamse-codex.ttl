@@ -9,17 +9,10 @@
 	a sh:NodeShape ;
 	sh:targetClass <http://www.w3.org/ns/adms#Identifier> ;
 	sh:property [
-		sh:name "gestructureerdedentificator" ;
-		sh:description "Identificator vh object opgesplitst in zijn onderdelen." ;
-		sh:path <http://data.vlaanderen.be/ns/generiek#gestructureerdedentificator> ;
-		sh:class <http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
 		sh:name "identificator" ;
 		sh:description "String gebruikt om het object uniek te identificeren. " ;
 		sh:path <http://www.w3.org/2004/02/skos/core#notation> ;
-		sh:class <http://www.w3.org/2000/01/rdf-schema#Literal> ;
+		sh:datatype <http://www.w3.org/2000/01/rdf-schema#Literal> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
@@ -34,70 +27,35 @@
 		sh:name "toegekendDoorString" ;
 		sh:description "Naam vd agent die de identificator heeft toegekend." ;
 		sh:path <http://www.w3.org/ns/adms#schemaAgency> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "toegekendOp" ;
 		sh:description "Tijdstip waarop de identificator werd uitgegeven." ;
 		sh:path <http://purl.org/dc/terms/issued> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#dateTime> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<https://data.vlaanderen.be/shacl/vlaamse-codex#GestructureerdeIdentificatorShape>
-	a sh:NodeShape ;
-	sh:targetClass <http://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
-	sh:property [
-		sh:name "lokaleIdentificator" ;
-		sh:description "String gebruikt om het object uniek te identificeren binnen de naamruimte." ;
-		sh:path <http://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "naamruimte" ;
-		sh:description "String die toegvoegd wordt aan de lokaleidentificator om deze globaal uniek te maken." ;
-		sh:path <http://data.vlaanderen.be/ns/generiek#naamruimte> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
-	] ;
-	sh:property [
-		sh:name "versieIdentificator" ;
-		sh:description "Identificator van de specifieke versie van een object." ;
-		sh:path <http://data.vlaanderen.be/ns/generiek#versieIdentificator> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:maxCount 1 ;
-	] ;
-	sh:closed false .
-
-<https://data.vlaanderen.be/shacl/vlaamse-codex#RegelgevendDocumentSubdivisieShape>
+<https://data.vlaanderen.be/shacl/vlaamse-codex#RechtsbrononderdeelShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.europa.eu/eli/ontology#LegalResourceSubdivision> ;
 	sh:property [
 		sh:name "isDeelVan" ;
-		sh:description "Relatie die documenten en onderdelen (hoofdstukken en artikels) aan elkaar linkt." ;
+		sh:description "Relatie die documenten en onderdelen (hoofdstukken, artikels...) aan elkaar linkt." ;
 		sh:path <http://data.europa.eu/eli/ontology#is_part_of> ;
 		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
 	] ;
 	sh:property [
-		sh:name "typeRechtsgrondSubdivisie" ;
-		sh:description "Het type van de rechtsgrond subdivsie." ;
-		sh:path <https://data.vlaanderen.be/ns/wetgeving#typeRechtsgrondSubdivisie> ;
+		sh:name "type" ;
+		sh:description "Het type van het rechtsbrononderdeel." ;
+		sh:path <http://purl.org/dc/terms/type> ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
-		qb:codeList <https://data.vlaanderen.be/id/conceptscheme/TypeRechtsgrondSubdivisie> ;
-	] ;
-	sh:property [
-		sh:name "nummer" ;
-		sh:description "Een ID of een ander onderscheidend kenmerk voor een juridische bron of juridische uitdrukking." ;
-		sh:path <http://data.europa.eu/eli/ontology#number> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
+		qb:codeList <https://data.vlaanderen.be/id/conceptscheme/TypeRechtsbrononderdeel> ;
 	] ;
 	sh:closed false .
 
@@ -109,15 +67,6 @@
 		sh:description "Geeft een hulpmiddel aan dat tekstuele wijzigingen introduceert (zoals correctie of spelfouten) zonder juridische wijzigingen in deze bron, uitdrukking of indeling." ;
 		sh:path <http://data.europa.eu/eli/ontology#corrected_by> ;
 		sh:class <http://data.europa.eu/eli/ontology#LegalExpression> ;
-		sh:minCount * ;
-	] ;
-	sh:property [
-		sh:name "realiseert" ;
-		sh:description "Heeft betrekking op een regelgevend document van de verschijningsvorm die door die verschijningsvorm is gerealiseerd." ;
-		sh:path <http://data.europa.eu/eli/ontology#realizes> ;
-		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
-		sh:minCount 1 ;
-		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "consolideert" ;
@@ -126,119 +75,236 @@
 		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
 	] ;
 	sh:property [
-		sh:name "inhoudstafel" ;
-		sh:description "Een beschrijving van de verschijningsvorm. Beschrijving kan omvatten, maar is niet beperkt tot: een abstract, een inhoudsopgave, een grafische weergave of een vrije beschrijving van de verschijningsvorm." ;
-		sh:path <http://purl.org/dc/terms/description> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:name "realiseert" ;
+		sh:description "Heeft betrekking op de rechtsbron die door de verschijningsvorm gematerialiseerd wordt." ;
+		sh:path <http://data.europa.eu/eli/ontology#realizes> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
 		sh:minCount 1 ;
+		sh:maxCount 1 ;
 	] ;
 	sh:property [
-		sh:name "opschrift" ;
-		sh:description "De beknopte titel of officiële korte naam van een decreet, wet, besluit... Deze wordt officieel vastgelegd. Deze benaming wordt in de praktijk gebruikt om naar de rechtsgrond te verwijzen." ;
-		sh:path <http://data.europa.eu/eli/ontology#title> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:minCount 1 ;
+		sh:name "citeeropschrift" ;
+		sh:description "De beknopte titel of officiële korte naam van een decreet, wet, besluit..." ;
+		sh:path <http://data.europa.eu/eli/ontology#title_short> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "commentaar" ;
 		sh:description "Een verslag van de bron." ;
 		sh:path <http://purl.org/dc/terms/description> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
-		sh:minCount 1 ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "inhoud" ;
-		sh:description "Geeft een waarde die een directe weergave is van een entiteit." ;
+		sh:description "De beschrijving van de beoogde rechtsgevolgen, het zogenaamde beschikkend gedeelte." ;
 		sh:path <http://www.w3.org/ns/prov#value> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 	] ;
 	sh:property [
 		sh:name "lokaleID" ;
 		sh:description "De unieke ID die wordt gebruikt in een lokaal referentiesysteem om compatibiliteit met eerdere versies te handhaven." ;
 		sh:path <http://data.europa.eu/eli/ontology#id_local> ;
-		sh:class <http://www.w3.org/ns/adms#Identifier> ;
 		sh:minCount 1 ;
 	] ;
 	sh:property [
-		sh:name "publicatieDatum" ;
-		sh:description "De officiële publicatiedatum van het besluit." ;
+		sh:name "publicatiedatum" ;
+		sh:description "De officiële publicatiedatum van de verschijningsvorm." ;
 		sh:path <http://data.europa.eu/eli/ontology#date_publication> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "taal" ;
-		sh:description "De taal van een uitdrukking." ;
+		sh:description "De taal van de verschijningsvorm." ;
 		sh:path <http://data.europa.eu/eli/ontology#language> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 		sh:minCount 1 ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "trefwoord" ;
-		sh:description "Éen of meerdere onderwerpen van de bron." ;
+		sh:description "Vrije term als extra zoekingang tot de rechtsbron." ;
 		sh:path <http://purl.org/dc/terms/subject> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
 	] ;
 	sh:property [
 		sh:name "buitenwerkingtreding" ;
 		sh:description "De laatste dag waarop de regelgeving nog van kracht is." ;
 		sh:path <http://data.europa.eu/eli/ontology#date_no_longer_in_force> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "datumToepasbaarheid" ;
 		sh:description "De datum waarop de wetgeving van toepassing wordt." ;
 		sh:path <http://data.europa.eu/eli/ontology#date_applicability> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "inwerkingtreding" ;
-		sh:description "De datum waarop de regelgeving van kracht wordt." ;
+		sh:description "De laatste dag waarop een specifieke versie van de regelgeving of een onderdeel ervan nog van kracht is." ;
 		sh:path <http://data.europa.eu/eli/ontology#first_date_entry_in_force> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "thema" ;
-		sh:description "Het onderwerp van deze juridische hulpbron." ;
+		sh:description "Term uit een thesaurus die verwijst naar een bevoegdheidsdomein." ;
 		sh:path <http://data.europa.eu/eli/ontology#is_about> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+	] ;
+	sh:property [
+		sh:name "nummer" ;
+		sh:description "Een identificator of een ander onderscheidend kenmerk voor een verschijningsvorm." ;
+		sh:path <http://data.europa.eu/eli/ontology#number> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "opschrift" ;
+		sh:description "De titel of officiële naam van een decreet, wet, besluit... Deze wordt officieel vastgelegd." ;
+		sh:path <http://data.europa.eu/eli/ontology#title> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#string> ;
+		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
-<https://data.vlaanderen.be/shacl/vlaamse-codex#RegelgevendDocumentShape>
+<https://data.vlaanderen.be/shacl/vlaamse-codex#RechtsbronShape>
 	a sh:NodeShape ;
 	sh:targetClass <http://data.europa.eu/eli/ontology#LegalResource> ;
 	sh:property [
+		sh:name "zetOm" ;
+		sh:description "Geeft aan dat deze wetgeving (of een deel van de wetgeving) voldoet aan de doelstellingen van een andere wetgeving, door het nemen van passende uitvoeringsmaatregelen." ;
+		sh:path <http://data.europa.eu/eli/ontology#transposes> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
+	] ;
+	sh:property [
+		sh:name "ingevoegdBij" ;
+		sh:description "Geeft een bron aan die deze bron aanvult met juridische impact." ;
+		sh:path <https://data.vlaanderen.be/ns/wetgeving#ingevoegdBij> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
+	] ;
+	sh:property [
+		sh:name "heeftDeel" ;
+		sh:description "Geeft aan dat deze bron uit deelbronnen bestaat." ;
+		sh:path <http://purl.org/dc/terms/hasPart> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalResourceSubdivision> ;
+	] ;
+	sh:property [
+		sh:name "zieOok" ;
+		sh:description "Duidt op een of ander manier gerelateerd ander document, niet noodzakelijk een legale bron." ;
+		sh:path <http://data.europa.eu/eli/ontology#related_to> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
+	] ;
+	sh:property [
+		sh:name "wijzigt" ;
+		sh:description "Duidt aan dat deze rechtsbron een verandering met legale gevolgen doorvoert op een andere rechtsbron. Dit omvat amendementen, vervangingen, herroepingen en andere types verandering." ;
+		sh:path <http://data.europa.eu/eli/ontology#amends> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
+	] ;
+	sh:property [
+		sh:name "bekrachtigt" ;
+		sh:description "Betekent dat dit document instemt met een ander type document waardoor dat laatste volledige rechtskracht krijgt. De bekrachtiging is in dit geval een opschortende voorwaarde." ;
+		sh:path <https://data.vlaanderen.be/ns/wetgeving#bekrachtigt> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
+	] ;
+	sh:property [
+		sh:name "ingetrokkenBij" ;
+		sh:description "Geeft aan dat deze bron volledig wordt geannuleerd door een andere bron." ;
+		sh:path <https://data.vlaanderen.be/ns/wetgeving#ingetrokkenBij> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
+	] ;
+	sh:property [
+		sh:name "gewijzigdBij" ;
+		sh:description "Duidt aan dat deze rechtsbron een verandering met legale gevolgen heeft ondergaan door een andere rechtsbron. Dit omvat amendementen, vervangingen, herroepingen en andere types verandering." ;
+		sh:path <http://data.europa.eu/eli/ontology#amended_by> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
+	] ;
+	sh:property [
+		sh:name "trektIn" ;
+		sh:description "Geeft aan dat deze juridische bron of juridische uitdrukking volledig kan worden geannuleerd door een andere." ;
+		sh:path <https://data.vlaanderen.be/ns/wetgeving#trektIn> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
+	] ;
+	sh:property [
+		sh:name "heftOp" ;
+		sh:description "Geeft aan dat deze bron een andere buiten werking stelt" ;
+		sh:path <https://data.vlaanderen.be/ns/wetgeving#heftOp> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
+	] ;
+	sh:property [
 		sh:name "isGerealiseerdDoor" ;
-		sh:description "Betreft een rechtsgrond die aan een verschijningsvorm van deze rechtsgrond "reeks van tekens" geeft" ;
+		sh:description "De verschijningsvorm die deze rechtsbron materialiseert in een concrete tekst." ;
 		sh:path <http://data.europa.eu/eli/ontology#is_realized_by> ;
 		sh:class <http://data.europa.eu/eli/ontology#LegalExpression> ;
 	] ;
 	sh:property [
-		sh:name "heeftOnderdeel" ;
-		sh:description "Geeft aan dat deze resource conceptueel een andere bevat." ;
-		sh:path <http://purl.org/dc/terms/hasPart> ;
-		sh:class <http://data.europa.eu/eli/ontology#LegalResourceSubdivision> ;
+		sh:name "opgehevenBij" ;
+		sh:description "Geeft aan dat deze juridische bron of juridische uitdrukking volledig wordt ingetrokken door een andere juridische hulpbron." ;
+		sh:path <https://data.vlaanderen.be/ns/wetgeving#opgehevenBij> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
+	] ;
+	sh:property [
+		sh:name "citeert" ;
+		sh:description "Een citatie in de wettelijke tekst. Dit omvat zowel woordelijke citaten als citaten in verwijzingen." ;
+		sh:path <http://data.europa.eu/eli/ontology#cites> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
+	] ;
+	sh:property [
+		sh:name "vervangt" ;
+		sh:description "Geeft aan dat deze bron een andere volledig vernieuwt." ;
+		sh:path <https://data.vlaanderen.be/ns/wetgeving#vervangt> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
+	] ;
+	sh:property [
+		sh:name "vervangenBij" ;
+		sh:description "Geeft een bron aan die volledig vernieuwd is door een andere." ;
+		sh:path <https://data.vlaanderen.be/ns/wetgeving#vervangenBij> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
+	] ;
+	sh:property [
+		sh:name "voegtIn" ;
+		sh:description "Deze bron vult een andere aan met legale impact." ;
+		sh:path <https://data.vlaanderen.be/ns/wetgeving#voegtIn> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
+	] ;
+	sh:property [
+		sh:name "bekrachtigdBij" ;
+		sh:description "Inverse van bekrachtigt." ;
+		sh:path <https://data.vlaanderen.be/ns/wetgeving#bekrachtigdBij> ;
+		sh:class <http://data.europa.eu/eli/ontology#LegalResource> ;
 	] ;
 	sh:property [
 		sh:name "datumDocument" ;
 		sh:description "Adoptiedatum of handtekendatum (in de vorm jjjj-mm-dd)." ;
 		sh:path <http://data.europa.eu/eli/ontology#date_document> ;
-		sh:class <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
 		sh:maxCount 1 ;
 	] ;
 	sh:property [
 		sh:name "typeDocument" ;
 		sh:description "Het type van het regelgevend document." ;
 		sh:path <http://data.europa.eu/eli/ontology#type_document> ;
-		sh:class <http://fixme.com#AardWetgeving> ;
-		sh:minCount 1 ;
+		sh:class <http://www.w3.org/2004/02/skos/core#Concept> ;
+		sh:maxCount 1 ;
 		qb:codeList <https://data.vlaanderen.be/id/conceptscheme/AardWetgeving> ;
+	] ;
+	sh:property [
+		sh:name "inwerkingtreding" ;
+		sh:description "De datum waarop de regelgeving van kracht wordt." ;
+		sh:path <http://data.europa.eu/eli/ontology#first_date_entry_in_force> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:maxCount 1 ;
+	] ;
+	sh:property [
+		sh:name "buitenwerkingtreding" ;
+		sh:description "De laatste dag waarop de regelgeving nog van kracht is." ;
+		sh:path <http://data.europa.eu/eli/ontology#date_no_longer_in_force> ;
+		sh:datatype <http://www.w3.org/2001/XMLSchema#date> ;
+		sh:maxCount 1 ;
 	] ;
 	sh:closed false .
 
