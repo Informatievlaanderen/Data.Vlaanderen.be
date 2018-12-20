@@ -71,10 +71,23 @@ Voor applicatieprofielen:
 }
 ```
 
+Voor objectencatalogi:
+```json
+{
+  "name": "objectcatalogus-vegetatie-elementen",
+  "type": "oj",
+  "eap": "OSLO-Openbaar-Domein.eap",
+  "diagram": "OSLO-OpenbaarDomein-Taxonomie-VegetatieElement",
+  "contributors": "OpenbaarDomein",
+  "template": "objectcatalogus-vegetatie-elementen-oj.j2",
+  "title": "Objectcatalogus Vegetatie-elementen"
+}
+```
+
 
 De attributen hebben de volgende betekenis:
 * *name*: Is de naam van het vocabularium / applicatieprofiel zoals hij in de uiteindelijke url komt; wordt ook 'slugname' genoemd.
-* *type*: Geeft aan of het item een vocabularium (`voc`) of applicatieprofiel (`ap`) is.
+* *type*: Geeft aan of het item een vocabularium (`voc`), applicatieprofiel (`ap`) of objectencatalogus (`oj`) is.
 * *eap*: Is de naam van de eap file waar het te converteren diagramma zich bevindt. Dit is hoofdlettergevoelig en het bestand moet aanwezig zijn in `/src`.
 * *diagram*: Is de naam van het diagramma in de eap file dat geconverteerd moet worden. Dit is hoofdlettergevoelig.
 * *contributors*: Is de naam van de kolom in `stakeholders.csv` die gebruikt wordt om contributors toe te voegen.
