@@ -91,7 +91,7 @@ extract_json() {
 	echo "extract_json: $(cat .names.txt).jsonld was not created"
 	exit -1;
     fi
-    jq -s '.[0] + .[1]' $(cat .names.txt).jsonld $MAPPINGFILE > ${TTDIR}/$(cat .names.txt).jsonld
+    jq -s '.[0] + .[1][1]' $(cat .names.txt).jsonld $MAPPINGFILE > ${TTDIR}/$(cat .names.txt).jsonld
     cp $(cat .names.txt).jsonld ${TDIR}    
     cp $(cat .names.txt).jsonld ${TTDIR}    
     cp $(cat .names.txt).report ${RDIR}
