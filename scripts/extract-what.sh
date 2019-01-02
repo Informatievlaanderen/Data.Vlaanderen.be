@@ -84,7 +84,7 @@ extract_json() {
     local TDIR=${TARGETDIR}/json
     local RDIR=${TARGETDIR}/report
     local TTDIR=${TARGETDIR}/report/${LINE}
-    mkdir -p ${TDIR} ${RDIR} ${TARGETDIR}/target/${LINE}
+    mkdir -p ${TDIR} ${RDIR} ${TTDIR} ${TARGETDIR}/target/${LINE}
     java -jar /app/ea-2-rdf.jar jsonld -c ${MAPPINGFILE} -n $(cat .names.txt)
     if [ ! -f "$(cat .names.txt).jsonld" ]
     then
