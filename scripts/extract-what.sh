@@ -85,13 +85,14 @@ extract_json() {
     local RDIR=${TARGETDIR}/report
     local TTDIR=${TARGETDIR}/report/${LINE}
     mkdir -p ${TDIR} ${RDIR} ${TTDIR} ${TARGETDIR}/target/${LINE}
-    java -jar /app/ea-2-rdf.jar jsonld -c ${MAPPINGFILE} -n $(cat .names.txt)
+    java -jar /app/ea-2-rdf.jar jsonld -c ${MAPPINGFILE} -n $(cat .names.txt) &> $(cat .names.txt).report
     if [ ! -f "$(cat .names.txt).jsonld" ]
     then
 	echo "extract_json: $(cat .names.txt).jsonld was not created"
 	exit -1;
     fi
-    jq -s '.[0] + .[1][0]' $(cat .names.txt).jsonld $MAPPINGFILE > ${TTDIR}/all-$(cat .names.txt).jsonld
+    cat .publication-point.json
+    jq -s '.[0] + .[1][0] + .[2]' $(cat .names.txt).jsonld $MAPPINGFILE .publication-point.json > ${TTDIR}/all-$(cat .names.txt).jsonld
     cp $(cat .names.txt).jsonld ${TDIR}    
     cp $(cat .names.txt).jsonld ${TTDIR}    
     cp $(cat .names.txt).report ${RDIR}
