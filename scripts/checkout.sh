@@ -75,8 +75,8 @@ then
 	   then
 	       echo "check name $NAME is present"
                echo "$NAME" >> .names.txt
-	   fi
-	   echo ${row} > .publication-point.json
+	   fi	
+	   echo ${row} | base64 --decode > .publication-point.json
         popd
 	echo "$RDIR" >> $ROOTDIR/checkouts.txt
     done
