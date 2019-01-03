@@ -9,13 +9,6 @@ Issues in deze repository dienen betrekking te hebben op technische of editorial
 
 Voor afspraken geldend in deze repository, betreffende bestandsnamen en dergelijke, zie deze [bijhorende afspraken](./CONVENTIONS.md).
 
-## branching afspraken
-
-Er zijn 2 actieve branches: test en production. Editors kunnen hun bijdrage leveren op de test branch. Als de wijziging correct en finaal is, dan kan er een pull-request van test naar production gemaakt worden.
-Deze pull-request zal worden bevestigd door de Data.vlaanderen.be beheerders. 
-
-De master branch wordt enkel als globaal documentatie punt gebruikt.
-
 ## Informatie voor beheerders
 
 Deze repository bevat de bronbestanden voor https://data.vlaanderen.be. De effectieve site zit in de https://github.com/Informatievlaanderen/OSLO-Generated repository.
@@ -71,23 +64,10 @@ Voor applicatieprofielen:
 }
 ```
 
-Voor objectencatalogi:
-```json
-{
-  "name": "objectcatalogus-vegetatie-elementen",
-  "type": "oj",
-  "eap": "OSLO-Openbaar-Domein.eap",
-  "diagram": "OSLO-OpenbaarDomein-Taxonomie-VegetatieElement",
-  "contributors": "OpenbaarDomein",
-  "template": "objectcatalogus-vegetatie-elementen-oj.j2",
-  "title": "Objectcatalogus Vegetatie-elementen"
-}
-```
-
 
 De attributen hebben de volgende betekenis:
 * *name*: Is de naam van het vocabularium / applicatieprofiel zoals hij in de uiteindelijke url komt; wordt ook 'slugname' genoemd.
-* *type*: Geeft aan of het item een vocabularium (`voc`), applicatieprofiel (`ap`) of objectencatalogus (`oj`) is.
+* *type*: Geeft aan of het item een vocabularium (`voc`) of applicatieprofiel (`ap`) is.
 * *eap*: Is de naam van de eap file waar het te converteren diagramma zich bevindt. Dit is hoofdlettergevoelig en het bestand moet aanwezig zijn in `/src`.
 * *diagram*: Is de naam van het diagramma in de eap file dat geconverteerd moet worden. Dit is hoofdlettergevoelig.
 * *contributors*: Is de naam van de kolom in `stakeholders.csv` die gebruikt wordt om contributors toe te voegen.
