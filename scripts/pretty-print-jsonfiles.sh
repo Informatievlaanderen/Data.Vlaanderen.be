@@ -11,12 +11,11 @@ pushd /app/pretty-print
  cat /tmp/files.txt | while read line
  do
      echo "node pretty-print.js --input $line --output $line.out"
-     if node pretty-print.js --input $line --output $line.out
+     if ! node pretty-print.js --input $line --output $line.out
      then
-	 mv $line.out $line
-     else
 	 echo "pretty print failed"
-	 exit -1
+	 exit 1
      fi
+     mv $line.out $line
  done
 popd
