@@ -44,10 +44,10 @@ render_context() { # SLINE TLINE JSON
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
     if [ $TYPE == "ap" ]; then
-      echo "node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/json/${OUTFILE}"
+      echo "node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/context/${OUTFILE}"
       pushd /app
-        mkdir -p ${TLINE}/json
-        node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/json/${OUTFILE} || exit -1
+        mkdir -p ${TLINE}/context
+        node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/context/${OUTFILE} || exit -1
       popd
     fi
 }

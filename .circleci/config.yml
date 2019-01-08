@@ -97,7 +97,7 @@ jobs:
           command: $PWD/scripts/render-details.sh /tmp/workspace context
       - run:
           name: List the context files found
-          command: find /tmp/workspace/target -name \*.ttl -type f
+          command: find /tmp/workspace/target -name \*.jsonld -type f
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
