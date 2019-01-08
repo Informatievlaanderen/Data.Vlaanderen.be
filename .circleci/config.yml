@@ -291,6 +291,9 @@ workflows:
       - normalise-jsonld:
           requires:
             - extract-jsonld-details          
+      - validate-report:
+          requires:
+            - normalise-jsonld
       - render-html-details:
           requires:
             - normalise-jsonld
@@ -315,6 +318,3 @@ workflows:
       - create-artifact:
           requires:
             - expand-links
-      - validate-report:
-          requires:
-            - expand-links	  
