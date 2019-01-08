@@ -10,6 +10,8 @@ render_html() { # SLINE TLINE JSON
     local SLINE=$1
     local TLINE=$2
     local JSONI=$3
+    local RLINE=$4
+    
     BASENAME=$(basename ${JSONI} .jsonld)
     OUTFILE=${BASENAME}.html
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.template')
@@ -37,6 +39,7 @@ render_context() { # SLINE TLINE JSON
     local SLINE=$1
     local TLINE=$2
     local JSONI=$3
+    local RLINE=$4    
     BASENAME=$(basename ${JSONI} .jsonld)
     OUTFILE=${BASENAME}.jsonld
 
@@ -53,21 +56,24 @@ render_context() { # SLINE TLINE JSON
 }
 		 
 render_shacl() {
-    echo "render_shacl: $1 $2 $3"
+    echo "render_shacl: $1 $2 $3 $4"
     local SLINE=$1
     local TLINE=$2
     local JSONI=$3
+    local RLINE=$4
     BASENAME=$(basename ${JSONI} .jsonld)
-    OUTFILE=${BASENAME}-SHACL.jsonld
+    OUTFILE=${TLINE}/shacl/${BASENAME}-SHACL.jsonld
+    OUTREPORT=${RLINE}/shacl/${BASENAME}-SHACL.report
 
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
     if [ $TYPE == "ap" ]; then
-      echo "node /app/shacl-generator.js -i ${JSONI} -o ${TLINE}/shacl/${OUTFILE}"
+      echo "node /app/shacl-generator.js -i ${JSONI} -o ${OUTFILE}"
       pushd /app
         mkdir -p ${TLINE}/shacl
-        node /app/shacl-generator.js -i ${JSONI} -o ${TLINE}/shacl/${OUTFILE} || exit -1
+	mkdir -p ${RLINE}/shacl      
+        node /app/shacl-generator.js -i ${JSONI} -o ${OUTFILE} 2>&1 | tee ${OUTREPORT} || exit -1
       popd
     fi
 }
@@ -78,18 +84,19 @@ cat ${CHECKOUTFILE} | while read line
 do
     SLINE=${TARGETDIR}/src/${line}
     TLINE=${TARGETDIR}/target/${line}
-    echo "Processing line: ${SLINE} => ${TLINE}"
+    RLINE=${TARGETDIR}/report/${line}
+    echo "Processing line: ${SLINE} => ${TLINE} and ${RLINE}"
     if [ -d "${SLINE}" ]
     then
 	for i in ${SLINE}/*.jsonld
 	do
 	    echo "render-details: convert $i to ${DETAILS} ($PWD)"
 	    case ${DETAILS} in
-		html) render_html $SLINE $TLINE $i
+		html) render_html $SLINE $TLINE $i $RLINE
 		      ;;
-               shacl) render_shacl $SLINE $TLINE $i
+               shacl) render_shacl $SLINE $TLINE $i $RLINE
 		      ;;
-	     context) render_context $SLINE $TLINE $i
+	     context) render_context $SLINE $TLINE $i $RLINE
 		      ;;
 		   *)  echo "${DETAILS} not handled yet"
 	    esac
