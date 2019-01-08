@@ -59,6 +59,7 @@ render_shacl() {
     local JSONI=$3
     BASENAME=$(basename ${JSONI} .jsonld)
     OUTFILE=${BASENAME}-SHACL.jsonld
+    OUTREPORT=${BASENAME}-SHACL.report
 
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
@@ -67,7 +68,7 @@ render_shacl() {
       echo "node /app/shacl-generator.js -i ${JSONI} -o ${TLINE}/shacl/${OUTFILE}"
       pushd /app
         mkdir -p ${TLINE}/shacl
-        node /app/shacl-generator.js -i ${JSONI} -o ${TLINE}/shacl/${OUTFILE} || exit -1
+        node /app/shacl-generator.js -i ${JSONI} -o ${TLINE}/shacl/${OUTFILE} 2>&1 | tee ${OUTREPORT} || exit -1
       popd
     fi
 }
