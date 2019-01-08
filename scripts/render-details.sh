@@ -50,7 +50,11 @@ render_context() { # SLINE TLINE JSON
       echo "node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/context/${OUTFILE}"
       pushd /app
         mkdir -p ${TLINE}/context
-        node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/context/${OUTFILE} || exit -1
+        if ! node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/context/${OUTFILE}
+	then
+	    echo "See XXX for more details"
+	    exit -1
+	fi
       popd
     fi
 }
@@ -73,7 +77,11 @@ render_shacl() {
       pushd /app
         mkdir -p ${TLINE}/shacl
 	mkdir -p ${RLINE}/shacl      
-        node /app/shacl-generator.js -i ${JSONI} -o ${OUTFILE} 2>&1 | tee ${OUTREPORT} || exit -1
+        if ! node /app/shacl-generator.js -i ${JSONI} -o ${OUTFILE} 2>&1 | tee ${OUTREPORT}
+	then
+	    echo "See ${OUTREPORT} for the details"
+	    exit -1
+        fi
       popd
     fi
 }
