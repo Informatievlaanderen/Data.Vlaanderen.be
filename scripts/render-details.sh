@@ -70,7 +70,7 @@ render_shacl() {
 
     if [ $TYPE == "ap" ]; then
       echo "node /app/shacl-generator.js -i ${JSONI} -o ${OUTFILE}"
-      pushd /ap
+      pushd /app
         mkdir -p ${TLINE}/shacl
 	mkdir -p ${RLINE}/shacl      
         node /app/shacl-generator.js -i ${JSONI} -o ${OUTFILE} 2>&1 | tee ${OUTREPORT} || exit -1
@@ -84,7 +84,7 @@ cat ${CHECKOUTFILE} | while read line
 do
     SLINE=${TARGETDIR}/src/${line}
     TLINE=${TARGETDIR}/target/${line}
-    RLINE=${TARGETDIR}/report/${line}    
+    RLINE=${TARGETDIR}/report/${line}
     echo "Processing line: ${SLINE} => ${TLINE} and ${RLINE}"
     if [ -d "${SLINE}" ]
     then
