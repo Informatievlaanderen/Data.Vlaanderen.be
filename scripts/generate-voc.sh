@@ -24,7 +24,10 @@ do
 	    REPORT=${RLINE}/${BASENAME}.ttl-report
 
 	    mkdir -p ${TLINE}/voc
-            rdf serialize --input-format jsonld --processingMode json-ld-1.1 $i --output-format turtle -o ${TLINE}/voc/$BASENAME.ttl 2>&1 | tee ${REPORT}
+            if ! rdf serialize --input-format jsonld --processingMode json-ld-1.1 $i --output-format turtle -o ${TLINE}/voc/$BASENAME.ttl 2>&1 | tee ${REPORT}
+	    then
+		exit 1
+	    fi
 	done
     else
 	echo "Error: ${SLINE}"
