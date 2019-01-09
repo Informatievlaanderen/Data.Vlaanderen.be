@@ -36,7 +36,7 @@ extract_tsv() {
 #	echo "extract_what(tsv): $(cat .names.txt).tsv was not created"
 #	exit -1;
 #    fi
-    cp $(cat .names.txt).tsv ${TDIR}    
+    cp $(cat .names.txt).tsv ${TDIR}
     cp /tmp/workspace/tsv/$(cat .names.txt).tsv ${TDIR}    
 }
 
@@ -94,7 +94,7 @@ extract_json() {
     cat .publication-point.json
     jq -s '.[0] + .[1][0] + .[2]' $(cat .names.txt).jsonld $MAPPINGFILE .publication-point.json > ${TTDIR}/all-$(cat .names.txt).jsonld
     cp $(cat .names.txt).jsonld ${TDIR}    
-    cp $(cat .names.txt).jsonld ${TTDIR}    
+    cp $(cat .names.txt).jsonld ${TTDIR}
     cp $(cat .names.txt).report ${RDIR}
     ( echo $PWD ; cat $(cat .names.txt).report ) >> ${RDIR}/ALL.report
 }

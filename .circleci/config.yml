@@ -40,6 +40,10 @@ jobs:
       - run:
           name: List the files which have been created
           command: ls -al /tmp/workspace/report/*
+      - run:
+          name: Show the errors found (for debugging purposes)
+          command:
+            egrep " ERROR " /tmp/workspace/report/*.report ;
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -49,6 +53,18 @@ jobs:
             - tsv/
             - json/
             - src/
+  validate-report:
+    docker:
+      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-circleci
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Check no errors found in the reports
+          command:
+            egrep " ERROR " /tmp/workspace/report/*.report ;
+            [ $( egrep " ERROR " /tmp/workspace/report/*.report | wc -l ) == 0 ] || exit 1
   normalise-jsonld:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
@@ -275,6 +291,9 @@ workflows:
       - normalise-jsonld:
           requires:
             - extract-jsonld-details          
+      - validate-report:
+          requires:
+            - extract-jsonld-details
       - render-html-details:
           requires:
             - normalise-jsonld
