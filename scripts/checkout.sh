@@ -79,7 +79,6 @@ then
 	   comhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
 	   echo "hashcode to add: ${comhash}"
 	   echo ${row} | base64 --decode | jq --arg comhash "${comhash}" '. + {commit : $comhash}' > .publication-point.json
-	   jq 
         popd
 	echo "$RDIR" >> $ROOTDIR/checkouts.txt
     done
