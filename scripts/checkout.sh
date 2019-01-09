@@ -75,8 +75,11 @@ then
 	   then
 	       echo "check name $NAME is present"
                echo "$NAME" >> .names.txt
-	   fi	
-	   echo ${row} | base64 --decode > .publication-point.json
+	   fi
+	   comhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
+	   echo "hashcode to add: ${comhash}"
+	   echo ${row} | base64 --decode | jq --arg comhash "${comhash}" '. + {commit : $comhash}' > .publication-point.json
+	   jq 
         popd
 	echo "$RDIR" >> $ROOTDIR/checkouts.txt
     done
