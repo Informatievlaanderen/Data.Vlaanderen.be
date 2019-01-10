@@ -45,7 +45,6 @@ fi
 
 
 toolchainhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
-echo $toolchainhash
 
 # Process the publications.config file
 if cat ${PUBCONFIG} | jq -e . > /dev/null 2>&1
@@ -82,7 +81,7 @@ then
 	   fi
 	   comhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
 	   echo "hashcode to add: ${comhash}"
-	   echo ${row} | base64 --decode | jq --arg comhash "${comhash}" '. + {commit : $comhash}' > .publication-point.json
+	   echo ${row} | base64 --decode | jq --arg comhash "${comhash}" --arg toolchainhash "${toolchainhash}" '. + {documentcommit : $comhash, toolchaincommit: $toolchainhash}' > .publication-point.json
         popd
 	echo "$RDIR" >> $ROOTDIR/checkouts.txt
     done

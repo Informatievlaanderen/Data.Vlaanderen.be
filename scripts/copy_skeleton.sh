@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 TARGETDIR=/tmp/workspace
 CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 
@@ -12,7 +10,7 @@ get_mapping_file() {
    if [ -f .names.json ] ; then
      echo ".names.json"
    else
-     echo "no mapping file available" >> log.txt
+     echo "no mapping file available"
      exit 1
    fi
 }
@@ -36,12 +34,12 @@ copy_details() {
 
     mkdir -p $TARGET
 
-    SITE=`jq --arg sline ${SLINE} --arg tline ${TLINE} -r '.[0] |{"site" : .site, "sline": $sline, "tline": $tline} | @text "\(.sline)/\(.site)" ' < $1`
+    SITE=`jq --arg sline ${SLINE} --arg tline ${TLINE} -r '.[0] |{"site" : .site, "sline": $sline, "tline": $tline} | @text \(.sline)/\(.site) ' < $1`
 
     if [ -d ${SITE} ] ; then
 	    cp -r ${SITE}/* ${TARGET}
     else 
-	    echo "WARNING no site exists" >> log.txt
+	    echo "WARNING no site exists" 
     fi
 }
 
@@ -65,7 +63,7 @@ do
        copy_details $MAPPINGFILE $SLINE $TDIR
       popd
     else
-      echo "Error: ${SLINE}" >> log.txt
+      echo "Error: ${SLINE}" 
     fi
 done
 
