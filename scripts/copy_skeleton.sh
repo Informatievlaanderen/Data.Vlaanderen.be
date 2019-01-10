@@ -32,15 +32,14 @@ get_mapping_file() {
 copy_details() {
     local MAPPINGFILE=$1
     local SLINE=$2
-    local TARGETDIR=$3
+    local TARGET=$3
 
-    mkdir -p $TARGETDIR
-    $(cat .names.txt)
+    mkdir -p $TARGET
 
     SITE=`jq --arg sline ${SLINE} --arg tline ${TLINE} -r '.[0] |{"site" : .site, "sline": $sline, "tline": $tline} | @text "\(.sline)/\(.site)" ' < $1`
 
     if [ -d ${SITE} ] ; then
-	    cp -r ${SITE}/* ${TARGETDIR}
+	    cp -r ${SITE}/* ${TARGET}
     else 
 	    echo "WARNING no site exists" >> log.txt
     fi
@@ -63,7 +62,7 @@ do
       pushd ${SLINE}
        MAPPINGFILE=$(get_mapping_file)   
        TDIR=${TARGETDIR}/target/${line}/html
-       copy_details $MAPPINGFILE $SLINE $TARGETDIR
+       copy_details $MAPPINGFILE $SLINE $TDIR
       popd
     else
       echo "Error: ${SLINE}" >> log.txt
