@@ -18,13 +18,13 @@ render_html() { # SLINE TLINE JSON
     TEMPLATE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
     # determine the location of the template to be used.
 
-    echo "render-details: ${TEMPLATE} ${PWD}"	    
+    echo "RENDER-DETAILS(html): ${TEMPLATE} ${PWD}"	    
     FTEMPLATE=/app/views/${TEMPLATE}
     if [ ! -f "${FTEMPLATE}" ] ; then
 	FTEMPLATE=${SLINE}/template/${TEMPLATE}
     fi
     
-    echo "node /app/cls.js ${JSONI} ${FTEMPLATE} ${TLINE}/html/${OUTFILE}"
+    echo "RENDER-DETAILS(html): node /app/cls.js ${JSONI} ${FTEMPLATE} ${TLINE}/html/${OUTFILE}"
     pushd /app
       mkdir -p ${TLINE}/html
       if ! node /app/cls.js ${JSONI} ${FTEMPLATE} ${TLINE}/html/${OUTFILE}
@@ -47,12 +47,12 @@ render_context() { # SLINE TLINE JSON
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
     if [ $TYPE == "ap" ]; then
-      echo "node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/context/${OUTFILE}"
+      echo "RENDER-DETAILS(context): node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/context/${OUTFILE}"
       pushd /app
         mkdir -p ${TLINE}/context
         if ! node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/context/${OUTFILE}
 	then
-	    echo "See XXX for more details"
+	    echo "RENDER-DETAILS: See XXX for more details"
 	    exit -1
 	fi
       popd
@@ -73,13 +73,13 @@ render_shacl() {
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
     if [ $TYPE == "ap" ]; then
-      echo "node /app/shacl-generator.js -i ${JSONI} -o ${OUTFILE}"
+      echo "RENDER-DETAILS(shacl): node /app/shacl-generator.js -i ${JSONI} -o ${OUTFILE}"
       pushd /app
         mkdir -p ${TLINE}/shacl
 	mkdir -p ${RLINE}/shacl      
         if ! node /app/shacl-generator.js -i ${JSONI} -o ${OUTFILE} 2>&1 | tee ${OUTREPORT}
 	then
-	    echo "See ${OUTREPORT} for the details"
+	    echo "RENDER-DETAILS: See ${OUTREPORT} for the details"
 	    exit -1
         fi
       popd
@@ -93,12 +93,12 @@ do
     SLINE=${TARGETDIR}/src/${line}
     TLINE=${TARGETDIR}/target/${line}
     RLINE=${TARGETDIR}/report/${line}
-    echo "Processing line: ${SLINE} => ${TLINE} and ${RLINE}"
+    echo "RENDER-DETAILS: Processing line ${SLINE} => ${TLINE},${RLINE}"
     if [ -d "${SLINE}" ]
     then
 	for i in ${SLINE}/*.jsonld
 	do
-	    echo "render-details: convert $i to ${DETAILS} ($PWD)"
+	    echo "RENDER-DETAILS: convert $i to ${DETAILS} ($PWD)"
 	    case ${DETAILS} in
 		html) render_html $SLINE $TLINE $i $RLINE
 		      ;;
@@ -106,7 +106,7 @@ do
 		      ;;
 	     context) render_context $SLINE $TLINE $i $RLINE
 		      ;;
-		   *)  echo "${DETAILS} not handled yet"
+		   *)  echo "RENDER-DETAILS: ${DETAILS} not handled yet"
 	    esac
 	done
     else
