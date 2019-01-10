@@ -43,7 +43,7 @@ jobs:
       - run:
           name: Show the errors found (for debugging purposes)
           command:
-            egrep " ERROR " /tmp/workspace/report/*.report ;
+            egrep " ERROR " /tmp/workspace/report/*.report || true
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -63,7 +63,7 @@ jobs:
       - run:
           name: Check no errors found in the reports
           command:
-            egrep " ERROR " /tmp/workspace/report/*.report ;
+            egrep " ERROR " /tmp/workspace/report/*.report || true ;
             [ $( egrep " ERROR " /tmp/workspace/report/*.report | wc -l ) == 0 ] || exit 1
   normalise-jsonld:
     docker:
@@ -262,9 +262,8 @@ jobs:
           workdir: /tmp/OSLO-Generated
           command: |
             git fetch origin
-            git branch "${CIRCLE_BRANCH}"
-            git checkout "${CIRCLE_BRANCH}"
-            rm -rf *
+            git checkout -b "${CIRCLE_BRANCH}" --track "origin/${CIRCLE_BRANCH}"
+            git rm -r --force *
       - run:
           name: Copy static assets
           command: |
@@ -283,6 +282,7 @@ jobs:
       - run:
           name: List the files which have been created
           command: |
+            ls -al /tmp/OSLO-Generated/*	  
             ls -al /tmp/OSLO-Generated/report/*
             find /tmp/OSLO-Generated/report
       - run:
