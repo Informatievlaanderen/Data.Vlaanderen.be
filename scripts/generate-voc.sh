@@ -48,10 +48,11 @@ do
 
                 mkdir -p ${TLINE}/voc
                 make_jsonld $BASENAME $i ${SLINE}/selected.jsonld ${CONFIGDIR} || exit 1
-                if ! rdf serialize --input-format jsonld --processingMode json-ld-1.1 ${SLINE}/selected.jsonld --output-format turtle -o ${TLINE}/voc/$BASENAME.ttl 2>&1 | tee ${REPORT}
-                then
-                    exit 1
-                fi
+                cp ${SLINE}/selected.jsonld ${TLINE}/voc/${BASENAME}.jsonld
+#                if ! rdf serialize --input-format jsonld --processingMode json-ld-1.1 ${SLINE}/selected.jsonld --output-format turtle -o ${TLINE}/voc/$BASENAME.ttl 2>&1 | tee ${REPORT}
+#                then
+#                    exit 1
+#                fi
             done
     else
 	    echo "Error: ${SLINE}"

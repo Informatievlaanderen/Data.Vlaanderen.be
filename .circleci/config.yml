@@ -222,6 +222,18 @@ jobs:
           command: |
             $PWD/scripts/generate-voc.sh /tmp/workspace json $PWD/config
       - run:
+          name: Convert vocabulary to turtle
+          command: |
+            find /tmp/workspace/target/doc/vocabulary -name \*.jsonld -type f | $PWD/scripts/convert_to_any.sh turtle
+      - run:
+          name: Convert vocabulary to ntriples
+          command: |
+            find /tmp/workspace/target/doc/vocabulary -name \*.jsonld -type f | $PWD/scripts/convert_to_any.sh ntriples
+      - run:
+          name: Convert vocabulary to rdf/xml
+          command: |
+            find /tmp/workspace/target/doc/vocabulary -name \*.jsonld -type f | $PWD/scripts/convert_to_any.sh rdfxml
+      - run:
           name: list results 
           command: |
             ls /tmp/workspace/voc
