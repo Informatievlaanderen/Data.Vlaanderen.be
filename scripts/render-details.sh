@@ -34,11 +34,13 @@ render_html() { # SLINE TLINE JSON
     popd
 }
 
+touch2() { mkdir -p "$(dirname "$1")" && touch "$1" ; }
+
 prettyprint_jsonld() {
     local FILE=$1
   
     if [ -f ${FILE} ] ;  then 
-    	mkdir -p /tmp/pp/${FILE}
+    	touch2 /tmp/pp/${FILE}
     	jq . ${FILE} > /tmp/pp/${FILE}
     	cp /tmp/pp/${FILE} ${FILE}
     fi
