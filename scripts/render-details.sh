@@ -34,6 +34,18 @@ render_html() { # SLINE TLINE JSON
     popd
 }
 
+touch2() { mkdir -p "$(dirname "$1")" && touch "$1" ; }
+
+prettyprint_jsonld() {
+    local FILE=$1
+  
+    if [ -f ${FILE} ] ;  then 
+    	touch2 /tmp/pp/${FILE}
+    	jq . ${FILE} > /tmp/pp/${FILE}
+    	cp /tmp/pp/${FILE} ${FILE}
+    fi
+}
+
 render_context() { # SLINE TLINE JSON
     echo "render_context: $1 $2 $3" 
     local SLINE=$1
@@ -55,6 +67,7 @@ render_context() { # SLINE TLINE JSON
 	    echo "RENDER-DETAILS: See XXX for more details"
 	    exit -1
 	fi
+        prettyprint_jsonld ${TLINE}/context/${OUTFILE}
       popd
     fi
 }
@@ -82,6 +95,7 @@ render_shacl() {
 	    echo "RENDER-DETAILS: See ${OUTREPORT} for the details"
 	    exit -1
         fi
+        prettyprint_jsonld ${OUTFILE}
       popd
     fi
 }
