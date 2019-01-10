@@ -34,7 +34,7 @@ copy_details() {
 
     mkdir -p $TARGET
 
-    SITE=`jq --arg sline ${SLINE} --arg tline ${TLINE} -r '.[0] |{"site" : .site, "sline": $sline, "tline": $tline} | @text \(.sline)/\(.site) ' < $1`
+    SITE=`jq --arg sline ${SLINE} --arg tline ${TARGET} -r '.[0] |{"site" : .site, "sline": $sline, "tline": $tline} | @text "\(.sline)/\(.site)" '  $1`
 
     if [ -d ${SITE} ] ; then
 	    cp -r ${SITE}/* ${TARGET}
