@@ -93,8 +93,9 @@ extract_json() {
     fi
     cat .publication-point.json
     jq -s '.[0] + .[1][0] + .[2]' $(cat .names.txt).jsonld $MAPPINGFILE .publication-point.json > ${TTDIR}/all-$(cat .names.txt).jsonld
-    cp $(cat .names.txt).jsonld ${TDIR}    
     cp $(cat .names.txt).jsonld ${TTDIR}
+    ## overwrite the content with the aggregated version
+    cp ${TTDIR}/all-$(cat .names.txt).jsonld  $(cat .names.txt).jsonld 
     cp $(cat .names.txt).report ${RDIR}
     ( echo $PWD ; cat $(cat .names.txt).report ) >> ${RDIR}/ALL.report
 }
