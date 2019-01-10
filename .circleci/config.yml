@@ -252,6 +252,7 @@ jobs:
             git fetch origin
             git branch "${CIRCLE_BRANCH}"
             git checkout "${CIRCLE_BRANCH}"
+            git rm -r --force *
             rm -rf *
       - run:
           name: Copy static assets
