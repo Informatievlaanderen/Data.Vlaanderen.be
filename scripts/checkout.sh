@@ -43,6 +43,10 @@ if [ ! -f "${PUBCONFIG}" ] ; then
     exit -1
 fi
 
+
+toolchainhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
+echo $toolchainhash
+
 # Process the publications.config file
 if cat ${PUBCONFIG} | jq -e . > /dev/null 2>&1
 then
