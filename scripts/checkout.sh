@@ -86,10 +86,8 @@ then
 	echo "$RDIR" >> $ROOTDIR/checkouts.txt
     done
 
-    for row in $(jq -r '.[] | select(.seealso)  | @base64 ' ${PUBCONFIG}) ;
-    do
-	echo "link $(_jq '.urlref') $(_jq '.seealso')" >> $ROOTDIR/links.txt
-    done
+
+    jq '[.[] | if has("seealso") then . else empty  end ] ' publication.config > $ROOTDIR/links.txt
 
     if [ -f "$ROOTDIR/failed.txt" ]
     then

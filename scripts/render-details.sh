@@ -27,7 +27,7 @@ render_html() { # SLINE TLINE JSON
     echo "RENDER-DETAILS(html): node /app/cls.js ${JSONI} ${FTEMPLATE} ${TLINE}/html/${OUTFILE}"
     pushd /app
       mkdir -p ${TLINE}/html
-      if ! node /app/cls.js ${JSONI} ${FTEMPLATE} ${TLINE}/html/${OUTFILE}
+      if ! node /app/cls.js ${JSONI} ${FTEMPLATE} ${TLINE}/index.html
       then
 	  exit -1
       fi

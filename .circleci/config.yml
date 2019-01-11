@@ -170,7 +170,10 @@ jobs:
       - checkout
       - attach_workspace:
           at: /tmp/workspace
-      - run: $PWD/scripts/expand-links.sh /tmp/workspace
+      - run: 
+          name: expand default links
+          command: | 
+            $PWD/scripts/expand-links.sh /tmp/workspace
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -218,7 +221,7 @@ jobs:
           command: |
             gem install linkeddata && mkdir -p /tmp/workspace/voc
       - run:
-          name: Generate turtle
+          name: Generate vocabulary in baseformat jsonld
           command: |
             $PWD/scripts/generate-voc.sh /tmp/workspace json $PWD/config
       - run:
