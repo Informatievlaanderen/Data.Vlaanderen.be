@@ -85,7 +85,7 @@ extract_json() {
     local RDIR=${TARGETDIR}/report
     local TTDIR=${TARGETDIR}/report/${LINE}
     mkdir -p ${TDIR} ${RDIR} ${TTDIR} ${TARGETDIR}/target/${LINE}
-    java -jar /app/ea-2-rdf.jar jsonld -c ${MAPPINGFILE} -n $(cat .names.txt) &> $(cat .names.txt).report
+    java -jar /app/ea-2-rdf.jar jsonld -c ${MAPPINGFILE} -n $(cat .names.txt) &> ${TTDIR}/$(cat .names.txt).report
     if [ ! -f "$(cat .names.txt).jsonld" ]
     then
 	echo "extract_json: $(cat .names.txt).jsonld was not created"
@@ -97,7 +97,7 @@ extract_json() {
     ## overwrite the content with the aggregated version
     cp ${TTDIR}/all-$(cat .names.txt).jsonld  $(cat .names.txt).jsonld 
     cp $(cat .names.txt).report ${RDIR}
-    ( echo $PWD ; cat $(cat .names.txt).report ) >> ${RDIR}/ALL.report
+    ( echo $PWD ; cat ${TTDIR}/$(cat .names.txt).report ) >> ${RDIR}/ALL.report
 }
 
 # do the conversions
