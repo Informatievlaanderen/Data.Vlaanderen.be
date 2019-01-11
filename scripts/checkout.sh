@@ -87,7 +87,7 @@ then
     done
 
 
-    jq '[.[] | if has("seealso") then . else empty  end ] ' publication.config > $ROOTDIR/links.txt
+    jq '[.[] | if has("seealso") then . else empty  end ] ' ${PUBCONFIG} > $ROOTDIR/links.txt
 
     if [ -f "$ROOTDIR/failed.txt" ]
     then
