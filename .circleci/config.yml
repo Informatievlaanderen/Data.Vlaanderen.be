@@ -178,37 +178,6 @@ jobs:
           root: /tmp/workspace
           paths:
             - target/
-  render-voc-rdf-orig:
-    docker:
-      - image: circleci/ruby
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          name: Install dependencies
-          command: |
-            gem install linkeddata && mkdir -p /tmp/workspace/voc
-            jq -r '.[] | select(has("prefix")) | @sh "mkdir -p /tmp/workspace/voc/\(.prefix)"' config/eap-mapping.json | bash -e
-      - run:
-          name: Generate turtle
-          command: |
-            for model in $(jq -r '.[] | select(.type | contains("voc")) | "\(if .prefix then .prefix + "/" else "" end)\(.name)"' config/eap-mapping.json); do
-              rdf serialize --input-format jsonld --processingMode json-ld-1.1 /tmp/workspace/.json --output-format turtle -o /tmp/workspace/voc/.ttl
-              
-            done
-      - run:
-          name: Generate ntriples
-          command: |
-            for model in $(jq -r '.[] | select(.type | contains("voc")) | "\(if .prefix then .prefix + "/" else "" end)\(.name)"' config/eap-mapping.json); do
-              rdf serialize --input-format jsonld --processingMode json-ld-1.1 /tmp/workspace/.json --output-format ntriples -o /tmp/workspace/voc/.nt
-            done
-      - run:
-          name: Generate rdfxml
-          command: |
-            for model in $(jq -r '.[] | select(.type | contains("voc")) | "\(if .prefix then .prefix + "/" else "" end)\(.name)"' config/eap-mapping.json); do
-              rdf serialize --input-format jsonld --processingMode json-ld-1.1 /tmp/workspace/.json --output-format rdfxml -o /tmp/workspace/voc/.rdf
-            done
   render-voc-rdf:
     docker:
       - image: circleci/ruby
