@@ -37,7 +37,7 @@ extract_tsv() {
 #	exit -1;
 #    fi
     cp $(cat .names.txt).tsv ${TDIR}
-    cp /tmp/workspace/tsv/$(cat .names.txt).tsv ${TDIR}    
+#    cp /tmp/workspace/tsv/$(cat .names.txt).tsv ${TDIR}    
 }
 
 #############################################################################################
