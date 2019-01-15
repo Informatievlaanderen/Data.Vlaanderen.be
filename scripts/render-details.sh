@@ -64,7 +64,7 @@ render_context() { # SLINE TLINE JSON
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
-    if [ $TYPE == "ap" || $TYPE == "oj" ]; then
+    if [ ${TYPE} == "ap"  ] || [ ${TYPE} == "oj" ]; then
       echo "RENDER-DETAILS(context): node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/context/${OUTFILE}"
       pushd /app
         mkdir -p ${TLINE}/context
@@ -91,7 +91,7 @@ render_shacl() {
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
-    if [ $TYPE == "ap" || $TYPE == "oj" ]; then
+    if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
       echo "RENDER-DETAILS(shacl): node /app/shacl-generator.js -i ${JSONI} -o ${OUTFILE}"
       pushd /app
         mkdir -p ${TLINE}/shacl
