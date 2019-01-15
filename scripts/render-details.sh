@@ -19,15 +19,21 @@ render_html() { # SLINE TLINE JSON
     # determine the location of the template to be used.
 
     echo "RENDER-DETAILS(html): ${TEMPLATE} ${PWD}"	    
+    # TODO: this is wrong we should merge first the generic templaes of /app/views to the local template dir
+    # the template dir can now also be configured
     FTEMPLATE=/app/views/${TEMPLATE}
     if [ ! -f "${FTEMPLATE}" ] ; then
 	FTEMPLATE=${SLINE}/template/${TEMPLATE}
     fi
+
+    COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
+    TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
+
     
-    echo "RENDER-DETAILS(html): node /app/cls.js ${JSONI} ${FTEMPLATE} ${TLINE}/html/${OUTFILE}"
+    echo "RENDER-DETAILS(html): node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${FTEMPLATE} -o ${TLINE}/index.html"
     pushd /app
       mkdir -p ${TLINE}/html
-      if ! node /app/cls.js ${JSONI} ${FTEMPLATE} ${TLINE}/index.html
+      if ! node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${FTEMPLATE} -o ${TLINE}/index.html
       then
 	  exit -1
       fi
@@ -58,7 +64,7 @@ render_context() { # SLINE TLINE JSON
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
-    if [ $TYPE == "ap" ]; then
+    if [ $TYPE == "ap" || $TYPE == "oj" ]; then
       echo "RENDER-DETAILS(context): node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/context/${OUTFILE}"
       pushd /app
         mkdir -p ${TLINE}/context
@@ -85,7 +91,7 @@ render_shacl() {
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
-    if [ $TYPE == "ap" ]; then
+    if [ $TYPE == "ap" || $TYPE == "oj" ]; then
       echo "RENDER-DETAILS(shacl): node /app/shacl-generator.js -i ${JSONI} -o ${OUTFILE}"
       pushd /app
         mkdir -p ${TLINE}/shacl
