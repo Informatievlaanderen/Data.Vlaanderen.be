@@ -6,7 +6,7 @@ CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 export NODE_PATH=/app/node_modules
 
 render_html() { # SLINE TLINE JSON
-    echo "render_htm: $1 $2 $3"     
+    echo "render_html: $1 $2 $3 $4"     
     local SLINE=$1
     local TLINE=$2
     local JSONI=$3
@@ -19,21 +19,18 @@ render_html() { # SLINE TLINE JSON
     # determine the location of the template to be used.
 
     echo "RENDER-DETAILS(html): ${TEMPLATE} ${PWD}"	    
-    # TODO: this is wrong we should merge first the generic templaes of /app/views to the local template dir
-    # the template dir can now also be configured
-    FTEMPLATE=/app/views/${TEMPLATE}
-    if [ ! -f "${FTEMPLATE}" ] ; then
-	FTEMPLATE=${SLINE}/template/${TEMPLATE}
-    fi
+    # local files have precendence
+    cp -n /app/views/* ${LINE}/templates 
+    
 
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
     
-    echo "RENDER-DETAILS(html): node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${FTEMPLATE} -o ${TLINE}/index.html"
+    echo "RENDER-DETAILS(html): node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${FTEMPLATE} -d ${LINE}/templates -o ${TLINE}/index.html"
     pushd /app
       mkdir -p ${TLINE}/html
-      if ! node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${FTEMPLATE} -o ${TLINE}/index.html
+      if ! node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${FTEMPLATE} -d ${LINE}/templates -o ${TLINE}/index.html
       then
 	  exit -1
       fi
