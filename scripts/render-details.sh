@@ -19,7 +19,8 @@ render_html() { # SLINE TLINE JSON
     # determine the location of the template to be used.
 
     echo "RENDER-DETAILS(html): ${TEMPLATE} ${PWD}"	    
-    # local files have precendence
+    # precendence order: local files > Data.vlaanderen.be > SpecGenerator
+    # TODO: include a first copy from Data.vlaanderen.be 
     cp -n /app/views/* ${LINE}/templates 
     
 
