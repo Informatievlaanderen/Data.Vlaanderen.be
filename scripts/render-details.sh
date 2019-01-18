@@ -21,17 +21,17 @@ render_html() { # SLINE TLINE JSON
     echo "RENDER-DETAILS(html): ${TEMPLATE} ${PWD}"	    
     # precendence order: local files > Data.vlaanderen.be > SpecGenerator
     # TODO: include a first copy from Data.vlaanderen.be 
-    cp -n /app/views/* ${LINE}/templates 
+    cp -n /app/views/* ${SLINE}/templates 
     
 
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
     
-    echo "RENDER-DETAILS(html): node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${FTEMPLATE} -d ${LINE}/templates -o ${TLINE}/index.html"
+    echo "RENDER-DETAILS(html): node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${TEMPLATE} -d ${SLINE}/templates -o ${TLINE}/index.html"
     pushd /app
       mkdir -p ${TLINE}/html
-      if ! node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${FTEMPLATE} -d ${LINE}/templates -o ${TLINE}/index.html
+      if ! node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${TEMPLATE} -d ${SLINE}/templates -o ${TLINE}/index.html
       then
 	  exit -1
       fi
