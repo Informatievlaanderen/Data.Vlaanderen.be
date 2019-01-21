@@ -91,10 +91,11 @@ render_shacl() {
 
     if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
       echo "RENDER-DETAILS(shacl): node /app/shacl-generator.js -i ${JSONI} -o ${OUTFILE}"
+      DOMAIN="https://data.vlaanderen.be/shacl/${BASENAME}#"
       pushd /app
         mkdir -p ${TLINE}/shacl
 	mkdir -p ${RLINE}/shacl      
-        if ! node /app/shacl-generator.js -i ${JSONI} -o ${OUTFILE} 2>&1 | tee ${OUTREPORT}
+        if ! node /app/shacl-generator.js -i ${JSONI} -d ${DOMAIN} -o ${OUTFILE} 2>&1 | tee ${OUTREPORT}
 	then
 	    echo "RENDER-DETAILS: See ${OUTREPORT} for the details"
 	    exit -1
