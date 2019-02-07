@@ -74,3 +74,5 @@ De attributen hebben de volgende betekenis:
 * *template*: Is de bestandsnaam van de template die gebruikt wordt om de HTML te genereren. Dit bestand moet aanwezig zijn in `/templates`
 * *title*: Dit is de titel die getoond wordt in de HTML van een applicatieprofiel. Dit attribuut is niet van toepassing voor vocabularia en wordt genegeerd indien er toch een waarde is. Bepaalt, na conversie naar kleine letters en vervanging van spaties door '-', het pad waar `overview.jpg` gezocht wordt.
 * *prefix*: Een optionele prefix voor de url van een vocabularium, afgestemd met de baseURI van het package, gedefinieerd in de eap file. *Zou* ook kunnen gebruikt worden voor een AP, maar dan zou de resulterende jsonld context file niet beschikbaar zijn onder /context.
+
+
