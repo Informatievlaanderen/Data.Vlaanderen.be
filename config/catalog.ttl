@@ -1,0 +1,58 @@
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcat:	<http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix mu:	<http://mu.semte.ch/vocabularies/core/> .
+
+# De catalogi
+<https://data.vlaanderen.be/id/catalogus/data-vlaanderen-be> rdf:type dcat:Catalog;
+  dcterms:title "Datasetcatalogus van de datasets gepupliceerd op Data.vlaanderen.be";
+  dcterms:description "De catalogus bevat metadata van de datasets die gepubliceerd wordt op data.vlaanderen.be"@nl;
+  dcterms:license <https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0>;
+  dcterms:issued "2017-01-01";
+  dcterms:modified "2019-02-01";
+  dcterms:publisher <https://data.vlaanderen.be/id/organisatie/OVO002949>;
+  dcat:dataset <https://data.vlaanderen.be/id/dataset/adressenregister> ;
+  dcat:dataset <https://data.vlaanderen.be/id/dataset/organisatieregister>;
+  dcat:dataset <https://data.vlaanderen.be/id/dataset/licentie> .
+
+# De datasets
+<https://data.vlaanderen.be/id/dataset/adressenregister> rdf:type dcat:Dataset;
+  dcterms:title "Het Vlaame Adressenregister";
+  dcterms:description "Het Vlaamse register van adressen"@nl;
+  dcterms:license <https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0>;
+  dcterms:publisher <https://data.vlaanderen.be/id/organisatie/OVO002949>;
+  dcat:distribution <https://data.vlaanderen.be/wellknown/genid/adressenregisterLOD> .
+
+<https://data.vlaanderen.be/id/dataset/organisatieregister> rdf:type dcat:Dataset;
+  dcterms:title "Vlaamse Organisatieregister";
+  dcterms:description "Deze dataset bevat organisaties die een persistente identificator hebben en zijn opgenomen in het organisatieregister"@nl;
+  dcterms:license <https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0>;
+  dcterms:publisher <https://data.vlaanderen.be/id/organisatie/OVO002949>;
+  dcat:distribution <https://data.vlaanderen.be/wellknown/genid/organisatieregisterLOD> .
+
+<https://data.vlaanderen.be/id/dataset/licentie> rdf:type dcat:Dataset;
+  dcterms:title "Dataset Licenties";
+  dcterms:description "De dataset met de beschrijving van modellicenties aanbevolen door de Vlaamse overheid voor het publiceren van data"@nl;
+  dcat:distribution <https://data.vlaanderen.be/wellknown/genid/licentiesLOD> ;
+  dcterms:publisher <https://data.vlaanderen.be/id/organisatie/OVO002949>;
+  dcterms:license <https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0> .
+
+# De distributies
+<https://data.vlaanderen.be/wellknown/genid/adressenregisterLOD> rdf:type dcat:Distribution;
+  dcterms:title "CRAB LOD";
+  dcterms:description "De LOD publicatie van het Vlaamse adressenregister"@nl;
+  dcterms:license <https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0>;
+  void:sparqlEndpoint <https://data.vlaanderen.be/sparql>.
+
+<https://data.vlaanderen.be/wellknown/genid/organisatieregisterLOD> rdf:type dcat:Distribution;
+  dcterms:title "Wegwijs LOD";
+  dcterms:description "De LOD publicatie van het Vlaamse organisatieregister"@nl;
+  dcterms:license <https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0>;
+  void:sparqlEndpoint <https://data.vlaanderen.be/sparql>.
+
+<https://data.vlaanderen.be/wellknown/genid/licentiesLOD> rdf:type dcat:Distribution;
+  dcterms:title "Licentie LOD";
+  dcterms:description "De LOD publicatie van de Vlaamse Overheid data licenties"@nl;
+  dcterms:license <https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0>;
+  void:sparqlEndpoint <https://data.vlaanderen.be/sparql>.
