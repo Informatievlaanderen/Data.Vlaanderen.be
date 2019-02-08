@@ -63,10 +63,6 @@
                       :clj-pipelines/graphname             "http://data.vlaanderen.be/id/dataset/licentie"
                       :clj-pipelines/dumpname              "licentie.ttl.gz"
                       :clj-pipelines.file-import/processor clj-pipelines.file-import/create-license-uuid}
- :cl-standaardstatus {:clj-pipelines/type                 :clj-pipelines/file-import
-                      :clj-pipelines.file-import/filename "https://github.com/Informatievlaanderen/codelijsten/raw/master/standaardstatus/standaardstatus.ttl"
-                      :clj-pipelines/graphname            "https://data.vlaanderen.be/id/dataset/codelists"
-                      :clj-pipelines/dumpname             "standaardstatus.ttl.gz"}
  :catalogs           {:clj-pipelines/type                  :clj-pipelines/file-import
                       :clj-pipelines.file-import/filename  "https://github.com/Informatievlaanderen/Data.Vlaanderen.be/raw/test/config/catalog.ttl"
                       :clj-pipelines/graphname             "http://data.vlaanderen.be/id/dataset/catalogus"
@@ -76,20 +72,21 @@
                       :clj-pipelines.addmuuuid/from        "http://data.vlaanderen.be/id/dataset/licentie"
                       :clj-pipelines.addmuuuid/batch       "200000"
                       :clj-pipelines/graphname             "http://data.vlaanderen.be/id/dataset/licentie/muuuid"
-                      :clj-pipelines/dumpname              "muuid.ttl.gz"
-                      }
+                      :clj-pipelines/dumpname              "muuid.ttl.gz"}
  :muuuid2             {:clj-pipelines/type                  :clj-pipelines/addmuuuid
-                      :clj-pipelines.addmuuuid/from        "http://data.vlaanderen.be/id/dataset/codelists"
+                      :clj-pipelines.addmuuuid/from        "https://data.vlaanderen.be/id/dataset/codelists"
                       :clj-pipelines.addmuuuid/batch       "200000"
                       :clj-pipelines/graphname             "http://data.vlaanderen.be/id/dataset/codelists/muuuid"
-                      :clj-pipelines/dumpname              "muuid.ttl.gz"
-                      }
+                      :clj-pipelines/dumpname              "muuid.ttl.gz"}
  :muuuid3             {:clj-pipelines/type                  :clj-pipelines/addmuuuid
                       :clj-pipelines.addmuuuid/from        "http://data.vlaanderen.be/id/dataset/CRAB"
                       :clj-pipelines.addmuuuid/batch       "200000"
                       :clj-pipelines/graphname             "http://data.vlaanderen.be/id/dataset/CRAB/muuuid"
-                      :clj-pipelines/dumpname              "muuid.ttl.gz"
-                      }
+                      :clj-pipelines/dumpname              "muuid.ttl.gz"}
+ :addresses          {:clj-pipelines/type            :clj-pipelines/addresses
+                      :clj-pipelines/graphname       "http://data.vlaanderen.be/id/dataset/CRAB"
+                      :clj-pipelines/dumpname        "adres.ttl.gz"
+:clj-pipelines.addresses/files ["https://swarmstoraccount.blob.core.windows.net/oslo-ttl-inputs/crab_data.ttl.gz" "https://swarmstoraccount.blob.core.windows.net/oslo-ttl-inputs/geo_data.ttl.gz" "https://swarmstoraccount.blob.core.windows.net/oslo-ttl-inputs/geo_export.3.ttl.gz"]}
  :organisations      {:clj-pipelines/type                   :clj-pipelines/organisations
                       :clj-pipelines/graphname              "http://data.vlaanderen.be/id/dataset/wegwijs"
                       :clj-pipelines/dumpname               "organisatie.ttl.gz"
