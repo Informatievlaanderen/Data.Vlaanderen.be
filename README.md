@@ -64,7 +64,7 @@ Voor applicatieprofielen:
 }
 ```
 
-
+ 
 De attributen hebben de volgende betekenis:
 * *name*: Is de naam van het vocabularium / applicatieprofiel zoals hij in de uiteindelijke url komt; wordt ook 'slugname' genoemd.
 * *type*: Geeft aan of het item een vocabularium (`voc`) of applicatieprofiel (`ap`) is.
