@@ -32,7 +32,7 @@ render_html() { # SLINE TLINE JSON
     echo "RENDER-DETAILS(html): node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${TEMPLATE} -d ${SLINE}/templates -o ${TLINE}/index.html"
     pushd /app
       mkdir -p ${TLINE}/html
-      if ! node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${TEMPLATE} -d ${SLINE}/templates -r ${DROOT} -o ${TLINE}/index.html
+      if ! node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${TEMPLATE} -d ${SLINE}/templates -r /${DROOT} -o ${TLINE}/index.html
       then
 	  exit -1
       fi
