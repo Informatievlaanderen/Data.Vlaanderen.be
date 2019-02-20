@@ -11,6 +11,7 @@ render_html() { # SLINE TLINE JSON
     local TLINE=$2
     local JSONI=$3
     local RLINE=$4
+    local DROOT=$5
     
     BASENAME=$(basename ${JSONI} .jsonld)
     OUTFILE=${BASENAME}.html
@@ -31,7 +32,7 @@ render_html() { # SLINE TLINE JSON
     echo "RENDER-DETAILS(html): node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${TEMPLATE} -d ${SLINE}/templates -o ${TLINE}/index.html"
     pushd /app
       mkdir -p ${TLINE}/html
-      if ! node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${TEMPLATE} -d ${SLINE}/templates -o ${TLINE}/index.html
+      if ! node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${TEMPLATE} -d ${SLINE}/templates -r ${DROOT} -o ${TLINE}/index.html
       then
 	  exit -1
       fi
@@ -119,7 +120,7 @@ do
 	do
 	    echo "RENDER-DETAILS: convert $i to ${DETAILS} ($PWD)"
 	    case ${DETAILS} in
-		html) render_html $SLINE $TLINE $i $RLINE
+		html) render_html $SLINE $TLINE $i $RLINE ${line}
 		      ;;
                shacl) render_shacl $SLINE $TLINE $i $RLINE
 		      ;;
