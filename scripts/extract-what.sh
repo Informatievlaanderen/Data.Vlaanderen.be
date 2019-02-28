@@ -36,8 +36,8 @@ extract_tsv() {
 #	echo "extract_what(tsv): $(cat .names.txt).tsv was not created"
 #	exit -1;
 #    fi
-    cp $(cat .names.txt).tsv ${TDIR}
-#    cp /tmp/workspace/tsv/$(cat .names.txt).tsv ${TDIR}    
+#    cp $(cat .names.txt).tsv ${TDIR}
+    mv /tmp/workspace/tsv/$(cat .names.txt).tsv ${TDIR}    
 }
 
 #############################################################################################
