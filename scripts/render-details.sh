@@ -23,7 +23,7 @@ render_html() { # SLINE TLINE JSON
     # precendence order: local files > Data.vlaanderen.be > SpecGenerator
     # TODO: include a first copy from Data.vlaanderen.be 
     cp -n /app/views/* ${SLINE}/templates 
-    
+    mkdir -p ${RLINE}/html 
 
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
