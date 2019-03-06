@@ -36,6 +36,9 @@ render_html() { # SLINE TLINE JSON
       then
 	  exit -1
       fi
+      # make the report better readable
+      jq . ${RLINE}/html-nj.json > ${RLINE}/html-nj.json2
+      mv ${RLINE}/html-nj.json2 ${RLINE}/html-nj.json
     popd
 }
 
