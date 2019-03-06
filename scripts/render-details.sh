@@ -6,7 +6,7 @@ CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 export NODE_PATH=/app/node_modules
 
 render_html() { # SLINE TLINE JSON
-    echo "render_html: $1 $2 $3 $4"     
+    echo "render_html: $1 $2 $3 $4 $5"     
     local SLINE=$1
     local TLINE=$2
     local JSONI=$3
@@ -23,16 +23,16 @@ render_html() { # SLINE TLINE JSON
     # precendence order: local files > Data.vlaanderen.be > SpecGenerator
     # TODO: include a first copy from Data.vlaanderen.be 
     cp -n /app/views/* ${SLINE}/templates 
-    mkdir -p ${RLINE}/html 
+    mkdir -p ${RLINE}
 
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
     
-    echo "RENDER-DETAILS(html): node /app/html-generator.js -s ${TYPE} -i ${JSONI} -x ${RLINE}/html/html-nj.json -r ${DROOT} -t ${TEMPLATE} -d ${SLINE}/templates -o ${TLINE}/index.html"
+    echo "RENDER-DETAILS(html): node /app/html-generator.js -s ${TYPE} -i ${JSONI} -x ${RLINE}/html-nj.json -r ${DROOT} -t ${TEMPLATE} -d ${SLINE}/templates -o ${TLINE}/index.html"
     pushd /app
       mkdir -p ${TLINE}/html
-      if ! node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${TEMPLATE} -x ${RLINE}/html/html-nj.json -d ${SLINE}/templates -r /${DROOT} -o ${TLINE}/index.html
+      if ! node /app/html-generator.js -s ${TYPE} -i ${JSONI} -t ${TEMPLATE} -x ${RLINE}/html-nj.json -d ${SLINE}/templates -r /${DROOT} -o ${TLINE}/index.html
       then
 	  exit -1
       fi
@@ -120,7 +120,9 @@ do
 	do
 	    echo "RENDER-DETAILS: convert $i to ${DETAILS} ($PWD)"
 	    case ${DETAILS} in
-		html) render_html $SLINE $TLINE $i $RLINE ${line}
+		html) RLINE=${TARGETDIR}/reporthtml/${line}
+		      mkdir -p ${RLINE}
+                      render_html $SLINE $TLINE $i $RLINE ${line}
 		      ;;
                shacl) render_shacl $SLINE $TLINE $i $RLINE
 		      ;;
