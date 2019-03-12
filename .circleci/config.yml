@@ -146,6 +146,10 @@ jobs:
           name: Render jsonld version of AP tsv file
           command: |
             jq -r '.[] | select(.type | contains("ap")) | @sh "python /app/specgen/generate_jsonld.py --input /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv --output /tmp/workspace/ap/\(if .prefix then .prefix + "/" else "" end)\(.name).jsonld"' config/eap-mapping.json | bash -e
+      - run:
+          name: Render jsonld version of AP tsv file
+          command: |
+            jq -r '.[] | select(.type | contains("oj")) | @sh "python /app/specgen/generate_jsonld.py --input /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv --output /tmp/workspace/ap/\(if .prefix then .prefix + "/" else "" end)\(.name).jsonld"' config/eap-mapping.json | bash -e
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
