@@ -23,7 +23,7 @@ make_jsonld() {
     jq -S '.externals| map({"name" : .name,  "@id" : ."@id", "@type" : "rdfs:Class" } ) |sort_by(."@id")' /tmp/${FILE}3.jsonld > /tmp/${FILE}/externalclasses
     jq -S '.properties| map({"name" : .name, "description" : .description , "usage" : .usage, "@id" : ."@id", "@type" : ."@type", "domain" : .domain, "range" : .range, "generalization": .generalization? } )| sort_by(."@id")' /tmp/${FILE}3.jsonld > /tmp/${FILE}/properties
     jq -S '.externalproperties| map({"name" : .name,  "@id" : ."@id", "@type" : "rdf:Property" } ) | sort_by(."@id")' /tmp/${FILE}3.jsonld > /tmp/${FILE}/externalproperties
-    jq -S '{"@id" : ."@id", "@type" : ."@type", "label": .label, "title": .title?, "namespace": .namespace?, "authors" : .authors, "editors" : .editors, "contributors" : .contributors, "publication-state" : ."publication-state"?, "publication-date" : ."publication-date"?, "navigation" : .navigation?, "licence": .licence?}' /tmp/${FILE}3.jsonld > /tmp/${FILE}/ontology
+    jq -S '{"@id" : ."@id", "@type" : ."@type", "label": .label, "title": .title?, "namespace": .namespace?, "authors" : .authors, "editors" : .editors, "contributors" : .contributors, "publication-state" : ."publication-state"?, "publication-date" : ."publication-date"?, "navigation" : .navigation?, "licence": .licence?, "baseURI": .baseURI?, "baseURIabbrev": .baseURIabbrev?}' /tmp/${FILE}3.jsonld > /tmp/${FILE}/ontology
 
     jq -s '.[0] + .[1] + {"classes": .[2], "properties": .[4], "externals": .[3], "externalproperties": .[5]} + .[6]' /tmp/${FILE}/ontology ${CONFIGDIR}/ontology.defaults.json /tmp/${FILE}/classes /tmp/${FILE}/externalclasses /tmp/${FILE}/properties /tmp/${FILE}/externalproperties ${CONFIGDIR}/context >  ${TARGET}
 }
