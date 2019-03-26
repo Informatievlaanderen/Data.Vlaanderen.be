@@ -121,7 +121,8 @@ do
        # determine the EAP config files to be used
        # if present use the repository ones, otherwise the definied by Data.vlaanderen.be
        jq -r '.[0] | if has("config") then empty else  @sh "cp ~/project/config/config-\(.type).json config" end ' < $MAPPINGFILE | bash 
-       jq 'def maybe(k): if has(k) then { (k) : .[k] } else { (k) : "config/config-\(.type).json" } end; .[0] |= . + maybe("config")' $MAPPINGFILE  
+       jq 'def maybe(k): if has(k) then { (k) : .[k] } else { (k) : "config/config-\(.type).json" } end; .[0] |= . + maybe("config")' $MAPPINGFILE > /tmp/mapfile
+       cp /tmp/mapfile $MAPPINGFILE
        case $extractwhat in
      	         raw) extract_raw $MAPPINGFILE $line
                       ;;
