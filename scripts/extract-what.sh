@@ -117,6 +117,11 @@ do
       pushd ${SLINE}
        MAPPINGFILE=$(get_mapping_file)   
        cat $MAPPINGFILE
+
+       # determine the EAP config files to be used
+       # if present use the repository ones, otherwise the definied by Data.vlaanderen.be
+       jq -r '.[0] | if has("config") then empty else  @sh "cp ~/project/config/config-\(.type).json config" end ' < $1 | bash 
+       jq 'def maybe(k): if has(k) then { (k) : .[k] } else { (k) : "config/config-\(.type).json" } end; .[0] |= . + maybe("config")' $MAPPINGFILE  
        case $extractwhat in
      	         raw) extract_raw $MAPPINGFILE $line
                       ;;

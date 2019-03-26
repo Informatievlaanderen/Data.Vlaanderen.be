@@ -9,6 +9,7 @@
 
 CONCEPTSCHEMECSV=$1
 
+rm -f /tmp/ruw
 
 awk -F ";" \
      -v selected="$2" \
