@@ -49,7 +49,7 @@ prettyprint_jsonld() {
   
     if [ -f ${FILE} ] ;  then 
     	touch2 /tmp/pp/${FILE}
-    	jq . ${FILE} > /tmp/pp/${FILE}
+    	jq --sort-keys . ${FILE} > /tmp/pp/${FILE}
     	cp /tmp/pp/${FILE} ${FILE}
     fi
 }
