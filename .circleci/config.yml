@@ -268,8 +268,10 @@ jobs:
             git add .
             git status
             git commit -m "Applying changes from commit ${CIRCLE_SHA1}" --allow-empty
-            git tag "${CIRCLE_SHA1}"
+            export TAG=`echo "${CIRCLE_SHA1}" | cut -c1-15`
+            git tag "${TAG}"
             git push --force origin "${CIRCLE_BRANCH}"
+	    git push --tags
 workflows:
   version: 2
   generate_documentation:
