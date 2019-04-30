@@ -159,7 +159,7 @@ jobs:
           name: List the -SHACL.ttl and context files found
           command: |
             find /tmp/workspace/target -name \*-SHACL.ttl -type f
-            find /tmp/workspace/target -name \*.ttl -type f	    
+            find /tmp/workspace/target -name \*.ttl -type f    
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -256,7 +256,7 @@ jobs:
       - run:
           name: List the files which have been created
           command: |
-            ls -al /tmp/OSLO-Generated/*	  
+            ls -al /tmp/OSLO-Generated/*
             ls -al /tmp/OSLO-Generated/report/*
             find /tmp/OSLO-Generated/report
       - run:
@@ -271,7 +271,7 @@ jobs:
             export TAG=`echo "${CIRCLE_SHA1}" | cut -c1-15`
             git tag "${TAG}"
             git push --force origin "${CIRCLE_BRANCH}"
-	    git push --tags
+            git push --tags
 workflows:
   version: 2
   generate_documentation:
