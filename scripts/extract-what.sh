@@ -10,7 +10,8 @@ CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 # extraction command functions
 
 get_mapping_file() {
-    local MAPPINGFILE="config/eap-mapping.json"
+    local MAPPINGFILE=`jq 'if (.name | length) > 0 then "config/eap_mapping.json"  else .filename end' .publication-point.json`
+    #local MAPPINGFILE="config/eap-mapping.json"
     if [ -f ".names.txt" ]
     then
 	STR=".[] | select(.name == \"$(cat .names.txt)\") | [.]"
