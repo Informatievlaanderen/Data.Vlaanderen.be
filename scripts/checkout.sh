@@ -55,22 +55,30 @@ then
 	    echo ${row} | base64 --decode | jq -r ${1}
 	}
 	
-	echo "start processing (repository): $(_jq '.repository') $(_jq '.urlref')"
+	FORM=$(_jq '.type')
+	if [ "$FORM" == "raw" ]
+	then
+	    MAIN=raw
+	else
+	    MAIN=src
+	fi
+	       
+	echo "start processing (repository): $(_jq '.repository') $(_jq '.urlref') $MAIN"
 
 	DIR=$(_jq '.urlref')
 	NAME=$(_jq '.name')
 	
 	RDIR=${DIR#'/'}
-	mkdir -p $ROOTDIR/src/$RDIR
+	mkdir -p $ROOTDIR/$MAIN/$RDIR
 	mkdir -p $ROOTDIR/target/$RDIR
 	mkdir -p $ROOTDIR/report/$RDIR
-	git clone $(_jq '.repository') $ROOTDIR/src/$RDIR
+	git clone $(_jq '.repository') $ROOTDIR/$MAIN/$RDIR
 
-	pushd $ROOTDIR/src/$RDIR
+	pushd $ROOTDIR/$MAIN/$RDIR
            if ! git checkout $(_jq '.branchtag')
  	   then
 	       # branch could not be checked out for some reason
-	       echo "failed: $ROOTDIR/src/$RDIR $(_jq '.branchtag')" >> $ROOTDIR/failed.txt
+	       echo "failed: $ROOTDIR/$MAIN/$RDIR $(_jq '.branchtag')" >> $ROOTDIR/failed.txt
 	   fi
 
 	   # Save the Name points to be processed
@@ -83,7 +91,11 @@ then
 	   echo "hashcode to add: ${comhash}"
 	   echo ${row} | base64 --decode | jq --arg comhash "${comhash}" --arg toolchainhash "${toolchainhash}" '. + {documentcommit : $comhash, toolchaincommit: $toolchainhash}' > .publication-point.json
         popd
-	echo "$RDIR" >> $ROOTDIR/checkouts.txt
+
+	if [ "$MAIN" == "src" ]
+	then
+	    echo "$RDIR" >> $ROOTDIR/checkouts.txt
+	fi
     done
 
 
