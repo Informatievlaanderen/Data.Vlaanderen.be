@@ -220,6 +220,8 @@ jobs:
       - image: circleci/python
     steps:
       - checkout
+      - attach_workspace:
+          at: /tmp/workspace
       - run:
           name: List the files which have been created
           command: ls -al /tmp/workspace/*
