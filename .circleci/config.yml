@@ -220,6 +220,9 @@ jobs:
       - image: circleci/python
     steps:
       - checkout
+      - run:
+          name: List the files which have been created
+          command: ls -al /tmp/workspace/*
       - run: 
           name: copy /raw-input to where it is needed
           command: cp -r /tmp/workspace/raw-input /tmp/workspace/raw
