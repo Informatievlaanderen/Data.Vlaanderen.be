@@ -58,7 +58,7 @@ then
 	FORM=$(_jq '.type')
 	if [ "$FORM" == "raw" ]
 	then
-	    MAIN=raw
+	    MAIN=raw-input
 	else
 	    MAIN=src
 	fi
