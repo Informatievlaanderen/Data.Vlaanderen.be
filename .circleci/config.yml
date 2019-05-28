@@ -18,7 +18,7 @@ jobs:
             - checkouts.txt
             - links.txt
             - src/
-            - raw/
+            - raw-input/
   extract-jsonld-details:
     docker:
       - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-circleci
@@ -215,6 +215,18 @@ jobs:
           root: /tmp/workspace
           paths:
             - target/
+  copy-raw:
+    docker:
+      - image: circleci/python
+    steps:
+      - checkout
+      - run: 
+          name: copy /raw-input to where it is needed
+          command: cp -r /raw-input /raw
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - raw/
   create-artifact:
     docker:
       - image: circleci/node
@@ -308,6 +320,12 @@ workflows:
             - convert-json-to-ttl
             - render-voc-rdf
             - render-html-details
+      - copy-raw:
+          requries:
+            - checkout
       - create-artifact:
           requires:
             - expand-links
+          requires:
+            - copy-raw
+
