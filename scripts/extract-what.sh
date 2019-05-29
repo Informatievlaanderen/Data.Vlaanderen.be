@@ -30,7 +30,7 @@ extract_tsv() {
     
     # Extract tsv data for each diagram    
     #jq -r '.[] | select(.type | contains("ap")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i \(.eap) -c config/config-ap.json -d \(.diagram) -o /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv"' < $MAPPINGFILE | bash -e
-    jq -r '.[] | @sh "java -jar /app/ea-2-rdf.jar tsv -i \(.eap) -c \(.config) -d \(.diagram) -o /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv"' < $MAPPINGFILE | bash -e
+    jq -r '.[] | @sh "java -Xmx2g -jar /app/ea-2-rdf.jar tsv -i \(.eap) -c \(.config) -d \(.diagram) -o /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv"' < $MAPPINGFILE | bash -e
 
 #    if [ ! -f "$(cat .names.txt).tsv" ]
 #    then
@@ -50,7 +50,7 @@ extract_raw() {
     
     # Extract tsv data for each diagram    
     #jq -r '.[] | select(.type | contains("ap")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i \(.eap) -c config/config-ap.json -d \(.diagram) -o /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv"' < $MAPPINGFILE | bash -e
-    jq -r '.[] | @sh "java -jar /app/ea-2-rdf.jar list -i \(.eap) --full --format json > /tmp/workspace/raw/\(.name).raw"' < $MAPPINGFILE | bash -e
+    jq -r '.[] | @sh "java -Xmx2g -jar /app/ea-2-rdf.jar list -i \(.eap) --full --format json > /tmp/workspace/raw/\(.name).raw"' < $MAPPINGFILE | bash -e
 
 #    if [ ! -f "$(cat .names.txt).tsv" ]
 #    then
@@ -65,7 +65,7 @@ extract_ttl() {
     local TDIR=${TARGETDIR}/ttl
     mkdir -p ${TDIR}
     # Extract ttl data for each diagram
-    jq -r '.[] | select(.type | contains("voc")) | @sh "java -jar /app/ea-2-rdf.jar convert -i \(.eap) -c config/config-voc.json -d \(.diagram) -o /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl"' $MAPPINGFILE | bash -e
+    jq -r '.[] | select(.type | contains("voc")) | @sh "java -Xmx2g -jar /app/ea-2-rdf.jar convert -i \(.eap) -c config/config-voc.json -d \(.diagram) -o /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl"' $MAPPINGFILE | bash -e
 }
 
 #############################################################################################
@@ -86,7 +86,7 @@ extract_json() {
     local RDIR=${TARGETDIR}/report
     local TTDIR=${TARGETDIR}/report/${LINE}
     mkdir -p ${TDIR} ${RDIR} ${TTDIR} ${TARGETDIR}/target/${LINE}
-    java -jar /app/ea-2-rdf.jar jsonld -c ${MAPPINGFILE} -n $(cat .names.txt) &> ${TTDIR}/$(cat .names.txt).report
+    java -Xmx2g -jar /app/ea-2-rdf.jar jsonld -c ${MAPPINGFILE} -n $(cat .names.txt) &> ${TTDIR}/$(cat .names.txt).report
     if [ ! -f "$(cat .names.txt).jsonld" ]
     then
 	echo "extract_json: $(cat .names.txt).jsonld was not created"
