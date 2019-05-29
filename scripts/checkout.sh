@@ -67,7 +67,6 @@ then
 
 	DIR=$(_jq '.urlref')
 	NAME=$(_jq '.name')
-	
 	RDIR=${DIR#'/'}
 	mkdir -p $ROOTDIR/$MAIN/$RDIR
 	mkdir -p $ROOTDIR/target/$RDIR

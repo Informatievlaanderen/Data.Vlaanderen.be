@@ -277,12 +277,17 @@ jobs:
             cp -R reporthtml/* /tmp/OSLO-Generated/report
             cp -R json   /tmp/OSLO-Generated/report
             cp -R tsv    /tmp/OSLO-Generated/report
-            cp -R raw    /tmp/OSLO-Generated/report
+      - run:
+          name: Copy raw assets
+          workdir: /tmp/workspace
+          command: |
+            cp -R raw /tmp/OSLO-Generated
       - run:
           name: List the files which have been created
           command: |
             ls -al /tmp/OSLO-Generated/*
             ls -al /tmp/OSLO-Generated/report/*
+            ls -al /tmp/OSLO-Generated/raw/*	    
             find /tmp/OSLO-Generated/report
       - run:
           name: Push results to github
