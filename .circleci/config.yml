@@ -229,6 +229,9 @@ jobs:
           name: List the files which should have been created
           command: ls -al /tmp/workspace/raw-input
       - run: 
+          name: create the raw directory
+          command: mkdir -p /tmp/workspace/raw
+      - run: 
           name: copy /raw-input to where it is needed
           command: cp -vr /tmp/workspace/raw-input/* /tmp/workspace/raw
       - run: 
