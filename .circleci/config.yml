@@ -223,8 +223,8 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run:
-          name: List the files which have been created
-          command: ls -al /tmp/workspace/*
+          name: List the files which should have been created
+          command: ls -al /tmp/workspace/raw-input
       - run: 
           name: copy /raw-input to where it is needed
           command: cp -r /tmp/workspace/raw-input /tmp/workspace/raw
@@ -271,6 +271,7 @@ jobs:
             cp -R reporthtml/* /tmp/OSLO-Generated/report
             cp -R json   /tmp/OSLO-Generated/report
             cp -R tsv    /tmp/OSLO-Generated/report
+            cp -R raw    /tmp/OSLO-Generated/report
       - run:
           name: List the files which have been created
           command: |
