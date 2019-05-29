@@ -95,7 +95,13 @@ then
 	then
 	    echo "$RDIR" >> $ROOTDIR/checkouts.txt
 	fi
-    done
+
+    	if [ "$MAIN" == "raw-input" ]
+	then
+	    echo "force removal of .git directory - $ROOTDIR/$MAIN/$RDIR"
+	    rm -rf $ROOTDIR/$MAIN/$RDIR/.git
+	fi
+done
 
 
     jq '[.[] | if has("seealso") then . else empty  end ] ' ${PUBCONFIG} > $ROOTDIR/links.txt
