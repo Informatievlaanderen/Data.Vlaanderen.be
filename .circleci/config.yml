@@ -12,6 +12,9 @@ jobs:
       - run:
           name: List the files which have been created
           command: ls -al /tmp/workspace/*
+      - run: 
+          name: List the subdirs in raw-input
+          command: ls -l /tmp/workspace/raw-input
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -228,6 +231,9 @@ jobs:
       - run: 
           name: copy /raw-input to where it is needed
           command: cp -r /tmp/workspace/raw-input /tmp/workspace/raw
+      - run: 
+          name: List the subdirs in raw
+          command: ls -l /tmp/workspace/raw
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
