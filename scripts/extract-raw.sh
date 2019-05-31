@@ -24,12 +24,11 @@ get_mapping_file() {
 #############################################################################################
 # main one being worked on
 copyall() {
-    local MAPPINGFILE=$1
-    local LINE=$2
+    local LINE=$1
     local RDIR=${TARGETDIR}/report
     local TTDIR=${TARGETDIR}/report/${LINE}
     mkdir -p ${RDIR} ${TTDIR} ${TARGETDIR}/target/${LINE}
-    cp -vr .* ${TARGETDIR}/target/${LINE}
+    cp -vr ${TARGETDIR}/raw-input/${LINE}/.* ${TARGETDIR}/target/${LINE}
 }
 
 # do the conversions
@@ -47,11 +46,9 @@ do
     if [ -d "${SLINE}" ]
     then
       pushd ${SLINE}
-       MAPPINGFILE=$(get_mapping_file)   
-       cat $MAPPINGFILE
 
        case $extractwhat in
-     	         raw) copyall $MAPPINGFILE $line
+     	         raw) copyall $line
                       ;;
                    *) echo "ERROR: $extractwhat not defined"
         esac
