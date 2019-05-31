@@ -9,16 +9,15 @@ jobs:
       - run: ls -al workspace
       - run: $PWD/scripts/checkout.sh /tmp/workspace $PWD/scripts/publication.config
       - run: cat /tmp/workspace/checkouts.txt
+      - run: cat /tmp/workspace/rawcheckouts.txt
       - run:
           name: List the files which have been created
           command: ls -al /tmp/workspace/*
-      - run: 
-          name: List the subdirs in raw-input
-          command: ls -l /tmp/workspace/raw-input
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
             - checkouts.txt
+            - rawcheckouts.txt
             - links.txt
             - src/
             - raw-input/
@@ -229,18 +228,15 @@ jobs:
           name: List the files which should have been created
           command: ls -al /tmp/workspace/raw-input
       - run: 
-          name: create the raw directory
-          command: mkdir -p /tmp/workspace/raw
-      - run: 
           name: copy /raw-input to where it is needed
           command: $PWD/scripts/extract-raw.sh raw
       - run: 
           name: List the subdirs in raw
-          command: ls -al /tmp/workspace/raw
+          command: ls -al /tmp/workspace/target
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
-            - raw/
+            - target/
   create-artifact:
     docker:
       - image: circleci/node
