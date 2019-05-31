@@ -28,7 +28,7 @@ copyall() {
     local RDIR=${TARGETDIR}/report
     local TTDIR=${TARGETDIR}/report/${LINE}
     mkdir -p ${RDIR} ${TTDIR} ${TARGETDIR}/target/${LINE}
-    cp -vr ${TARGETDIR}/raw-input/${LINE}/.* ${TARGETDIR}/target/${LINE}
+    cp -vr ${TARGETDIR}/raw-input/${LINE}/* ${TARGETDIR}/target/${LINE}
 }
 
 # do the conversions
@@ -41,6 +41,8 @@ fi
 
 cat ${CHECKOUTFILE} | while read line
 do
+    if [[ $line =~ "doc" ]]  ; then
+    # expect a line with doc into it
     SLINE=${TARGETDIR}/src/${line}
     echo "Processing line ($extractwhat): ${SLINE}"
     if [ -d "${SLINE}" ]
@@ -55,6 +57,7 @@ do
       popd
     else
       echo "Error: ${SLINE}" >> log.txt
+    fi
     fi
 done
 
