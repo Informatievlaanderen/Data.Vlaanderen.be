@@ -43,7 +43,7 @@ cat ${CHECKOUTFILE} | while read line
 do
     if [[ $line =~ "doc" ]]  ; then
     # expect a line with doc into it
-    SLINE=${TARGETDIR}/src/${line}
+    SLINE=${TARGETDIR}/raw-input/${line}
     echo "Processing line ($extractwhat): ${SLINE}"
     if [ -d "${SLINE}" ]
     then
