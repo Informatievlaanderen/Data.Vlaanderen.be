@@ -232,7 +232,8 @@ jobs:
           command: $PWD/scripts/extract-raw.sh raw
       - run: 
           name: List the subdirs in raw
-          command: if [ -d /tmp/workspace/target ] ; then ls -al /tmp/workspace/target fi
+          command: |
+            if [ -d /tmp/workspace/target ] ; then ls -al /tmp/workspace/target ; fi
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
