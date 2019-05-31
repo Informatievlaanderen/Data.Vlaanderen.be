@@ -27,8 +27,8 @@ copyall() {
     local LINE=$1
     local RDIR=${TARGETDIR}/report
     local TTDIR=${TARGETDIR}/report/${LINE}
-    mkdir -p ${RDIR} ${TTDIR} ${TARGETDIR}/target/${LINE}
-    cp -vr ${TARGETDIR}/raw-input/${LINE}/* ${TARGETDIR}/target/${LINE}
+    mkdir -p ${RDIR} ${TTDIR} ${TARGETDIR}/raw/${LINE}
+    cp -vr ${TARGETDIR}/raw-input/${LINE}/* ${TARGETDIR}/raw/${LINE}
 }
 
 # do the conversions

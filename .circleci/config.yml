@@ -233,11 +233,11 @@ jobs:
       - run: 
           name: List the subdirs in raw
           command: |
-            if [ -d /tmp/workspace/target ] ; then ls -al /tmp/workspace/target ; fi
+            if [ -d /tmp/workspace/raw] ; then ls -al /tmp/workspace/raw; fi
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
-            - target/
+            - raw/
   create-artifact:
     docker:
       - image: circleci/node
@@ -310,7 +310,6 @@ workflows:
       - extract-jsonld-details:
           requires:
             - checkout
-            - copy-raw
       - normalise-jsonld:
           requires:
             - extract-jsonld-details          
@@ -334,6 +333,7 @@ workflows:
             - normalise-jsonld
       - expand-links:
           requires:
+            - copy-raw
             - render-context-details
             - convert-json-to-ttl
             - render-voc-rdf
