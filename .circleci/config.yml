@@ -233,7 +233,7 @@ jobs:
           command: mkdir -p /tmp/workspace/raw
       - run: 
           name: copy /raw-input to where it is needed
-          command: cp -vr /tmp/workspace/raw-input/* /tmp/workspace/raw
+          command: $PWD/scripts/extract-raw.sh raw
       - run: 
           name: List the subdirs in raw
           command: ls -al /tmp/workspace/raw

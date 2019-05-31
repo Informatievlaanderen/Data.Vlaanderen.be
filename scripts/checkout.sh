@@ -100,6 +100,7 @@ then
 	then
 	    echo "force removal of .git directory - $ROOTDIR/$MAIN/$RDIR"
 	    rm -rf $ROOTDIR/$MAIN/$RDIR/.git
+	    echo "$RDIR" >> $ROOTDIR/rawcheckouts.txt
 	fi
 done
 
