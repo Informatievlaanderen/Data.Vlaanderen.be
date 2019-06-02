@@ -43,6 +43,19 @@ if [ ! -f "${PUBCONFIG}" ] ; then
     exit -1
 fi
 
+# determin the last changed files 
+curl -s -o $ROOTDIR/commit.json https://raw.githubusercontent.com/Informatievlaanderen/OSLO-Generated/9783cb35bed704f/report/commit.json
+jq . $ROOTDIR/commit.json
+if  [ $? -eq 0 ] ; then
+   COMMIT=`jq -r .commit $ROOTDIR/commit.json` 
+   listofchanges=$(git diff --name-only $COMMIT)
+   echo $listofchanges > changes.txt
+else 
+   # no previous commit
+   # assumes full rebuild
+   echo "all" > changes.txt
+fi
+
 
 toolchainhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
 

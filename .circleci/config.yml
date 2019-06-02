@@ -7,6 +7,11 @@ jobs:
       - checkout
       - run: mkdir -p workspace
       - run: ls -al workspace
+      - run: 
+          name: clone the previous build
+          command: |
+            git clone https://github.com/Informatievlaanderen/OSLO-Generated.git /tmp/workspace/OSLO-Generated
+            git checkout -b "${CIRCLE_BRANCH}" --track "origin/${CIRCLE_BRANCH}"
       - run: $PWD/scripts/checkout.sh /tmp/workspace $PWD/config/publication.json
       - run: cat /tmp/workspace/checkouts.txt
       - run: cat /tmp/workspace/rawcheckouts.txt
@@ -288,6 +293,11 @@ jobs:
             ls -al /tmp/OSLO-Generated/*
             ls -al /tmp/OSLO-Generated/report/*
             find /tmp/OSLO-Generated/report
+      - run: 
+          name: insert the commit
+          command: |
+            export TAG=`echo "${CIRCLE_SHA1}" | cut -c1-15`
+            echo "{\"commit\" : \"$TAG\"}" > /tmp/OSLO-Generated/report/commit.json
       - run:
           name: Push results to github
           workdir: /tmp/OSLO-Generated
