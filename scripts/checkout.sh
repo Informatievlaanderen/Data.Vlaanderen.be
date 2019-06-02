@@ -44,7 +44,7 @@ if [ ! -f "${PUBCONFIG}" ] ; then
 fi
 
 # determin the last changed files 
-curl -s -o $ROOTDIR/commit.json https://raw.githubusercontent.com/Informatievlaanderen/OSLO-Generated/9783cb35bed704f/report/commit.json
+curl -s -o $ROOTDIR/commit.json https://raw.githubusercontent.com/Informatievlaanderen/OSLO-Generated/$CIRCLE_BRANCH/report/commit.json
 jq . $ROOTDIR/commit.json
 if  [ $? -eq 0 ] ; then
    COMMIT=`jq -r .commit $ROOTDIR/commit.json` 
