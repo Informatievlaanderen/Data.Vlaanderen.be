@@ -134,7 +134,7 @@ then
             cat $ROOTDIR/rawcheckouts.txt
 	    rm -rf $ROOTDIR/$MAIN/$RDIR/.git
 	fi
-done
+    done
 
 
     jq '[.[] | if has("seealso") then . else empty  end ] ' ${PUBCONFIG} > $ROOTDIR/links.txt
@@ -145,6 +145,8 @@ done
        cat $ROOTDIR/failed.txt
        exit -1
     fi
+    touch $ROOTDIR/checkouts.txt
+    touch $ROOTDIR/rawcheckouts.txt
 else
     echo "problem in processing: ${PUBCONFIG}"
 fi
