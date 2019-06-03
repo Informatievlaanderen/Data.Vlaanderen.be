@@ -85,7 +85,9 @@ jobs:
           command: cd /app/pretty-print ; sudo npm install
       - run:
           name: Normalise the recovered JSON-LD files (in the src directory)
-          command: $PWD/scripts/pretty-print-jsonfiles.sh /tmp/workspace
+          command: |
+            $PWD/scripts/pretty-print-jsonfiles.sh /tmp/workspace
+            mkdir -p /tmp/workspace/report /tmp/workspace/json /tmp/workspace/json
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
