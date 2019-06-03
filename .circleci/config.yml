@@ -183,7 +183,7 @@ jobs:
           name: Copy raw assets
           workdir: /tmp/workspace
           command: |
-            cp -R raw/* /tmp/workspace/target/
+            if [-d raw ] ; then cp -R raw/* /tmp/workspace/target/ ; fi
       - run: 
           name: expand default links
           command: | 
@@ -244,7 +244,7 @@ jobs:
       - run: 
           name: List the subdirs in raw
           command: |
-            if [ -d /tmp/workspace/raw] ; then ls -al /tmp/workspace/raw; fi
+            if [ -d /tmp/workspace/raw] ; then ls -al /tmp/workspace/raw; else mkdir -p /tmp/workspace/raw ; fi
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
