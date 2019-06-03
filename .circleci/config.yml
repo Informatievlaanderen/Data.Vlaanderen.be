@@ -109,7 +109,8 @@ jobs:
           command: $PWD/scripts/copy_skeleton.sh
       - run:
           name: List the html files found
-          command: find /tmp/workspace/target -name \*.html -type f
+          command: |
+            if [ -d /tmp/workspace/target ] ; then find /tmp/workspace/target -name \*.html -type f ; fi
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -127,7 +128,8 @@ jobs:
           command: $PWD/scripts/render-details.sh /tmp/workspace context
       - run:
           name: List the context files found
-          command: find /tmp/workspace/target -name \*.jsonld -type f
+          command: |
+            if [ -d /tmp/workspace/target ] ; then find /tmp/workspace/target -name \*.jsonld -type f ; fi
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -168,8 +170,8 @@ jobs:
       - run:
           name: List the -SHACL.ttl and context files found
           command: |
-            find /tmp/workspace/target -name \*-SHACL.ttl -type f
-            find /tmp/workspace/target -name \*.ttl -type f    
+            if [ -d /tmp/workspace/target ] ; then find /tmp/workspace/target -name \*-SHACL.ttl -type f ; fi
+            if [ -d /tmp/workspace/target ] ; then find /tmp/workspace/target -name \*.ttl -type f ; fi   
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -209,6 +211,7 @@ jobs:
           name: Generate vocabulary in baseformat jsonld
           command: |
             $PWD/scripts/generate-voc.sh /tmp/workspace json $PWD/config
+            mkdir -p /tmp/workspace/target/doc/vocabularium
       - run:
           name: Convert vocabulary to turtle
           command: |
@@ -224,7 +227,7 @@ jobs:
       - run:
           name: list results 
           command: |
-            ls /tmp/workspace/voc
+            if [-d /tmp/workspace/voc ]; then ls /tmp/workspace/voc ; fi
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
