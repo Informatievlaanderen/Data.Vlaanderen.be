@@ -103,7 +103,9 @@ jobs:
           at: /tmp/workspace
       - run:
           name: Render HTML version of merged json file (a)
-          command: $PWD/scripts/render-details.sh /tmp/workspace html
+          command: |
+            $PWD/scripts/render-details.sh /tmp/workspace html
+            mkdir -p /tmp/workspace/target /tmp/workspace/reporthtml
       - run:
           name: copy the site-skeleton for the html
           command: $PWD/scripts/copy_skeleton.sh
@@ -125,7 +127,9 @@ jobs:
           at: /tmp/workspace
       - run:
           name: Render Context Details
-          command: $PWD/scripts/render-details.sh /tmp/workspace context
+          command: |
+            $PWD/scripts/render-details.sh /tmp/workspace context
+            mkdir -p /tmp/workspace/target
       - run:
           name: List the context files found
           command: |
@@ -143,7 +147,9 @@ jobs:
           at: /tmp/workspace
       - run:
           name: Render Shacl details
-          command: $PWD/scripts/render-details.sh /tmp/workspace shacl
+          command: |
+            $PWD/scripts/render-details.sh /tmp/workspace shacl
+            mkdir -p /tmp/workspace/target /tmp/workspace/report
       - run:
           name: List the shacl files found
           command: find /tmp/workspace/target -name \*-SHACL.jsonld -type f
@@ -163,6 +169,7 @@ jobs:
           name: Install dependencies
           command: |
             gem install linkeddata
+            mkdir -p /tmp/workspace/target
       - run:
           name: Convert -SHACL.jsonld file to -SHACL.ttl files
           command: |
@@ -207,6 +214,7 @@ jobs:
           name: Install dependencies
           command: |
             gem install linkeddata && mkdir -p /tmp/workspace/voc
+            mkdir -p /tmp/workspace/target
       - run:
           name: Generate vocabulary in baseformat jsonld
           command: |
