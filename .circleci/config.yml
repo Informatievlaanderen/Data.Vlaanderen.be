@@ -268,7 +268,7 @@ jobs:
           command: |
             git fetch origin
             git checkout -b "${CIRCLE_BRANCH}" --track "origin/${CIRCLE_BRANCH}"
-            if [ "`cat /tmp/workdir/haschangedpublications.json`" == "false" ] ; then git rm -r --force * ; fi
+            if [ "`cat /tmp/workspace/haschangedpublications.json`" == "false" ] ; then git rm -r --force * ; fi
       - run:
           name: Copy static assets
           command: |
