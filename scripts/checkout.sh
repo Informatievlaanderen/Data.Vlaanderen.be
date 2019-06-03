@@ -54,16 +54,21 @@ if  [ $? -eq 0 ] ; then
    echo $listofchanges > changes.txt
    if [ "$listofchanges" == "config/publication.json" ] ; then 
        git show $COMMIT:config/publication.json > prev
-       jq -s '.[0] - .[1]' config/publication.json prev > changed.json
-       cat changed.json
+       jq -s '.[0] - .[1]' config/publication.json prev > $ROOTDIR/changedpublications.json
+       cat $ROOTDIR/changedpublications.json
+       echo "true" > $ROOTDIR/haschangedpublications.json
+      
    else 
+       cp ${PUBCONFIG} $ROOTDIR/changedpublications.json
+       echo "false" > $ROOTDIR/haschangedpublications.json
        echo "process all publication points";  
    fi
    
 else 
    # no previous commit
    # assumes full rebuild
-   echo "error during processing commit point" > changes.txt
+   cp ${PUBCONFIG} $ROOTDIR/changedpublications.json
+   echo "false" > $ROOTDIR/haschangedpublications.json
    echo "process all publication points";  
 fi
 
