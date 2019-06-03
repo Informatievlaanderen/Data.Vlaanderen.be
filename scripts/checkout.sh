@@ -52,10 +52,19 @@ if  [ $? -eq 0 ] ; then
    COMMIT=`jq -r .commit $ROOTDIR/commit.json` 
    listofchanges=$(git diff --name-only $COMMIT)
    echo $listofchanges > changes.txt
+   if [ "$listofchanges" == "config/publication.json" ] ; then 
+       git show $COMMIT:config/publication.json > prev
+       jq -s '.[0] - .[1]' config/publication.json prev > changed.json
+       cat changed.json
+   else 
+       echo "process all publication points";  
+   fi
+   
 else 
    # no previous commit
    # assumes full rebuild
-   echo "all" > changes.txt
+   echo "error during processing commit point" > changes.txt
+   echo "process all publication points";  
 fi
 
 
