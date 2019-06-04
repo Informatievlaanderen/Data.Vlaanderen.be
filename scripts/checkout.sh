@@ -56,10 +56,10 @@ if  [ $? -eq 0 ] ; then
        git show $COMMIT:config/publication.json > prev
        jq -s '.[0] - .[1]' config/publication.json prev > $ROOTDIR/changedpublications.json
        cat $ROOTDIR/changedpublications.json
-#       echo "true" > $ROOTDIR/haschangedpublications.json
+       echo "true" > $ROOTDIR/haschangedpublications.json
        cp ${PUBCONFIG} $ROOTDIR/publications.json.old
-       echo "false" > $ROOTDIR/haschangedpublications.json
-#       cp $ROOTDIR/changedpublications.json ${PUBCONFIG}
+#       echo "false" > $ROOTDIR/haschangedpublications.json
+       cp $ROOTDIR/changedpublications.json ${PUBCONFIG}
       
    else 
        cp ${PUBCONFIG} $ROOTDIR/changedpublications.json
