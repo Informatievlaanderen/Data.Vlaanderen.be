@@ -60,6 +60,10 @@ render_context() { # SLINE TLINE JSON
     local TLINE=$2
     local JSONI=$3
     local RLINE=$4    
+
+    FILENAME=$(jq -r ".name" ${JSONI})
+    echo "filename ${FILENAME}"
+
     BASENAME=$(basename ${JSONI} .jsonld)
     OUTFILE=${BASENAME}.jsonld
 

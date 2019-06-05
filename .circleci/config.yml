@@ -293,6 +293,7 @@ jobs:
           name: Copy generated assets
           workdir: /tmp/workspace
           command: |
+            mkdir -p /tmp/OSLO-Generated/report
             if [ -d target ] ; then cp -R target/* /tmp/OSLO-Generated ; fi
             if [ -d report ] ; then cp -R report/* /tmp/OSLO-Generated/report ; fi
             if [ -d reporthtml ] ; then cp -R reporthtml/* /tmp/OSLO-Generated/report ; fi
