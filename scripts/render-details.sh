@@ -14,7 +14,7 @@ render_html() { # SLINE TLINE JSON
     local DROOT=$5
     
     BASENAME=$(basename ${JSONI} .jsonld)
-    OUTFILE=${BASENAME}.html
+#    OUTFILE=${BASENAME}.html
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.template')
     TEMPLATE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
     # determine the location of the template to be used.
@@ -62,10 +62,10 @@ render_context() { # SLINE TLINE JSON
     local RLINE=$4    
 
     FILENAME=$(jq -r ".name" ${JSONI})
-    echo "filename ${FILENAME}"
+    OUTFILE=${FILENAME}.jsonld
 
     BASENAME=$(basename ${JSONI} .jsonld)
-    OUTFILE=${BASENAME}.jsonld
+#    OUTFILE=${BASENAME}.jsonld
 
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
@@ -90,16 +90,22 @@ render_shacl() {
     local TLINE=$2
     local JSONI=$3
     local RLINE=$4
+
+    FILENAME=$(jq -r ".name" ${JSONI})
+    OUTFILE=${TLINE}/shacl/${FILENAME}-SHACL.jsonld
+    OUTREPORT=${RLINE}/shacl/${FILENAME}-SHACL.report
+
     BASENAME=$(basename ${JSONI} .jsonld)
-    OUTFILE=${TLINE}/shacl/${BASENAME}-SHACL.jsonld
-    OUTREPORT=${RLINE}/shacl/${BASENAME}-SHACL.report
+#    OUTFILE=${TLINE}/shacl/${BASENAME}-SHACL.jsonld
+#    OUTREPORT=${RLINE}/shacl/${BASENAME}-SHACL.report
 
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
     if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
       echo "RENDER-DETAILS(shacl): node /app/shacl-generator.js -i ${JSONI} -o ${OUTFILE}"
-      DOMAIN="https://data.vlaanderen.be/shacl/${BASENAME}"
+#      DOMAIN="https://data.vlaanderen.be/shacl/${BASENAME}"
+      DOMAIN="https://data.vlaanderen.be/shacl/${FILENAME}"
       pushd /app
         mkdir -p ${TLINE}/shacl
 	mkdir -p ${RLINE}/shacl      
