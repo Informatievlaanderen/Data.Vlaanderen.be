@@ -30,16 +30,28 @@ Dit document is bedoeld om uit te groeien tot een standaard in het beschreven do
         <li>externe terminologie (klassen en eigenschappen) gebruikt voor nieuwe/extra termen die niet in de bestaande vocabularia voorkomen.</li>
         </ul>
         </p>
-        <p>Om conform te zijn met dit applicatieprofiel, geldt voor een implementatie dat ze:</p>
+
+  <p>Om conform te zijn met dit applicatieprofiel, geldt voor een implementatie dat ze:</p>
         <p>
         <ul>
+        <li>MOET conform zijn aan de verplichtingen van <a href="https://joinup.ec.europa.eu/release/dcat-ap/12">DCAT-AP</a>.</li>
         <li>MOET Voor elke klasse steeds de eigenschappen bevatten die als minimum kardinaliteit 1 hebben.</li>
         <li>MAG NIET meer dan 1 instantie bevatten van eigenschappen die 1 als maximum kardinaliteit hebben.</li>
         <li>MAG terminologie (klassen en eigenschappen) gebruiken op een manier die consistent is met haar semantiek (definitie, gebruik, domein en bereik).</li>
-        <li>MAG NIET terminologie van andere gecontroleerde vocabularia gebruiken dan diegene die gedefinieerd wordt in dit applicatieprofiel.</li>
-        <li>MAG uitgebreid worden met klassen en eigenschappen van andere datamodellen (vocabularia) die niet overlappen met terminologie uit dit applicatieprofiel.</li>
+        <li>MAG uitgebreid worden met klassen en eigenschappen van andere datamodellen (vocabularia) die niet overlappen met terminologie vermeld in dit document of in DCAT-AP.</li>
+        <li>PAST maximaal de algemene en specifieke gebruiksadviezen toe.
         </ul>
         </p> 
+
+  <div class="region region--no-space-top">
+      <h3 class="h3" >Algemene gebruikadviezen</h3> 
+      <ul>
+       <li>Zorg voor stabiele identificatoren voor datasets, en waar mogelijk ook voor alle andere vermelde entiteiten.</li>
+       <li>Voor temporele informatie wordt verwacht dat de tijdszone wordt meegegeven.<li>
+       <li>Gebruik enkel absolute URLs. Dan is blijft onder alle verwerkingsoperaties van de catalogus de URL identiek en is er geen kwaliteitsverlies voor de gebruiker.</li>
+       <li>Indien gekozen wordt om de geografische beschrijving als een geometrie mee te geven, dan wordt best gekozen voor een beschrijving met expliciete vermelding van het gebruikte Coordinaten Referentie Systeem (CRS). </li>
+      </ul>
+  </div>
 {% endblock %}
 
 {% block jsonld %}
