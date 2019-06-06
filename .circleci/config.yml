@@ -294,9 +294,9 @@ jobs:
           workdir: /tmp/workspace
           command: |
             mkdir -p /tmp/OSLO-Generated/report
-            if [ -d target ] ; then cp -R target/* /tmp/OSLO-Generated ; fi
-            if [ -d report ] ; then cp -R report/* /tmp/OSLO-Generated/report ; fi
-            if [ -d reporthtml ] ; then cp -R reporthtml/* /tmp/OSLO-Generated/report ; fi
+            if [ -d target ] ; then if [ ! "$(ls -A target)" ] ; then echo "directory target is empty" ; else cp -R target/* /tmp/OSLO-Generated ; fi fi
+            if [ -d report ] ; then if [ ! "$(ls -A report)" ] ; then echo "directory report is empty" ; else cp -R report/* /tmp/OSLO-Generated/report ; fi fi
+            if [ -d reporthtml ] ; then if [ ! "$(ls -A reporthtml)" ] ; then echo "directory reporthtml is empty" ; else cp -R reporthtml/* /tmp/OSLO-Generated/report ; fi fi
             if [ -d json ] ; then if [ ! "$(ls -A json)" ] ; then echo "directory json is empty" ; else cp -R json/*   /tmp/OSLO-Generated/report ; fi fi
       - run:
           name: List the files which have been created
