@@ -1,0 +1,752 @@
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriAndereVerhardingen> a owl:Class;
+  rdfs:label "Proef a posteriori andere verhardingen"@nl;
+  rdfs:comment "Verzameling van de a posteriori proeven voor Andere_verhardingen"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefVlakheid>,
+    <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefGemetenDikte>,
+    <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefDraagvermogen> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriAndereVerhardingenWalsbeton> a owl:Class;
+  rdfs:label "Proef a posteriori andere verhardingen walsbeton"@nl;
+  rdfs:comment "Verzameling van de a posteriori proeven voor Andere_verhardingen_walsbeton"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefDruksterkte>,
+    <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefVlakheid>,
+    <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefGemetenDikte> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriBestratingBetonstraatstenen> a owl:Class;
+  rdfs:label "Proef a posteriori bestrating betonstraatstenen"@nl;
+  rdfs:comment "Abstracte voor proef betonstraatstenen."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefLangsvlakheid> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriGeluidswerendeConstructie> a owl:Class;
+  rdfs:label "Proef a posteriori geluidswerende constructie"@nl;
+  rdfs:comment "Verzameling van de a posteriori proeven voor Geluidswerende constructies."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefGeluidswerendeConstructie> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriMarkering> a owl:Class;
+  rdfs:label "Proef a posteriori markering"@nl;
+  rdfs:comment "Verzameling van de a posteriori proeven voor Markeringen"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefMarkering> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPrioriGeluidswerendeConstructie> a owl:Class;
+  rdfs:label "Proef a priori geluidswerende constructie"@nl;
+  rdfs:comment "Verzameling van de a priori proeven voor Geluidswerende constructies."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefGeluidswerendeConstructie> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPrioriOvergangsconstructie> a owl:Class;
+  rdfs:label "Proef a priori overgangsconstructie"@nl;
+  rdfs:comment "Abstracte voor proef Overgangsconstructie."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefSchokindex> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefSleuf> a owl:Class;
+  rdfs:label "Proef sleuf"@nl;
+  rdfs:comment "Hfst7-<b>1.1.2.7</b>A,B,C"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensAndereVerhardingen> a owl:Class;
+  rdfs:label "Proef tijdens andere verhardingen"@nl;
+  rdfs:comment "abstracte _Proef_tijdens_Andere_verhardingen"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensAndereVerhardingenWalsbeton> a owl:Class;
+  rdfs:label "Proef tijdens andere verhardingen walsbeton"@nl;
+  rdfs:comment "abstracte _Proef_tijdens_Andere_verhardingen_walsbeton"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensBestrating> a owl:Class;
+  rdfs:label "Proef tijdens bestrating"@nl;
+  rdfs:comment "abstracte _Proef_tijdens_bestrating"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensBitumineuze> a owl:Class;
+  rdfs:label "Proef tijdens bitumineuze"@nl;
+  rdfs:comment "abstracte _Proef_tijdens_butimineuze"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensBitumineuzeDunneOverlaging> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensMarkering> a owl:Class;
+  rdfs:label "Proef tijdens markering"@nl;
+  rdfs:comment "abstracte _Proef_tijdens_markering"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefMarkering> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensVerkeersbord> a owl:Class;
+  rdfs:label "Proef tijdens verkeersbord"@nl;
+  rdfs:comment "Abstracte voor de proef op het verkeersbord."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdesAndereLagen> a owl:Class;
+  rdfs:label "Proef tijdes andere lagen"@nl;
+  rdfs:comment "Abstracte _Proef_tijdes_andere_lagen"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensBitumineuzeDunneOverlaging> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#geluidstestrapport.geluidsabsorptiereflectie> a owl:DatatypeProperty;
+  rdfs:label "Geluidsabsorptie reflectie"@nl;
+  rdfs:comment "De absorptie- of reflectiewaarde van het geluidsscherm als geheel getal."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#GeluidstestRapport>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range xsd:integer .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#geluidstestrapport.gemetenwaarde> a owl:DatatypeProperty;
+  rdfs:label "Gemeten waarde"@nl;
+  rdfs:comment "De sterkte van het geluid in dB."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#GeluidstestRapport>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range xsd:integer .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#geluidstestrapport.locatieinsitulabo> a owl:ObjectProperty;
+  rdfs:label "Locatie in situlabo"@nl;
+  rdfs:comment "Locatie waar de geluidstest is uitgevoerd (terrein of labo)."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#GeluidstestRapport>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#geluidstestrapport.luchtgeluidsisolatie> a owl:DatatypeProperty;
+  rdfs:label "Luchtgeluidsisolatie"@nl;
+  rdfs:comment "De gemeten waarde van het  luchtgeluidsisiolatie van het geluidsscherm."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#GeluidstestRapport>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range xsd:integer .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#geluidstestrapport.norm> a owl:ObjectProperty;
+  rdfs:label "Norm"@nl;
+  rdfs:comment "De proef volgens aangeduide norm."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#GeluidstestRapport>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#geluidstestrapport.testrapport> a owl:ObjectProperty;
+  rdfs:label "Testrapport"@nl;
+  rdfs:comment "Documentbijlage met de resultaten van de test"@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#GeluidstestRapport>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#geluidstestrapport.type> a owl:ObjectProperty;
+  rdfs:label "Type"@nl;
+  rdfs:comment "Het type van de geluidstest."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#GeluidstestRapport>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaposteriorianderelagen.visuelebeoordeling> a owl:ObjectProperty;
+  rdfs:label "Visuele beoordeling"@nl;
+  rdfs:comment "Een rapport van de visuele beoordeling van de laag."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriAndereLagen>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaposterioribestrating.doorlatendheid> a owl:ObjectProperty;
+  rdfs:label "Doorlatendheid"@nl;
+  rdfs:comment "Proefresultaten van de waterdoorlatendheid."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriBestrating>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaposterioribitumineuze.draineervermogen> a owl:ObjectProperty;
+  rdfs:label "Draineervermogen"@nl;
+  rdfs:comment "Proefresultaten van het drainvermogen."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriBitumineuze>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaposterioribitumineuze.dwarsvlakheid> a owl:ObjectProperty;
+  rdfs:label "Dwarsvlakheid"@nl;
+  rdfs:comment "Proefresultaten van de dwarsvlakheid."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriBitumineuze>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaposterioribitumineuzecementbetonlaag.rolgeluid> a owl:ObjectProperty;
+  rdfs:label "Rolgeluid"@nl;
+  rdfs:comment "Proefresultaten van het rolgeluid van de toplaag."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriBitumineuzeCementbetonLaag>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaposterioribitumineuzecementbetonlaag.textuurdiepte> a owl:ObjectProperty;
+  rdfs:label "Textuurdiepte"@nl;
+  rdfs:comment "Proefresultaten van de textuurdiepte van de toplaag."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriBitumineuzeCementbetonLaag>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaposterioricementbetonverharding.gemetendikte> a owl:ObjectProperty;
+  rdfs:label "Gemeten dikte"@nl;
+  rdfs:comment "Proef om de dikte van de laag te bepalen."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriCementbetonverharding>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaposterioricementbetonverharding.hechtsterkte> a owl:ObjectProperty;
+  rdfs:label "Hechtsterkte"@nl;
+  rdfs:comment "Proef om de hechtsterkte van de laag te bepalen."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriCementbetonverharding>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaposterioricementbetonverharding.wateropslorping> a owl:ObjectProperty;
+  rdfs:label "Wateropslorping"@nl;
+  rdfs:comment "Proef om de wateropslorping van de laag te bepalen."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriCementbetonverharding>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaposterioricementbetonverharding.weerstandafschilfering> a owl:ObjectProperty;
+  rdfs:label "Weerstand afschilfering"@nl;
+  rdfs:comment "Proef om de weerstand/afschilfering van de laag te bepalen."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriCementbetonverharding>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaposteriorionderbouw.mortelkwaliteit> a owl:ObjectProperty;
+  rdfs:label "Mortelkwaliteit"@nl;
+  rdfs:comment "Een rapport van de mortelkwaliteit van de onderbouw laag."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriOnderbouw>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaposterioritkw.druksterkte> a owl:ObjectProperty;
+  rdfs:label "Druksterkte"@nl;
+  rdfs:comment "Proefresultaten van de drukstrerkte van de laag."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriTKW>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaposterioritkw.gaafheid> a owl:ObjectProperty;
+  rdfs:label "Gaafheid"@nl;
+  rdfs:comment "Proef om de gaafheid van de laag te bepalen."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriTKW>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaposterioritkw.vlakheid> a owl:ObjectProperty;
+  rdfs:label "Vlakheid"@nl;
+  rdfs:comment "Proefresultaten van de vlakheid van de laag."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriTKW>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaposterioritkw.wateropslorping> a owl:ObjectProperty;
+  rdfs:label "Wateropslorping"@nl;
+  rdfs:comment "Proef om de wateropslorping van de laag te bepalen."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriTKW>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaposterioriverkeersbord.retroreflectie> a owl:ObjectProperty;
+  rdfs:label "Retroreflectie"@nl;
+  rdfs:comment "Proef vor de retroreflectie van een verkeersbord te bepalen."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriVerkeersbord>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaprioriafschermendeconstructie.bepalinggrondkarakteristieken> a owl:ObjectProperty;
+  rdfs:label "Bepaling grondkarakteristieken"@nl;
+  rdfs:comment "Proef met de resultaten van de grondkarakteristieken."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPrioriAfschermendeConstructie>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaprioriafschermendeconstructie.testrapport> a owl:ObjectProperty;
+  rdfs:label "Testrapport"@nl;
+  rdfs:comment "Proef met de proef/test resultaten van een afschermende constructie."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPrioriAfschermendeConstructie>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefapriorigeleideconstructie.kerendvermogen> a owl:ObjectProperty;
+  rdfs:label "Kerend vermogen"@nl;
+  rdfs:comment "Het kerend vermogen geeft het vermogen van een voertuigkering aan om een doorbraak bij een bepaald type crash te voorkomen."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPrioriGeleideConstructie>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefapriorigeleideconstructie.voertuigoverhelling> a owl:ObjectProperty;
+  rdfs:label "Voertuig overhelling"@nl;
+  rdfs:comment "Naast het horizontaal verplaatsen van de veiligheidsafbakening bij een impact, kan een voertuig bij impact ook over de afbakening hellen.  De maximale overhelling wordt op basis van foto's en video-opnames van de test bepaald."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPrioriGeleideConstructie>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefapriorigetestebeginconstructie.performantieklasse> a owl:ObjectProperty;
+  rdfs:label "Performantieklasse"@nl;
+  rdfs:comment "De aanduiding hoe (performantie) de beginconstructie is getest."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPrioriGetesteBeginconstructie>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefapriorimotorvangplank.schokindexmvp> a owl:ObjectProperty;
+  rdfs:label "Schokindex mvp"@nl;
+  rdfs:comment """ head injury criterium (HIC) van een motorvangplank.
+"""@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPrioriMotorvangplank>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefaprioriobstakelbeveiliger.performantieniveau> a owl:ObjectProperty;
+  rdfs:label "Performantieniveau"@nl;
+  rdfs:comment "Het niveau waarop de obstakelbeveiliger is getest."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPrioriObstakelbeveiliger>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefbathymetrie.bijlage> a owl:ObjectProperty;
+  rdfs:label "Bijlage"@nl;
+  rdfs:comment "Het rapport van de bathymetrie als bijlage."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefBathymetrie>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefboomtoestand.naderonderzoektomograaf> a owl:ObjectProperty;
+  rdfs:label "Nader onderzoek tomograaf"@nl;
+  rdfs:comment "Een geluids- en/of elektrische weerstandstomografie is een niet-destructieve methode om rot en holtes in bomen op te sporen door gebruik van geluidsgolven en/of elektrische stroom."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefBoomtoestand>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefboomtoestand.verderonderzoektrekproef> a owl:ObjectProperty;
+  rdfs:label "Verder onderzoek trekproef"@nl;
+  rdfs:comment """Een trekproef is een niet-destructieve methode om de stabiliteit (gevoeligheid voor windworp) van
+bomen te testen door een kunstmatige belasting op de stam te relateren met het kantelen van de
+stamvoet."""@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefBoomtoestand>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefbuis.toestand> a owl:DatatypeProperty;
+  rdfs:label "Toestand"@nl;
+  rdfs:comment "Toestand van de buizen, toegangs- en verbindingsputten, enz."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefBuis>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range xsd:string .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefbuis.waterdichtheid> a owl:ObjectProperty;
+  rdfs:label "Waterdichtheid"@nl;
+  rdfs:comment """waterdichtheid of luchtdichtheid van een leidingsvak gebeurt door de bepaling van
+het waterverlies of de drukval van het beproefde leidingsvak."""@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefBuis>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefdraagvermogen.draagvermogen> a owl:ObjectProperty;
+  rdfs:label "Draagvermogen"@nl;
+  rdfs:comment "Proef die het draagvermogen van de laag bepaald."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefDraagvermogen>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefdruksterkte.druksterkte> a owl:ObjectProperty;
+  rdfs:label "Druksterkte"@nl;
+  rdfs:comment "Proefresultaten van de drukstrerkte van de laag."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefDruksterkte>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefgeluidswerendeconstructie.geluidstestrapport> a owl:ObjectProperty;
+  rdfs:label "Geluidstest rapport"@nl;
+  rdfs:comment "Het resultaat van de geluidstest."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefGeluidswerendeConstructie>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#GeluidstestRapport> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefgemetendikte.gemetendikte> a owl:ObjectProperty;
+  rdfs:label "Gemeten dikte"@nl;
+  rdfs:comment "De gemeten dikte van de laag in centimeter."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefGemetenDikte>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range <https://wegenenverkeer.data.vlaanderen.be/ns/implementatieelement#Centimeter> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proeflangsvlakheid.langsvlakheid> a rdf:Property;
+  rdfs:label "Langsvlakheid"@nl;
+  rdfs:comment "Het resultaat van de langsvlakheid meting."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefLangsvlakheid>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefmarkering.luminatiefactor> a owl:ObjectProperty;
+  rdfs:label "Luminatiefactor"@nl;
+  rdfs:comment "Waarde om het contrast met het wegdek en bijgevolg de dagzichtbaarheid te bepalen."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefMarkering>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefmarkering.stroefheid> a owl:ObjectProperty;
+  rdfs:label "Stroefheid"@nl;
+  rdfs:comment "Proefresultaten van de stroefheid."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefMarkering>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefmarkering.zichtbaarheiddagofwegverlichting> a owl:ObjectProperty;
+  rdfs:label "Zichtbaarheid dag of wegverlichting"@nl;
+  rdfs:comment "zichtbaarheid_dag_of_wegverlichting"@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefMarkering>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range <https://wegenenverkeer.data.vlaanderen.be/ns/implementatieelement#Decimal> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefmarkering.zichtbaarheidnacht> a owl:ObjectProperty;
+  rdfs:label "Zichtbaarheid nacht"@nl;
+  rdfs:comment "zichtbaarheid_nacht"@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefMarkering>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range <https://wegenenverkeer.data.vlaanderen.be/ns/implementatieelement#Decimal> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefmarkering.zichtbaarheidnachtnatwegdek> a owl:ObjectProperty;
+  rdfs:label "Zichtbaarheid nacht nat wegdek"@nl;
+  rdfs:comment "zichtbaarheid_nacht_nat_wegdek"@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefMarkering>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range <https://wegenenverkeer.data.vlaanderen.be/ns/implementatieelement#Decimal> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefmarkering.zichtbaarheidnachtregenweer> a owl:ObjectProperty;
+  rdfs:label "Zichtbaarheid nacht regenweer"@nl;
+  rdfs:comment "zichtbaarheid_nacht_regenweer"@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefMarkering>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range <https://wegenenverkeer.data.vlaanderen.be/ns/implementatieelement#Decimal> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefpctholleruimte.pctholleruimte> a owl:ObjectProperty;
+  rdfs:label "Pct holleruimte"@nl;
+  rdfs:comment "Het resultaat van het aantal percentage holleruimte meting aanwezig in de laag."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefPctHolleruimte>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefput.waterdichtheid> a owl:ObjectProperty;
+  rdfs:label "Waterdichtheid"@nl;
+  rdfs:comment """waterdichtheid of luchtdichtheid van een leidingsvak gebeurt door de bepaling van
+het waterverlies of de drukval van het beproefde leidingsvak."""@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefPut>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefschokindex.schokindex> a owl:ObjectProperty;
+  rdfs:label "Schokindex"@nl;
+  rdfs:comment """ De schokindex is een parameter die
+weergeeft hoe groot de kans op ernstige letsels is van de inzittenden bij een
+aanrijding."""@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefSchokindex>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefsondering.bijlage> a owl:ObjectProperty;
+  rdfs:label "Bijlage"@nl;
+  rdfs:comment "Het resultaat van de sonderingsproef als bijlage."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefSondering>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefstroefheid.stroefheid> a owl:ObjectProperty;
+  rdfs:label "Stroefheid"@nl;
+  rdfs:comment "Proefresultaten van de stroefheid."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefStroefheid>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proeftijdensbitumineuzedunneoverlaging.effectiefbindmiddelgehalte> a rdf:Property;
+  rdfs:label "Effectief bindmiddelgehalte"@nl;
+  rdfs:comment "Het resultaat van de test van het gemeten effectief bindmiddelgehalte in de BV laag."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensBitumineuzeDunneOverlaging>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proeftijdensbitumineuzedunneoverlaging.korrelverdeling> a rdf:Property;
+  rdfs:label "Korrelverdeling"@nl;
+  rdfs:comment "Het resultaat van de test van de gemeten korrelverdeling in de BV laag."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensBitumineuzeDunneOverlaging>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proeftijdensbitumineuzedunneoverlaging.temperatuur> a owl:ObjectProperty;
+  rdfs:label "Temperatuur"@nl;
+  rdfs:comment "De temperatuur van de BV laag in graden Celsius."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensBitumineuzeDunneOverlaging>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range <https://wegenenverkeer.data.vlaanderen.be/ns/implementatieelement#Celsius> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proeftijdenscementbetonverharding.consistentie> a owl:ObjectProperty;
+  rdfs:label "Consistentie"@nl;
+  rdfs:comment "Proefresultaten van de consistentie"@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensCementbetonverharding>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proeftijdenscementbetonverharding.luchtgehalte> a owl:ObjectProperty;
+  rdfs:label "Luchtgehalte"@nl;
+  rdfs:comment "Proefresultaten van het luchtgehalte"@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensCementbetonverharding>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proeftijdenscementbetonverharding.staalvezelgehalte> a owl:ObjectProperty;
+  rdfs:label "Staalvezelgehalte"@nl;
+  rdfs:comment "Het resultaat van de test van het gemeten staalvezelgehalte in de BV laag."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensCementbetonverharding>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proeftijdenscementbetonverharding.verankeringskracht> a owl:ObjectProperty;
+  rdfs:label "Verankeringskracht"@nl;
+  rdfs:comment "Het resultaat van de test om de verankeringskracht in de BV laag."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensCementbetonverharding>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proeftijdenscementbetonverharding.watergehalte> a owl:ObjectProperty;
+  rdfs:label "Watergehalte"@nl;
+  rdfs:comment "Het resultaat van de test van het gemeten watergehalte in de BV laag."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensCementbetonverharding>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proeftijdenstkw.consistentie> a owl:ObjectProperty;
+  rdfs:label "Consistentie"@nl;
+  rdfs:comment "Het resultaat van de test van de gemeten consistentie in de BV laag."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensTKW>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proeftijdenstkw.luchtgehalte> a owl:ObjectProperty;
+  rdfs:label "Luchtgehalte"@nl;
+  rdfs:comment "Het resultaat van de test van het gemeten luchtgehalte in de BV laag."@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensTKW>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#proefvlakheid.vlakheid> a owl:ObjectProperty;
+  rdfs:label "Vlakheid"@nl;
+  rdfs:comment "Proefresultaten van de vlakheid"@nl;
+  rdfs:domain <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefVlakheid>;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:range skos:Concept .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriAndereLagen> a owl:Class;
+  rdfs:label "Proef a posteriori andere lagen"@nl;
+  rdfs:comment "Verzameling van de a posteriori proeven voor Andere_lagen"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefStroefheid> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriBestrating> a owl:Class;
+  rdfs:label "Proef a posteriori bestrating"@nl;
+  rdfs:comment "Verzameling van de a posteriori proeven voor Bestrating"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefVlakheid> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriOnderbouw> a owl:Class;
+  rdfs:label "Proef a posteriori onderbouw"@nl;
+  rdfs:comment "Verzameling van de a posteriori proeven voor Fundering."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefDruksterkte>,
+    <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefVlakheid>,
+    <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefPctHolleruimte>,
+    <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefGemetenDikte>,
+    <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefDraagvermogen> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriVerkeersbord> a owl:Class;
+  rdfs:label "Proef a posteriori verkeersbord"@nl;
+  rdfs:comment "Verzameling van de a posteriori proeven voor verkeersborden."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPrioriGetesteBeginconstructie> a owl:Class;
+  rdfs:label "Proef a priori geteste beginconstructie"@nl;
+  rdfs:comment "Abstracte voor proef GetesteBeginconstructie."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefSchokindex> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPrioriMotorvangplank> a owl:Class;
+  rdfs:label "Proef a priori motorvangplank"@nl;
+  rdfs:comment "Abstracte voor proef Motorvangplank."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPrioriObstakelbeveiliger> a owl:Class;
+  rdfs:label "Proef a priori obstakelbeveiliger"@nl;
+  rdfs:comment "Abstracte voor proef Obstakelbeveiliger."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefSchokindex> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefBathymetrie> a owl:Class;
+  rdfs:label "Proef bathymetrie"@nl;
+  rdfs:comment "Abstracte voor proef Bathymetrie."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefPut> a owl:Class;
+  rdfs:label "Proef put"@nl;
+  rdfs:comment "Abstracte voor de put proeven."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefSondering> a owl:Class;
+  rdfs:label "Proef sondering"@nl;
+  rdfs:comment "Abstracte voor de sonderingsproef."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriBitumineuze> a owl:Class;
+  rdfs:label "Proef a posteriori bitumineuze"@nl;
+  rdfs:comment "Verzameling van de a posteriori proeven voor Bitumineuze verhardingen."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefPctHolleruimte>,
+    <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriBitumineuzeCementbetonLaag> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPrioriAfschermendeConstructie> a owl:Class;
+  rdfs:label "Proef a priori afschermende constructie"@nl;
+  rdfs:comment "Verzameling van de a priori proeven voor Afschermende constructies."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPrioriGeleideConstructie> a owl:Class;
+  rdfs:label "Proef a priori geleide constructie"@nl;
+  rdfs:comment "Abstracte voor proef GeleideConstructie."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefSchokindex> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefBoomtoestand> a owl:Class;
+  rdfs:label "Proef boomtoestand"@nl;
+  rdfs:comment "Abstracte om de proeven die info geven over de toestand van de boom samen te vatten."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/implementatieelement#AWVObject> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefBuis> a owl:Class;
+  rdfs:label "Proef buis"@nl;
+  rdfs:comment "Hfst7-"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensTKW> a owl:Class;
+  rdfs:label "Proef tijdens t k w"@nl;
+  rdfs:comment "Verzameling van de proeven tijdens de werken voor TKW"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefDraagvermogen> a owl:Class;
+  rdfs:label "Proef draagvermogen"@nl;
+  rdfs:comment "Proef die het draagvermogen van de laag bepaald."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefGeluidswerendeConstructie> a owl:Class;
+  rdfs:label "Proef geluidswerende constructie"@nl;
+  rdfs:comment "Abstracte voor proef GeluidswerendeConstructie."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefLangsvlakheid> a owl:Class;
+  rdfs:label "Proef langsvlakheid"@nl;
+  rdfs:comment "Abstracte voor de langsvlakheidsproef."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefPctHolleruimte> a owl:Class;
+  rdfs:label "Proef pct holleruimte"@nl;
+  rdfs:comment "abstracte _Proef_pct_holleruimte"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefStroefheid> a owl:Class;
+  rdfs:label "Proef stroefheid"@nl;
+  rdfs:comment "Abstracte Proef_stroefheid"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriBitumineuzeCementbetonLaag> a owl:Class;
+  rdfs:label "Proef a posteriori bitumineuze cementbeton laag"@nl;
+  rdfs:comment "Verzameling van de a posteriori proeven voor Bitumineuze en cementbeton verhardingen."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefVlakheid>,
+    <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefLangsvlakheid>,
+    <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefStroefheid> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriCementbetonverharding> a owl:Class;
+  rdfs:label "Proef a posteriori cementbetonverharding"@nl;
+  rdfs:comment "Verzameling van de proeven voor betonverhardingen."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting>;
+  rdfs:subClassOf <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefDruksterkte>,
+    <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriBitumineuzeCementbetonLaag> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefAPosterioriTKW> a owl:Class;
+  rdfs:label "Proef a posteriori t k w"@nl;
+  rdfs:comment "Verzameling van de a posteriori proeven voor TKW"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefDruksterkte> a owl:Class;
+  rdfs:label "Proef druksterkte"@nl;
+  rdfs:comment "Proefresultaten van de drukstrerkte van de laag."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefGemetenDikte> a owl:Class;
+  rdfs:label "Proef gemeten dikte"@nl;
+  rdfs:comment "Abstracte voor de proef gemeten dikte."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefSchokindex> a owl:Class;
+  rdfs:label "Proef schokindex"@nl;
+  rdfs:comment "Abstracte voor de schokindexproef."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensBitumineuzeDunneOverlaging> a owl:Class;
+  rdfs:label "Proef tijdens bitumineuze dunne overlaging"@nl;
+  rdfs:comment "Abstracte voor de BV dunne overlagingsproef."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefTijdensCementbetonverharding> a owl:Class;
+  rdfs:label "Proef tijdens cementbetonverharding"@nl;
+  rdfs:comment "abstracte _Proef_tijdens_cementbetonverharding"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefVlakheid> a owl:Class;
+  rdfs:label "Proef vlakheid"@nl;
+  rdfs:comment "Abstracte _Proef_vlakheid"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#GeluidstestRapport> a owl:Class;
+  rdfs:label "Geluidstest rapport"@nl;
+  rdfs:comment "Het geluidstestrapport."@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting#ProefMarkering> a owl:Class;
+  rdfs:label "Proef markering"@nl;
+  rdfs:comment "abstracte _Proef_Markering"@nl;
+  rdfs:isDefinedBy <https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> .
+
+<https://wegenenverkeer.data.vlaanderen.be/ns/proefenmeting> a owl:Ontology;
+  rdfs:label "wegenenverkeer-proefenmeting"@en,
+    "wegenenverkeer-proefenmeting"@nl;
+  dc:issued "TODO";
+  dc:license "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0";
+  dc:mediator [
+    foaf:homepage <https://data.vlaanderen.be>;
+    foaf:mbox <mailto:oslo@kb.vlaanderen.be>;
+    foaf:name "Data Vlaanderen"
+  ];
+  foaf:maker [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <http://www.banyan3d.be>;
+      foaf:name "Banyan3d"
+    ];
+    foaf:firstName "Raf";
+    foaf:lastName "Vanlathem";
+    foaf:mbox <mailto:rafvanlathem@gmail.com>
+  ], [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://www.realdolmen.com>;
+      foaf:name "RealDolmen"
+    ];
+    foaf:firstName "Davy";
+    foaf:lastName "Vanhoudt";
+    foaf:mbox <mailto:Davy.Vanhoudt@realdolmen.com>
+  ], [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://www.geonius.nl>;
+      foaf:name "Geonius"
+    ];
+    foaf:firstName "Jordy";
+    foaf:lastName "Brouwers";
+    foaf:mbox <mailto:j.brouwers@geonius.be>
+  ] .
