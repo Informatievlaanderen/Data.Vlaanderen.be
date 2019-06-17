@@ -1,0 +1,34 @@
+{% extends "vocabularynlv2.j2" %}
+
+{% block summary %}
+<p>
+Het OSLO-Generiek vocabularium focust op termen van algemeen nut: er wordt naar gerefereerd in meerdere OSLO-vocabularia of het betreft termen die bruikbaar zijn voor domeinen buiten OSLO.
+</p><p>
+Voor termen uit bestaande vocabularia voegt OSLO-Generiek enkel een Nederlandse vertaling toe.
+</p><p>
+Een aantal termen komt uit de vocabularia waarop OSLO zich baseert. Bv. Formeel Kader komt uit het <a href="https://joinup.ec.europa.eu/asset/core_public_service/description">ISA Core Public Service vocabularium</a> en werd voorzien van attributen in het <a href="https://joinup.ec.europa.eu/asset/cpsv-ap/asset_release/core-public-service-vocabulary-application-profile-v20">applicatieprofiel voor een dienstencataloog</a>, eveneens van ISA.
+</p><p>
+Voor herkomstgegevens verwijst OSLO-Generiek naar <a href="https://www.w3.org/TR/prov-o/">W3C PROV-O</a>. Op basis van dat model zijn properties voorzien die beschrijven wanneer, door wie en waarom een versie is aangemaakt of vernietigd. Dit laat toe om specifieke versies van objecten uit te wisselen (bv. om bestaande gegevens bij te werken). Met dat doel werd ook de entiteit Versie toegevoegd, gedefinieerd als de toestand van een entiteit op een specifiek tijdstip. OSLO-Generiek voegde nog een property toe om aan te geven in wiens opdracht een entiteit werd gewijzigd en door welke activiteit.
+</p><p>
+De entiteit Object mapt op <a href="https://www.w3.org/ns/prov#Entity">Entity</a>. Elke entiteit in OSLO met een levensloop erft ervan over. Elk object heeft een identificator die zoals in de ISA Core vocabularia mapt op het datatype Identifier uit het <a href="https://www.w3.org/TR/vocab-adms/">W3C ADMS vocabularium</a>.
+</p><p>
+In OSLO-Generiek vinden we een entiteit Contactinfo, die net als in de ISA Core vocabularia mapt op ContactPoint <a href="http://schema.org/ContactPoint">in schema.org</a>. OSLO voegt termen toe zoals aanschrijfvorm en (contact)adres maar ook die werden geleend uit bestaande vocabularia.
+</p><p>
+Geografische Positie en Geografische Naam zijn entiteiten oorspronkelijk afkomstig uit OSLO-Adres, maar worden in OSLO-Generiek geplaatst omdat ze meer algemeen bruikbaar zijn (Geografische Positie eventueel met een andere codelijst). Geografische Positie is eigen aan OSLO-Generiek, Geografische Naam werd gemapt op een bestaande term in het RDF zelf.
+</p><p>
+Jurisdictie kon worden overgenomen uit het <a href="https://joinup.ec.europa.eu/node/42440">ISA Core Person Vocabulary</a> maar we voegden er een property aan toe die toelaat om te specifiëren op welk geografisch gebied de jurisdictie betrekking heeft.
+</p><p>
+Tenslotte vermelden we nog de entiteit Geometrie, deze verwijst naar de overeenstemmende term in ISA Core Location maar werd verder uitgebreid met de subklassen Punt, Lijnstring en Polygoon (termen uit het <a href="http://schemas.opengis.net/sf/1.0/simple_features_geometries.rdf">OGC Simple Features vocabularium</a>) om het type geometrie te kunnen specifiëren.
+</p>
+{% endblock %}
+
+{% block status %}<p>Een lijst van de recentste vocabularia is terug te vinden op
+<a href="https://data.vlaanderen.be/ns">https://data.vlaanderen.be/ns</a>.</p><br />
+
+<p>Dit document is een offici&#235;le specificatie van een vocabularium en biedt een gedeeld begrippenkader voor bepaalde concepten. Deze specificatie dient om de definitie, gebruik, domein en bereik van de RDF termen binnen dit domein te verduidelijken. De termen gedefinieerd in dit vocabularium zijn persistent en zullen bijgevolg nooit verdwijnen, noch zullen de definities veranderen behalve dan om een bestaande definitie verder te verduidelijken. Termen kunnen echter wel als verouderd worden bestempeld en vervangen worden in nieuwere versies van deze specificatie.</p>
+
+<p>Dit document werd gepubliceerd door de werkgroep Datastandaarden OSLO van het stuurorgaan Vlaams Informatie- en ICT-beleid.
+Deze specificatie maakt geen onderdeel uit van een standaardisatietraject. De termen die opgenomen zijn in het OSLO-Generiek vocabularium werden bediscussieerd en erkend in andere OSLO thematische werkgroepen en vervolgens opgenomen in dit vocabularium wegens hun generiek herbruikbaar karakter.</p>
+
+<p>Feedback op deze specificatie kan gegeven worden als een topic in onze <a href="https://github.com/Informatievlaanderen/OSLO-Public-Discussion">publieke reviewdiscussielijst</a>.</p>
+{% endblock %}
