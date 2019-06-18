@@ -16,6 +16,6 @@ then
    jq  --arg src ${TARGET} --arg tgt ${TARGET}/ns -r '.[] | if ( .urlref | startswith("/ns") ) then if (.prefix ) then @sh "mkdir -p \($tgt)/\(.prefix)" else empty end else empty end'  $LINKS | bash -e 
    jq  --arg src ${TARGET} --arg tgt ${TARGET}/ns -r '.[] | if ( .urlref | startswith("/ns") ) then if (.prefix ) then @sh "cp \($src)\(.seealso)/voc/* \($tgt)/\(.prefix)" else @sh "cp \($src)\(.seealso)/voc/* \($tgt)" end else empty end'  $LINKS | bash -e 
 
-
+ 
 
 fi
