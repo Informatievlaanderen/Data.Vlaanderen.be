@@ -35,6 +35,17 @@ ROOTDIR=$1
 # publicationpoints for that month. That would reduce the runtime
 # drastically.
 
+
+cleanup_directory() {
+    local MAPPINGFILE=`jq -r 'if (.filename | length) > 0 then .filename else @sh "config/eap-mapping.json"  end' .publication-point.json`
+    if [ -f ".names.txt" ]
+    then
+	STR=".[] | select(.name == \"$(cat .names.txt)\") | [.]"
+	jq "${STR}" ${MAPPINGFILE} > .map.json
+	jq -r '.[] | @sh "find . -name \"*.eap\" !  -name \(.eap) -type f -exec rm -f {} + "' .map.json | bash -e
+    fi
+}
+
 # Cleanup root (just in case)
 rm -rf $ROOTDIR/*.txt
 
@@ -120,7 +131,8 @@ then
 	   fi
 	   comhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
 	   echo "hashcode to add: ${comhash}"
-	   echo ${row} | base64 --decode | jq --arg comhash "${comhash}" --arg toolchainhash "${toolchainhash}" '. + {documentcommit : $comhash, toolchaincommit: $toolchainhash}' > .publication-point.json
+	   echo ${row} | base64 --decode | jq --arg comhash "${comhash}" --arg toolchainhash "${toolchainhash}" '. + {documentcommit : $comhash, toolchaincommit: $toolchainhash, hostname: "https://wegenenverkeer.data.vlaanderen.be" }' > .publication-point.json
+	   cleanup_directory 
         popd
 
 	if [ "$MAIN" == "src" ]
