@@ -43,6 +43,7 @@ cleanup_directory() {
 	STR=".[] | select(.name == \"$(cat .names.txt)\") | [.]"
 	jq "${STR}" ${MAPPINGFILE} > .map.json
 	jq -r '.[] | @sh "find . -name \"*.eap\" !  -name \(.eap) -type f -exec rm -f {} + "' .map.json | bash -e
+        rm -rf .git 
     fi
 }
 
