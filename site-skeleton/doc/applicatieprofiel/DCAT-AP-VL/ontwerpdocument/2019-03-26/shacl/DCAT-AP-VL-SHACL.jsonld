@@ -1,0 +1,216 @@
+{
+  "@context": {
+    "@vocab": "https://data.vlaanderen.be/shacl/DCAT-AP-VL",
+    "qb": "http://purl.org/linked-data/cube#",
+    "qb:codeList": {
+      "@type": "@id"
+    },
+    "sh": "http://www.w3.org/ns/shacl#",
+    "sh:class": {
+      "@type": "@id"
+    },
+    "sh:datatype": {
+      "@type": "@id"
+    },
+    "sh:maxCount": {
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "sh:minCount": {
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "sh:path": {
+      "@type": "@id"
+    },
+    "sh:property": {
+      "@type": "@id"
+    },
+    "sh:targetClass": {
+      "@type": "@id"
+    },
+    "shapes": {
+      "@type": "@id"
+    }
+  },
+  "@id": "https://data.vlaanderen.be/shacl/DCAT-AP-VL",
+  "shapes": [
+    {
+      "@id": "https://data.vlaanderen.be/shacl/DCAT-AP-VL#PubliekeOrganisatieShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://data.europa.eu/m8g/PublicOrganisation"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/DCAT-AP-VL#LicentieDocumentShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://purl.org/dc/terms/LicenseDocument"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/DCAT-AP-VL#ContactinfoShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:description": "het e-mail adres waarmee je contact kan opnemen",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "e-mail",
+          "sh:path": "http://www.w3.org/2006/vcard/ns#hasEmail"
+        }
+      ],
+      "sh:targetClass": "http://www.w3.org/2006/vcard/ns#Kind"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetCatalogusShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:description": "Een bondige omschrijving van de datasetcatalogus. ",
+          "sh:maxCount": "n",
+          "sh:minCount": "1",
+          "sh:name": "beschrijving",
+          "sh:path": "http://purl.org/dc/terms/description"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/dcat#Dataset",
+          "sh:description": "Een dataset die behoort tot de datasetcatalogus",
+          "sh:minCount": "1",
+          "sh:name": "heeftDataset",
+          "sh:path": "http://www.w3.org/ns/dcat#dataset"
+        },
+        {
+          "sh:class": "http://purl.org/dc/terms/LicenseDocument",
+          "sh:description": "De licentie van de datasetcatalogus.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "heeftLicentie",
+          "sh:path": "http://purl.org/dc/terms/license"
+        },
+        {
+          "sh:class": "http://xmlns.com/foaf/0.1/Agent",
+          "sh:description": "de uitgever van de datasetcatalogus",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "heeftUitgever",
+          "sh:path": "http://purl.org/dc/terms/publisher"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:description": "De naam van de datasetcatalogus.",
+          "sh:maxCount": "n",
+          "sh:minCount": "1",
+          "sh:name": "titel",
+          "sh:path": "http://purl.org/dc/terms/title"
+        }
+      ],
+      "sh:targetClass": "http://www.w3.org/ns/dcat#Catalog"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "De toegankelijkheidscategorie van de dataset.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "accessrights",
+          "sh:path": "http://purl.org/dc/terms/accessRights"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:description": "Een bondige omschrijving van de dataset.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "beschrijving",
+          "sh:path": "http://purl.org/dc/terms/description"
+        },
+        {
+          "sh:class": "http://www.w3.org/2006/vcard/ns#Kind",
+          "sh:description": "De contactinformatie via men in contact kan treden met de verantwoordelijken van de dataset. ",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "contactinfo",
+          "sh:path": "http://www.w3.org/ns/dcat#contactPoint"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/dcat#Distribution",
+          "sh:description": "De distributie van een dataset.",
+          "sh:minCount": "1",
+          "sh:name": "heeftDistributie",
+          "sh:path": "http://www.w3.org/ns/dcat#distribution"
+        },
+        {
+          "sh:class": "http://xmlns.com/foaf/0.1/Agent",
+          "sh:description": "De uitgever van de dataset. ",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "heeftUitgever",
+          "sh:path": "http://purl.org/dc/terms/publisher"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "Het thema waartoe de dataset behoort.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "thema",
+          "sh:path": "http://www.w3.org/ns/dcat#theme"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:description": "De naam van de dataset",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "titel",
+          "sh:path": "http://purl.org/dc/terms/title"
+        }
+      ],
+      "sh:targetClass": "http://www.w3.org/ns/dcat#Dataset"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/DCAT-AP-VL#DistributieShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://purl.org/dc/terms/LicenseDocument",
+          "sh:description": "De licentie van de distributie",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "heeftLicentie",
+          "sh:path": "http://purl.org/dc/terms/license"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:description": "een naam voor de distributie",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "titel",
+          "sh:path": "http://purl.org/dc/terms/title"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:description": "De URL waar de data waarnaar de distributie verwijst kan gevonden worden.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "toegangsURL",
+          "sh:path": "http://www.w3.org/ns/dcat#accessURL"
+        }
+      ],
+      "sh:targetClass": "http://www.w3.org/ns/dcat#Distribution"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/DCAT-AP-VL#AgentShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://xmlns.com/foaf/0.1/Agent"
+    }
+  ]
+}
