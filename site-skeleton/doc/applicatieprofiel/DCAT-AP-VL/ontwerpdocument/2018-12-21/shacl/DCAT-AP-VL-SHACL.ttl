@@ -6,13 +6,13 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://data.vlaanderen.be/shacl/DCAT-AP-VL> <https://data.vlaanderen.be/shacl/DCAT-AP-VLshapes> <https://data.vlaanderen.be/shacl/DCAT-AP-VL#ContactpuntShape>,
+<https://data.vlaanderen.be/shacl/DCAT-AP-VL> <https://data.vlaanderen.be/shacl/DCAT-AP-VLshapes> <https://data.vlaanderen.be/shacl/DCAT-AP-VL#PubliekeOrganisatieShape>,
+    <https://data.vlaanderen.be/shacl/DCAT-AP-VL#DistributieShape>,
+    <https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape>,
+    <https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetCatalogusShape>,
     <https://data.vlaanderen.be/shacl/DCAT-AP-VL#AgentShape>,
     <https://data.vlaanderen.be/shacl/DCAT-AP-VL#LicentieDocumentShape>,
-    <https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape>,
-    <https://data.vlaanderen.be/shacl/DCAT-AP-VL#DistributieShape>,
-    <https://data.vlaanderen.be/shacl/DCAT-AP-VL#PubliekeOrganisatieShape>,
-    <https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetCatalogusShape> .
+    <https://data.vlaanderen.be/shacl/DCAT-AP-VL#ContactpuntShape> .
 
 <https://data.vlaanderen.be/shacl/DCAT-AP-VL#AgentShape> a <http://www.w3.org/ns/shacl#NodeShape>;
   <http://www.w3.org/ns/shacl#closed> false;
@@ -33,6 +33,13 @@
 <https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetCatalogusShape> a <http://www.w3.org/ns/shacl#NodeShape>;
   <http://www.w3.org/ns/shacl#closed> false;
   <http://www.w3.org/ns/shacl#property> [
+    <http://www.w3.org/ns/shacl#class> foaf:Agent;
+    <http://www.w3.org/ns/shacl#description> "de uitgever van de datasetcatalogus";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "heeftUitgever";
+    <http://www.w3.org/ns/shacl#path> dc:publisher
+  ], [
     <http://www.w3.org/ns/shacl#datatype> rdf:langString;
     <http://www.w3.org/ns/shacl#description> "De naam van de datasetcatalogus.";
     <http://www.w3.org/ns/shacl#maxCount> "n"^^xsd:integer;
@@ -40,18 +47,18 @@
     <http://www.w3.org/ns/shacl#name> "titel";
     <http://www.w3.org/ns/shacl#path> dc:title
   ], [
-    <http://www.w3.org/ns/shacl#datatype> xsd:dateTime;
-    <http://www.w3.org/ns/shacl#description> "Het meest recente moment waarop de metadata in de datasetcatalogus het laatst is gewijzigd.";
-    <http://www.w3.org/ns/shacl#maxCount> 1;
-    <http://www.w3.org/ns/shacl#name> "laatste wijziging";
-    <http://www.w3.org/ns/shacl#path> dc:modified
-  ], [
     <http://www.w3.org/ns/shacl#class> dc:LicenseDocument;
     <http://www.w3.org/ns/shacl#description> "De licentie van de datasetcatalogus.";
     <http://www.w3.org/ns/shacl#maxCount> 1;
     <http://www.w3.org/ns/shacl#minCount> 1;
     <http://www.w3.org/ns/shacl#name> "heeftLicentie";
     <http://www.w3.org/ns/shacl#path> dc:license
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> xsd:dateTime;
+    <http://www.w3.org/ns/shacl#description> "Het meest recente moment waarop de metadata in de datasetcatalogus het laatst is gewijzigd.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#name> "laatste wijziging";
+    <http://www.w3.org/ns/shacl#path> dc:modified
   ], [
     <http://www.w3.org/ns/shacl#class> dcat:Dataset;
     <http://www.w3.org/ns/shacl#name> "heeftDataset";
@@ -63,29 +70,12 @@
     <http://www.w3.org/ns/shacl#minCount> 1;
     <http://www.w3.org/ns/shacl#name> "beschrijving";
     <http://www.w3.org/ns/shacl#path> dc:description
-  ], [
-    <http://www.w3.org/ns/shacl#class> foaf:Agent;
-    <http://www.w3.org/ns/shacl#description> "de uitgever van de datasetcatalogus";
-    <http://www.w3.org/ns/shacl#maxCount> 1;
-    <http://www.w3.org/ns/shacl#minCount> 1;
-    <http://www.w3.org/ns/shacl#name> "heeftUitgever";
-    <http://www.w3.org/ns/shacl#path> dc:publisher
   ];
   <http://www.w3.org/ns/shacl#targetClass> dcat:Catalog .
 
 <https://data.vlaanderen.be/shacl/DCAT-AP-VL#DatasetShape> a <http://www.w3.org/ns/shacl#NodeShape>;
   <http://www.w3.org/ns/shacl#closed> false;
   <http://www.w3.org/ns/shacl#property> [
-    <http://www.w3.org/ns/shacl#class> dcat:Distribution;
-    <http://www.w3.org/ns/shacl#name> "heeftDistributie";
-    <http://www.w3.org/ns/shacl#path> dcat:distribution
-  ], [
-    <http://www.w3.org/ns/shacl#datatype> xsd:dateTime;
-    <http://www.w3.org/ns/shacl#description> "Het meest recente moment waarop de data van de dataset is gewijzigd.";
-    <http://www.w3.org/ns/shacl#maxCount> 1;
-    <http://www.w3.org/ns/shacl#name> "laatste wijziging";
-    <http://www.w3.org/ns/shacl#path> dc:modified
-  ], [
     <http://www.w3.org/ns/shacl#class> foaf:Agent;
     <http://www.w3.org/ns/shacl#description> "De uitgever van de dataset. ";
     <http://www.w3.org/ns/shacl#maxCount> 1;
@@ -93,25 +83,17 @@
     <http://www.w3.org/ns/shacl#name> "heeftUitgever";
     <http://www.w3.org/ns/shacl#path> dc:publisher
   ], [
+    <http://www.w3.org/ns/shacl#datatype> xsd:dateTime;
+    <http://www.w3.org/ns/shacl#description> "Het moment waarop de dataset voor het eerst werd gepubliceerd.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#name> "publicatiedatum";
+    <http://www.w3.org/ns/shacl#path> dc:issued
+  ], [
     <http://www.w3.org/ns/shacl#class> skos:Concept;
     <http://www.w3.org/ns/shacl#maxCount> 1;
     <http://www.w3.org/ns/shacl#minCount> 1;
     <http://www.w3.org/ns/shacl#name> "accessrights";
     <http://www.w3.org/ns/shacl#path> dc:accessRights
-  ], [
-    <http://www.w3.org/ns/shacl#datatype> rdf:langString;
-    <http://www.w3.org/ns/shacl#description> "Een bondige omscrhijving van de dataset.";
-    <http://www.w3.org/ns/shacl#maxCount> 1;
-    <http://www.w3.org/ns/shacl#minCount> 1;
-    <http://www.w3.org/ns/shacl#name> "beschrijving";
-    <http://www.w3.org/ns/shacl#path> dc:description
-  ], [
-    <http://www.w3.org/ns/shacl#datatype> rdf:langString;
-    <http://www.w3.org/ns/shacl#description> "De naam van de dataset";
-    <http://www.w3.org/ns/shacl#maxCount> 1;
-    <http://www.w3.org/ns/shacl#minCount> 1;
-    <http://www.w3.org/ns/shacl#name> "titel";
-    <http://www.w3.org/ns/shacl#path> dc:title
   ], [
     <http://www.w3.org/ns/shacl#class> vcard:Kind;
     <http://www.w3.org/ns/shacl#maxCount> 1;
@@ -120,29 +102,34 @@
     <http://www.w3.org/ns/shacl#path> dcat:contactPoint
   ], [
     <http://www.w3.org/ns/shacl#datatype> xsd:dateTime;
-    <http://www.w3.org/ns/shacl#description> "Het moment waarop de dataset voor het eerst werd gepubliceerd.";
+    <http://www.w3.org/ns/shacl#description> "Het meest recente moment waarop de data van de dataset is gewijzigd.";
     <http://www.w3.org/ns/shacl#maxCount> 1;
-    <http://www.w3.org/ns/shacl#name> "publicatiedatum";
-    <http://www.w3.org/ns/shacl#path> dc:issued
+    <http://www.w3.org/ns/shacl#name> "laatste wijziging";
+    <http://www.w3.org/ns/shacl#path> dc:modified
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> rdf:langString;
+    <http://www.w3.org/ns/shacl#description> "De naam van de dataset";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "titel";
+    <http://www.w3.org/ns/shacl#path> dc:title
+  ], [
+    <http://www.w3.org/ns/shacl#class> dcat:Distribution;
+    <http://www.w3.org/ns/shacl#name> "heeftDistributie";
+    <http://www.w3.org/ns/shacl#path> dcat:distribution
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> rdf:langString;
+    <http://www.w3.org/ns/shacl#description> "Een bondige omscrhijving van de dataset.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "beschrijving";
+    <http://www.w3.org/ns/shacl#path> dc:description
   ];
   <http://www.w3.org/ns/shacl#targetClass> dcat:Dataset .
 
 <https://data.vlaanderen.be/shacl/DCAT-AP-VL#DistributieShape> a <http://www.w3.org/ns/shacl#NodeShape>;
   <http://www.w3.org/ns/shacl#closed> false;
   <http://www.w3.org/ns/shacl#property> [
-    <http://www.w3.org/ns/shacl#class> dc:LicenseDocument;
-    <http://www.w3.org/ns/shacl#description> "De licentie van de distributie";
-    <http://www.w3.org/ns/shacl#maxCount> 1;
-    <http://www.w3.org/ns/shacl#minCount> 1;
-    <http://www.w3.org/ns/shacl#name> "heeftLicentie";
-    <http://www.w3.org/ns/shacl#path> dc:license
-  ], [
-    <http://www.w3.org/ns/shacl#datatype> rdf:langString;
-    <http://www.w3.org/ns/shacl#description> "een bondige omschrijving van de distributie";
-    <http://www.w3.org/ns/shacl#maxCount> 1;
-    <http://www.w3.org/ns/shacl#name> "beschrijving";
-    <http://www.w3.org/ns/shacl#path> dc:description
-  ], [
     <http://www.w3.org/ns/shacl#datatype> xsd:string;
     <http://www.w3.org/ns/shacl#description> "De URL waar de data waarnaar de distributie verwijst kan gevonden worden.";
     <http://www.w3.org/ns/shacl#maxCount> 1;
@@ -156,6 +143,19 @@
     <http://www.w3.org/ns/shacl#minCount> 1;
     <http://www.w3.org/ns/shacl#name> "titel";
     <http://www.w3.org/ns/shacl#path> dc:title
+  ], [
+    <http://www.w3.org/ns/shacl#class> dc:LicenseDocument;
+    <http://www.w3.org/ns/shacl#description> "De licentie van de distributie";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "heeftLicentie";
+    <http://www.w3.org/ns/shacl#path> dc:license
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> rdf:langString;
+    <http://www.w3.org/ns/shacl#description> "een bondige omschrijving van de distributie";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#name> "beschrijving";
+    <http://www.w3.org/ns/shacl#path> dc:description
   ];
   <http://www.w3.org/ns/shacl#targetClass> dcat:Distribution .
 
