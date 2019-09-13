@@ -1,0 +1,234 @@
+{
+  "@context": {
+    "Agent": "http://purl.org/dc/terms/Agent",
+    "Dimensie": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "Gebouw": "https://data.vlaanderen.be/ns/gebouw#Gebouw",
+    "Geometrie": "http://www.w3.org/ns/locn#Geometry",
+    "GeometrieMethodeWaarde": "http://www.w3.org/2004/02/skos/core#Concept",
+    "GestructureerdeIdentificator": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
+    "GetypeerdeString": "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "Identificator": "http://www.w3.org/ns/adms#Identifier",
+    "Identificator.identificator": {
+      "@id": "http://www.w3.org/2004/02/skos/core#notation",
+      "@type": "http://www.w3.org/2000/01/rdf-schema#Literal"
+    },
+    "KadastraalPatrimoniumperceel": "http://data.vlaanderen.be/ns/perceel#KadastraalPatrimoniumperceel",
+    "KadastraalPatrimoniumperceel.IsGerelateerdAan": {
+      "@id": "http://purl.org/dc/terms/relation",
+      "@type": "http://data.vlaanderen.be/ns/perceel#KadastraalPlanperceel"
+    },
+    "KadastraalPatrimoniumperceel.datumbijwerking": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#datumbijwerking",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "KadastraalPatrimoniumperceel.identificator": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#identificator",
+      "@type": "http://www.w3.org/ns/adms#Identifier"
+    },
+    "KadastraalPlanperceel": "http://data.vlaanderen.be/ns/perceel#KadastraalPlanperceel",
+    "KadastraalPlanperceel.datumbijwerking": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#datumbijwerking",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "KwantitatieveWaarde": "https://schema.org/QuantitativeValue",
+    "Landgebruik": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "LigtOp": {
+      "@container": "@set",
+      "@id": "https://data.vlaanderen.be/ns/gebouw#ligtOp",
+      "@type": "http://data.vlaanderen.be/ns/perceel#KadastraalPlanperceel"
+    },
+    "Oppervlaktetype": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "Periode": "http://data.europa.eu/m8g/PeriodOfTime",
+    "Recht": "http://data.vlaanderen.be/ns/perceel#Recht",
+    "Recht.aandeel": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#aandeel",
+      "@type": ""
+    },
+    "Recht.geldigheidsperiode": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#geldigheidsperiode",
+      "@type": "http://data.europa.eu/m8g/PeriodOfTime"
+    },
+    "Recht.omschrijving": {
+      "@id": "http://purl.org/dc/terms/description",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Rechtstype": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "Restrictie": "http://data.vlaanderen.be/ns/perceel#Restrictie",
+    "Restrictie.aandeel": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#aandeel",
+      "@type": ""
+    },
+    "Restrictie.omschrijving": {
+      "@id": "http://purl.org/dc/terms/description",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Restrictietype": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "RuimtelijkeEenheid": "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid",
+    "RuimtelijkeEenheid.IsGerelateerdAan": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/relation",
+      "@type": "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid"
+    },
+    "RuimtelijkeEenheid.geldigheidsperiode": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#geldigheidsperiode",
+      "@type": "http://data.europa.eu/m8g/PeriodOfTime"
+    },
+    "RuimtelijkeEenheid.geometrie": {
+      "@container": "@set",
+      "@id": "http://data.vlaanderen.be/ns/perceel#geometrie",
+      "@type": "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie"
+    },
+    "RuimtelijkeEenheid.identificator": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#identificator",
+      "@type": "http://www.w3.org/ns/adms#Identifier"
+    },
+    "RuimtelijkeEenheid.oppervlakte": {
+      "@container": "@set",
+      "@id": "http://data.vlaanderen.be/ns/perceel#oppervlakte",
+      "@type": "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte"
+    },
+    "RuimtelijkeEenheidGeometrie": "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie",
+    "RuimtelijkeEenheidGeometrie.geometrie": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#geometrie",
+      "@type": "http://www.w3.org/ns/locn#Geometry"
+    },
+    "RuimtelijkeEenheidOppervlakte": "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte",
+    "RuimtelijkeEenheidOppervlakte.oppervlakte": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#oppervlakte",
+      "@type": "https://schema.org/QuantitativeValue"
+    },
+    "RuimtelijkeEenheidtype": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "Verantwoordelijkheid": "http://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid",
+    "Verantwoordelijkheid.aandeel": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#aandeel",
+      "@type": ""
+    },
+    "Verantwoordelijkheid.geldigheidsperiode": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#geldigheidsperiode",
+      "@type": "http://data.europa.eu/m8g/PeriodOfTime"
+    },
+    "Verantwoordelijkheid.omschrijving": {
+      "@id": "http://purl.org/dc/terms/description",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Verantwoordelijkheidtype": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "ZakelijkRecht": "http://data.vlaanderen.be/ns/perceel#ZakelijkRecht",
+    "ZakelijkRecht.aandeel": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#aandeel",
+      "@type": ""
+    },
+    "ZakelijkRecht.geldigheidsperiode": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#geldigheidsperiode",
+      "@type": "http://data.europa.eu/m8g/PeriodOfTime"
+    },
+    "ZakelijkRechttype": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "begin": {
+      "@id": "http://data.europa.eu/m8g/startTime",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "default": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#default",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "dimensie": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#dimensie",
+      "@type": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+    },
+    "eenheid": {
+      "@id": "https://schema.org/unitText",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "einde": {
+      "@id": "http://data.europa.eu/m8g/endTime",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "geldigheidperiode": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#geldigheidperiode",
+      "@type": "http://data.europa.eu/m8g/PeriodOfTime"
+    },
+    "gestructureerdedentificator": {
+      "@id": "https://data.vlaanderen.be/ns/generiek#gestructureerdedentificator",
+      "@type": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator"
+    },
+    "gml": {
+      "@id": "http://www.opengis.net/ont/geosparql#asGML",
+      "@type": "http://www.w3.org/2000/01/rdf-schema#Literal"
+    },
+    "landgebruik": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#landgebruik",
+      "@type": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+    },
+    "lokaleIdentificator": {
+      "@id": "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "methode": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#methode",
+      "@type": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    "naamruimte": {
+      "@id": "https://data.vlaanderen.be/ns/generiek#naamruimte",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "niveau": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#niveau",
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "officiëleOppervlakte": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#officiëleOppervlakte",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "oppervlaktetype": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#oppervlaktetype",
+      "@type": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+    },
+    "rechtstype": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#Recht.type",
+      "@type": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+    },
+    "restrictietype": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#Restrictie.type",
+      "@type": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+    },
+    "ruimtelijkeeenheidtype": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid.type",
+      "@type": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+    },
+    "standaardEenheid": {
+      "@id": "https://schema.org/unitCode",
+      "@type": "https://data.vlaanderen.be/ns/generiek#StandaardEenheid"
+    },
+    "toegekendDoor": {
+      "@id": "http://purl.org/dc/terms/creator",
+      "@type": "http://purl.org/dc/terms/Agent"
+    },
+    "toegekendDoorString": {
+      "@id": "http://www.w3.org/ns/adms#schemaAgency",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "toegekendOp": {
+      "@id": "http://purl.org/dc/terms/issued",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "verantwoordelijkheidtype": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid.type",
+      "@type": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+    },
+    "versieIdentificator": {
+      "@id": "https://data.vlaanderen.be/ns/generiek#versieIdentificator",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "waarde": {
+      "@id": "https://schema.org/value",
+      "@type": "https://schema.org/Number"
+    },
+    "wkt": {
+      "@id": "http://www.opengis.net/ont/geosparql#asWKT",
+      "@type": "http://www.w3.org/2000/01/rdf-schema#Literal"
+    },
+    "zakelijkrechttype": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#ZakelijkRecht.type",
+      "@type": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+    }
+  }
+}
