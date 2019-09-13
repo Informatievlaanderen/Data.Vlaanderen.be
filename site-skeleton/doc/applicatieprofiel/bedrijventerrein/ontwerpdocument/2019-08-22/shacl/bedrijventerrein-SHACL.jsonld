@@ -90,14 +90,6 @@
           "sh:path": "https://data.vlaanderen.be/ns/bedrijventerrein#bebouwing"
         },
         {
-          "sh:class": "https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein",
-          "sh:description": "Geeft aan tot welk Bedrijventerrein het Bedrijventerreingebruiksperceel behoort.",
-          "sh:maxCount": "1",
-          "sh:minCount": "1",
-          "sh:name": "behoortTot",
-          "sh:path": "https://data.vlaanderen.be/ns/bedrijventerrein#behoortTot"
-        },
-        {
           "sh:class": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
           "sh:description": "Deze eigenschap geeft aan welke de mogelijk beperking een bepaald bedrijventerreingebruiksperceel momenteel ondervindt.",
           "sh:maxCount": "1",
@@ -105,14 +97,14 @@
           "sh:path": "https://data.vlaanderen.be/ns/bedrijventerrein#beperking"
         },
         {
-          "sh:class": "https://data.vlaanderen.be/ns/bedrijventerrein#Beschikbaarheid",
+          "sh:class": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
           "sh:description": "Deze eigenschap geeft de beschikbaarheid aan van een Bedrijventerreingebruiksperceel.",
           "sh:maxCount": "1",
           "sh:name": "beschikbaarheid",
           "sh:path": "https://data.vlaanderen.be/ns/bedrijventerrein#beschikbaarheid"
         },
         {
-          "sh:class": "https://data.vlaanderen.be/ns/bedrijventerrein#Functie",
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
           "sh:description": "De functie geeft de (verschillende) functies aan die men kan terugvinden op het Bedrijventerreingebruiksperceel en het percentage van het gebruiksperceel dat gedekt wordt door elke functie.",
           "sh:minCount": "1",
           "sh:name": "functie",
@@ -124,6 +116,14 @@
           "sh:maxCount": "1",
           "sh:name": "inGebruik",
           "sh:path": "https://data.vlaanderen.be/ns/bedrijventerrein#inGebruik"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein",
+          "sh:description": "Geeft aan tot welk Bedrijventerrein het Bedrijventerreingebruiksperceel behoort.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "isDeelVan",
+          "sh:path": "http://purl.org/dc/terms/isPartOf"
         },
         {
           "sh:class": "https://data.vlaanderen.be/ns/bedrijventerrein#OntwikkelbareBedrijvenzone",
@@ -142,8 +142,8 @@
         {
           "sh:class": "https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein",
           "sh:description": "Geeft aan tot welk Bedrijventerrein de Beheerde Bedrijvenzone behoort.",
-          "sh:name": "behoortTot",
-          "sh:path": "https://data.vlaanderen.be/ns/bedrijventerrein#behoortTot"
+          "sh:name": "isDeelVan",
+          "sh:path": "https://data.vlaanderen.be/ns/bedrijventerrein#isDeelVan"
         },
         {
           "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
@@ -171,13 +171,6 @@
       "sh:targetClass": "https://data.vlaanderen.be/ns/bedrijventerrein#BeheerdeBedrijvenzone"
     },
     {
-      "@id": "https://data.vlaanderen.be/shacl/bedrijventerrein#BeschikbaarheidShape",
-      "@type": "sh:NodeShape",
-      "sh:closed": false,
-      "sh:property": [],
-      "sh:targetClass": "https://data.vlaanderen.be/ns/bedrijventerrein#Beschikbaarheid"
-    },
-    {
       "@id": "https://data.vlaanderen.be/shacl/bedrijventerrein#EconomischGebiedShape",
       "@type": "sh:NodeShape",
       "sh:closed": false,
@@ -201,7 +194,7 @@
       "sh:targetClass": "https://data.vlaanderen.be/ns/bedrijventerrein#EconomischGebied"
     },
     {
-      "@id": "https://data.vlaanderen.be/shacl/bedrijventerrein#FunctieShape",
+      "@id": "https://data.vlaanderen.be/shacl/bedrijventerrein#FunctieWaardeShape",
       "@type": "sh:NodeShape",
       "sh:closed": false,
       "sh:property": [
@@ -210,8 +203,8 @@
           "sh:description": "Aanduiding van de functiewaarde.",
           "sh:maxCount": "1",
           "sh:minCount": "1",
-          "sh:name": "functie",
-          "sh:path": "https://data.vlaanderen.be/ns/bedrijventerrein#functie"
+          "sh:name": "functietype",
+          "sh:path": "http://data.vlaanderen.be/ns/bedrijventerrein#FunctieWaarde.type"
         },
         {
           "sh:datatype": "http://www.w3.org/2001/XMLSchema#integer",
@@ -222,7 +215,7 @@
           "sh:path": "https://data.vlaanderen.be/ns/bedrijventerrein#percentage"
         }
       ],
-      "sh:targetClass": "https://data.vlaanderen.be/ns/bedrijventerrein#Functie"
+      "sh:targetClass": "https://data.vlaanderen.be/ns/bedrijventerrein#FunctieWaarde"
     },
     {
       "@id": "https://data.vlaanderen.be/shacl/bedrijventerrein#OntwikkelbareBedrijvenzoneShape",
@@ -230,17 +223,17 @@
       "sh:closed": false,
       "sh:property": [
         {
-          "sh:class": "https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein",
-          "sh:description": "Geeft aan tot welk Bedrijventerrein de Ontwikkelbare Bedrijvenzone behoort.",
-          "sh:name": "behoortTot",
-          "sh:path": "https://data.vlaanderen.be/ns/bedrijventerrein#behoortTot"
-        },
-        {
           "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
           "sh:description": "Adres van de homepage van de website van de ontwikkelbare bedrijvenzone.",
           "sh:maxCount": "1",
           "sh:name": "homepage",
           "sh:path": "http://xmlns.com/foaf/0.1/homepage"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein",
+          "sh:description": "Geeft aan tot welk Bedrijventerrein de Ontwikkelbare Bedrijvenzone behoort.",
+          "sh:name": "isDeelVan",
+          "sh:path": "http://purl.org/dc/terms/isPartOf"
         },
         {
           "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
@@ -321,7 +314,7 @@
           "sh:path": "https://data.vlaanderen.be/ns/bedrijventerrein#publicatiedatum"
         },
         {
-          "sh:class": "https://data.vlaanderen.be/ns/bedrijventerrein#Schorsing",
+          "sh:class": "https://data.vlaanderen.be/ns/bedrijventerrein#SchorsingInfo",
           "sh:description": "De schorsing geeft aan of het plan al dan niet geschorst is en bijhorende metadata over de schorsing.",
           "sh:maxCount": "1",
           "sh:name": "schorsing",
@@ -379,7 +372,7 @@
       "sh:targetClass": "https://data.vlaanderen.be/ns/bedrijventerrein#Planningszone"
     },
     {
-      "@id": "https://data.vlaanderen.be/shacl/bedrijventerrein#SchorsingShape",
+      "@id": "https://data.vlaanderen.be/shacl/bedrijventerrein#SchorsingInfoShape",
       "@type": "sh:NodeShape",
       "sh:closed": false,
       "sh:property": [
@@ -391,18 +384,18 @@
           "sh:path": "https://data.vlaanderen.be/ns/bedrijventerrein#datumSchorsing"
         },
         {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+          "sh:description": "Geeft aan of het plan al dan niet geschorst is.",
+          "sh:maxCount": "1",
+          "sh:name": "geschorst",
+          "sh:path": "https://data.vlaanderen.be/ns/bedrijventerrein#geschorst"
+        },
+        {
           "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
           "sh:description": "Link naar het arrest van de schorsing",
           "sh:maxCount": "1",
           "sh:name": "linkSchorsing",
           "sh:path": "https://data.vlaanderen.be/ns/bedrijventerrein#linkSchorsing"
-        },
-        {
-          "sh:datatype": "http://www.w3.org/2001/XMLSchema#boolean",
-          "sh:description": "Geeft aan of het plan al dan niet geschorst is.",
-          "sh:maxCount": "1",
-          "sh:name": "schorsing",
-          "sh:path": "https://data.vlaanderen.be/ns/bedrijventerrein#schorsing"
         },
         {
           "sh:description": "Opmerkingen in het kader van de schorsing.",
@@ -411,7 +404,7 @@
           "sh:path": "https://data.vlaanderen.be/ns/bedrijventerrein#schorsingOpmerking"
         }
       ],
-      "sh:targetClass": "https://data.vlaanderen.be/ns/bedrijventerrein#Schorsing"
+      "sh:targetClass": "https://data.vlaanderen.be/ns/bedrijventerrein#SchorsingInfo"
     },
     {
       "@id": "https://data.vlaanderen.be/shacl/bedrijventerrein#PeriodeShape",
@@ -456,7 +449,16 @@
       "@id": "https://data.vlaanderen.be/shacl/bedrijventerrein#OSLO-Perceel::RechtShape",
       "@type": "sh:NodeShape",
       "sh:closed": false,
-      "sh:property": [],
+      "sh:property": [
+        {
+          "sh:class": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+          "sh:description": "De aard van het recht dat een agent heeft ten opzichte van een ruimtelijke eenheid.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "rechtstype",
+          "sh:path": "http://data.vlaanderen.be/ns/perceel#Recht.type"
+        }
+      ],
       "sh:targetClass": "http://data.vlaanderen.be/ns/perceel#Recht"
     },
     {
@@ -597,7 +599,16 @@
       "@id": "https://data.vlaanderen.be/shacl/bedrijventerrein#OSLO-Perceel::VerantwoordelijkheidShape",
       "@type": "sh:NodeShape",
       "sh:closed": false,
-      "sh:property": [],
+      "sh:property": [
+        {
+          "sh:class": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+          "sh:description": "De aard van de verantwoordelijkheid die een agent heeft ten opzichte van een ruimtelijke eenheid.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "verantwoordelijkheidtype",
+          "sh:path": "http://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid.type"
+        }
+      ],
       "sh:targetClass": "http://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid"
     },
     {
@@ -612,6 +623,18 @@
           "sh:minCount": "1",
           "sh:name": "contactinfo",
           "sh:path": "https://data.vlaanderen.be/ns/generiek#contactinfo"
+        },
+        {
+          "sh:class": "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid",
+          "sh:description": "Voorstelling van de rechten die een agent heeft ten opzichte van een ruimtelijke eenheid.",
+          "sh:name": "heeftRecht",
+          "sh:path": "http://data.vlaanderen.be/ns/perceel#Recht"
+        },
+        {
+          "sh:class": "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid",
+          "sh:description": "Voorstelling van de verantwoordelijkheden die een agent heeft ten opzichte van een ruimtelijke eenheid.",
+          "sh:name": "heeftVerantwoordelijkheid",
+          "sh:path": "http://data.vlaanderen.be/ns/perceel#heeftVerantwoordelijkheid"
         }
       ],
       "sh:targetClass": "http://purl.org/dc/terms/Agent"
@@ -806,6 +829,13 @@
     },
     {
       "@id": "https://data.vlaanderen.be/shacl/bedrijventerrein#BeperkingShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/bedrijventerrein#BeschikbaarheidShape",
       "@type": "sh:NodeShape",
       "sh:closed": false,
       "sh:property": [],

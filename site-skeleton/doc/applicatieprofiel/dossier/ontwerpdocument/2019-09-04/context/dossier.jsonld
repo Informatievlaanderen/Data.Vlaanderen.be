@@ -1,0 +1,253 @@
+{
+  "@context": {
+    "Activiteit": "http://www.w3.org/ns/prov#Activity",
+    "Activiteit.einddatum": {
+      "@id": "https://data.vlaanderen.be/ns/dossier#einddatum",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "Activiteit.naam": {
+      "@id": "http://purl.org/dc/terms/title",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Activiteit.startdatum": {
+      "@id": "https://data.vlaanderen.be/ns/dossier#startdatum",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "Activiteit.vindtPlaatsTijdens": {
+      "@container": "@set",
+      "@id": "https://data.vlaanderen.be/ns/dossier#vindtPlaatsTijdens",
+      "@type": "http://dbpedia.org/ontology/UnitOfWork"
+    },
+    "ActiviteitContext": "https://data.vlaanderen.be/ns/dossier#ActiviteitContext",
+    "Agent": "http://www.w3.org/ns/prov#Agent",
+    "Besluit": "http://data.vlaanderen.be/ns/besluit#Besluit",
+    "Besluit.beschrijving": {
+      "@id": "http://data.europa.eu/eli/ontology#description",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Collectie": "http://www.w3.org/ns/prov#Collection",
+    "Collectie.bestaatUit": {
+      "@container": "@set",
+      "@id": "https://data.vlaanderen.be/ns/dossier#collectie.bestaatUit",
+      "@type": "http://www.w3.org/ns/prov#Entity"
+    },
+    "Collectie.isNeerslagVan": {
+      "@container": "@set",
+      "@id": "https://data.vlaanderen.be/ns/dossier#isNeerslagVan",
+      "@type": "http://dbpedia.org/ontology/UnitOfWork"
+    },
+    "Dossier": "https://data.vlaanderen.be/ns/dossier#Dossier",
+    "Dossier.bestaatUit": {
+      "@container": "@set",
+      "@id": "https://data.vlaanderen.be/ns/dossier#dossier.bestaatUit",
+      "@type": "https://data.vlaanderen.be/ns/dossier#Stuk"
+    },
+    "Dossier.informatieclassificatie": {
+      "@id": "https://data.vlaanderen.be/ns/dossier#informatieclassificatie",
+      "@type": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    "Dossier.isNeerslagVan": {
+      "@id": "https://data.vlaanderen.be/ns/dossier#isNeerslagVan",
+      "@type": "http://dbpedia.org/ontology/Case"
+    },
+    "Dossier.naam": {
+      "@id": "http://purl.org/dc/terms/title",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "EenheidVanWerk": "http://dbpedia.org/ontology/UnitOfWork",
+    "Entiteit": "http://www.w3.org/ns/prov#Entity",
+    "Informatieclassificatie": "http://www.w3.org/2004/02/skos/core#Concept",
+    "Object": "http://www.w3.org/ns/prov#Entity",
+    "Participatie": "http://data.europa.eu/m8g/Participation",
+    "Procedurestap": "https://data.vlaanderen.be/ns/dossier#Procedurestap",
+    "Procedurestap.einddatum": {
+      "@id": "https://data.vlaanderen.be/ns/dossier#einddatum",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "Procedurestap.naam": {
+      "@id": "http://purl.org/dc/terms/title",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Procedurestap.startdatum": {
+      "@id": "https://data.vlaanderen.be/ns/dossier#startdatum",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "Procedurestap.vindtPlaatsTijdens": {
+      "@container": "@set",
+      "@id": "https://data.vlaanderen.be/ns/dossier#vindtPlaatsTijdens",
+      "@type": "http://www.w3.org/ns/prov#Activity"
+    },
+    "Project": "http://dbpedia.org/ontology/Project",
+    "PubliekeDienstverlening": "http://purl.org/vocab/cpsv#PublicService",
+    "PubliekeDienstverlening.beschrijving": {
+      "@id": "http://purl.org/dc/terms/description",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "PubliekeDienstverlening.naam": {
+      "@id": "http://purl.org/dc/terms/title",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "Representatie": "http://www.w3.org/ns/dcat#Distribution",
+    "Serie": "https://data.vlaanderen.be/ns/dossier#Serie",
+    "Stuk": "https://data.vlaanderen.be/ns/dossier#Stuk",
+    "Stuk.auteur": {
+      "@id": "https://data.vlaanderen.be/ns/dossier#auteur",
+      "@type": "http://www.w3.org/ns/prov#Agent"
+    },
+    "Stuk.creatiedatum": {
+      "@id": "http://purl.org/dc/terms/created",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "Stuk.heeftRelatieTot": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/relation",
+      "@type": "https://data.vlaanderen.be/ns/dossier#Stuk"
+    },
+    "Stuk.informatieclassificatie": {
+      "@id": "https://data.vlaanderen.be/ns/dossier#informatieclassificatie",
+      "@type": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    "Stuk.isVoorgesteldDoor": {
+      "@container": "@set",
+      "@id": "https://data.vlaanderen.be/ns/dossier#isVoorgesteldDoor",
+      "@type": "http://www.w3.org/ns/dcat#Distribution"
+    },
+    "Stuk.naam": {
+      "@id": "http://purl.org/dc/terms/title",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Stukonderdeel": "https://data.vlaanderen.be/ns/dossier#Stukonderdeel",
+    "Stukonderdeel.auteur": {
+      "@id": "https://data.vlaanderen.be/ns/dossier#auteur",
+      "@type": "http://www.w3.org/ns/prov#Agent"
+    },
+    "Stukonderdeel.creatiedatum": {
+      "@id": "http://purl.org/dc/terms/created",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "Stukonderdeel.informatieclassificatie": {
+      "@id": "https://data.vlaanderen.be/ns/dossier#informatieclassificatie",
+      "@type": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    "Stukonderdeel.isDeelVan": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/isPartOf",
+      "@type": "https://data.vlaanderen.be/ns/dossier#Stuk"
+    },
+    "Stukonderdeel.isVoorgesteldDoor": {
+      "@container": "@set",
+      "@id": "https://data.vlaanderen.be/ns/dossier#isVoorgesteldDoor",
+      "@type": "http://www.w3.org/ns/dcat#Distribution"
+    },
+    "Stukonderdeel.naam": {
+      "@id": "http://purl.org/dc/terms/title",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Zaak": "http://dbpedia.org/ontology/Case",
+    "Zaak.heeftRelatieTot": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/relation",
+      "@type": "http://dbpedia.org/ontology/Case"
+    },
+    "Zaak.isDeelVan": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/isPartOf",
+      "@type": "http://dbpedia.org/ontology/Project"
+    },
+    "Zaak.naam": {
+      "@id": "http://purl.org/dc/terms/title",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "activiteit": {
+      "@id": "https://data.vlaanderen.be/ns/dossier#activiteit",
+      "@type": "http://www.w3.org/ns/prov#Activity"
+    },
+    "alternatieveNaam": {
+      "@id": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "behandelt": {
+      "@container": "@set",
+      "@id": "https://data.vlaanderen.be/ns/dossier#behandelt",
+      "@type": "http://dbpedia.org/ontology/Case"
+    },
+    "beschrijft": {
+      "@container": "@set",
+      "@id": "https://data.vlaanderen.be/ns/dossier#beschrijft",
+      "@type": "http://www.w3.org/ns/prov#Entity"
+    },
+    "citeeropschrift": {
+      "@id": "http://data.europa.eu/eli/ontology#title_short",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "contactinfo": {
+      "@id": "http://data.europa.eu/m8g/hasContactPoint",
+      "@type": "http://schema.org/ContactPoint"
+    },
+    "doorloopt": {
+      "@container": "@set",
+      "@id": "https://data.vlaanderen.be/ns/dossier#doorloopt",
+      "@type": "https://data.vlaanderen.be/ns/dossier#Procedurestap"
+    },
+    "genereert": {
+      "@container": "@set",
+      "@id": "https://data.vlaanderen.be/ns/dossier#genereert",
+      "@type": "https://data.vlaanderen.be/ns/dossier#Stuk"
+    },
+    "handeltInOpdrachtVan": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/prov#actedOnBehalfOf",
+      "@type": "http://www.w3.org/ns/prov#Agent"
+    },
+    "identificator": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/adms#identifier",
+      "@type": "http://www.w3.org/ns/adms#Identifier"
+    },
+    "kost": {
+      "@id": "http://data.europa.eu/m8g/hasCost",
+      "@type": "http://data.europa.eu/m8g/Cost"
+    },
+    "openingsdatum": {
+      "@id": "https://data.vlaanderen.be/ns/dossier#openingsdatum",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "ruimtelijkeDekking": {
+      "@id": "http://purl.org/dc/terms/spatial",
+      "@type": "http://purl.org/dc/terms/Location"
+    },
+    "sector": {
+      "@id": "http://data.europa.eu/m8g/sector",
+      "@type": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    "sluitingsdatum": {
+      "@id": "https://data.vlaanderen.be/ns/dossier#sluitingsdatum",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "speeltRol": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/m8g/playsRole",
+      "@type": "http://www.w3.org/ns/prov#Agent"
+    },
+    "status": {
+      "@id": "http://www.w3.org/ns/adms#status",
+      "@type": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    "taal": {
+      "@id": "http://purl.org/dc/terms/language",
+      "@type": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    "trefwoord": {
+      "@id": "http://www.w3.org/ns/dcat#keyword",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "type": {
+      "@id": "http://purl.org/dc/terms/type",
+      "@type": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    "verwerkingstijd": {
+      "@id": "http://data.europa.eu/m8g/processingTime",
+      "@type": "http://www.w3.org/2000/01/rdf-schema#Literal"
+    }
+  }
+}

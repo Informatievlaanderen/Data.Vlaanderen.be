@@ -1,0 +1,355 @@
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://data.vlaanderen.be/shacl/dossier> <https://data.vlaanderen.be/shacl/dossiershapes> <https://data.vlaanderen.be/shacl/dossier#EntiteitShape>,
+    <https://data.vlaanderen.be/shacl/dossier#ProjectShape>,
+    <https://data.vlaanderen.be/shacl/dossier#ObjectShape>,
+    <https://data.vlaanderen.be/shacl/dossier#BesluitShape>,
+    <https://data.vlaanderen.be/shacl/dossier#ActiviteitContextShape>,
+    <https://data.vlaanderen.be/shacl/dossier#DossierShape>,
+    <https://data.vlaanderen.be/shacl/dossier#StukShape>,
+    <https://data.vlaanderen.be/shacl/dossier#ActiviteitShape>,
+    <https://data.vlaanderen.be/shacl/dossier#RepresentatieShape>,
+    <https://data.vlaanderen.be/shacl/dossier#ParticipatieShape>,
+    <https://data.vlaanderen.be/shacl/dossier#SerieShape>,
+    <https://data.vlaanderen.be/shacl/dossier#StukonderdeelShape>,
+    <https://data.vlaanderen.be/shacl/dossier#CollectieShape>,
+    <https://data.vlaanderen.be/shacl/dossier#ProcedurestapShape>,
+    <https://data.vlaanderen.be/shacl/dossier#ZaakShape>,
+    <https://data.vlaanderen.be/shacl/dossier#AgentShape>,
+    <https://data.vlaanderen.be/shacl/dossier#InformatieclassificatieShape> .
+
+<https://data.vlaanderen.be/shacl/dossier#ActiviteitContextShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#closed> false;
+  <http://www.w3.org/ns/shacl#property> [
+    <http://www.w3.org/ns/shacl#class> prov:Activity;
+    <http://www.w3.org/ns/shacl#description> "URI van de activiteit";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "activiteit";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#activiteit>
+  ];
+  <http://www.w3.org/ns/shacl#targetClass> <https://data.vlaanderen.be/ns/dossier#ActiviteitContext> .
+
+<https://data.vlaanderen.be/shacl/dossier#ActiviteitShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#closed> false;
+  <http://www.w3.org/ns/shacl#property> [
+    <http://www.w3.org/ns/shacl#datatype> xsd:date;
+    <http://www.w3.org/ns/shacl#description> "De startdatum van de activiteit.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "startDatum";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#startDatum>
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> xsd:string;
+    <http://www.w3.org/ns/shacl#description> "De naam van de activiteit.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "naam";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#naam>
+  ], [
+    <http://www.w3.org/ns/shacl#class> <https://data.vlaanderen.be/ns/dossier#Stuk>;
+    <http://www.w3.org/ns/shacl#description> "Een activiteit kan een stuk genereren";
+    <http://www.w3.org/ns/shacl#name> "genereertEen";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#genereertEen>
+  ], [
+    <http://www.w3.org/ns/shacl#class> prov:Agent;
+    <http://www.w3.org/ns/shacl#description> "Participatie van de agent (aan een publieke dienstverlening).";
+    <http://www.w3.org/ns/shacl#name> "null";
+    <http://www.w3.org/ns/shacl#path> <http://data.europa.eu/m8g/playsRole>
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> xsd:date;
+    <http://www.w3.org/ns/shacl#description> "De einddatum van de activiteit.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "eindDatum";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#eindDatum>
+  ], [
+    <http://www.w3.org/ns/shacl#class> <http://dbpedia.org/ontology/UnitOfWork>;
+    <http://www.w3.org/ns/shacl#description> "De activiteit vind plaats tijdens een eenheid van werk.";
+    <http://www.w3.org/ns/shacl#name> "vindtPlaatsTijdens";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#vindtPlaatsTijdens>
+  ];
+  <http://www.w3.org/ns/shacl#targetClass> prov:Activity .
+
+<https://data.vlaanderen.be/shacl/dossier#AgentShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#closed> false;
+  <http://www.w3.org/ns/shacl#property> [
+    <http://www.w3.org/ns/shacl#class> prov:Agent;
+    <http://www.w3.org/ns/shacl#description> "Een agent kan handelen in opdracht van een andere agent.";
+    <http://www.w3.org/ns/shacl#name> "kanHandelenInOpdrachtVan";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#kanHandelenInOpdrachtVan>
+  ];
+  <http://www.w3.org/ns/shacl#targetClass> prov:Agent .
+
+<https://data.vlaanderen.be/shacl/dossier#BesluitShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#closed> false;
+  <http://www.w3.org/ns/shacl#property> [
+    <http://www.w3.org/ns/shacl#datatype> xsd:string;
+    <http://www.w3.org/ns/shacl#description> "De beknopte titel of officiële korte naam van een decreet, wet, besluit... Deze wordt officieel vastgelegd. Deze benaming wordt in de praktijk gebruikt om naar de rechtsgrond te verwijzen.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "citeeropschrift";
+    <http://www.w3.org/ns/shacl#path> <http://data.europa.eu/eli/ontology#title_short>
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> xsd:string;
+    <http://www.w3.org/ns/shacl#description> "De beknopte beschrijving van de beslissing.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "beschrijving";
+    <http://www.w3.org/ns/shacl#path> <http://data.europa.eu/eli/ontology#description>
+  ];
+  <http://www.w3.org/ns/shacl#targetClass> <http://data.vlaanderen.be/ns/besluit#Besluit> .
+
+<https://data.vlaanderen.be/shacl/dossier#CollectieShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#closed> false;
+  <http://www.w3.org/ns/shacl#property> [
+    <http://www.w3.org/ns/shacl#class> prov:Entity;
+    <http://www.w3.org/ns/shacl#description> "Een collectie bestaat uit entiteiten.";
+    <http://www.w3.org/ns/shacl#name> "bestaatUit";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#Collectie.bestaatUit>
+  ], [
+    <http://www.w3.org/ns/shacl#class> <http://dbpedia.org/ontology/UnitOfWork>;
+    <http://www.w3.org/ns/shacl#description> "Een collectie is een neerslag van een eenheid van werk.";
+    <http://www.w3.org/ns/shacl#name> "neerslagVan";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#neerslagVan>
+  ];
+  <http://www.w3.org/ns/shacl#targetClass> prov:Collection .
+
+<https://data.vlaanderen.be/shacl/dossier#DossierShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#closed> false;
+  <http://www.w3.org/ns/shacl#property> [
+    <http://www.w3.org/ns/shacl#class> skos:Concept;
+    <http://www.w3.org/ns/shacl#description> "De informatieclassificatie van het dossier.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "informatieClassificatie";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#informatieClassificatie>
+  ], [
+    <http://www.w3.org/ns/shacl#class> <https://data.vlaanderen.be/ns/dossier#Stuk>;
+    <http://www.w3.org/ns/shacl#description> "Een dossier bestaat uit dossierstukken.";
+    <http://www.w3.org/ns/shacl#name> "bestaatUit";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#Dossier.bestaatUit>
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> xsd:string;
+    <http://www.w3.org/ns/shacl#description> "De naam van het dossier.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "naam";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#naam>
+  ], [
+    <http://www.w3.org/ns/shacl#class> <http://dbpedia.org/ontology/Case>;
+    <http://www.w3.org/ns/shacl#description> "Een dossier is neerslag van een zaak.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "isNeerslagVan";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#isNeerslagVan>
+  ];
+  <http://www.w3.org/ns/shacl#targetClass> <https://data.vlaanderen.be/ns/dossier#Dossier> .
+
+<https://data.vlaanderen.be/shacl/dossier#EntiteitShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#closed> false;
+  <http://www.w3.org/ns/shacl#targetClass> prov:Entity .
+
+<https://data.vlaanderen.be/shacl/dossier#InformatieclassificatieShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#closed> false;
+  <http://www.w3.org/ns/shacl#targetClass> skos:Concept .
+
+<https://data.vlaanderen.be/shacl/dossier#ObjectShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#closed> false;
+  <http://www.w3.org/ns/shacl#property> [
+    <http://www.w3.org/ns/shacl#datatype> xsd:anyURI;
+    <http://www.w3.org/ns/shacl#description> "Een identificator van het object.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "ID";
+    <http://www.w3.org/ns/shacl#path> <http://www.w3.org/ns/adms#identifier>
+  ];
+  <http://www.w3.org/ns/shacl#targetClass> prov:Entity .
+
+<https://data.vlaanderen.be/shacl/dossier#ParticipatieShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#closed> false;
+  <http://www.w3.org/ns/shacl#targetClass> <http://data.europa.eu/m8g/Participation> .
+
+<https://data.vlaanderen.be/shacl/dossier#ProcedurestapShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#closed> false;
+  <http://www.w3.org/ns/shacl#property> [
+    <http://www.w3.org/ns/shacl#class> prov:Activity;
+    <http://www.w3.org/ns/shacl#description> "Een activiteit heeft plaats tijdens een procedurestap.";
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "heeftPlaatsTijdens";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#heeftPlaatsTijdens>
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> xsd:string;
+    <http://www.w3.org/ns/shacl#description> "De naam van de procedurestap.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "naam";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#naam>
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> xsd:date;
+    <http://www.w3.org/ns/shacl#description> "De startdatum van de procedurestap.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "startDatum";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#startDatum>
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> xsd:date;
+    <http://www.w3.org/ns/shacl#description> "De einddatum van de procedurestap.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "eindDatum";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#eindDatum>
+  ];
+  <http://www.w3.org/ns/shacl#targetClass> <https://data.vlaanderen.be/ns/dossier#Procedurestap> .
+
+<https://data.vlaanderen.be/shacl/dossier#ProjectShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#closed> false;
+  <http://www.w3.org/ns/shacl#targetClass> <http://dbpedia.org/ontology/Project> .
+
+<https://data.vlaanderen.be/shacl/dossier#RepresentatieShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#closed> false;
+  <http://www.w3.org/ns/shacl#targetClass> dcat:Distribution .
+
+<https://data.vlaanderen.be/shacl/dossier#SerieShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#closed> false;
+  <http://www.w3.org/ns/shacl#targetClass> <https://data.vlaanderen.be/ns/dossier#Serie> .
+
+<https://data.vlaanderen.be/shacl/dossier#StukShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#closed> false;
+  <http://www.w3.org/ns/shacl#property> [
+    <http://www.w3.org/ns/shacl#class> prov:Agent;
+    <http://www.w3.org/ns/shacl#description> "De auteur van het stuk.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "auteur";
+    <http://www.w3.org/ns/shacl#path> prov:Agent
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> xsd:string;
+    <http://www.w3.org/ns/shacl#description> "De naam van het stuk.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "naam";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#naam>
+  ], [
+    <http://www.w3.org/ns/shacl#class> dcat:Distribution;
+    <http://www.w3.org/ns/shacl#description> "Een stuk of een onderdeel worden voorgesteld door een representatie.";
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "wordtVoorgesteldDoor";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#wordtVoorgesteldDoor>
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> xsd:date;
+    <http://www.w3.org/ns/shacl#description> "De creatiedatum van de entiteit.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "creatieDatum";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#creatieDatum>
+  ], [
+    <http://www.w3.org/ns/shacl#class> skos:Concept;
+    <http://www.w3.org/ns/shacl#description> "De informatieclassificatie van het stuk.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "informatieclassificatie";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#informatieclassificatie>
+  ], [
+    <http://www.w3.org/ns/shacl#class> <https://data.vlaanderen.be/ns/dossier#Stuk>;
+    <http://www.w3.org/ns/shacl#description> "Een stuk kan een relatie hebben tot een ander stuk.";
+    <http://www.w3.org/ns/shacl#name> "heeftRelatieTot";
+    <http://www.w3.org/ns/shacl#path> dc:relation
+  ];
+  <http://www.w3.org/ns/shacl#targetClass> <https://data.vlaanderen.be/ns/dossier#Stuk> .
+
+<https://data.vlaanderen.be/shacl/dossier#StukonderdeelShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#closed> false;
+  <http://www.w3.org/ns/shacl#property> [
+    <http://www.w3.org/ns/shacl#class> <https://data.vlaanderen.be/ns/dossier#Stukonderdeel>;
+    <http://www.w3.org/ns/shacl#description> "Een stukonderdeel kan deel zijn van een ander stukonderdeel.";
+    <http://www.w3.org/ns/shacl#name> "isDeelVan";
+    <http://www.w3.org/ns/shacl#path> dc:isPartOf
+  ], [
+    <http://www.w3.org/ns/shacl#class> prov:Agent;
+    <http://www.w3.org/ns/shacl#description> "De auteur van het stukonderdeel.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "auteur";
+    <http://www.w3.org/ns/shacl#path> prov:Agent
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> xsd:string;
+    <http://www.w3.org/ns/shacl#description> "De naam van het stukonderdeel.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "naam";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#naam>
+  ], [
+    <http://www.w3.org/ns/shacl#class> <https://data.vlaanderen.be/ns/dossier#Stuk>;
+    <http://www.w3.org/ns/shacl#description> "Een verwante bron waarin de beschreven bron fysiek of logisch is opgenomen.";
+    <http://www.w3.org/ns/shacl#name> "isOnderdeelVan";
+    <http://www.w3.org/ns/shacl#path> dc:isPartOf
+  ], [
+    <http://www.w3.org/ns/shacl#class> dcat:Distribution;
+    <http://www.w3.org/ns/shacl#description> "Een stuk of een onderdeel worden voorgesteld door een representatie.";
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "wordtVoorgesteldDoor";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#wordtVoorgesteldDoor>
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> xsd:date;
+    <http://www.w3.org/ns/shacl#description> "De creatiedatum van het stukonderdeel.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "creatieDatum";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#creatieDatum>
+  ], [
+    <http://www.w3.org/ns/shacl#class> skos:Concept;
+    <http://www.w3.org/ns/shacl#description> "De informatieclassificatie van het stukonderdeel.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "informatieclassificatie";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#informatieclassificatie>
+  ];
+  <http://www.w3.org/ns/shacl#targetClass> <https://data.vlaanderen.be/ns/dossier#Stukonderdeel> .
+
+<https://data.vlaanderen.be/shacl/dossier#ZaakShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#closed> false;
+  <http://www.w3.org/ns/shacl#property> [
+    <http://www.w3.org/ns/shacl#class> <https://data.vlaanderen.be/ns/dossier#Procedurestap>;
+    <http://www.w3.org/ns/shacl#description> "Een zaak doorloopt procedurestappen.";
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "doorloopt";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#doorloopt>
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> xsd:date;
+    <http://www.w3.org/ns/shacl#description> "De openingsdatum van de zaak.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "openingsDatum";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#openingsDatum>
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> xsd:date;
+    <http://www.w3.org/ns/shacl#description> "De sluitingsdatum van de zaak.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "sluitingsDatum";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#sluitingsDatum>
+  ], [
+    <http://www.w3.org/ns/shacl#class> <http://dbpedia.org/ontology/Project>;
+    <http://www.w3.org/ns/shacl#description> "Een entiteit kan deel zijn van entiteiten.";
+    <http://www.w3.org/ns/shacl#name> "kanDeelZijnVan";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#kanDeelZijnVan>
+  ], [
+    <http://www.w3.org/ns/shacl#datatype> xsd:string;
+    <http://www.w3.org/ns/shacl#description> "De naam van de zaak.";
+    <http://www.w3.org/ns/shacl#maxCount> 1;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#name> "naam";
+    <http://www.w3.org/ns/shacl#path> <https://data.vlaanderen.be/ns/dossier#naam>
+  ], [
+    <http://www.w3.org/ns/shacl#class> <http://dbpedia.org/ontology/Case>;
+    <http://www.w3.org/ns/shacl#description> "Een zaak kan een relatie hebben tot een andere zaak.";
+    <http://www.w3.org/ns/shacl#name> "heeftRelatieTot";
+    <http://www.w3.org/ns/shacl#path> dc:relation
+  ];
+  <http://www.w3.org/ns/shacl#targetClass> <http://dbpedia.org/ontology/Case> .

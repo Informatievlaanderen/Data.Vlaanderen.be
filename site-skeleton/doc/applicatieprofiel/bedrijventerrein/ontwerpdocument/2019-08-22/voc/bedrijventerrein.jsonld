@@ -69,14 +69,6 @@
       "usage": {}
     },
     {
-      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#Beschikbaarheid",
-      "@type": "http://www.w3.org/2002/07/owl#Class",
-      "description": {},
-      "name": {},
-      "parents": [],
-      "usage": {}
-    },
-    {
       "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#EconomischGebied",
       "@type": "http://www.w3.org/2002/07/owl#Class",
       "description": {
@@ -91,7 +83,7 @@
       "usage": {}
     },
     {
-      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#Functie",
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#FunctieWaarde",
       "@type": "http://www.w3.org/2002/07/owl#Class",
       "description": {
         "nl": "Dit data type geeft weer welke functies aanwezig zijn binnen een BedrijventerreinGebruiksperceel en de overeenkomstige percentages."
@@ -143,13 +135,13 @@
       "usage": {}
     },
     {
-      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#Schorsing",
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#SchorsingInfo",
       "@type": "http://www.w3.org/2002/07/owl#Class",
       "description": {
         "nl": "Schorsing geeft informatie over een mogelijke schorsing van het plan."
       },
       "name": {
-        "nl": "Schorsing"
+        "nl": "SchorsingInfo"
       },
       "parents": [],
       "usage": {}
@@ -175,60 +167,6 @@
       "usage": {
         "nl": "Mogelijke waarden kunnen zijn: bebouwd, onbebouw of infrastructuur."
       }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#behoortTot",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "description": {
-        "nl": "Geeft aan tot welk Bedrijventerrein de Beheerde Bedrijvenzone behoort."
-      },
-      "domain": [
-        "https://data.vlaanderen.be/ns/bedrijventerrein#BeheerdeBedrijvenzone"
-      ],
-      "generalization": [],
-      "name": {
-        "nl": "behoort tot"
-      },
-      "range": [
-        "https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein"
-      ],
-      "usage": {}
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#behoortTot",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "description": {
-        "nl": "Geeft aan tot welk Bedrijventerrein het Bedrijventerreingebruiksperceel behoort."
-      },
-      "domain": [
-        "https://data.vlaanderen.be/ns/bedrijventerrein#BedrijventerreinGebruiksperceel"
-      ],
-      "generalization": [],
-      "name": {
-        "nl": "behoort tot"
-      },
-      "range": [
-        "https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein"
-      ],
-      "usage": {}
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#behoortTot",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "description": {
-        "nl": "Geeft aan tot welk Bedrijventerrein de Ontwikkelbare Bedrijvenzone behoort."
-      },
-      "domain": [
-        "https://data.vlaanderen.be/ns/bedrijventerrein#OntwikkelbareBedrijvenzone"
-      ],
-      "generalization": [],
-      "name": {
-        "nl": "behoort tot"
-      },
-      "range": [
-        "https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein"
-      ],
-      "usage": {}
     },
     {
       "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#beperking",
@@ -264,7 +202,7 @@
         "nl": "beschikbaarheid"
       },
       "range": [
-        "https://data.vlaanderen.be/ns/bedrijventerrein#Beschikbaarheid"
+        "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
       ],
       "usage": {
         "nl": "Mogelijke waarden voor dit attribuut zijn: Aangeboden, Niet aangeboden of optie."
@@ -331,7 +269,7 @@
         "nl": "Geeft de datum weer waarop het plan werd geschorst."
       },
       "domain": [
-        "https://data.vlaanderen.be/ns/bedrijventerrein#Schorsing"
+        "https://data.vlaanderen.be/ns/bedrijventerrein#SchorsingInfo"
       ],
       "generalization": [],
       "name": {
@@ -382,26 +320,6 @@
       "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#functie",
       "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
       "description": {
-        "nl": "Aanduiding van de functiewaarde."
-      },
-      "domain": [
-        "https://data.vlaanderen.be/ns/bedrijventerrein#Functie"
-      ],
-      "generalization": [],
-      "name": {
-        "nl": "functie"
-      },
-      "range": [
-        "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
-      ],
-      "usage": {
-        "nl": "Mogelijke waarden voor dit attribuut zijn: Landbouw, bos, economie, gemeenschapsvoorziening, infrastructuur, water, wonen, braakliggend, buffer, niet gekend en gemengd."
-      }
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#functie",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "description": {
         "nl": "De functie geeft de (verschillende) functies aan die men kan terugvinden op het Bedrijventerreingebruiksperceel en het percentage van het gebruiksperceel dat gedekt wordt door elke functie."
       },
       "domain": [
@@ -412,11 +330,29 @@
         "nl": "functie"
       },
       "range": [
-        "https://data.vlaanderen.be/ns/bedrijventerrein#Functie"
+        "http://www.w3.org/2004/02/skos/core#Concept"
       ],
       "usage": {
         "nl": "Modellering geïnspireerd op INSPIRE HILUCS value en HILUCS percentage."
       }
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#geschorst",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "description": {
+        "nl": "Geeft aan of het plan al dan niet geschorst is."
+      },
+      "domain": [
+        "https://data.vlaanderen.be/ns/bedrijventerrein#SchorsingInfo"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "geschorst"
+      },
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#boolean"
+      ],
+      "usage": {}
     },
     {
       "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#identificator",
@@ -457,13 +393,31 @@
       "usage": {}
     },
     {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#isDeelVan",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "Geeft aan tot welk Bedrijventerrein de Beheerde Bedrijvenzone behoort."
+      },
+      "domain": [
+        "https://data.vlaanderen.be/ns/bedrijventerrein#BeheerdeBedrijvenzone"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "is deel van"
+      },
+      "range": [
+        "https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein"
+      ],
+      "usage": {}
+    },
+    {
       "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#linkSchorsing",
       "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
       "description": {
         "nl": "Link naar het arrest van de schorsing"
       },
       "domain": [
-        "https://data.vlaanderen.be/ns/bedrijventerrein#Schorsing"
+        "https://data.vlaanderen.be/ns/bedrijventerrein#SchorsingInfo"
       ],
       "generalization": [],
       "name": {
@@ -481,7 +435,7 @@
         "nl": "Percentage van het gebruiksperceel dat gedekt wordt door de functie."
       },
       "domain": [
-        "https://data.vlaanderen.be/ns/bedrijventerrein#Functie"
+        "https://data.vlaanderen.be/ns/bedrijventerrein#FunctieWaarde"
       ],
       "generalization": [],
       "name": {
@@ -544,25 +498,7 @@
         "nl": "schorsing"
       },
       "range": [
-        "https://data.vlaanderen.be/ns/bedrijventerrein#Schorsing"
-      ],
-      "usage": {}
-    },
-    {
-      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#schorsing",
-      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
-      "description": {
-        "nl": "Geeft aan of het plan al dan niet geschorst is."
-      },
-      "domain": [
-        "https://data.vlaanderen.be/ns/bedrijventerrein#Schorsing"
-      ],
-      "generalization": [],
-      "name": {
-        "nl": "schorsing"
-      },
-      "range": [
-        "http://www.w3.org/2001/XMLSchema#boolean"
+        "https://data.vlaanderen.be/ns/bedrijventerrein#SchorsingInfo"
       ],
       "usage": {}
     },
@@ -573,7 +509,7 @@
         "nl": "Opmerkingen in het kader van de schorsing."
       },
       "domain": [
-        "https://data.vlaanderen.be/ns/bedrijventerrein#Schorsing"
+        "https://data.vlaanderen.be/ns/bedrijventerrein#SchorsingInfo"
       ],
       "generalization": [],
       "name": {
@@ -787,14 +723,54 @@
       "@id": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
       "@type": "rdfs:Class",
       "name": {}
+    },
+    {
+      "@id": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+      "@type": "rdfs:Class",
+      "name": {}
     }
   ],
   "externalproperties": [
+    {
+      "@id": "http://data.vlaanderen.be/ns/bedrijventerrein#FunctieWaarde.type",
+      "@type": "rdf:Property",
+      "name": {
+        "nl": "type"
+      }
+    },
     {
       "@id": "http://data.vlaanderen.be/ns/bedrijventerrein#subsidietype",
       "@type": "rdf:Property",
       "name": {
         "nl": "subsidietype"
+      }
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#Recht.type",
+      "@type": "rdf:Property",
+      "name": {
+        "nl": "type"
+      }
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid.type",
+      "@type": "rdf:Property",
+      "name": {
+        "nl": "type"
+      }
+    },
+    {
+      "@id": "http://purl.org/dc/terms/isPartOf",
+      "@type": "rdf:Property",
+      "name": {
+        "nl": "is deel van"
+      }
+    },
+    {
+      "@id": "http://purl.org/dc/terms/isPartOf",
+      "@type": "rdf:Property",
+      "name": {
+        "nl": "is deel van"
       }
     },
     {
