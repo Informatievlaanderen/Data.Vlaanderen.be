@@ -1,62 +1,138 @@
 {% extends "ap.j2" %}
 
 {% block introduction %}
-<p>Dit document beschrijft een <strong>applicatieprofiel</strong>, in dit geval <strong>{{ title }}</strong>.
-Het applicatieprofiel is ontwikkeld binnen het project
-<a href="http://lokaalbestuur.vlaanderen.be/lokale-besluiten-als-gelinkte-open-data">Lokale Besluiten als Gelinkte
-Open Data</a> en laat toe om aanvullende reglementen, inname- en signalisatievergunningen gelinkt op te maken en te ontsluiten.
-Het beantwoordt de vraag over hoe het corresponderende domeinmodel in de praktijk kan toegepast worden.
-Daarbij worden de beperkingen (kardinaliteit, codelijsten) toegelicht en de overeenkomstige (RDF) termen opgelijst.
-</p>
+    <p>Dit document beschrijft het <strong>applicatieprofiel</strong> <strong>{{ title }}</strong>.
+    Dit applicatieprofiel is ontwikkeld binnen het project
+    <a href="http://lokaalbestuur.vlaanderen.be/lokale-besluiten-als-gelinkte-open-data">Lokale Besluiten als Gelinkte
+    Open Data</a> en laat toe om subsidiereglementen en -toekenningen gelinkt op te maken en te ontsluiten.
+    Het beantwoordt de vraag over hoe het corresponderende domeinmodel in de praktijk kan toegepast worden.
+    Daarbij worden de beperkingen (kardinaliteit, codelijsten) toegelicht en de overeenkomstige (RDF) termen opgelijst.
+    </p>
 {% endblock %}
 
 {% block conformance %}
   <p>Een applicatieprofiel is een specificatie voor gegevensuitwisseling dat bijkomende beperkingen introduceert voor het toepassen van vocabularia.
-        Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
-        <p>
-        <ul>
-        <li>verfijning van de terminologie (klassen en eigenschappen) consistent met de semantiek uit de betreffende specificaties met een welbepaald gebruik als doel;</li>
-        <li>externe terminologie (klassen en eigenschappen) gebruikt voor nieuwe/extra termen die niet in de bestaande vocabularia voorkomen.</li>
-        </ul>
-        </p>
-        <p>Om conform te zijn met dit applicatieprofiel, geldt voor een implementatie dat ze:</p>
-        <p>
-        <ul>
-        <li>MOET Voor elke klasse steeds de eigenschappen bevatten die als minimum kardinaliteit 1 hebben.</li>
-        <li>MAG NIET meer dan 1 instantie bevatten van eigenschappen die 1 als maximum kardinaliteit hebben.</li>
-        <li>MAG terminologie (klassen en eigenschappen) gebruiken op een manier die consistent is met haar semantiek (definitie, gebruik, domein en bereik).</li>
-        <li>MAG NIET terminologie van andere gecontroleerde vocabularia gebruiken dan diegene die gedefinieerd wordt in dit applicatieprofiel.</li>
-        <li>MAG uitgebreid worden met klassen en eigenschappen van andere datamodellen (vocabularia) die niet overlappen met terminologie uit dit applicatieprofiel.</li>
-        </ul>
-        </p> 
+    Dergelijke bijkomende beperkingen kunnen de volgende elementen bevatten:</p>
+    <p>
+    <ul>
+    <li>verfijning van de terminologie (klassen en eigenschappen) consistent met de semantiek uit de betreffende specificaties met een welbepaald gebruik als doel;</li>
+    <li>externe terminologie (klassen en eigenschappen) gebruikt voor nieuwe/extra termen die niet in de bestaande vocabularia voorkomen.</li>
+    </ul>
+    </p>
+    <p>Om conform te zijn met dit applicatieprofiel, geldt voor een implementatie dat ze:</p>
+    <p>
+    <ul>
+    <li>MOET Voor elke klasse steeds de eigenschappen bevatten die als minimum kardinaliteit 1 hebben.</li>
+    <li>MAG NIET meer dan 1 instantie bevatten van eigenschappen die 1 als maximum kardinaliteit hebben.</li>
+    <li>MAG terminologie (klassen en eigenschappen) gebruiken op een manier die consistent is met haar semantiek (definitie, gebruik, domein en bereik).</li>
+    <li>MAG NIET terminologie van andere gecontroleerde vocabularia gebruiken dan diegene die gedefinieerd wordt in dit applicatieprofiel.</li>
+    <li>MAG uitgebreid worden met klassen en eigenschappen van andere datamodellen (vocabularia) die niet overlappen met terminologie uit dit applicatieprofiel.</li>
+    </ul>
+  </p> 
 {% endblock %}
 
 {% block license %}
-<p>Deze specificatie van
-<a href="https://www.vlaanderen.be/nl/contact/adressengids/administratieve-diensten-van-de-vlaamse-overheid/beleidsdomein-kanselarij-en-bestuur/agentschap-binnenlands-bestuur">
-Agentschap Binnenlands Bestuur</a> is gepubliceerd onder de
-<a href="https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html">
-Modellicentie Gratis Hergebruik - v1.0</a>.</p>
+    <p>
+        Deze specificatie van het
+        <a href="https://www.vlaanderen.be/nl/contact/adressengids/administratieve-diensten-van-de-vlaamse-overheid/beleidsdomein-kanselarij-en-bestuur/agentschap-binnenlands-bestuur">
+        Agentschap Binnenlands Bestuur</a> is gepubliceerd onder de
+        <a href="https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html">
+        Modellicentie Gratis Hergebruik - v1.0</a>.
+    </p>
 {% endblock %}
 
 {% block summary %}
-    <p>TO DO</p>
+    <p>
+        Deze specificatie beschrijft een informatiemodel voor het gelinkt opstellen van twee types van lokale besluiten gerelateerd aan subsidies: subsidiereglementen en subsidietoekenningsbesluiten.  
+        Dit model is een uitbreiding van het generieke OSLO-model voor lokale besluiten, 
+        <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/">Besluit Publicatie</a>).
+        Het omvat informatie met o.a. betrekking tot: aan welke criteria een potentieel begunstigde moet voldoen om recht te hebben op een subsidiemaatregel, welke subsidiebedragen van toepassing zijn en het motiveren waarom er al dan niet toegekend wordt met de mogelijkheid om te verwijzen naar de criteria van het subsidiereglement. 
+        Er is gealigneerd met de volgende OSLO-modellen: 
+        <a href="https://data.vlaanderen.be/doc/applicatieprofiel/dienst-transactiemodel/">Dienst Transactiemodel</a>,
+        <a href="https://data.vlaanderen.be/doc/applicatieprofiel/dienstencataloog/">Dienstencataloog</a> en
+        <a href="https://data.vlaanderen.be/doc/applicatieprofiel/subsidieregister/">Subsidieregister</a>.
+        Daarnaast wordt ook in grote mate gesteund op de Europese ISA standaarden
+        <a href="https://ec.europa.eu/isa2/solutions/core-public-service-vocabulary-application-profile-cpsv-ap_en">Core Public Service Vocabulary Application Profile (CPSV-AP)</a> en
+        <a href="https://joinup.ec.europa.eu/solution/e-government-core-vocabularies/core-criterion-and-core-evidence-vocabulary">Core Criterion and Core Evidence Vocabulary</a>,
+        die ook als leidraad hebben gediend voor enkele van de hierboven vermelde OSLO-modellen.
+        De termen die nieuw gedefinieerd worden in dit applicatieprofiel zijn terug te vinden in het <a href="https://data.vlaanderen.be/ns/subsidie">Vocabularium Subsidie</a>.
+    </p>
+    <p>
+        Het model bestaat uit twee hoofddelen.
+        Het rechterdeel vertelt hoe een subsidiereglement opgebouwd is, terwijl het linkerdeel focust op de subsidietoekenning.
+        We zoomen eerst in op het rechterdeel met het subsidiereglement als startpunt.
+    </p>
+    <p>
+        De entiteit <b>Subsidiereglement</b> is een specifiek type Besluit en neemt bijgevolg alle bestaande eigenschappen, zoals citeeropschrift, publicatiedatum etc., over van het generiek model voor lokale besluiten, <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/">Besluit Publicatie</a>.
+        Daarnaast zijn er een aantal eigenschappen toegevoegd die specifiek zijn voor een subsidiereglement zoals de doelstelling.
+    <p>
+        In een subsidiereglement worden <b>Definities</b> gebruikt om de aangewende begrippen toe te lichten.
+        Deze bestaan enerzijds uit een generieke omschrijving die hergebruikt kan worden binnen andere besluiten en anderzijds uit een beschrijving specifiek voor dit subsidiereglement.
+        Bijvoorbeeld: een handelskern heeft “een aaneengesloten gebied met een hoge dichtheid aan winkels en horecazaken” als generieke definitie en “zie de bijgevoegde lijst voor straten die in aanmerking komen” als specifieke context voor het betreffende reglement.
+    </p>
+    <p>
+        Binnen een subsidiereglement worden één of meerdere <b>Subsidiemaatregelen (Aanbod)</b> aangeboden.
+        Om recht te hebben op een dergelijke publieke dienstverlening moet je voldoen aan de bijhorende <b>Criteria</b>.
+        Aan een criterium, zoals het toepassingsgebied, kan men voldoen door te voldoen aan minstens één van de bijhorende <b>VereistenGroepen</b>.
+        Zo kan er een vereistengroep zijn voor het renoveren van de gevel en een vereistengroep voor het heropbouwen van de gevel.
+        Om tot een dergelijke VereistenGroep te behoren, moet men aan alle <b>CriteriumVereisten</b> binnen die groep voldoen.
+        Een criteriumvereiste is bijvoorbeeld dat de gevel door een erkend bedrijf heropgebouwd moet worden.
+    </p>
+    <p>
+        Om een subsidiemaatregel te verkrijgen en behandelen, worden er verschillende <b>Subsidieprocedurestappen</b> doorlopen.
+        Hierin staat beschreven hoe de aanvraag moet gebeuren, hoe er beoordeeld wordt, wanneer er beslist wordt enzovoort.
+        Een ander kernbegrip bij een subsidiemaatregel (aanbod) is het <b>Subsidiebedrag</b> dat aangeboden wordt.
+        Het is mogelijk dat dit bedrag afhankelijk is van de vereistengroep waartoe een potentieel begunstigde behoort (bijvoorbeeld, het subsidiebedrag voor een vzw kan verschillen met deze voor een bvba—hierbij zijn ‘vzw’ en ‘bvba’ de namen van twee verschillende vereistengroepen van het criterium ‘doelgroep’).
+        Eventueel is het bedrag ook afhankelijk van nog andere bijkomende criteriumvereisten.
+    </p>
+    <p>
+        In de volgende paragrafen gaan we dieper in op hoe de subsidiemaatregel (aanbod) geconsumeerd wordt: Heeft een aanvraag geleid tot een toekenning? Waarom werd mijn aanvraag afgekeurd?
+        Als startpunt vertrekken we vanuit de entiteit Subsidiemaatregel (Consumptie).
+    </p>
+    <p>
+        De <b>Subsidiemaatregel (Consumptie)</b>, hierna vernoemd als de consumptie, is een instantie van de bijhorende <b>Subsidiemaatregel (Aanbod)</b>.
+        Dit wil zeggen dat één bepaalde <b>Agent</b> (een persoon, een organisatie ...) een afname doet van de subsidiemaatregel in kwestie; dit is de consument.
+        Anderzijds is er ook de uitvoerder; dit betreft de agent die de subsidiemaatregel verstrekt.
+        Er kunnen daarnaast ook nog andere rollen gedefinieerd worden.
+    </p>
+    <p>
+        De consumptie behandelt een bepaald <b>Subsidievoorwerp</b>.
+        Dit kan bijvoorbeeld een huis zijn in het geval van een subsidie voor renovatiewerken of een persoon in het geval van een subsidie voor kaderopleidingen.
+        Dit laat toe om op te vragen welke subsidiemaatregelen reeds aan hetzelfde voorwerp werden toegekend. 
+    </p>    
+    <p>
+        Over een bepaalde consumptie worden Subsidiebeslissingen</b> genomen.
+        Deze worden gerealiseerd door het <b>SubsidieToekenningsbesluit</b>.
+        Drie beslissingen modelleren we in dit model expliciet: de <b>SubsidieNietToekenning</b>, de <b>SubsidieToekenning</b> en de <b>SubsidieUitbetalingsbeslissing</b>.
+        De Subsidiebeslissing kan later nog uitgebreid worden met andere beslissingen, zoals een terugvorderingsbeslissing.
+    </p>        
+    <p>
+        Het is de <b>Beoordeling</b> van een subsidiemaatregel (consumptie) die aanleiding geeft tot de subsidiebeslissing.
+        Hierin wordt dan ook de motivering opgenomen.
+        Deze beoordeling kan eventueel gebaseerd zijn op <b>Adviezen</b> en <b>CriteriumBeoordelingen</b>.
+        Deze laatste entiteit linkt een specifieke consumptie terug naar de criteria en criteriumvereisten uit het subsidiereglement en beschrijft of daar al dan niet aan voldaan is.
+        Een advies is de input van een partij die bijdraagt aan het beslissingsproces en kan bovendien gebaseerd zijn op criteriumbeoordelingen.
+    </p>        
+    <p>
+        Een <b>FinanciëleTransactie</b> is, ten slotte, de finale output van de consumptie van een subsidiemaatregel.
+        Om dit te kunnen aanmaken, is het noodzakelijk dat eerst een subsidietoekenning heeft plaatsgevonden.
+    </p>    
 {% endblock %}
 
 {% block status %}
-<p>
-  Dit applicatieprofiel dient om het specifieke gebruik van de entiteiten relevant voor de beschreven applicatie te verduidelijken.
-</p>
-<p>
-Dit document werd gepubliceerd als Ontwerpdocument. De specificatie zoals in dit document beschreven is in ontwikkeling. Bijgevolg kan dit document op elk moment aangepast, vervangen of achterhaald worden.
-</p>
-<p>
-Dit document is bedoeld om uit te groeien tot een standaard in het beschreven domein. Desalniettemin heeft het op dit ogenblik geen officieel statuut en vertegenwoordigt het geen consensus binnen OSLO.
-</p>                                                        
-<p>Feedback op deze specificatie kan gegeven worden als een topic in onze <a href="https://github.com/Informatievlaanderen/OSLO-Public-Discussion">publieke reviewdiscussielijst</a>.</p>   
+    <p>
+      Dit applicatieprofiel dient om het specifieke gebruik van de entiteiten relevant voor de beschreven applicatie te verduidelijken.
+    </p>
+    <p>
+    Dit document werd gepubliceerd als Ontwerpdocument. De specificatie zoals in dit document beschreven is in ontwikkeling. Bijgevolg kan dit document op elk moment aangepast, vervangen of achterhaald worden.
+    </p>
+    <p>
+    Dit document is bedoeld om uit te groeien tot een standaard in het beschreven domein. Desalniettemin heeft het op dit ogenblik geen officieel statuut en vertegenwoordigt het geen consensus binnen OSLO.
+    </p>                                                        
+    <p>Feedback op deze specificatie kan gegeven worden als een topic in onze <a href="https://github.com/Informatievlaanderen/OSLO-Public-Discussion">publieke reviewdiscussielijst</a>.</p>   
 {% endblock %}
 
 {% block jsonld %}
-<p>Een herbruikbare JSON-LD context definitie voor dit applicatieprofiel is terug te vinden op: <a href="https://data.vlaanderen.be/context/besluit-subsidie.jsonld" target="_blank">https://data.vlaanderen.be/context/besluit-subsidie.jsonld</a></p>
+    <p>Een herbruikbare JSON-LD context definitie voor dit applicatieprofiel is terug te vinden op: <a href="https://test.data.vlaanderen.be/context/besluit-subsidie.jsonld" target="_blank">https://test.data.vlaanderen.be/context/besluit-subsidie.jsonld</a></p>
 {% endblock %}
 
