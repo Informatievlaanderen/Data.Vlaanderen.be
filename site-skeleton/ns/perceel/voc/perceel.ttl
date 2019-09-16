@@ -57,8 +57,8 @@
 <http://data.vlaanderen.be/ns/perceel#datumbijwerking> a owl:DatatypeProperty;
   rdfs:label "datumBijwerking"@nl;
   rdfs:comment "Datum van de laatste bijwerking."@nl;
-  rdfs:domain <http://data.vlaanderen.be/ns/perceel#KadastraalPlanperceel>,
-    <http://data.vlaanderen.be/ns/perceel#KadastraalPatrimoniumperceel>;
+  rdfs:domain <http://data.vlaanderen.be/ns/perceel#KadastraalPatrimoniumperceel>,
+    <http://data.vlaanderen.be/ns/perceel#KadastraalPlanperceel>;
   rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
   rdfs:range xsd:dateTime .
 
@@ -95,10 +95,10 @@
 
 <http://data.vlaanderen.be/ns/perceel#geometrie> a owl:ObjectProperty;
   rdfs:label "geometrie"@nl;
-  rdfs:comment "Geometrische voorstelling van een ruimtelijke eenheid."@nl,
-    "Vorm- en positiekenmerken van een object."@nl;
-  rdfs:domain <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie>,
-    <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid>;
+  rdfs:comment "Vorm- en positiekenmerken van een object."@nl,
+    "Geometrische voorstelling van een ruimtelijke eenheid."@nl;
+  rdfs:domain <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid>,
+    <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie>;
   rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
   rdfs:range <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie>,
     <http://www.w3.org/ns/locn#Geometry> .
@@ -219,16 +219,16 @@ dc:relation a rdf:Property;
   rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel> .
 
 <http://data.vlaanderen.be/ns/perceel> a owl:Ontology;
-  rdfs:label "perceel"@en,
-    "perceel"@nl;
+  rdfs:label "perceel"@nl,
+    "perceel"@en;
   dc:issued "2019-06-19";
-  dc:license "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0",
-    <https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0>;
+  dc:license <https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0>,
+    "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0";
   dc:mediator [
     foaf:homepage <https://data.vlaanderen.be>;
     foaf:mbox <mailto:oslo@kb.vlaanderen.be>;
     foaf:name "Data Vlaanderen"
   ];
-  rdfs:seeAlso dc:relation,
-    <https://www.w3.org/2009/08/skos-reference/skos.html#Concept>,
-    dc:description .
+  rdfs:seeAlso dc:description,
+    dc:relation,
+    <https://www.w3.org/2009/08/skos-reference/skos.html#Concept> .

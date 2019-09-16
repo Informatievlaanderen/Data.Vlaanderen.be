@@ -1,0 +1,320 @@
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.europa.eu/m8g/Participation> a rdfs:Class;
+  rdfs:label "Participatie"@nl .
+
+<http://dbpedia.org/ontology/Case> a rdfs:Class;
+  rdfs:label "Zaak"@nl .
+
+<http://dbpedia.org/ontology/Project> a rdfs:Class;
+  rdfs:label "Project"@nl .
+
+<http://dbpedia.org/ontology/UnitOfWork> a rdfs:Class;
+  rdfs:label "Eenheid Van Werk"@nl .
+
+skos:Concept a rdfs:Class .
+
+dcat:Distribution a rdfs:Class;
+  rdfs:label "Representatie"@nl .
+
+prov:Activity a rdfs:Class;
+  rdfs:label "Activiteit"@nl .
+
+prov:Collection a rdfs:Class;
+  rdfs:label "Collectie"@nl .
+
+prov:Entity a rdfs:Class;
+  rdfs:label "Entiteit"@nl .
+
+<https://data.vlaanderen.be/ns/dossier#Dossier> a owl:Class;
+  rdfs:label "Dossier"@nl;
+  rdfs:comment "Samenhangend geheel van stukken die betrekking hebben op een bepaalde zaak. "@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:subClassOf prov:Collection .
+
+<https://data.vlaanderen.be/ns/dossier#Serie> a owl:Class;
+  rdfs:label "Serie"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Voor attributen, zie model \"Digitaal Archief Vlaanderen\""@nl;
+  rdfs:comment "Een serie is een collectie van stukken die gemeenschappelijke eigenschappen deelt."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:subClassOf prov:Collection .
+
+<https://data.vlaanderen.be/ns/dossier#Stukonderdeel> a owl:Class;
+  rdfs:label "Stukonderdeel"@nl;
+  rdfs:comment "Een apart onderdeel van een groter stuk."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:subClassOf prov:Entity .
+
+<https://data.vlaanderen.be/ns/dossier#activiteit> a owl:ObjectProperty;
+  rdfs:label "activiteit"@nl;
+  rdfs:comment "URI van de activiteit."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/dossier#ActiviteitContext>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:range prov:Activity .
+
+<https://data.vlaanderen.be/ns/dossier#auteur> a owl:ObjectProperty;
+  rdfs:label "auteur"@nl;
+  rdfs:comment "De auteur van het stuk(onderdeel)."@nl;
+  rdfs:domain prov:Entity;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:range prov:Agent;
+  rdfs:subPropertyOf dc:creator .
+
+<https://data.vlaanderen.be/ns/dossier#behandelt> a owl:ObjectProperty;
+  rdfs:label "behandelt"@nl;
+  rdfs:comment "Een zaak behandelt een object."@nl;
+  rdfs:domain prov:Entity;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:range <http://dbpedia.org/ontology/Case> .
+
+<https://data.vlaanderen.be/ns/dossier#beschrijft> a owl:ObjectProperty;
+  rdfs:label "beschrijft"@nl;
+  rdfs:comment "Een stuk beschrijft een object."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/dossier#Stuk>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:range prov:Entity .
+
+<https://data.vlaanderen.be/ns/dossier#collectie.bestaatUit> a owl:ObjectProperty;
+  rdfs:label "bestaat uit"@nl;
+  rdfs:comment "Een collectie bestaat uit entiteiten."@nl;
+  rdfs:domain prov:Entity;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:range prov:Entity;
+  rdfs:subPropertyOf prov:hadMember .
+
+<https://data.vlaanderen.be/ns/dossier#doorloopt> a owl:ObjectProperty;
+  rdfs:label "doorloopt"@nl;
+  rdfs:comment "Een zaak doorloopt procedurestappen."@nl;
+  rdfs:domain <http://dbpedia.org/ontology/Case>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:range <https://data.vlaanderen.be/ns/dossier#Procedurestap> .
+
+<https://data.vlaanderen.be/ns/dossier#dossier.bestaatUit> a owl:ObjectProperty;
+  rdfs:label "bestaat uit"@nl;
+  rdfs:comment "Een dossier bestaat uit dossierstukken."@nl;
+  rdfs:domain prov:Entity;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:range <https://data.vlaanderen.be/ns/dossier#Stuk>;
+  rdfs:subPropertyOf prov:hadMember .
+
+<https://data.vlaanderen.be/ns/dossier#einddatum> a owl:DatatypeProperty;
+  rdfs:label "einddatum"@nl;
+  rdfs:comment "De einddatum van de entiteit."@nl;
+  rdfs:domain prov:Entity;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:range xsd:date;
+  rdfs:subPropertyOf prov:endedAtTime .
+
+<https://data.vlaanderen.be/ns/dossier#genereert> a owl:ObjectProperty;
+  rdfs:label "genereert"@nl;
+  rdfs:comment "Een activiteit kan een stuk genereren."@nl;
+  rdfs:domain prov:Activity;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:range <https://data.vlaanderen.be/ns/dossier#Stuk>;
+  rdfs:subPropertyOf prov:generated .
+
+<https://data.vlaanderen.be/ns/dossier#informatieclassificatie> a owl:ObjectProperty;
+  rdfs:label "informatieclassificatie"@nl;
+  rdfs:comment "De informatieclassificatie van de entiteit."@nl;
+  rdfs:domain prov:Entity;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/dossier#isNeerslagVan> a owl:ObjectProperty;
+  rdfs:label "is neerslag van"@nl;
+  rdfs:comment "Een collectie is een neerslag van een eenheid van werk."@nl;
+  rdfs:domain prov:Collection;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:range <http://dbpedia.org/ontology/Case>,
+    <http://dbpedia.org/ontology/UnitOfWork> .
+
+<https://data.vlaanderen.be/ns/dossier#isVoorgesteldDoor> a owl:ObjectProperty;
+  rdfs:label "is voorgesteld door"@nl;
+  rdfs:comment "Een stuk of een onderdeel daarvan worden voorgesteld door een representatie."@nl;
+  rdfs:domain prov:Entity;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:range dcat:Distribution .
+
+<https://data.vlaanderen.be/ns/dossier#openingsdatum> a owl:DatatypeProperty;
+  rdfs:label "openingsdatum"@nl;
+  rdfs:comment "De openingsdatum van de zaak."@nl;
+  rdfs:domain <http://dbpedia.org/ontology/Case>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:range xsd:date;
+  rdfs:subPropertyOf dc:date .
+
+<https://data.vlaanderen.be/ns/dossier#sluitingsdatum> a owl:DatatypeProperty;
+  rdfs:label "sluitingsdatum"@nl;
+  rdfs:comment "De sluitingsdatum van de zaak."@nl;
+  rdfs:domain <http://dbpedia.org/ontology/Case>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:range xsd:date;
+  rdfs:subPropertyOf dc:date .
+
+<https://data.vlaanderen.be/ns/dossier#startdatum> a owl:DatatypeProperty;
+  rdfs:label "startdatum"@nl;
+  rdfs:comment "De startdatum van de entiteit."@nl;
+  rdfs:domain prov:Entity;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:range xsd:date;
+  rdfs:subPropertyOf prov:startedAtTime .
+
+<https://data.vlaanderen.be/ns/dossier#vindtPlaatsTijdens> a owl:ObjectProperty;
+  rdfs:label "vindt plaats tijdens"@nl;
+  rdfs:comment "Een activiteit vindt plaats tijdens een eenheid van werk."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/dossier#Procedurestap>,
+    prov:Activity;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:range prov:Activity,
+    <http://dbpedia.org/ontology/UnitOfWork> .
+
+dc:created a rdf:Property;
+  rdfs:label "creatiedatum"@nl .
+
+dc:isPartOf a rdf:Property;
+  rdfs:label "is deel van"@nl .
+
+dc:relation a rdf:Property;
+  rdfs:label "heeft relatie tot"@nl .
+
+dc:title a rdf:Property;
+  rdfs:label "naam"@nl .
+
+prov:actedOnBehalfOf a rdf:Property;
+  rdfs:label "handelt in opdracht van"@nl .
+
+<https://data.vlaanderen.be/ns/dossier#ActiviteitContext> a owl:Class;
+  rdfs:label "Activiteitcontext"@nl;
+  rdfs:comment "Context van een relatie tussen dossierstukken. Deze context maakt de samenhang van dossierstukken duidelijk in het kader van één bepaalde activiteit."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:subClassOf prov:EntityInfluence .
+
+<https://data.vlaanderen.be/ns/dossier#Procedurestap> a owl:Class;
+  rdfs:label "Procedurestap"@nl;
+  rdfs:comment "Een procedurestap is het geheel aan werk gedaan binnen een specifiek chronologisch, logisch, organisatorisch of wettelijk bepaald onderdeel van een procedure."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:subClassOf <http://dbpedia.org/ontology/UnitOfWork> .
+
+<https://data.vlaanderen.be/ns/dossier#Stuk> a owl:Class;
+  rdfs:label "Stuk"@nl;
+  rdfs:comment "Een stuk uit het dossier dat iets beschrijft en/of informatie bevat."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/dossier>;
+  rdfs:subClassOf prov:Entity .
+
+<https://data.vlaanderen.be/ns/dossier> a owl:Ontology;
+  rdfs:label "dossier"@nl,
+    "dossier"@en;
+  dc:contributor [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <http://www.pwc.be>;
+      foaf:name "PwC"
+    ];
+    foaf:firstName "Arne";
+    foaf:lastName "De Proft";
+    foaf:mbox <mailto:arne.de.proft@pwc.com>
+  ], [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <http://www.pwc.be>;
+      foaf:name "PwC"
+    ];
+    foaf:firstName "Michiel";
+    foaf:lastName "De Keyzer";
+    foaf:mbox <mailto:michiel.de.keyzer@pwc.com>
+  ];
+  dc:issued "2019-09-01";
+  dc:license "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0",
+    <https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0>;
+  dc:mediator [
+    foaf:homepage <https://data.vlaanderen.be>;
+    foaf:mbox <mailto:oslo@kb.vlaanderen.be>;
+    foaf:name "Data Vlaanderen"
+  ];
+  rdfs:seeAlso prov:Collection,
+    prov:Entity,
+    dc:relation,
+    prov:Activity,
+    prov:actedOnBehalfOf,
+    <http://data.europa.eu/m8g/Participation>,
+    <http://dbpedia.org/ontology/Case>,
+    dcat:Distribution,
+    dc:isPartOf,
+    skos:Concept,
+    <http://dbpedia.org/ontology/UnitOfWork>,
+    dc:created,
+    dc:title,
+    <http://dbpedia.org/ontology/Project>;
+  foaf:maker [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://www.lne.be/>;
+      foaf:name "Departement Omgeving"
+    ];
+    foaf:firstName "Geert";
+    foaf:lastName "Van Haute";
+    foaf:mbox <mailto:geert.vanhaute@lne.vlaanderen.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://www.skryv.com/>;
+      foaf:name "Skryv"
+    ];
+    foaf:firstName "Toon";
+    foaf:lastName "Timbermont";
+    foaf:mbox <mailto:toon.timbermont@skryv.com>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Departement CJM"];
+    foaf:firstName "Roel";
+    foaf:lastName "Devriendt";
+    foaf:mbox <mailto:roel.devriendt@cjsm.vlaanderen.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://overheid.vlaanderen.be/>;
+      foaf:name "Informatie Vlaanderen"
+    ];
+    foaf:firstName "Henk";
+    foaf:lastName "Vanderstraeten";
+    foaf:mbox <mailto:henk.vanderstraeten@bz.vlaanderen.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Cipal Schaubroeck"];
+    foaf:firstName "Wim";
+    foaf:lastName "Lambrecht";
+    foaf:mbox <mailto:wim.lambrecht@cipalschaubroeck.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Stad Gent"];
+    foaf:firstName "Steven";
+    foaf:lastName "Staelens";
+    foaf:mbox <mailto:steven.staelens@stad.gent>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Skryv"];
+    foaf:firstName "Anouk";
+    foaf:lastName "De Meester";
+    foaf:mbox <mailto:anouk.demeester@skryv.com>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Onroerend Erfgoed"];
+    foaf:firstName "Inge";
+    foaf:lastName "Roosens";
+    foaf:mbox <mailto:inge.roosens@vlaanderen.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Informatie Vlaanderen"];
+    foaf:firstName "Bert";
+    foaf:lastName "Van Kets";
+    foaf:mbox <mailto:bert.vankets@kb.vlaanderen.be>
+  ] .
