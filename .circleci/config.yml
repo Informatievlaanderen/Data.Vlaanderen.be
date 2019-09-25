@@ -75,7 +75,7 @@ jobs:
             [ $( egrep " ERROR " /tmp/workspace/report/*.report | wc -l ) == 0 ] || exit 1
   normalise-jsonld:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
+      - image: informatievlaanderen/oslo-specification-generator:j1.2-circleci
     steps:
       - checkout
       - attach_workspace:
@@ -96,7 +96,7 @@ jobs:
             - src/
   render-html-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
+      - image: informatievlaanderen/oslo-specification-generator:j1.2-circleci
     steps:
       - checkout
       - attach_workspace:
@@ -120,7 +120,7 @@ jobs:
             - reporthtml/
   render-context-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
+      - image: informatievlaanderen/oslo-specification-generator:j1.2-circleci
     steps:
       - checkout
       - attach_workspace:
@@ -140,7 +140,7 @@ jobs:
             - target/
   render-shacl-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
+      - image: informatievlaanderen/oslo-specification-generator:j1.2-circleci
     steps:
       - checkout
       - attach_workspace:
