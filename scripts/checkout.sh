@@ -151,7 +151,7 @@ then
 	    echo "only take the content of the directory $localdirectory"
 	    rm -rf /tmp/rawdir
 	    mkdir -p /tmp/rawdir
-	    cp -r $ROOTDIR/$MAIN/$RDIR/$localdirectory /tmp/rawdir
+	    cp -r $ROOTDIR/$MAIN/$RDIR/$localdirectory/* /tmp/rawdir
 	    rm -rf $ROOTDIR/$MAIN/$RDIR/*
 	    cp -r /tmp/rawdir/* $ROOTDIR/$MAIN/$RDIR/
 	fi
