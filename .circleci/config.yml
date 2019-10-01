@@ -8,8 +8,8 @@ jobs:
       - run: mkdir -p workspace
       - run: ls -al workspace
       - run: $PWD/scripts/checkout.sh /tmp/workspace $PWD/config/publication.json
-      - run: cat /tmp/workspace/checkouts.txt
-      - run: cat /tmp/workspace/rawcheckouts.txt
+      - run: if [ -e /tmp/workspace/checkouts.txt ] ; cat /tmp/workspace/checkouts.txt ; fi
+      - run: if [ -e /tmp/workspace/rawcheckouts.txt ] ; cat /tmp/workspace/rawcheckouts.txt ; fi
       - run: if [ -e /home/circleci/project/changes.txt ] ; then cat /home/circleci/project/changes.txt ; fi
       - run:
           name: List the files which have been created
