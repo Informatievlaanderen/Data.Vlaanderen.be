@@ -302,7 +302,7 @@ jobs:
           name: List the files which have been created
           command: |
             ls -al /tmp/OSLO-Generated/*
-            if [ -f /tmp/OSLO-Generated/report ] ; then ls -al /tmp/OSLO-Generated/report/* ; fi
+            if [ -d /tmp/OSLO-Generated/report ] ; then ls -al /tmp/OSLO-Generated/report/* ; fi
             find /tmp/OSLO-Generated/report
       - run: 
           name: insert the commit
