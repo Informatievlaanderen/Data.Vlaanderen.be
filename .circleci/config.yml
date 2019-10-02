@@ -194,7 +194,7 @@ jobs:
           name: Copy raw assets
           workdir: /tmp/workspace
           command: |
-            if [ -d raw ] ; then cp -R raw/* /tmp/workspace/target/ ; fi
+            if [ -d raw ] ; then count="$( find raw -mindepth 1 -maxdepth 1 | wc -l )" ; if [ $count -ne 0 ] ; then cp -R raw/* /tmp/workspace/target/ ; fi  ; fi
       - run: 
           name: expand default links
           command: | 
