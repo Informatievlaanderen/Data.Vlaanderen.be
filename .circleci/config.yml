@@ -8,8 +8,8 @@ jobs:
       - run: mkdir -p workspace
       - run: ls -al workspace
       - run: $PWD/scripts/checkout.sh /tmp/workspace $PWD/config/publication.json
-      - run: cat /tmp/workspace/checkouts.txt
-      - run: cat /tmp/workspace/rawcheckouts.txt
+      - run: if [ -e /tmp/workspace/checkouts.txt ] ; then cat /tmp/workspace/checkouts.txt ; fi
+      - run: if [ -e /tmp/workspace/rawcheckouts.txt ] ; then cat /tmp/workspace/rawcheckouts.txt ; fi
       - run: if [ -e /home/circleci/project/changes.txt ] ; then cat /home/circleci/project/changes.txt ; fi
       - run:
           name: List the files which have been created
@@ -194,7 +194,7 @@ jobs:
           name: Copy raw assets
           workdir: /tmp/workspace
           command: |
-            if [-d raw ] ; then cp -R raw/* /tmp/workspace/target/ ; fi
+            if [ -d raw ] ; then count="$( find raw -mindepth 1 -maxdepth 1 | wc -l )" ; if [ $count -ne 0 ] ; then cp -R raw/* /tmp/workspace/target/ ; fi  ; fi
       - run: 
           name: expand default links
           command: | 
@@ -235,7 +235,7 @@ jobs:
       - run:
           name: list results 
           command: |
-            if [-d /tmp/workspace/voc ]; then ls /tmp/workspace/voc ; fi
+            if [ -d /tmp/workspace/voc ]; then ls /tmp/workspace/voc ; fi
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -302,7 +302,7 @@ jobs:
           name: List the files which have been created
           command: |
             ls -al /tmp/OSLO-Generated/*
-            ls -al /tmp/OSLO-Generated/report/*
+            if [ -d /tmp/OSLO-Generated/report ] ; then ls -al /tmp/OSLO-Generated/report/* ; fi
             find /tmp/OSLO-Generated/report
       - run: 
           name: insert the commit

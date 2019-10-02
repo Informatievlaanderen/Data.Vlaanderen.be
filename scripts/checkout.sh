@@ -147,6 +147,13 @@ then
 	    echo "$RDIR" >> $ROOTDIR/rawcheckouts.txt
             cat $ROOTDIR/rawcheckouts.txt
 	    rm -rf $ROOTDIR/$MAIN/$RDIR/.git
+	    localdirectory=$(_jq '.directory')
+	    echo "only take the content of the directory $localdirectory"
+	    rm -rf /tmp/rawdir
+	    mkdir -p /tmp/rawdir
+	    cp -r $ROOTDIR/$MAIN/$RDIR/$localdirectory/* /tmp/rawdir
+	    rm -rf $ROOTDIR/$MAIN/$RDIR/*
+	    cp -r /tmp/rawdir/* $ROOTDIR/$MAIN/$RDIR/
 	fi
     done
 
