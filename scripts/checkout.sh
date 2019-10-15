@@ -82,11 +82,15 @@ toolchainhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
 if cat ${PUBCONFIG} | jq -e . > /dev/null 2>&1
 then
     # only iterate over those that have a repository
-    for row in $(jq -r '.[] | select(.repository)  | @base64 ' ${PUBCONFIG}) ; do
+    for row in $(jq -r '.[] | select(.repository) | @base64 ' ${PUBCONFIG}) ; do
 	_jq() {
 	    echo ${row} | base64 --decode | jq -r ${1}
 	}
 	
+	DISABLED=$(_jq '.disabled')
+	if [ "$DISABLED" == "" ] ; then 
+        # start non  disabled
+
 	FORM=$(_jq '.type')
 	if [ "$FORM" == "raw" ]
 	then
@@ -134,6 +138,7 @@ then
 	    echo "$RDIR" >> $ROOTDIR/rawcheckouts.txt
             cat $ROOTDIR/rawcheckouts.txt
 	    rm -rf $ROOTDIR/$MAIN/$RDIR/.git
+	fi
 	fi
     done
 
