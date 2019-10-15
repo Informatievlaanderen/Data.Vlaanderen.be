@@ -90,6 +90,7 @@ extract_json() {
     if [ ! -f "$(cat .names.txt).jsonld" ]
     then
 	echo "extract_json: $(cat .names.txt).jsonld was not created"
+	cat  ${TTDIR}/$(cat .names.txt).report
 	exit -1;
     fi
     cat .publication-point.json
