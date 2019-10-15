@@ -88,7 +88,8 @@ then
 	}
 	
 	DISABLED=$(_jq '.disabled')
-	if [ "$DISABLED" == "" ] ; then 
+        
+	if [ "$DISABLED" == "" ] || [ "$DISABLED" == "null" ] || [ "$DISABLED" == "false" ] ; then 
         # start non  disabled
 
 	FORM=$(_jq '.type')
