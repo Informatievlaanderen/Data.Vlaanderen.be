@@ -8,9 +8,9 @@ jobs:
       - run: mkdir -p workspace
       - run: ls -al workspace
       - run: $PWD/scripts/checkout.sh /tmp/workspace $PWD/config/publication.json
-      - run: cat /tmp/workspace/checkouts.txt
-      - run: cat /tmp/workspace/rawcheckouts.txt
-      - run: cat /home/circleci/project/changes.txt
+      - run: if [ -e /tmp/workspace/checkouts.txt ] ; then cat /tmp/workspace/checkouts.txt ; fi
+      - run: if [ -e /tmp/workspace/rawcheckouts.txt ] ; then cat /tmp/workspace/rawcheckouts.txt ; fi
+      - run: if [ -e /home/circleci/project/changes.txt ] ; then cat /home/circleci/project/changes.txt ; fi
       - run:
           name: List the files which have been created
           command: ls -al /tmp/workspace/*
@@ -26,7 +26,7 @@ jobs:
             - raw-input/
   extract-jsonld-details:
     docker:
-      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-circleci
+      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-v3.0.7
     steps:
       - checkout
       - attach_workspace:
@@ -63,7 +63,7 @@ jobs:
             - src/
   validate-report:
     docker:
-      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-circleci
+      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-v3.0.7
     steps:
       - checkout
       - attach_workspace:
@@ -75,7 +75,7 @@ jobs:
             [ $( egrep " ERROR " /tmp/workspace/report/*.report | wc -l ) == 0 ] || exit 1
   normalise-jsonld:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
+      - image: informatievlaanderen/oslo-specification-generator:j1.2-circleci
     steps:
       - checkout
       - attach_workspace:
@@ -96,7 +96,7 @@ jobs:
             - src/
   render-html-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
+      - image: informatievlaanderen/oslo-specification-generator:j1.2-circleci
     steps:
       - checkout
       - attach_workspace:
@@ -120,7 +120,7 @@ jobs:
             - reporthtml/
   render-context-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
+      - image: informatievlaanderen/oslo-specification-generator:j1.2-circleci
     steps:
       - checkout
       - attach_workspace:
@@ -140,7 +140,7 @@ jobs:
             - target/
   render-shacl-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
+      - image: informatievlaanderen/oslo-specification-generator:j1.2-circleci
     steps:
       - checkout
       - attach_workspace:
@@ -194,7 +194,7 @@ jobs:
           name: Copy raw assets
           workdir: /tmp/workspace
           command: |
-            if [ -d raw ] ; then cp -R raw/* /tmp/workspace/target/ ; fi
+            if [ -d raw ] ; then count="$( find raw -mindepth 1 -maxdepth 1 | wc -l )" ; if [ $count -ne 0 ] ; then cp -R raw/* /tmp/workspace/target/ ; fi  ; fi
       - run: 
           name: expand default links
           command: | 
@@ -302,7 +302,7 @@ jobs:
           name: List the files which have been created
           command: |
             ls -al /tmp/OSLO-Generated/*
-            ls -al /tmp/OSLO-Generated/report/*
+            if [ -d /tmp/OSLO-Generated/report ] ; then ls -al /tmp/OSLO-Generated/report/* ; fi
             find /tmp/OSLO-Generated/report
       - run: 
           name: insert the commit

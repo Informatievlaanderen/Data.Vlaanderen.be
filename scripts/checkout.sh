@@ -35,6 +35,18 @@ ROOTDIR=$1
 # publicationpoints for that month. That would reduce the runtime
 # drastically.
 
+
+cleanup_directory() {
+    local MAPPINGFILE=`jq -r 'if (.filename | length) > 0 then .filename else @sh "config/eap-mapping.json"  end' .publication-point.json`
+    if [ -f ".names.txt" ]
+    then
+	STR=".[] | select(.name == \"$(cat .names.txt)\") | [.]"
+	jq "${STR}" ${MAPPINGFILE} > .map.json
+	jq -r '.[] | @sh "find . -name \"*.eap\" !  -name \(.eap) -type f -exec rm -f {} + "' .map.json | bash -e
+        rm -rf .git 
+    fi
+}
+
 # Cleanup root (just in case)
 rm -rf $ROOTDIR/*.txt
 
@@ -82,7 +94,7 @@ toolchainhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
 if cat ${PUBCONFIG} | jq -e . > /dev/null 2>&1
 then
     # only iterate over those that have a repository
-    for row in $(jq -r '.[] | select(.repository) | @base64 ' ${PUBCONFIG}) ; do
+    for row in $(jq -r '.[] | select(.repository)  | @base64 ' ${PUBCONFIG}) ; do
 	_jq() {
 	    echo ${row} | base64 --decode | jq -r ${1}
 	}
@@ -125,7 +137,8 @@ then
 	   fi
 	   comhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
 	   echo "hashcode to add: ${comhash}"
-	   echo ${row} | base64 --decode | jq --arg comhash "${comhash}" --arg toolchainhash "${toolchainhash}" '. + {documentcommit : $comhash, toolchaincommit: $toolchainhash}' > .publication-point.json
+	   echo ${row} | base64 --decode | jq --arg comhash "${comhash}" --arg toolchainhash "${toolchainhash}" '. + {documentcommit : $comhash, toolchaincommit: $toolchainhash, hostname: "https://otl-test.data.vlaanderen.be" }' > .publication-point.json
+	   cleanup_directory 
         popd
 
 	if [ "$MAIN" == "src" ]
@@ -139,7 +152,13 @@ then
 	    echo "$RDIR" >> $ROOTDIR/rawcheckouts.txt
             cat $ROOTDIR/rawcheckouts.txt
 	    rm -rf $ROOTDIR/$MAIN/$RDIR/.git
-	fi
+	    localdirectory=$(_jq '.directory')
+	    echo "only take the content of the directory $localdirectory"
+	    rm -rf /tmp/rawdir
+	    mkdir -p /tmp/rawdir
+	    cp -r $ROOTDIR/$MAIN/$RDIR/$localdirectory/* /tmp/rawdir
+	    rm -rf $ROOTDIR/$MAIN/$RDIR/*
+	    cp -r /tmp/rawdir/* $ROOTDIR/$MAIN/$RDIR/
 	fi
     done
 
