@@ -146,20 +146,26 @@ then
 	    echo "$RDIR" >> $ROOTDIR/checkouts.txt
 	fi
 
-    	if [ "$MAIN" == "raw-input" ]
-	then
-	    echo "force removal of .git directory - $ROOTDIR/$MAIN/$RDIR"
-	    echo "$RDIR" >> $ROOTDIR/rawcheckouts.txt
+        if [ "$MAIN" == "raw-input" ]
+        then
+            echo "force removal of .git directory - $ROOTDIR/$MAIN/$RDIR"
+            echo "$RDIR" >> $ROOTDIR/rawcheckouts.txt
             cat $ROOTDIR/rawcheckouts.txt
-	    rm -rf $ROOTDIR/$MAIN/$RDIR/.git
-	    localdirectory=$(_jq '.directory')
-	    echo "only take the content of the directory $localdirectory"
-	    rm -rf /tmp/rawdir
-	    mkdir -p /tmp/rawdir
-	    cp -r $ROOTDIR/$MAIN/$RDIR/$localdirectory/* /tmp/rawdir
-	    rm -rf $ROOTDIR/$MAIN/$RDIR/*
-	    cp -r /tmp/rawdir/* $ROOTDIR/$MAIN/$RDIR/
-	fi
+            rm -rf $ROOTDIR/$MAIN/$RDIR/.git
+            localdirectory=$(_jq '.directory')
+            if [ "$localdirectory" != "null" ] ;  then
+             echo "only take the content of the directory $localdirectory"
+             rm -rf /tmp/rawdir
+             mkdir -p /tmp/rawdir
+             cp -r $ROOTDIR/$MAIN/$RDIR/$localdirectory/* /tmp/rawdir
+             rm -rf $ROOTDIR/$MAIN/$RDIR/*
+             cp -r /tmp/rawdir/* $ROOTDIR/$MAIN/$RDIR/
+            else 
+             echo "no localdirectory defined, keep content as is"
+            fi
+        fi
+        fi
+	
     done
 
 
