@@ -38,7 +38,7 @@ ROOTDIR=$1
 
 cleanup_directory() {
     local MAPPINGFILE=`jq -r 'if (.filename | length) > 0 then .filename else @sh "config/eap-mapping.json"  end' .publication-point.json`
-    if [ -f ".names.txt" ]
+    if [[ -f ".names.txt" && -f $MAPPINGFILE ]]
     then
 	STR=".[] | select(.name == \"$(cat .names.txt)\") | [.]"
 	jq "${STR}" ${MAPPINGFILE} > .map.json
