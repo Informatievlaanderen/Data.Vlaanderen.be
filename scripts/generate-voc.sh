@@ -14,7 +14,7 @@ make_jsonld() {
     local TARGET=$3
     local CONFIGDIR=$4
     mkdir -p /tmp/${FILE}
-/* TODO support subclass */
+#/* TODO support subclass */
     jq 'walk( if type == "object" and (.range | type) == "array" and (.range | length) > 0 then .range |= map(.uri)  else . end)' ${INPUT} > /tmp/${FILE}0.jsonld
     jq 'walk( if type == "object" and (.domain | type) == "array" and (.domain | length) > 0 then .domain |= map(.uri)  else . end)' /tmp/${FILE}0.jsonld > /tmp/${FILE}1.jsonld
     jq 'walk( if type == "object" and (.nl | length) > 0 and (.nl | sub(" ";"";"g") | length) == 0 then .nl |= ""  else . end)' /tmp/${FILE}1.jsonld > /tmp/${FILE}2.jsonld
