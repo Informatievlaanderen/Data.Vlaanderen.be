@@ -70,7 +70,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            gem install rdf-turtle -v 3.0.6 && gem install linkeddata -v 3.0.1 && gem uninstall rdf-turtle -v 3.1.0 && mkdir -p /tmp/workspace/voc
+            gem install linkeddata && mkdir -p /tmp/workspace/voc
             jq -r '.[] | select(has("prefix")) | @sh "mkdir -p /tmp/workspace/voc/\(.prefix)"' config/eap-mapping.json | bash -e
             sed -i '/TBD/d' /tmp/workspace/ttl/gebouw.ttl
       - run:
