@@ -95,8 +95,8 @@ jobs:
           command: |
             for model in $(jq -r '.[] | select(.type | contains("voc")) | "\(if .prefix then .prefix + "/" else "" end)\(.name)"' config/eap-mapping.json); do
               echo "disabled json generation due to performance issues"
-              #rdf serialize --input-format turtle --output-format jsonld /tmp/workspace/ttl/${model}.ttl -o /tmp/workspace/voc/${model}.jsonld
-              cp /tmp/workspace/voc/${model}.jsonld /tmp/workspace/voc/${model}.json
+              # rdf serialize --input-format turtle --output-format jsonld /tmp/workspace/ttl/${model}.ttl -o /tmp/workspace/voc/${model}.jsonld
+              # cp /tmp/workspace/voc/${model}.jsonld /tmp/workspace/voc/${model}.json
             done
       - run:
           name: Generate turtle
