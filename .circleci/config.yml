@@ -80,19 +80,22 @@ jobs:
           name: Generate ntriples
           command: |
             for model in $(jq -r '.[] | select(.type | contains("voc")) | "\(if .prefix then .prefix + "/" else "" end)\(.name)"' config/eap-mapping.json); do
-              rdf serialize --input-format turtle --output-format ntriples /tmp/workspace/ttl/${model}.ttl -o /tmp/workspace/voc/${model}.nt
+              echo "disabled turtle generation due to performance issues"
+              # rdf serialize --input-format turtle --output-format ntriples /tmp/workspace/ttl/${model}.ttl -o /tmp/workspace/voc/${model}.nt
             done
       - run:
           name: Generate rdfxml
           command: |
             for model in $(jq -r '.[] | select(.type | contains("voc")) | "\(if .prefix then .prefix + "/" else "" end)\(.name)"' config/eap-mapping.json); do
-              rdf serialize --input-format turtle --output-format rdfxml /tmp/workspace/ttl/${model}.ttl -o /tmp/workspace/voc/${model}.rdf
+              echo "disabled RDF generation due to performance issues"
+            # rdf serialize --input-format turtle --output-format rdfxml /tmp/workspace/ttl/${model}.ttl -o /tmp/workspace/voc/${model}.rdf
             done
       - run:
           name: Generate jsonld
           command: |
             for model in $(jq -r '.[] | select(.type | contains("voc")) | "\(if .prefix then .prefix + "/" else "" end)\(.name)"' config/eap-mapping.json); do
-              rdf serialize --input-format turtle --output-format jsonld /tmp/workspace/ttl/${model}.ttl -o /tmp/workspace/voc/${model}.jsonld
+              echo "disabled json generation due to performance issues"
+              #rdf serialize --input-format turtle --output-format jsonld /tmp/workspace/ttl/${model}.ttl -o /tmp/workspace/voc/${model}.jsonld
               cp /tmp/workspace/voc/${model}.jsonld /tmp/workspace/voc/${model}.json
             done
       - run:
