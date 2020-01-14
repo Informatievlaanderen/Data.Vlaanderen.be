@@ -160,7 +160,7 @@ jobs:
             - report/
   convert-json-to-ttl:
     docker:
-      - image: circleci/ruby
+      - image: circleci/ruby:2.6.5-stretch
     steps:
       - checkout
       - attach_workspace:
@@ -205,7 +205,7 @@ jobs:
             - target/
   render-voc-rdf:
     docker:
-      - image: circleci/ruby
+      - image: circleci/ruby:2.6.5-stretch
     steps:
       - checkout
       - attach_workspace:
@@ -220,18 +220,18 @@ jobs:
           command: |
             $PWD/scripts/generate-voc.sh /tmp/workspace json $PWD/config
             mkdir -p /tmp/workspace/target/doc/vocabularium
-#      - run:
-#          name: Convert vocabulary to turtle
-#          command: |
-#            find /tmp/workspace/target/doc/vocabularium -name \*.jsonld -type f | $PWD/scripts/convert_to_any.sh turtle
+      - run:
+          name: Convert vocabulary to turtle
+          command: |
+            find /tmp/workspace/target/doc/vocabularium -name \*.jsonld -type f | $PWD/scripts/convert_to_any.sh turtle
       - run:
           name: Convert vocabulary to ntriples
           command: |
             find /tmp/workspace/target/doc/vocabularium -name \*.jsonld -type f | $PWD/scripts/convert_to_any.sh ntriples
-#      - run:
-#          name: Convert vocabulary to rdf/xml
-#          command: |
-#            find /tmp/workspace/target/doc/vocabularium -name \*.jsonld -type f | $PWD/scripts/convert_to_any.sh rdfxml
+      - run:
+          name: Convert vocabulary to rdf/xml
+          command: |
+            find /tmp/workspace/target/doc/vocabularium -name \*.jsonld -type f | $PWD/scripts/convert_to_any.sh rdfxml
       - run:
           name: list results 
           command: |
