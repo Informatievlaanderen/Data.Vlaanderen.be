@@ -173,7 +173,7 @@ jobs:
       - run:
           name: Convert -SHACL.jsonld file to -SHACL.ttl files
           command: |
-            find /tmp/workspace/target -name \*-SHACL.jsonld -type f | $PWD/scripts/convert_to_any.sh ntriples
+            find /tmp/workspace/target -name \*-SHACL.jsonld -type f | $PWD/scripts/convert_to_any.sh turtle
       - run:
           name: List the -SHACL.ttl and context files found
           command: |
