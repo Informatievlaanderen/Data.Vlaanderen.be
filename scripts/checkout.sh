@@ -137,7 +137,7 @@ then
 	   fi
 	   comhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
 	   echo "hashcode to add: ${comhash}"
-	   echo ${row} | base64 --decode | jq --arg comhash "${comhash}" --arg toolchainhash "${toolchainhash}" '. + {documentcommit : $comhash, toolchaincommit: $toolchainhash, hostname: "https://otl-test.data.vlaanderen.be" }' > .publication-point.json
+	   echo ${row} | base64 --decode | jq --arg comhash "${comhash}" --arg toolchainhash "${toolchainhash}" '. + {documentcommit : $comhash, toolchaincommit: $toolchainhash, hostname: "https://test.data.vlaanderen.be" }' > .publication-point.json
 	   cleanup_directory 
         popd
 
