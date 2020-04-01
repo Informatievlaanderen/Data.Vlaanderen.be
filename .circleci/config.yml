@@ -1,68 +1,211 @@
 version: 2
 jobs:
-  extract-vocabularia:
-    docker:
-      - image: informatievlaanderen/oslo-ea-to-rdf:circleci
+  checkout:
+    docker: 
+      - image: circleci/python
     steps:
       - checkout
+      - run: mkdir -p workspace
+      - run: ls -al workspace
+      - run: $PWD/scripts/checkout.sh /tmp/workspace $PWD/config/publication.json
+      - run: if [ -e /tmp/workspace/checkouts.txt ] ; then cat /tmp/workspace/checkouts.txt ; fi
+      - run: if [ -e /tmp/workspace/rawcheckouts.txt ] ; then cat /tmp/workspace/rawcheckouts.txt ; fi
+      - run: if [ -e /home/circleci/project/changes.txt ] ; then cat /home/circleci/project/changes.txt ; fi
       - run:
-          name: Extract ttl data for each diagram
-          command: |
-            jq -r '.[] | select(.type | contains("voc")) | @sh "java -jar /app/ea-2-rdf.jar convert -i src/\(.eap) -c config/config-voc.json -d \(.diagram) -o /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl"' config/eap-mapping.json | bash -e
+          name: List the files which have been created
+          command: ls -al /tmp/workspace/*
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
-            - ttl/
-  extract-application-profiles:
+            - checkouts.txt
+            - rawcheckouts.txt
+            - changedpublications.json
+            - haschangedpublications.json
+            - links.txt
+            - src/
+            - raw-input/
+  extract-jsonld-details:
     docker:
-      - image: informatievlaanderen/oslo-ea-to-rdf:circleci
+      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-v3.0.7
     steps:
       - checkout
+      - attach_workspace:
+          at: /tmp/workspace
       - run:
-          name: Extract tsv data for each diagram ap
-          command: |
-            jq -r '.[] | select(.type | contains("ap")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i src/\(.eap) -c config/config-ap.json -d \(.diagram) -o /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv"' < config/eap-mapping.json | bash -e
+          name: Extract json details from UML diagram(s)
+          command: $PWD/scripts/extract-what.sh jsonld
       - run:
-          name: Extract tsv data for each diagram oj
+          name: Extract tsv details from UML diagram
+          command: $PWD/scripts/extract-what.sh tsv
+      - run:
+          name: Extract raw details from UML diagram
+          command: $PWD/scripts/extract-what.sh raw
+      - run:
+          name: Show the report (for debugging purposes)
           command: |
-            jq -r '.[] | select(.type | contains("oj")) | @sh "java -jar /app/ea-2-rdf.jar tsv -i src/\(.eap) -c config/config-ap.json -d \(.diagram) -o /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv"' < config/eap-mapping.json | bash -e
+             if [ -d /tmp/workspace/report ] ; then cat /tmp/workspace/report/*.report ; fi
+      - run:
+          name: List the files which have been created
+          command: |
+             if [ -d /tmp/workspace/report ] ; then ls -al /tmp/workspace/report/* ; fi
+      - run:
+          name: Show the errors found (for debugging purposes)
+          command:
+            egrep " ERROR " /tmp/workspace/report/*.report || true
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
+            - checkouts.txt
+            - links.txt
+            - report/
             - tsv/
-  add-voc-contributors:
+            - json/
+            - src/
+  validate-report:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:v1.2-circleci
+      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-v3.0.7
     steps:
       - checkout
       - attach_workspace:
           at: /tmp/workspace
       - run:
-          name: Add contributors to vocabulary ttl file
-          command: |
-            jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --add_contributors --rdf /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl --csv src/stakeholders.csv --csv_contributor_role_column \(.contributors) --output /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl"' < config/eap-mapping.json | bash -e
-      - persist_to_workspace:
-          root: /tmp/workspace
-          paths:
-            - ttl/
-  render-voc-html:
+          name: Check no errors found in the reports
+          command:
+            egrep " ERROR " /tmp/workspace/report/*.report || true ;
+            [ $( egrep " ERROR " /tmp/workspace/report/*.report | wc -l ) == 0 ] || exit 1
+  normalise-jsonld:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:v1.2-circleci
+      - image: informatievlaanderen/oslo-specification-generator:j1.2-circleci
     steps:
       - checkout
       - attach_workspace:
           at: /tmp/workspace
       - run:
-          name: Render HTML version of merged ttl file
+          name: Make sure pretty print is runnable
+          command: cd /app/pretty-print ; sudo npm install
+      - run:
+          name: Normalise the recovered JSON-LD files (in the src directory)
           command: |
-            jq -r '.[] | select(.type | contains("voc")) | @sh "python /app/specgen/generate_vocabulary.py --schema \(.template) --schema_folder templates/ --rdf /tmp/workspace/ttl/\(if .prefix then .prefix + "/" else "" end)\(.name).ttl --output /tmp/workspace/voc/\(if .prefix then .prefix + "/" else "" end)\(.name)/index.html"' < config/eap-mapping.json | bash -e
+            $PWD/scripts/pretty-print-jsonfiles.sh /tmp/workspace
+            mkdir -p /tmp/workspace/report /tmp/workspace/json /tmp/workspace/json
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
-            - voc/
+            - report/
+            - json/
+            - src/
+  render-html-details:
+    docker:
+      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Render HTML version of merged json file (a)
+          command: |
+            $PWD/scripts/render-details.sh /tmp/workspace html
+            mkdir -p /tmp/workspace/target /tmp/workspace/reporthtml
+      - run:
+          name: copy the site-skeleton for the html
+          command: $PWD/scripts/copy_skeleton.sh
+      - run:
+          name: List the html files found
+          command: |
+            if [ -d /tmp/workspace/target ] ; then find /tmp/workspace/target -name \*.html -type f ; fi
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - target/
+            - reporthtml/
+  render-context-details:
+    docker:
+      - image: informatievlaanderen/oslo-specification-generator:j1.2-circleci
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Render Context Details
+          command: |
+            $PWD/scripts/render-details.sh /tmp/workspace context
+            mkdir -p /tmp/workspace/target
+      - run:
+          name: List the context files found
+          command: |
+            if [ -d /tmp/workspace/target ] ; then find /tmp/workspace/target -name \*.jsonld -type f ; fi
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - target/
+  render-shacl-details:
+    docker:
+      - image: informatievlaanderen/oslo-specification-generator:j1.2-circleci
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Render Shacl details
+          command: |
+            $PWD/scripts/render-details.sh /tmp/workspace shacl
+            mkdir -p /tmp/workspace/target /tmp/workspace/report
+      - run:
+          name: List the shacl files found
+          command: find /tmp/workspace/target -name \*-SHACL.jsonld -type f
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - target/
+            - report/
+  convert-json-to-ttl:
+    docker:
+      - image: circleci/ruby:2.6.5-stretch
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Install dependencies
+          command: |
+            gem install linkeddata
+            mkdir -p /tmp/workspace/target
+      - run:
+          name: Convert -SHACL.jsonld file to -SHACL.ttl files
+          command: |
+            find /tmp/workspace/target -name \*-SHACL.jsonld -type f | $PWD/scripts/convert_to_any.sh turtle
+      - run:
+          name: List the -SHACL.ttl and context files found
+          command: |
+            if [ -d /tmp/workspace/target ] ; then find /tmp/workspace/target -name \*-SHACL.ttl -type f ; fi
+            if [ -d /tmp/workspace/target ] ; then find /tmp/workspace/target -name \*.ttl -type f ; fi   
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - target/
+  expand-links:
+    docker: 
+      - image: circleci/node:4.8.2
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Copy raw assets
+          workdir: /tmp/workspace
+          command: |
+            if [ -d raw ] ; then count="$( find raw -mindepth 1 -maxdepth 1 | wc -l )" ; if [ $count -ne 0 ] ; then cp -R raw/* /tmp/workspace/target/ ; fi  ; fi
+      - run: 
+          name: expand default links
+          command: | 
+            $PWD/scripts/expand-links.sh /tmp/workspace
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - target/
   render-voc-rdf:
     docker:
-      - image: circleci/ruby
+      - image: circleci/ruby:2.6.5-stretch
     steps:
       - checkout
       - attach_workspace:
@@ -71,108 +214,54 @@ jobs:
           name: Install dependencies
           command: |
             gem install linkeddata && mkdir -p /tmp/workspace/voc
-            jq -r '.[] | select(has("prefix")) | @sh "mkdir -p /tmp/workspace/voc/\(.prefix)"' config/eap-mapping.json | bash -e
-            sed -i '/TBD/d' /tmp/workspace/ttl/gebouw.ttl
+            mkdir -p /tmp/workspace/target
       - run:
-          name: Turn TODO into proper URIs
-          command: find /tmp/workspace/ttl -type f | xargs sed -i 's/TODO/http:\/\/example.com\/TODO/g'
-      - run:
-          name: Generate ntriples
+          name: Generate vocabulary in baseformat jsonld
           command: |
-            for model in $(jq -r '.[] | select(.type | contains("voc")) | "\(if .prefix then .prefix + "/" else "" end)\(.name)"' config/eap-mapping.json); do
-              rdf serialize --input-format turtle --output-format ntriples /tmp/workspace/ttl/${model}.ttl -o /tmp/workspace/voc/${model}.nt
-            done
+            $PWD/scripts/generate-voc.sh /tmp/workspace json $PWD/config
+            mkdir -p /tmp/workspace/target/doc/vocabularium
       - run:
-          name: Generate rdfxml
+          name: Convert vocabulary to turtle
           command: |
-            for model in $(jq -r '.[] | select(.type | contains("voc")) | "\(if .prefix then .prefix + "/" else "" end)\(.name)"' config/eap-mapping.json); do
-              rdf serialize --input-format turtle --output-format rdfxml /tmp/workspace/ttl/${model}.ttl -o /tmp/workspace/voc/${model}.rdf
-            done
+            find /tmp/workspace/target/doc/vocabularium -name \*.jsonld -type f | $PWD/scripts/convert_to_any.sh turtle
       - run:
-          name: Generate jsonld
+          name: Convert vocabulary to ntriples
           command: |
-            for model in $(jq -r '.[] | select(.type | contains("voc")) | "\(if .prefix then .prefix + "/" else "" end)\(.name)"' config/eap-mapping.json); do
-              rdf serialize --input-format turtle --output-format jsonld /tmp/workspace/ttl/${model}.ttl -o /tmp/workspace/voc/${model}.jsonld
-              cp /tmp/workspace/voc/${model}.jsonld /tmp/workspace/voc/${model}.json
-            done
+            find /tmp/workspace/target/doc/vocabularium -name \*.jsonld -type f | $PWD/scripts/convert_to_any.sh ntriples
       - run:
-          name: Generate turtle
+          name: Convert vocabulary to rdf/xml
           command: |
-            for model in $(jq -r '.[] | select(.type | contains("voc")) | "\(if .prefix then .prefix + "/" else "" end)\(.name)"' config/eap-mapping.json); do
-              cp /tmp/workspace/ttl/${model}.ttl /tmp/workspace/voc/${model}.ttl
-            done
+            find /tmp/workspace/target/doc/vocabularium -name \*.jsonld -type f | $PWD/scripts/convert_to_any.sh rdfxml
+      - run:
+          name: list results 
+          command: |
+            if [ -d /tmp/workspace/voc ]; then ls /tmp/workspace/voc ; fi
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
-            - voc/
-  render-ap-html:
+            - target/
+  copy-raw:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:v1.2-circleci
+      - image: circleci/python
     steps:
       - checkout
       - attach_workspace:
           at: /tmp/workspace
       - run:
-          name: Render HTML of AP tsv file
+          name: List the files which should have been created
           command: |
-            jq -r '.[] | select(.type | contains("ap")) | @sh "python /app/specgen/generate_vocabulary.py --ap --csv /tmp/workspace/tsv/\(.name).tsv --csv_contributor src/stakeholders.csv --csv_contributor_role_column \(.contributors) --title \(.title) --name \(.name) --schema \(.template) --schema_folder templates/ --output /tmp/workspace/ap/\(.name)/index.html"' < config/eap-mapping.json | bash -e
+             if [ -d /tmp/workspace/raw-input ] ; then ls -al /tmp/workspace/raw-input ; fi
+      - run: 
+          name: copy /raw-input to where it is needed
+          command: $PWD/scripts/extract-raw.sh raw
+      - run: 
+          name: List the subdirs in raw
+          command: |
+            if [ -d /tmp/workspace/raw ] ; then ls -al /tmp/workspace/raw; else mkdir -p /tmp/workspace/raw ; fi
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
-            - ap/
-  render-oj-html:
-    docker:
-      - image: informatievlaanderen/oslo-specification-generator:v1.2-circleci
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          name: Render HTML of OJ tsv file
-          command: |
-            jq -r '.[] | select(.type | contains("oj")) | @sh "python /app/specgen/generate_vocabulary.py --oj --csv /tmp/workspace/tsv/\(.name).tsv --csv_contributor src/stakeholders.csv --csv_contributor_role_column \(.contributors) --title \(.title) --name \(.name) --schema \(.template) --schema_folder templates/ --output /tmp/workspace/ap/\(.name)/index.html"' < config/eap-mapping.json | bash -x
-      - persist_to_workspace:
-          root: /tmp/workspace
-          paths:
-            - ap/
-  render-ap-jsonld:
-    docker:
-      - image: informatievlaanderen/oslo-specification-generator:v1.2-circleci
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          name: Render jsonld version of AP tsv file
-          command: |
-            jq -r '.[] | select(.type | contains("ap")) | @sh "python /app/specgen/generate_jsonld.py --input /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv --output /tmp/workspace/ap/\(if .prefix then .prefix + "/" else "" end)\(.name).jsonld"' config/eap-mapping.json | bash -e
-      - run:
-          name: Render jsonld version of AP tsv file
-          command: |
-            jq -r '.[] | select(.type | contains("oj")) | @sh "python /app/specgen/generate_jsonld.py --input /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv --output /tmp/workspace/ap/\(if .prefix then .prefix + "/" else "" end)\(.name).jsonld"' config/eap-mapping.json | bash -e
-      - persist_to_workspace:
-          root: /tmp/workspace
-          paths:
-            - ap/
-  create-shacl:
-    docker:
-      - image: informatievlaanderen/oslo-specification-generator:v1.2-circleci
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          name: create the target dir
-          command: |
-             mkdir -p /tmp/workspace/shacl
-      - run:
-          name: create the SHACL files
-          command: |
-            jq -r '.[] | select(.type | contains("ap")) | @sh "python /app/specgen/generate_shacl.py --input /tmp/workspace/tsv/\(if .prefix then .prefix + "/" else "" end)\(.name).tsv --output /tmp/workspace/shacl/\(if .prefix then .prefix + "/" else "" end)\(.name)-SHACL.ttl --name \(.name)"' config/eap-mapping.json | bash -e
-      - persist_to_workspace:
-          root: /tmp/workspace
-          paths:
-            - shacl/
+            - raw/
   create-artifact:
     docker:
       - image: circleci/node
@@ -187,9 +276,15 @@ jobs:
           name: Checkout target repo
           workdir: /tmp
           command: |
+            rm -rf OSLO-Generated
             git clone git@github.com:Informatievlaanderen/OSLO-Generated.git
-            cd OSLO-Generated && git fetch origin && git checkout -B "${CIRCLE_BRANCH}" "origin/${CIRCLE_BRANCH}"
-            rm -rf *
+      - run:
+          name: clean the generated directory
+          workdir: /tmp/OSLO-Generated
+          command: |
+            git fetch origin
+            git checkout -b "${CIRCLE_BRANCH}" --track "origin/${CIRCLE_BRANCH}"
+            if [ "`cat /tmp/workspace/haschangedpublications.json`" == "false" ] ; then git rm -r --force * ; fi
       - run:
           name: Copy static assets
           command: |
@@ -198,11 +293,22 @@ jobs:
           name: Copy generated assets
           workdir: /tmp/workspace
           command: |
-            ls ap/*
-            cp -R voc/* /tmp/OSLO-Generated/ns/
-            cp ap/*.jsonld /tmp/OSLO-Generated/context/
-            cp -R ap/* /tmp/OSLO-Generated/doc/applicatieprofiel/
-            cp -R shacl/* /tmp/OSLO-Generated/shacl/
+            mkdir -p /tmp/OSLO-Generated/report
+            if [ -d target ] ; then if [ ! "$(ls -A target)" ] ; then echo "directory target is empty" ; else cp -R target/* /tmp/OSLO-Generated ; fi fi
+            if [ -d report ] ; then if [ ! "$(ls -A report)" ] ; then echo "directory report is empty" ; else cp -R report/* /tmp/OSLO-Generated/report ; fi fi
+            if [ -d reporthtml ] ; then if [ ! "$(ls -A reporthtml)" ] ; then echo "directory reporthtml is empty" ; else cp -R reporthtml/* /tmp/OSLO-Generated/report ; fi fi
+            if [ -d json ] ; then if [ ! "$(ls -A json)" ] ; then echo "directory json is empty" ; else cp -R json/*   /tmp/OSLO-Generated/report ; fi fi
+      - run:
+          name: List the files which have been created
+          command: |
+            ls -al /tmp/OSLO-Generated/*
+            if [ -d /tmp/OSLO-Generated/report ] ; then ls -al /tmp/OSLO-Generated/report/* ; fi
+            find /tmp/OSLO-Generated/report
+      - run: 
+          name: insert the commit
+          command: |
+            export TAG=`echo "${CIRCLE_SHA1}" | cut -c1-15`
+            echo "{\"commit\" : \"$TAG\"}" > /tmp/OSLO-Generated/report/commit.json
       - run:
           name: Push results to github
           workdir: /tmp/OSLO-Generated
@@ -210,40 +316,51 @@ jobs:
             git config user.email "oslo@kb.vlaanderen.be"
             git config user.name "Circle CI Builder"
             git add .
+            git status
             git commit -m "Applying changes from commit ${CIRCLE_SHA1}" --allow-empty
-            git push origin "${CIRCLE_BRANCH}"
+            export TAG=`echo "${CIRCLE_SHA1}" | cut -c1-15`
+            git tag "${TAG}"
+            git push --force origin "${CIRCLE_BRANCH}"
+            git push --tags
 workflows:
   version: 2
   generate_documentation:
     jobs:
-      - extract-vocabularia
-      - extract-application-profiles
-      - add-voc-contributors:
+      - checkout
+      - extract-jsonld-details:
           requires:
-            - extract-vocabularia
-      - render-voc-html:
+            - checkout
+      - normalise-jsonld:
           requires:
-            - add-voc-contributors
+            - extract-jsonld-details          
+      - validate-report:
+          requires:
+            - extract-jsonld-details
+      - render-html-details:
+          requires:
+            - normalise-jsonld
       - render-voc-rdf:
           requires:
-            - add-voc-contributors
-      - render-ap-html:
+            - normalise-jsonld
+      - render-shacl-details:
           requires:
-            - extract-application-profiles
-      - render-oj-html:
+            - normalise-jsonld
+      - convert-json-to-ttl:
           requires:
-            - extract-application-profiles
-      - render-ap-jsonld:
+            - render-shacl-details
+      - render-context-details:
           requires:
-            - extract-application-profiles
-      - create-shacl:
+            - normalise-jsonld
+      - expand-links:
           requires:
-            - extract-application-profiles
+            - copy-raw
+            - render-context-details
+            - convert-json-to-ttl
+            - render-voc-rdf
+            - render-html-details
+      - copy-raw:
+          requires:
+            - checkout
       - create-artifact:
           requires:
-            - render-voc-html
-            - render-voc-rdf
-            - render-ap-html
-            - render-oj-html
-            - render-ap-jsonld
-            - create-shacl
+            - expand-links
