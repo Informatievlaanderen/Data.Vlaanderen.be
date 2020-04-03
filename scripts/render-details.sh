@@ -71,7 +71,7 @@ render_context() { # SLINE TLINE JSON
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
     if [ ${TYPE} == "ap"  ] || [ ${TYPE} == "oj" ]; then
-      echo "RENDER-DETAILS(context): node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/context/${OUTFILE}"
+      echo "RENDER-DETAILS(context): node /app/json-ld-generator.js -l label -i ${JSONI} -o ${TLINE}/context/${OUTFILE} "
       pushd /app
         mkdir -p ${TLINE}/context
         if ! node /app/json-ld-generator.js -i ${JSONI} -o ${TLINE}/context/${OUTFILE}
