@@ -5,7 +5,7 @@ SRCDIR=${WORKDIR}/src
 JSONDIR=${WORKDIR}/json
 PID=$$
 
-( find ${SRCDIR} -name \*.jsonld -type f ; find ${JSONDIR} -name \*.jsonld -type f ) > /tmp/files.txt
+( find ${SRCDIR} -name \*.jsonld -type f -not \( -path '*site-skeleton*' -o -path '*html*' -o -path '*template*' \) ; find ${JSONDIR} -name \*.jsonld -type f -not \( -path '*site-skeleton*' -o -path '*html*' -o -path '*template*' \)  ) > /tmp/files.txt
 
 pushd /app/pretty-print
  cat /tmp/files.txt | while read line
