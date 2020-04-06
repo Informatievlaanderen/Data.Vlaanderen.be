@@ -26,7 +26,7 @@ jobs:
             - raw-input/
   extract-jsonld-details:
     docker:
-      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-v3.0.7
+      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-v3.0.8
     steps:
       - checkout
       - attach_workspace:
@@ -34,12 +34,6 @@ jobs:
       - run:
           name: Extract json details from UML diagram(s)
           command: $PWD/scripts/extract-what.sh jsonld
-      - run:
-          name: Extract tsv details from UML diagram
-          command: $PWD/scripts/extract-what.sh tsv
-      - run:
-          name: Extract raw details from UML diagram
-          command: $PWD/scripts/extract-what.sh raw
       - run:
           name: Show the report (for debugging purposes)
           command: |
