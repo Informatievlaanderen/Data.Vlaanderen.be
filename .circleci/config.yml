@@ -26,7 +26,7 @@ jobs:
             - raw-input/
   extract-jsonld-details:
     docker:
-      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-v3.0.7
+      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-v3.0.9
     steps:
       - checkout
       - attach_workspace:
@@ -34,12 +34,6 @@ jobs:
       - run:
           name: Extract json details from UML diagram(s)
           command: $PWD/scripts/extract-what.sh jsonld
-      - run:
-          name: Extract tsv details from UML diagram
-          command: $PWD/scripts/extract-what.sh tsv
-      - run:
-          name: Extract raw details from UML diagram
-          command: $PWD/scripts/extract-what.sh raw
       - run:
           name: Show the report (for debugging purposes)
           command: |
@@ -63,7 +57,7 @@ jobs:
             - src/
   validate-report:
     docker:
-      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-v3.0.7
+      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-v3.0.9
     steps:
       - checkout
       - attach_workspace:
@@ -75,7 +69,7 @@ jobs:
             [ $( egrep " ERROR " /tmp/workspace/report/*.report | wc -l ) == 0 ] || exit 1
   normalise-jsonld:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:j1.2-circleci
+      - image: informatievlaanderen/oslo-specification-generator:j1.4-circleci
     steps:
       - checkout
       - attach_workspace:
@@ -96,7 +90,7 @@ jobs:
             - src/
   render-html-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
+      - image: informatievlaanderen/oslo-specification-generator:j1.4-circleci
     steps:
       - checkout
       - attach_workspace:
@@ -120,7 +114,7 @@ jobs:
             - reporthtml/
   render-context-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:j1.2-circleci
+      - image: informatievlaanderen/oslo-specification-generator:j1.4-circleci
     steps:
       - checkout
       - attach_workspace:
@@ -140,7 +134,7 @@ jobs:
             - target/
   render-shacl-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:j1.2-circleci
+      - image: informatievlaanderen/oslo-specification-generator:j1.4-circleci
     steps:
       - checkout
       - attach_workspace:
