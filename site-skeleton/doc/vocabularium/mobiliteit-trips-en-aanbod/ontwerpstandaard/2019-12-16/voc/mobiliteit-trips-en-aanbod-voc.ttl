@@ -1,0 +1,845 @@
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://schema.org/PriceSpecification> a rdfs:Class;
+  rdfs:label "Prijsspecificatie"@nl .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Beschikbaarheid.gebruiker> a owl:ObjectProperty;
+  rdfs:label "gebruiker"@nl;
+  rdfs:comment "Type gebruiker waarvoor de beschikbaarheid geldt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Beschikbaarheid>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Beschikbaarheid.periode> a owl:ObjectProperty;
+  rdfs:label "periode"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv startdatum zonder einddatum voor dienstverlening die nog actief is of een aanduiding van het seizoen waarin de dienstverlening wordt aangeboden. Een ingevulde einddatum geeft aan wanneer de dienstverlening werd beëindigd. Begin- en einddatum volgens ISO8601 syntax."@nl;
+  rdfs:comment "Periode waarin iets beschikbaar is."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Beschikbaarheid>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range schema:OpeningHoursSpecification .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Boeking.reis> a owl:ObjectProperty;
+  rdfs:label "reis"@nl;
+  rdfs:comment "Reis die geboekt wordt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Boeking>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reis> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Boeking.resource> a owl:ObjectProperty;
+  rdfs:label "resource"@nl;
+  rdfs:comment "Resource die is gereserveerd"@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Boeking>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Resource> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Boeking.status> a owl:ObjectProperty;
+  rdfs:label "status"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv of de Boeking nog hangende is of reeds bevestigd."@nl;
+  rdfs:comment "Status van de Boeking."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Boeking>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Boeking.vervoersbewijs> a owl:ObjectProperty;
+  rdfs:label "vervoersbewijs"@nl;
+  rdfs:comment "Vervoersbewijs voor de geboekte Reis."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Boeking>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Vervoersbewijs> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Licentie.verkregenBinnen> a owl:ObjectProperty;
+  rdfs:label "verkregen binnen"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv de set van criteria waaraan een Mobiliteitsdienst moet voldoen."@nl;
+  rdfs:comment "Formeel Kader waarbinnen de Licentie is verkregen."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Licentie>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <http://purl.org/vocab/cpsv#FormalFramework> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst.aandrijving> a owl:ObjectProperty;
+  rdfs:label "aandrijving"@nl;
+  rdfs:comment "Aandrijving van het vervoermiddel waarmee of waarvoor de Mobiliteitsdienst doorgaans wordt georganiseerd."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst.beschikbaarOp> a owl:ObjectProperty;
+  rdfs:label "beschikbaar op"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv P+R wordt aangeboden op parking van station, deelfiets+trein aangeboden in combipunt."@nl;
+  rdfs:comment "Transportobject waarop de Mobiliteitsdienst wordt aangeboden."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <http://fixme.com#Transportobject> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst.beschikbaarheid> a owl:ObjectProperty;
+  rdfs:label "beschikbaarheid"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv dienstregeling of openingsuren."@nl;
+  rdfs:comment "Beschikbaarheid van de Mobiliteitsdienst."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Beschikbaarheid> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst.omvat> a owl:ObjectProperty;
+  rdfs:label "omvat"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv openbaar vervoer in Brussel aangeboden door de MIVB bestaat uit een aantal metrolijnen bv lijn 5 Erasmus-Herman-Debroux."@nl;
+  rdfs:comment "Meer specifieke Mobiliteitsdiensten waaruit de Mobiliteitsdienst is samengesteld."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst.resource> a owl:ObjectProperty;
+  rdfs:label "resource"@nl;
+  rdfs:comment "Resource waarover de Mobiliteitsdienst beschikt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Resource> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst.toegankelijkheid> a owl:ObjectProperty;
+  rdfs:label "toegankelijkheid"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv of de Mobiliteitsdienst toegankelijk is voor personen met een beperking."@nl;
+  rdfs:comment "Toegankelijkheid van de Mobiliteitsdienst."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Toegankelijkheid> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst.uitgevoerdDoor> a owl:ObjectProperty;
+  rdfs:label "uitgevoerd door"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Kan verschillen van de Aanbieder."@nl;
+  rdfs:comment "Uitvoerder van de Mobiliteitsdienst."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Uitvoerder> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst.vervoermiddel> a owl:ObjectProperty;
+  rdfs:label "vervoermiddel"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv metro, tram, bus voor de MIVB. Bv auto, fiets voor parking Coovi."@nl;
+  rdfs:comment "Vervoermiddel waarmee of waarvoor de Mobiliteitsdienst doorgaans wordt georganiseerd."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Overstap.aandrijving> a owl:ObjectProperty;
+  rdfs:label "aandrijving"@nl;
+  rdfs:comment "Aandrijving van het voertuig vervoermiddel waarmee de Overstap gebeurt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Overstap>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Overstap.gerealiseerdOp> a owl:ObjectProperty;
+  rdfs:label "gerealiseerd op"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv de halte waar men overstap tussen twee metrolijnen, het Adresgebied waarbinnen men overstapt tussen twee vervoersmodi."@nl;
+  rdfs:comment "Transportobject waarmee de Routeconnectie samenvalt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Overstap>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <http://fixme.com#Transportobject> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Overstap.routeknoop.source> a owl:ObjectProperty;
+  rdfs:label "routeknoop (source)"@nl;
+  rdfs:comment "Referentie naar verbonden klasse."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Overstap>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeknoop> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Overstap.routeknoop.target> a owl:ObjectProperty;
+  rdfs:label "routeknoop (target)"@nl;
+  rdfs:comment "Referentie naar verbonden klasse."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Overstap>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeknoop> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Overstap.vervoermiddel> a owl:ObjectProperty;
+  rdfs:label "vervoermiddel"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Doorgaans te voet."@nl;
+  rdfs:comment "Vervoermiddel waarmee de Overstap gebeurt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Overstap>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reis.aankomsttijdstip> a owl:DatatypeProperty;
+  rdfs:label "aankomsttijdstip"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Doorgaans wordt enkel een vertrek- of een aankomsttijdstip opgegeven"@nl;
+  rdfs:comment "Tijdstip waarop de Reis afgelopen is of waarop de Reiziger zou willen dat ze is afgelopen."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reis>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range xsd:dateTime .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reis.boeking> a owl:ObjectProperty;
+  rdfs:label "boeking"@nl;
+  rdfs:comment "Boeking van de Reis."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reis>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Boeking> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reis.reisweg> a owl:ObjectProperty;
+  rdfs:label "reisweg"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Inclusief de Locatie waar de Reis aanvangt en eindigt."@nl;
+  rdfs:comment "Opeenvolging van Locaties die men tijdens de Reis wil aandoen."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reis>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range prov:Location .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reis.vertrektijdstip> a owl:DatatypeProperty;
+  rdfs:label "vertrektijdstip"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Doorgaans wordt enkel een vertrek- of een aankomsttijdstip opgegeven."@nl;
+  rdfs:comment "Tijdstip waarop de Reis aanvangt of waarop de Reiziger zou willen dat ze aanvangt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reis>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range xsd:dateTime .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reis.vervoersbewijs> a owl:ObjectProperty;
+  rdfs:label "vervoersbewijs"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Dit is het Vervoersbewijs waarmee men de Reis wil uitvoeren of men de Reis heeft uitgevoerd. Bv het gekochte ticket of het abonnement waarover men beschikt."@nl;
+  rdfs:comment "Vervoersbewijs voor de Reis."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reis>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Vervoersbewijs> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reiziger.kenmerk> a owl:ObjectProperty;
+  rdfs:label "kenmerk"@nl;
+  rdfs:comment "Kenmerk van de Reiziger."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reiziger>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Kenmerk> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reiziger.onderneemt> a owl:ObjectProperty;
+  rdfs:label "onderneemt"@nl;
+  rdfs:comment "Reis die een Reiziger onderneemt of wil ondernemen."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reiziger>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reis> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reiziger.vervoersbewijs> a owl:ObjectProperty;
+  rdfs:label "vervoersbewijs"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Kan los staan van een Reis, ttz men kan beschikken over een Vervoersbewijs waarbij de Reis nog niet vastligt of nog niet is uitgevoerd, bv een abonnement of een dagkaart."@nl;
+  rdfs:comment "Vervoersbewijs van de Reiziger."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reiziger>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Vervoersbewijs> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reservatie.boeking> a owl:ObjectProperty;
+  rdfs:label "boeking"@nl;
+  rdfs:comment "Referentie naar verbonden klasse."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reservatie>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Boeking> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reservatie.reisweg> a owl:ObjectProperty;
+  rdfs:label "reisweg"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv zitplaats van Brussel naar Parijs."@nl;
+  rdfs:comment "Reisweg waarvoor iets gereserveerd wordt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reservatie>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range prov:Location .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reservatie.resource> a owl:ObjectProperty;
+  rdfs:label "resource"@nl;
+  rdfs:comment "Referentie naar verbonden klasse."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reservatie>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Resource> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Resource.identificator> a owl:DatatypeProperty;
+  rdfs:label "identificator"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv nummerplaat van de huurauto, nummer vd zitplaats..."@nl;
+  rdfs:comment "Identificator van de Resource."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Resource>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range rdfs:Literal .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Resource.status> a owl:ObjectProperty;
+  rdfs:label "status"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv gereserveerd, inactief, beschikbaar. Bepaalt of een Resource gebruikt kan worden."@nl;
+  rdfs:comment "Toestand waarin een Resource zicht bevindt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Resource>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route.aankomsttijdstip> a owl:DatatypeProperty;
+  rdfs:label "aankomsttijdstip"@nl;
+  rdfs:comment "Tijdstip waarop de Route eindigt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range xsd:dateTime .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route.berekendMet> a owl:ObjectProperty;
+  rdfs:label "berekend met"@nl;
+  rdfs:comment "Routeplanner waarmee de Route is berekend."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeplanner> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route.bestaatUit> a owl:ObjectProperty;
+  rdfs:label "bestaat uit"@nl;
+  rdfs:comment "Opeenvolging van Routesegmenten waaruit de Route bestaat."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routesegment> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route.kostprijs> a owl:ObjectProperty;
+  rdfs:label "kostprijs"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv de som van de kostprijs van de aangekochte Vervoersbewijzen."@nl;
+  rdfs:comment "Prijs van de Route."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://schema.org/MonetaryAmount> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route.vertrektijdstip> a owl:DatatypeProperty;
+  rdfs:label "vertrektijdstip"@nl;
+  rdfs:comment "Tijdstip waarop de Route begint.."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range xsd:dateTime .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeknoop.gerealiseerdDoor> a owl:ObjectProperty;
+  rdfs:label "gerealiseerd door"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv parking."@nl;
+  rdfs:comment "Mobiliteitsdienst die de Reiziger heeft gebruikt in de Routeknoop."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeknoop>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeknoop.gerealiseerdMet> a owl:ObjectProperty;
+  rdfs:label "gerealiseerd met"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv parkeerplaats."@nl;
+  rdfs:comment "Resource van de Mobiliteitsdienst die de reiziger heeft gebruikt in de Routeknoop."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeknoop>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Resource> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeknoop.gerealiseerdOp> a owl:ObjectProperty;
+  rdfs:label "gerealiseerd op"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv de halte waar men op- of afstapt, de parking waar men zijn auto parkeert, het deelfietsstation waar men een fiets ophaalt."@nl;
+  rdfs:comment "Transportobject dat met de Routeknoop samenvalt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeknoop>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <http://fixme.com#Transportobject> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeknoop.vervoersbewijs> a owl:ObjectProperty;
+  rdfs:label "vervoersbewijs"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv het parkeerticket nodig voor het parkeren van zijn auto in de Routeknoop."@nl;
+  rdfs:comment "Vervoersbewijs dat nodig is of gebruikt is in de Routeknoop."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeknoop>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Vervoersbewijs> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeplanner.integreertInfoOver> a owl:ObjectProperty;
+  rdfs:label "integreert info over"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Die integratie houdt typischin  het samenvoegen van beschrijvingen van Transportnetwerken tot een graph waarover kortste, snelste etc paden kunnen worden berekend."@nl;
+  rdfs:comment "Info over Transportnetwerken die een Routeplanner gebruikt om Routes te berekenen."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeplanner>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <http://fixme.com#Transportnetwerk> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routesegment.aandrijving> a owl:ObjectProperty;
+  rdfs:label "aandrijving"@nl;
+  rdfs:comment "Aandrijving van het voertuig vervoermiddel waarmee het Routesegment is afgelegd."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routesegment>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routesegment.gerealiseerdDoor> a owl:ObjectProperty;
+  rdfs:label "gerealiseerd door"@nl;
+  rdfs:comment "Mobiliteitsdienst die de Reiziger heeft gebruikt bij het afleggen van het Routesegment."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routesegment>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routesegment.gerealiseerdMet> a owl:ObjectProperty;
+  rdfs:label "gerealiseerd met"@nl;
+  rdfs:comment "Resource van de Mobiliteitsdienst die de reiziger heeft gebruikt bij het afleggen van het Routesegment."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routesegment>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Resource> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routesegment.link> a owl:ObjectProperty;
+  rdfs:label "link"@nl;
+  rdfs:comment "Opeenvolging van Gerichte Links waaruit het Routesegment bestaat."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routesegment>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <http://fixme.com#GerichteLink> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routesegment.vervoermiddel> a owl:ObjectProperty;
+  rdfs:label "vervoermiddel"@nl;
+  rdfs:comment "Type voertuig waarmee het Routesegment is afgelegd."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routesegment>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routesegment.vervoersbewijs> a owl:ObjectProperty;
+  rdfs:label "vervoersbewijs"@nl;
+  rdfs:comment "Vervoersbewijs waarmee het Routesegment kan worden afgelegd of is afgelegd."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routesegment>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Vervoersbewijs> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Toegankelijkheid.niveau> a owl:ObjectProperty;
+  rdfs:label "niveau"@nl;
+  rdfs:comment "Niveau van toegankelijkheid."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Toegankelijkheid>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Toegankelijkheid.onderdeel> a owl:ObjectProperty;
+  rdfs:label "onderdeel"@nl;
+  rdfs:comment "Deel van de dienst of infrastructuur waarop de Toegankelijkheid betrekking heeft.."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Toegankelijkheid>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Vervoersbewijs.aantal> a owl:DatatypeProperty;
+  rdfs:label "aantal"@nl;
+  rdfs:comment "Aantal reizen dat men met het Vervoersbewijs kan afleggen."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Vervoersbewijs>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range xsd:integer .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Vervoersbewijs.bedrag> a owl:ObjectProperty;
+  rdfs:label "bedrag"@nl;
+  rdfs:comment "Geldbedrag dat aan de Mobiliteitsdienst kan worden besteed;"@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Vervoersbewijs>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://schema.org/MonetaryAmount> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Vervoersbewijs.dienst> a owl:ObjectProperty;
+  rdfs:label "dienst"@nl;
+  rdfs:comment "Mobiliteitsdienst waarvan men met het Vervoersbewijs gebruik mag maken."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Vervoersbewijs>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Vervoersbewijs.duur> a owl:DatatypeProperty;
+  rdfs:label "duur"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv 1 uur in het geval van een metroticket of 1 dag voor een dagticket of een krediet van 120 minuten deelstep."@nl;
+  rdfs:comment "Totale tijd waarvan men met het Vervoersbewijs van een Mobiliteitsdienst gebruik mag maken."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Vervoersbewijs>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range xsd:duration .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Vervoersbewijs.reisweg> a owl:ObjectProperty;
+  rdfs:label "reisweg"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Typisch de twee opeenvolgende Locaties waartussen men mag reizen met het Vervoersbewijs, bv een treinabonnement tussen Brussel en Gent (waarbij het type Vervoersbewijs dan doorgaans \"retourticket\" is, maw ook een Reis van Gent naar Brussel is mogelijk). Maar kan ook gewoon het Gebied of de Plaats zijn waarvoor het Vervoersbewijs geldt, bv Antwerpen."@nl;
+  rdfs:comment "Opeenvolging van Locaties waarvoor het Vervoersbewijs geldig is."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Vervoersbewijs>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range prov:Location .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Waarde> a owl:Class;
+  rdfs:label "Waarde"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Kwantitatief bv gewicht, kwalitatief bv categorie."@nl;
+  rdfs:comment "Uitdrukking van het belang van iets."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#aanbod> a owl:ObjectProperty;
+  rdfs:label "aanbod"@nl;
+  rdfs:comment "Door de Aanbieder aangeboden Mobiliteitsdiensten."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Aanbieder>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#aangebodenBinnen> a owl:ObjectProperty;
+  rdfs:label "aangeboden binnen"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv Besluit waarin de criteria voor het vergunnen van een Mobiliteitsdienst zijn opgesomd."@nl;
+  rdfs:comment "Formeel Kader waarbinnen de Mobiliteitsdienst wordt aangeboden."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <http://purl.org/vocab/cpsv#FormalFramework> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#aankomstknoop> a owl:ObjectProperty;
+  rdfs:label "aankomstknoop"@nl;
+  rdfs:comment "Knoop waar het Routesegment eindigt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routesegment>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeknoop> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#aankomstpunt> a owl:ObjectProperty;
+  rdfs:label "aankomstpunt"@nl;
+  rdfs:comment "Locatie waar de Route eindigt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range prov:Location .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#afstand> a owl:ObjectProperty;
+  rdfs:label "afstand"@nl;
+  rdfs:comment "Gecumuleerde afstand die men met het Vervoersbewijs mag afleggen."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Vervoersbewijs>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Afstand> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#dienstregeling> a owl:ObjectProperty;
+  rdfs:label "dienstregeling"@nl;
+  rdfs:comment "Schema met tijdstippen waarop iets wordt aangeboden."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Beschikbaarheid>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Dienstregeling> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#gekozenRoute> a owl:ObjectProperty;
+  rdfs:label "gekozen route"@nl;
+  rdfs:comment "Route die de Reiziger kiest uit de mogelijke Routes."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reis>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#isMedereizigerVan> a owl:ObjectProperty;
+  rdfs:label "is medereiziger van"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv de kinderen van een gezin dat samenreist. Van belang bij bv bij het bepalen van de prijs van een Vervoersbewijs wanneer jonge kinderen gratis meereizen."@nl;
+  rdfs:comment "Reiziger die de Reiziger vergezelt tijdens de Reis."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reiziger>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reiziger> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#licentie> a owl:ObjectProperty;
+  rdfs:label "licentie"@nl;
+  rdfs:comment "Licentie waaronder de Mobiliteitsdienst wordt aangeboden."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Licentie> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#mogelijkeRoute> a owl:ObjectProperty;
+  rdfs:label "mogelijke route"@nl;
+  rdfs:comment "Routes die gevolgd kunnen worden om de Reis uit te voeren."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reis>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#overstap> a owl:ObjectProperty;
+  rdfs:label "overstap"@nl;
+  rdfs:comment "Routeknoop waarnaar wordt overgestapt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeknoop>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeknoop> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#overstaptijd> a owl:DatatypeProperty;
+  rdfs:label "overstaptijd"@nl;
+  rdfs:comment "Tijd waarin de overstap gebeurt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Overstap>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range xsd:duration .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#prijsplan> a owl:ObjectProperty;
+  rdfs:label "prijsplan"@nl;
+  rdfs:comment "Prijsplan van de Mobiliteitsdienst."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://schema.org/PriceSpecification> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#pseudoniem> a owl:ObjectProperty;
+  rdfs:label "pseudoniem"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Doel is dat de werkelijke identiteit van de Reiziger niet meer achterhaald kan worden maar dat tripdata toch op individueel niveau bestudeerd kan worden."@nl;
+  rdfs:comment "Naam van de Reiziger die afwijkt van zijn werkelijke naam."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reiziger>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Pseudoniem> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#reisduur> a owl:DatatypeProperty;
+  rdfs:label "reisduur"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Af te leiden uit andere kenmerken van de Route, bv uit het vertrek- en aankomsttijdstip."@nl;
+  rdfs:comment "Tijd waarin de Route wordt afgelegd."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range xsd:duration .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#routebeschrijving> a owl:ObjectProperty;
+  rdfs:label "routebeschrijving"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Af te leiden uit andere kenmerken van de Route, bv de routesegmenten waaruit de Route bestaat en de kenmerken daarvan."@nl;
+  rdfs:comment "Beschrijving van de Route."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routebeschrijving> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#uitgevoerdeRoute> a owl:ObjectProperty;
+  rdfs:label "uitgevoerde route"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Werkelijke aankomst- en vertrektijdstip, reisduur etc."@nl;
+  rdfs:comment "Route die uiteindelijk uitgevoerd is om de Reis te realiseren."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reis>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#uitvoerder> a owl:ObjectProperty;
+  rdfs:label "uitvoerder"@nl;
+  rdfs:comment "Uitvoerder van het Routesegment."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routesegment>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Uitvoerder> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#verbindt> a owl:ObjectProperty;
+  rdfs:label "verbindt"@nl;
+  rdfs:comment "Transportobject die de Transportconnectie verbindt met een ander Transportobject."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Transportconnectie>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <http://fixme.com#Transportobject> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#vertrekknoop> a owl:ObjectProperty;
+  rdfs:label "vertrekknoop"@nl;
+  rdfs:comment "Knoop waar het Routesegment begint."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routesegment>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeknoop> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#vertrekpunt> a owl:ObjectProperty;
+  rdfs:label "vertrekpunt"@nl;
+  rdfs:comment "Locatie waar de Route begint."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range prov:Location .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#vervoersautoriteit> a owl:ObjectProperty;
+  rdfs:label "vervoersautoriteit"@nl;
+  rdfs:comment "Publieke Organisatie verantwoordelijk voor het verkeersmanagement of de planning, controle of het beheer van een bepaald vervoersnetwerk of vervoerswijze, of beide, die onder haar territoriale bevoegdheid vallen."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Licentie>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <http://data.europa.eu/m8g/PublicOrganisation> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#voorkeur> a owl:ObjectProperty;
+  rdfs:label "voorkeur"@nl;
+  rdfs:comment "Voorkeuren van de Reiziger."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reiziger>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:range <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Voorkeur> .
+
+<http://data.europa.eu/m8g/territorialApplication> a rdf:Property;
+  rdfs:label "territoriale toepassing"@nl .
+
+<http://fixme.com#Netwerkelement.identificator> a rdf:Property;
+  rdfs:label "identificator"@nl .
+
+dc:date a rdf:Property;
+  rdfs:label "periode"@nl,
+    "datum"@nl .
+
+dc:description a rdf:Property;
+  rdfs:label "beschrijving"@nl .
+
+dc:isPartOf a rdf:Property;
+  rdfs:label "is deel van"@nl .
+
+dc:spatial a rdf:Property;
+  rdfs:label "ruimtelijke dekking"@nl .
+
+dc:title a rdf:Property;
+  rdfs:label "naam"@nl .
+
+dc:type a rdf:Property;
+  rdfs:label "type"@nl .
+
+schema:contactPoint a rdf:Property;
+  rdfs:label "contactinfo"@nl .
+
+schema:openingHours a rdf:Property;
+  rdfs:label "openingsuren"@nl .
+
+skos:prefLabel a rdf:Property;
+  rdfs:label "voorkeursnaam"@nl .
+
+<http://www.w3.org/ns/locn#geometry> a rdf:Property;
+  rdfs:label "geometrie"@nl .
+
+<http://www.w3.org/ns/regorg#registration> a rdf:Property;
+  rdfs:label "registratie"@nl .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Aanbieder> a owl:Class;
+  rdfs:label "Aanbieder"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Onder een Geregistreerde Organisaties verstaan we een Organisatie met een juridisch statuut (vastgelegd door registratie), bv NV, VZW..."@nl;
+  rdfs:comment "Geregistreerde Organisatie die Mobiliteitsdiensten aanbiedt."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:subClassOf <http://www.w3.org/ns/regorg#RegisteredOrganization> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Afstand> a owl:Class;
+  rdfs:label "Afstand"@nl;
+  rdfs:comment "Ruimte tussen twee punten, meestal gemeten langs een rechte lijn."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Dienstregeling> a owl:Class;
+  rdfs:label "Dienstregeling"@nl;
+  rdfs:comment "Planning in tijd en ruimte van een dienst."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Kenmerk> a owl:Class;
+  rdfs:label "Kenmerk"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv leeftijd, beperking, rijbewijs."@nl;
+  rdfs:comment "Eigenschap van de Reiziger."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Pseudoniem> a owl:Class;
+  rdfs:label "Pseudoniem"@nl;
+  rdfs:comment "Naam van een Persoon die afwijkt van zijn werkelijke naam."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routebeschrijving> a owl:Class;
+  rdfs:label "Routebeschrijving"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Typisch de beschrijving zoals ze in een Routeplanner zou worden getoond."@nl;
+  rdfs:comment "Beschrijving van een Route."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Transportconnectie> a owl:Class;
+  rdfs:label "Transportconnectie"@nl;
+  rdfs:comment "Logische verbinding tussen twee of meer Transportobjecten in verschillende Transportnetwerken."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:subClassOf <http://fixme.com#Connectie>,
+    <http://fixme.com#Transportobject> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Voorkeur> a owl:Class;
+  rdfs:label "Voorkeur"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv routetype, vervoermiddel..."@nl;
+  rdfs:comment "Voorkeur van de Reiziger."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://schema.org/price> a rdf:Property;
+  rdfs:label "prijs"@nl .
+
+<https://schema.org/value> a rdf:Property;
+  rdfs:label "waarde"@nl .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeplanner> a owl:Class;
+  rdfs:label "Routeplanner"@nl;
+  rdfs:comment "Software waarmee de Route van een Reis kan worden berekend."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:subClassOf dc:Agent .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Uitvoerder> a owl:Class;
+  rdfs:label "Uitvoerder"@nl;
+  rdfs:comment "Geregistreerde Organisatie die Mobiliteitsdiensten uitvoert."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:subClassOf <http://www.w3.org/ns/regorg#RegisteredOrganization> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Licentie> a owl:Class;
+  rdfs:label "Licentie"@nl;
+  rdfs:comment "Formele toestemming om een Mobiliteitsdienst aan te bieden."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reservatie> a owl:Class;
+  rdfs:label "Reservatie"@nl;
+  rdfs:comment "Kenmerken van de Reservatie van een resource bij een Boeking."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Toegankelijkheid> a owl:Class;
+  rdfs:label "Toegankelijkheid"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv fysieke toegankelijkheid van een dienst of gebouw voor personen met een beperking."@nl;
+  rdfs:comment "Mate waarin iets bereikt kan worden."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Beschikbaarheid> a owl:Class;
+  rdfs:label "Beschikbaarheid"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv uren waarin een dienst wordt aangeboden of openingsuren van een gebouw."@nl;
+  rdfs:comment "Mate waarin iets voorhanden is voor gebruik."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Boeking> a owl:Class;
+  rdfs:label "Boeking"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv het aankopen van een treinticket of het reserveren een zitplaats op de trein.."@nl;
+  rdfs:comment "Het vastleggen van een Reis door aankoop van een Vervoersbewijs en/of het reserveren van een Resource."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Overstap> a owl:Class;
+  rdfs:label "Overstap"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bedoeld om de overgang tussen twee Routesegmenten te beschrijven indien deze niet zelf door een Routesegment wordt voorgesteld. Men kan overstappen tussen twee dezelfde Routeknopen (bv overstap van de ene trein op de andere in hetzelfde station) of tussen twee verschillende (bv overstap van de parking bij het station naar - de perrons van - het station)."@nl;
+  rdfs:comment "Logische verbinding tussen twee Routeknopen."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reiziger> a owl:Class;
+  rdfs:label "Reiziger"@nl;
+  rdfs:comment "Persoon die een Reis onderneemt of wil ondernemen."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:subClassOf dc:Agent .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Resource> a owl:Class;
+  rdfs:label "Resource"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv zitplaats op een trein, deelfiets aan een station, parkeerplaats in een parking."@nl;
+  rdfs:comment "Middel dat de Mobiliteitsdienst aan de Reiziger kan aanbieden om zijn verplaatsing te maken."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Reis> a owl:Class;
+  rdfs:label "Reis"@nl;
+  <http://purl.org/vocab/vann/usageNote> "De reis verloopt eventueel via andere Locaties. De Locatie waar de Reis begint kan gelijk zijn aan deze waar de Reis eindigt (bv heen- en terugreis)."@nl;
+  rdfs:comment "Vrijwillige verplaatsing van een Persoon van de ene Locatie naar een andere Locatie."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routeknoop> a owl:Class;
+  rdfs:label "Routeknoop"@nl;
+  rdfs:comment "Significante positie in de Route die steeds samenvalt met het begin of het einde van een Routesegment."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Routesegment> a owl:Class;
+  rdfs:label "Routesegment"@nl;
+  rdfs:comment "Deel van een Route dat zonder Overstap wordt afgelegd met hetzelfde vervoermiddel."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod>;
+  rdfs:subClassOf <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Vervoersbewijs> a owl:Class;
+  rdfs:label "Vervoersbewijs"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Vervoer of dienst zijn nog te consumeren of al geconsumeerd. Typisch een ticket voor of een abonnement op een Mobiliteitsdienst zoals openbaar vervoer, maar kan ook bv een parkeerticket zijn."@nl;
+  rdfs:comment "Bewijs van bepaald recht op vervoer of diensten daarmee geassocieerd."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Route> a owl:Class;
+  rdfs:label "Route"@nl;
+  rdfs:comment "Mogelijke, gekozen of afgelegde weg tussen twee Locaties (resp het vertrekpunt en het aankomstpunt)."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod#Mobiliteitsdienst> a owl:Class;
+  rdfs:label "Mobiliteitsdienst"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Hieronder verstaan we zowel klassieke mobiliteitsdiensten zoals openbaar vervoer (typisch aangeboden als lijndienst, bv metrolijn 5 in Brussel), maar ook deelvervoer zoals free floating deelsteps (bv deelsteps in grote steden)."@nl;
+  rdfs:comment "Dienstverlening die verplaatsingen van Personen tussen Locaties mogelijk maakt."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> .
+
+<https://data.vlaanderen.be/ns/mobiliteit/trips-en-aanbod> a owl:Ontology;
+  rdfs:label "mobiliteit-trips-en-aanbod-voc"@en,
+    "mobiliteit-trips-en-aanbod-voc"@nl;
+  dc:issued "TODO";
+  dc:license <https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0>,
+    "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0";
+  dc:mediator [
+    foaf:homepage <https://data.vlaanderen.be>;
+    foaf:mbox <mailto:oslo@kb.vlaanderen.be>;
+    foaf:name "Data Vlaanderen"
+  ];
+  rdfs:seeAlso dc:title,
+    dc:description,
+    <http://www.w3.org/ns/regorg#registration>,
+    <https://schema.org/price>,
+    <http://fixme.com#Netwerkelement.identificator>,
+    <http://data.europa.eu/m8g/territorialApplication>,
+    schema:openingHours,
+    dc:date,
+    <https://schema.org/PriceSpecification>,
+    dc:spatial,
+    dc:isPartOf,
+    dc:type,
+    schema:contactPoint,
+    <http://www.w3.org/ns/locn#geometry>,
+    <https://schema.org/value>,
+    skos:prefLabel;
+  <http://www.w3.org/2001/02pd/rec54#editor> [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen>;
+      foaf:name "Informatie Vlaanderen"
+    ];
+    foaf:firstName "Geert";
+    foaf:lastName "Thijs";
+    foaf:mbox <mailto:geert.thijs@kb.vlaanderen.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://www.imec-int.com/>;
+      foaf:name "IMEC"
+    ];
+    foaf:firstName "Martin";
+    foaf:lastName "Vanbrabant";
+    foaf:mbox <mailto:Martin.Vanbrabant@UGent.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://www.pwc.be>;
+      foaf:name "PWC"
+    ];
+    foaf:firstName "Dimitri";
+    foaf:lastName "Schepers";
+    foaf:mbox <mailto:dimitri.schepers@pwc.com>
+  ] .
