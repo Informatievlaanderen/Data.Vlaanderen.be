@@ -1,0 +1,1353 @@
+{
+  "@context": {
+    "@vocab": "https://data.vlaanderen.be/shacl/mobiliteit-maas",
+    "qb": "http://purl.org/linked-data/cube#",
+    "qb:codeList": {
+      "@type": "@id"
+    },
+    "sh": "http://www.w3.org/ns/shacl#",
+    "sh:class": {
+      "@type": "@id"
+    },
+    "sh:datatype": {
+      "@type": "@id"
+    },
+    "sh:maxCount": {
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "sh:minCount": {
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "sh:path": {
+      "@type": "@id"
+    },
+    "sh:property": {
+      "@type": "@id"
+    },
+    "sh:targetClass": {
+      "@type": "@id"
+    },
+    "shapes": {
+      "@type": "@id"
+    }
+  },
+  "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas",
+  "shapes": [
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#AanbiederShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://www.w3.org/ns/adms#Identifier",
+          "sh:description": "Identificator van de Organisatie.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "^identificator",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#^identificator"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#MobiliteitsDienst",
+          "sh:description": "Door de Aanbieder aangeboden Mobiliteitsdiensten.",
+          "sh:minCount": "1",
+          "sh:name": "aanbod",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#aanbod"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Aanbieder"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#BeschikbaarheidShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Gebruikerstype",
+          "sh:description": "Type gebruiker waarvoor de Mobiliteitsdienst beschikbaar is.",
+          "sh:maxCount": "1",
+          "sh:name": "gebruiker",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#gebruiker"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "Uren waarop de Mobiliteitsdienst beschikbaar is.",
+          "sh:maxCount": "1",
+          "sh:name": "openingsuren",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#openingsuren"
+        },
+        {
+          "sh:class": "https://schema.org/Schedule",
+          "sh:description": "Schema met tijdstippen waarop de Mobiliteitsdienst wordt aangeboden.",
+          "sh:maxCount": "1",
+          "sh:name": "tijdschema",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#tijdschema"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Beschikbaarheid"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#BoekingShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Vervoersbewijs",
+          "sh:description": "Vervoersbewijs van de Boeking van de reis.",
+          "sh:name": "Omvat",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#omvat"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Reservatie",
+          "sh:description": "Reservatie van een Resource van een Mobiliteitsdienst in het kader van een Boeking van een reis.",
+          "sh:name": "Omvat",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#omvat"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#MobiliteitsDienst",
+          "sh:description": "Mobiliteitsdienst die wordt geboekt.",
+          "sh:minCount": "1",
+          "sh:name": "dienst",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#dienst"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/Cost",
+          "sh:description": "Prijs van de Boeking van de Reis.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "prijs",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#prijs"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Reis",
+          "sh:description": "Reis die geboekt wordt.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "reis",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#reis"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Boeking"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#GebruikerstypeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Gebruikerstype"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#KenmerkShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "Aard van het Kenmerk van de Reiziger.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "type",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#type"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Waarde",
+          "sh:description": "Waarde van het Kenmerk vd Reiziger.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "waarde",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#waarde"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Kenmerk"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#LicentieShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://purl.org/vocab/cpsv#FormalFramework",
+          "sh:description": "Formeel Kader waarbinnen de Licentie is verkregen.",
+          "sh:name": "VerkregenBinnen",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#verkregenBinnen"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/PeriodOfTime",
+          "sh:description": "Periode waarvoor de Licentie geldt.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "periode",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#periode"
+        },
+        {
+          "sh:class": "http://purl.org/dc/terms/Location",
+          "sh:description": "Gebied of Plaats waarbinnen de Licentie geldt.",
+          "sh:name": "toepassingsGebied",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#toepassingsGebied"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Licentie"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#MobiliteitsDienstShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://purl.org/vocab/cpsv#FormalFramework",
+          "sh:description": "Formeel Kader waarbinnen de Mobiliteitsdienst wordt aangeboden.",
+          "sh:name": "AangebodenBinnen",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#aangebodenBinnen"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Beschikbaarheid",
+          "sh:description": "Beschikbaarheid van de Mobiliteitsdienst.",
+          "sh:maxCount": "1",
+          "sh:name": "Heeft",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#heeft"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Prijsplan",
+          "sh:description": "Prijsplan van de Mobiliteitsdienst.",
+          "sh:name": "Heeft",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#heeft"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Resource",
+          "sh:description": "Resources waarover de Mobiliteitsdienst beschikt.",
+          "sh:name": "Heeft",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#heeft"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#MobiliteitsDienst",
+          "sh:description": "Meer specifieke Mobiliteitsdiensten waaruit de Mobiliteitsdienst bestaat.",
+          "sh:name": "Omvat",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#omvat"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Uitvoerder",
+          "sh:description": "Uitvoerder van de Mobiliteitsdienst.",
+          "sh:minCount": "1",
+          "sh:name": "UitgevoerdDoor",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#uitgevoerdDoor"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/Cost",
+          "sh:description": "Kostprijs van de Mobiliteitsdienst voor de Reiziger.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "^kost",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#^kost"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:description": "Naam van de Mobiliteitsdienst.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "^naam",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#^naam"
+        },
+        {
+          "sh:class": "http://purl.org/dc/terms/Location",
+          "sh:description": "Gebied of Plaats waarbinnen de Mobiliteitsdienst wordt aangeboden.",
+          "sh:maxCount": "1",
+          "sh:name": "^ruimtelijkeDekking",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#^ruimtelijkeDekking"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "Aard van de Mobiliteitsdienst.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "^type",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#^type"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Licentie",
+          "sh:description": "Licentie waaronder de Mobiliteitsdienst wordt aangeboden.",
+          "sh:name": "licentie",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#licentie"
+        },
+        {
+          "sh:class": "http://fixme.com#TransportNetwerk",
+          "sh:name": "transportnetwerk",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#transportnetwerk"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#MobiliteitsDienst"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#NetwerkInfoShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://fixme.com#TransportNetwerk",
+          "sh:description": "Transportnetwerk dat door de Netwerkinfo wordt beschreven.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "Beschrijft",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#beschrijft"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:description": "Naam van de Netwerkinfo.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "naam",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#naam"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#NetwerkInfo"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#PrijsplanShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Prijsplan"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#PseudoniemShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Pseudoniem"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#ReisShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Reis",
+          "sh:description": "Deel van de volledige Reis dat op zich beschouwd kan worden als een reis.",
+          "sh:name": "IsDeelVan",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#isDeelVan"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "sh:description": "Tijdstip waarop de Reis afgelopen is of afgelopen zou moeten zijn.",
+          "sh:maxCount": "1",
+          "sh:name": "aankomsttijdstip",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#aankomsttijdstip"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Boeking",
+          "sh:description": "Boeking van de reis.",
+          "sh:name": "boeking",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#boeking"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Route",
+          "sh:description": "Route die de Reiziger kiest uit de mogelijke Routes.",
+          "sh:name": "gekozenRoute",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#gekozenRoute"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Route",
+          "sh:description": "Routes die gevolgd kunnen worden om de Reis uit te voeren.",
+          "sh:name": "mogelijkeRoute",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#mogelijkeRoute"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/prov#Location",
+          "sh:description": "Opeenvolging van Locaties die men tijdens de Reis wil aandoen.",
+          "sh:minCount": "2",
+          "sh:name": "reisweg",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#reisweg"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Route",
+          "sh:description": "Route die uiteindelijk uitgevoerd is om de Reis te raliseren.",
+          "sh:name": "uitgevoerdeRoute",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#uitgevoerdeRoute"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "sh:description": "Tijdstip waarop de Reis aanvangt is of zou moeten aanvangen.",
+          "sh:maxCount": "1",
+          "sh:name": "vertrektijdstip",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#vertrektijdstip"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Reis"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#ReizigerShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Reis",
+          "sh:description": "Reis die een Reiziger onderneemt of wil ondernemen.",
+          "sh:name": "Onderneemt",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#onderneemt"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Kenmerk",
+          "sh:description": "Kenmerken van de Reiziger.",
+          "sh:name": "kenmerk",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#kenmerk"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Reiziger",
+          "sh:description": "Reiziger die de Reiziger vergezelt tijdens de Reis.",
+          "sh:name": "medeReiziger",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#medeReiziger"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Pseudoniem",
+          "sh:description": "Naam van een Persoon die afwijkt van zijn werkelijke naam.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "pseudoniem",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#pseudoniem"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Vervoersbewijs",
+          "sh:description": "Vervoersbewijs gebruikt om de Reis uit te voeren.",
+          "sh:name": "vervoersbewijs",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#vervoersbewijs"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Voorkeur",
+          "sh:description": "Voorkeuren van de Reiziger.",
+          "sh:name": "voorkeur",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#voorkeur"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Reiziger"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#ReservatieShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Resource",
+          "sh:description": "Resource die wordt gereserveerd.",
+          "sh:minCount": "1",
+          "sh:name": "HeeftBetrekkingOp",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#heeftBetrekkingOp"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/PeriodOfTime",
+          "sh:description": "Periode waarvoor iets gereserveerd wordt.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "periode",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#periode"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Reservatie"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#ResourceShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+          "sh:description": "Geeft aan of de Resource beschikbaar is voor gebruik door een Reiziger.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "beschikbaar",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#beschikbaar"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:description": "Merk van de resource.",
+          "sh:maxCount": "1",
+          "sh:name": "fabrikant",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#fabrikant"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+          "sh:description": "Geeft aan of de Resource gereserveerd is door een Reiziger.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "gereserveerd",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#gereserveerd"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "Identificator van de Resource.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "identificator",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#identificator"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/prov#Location",
+          "sh:description": "Plaats waar de Resource zicht bevindt.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "locatie",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#locatie"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:description": "Model van de resource.",
+          "sh:maxCount": "1",
+          "sh:name": "model",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#model"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "Toestand waarin een Resource zicht bevindt.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "status",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#status"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "Aard van de Resource.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "type",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#type"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Resource"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#RouteShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Routeplanner",
+          "sh:description": "Routeplanner waarmee de Route is berekend.",
+          "sh:maxCount": "1",
+          "sh:name": "BerekendMet",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#berekendMet"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#RouteSegment",
+          "sh:description": "Routesegmenten waaruit de Route bestaat.",
+          "sh:minCount": "1",
+          "sh:name": "Bestaatuit",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#bestaatuit"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "sh:description": "Tijdstip waarop de Route begint.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "aankomstijdstip",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#aankomstijdstip"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/prov#Location",
+          "sh:description": "Locatie waar de Route eindigt.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "aankomstpunt",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#aankomstpunt"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/Cost",
+          "sh:description": "Prijs van de Route.",
+          "sh:maxCount": "1",
+          "sh:name": "kostprijs",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#kostprijs"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#duration",
+          "sh:description": "Tijd waarin de Route wordt afgelegd.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "reisduur",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#reisduur"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Routebeschrijving",
+          "sh:description": "Beschrijving van de Route.",
+          "sh:maxCount": "1",
+          "sh:name": "routebeschrijving",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#routebeschrijving"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "Aard van de Route.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "type",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#type"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/prov#Location",
+          "sh:description": "Locatie waar de Route begint.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "vertrekpunt",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#vertrekpunt"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "sh:description": "Tijdstip waarop de Route eindigt.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "vertrektijdstip",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#vertrektijdstip"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Route"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#RouteConnectieShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#RouteKnoop",
+          "sh:description": "Routeknoop die de Routeconnectie verbindt met een andere Routeknoop.",
+          "sh:maxCount": "2",
+          "sh:minCount": "2",
+          "sh:name": "Verbindt",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#verbindt"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "Identificator van de TransportConnectie waarmee de Routeconnectie eventueel samenvalt.",
+          "sh:maxCount": "1",
+          "sh:name": "^identificator",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#^identificator"
+        },
+        {
+          "sh:class": "http://fixme.com#ConnectieType",
+          "sh:description": "Aard van de Routeconnectie.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "^type",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#^type"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#duration",
+          "sh:description": "Tijd waarin de overstap gebeurt.",
+          "sh:maxCount": "1",
+          "sh:name": "overstapTijd",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#overstapTijd"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#RouteConnectie"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#RouteKnoopShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#MobiliteitsDienst",
+          "sh:description": "Mobiliteitsdienst die de Reiziger heeft gebruikt in de Routeknoop.",
+          "sh:maxCount": "1",
+          "sh:name": "GerealiseerdDoor",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#gerealiseerdDoor"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Resource",
+          "sh:description": "Resource van de Mobiliteitsdienst die de reiziger heeft gebruikt in de Routeknoop.",
+          "sh:maxCount": "1",
+          "sh:name": "GerealiseerdMet",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#gerealiseerdMet"
+        },
+        {
+          "sh:class": "http://www.opengis.net/ont/sf#Point",
+          "sh:description": "Locatie van de Routeknoop.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "^geometrie",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#^geometrie"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "Identificator van de Transportknoop waarmee de Routeknoop eventueel samenvalt.",
+          "sh:maxCount": "1",
+          "sh:name": "^identificator",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#^identificator"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#RouteKnoop"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#RouteSegmentShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#MobiliteitsDienst",
+          "sh:description": "Mobiliteitsdienst die de Reiziger heeft gebruikt bij het afleggen van het Routesegment.",
+          "sh:maxCount": "1",
+          "sh:name": "GerealiseerdDoor",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#gerealiseerdDoor"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Resource",
+          "sh:description": "Resource van de Mobiliteitsdienst die de reiziger heeft gebruikt bij het afleggen van het Routesegment.",
+          "sh:maxCount": "1",
+          "sh:name": "GerealiseerdMet",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#gerealiseerdMet"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#RouteKnoop",
+          "sh:description": "Knoop waar het Routesegment eindigt.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "^aankomstknoop",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#^aankomstknoop"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "Identificator van de Transportlinksequentie waarmee het Routesegment eventueel samenvalt.",
+          "sh:maxCount": "1",
+          "sh:name": "^identificator",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#^identificator"
+        },
+        {
+          "sh:class": "http://fixme.com#GerichteLink",
+          "sh:description": "Opeenvolging van Gerichtelinks waaruit het Routesegment bestaat.",
+          "sh:minCount": "1",
+          "sh:name": "^link",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#^link"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#RouteKnoop",
+          "sh:description": "Knoop waar het Routesegment begint.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "^vertrekknoop",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#^vertrekknoop"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "Type voertuig waarmee het Routesegment is afgelegd.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "vervoermiddel",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#vervoermiddel"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#RouteSegment"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#RoutebeschrijvingShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Routebeschrijving"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#RouteplannerShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#NetwerkInfo",
+          "sh:description": "Netwerkinfo die een Routeplanner gebruikt om Routes te berekenen.",
+          "sh:name": "Integreert",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#integreert"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Routeplanner"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#TransportConnectieShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://fixme.com#TransportObject",
+          "sh:description": "Transportobject die de Transportconnectie verbindt met een ander Transportobject.",
+          "sh:minCount": "2",
+          "sh:name": "^Verbindt",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#^Verbindt"
+        },
+        {
+          "sh:class": "http://fixme.com#ConnectieType",
+          "sh:description": "Aard van de Transportconnectie.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "type",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#type"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#TransportConnectie"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#UitvoerderShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://www.w3.org/ns/adms#Identifier",
+          "sh:description": "Identificator van de Organisatie.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "^identificator",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#^identificator"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Uitvoerder"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#VervoersbewijsShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#MobiliteitsDienst",
+          "sh:description": "Dienst waarvoor het Vervoersbewijs geldt.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "dienst",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#dienst"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Vervoersbewijs"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#VoorkeurShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "Aard van de Voorkeur van de Reiziger.",
+          "sh:maxCount": "1",
+          "sh:name": "type",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#type"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/mobiliteit#Waarde",
+          "sh:description": "Waarde van de Voorkeur van de Reiziger.",
+          "sh:maxCount": "1",
+          "sh:name": "waarde",
+          "sh:path": "https://data.vlaanderen.be/ns/mobiliteit#waarde"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Voorkeur"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#WaardeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/mobiliteit#Waarde"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#PeriodeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "sh:description": "Aanvang van de tijdsduur.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "begin",
+          "sh:path": "http://data.europa.eu/m8g/startTime"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "sh:description": "Einde vd tijdsduur.",
+          "sh:maxCount": "1",
+          "sh:name": "einde",
+          "sh:path": "http://data.europa.eu/m8g/endTime"
+        }
+      ],
+      "sh:targetClass": "http://data.europa.eu/m8g/PeriodOfTime"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#GerichteLinkShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://fixme.com#Link",
+          "sh:description": "Verwijzing naar de Link.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "link",
+          "sh:path": "http://fixme.com#link"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "Geeft aan of de richting van de link overeenstemt met zijn positieve of zijn negatieve richting.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "richting",
+          "sh:path": "http://fixme.com#richting"
+        }
+      ],
+      "sh:targetClass": "http://fixme.com#GerichteLink"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#LinkShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://fixme.com#Knoop",
+          "sh:description": "Knoop waar de Link eindigt.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "^aankomstknoop",
+          "sh:path": "http://fixme.com#^aankomstknoop"
+        },
+        {
+          "sh:class": "http://fixme.com#Knoop",
+          "sh:description": "Knoop waar de Link begint.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "^vertrekKnoop",
+          "sh:path": "http://fixme.com#^vertrekKnoop"
+        },
+        {
+          "sh:class": "http://www.opengis.net/ont/sf#LineString",
+          "sh:description": "Geometrie van de midellijn van de Link.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "geometrieMiddenlijn",
+          "sh:path": "http://fixme.com#geometrieMiddenlijn"
+        }
+      ],
+      "sh:targetClass": "http://fixme.com#Link"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#TransportGebiedShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://www.opengis.net/ont/sf#Polygon",
+          "sh:description": "Beschrijving van de geometrie van het Transportgebied.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "^geometrie",
+          "sh:path": "http://fixme.com#^geometrie"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "Aard van het Transportgebied.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "type",
+          "sh:path": "http://fixme.com#type"
+        }
+      ],
+      "sh:targetClass": "http://fixme.com#TransportGebied"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#TransportKnoopShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://www.opengis.net/ont/sf#Point",
+          "sh:description": "Locatie van de Transportknoop.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "^geometrie",
+          "sh:path": "http://fixme.com#^geometrie"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "Aard van de Transportknoop.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "type",
+          "sh:path": "http://fixme.com#type"
+        }
+      ],
+      "sh:targetClass": "http://fixme.com#TransportKnoop"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#TransportNetwerkShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://fixme.com#TransportObject",
+          "sh:description": "Transportobjecten waaruit het Transportnetwerk bestaat.",
+          "sh:name": "^BestaatUit",
+          "sh:path": "http://fixme.com#^BestaatUit"
+        },
+        {
+          "sh:class": "http://fixme.com#TransportType",
+          "sh:description": "Aard van het Transportnetwerk volgens het type infrastructuur.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "transportType",
+          "sh:path": "http://fixme.com#transportType"
+        }
+      ],
+      "sh:targetClass": "http://fixme.com#TransportNetwerk"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#TransportObjectShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "Identificator van het Transportobject.",
+          "sh:maxCount": "1",
+          "sh:name": "^identificator",
+          "sh:path": "http://fixme.com#^identificator"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:description": "Naam van het Transportobject.",
+          "sh:maxCount": "1",
+          "sh:name": "geografischeNaam",
+          "sh:path": "http://fixme.com#geografischeNaam"
+        }
+      ],
+      "sh:targetClass": "http://fixme.com#TransportObject"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#PlaatsShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://www.w3.org/ns/locn#Geometry",
+          "sh:description": "Geometrie van de plaats of het gebied.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "geometrie",
+          "sh:path": "http://www.w3.org/ns/locn#geometry"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:description": "Naam van de plaats of van het gebied.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "plaatsnaam",
+          "sh:path": "http://www.w3.org/2000/01/rdf-schema#label"
+        }
+      ],
+      "sh:targetClass": "http://purl.org/dc/terms/Location"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#FormeelKaderShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:description": "Beschrijving van het formeel kader.",
+          "sh:maxCount": "1",
+          "sh:name": "beschrijving",
+          "sh:path": "http://purl.org/dc/terms/description"
+        },
+        {
+          "sh:class": "http://purl.org/vocab/cpsv#FormalFramework",
+          "sh:description": "Ander formeel kader dat met het formeel kader verband houdt.",
+          "sh:name": "isGerelateerdAan",
+          "sh:path": "http://purl.org/dc/terms/relation"
+        },
+        {
+          "sh:description": "Naam vh formeel kader.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "naam",
+          "sh:path": "http://purl.org/dc/terms/title"
+        },
+        {
+          "sh:description": "Onderwerp vh formeel kader.",
+          "sh:name": "onderwerp",
+          "sh:path": "http://data.europa.eu/m8g/subject"
+        },
+        {
+          "sh:description": "Status vh formeel kader.",
+          "sh:maxCount": "1",
+          "sh:name": "status",
+          "sh:path": "http://www.w3.org/ns/adms#status"
+        },
+        {
+          "sh:description": "Taal waarin het formeel kader beschikbaar is.",
+          "sh:name": "taal",
+          "sh:path": "http://data.europa.eu/eli/ontology#language"
+        },
+        {
+          "sh:class": "http://purl.org/dc/terms/Location",
+          "sh:description": "Het geografisch bereik vh formeel kader.",
+          "sh:name": "toepassingsgebied",
+          "sh:path": "http://data.europa.eu/m8g/territorialApplication"
+        },
+        {
+          "sh:description": "Aard vh formeel kader.",
+          "sh:name": "type",
+          "sh:path": "http://purl.org/dc/terms/type"
+        }
+      ],
+      "sh:targetClass": "http://purl.org/vocab/cpsv#FormalFramework"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#LijnStringShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.opengis.net/ont/sf#LineString"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#PuntShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.opengis.net/ont/sf#Point"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#PolygoonShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.opengis.net/ont/sf#Polygon"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#GeografischeNaamShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#GetypeerdeStringShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2000/01/rdf-schema#Literal"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#RouteTypeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#VervoermiddelShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#ResourcetypeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#DienstverleningTypeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#ResourceStatusShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#ReizigersKenmerkShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#ReizigersVoorkeurShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#TransportGebiedTypeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#TransportKnoopTypeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#TekenShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#IdentificatorShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:description": "Identificator vh object opgesplitst in zijn onderdelen.",
+          "sh:maxCount": "1",
+          "sh:name": "gestructureerdeIdentificator",
+          "sh:path": "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "String gebruikt om het object uniek te identificeren.",
+          "sh:maxCount": "1",
+          "sh:name": "identificator",
+          "sh:path": "http://www.w3.org/2004/02/skos/core#notation"
+        },
+        {
+          "sh:class": "http://purl.org/dc/terms/Agent",
+          "sh:description": "Link naar de agent die de identificator heeft uitgegeven.",
+          "sh:maxCount": "1",
+          "sh:name": "toegekendDoor",
+          "sh:path": "http://purl.org/dc/terms/creator"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:description": "Naam vd agent die de identificator heeft toegekend.",
+          "sh:maxCount": "1",
+          "sh:name": "toegekendDoorString",
+          "sh:path": "http://www.w3.org/ns/adms#schemaAgency"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "sh:description": "Tijdstip waarop de identificator werd uitgegeven.",
+          "sh:maxCount": "1",
+          "sh:name": "toegekendOp",
+          "sh:path": "http://purl.org/dc/terms/issued"
+        }
+      ],
+      "sh:targetClass": "http://www.w3.org/ns/adms#Identifier"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#GeometrieShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "Geometrie uitgedrukt in gml-formaat.",
+          "sh:maxCount": "1",
+          "sh:name": "gml",
+          "sh:path": "http://www.opengis.net/ont/geosparql#asGML"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "Geometrie uitgedrukt in wkt-formaat.",
+          "sh:maxCount": "1",
+          "sh:name": "wkt",
+          "sh:path": "http://www.opengis.net/ont/geosparql#asWKT"
+        }
+      ],
+      "sh:targetClass": "http://www.w3.org/ns/locn#Geometry"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#LocatieShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/ns/prov#Location"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/mobiliteit-maas#TijdschemaShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "sh:description": "Aantal keer dat het plaatsvindt.",
+          "sh:maxCount": "1",
+          "sh:name": "aantal",
+          "sh:path": "https://schema.org/repeatCount"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#duration",
+          "sh:description": "Duur van hetgeen plaatsvindt.",
+          "sh:maxCount": "1",
+          "sh:name": "duur",
+          "sh:path": "https://data.vlaanderen.be/ns/generiek#duur"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#date",
+          "sh:description": "Datum tot wanneer het plaatsvindt.",
+          "sh:maxCount": "1",
+          "sh:name": "einddatum",
+          "sh:path": "https://schema.org/endDate"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#time",
+          "sh:description": "Tijdstip waarop het eindigt.",
+          "sh:maxCount": "1",
+          "sh:name": "eindtijd",
+          "sh:path": "https://schema.org/endTime"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:description": "Frequentie waarmee het plaatsvindt.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "frequentie",
+          "sh:path": "https://schema.org/repeatFrequency"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
+          "sh:description": "Dagen van de week waarop het plaatsvindt.",
+          "sh:name": "perDag",
+          "sh:path": "https://schema.org/byDay"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "sh:description": "Dagen van de maand waarop het plaatsvindt.",
+          "sh:name": "perDagVanDeMaand",
+          "sh:path": "https://schema.org/byMonthDay"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "sh:description": "Maanden van het jaar waarop het plaatsvindt.",
+          "sh:name": "perMaand",
+          "sh:path": "https://schema.org/byMonth"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "sh:description": "N-de keer dat iets plaatsvindt uit de verzameling van mogelijke tijdstippen.",
+          "sh:maxCount": "1",
+          "sh:name": "perSetpositie",
+          "sh:path": "https://data.vlaanderen.be/ns/generiek#perSetpositie"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#date",
+          "sh:description": "Datum vanaf wanneer het plaatsvindt.",
+          "sh:maxCount": "1",
+          "sh:name": "startdatum",
+          "sh:path": "https://schema.org/startDate"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#time",
+          "sh:description": "Tijdstip waarop het start.",
+          "sh:maxCount": "1",
+          "sh:name": "starttijd",
+          "sh:path": "https://schema.org/startTime"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#date",
+          "sh:description": "Datums waarop het uitzonderlijk niet plaatsvindt.",
+          "sh:name": "uitzonderingsdatum",
+          "sh:path": "https://schema.org/exceptDate"
+        }
+      ],
+      "sh:targetClass": "https://schema.org/Schedule"
+    }
+  ]
+}
