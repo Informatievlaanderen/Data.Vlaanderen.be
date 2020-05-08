@@ -1,0 +1,404 @@
+{
+  "@context": {
+    "Agent": "http://purl.org/dc/terms/Agent",
+    "Agent.contactinfo": {
+      "@id": "https://data.vlaanderen.be/ns/generiek#contactinfo",
+      "@type": "@id"
+    },
+    "Agent.heeftRecht": {
+      "@container": "@set",
+      "@id": "http://data.vlaanderen.be/ns/perceel#Recht",
+      "@type": "@id"
+    },
+    "Agent.heeftVerantwoordelijkheid": {
+      "@container": "@set",
+      "@id": "http://data.vlaanderen.be/ns/perceel#heeftVerantwoordelijkheid",
+      "@type": "@id"
+    },
+    "Bebouwing": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "Bedrijventerrein": "https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein",
+    "Bedrijventerrein.beschikbareKavels": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#beschikbareKavels",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "Bedrijventerrein.beschikbareOppervlakte": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#beschikbareOppervlakte",
+      "@type": "@id"
+    },
+    "Bedrijventerrein.commerciëleNaam": {
+      "@id": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "Bedrijventerrein.isGerelateerdAan": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/relation",
+      "@type": "@id"
+    },
+    "Bedrijventerrein.naam": {
+      "@id": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "BedrijventerreinGebruiksperceel": "https://data.vlaanderen.be/ns/bedrijventerrein#BedrijventerreinGebruiksperceel",
+    "BedrijventerreinGebruiksperceel.bebouwing": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#bebouwing",
+      "@type": "@id"
+    },
+    "BedrijventerreinGebruiksperceel.beperking": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#beperking",
+      "@type": "@id"
+    },
+    "BedrijventerreinGebruiksperceel.beschikbaarheid": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#beschikbaarheid",
+      "@type": "@id"
+    },
+    "BedrijventerreinGebruiksperceel.functie": {
+      "@container": "@set",
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#functie",
+      "@type": "@id"
+    },
+    "BedrijventerreinGebruiksperceel.inGebruik": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#inGebruik",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "BedrijventerreinGebruiksperceel.isDeelVan": {
+      "@id": "http://purl.org/dc/terms/isPartOf",
+      "@type": "@id"
+    },
+    "BedrijventerreinGebruiksperceel.isGerelateerdAan": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/relation",
+      "@type": "@id"
+    },
+    "BeheerdeBedrijvenzone": "https://data.vlaanderen.be/ns/bedrijventerrein#BeheerdeBedrijvenzone",
+    "BeheerdeBedrijvenzone.isDeelVan": {
+      "@container": "@set",
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#isDeelVan",
+      "@type": "@id"
+    },
+    "BeheerdeBedrijvenzone.naam": {
+      "@id": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "BeheerdeBedrijvenzone.subsidie": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#subsidie",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "BeheerdeBedrijvenzone.subsidietype": {
+      "@container": "@set",
+      "@id": "http://data.vlaanderen.be/ns/bedrijventerrein#subsidietype",
+      "@type": "@id"
+    },
+    "Beperking": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "Beschikbaarheid": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "Bestemming": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "Contactinfo": "http://schema.org/ContactPoint",
+    "Contactinfo.aanschrijfvorm": {
+      "@id": "http://www.w3.org/2006/vcard/ns#honorific-prefix",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "Contactinfo.adres": {
+      "@id": "http://www.w3.org/ns/locn#address",
+      "@type": "@id"
+    },
+    "Contactinfo.beschikbaarheid": {
+      "@id": "http://schema.org/hoursAvailable",
+      "@type": "@id"
+    },
+    "Contactinfo.contactnaam": {
+      "@id": "http://xmlns.com/foaf/0.1/name",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Contactinfo.email": {
+      "@id": "http://schema.org/email",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Contactinfo.fax": {
+      "@id": "http://schema.org/faxNumber",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Contactinfo.openingsuren": {
+      "@id": "http://schema.org/openingHours",
+      "@type": "http://www.w3.org/2000/01/rdf-schema#Literal"
+    },
+    "Contactinfo.telefoon": {
+      "@id": "http://schema.org/telephone",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Contactinfo.website": {
+      "@id": "http://xmlns.com/foaf/0.1/page",
+      "@type": "http://www.w3.org/2001/XMLSchema#anyURI"
+    },
+    "DominanteEconomischeActiviteit": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "Dossierfase": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "EconomischGebied": "https://data.vlaanderen.be/ns/bedrijventerrein#EconomischGebied",
+    "EconomischGebied.dominanteEconomischeActiviteit": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#dominanteEconomischeActiviteit",
+      "@type": "@id"
+    },
+    "EconomischGebied.isGerelateerdAan": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/relation",
+      "@type": "@id"
+    },
+    "Functie": "https://data.vlaanderen.be/ns/bedrijventerrein#FunctieWaarde",
+    "Functie.percentage": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#percentage",
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "Functie.type": {
+      "@id": "http://data.vlaanderen.be/ns/bedrijventerrein#FunctieWaarde.type",
+      "@type": "@id"
+    },
+    "Functiewaarde": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "Geometrie": "http://www.w3.org/ns/locn#Geometry",
+    "Geometrie.gml": {
+      "@id": "http://www.opengis.net/ont/geosparql#asGML",
+      "@type": "http://www.w3.org/2000/01/rdf-schema#Literal"
+    },
+    "Geometrie.wkt": {
+      "@id": "http://www.opengis.net/ont/geosparql#asWKT",
+      "@type": "http://www.w3.org/2000/01/rdf-schema#Literal"
+    },
+    "GeometrieMethodeWaarde": "http://www.w3.org/2004/02/skos/core#Concept",
+    "Identificator": "http://www.w3.org/ns/adms#Identifier",
+    "Identificator.gestructureerdeIdentificator": {
+      "@id": "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator",
+      "@type": "@id"
+    },
+    "Identificator.notatie": {
+      "@id": "http://www.w3.org/2004/02/skos/core#notation",
+      "@type": "http://www.w3.org/2000/01/rdf-schema#Literal"
+    },
+    "Identificator.toegekendDoor": {
+      "@id": "http://purl.org/dc/terms/creator",
+      "@type": "@id"
+    },
+    "Identificator.toegekendDoor (string)": {
+      "@id": "http://www.w3.org/ns/adms#schemaAgency",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Identificator.toegekendOp": {
+      "@id": "http://purl.org/dc/terms/issued",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "KadastraalPlanperceel": "http://data.vlaanderen.be/ns/perceel#KadastraalPlanperceel",
+    "KadastraalPlanperceel.datumBijwerking": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#datumbijwerking",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "KwantitatieveWaarde": "https://schema.org/QuantitativeValue",
+    "KwantitatieveWaarde.eenheid": {
+      "@id": "https://schema.org/unitText",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "KwantitatieveWaarde.standaardEenheid": {
+      "@id": "https://schema.org/unitCode",
+      "@type": "@id"
+    },
+    "KwantitatieveWaarde.waarde": {
+      "@id": "https://schema.org/value",
+      "@type": "@id"
+    },
+    "Landgebruik": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "OSLO-Perceel::RuimtelijkeEenheidtype": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "OntwikkelbareBedrijvenzone": "https://data.vlaanderen.be/ns/bedrijventerrein#OntwikkelbareBedrijvenzone",
+    "OntwikkelbareBedrijvenzone.homepage": {
+      "@id": "http://xmlns.com/foaf/0.1/homepage",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "OntwikkelbareBedrijvenzone.isDeelVan": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/isPartOf",
+      "@type": "@id"
+    },
+    "OntwikkelbareBedrijvenzone.naam": {
+      "@id": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "OntwikkelbareBedrijvenzone.statusOntwikkeling": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#statusOntwikkeling",
+      "@type": "@id"
+    },
+    "OntwikkelbareBedrijvenzone.voorzieneUitgifte": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#voorzieneUitgifte",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "Opmetingtype": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "Oppervlaktetype": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "Periode": "http://data.europa.eu/m8g/PeriodOfTime",
+    "Periode.begin": {
+      "@id": "http://data.europa.eu/m8g/startTime",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "Periode.einde": {
+      "@id": "http://data.europa.eu/m8g/endTime",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "Plan": "https://data.vlaanderen.be/ns/bedrijventerrein#Plan",
+    "Plan.bestemming": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#bestemming",
+      "@type": "@id"
+    },
+    "Plan.dossierfase": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#dossierfase",
+      "@type": "@id"
+    },
+    "Plan.identificator": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#identificator",
+      "@type": "@id"
+    },
+    "Plan.naam": {
+      "@id": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "Plan.planningsniveau": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#planningsNiveau",
+      "@type": "@id"
+    },
+    "Plan.publicatiedatum": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#publicatiedatum",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "Plan.schorsing": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#schorsing",
+      "@type": "@id"
+    },
+    "Plan.startdatum": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#startdatum",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "Plan.status": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#status",
+      "@type": "@id"
+    },
+    "Plan.stedenbouwkundigevoorschriften": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#stedenbouwkundigeVoorschriften",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Plan.toelichtingsnota": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#toelichtingsnota",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Planningsniveau": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "Planningszone": "https://data.vlaanderen.be/ns/bedrijventerrein#Planningszone",
+    "Planningszone.isGerelateerdAan": {
+      "@id": "http://purl.org/dc/terms/relation",
+      "@type": "@id"
+    },
+    "Recht": "http://data.vlaanderen.be/ns/perceel#Recht",
+    "Recht.agent": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#OSLO-Perceel::Recht.agent",
+      "@type": "@id"
+    },
+    "Recht.ruimtelijkeEenheid": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#OSLO-Perceel::Recht.ruimtelijkeEenheid",
+      "@type": "@id"
+    },
+    "Recht.type": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#Recht.type",
+      "@type": "@id"
+    },
+    "Rechtstype": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "RuimtelijkeEenheid": "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid",
+    "RuimtelijkeEenheid.dimensie": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#dimensie",
+      "@type": "@id"
+    },
+    "RuimtelijkeEenheid.geldigheidsperiode": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#geldigheidsperiode",
+      "@type": "@id"
+    },
+    "RuimtelijkeEenheid.geometrie": {
+      "@container": "@set",
+      "@id": "http://data.vlaanderen.be/ns/perceel#geometrie",
+      "@type": "@id"
+    },
+    "RuimtelijkeEenheid.identificator": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#identificator",
+      "@type": "@id"
+    },
+    "RuimtelijkeEenheid.isGerelateerdAan": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/relation",
+      "@type": "@id"
+    },
+    "RuimtelijkeEenheid.landgebruik": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#landgebruik",
+      "@type": "@id"
+    },
+    "RuimtelijkeEenheid.niveau": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#niveau",
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "RuimtelijkeEenheid.oppervlakte": {
+      "@container": "@set",
+      "@id": "http://data.vlaanderen.be/ns/perceel#oppervlakte",
+      "@type": "@id"
+    },
+    "RuimtelijkeEenheid.type": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid.type",
+      "@type": "@id"
+    },
+    "RuimtelijkeEenheidGeometrie": "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie",
+    "RuimtelijkeEenheidGeometrie.default": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#default",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "RuimtelijkeEenheidGeometrie.geometrie": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#geometrie",
+      "@type": "@id"
+    },
+    "RuimtelijkeEenheidGeometrie.methode": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#methode",
+      "@type": "@id"
+    },
+    "RuimtelijkeEenheidOppervlakte": "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte",
+    "RuimtelijkeEenheidOppervlakte.officiëleOppervlakte": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#officiëleOppervlakte",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "RuimtelijkeEenheidOppervlakte.oppervlakte": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#oppervlakte",
+      "@type": "@id"
+    },
+    "RuimtelijkeEenheidOppervlakte.type": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#oppervlaktetype",
+      "@type": "@id"
+    },
+    "SchorsingInfo": "https://data.vlaanderen.be/ns/bedrijventerrein#SchorsingInfo",
+    "SchorsingInfo.datumSchorsing": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#datumSchorsing",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "SchorsingInfo.geschorst": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#geschorst",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "SchorsingInfo.linkSchorsing": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#linkSchorsing",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "SchorsingInfo.schorsingOpmerking": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#schorsingOpmerking",
+      "@type": ""
+    },
+    "Status": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "StatusOntwikkeling": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "Subsidietype": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+    "TaalString": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+    "Verantwoordelijkheid": "http://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid",
+    "Verantwoordelijkheid.agent": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#OSLO-Perceel::Verantwoordelijkheid.agent",
+      "@type": "@id"
+    },
+    "Verantwoordelijkheid.ruimtelijkeEenheid": {
+      "@id": "https://data.vlaanderen.be/ns/bedrijventerrein#OSLO-Perceel::Verantwoordelijkheid.ruimtelijkeEenheid",
+      "@type": "@id"
+    },
+    "Verantwoordelijkheid.type": {
+      "@id": "http://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid.type",
+      "@type": "@id"
+    },
+    "Verantwoordelijkheidtype": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+  }
+}

@@ -1,0 +1,234 @@
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://www.w3.org/2009/08/skos-reference/skos.html#Concept> a rdfs:Class .
+
+<http://data.vlaanderen.be/ns/perceel#Recht.type> a owl:ObjectProperty;
+  rdfs:label "type (Recht)"@nl;
+  rdfs:comment "De aard van een resource."@nl;
+  rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range <https://www.w3.org/2009/08/skos-reference/skos.html#Concept> .
+
+<http://data.vlaanderen.be/ns/perceel#Restrictie.type> a owl:ObjectProperty;
+  rdfs:label "type (Restrictie)"@nl;
+  rdfs:comment "De aard van een resource."@nl;
+  rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range <https://www.w3.org/2009/08/skos-reference/skos.html#Concept> .
+
+<http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid.type> a owl:ObjectProperty;
+  rdfs:label "type (RuimtelijkeEenheid)"@nl;
+  <http://purl.org/vocab/vann/usageNote> """Via deze eigenschap kan men aangeven over welk soort ruimtelijke eenheid men het heeft. Mogelijke voorbeelden zijn onder meer Gebruiksperceel, akteperceel, vervuilingsperceel, openbaar domein, kadastraal planperceel
+"""@nl;
+  rdfs:comment "De aard van een resource."@nl;
+  rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range <https://www.w3.org/2009/08/skos-reference/skos.html#Concept> .
+
+<http://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid.type> a owl:ObjectProperty;
+  rdfs:label "type (Verantwoordelijkheid)"@nl;
+  rdfs:comment "De aard van een resource."@nl;
+  rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range <https://www.w3.org/2009/08/skos-reference/skos.html#Concept> .
+
+<http://data.vlaanderen.be/ns/perceel#ZakelijkRecht.type> a owl:ObjectProperty;
+  rdfs:label "type (ZakelijkRecht)"@nl;
+  rdfs:comment "De aard van een resource."@nl;
+  rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range <https://www.w3.org/2009/08/skos-reference/skos.html#Concept> .
+
+<http://data.vlaanderen.be/ns/perceel#aandeel> a rdf:Property;
+  rdfs:label "aandeel"@nl;
+  rdfs:comment "Procentuele aanduiding van een resource."@nl;
+  rdfs:domain <http://data.vlaanderen.be/ns/perceel#ZakelijkRecht>,
+    <http://data.vlaanderen.be/ns/perceel#Recht>,
+    <http://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid>,
+    <http://data.vlaanderen.be/ns/perceel#Restrictie>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel> .
+
+<http://data.vlaanderen.be/ns/perceel#datumbijwerking> a owl:DatatypeProperty;
+  rdfs:label "datumBijwerking"@nl;
+  rdfs:comment "Datum van de laatste bijwerking."@nl;
+  rdfs:domain <http://data.vlaanderen.be/ns/perceel#KadastraalPatrimoniumperceel>,
+    <http://data.vlaanderen.be/ns/perceel#KadastraalPlanperceel>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range xsd:dateTime .
+
+<http://data.vlaanderen.be/ns/perceel#default> a owl:DatatypeProperty;
+  rdfs:label "default"@nl;
+  rdfs:comment "Geometrie die moet worden gebruikt bv bij voorstelling op kaart."@nl;
+  rdfs:domain <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range xsd:boolean .
+
+<http://data.vlaanderen.be/ns/perceel#dimensie> a owl:ObjectProperty;
+  rdfs:label "dimensie"@nl;
+  rdfs:comment "De dimensie van de ruimtelijke eenheid."@nl;
+  rdfs:domain <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range <https://www.w3.org/2009/08/skos-reference/skos.html#Concept> .
+
+<http://data.vlaanderen.be/ns/perceel#geldigheidperiode> a owl:ObjectProperty;
+  rdfs:label "geldigheidsperiode"@nl;
+  rdfs:comment "Tijdsinterval waarbinnen iets geldig is."@nl;
+  rdfs:domain <http://data.vlaanderen.be/ns/perceel#Restrictie>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range <http://data.europa.eu/m8g/PeriodOfTime> .
+
+<http://data.vlaanderen.be/ns/perceel#geldigheidsperiode> a owl:ObjectProperty;
+  rdfs:label "geldigheidsperiode"@nl;
+  rdfs:comment "Tijdsinterval waarbinnen iets geldig is."@nl;
+  rdfs:domain <http://data.vlaanderen.be/ns/perceel#ZakelijkRecht>,
+    <http://data.vlaanderen.be/ns/perceel#Recht>,
+    <https://www.w3.org/2000/01/rdf-schema#Resource>,
+    <http://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range <http://data.europa.eu/m8g/PeriodOfTime> .
+
+<http://data.vlaanderen.be/ns/perceel#geometrie> a owl:ObjectProperty;
+  rdfs:label "geometrie"@nl;
+  rdfs:comment "Geometrische voorstelling van een ruimtelijke eenheid."@nl,
+    "Vorm- en positiekenmerken van een object."@nl;
+  rdfs:domain <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie>,
+    <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie>,
+    <http://www.w3.org/ns/locn#Geometry> .
+
+<http://data.vlaanderen.be/ns/perceel#identificator> a owl:ObjectProperty;
+  rdfs:label "Identificator"@nl;
+  rdfs:comment """De identificator van resource.
+"""@nl,
+    "De identificator van resource."@nl;
+  rdfs:domain <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid>,
+    <http://data.vlaanderen.be/ns/perceel#KadastraalPatrimoniumperceel>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range <http://www.w3.org/ns/adms#Identifier> .
+
+<http://data.vlaanderen.be/ns/perceel#landgebruik> a owl:ObjectProperty;
+  rdfs:label "Landgebruik"@nl;
+  rdfs:comment "Geeft het gebruik aan van de ruimtelijke eenheid."@nl;
+  rdfs:domain <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range <https://www.w3.org/2009/08/skos-reference/skos.html#Concept> .
+
+<http://data.vlaanderen.be/ns/perceel#methode> a owl:ObjectProperty;
+  rdfs:label "methode"@nl;
+  rdfs:comment "De methode geeft aan op welke manier de geometrie tot stand is gekomen."@nl;
+  rdfs:domain <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range skos:Concept .
+
+<http://data.vlaanderen.be/ns/perceel#niveau> a owl:DatatypeProperty;
+  rdfs:label "niveau"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Negatieve waarden worden geassocieerd met ondergronds en positieve waarden met bovengronds. Nul wordt beschouwd als een absolute waarde om het maaiveld aan te duiden."@nl;
+  rdfs:comment "Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten."@nl;
+  rdfs:domain <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range xsd:integer .
+
+<http://data.vlaanderen.be/ns/perceel#officiëleOppervlakte> a owl:DatatypeProperty;
+  rdfs:label "officiëleOppervlakte"@nl;
+  rdfs:comment "Geeft aan of de oppervlakte al dan niet officieel is."@nl;
+  rdfs:domain <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range xsd:boolean .
+
+<http://data.vlaanderen.be/ns/perceel#oppervlakte> a owl:ObjectProperty;
+  rdfs:label "oppervlakte"@nl;
+  rdfs:comment "Afmeting van een twee-dimensionaal gebied."@nl,
+    "Oppervlakte van de ruimtelijke eenheid en metadata over de manier waarop deze bepaald werd."@nl;
+  rdfs:domain <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid>,
+    <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte>,
+    <https://schema.org/QuantitativeValue> .
+
+<http://data.vlaanderen.be/ns/perceel#oppervlaktetype> a owl:ObjectProperty;
+  rdfs:label "oppervlaktetype"@nl;
+  rdfs:comment "De methode waarop de oppervlakte bepaald werd;"@nl;
+  rdfs:domain <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte>;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:range <https://www.w3.org/2009/08/skos-reference/skos.html#Concept> .
+
+<http://data.vlaanderen.be/ns/perceel#KadastraalPlanperceel> a owl:Class;
+  rdfs:label "Kadastraal Planperceel"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Kadastraal Planperceel komt overeen met de entiteit CadastralParcel uit INSPIRE Cadastral Parcel. De identificator dat gedefinieerd kan worden voor een Kadastraal planperceel komt overeen met de CaPaKey (bijvoorbeeld 44024A0034/00B002)."@nl;
+  rdfs:comment "Een gedeelte van het Belgische grondgebied, geografische afgebakend en geïdentificeerd door de AAPD op het kadastraal percelenplan, dat overeenstemt met het grondoppervlak van één of meerdere kadastrale patrimoniale percelen."@nl;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel>;
+  rdfs:subClassOf <http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid> .
+
+dc:description a rdf:Property;
+  rdfs:label "omschrijving"@nl .
+
+dc:relation a rdf:Property;
+  rdfs:label "isGerelateerdAan"@nl .
+
+<http://data.vlaanderen.be/ns/perceel#KadastraalPatrimoniumperceel> a owl:Class;
+  rdfs:label "Kadastraal Patrimoniumperceel"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Deze definitie is gealigneerd met de definitie van de Algemene Administratie van de PatrimoniumDocumentatie (AAPD). Kadastraal Patrimoniumperceel komt overeen met de entiteit BasicPropertyUnit uit INSPIRE Cadastral Parcel."@nl;
+  rdfs:comment "Een onroerend goed of onroerend recht dat in hoofde van één of meerdere titularissen van een zakelijk recht onderworpen is aan een bepaald eigendomsstatuut."@nl;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel> .
+
+<http://data.vlaanderen.be/ns/perceel#Recht> a owl:Class;
+  rdfs:label "Recht"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Definitie conform ISO 19152 - Land Administration Domain Model."@nl;
+  rdfs:comment "Actie, activiteit of verzameling van acties dat een systeemparticipant mag uitvoeren of mag gebruik maken van een geassocieerde resource."@nl;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel> .
+
+<http://data.vlaanderen.be/ns/perceel#Restrictie> a owl:Class;
+  rdfs:label "Restrictie"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Definitie conform ISO 19152 - Land Administration Domain Model."@nl;
+  rdfs:comment "Formele of informele verplichting om zich te weerhouden van iets te doen"@nl;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel> .
+
+<http://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid> a owl:Class;
+  rdfs:label "Verantwoordelijkheid"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Definitie conform ISO 19152 - Land Administration Domain Model."@nl;
+  rdfs:comment "Formele of informele verplichting om iets te doen."@nl;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel> .
+
+<http://data.vlaanderen.be/ns/perceel#ZakelijkRecht> a owl:Class;
+  rdfs:label "Zakelijk Recht"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Deze definitie is gealigneerd met de definitie van de Algemene Administratie van de PatrimoniumDocumentatie (AAPD)."@nl;
+  rdfs:comment "De zakelijke rechten zijn rechten die rechtstreeks op een zaak worden uitgeoefend. Een zakelijk recht geef aan zijn titularis een rechtstreekse en onmiddellijke macht over de zaak waarop het is gevestigd. Een zakelijk recht is een absoluut recht, in die zin dat zijn titularis het tegen iedereen kan doen gelden."@nl;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel> .
+
+<http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie> a owl:Class;
+  rdfs:label "RuimtelijkeEenheidGeometrie"@nl;
+  rdfs:comment "Geometrie van de ruimtelijke eenheid en metadata over hoe deze werd bepaald."@nl;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel> .
+
+<http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte> a owl:Class;
+  rdfs:label "RuimtelijkeEenheidOppervlakte"@nl;
+  rdfs:comment "Oppervlakte van de ruimtelijke eenheid en metadata over de manier waarop deze bepaald werd."@nl;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel> .
+
+<http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid> a owl:Class;
+  rdfs:label "Ruimtelijke Eenheid"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Definitie conform ISO 19152 - Land Administration Domain Model."@nl;
+  rdfs:comment "Eén gebied (of meerdere gebieden) van land en/of water, of één enkel volume (of meerdere volumes) ruimte, afgebakend voor een bepaald doel."@nl;
+  rdfs:isDefinedBy <http://data.vlaanderen.be/ns/perceel> .
+
+<http://data.vlaanderen.be/ns/perceel> a owl:Ontology;
+  rdfs:label "perceel"@nl,
+    "perceel"@en;
+  dc:issued "2019-06-19";
+  dc:license <https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0>,
+    "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0";
+  dc:mediator [
+    foaf:homepage <https://data.vlaanderen.be>;
+    foaf:mbox <mailto:oslo@kb.vlaanderen.be>;
+    foaf:name "Data Vlaanderen"
+  ];
+  rdfs:seeAlso dc:relation,
+    <https://www.w3.org/2009/08/skos-reference/skos.html#Concept>,
+    dc:description .

@@ -1,0 +1,471 @@
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+skos:Concept a rdfs:Class .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#Functiewaarde.type> a owl:ObjectProperty;
+  rdfs:label "type (Functie)"@nl;
+  rdfs:comment "Aanduiding van het functietype."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Functiewaarde>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#Planningszone> a owl:Class;
+  rdfs:label "Planningszone"@nl;
+  rdfs:comment "Een gebied dat gelegen is binnen een bepaalde vastgelegde ruimtelijke bestemming en dat zich in een ruimtelijke bestemmingsprocedure bevindt. De oorspronkelijke vastgelegde bestemming kan door de bestemmingsprocedure gewijzigd of hernomen worden."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:subClassOf <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid> .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#bebouwing> a owl:ObjectProperty;
+  rdfs:label "bebouwing"@nl;
+  rdfs:comment "Deze eigenschap geeft de aanwezigheid van bebouwing aan op het Bedrijventerreinperceel."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerreinperceel>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#beperking> a owl:ObjectProperty;
+  rdfs:label "beperking"@nl;
+  rdfs:comment "Deze eigenschap geeft aan welke mogelijke beperking(en) een bepaald bedrijventerreinperceel momenteel ondervindt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerreinperceel>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#beschikbaarheid> a owl:ObjectProperty;
+  rdfs:label "beschikbaarheid"@nl;
+  rdfs:comment "Deze eigenschap geeft de beschikbaarheid aan van een Bedrijventerreinperceel."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerreinperceel>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#beschikbareKavels> a owl:DatatypeProperty;
+  rdfs:label "beschikbare kavels"@nl;
+  rdfs:comment "Deze eigenschap geeft aan of er al dan niet beschikbare kavels aanwezig zijn op het bedrijventerrein."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range xsd:boolean .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#beschikbareOppervlakte> a owl:ObjectProperty;
+  rdfs:label "beschikbare oppervlakte"@nl;
+  rdfs:comment "Deze eigenschap geeft aan hoeveel oppervlakte nog beschikbaar is op het bedrijventerrein."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range <https://schema.org/QuantitativeValue> .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#bestemming> a owl:ObjectProperty;
+  rdfs:label "bestemming"@nl;
+  rdfs:comment "Geeft de geplande bestemming aan van de planningszone."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Plan>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#datumSchorsing> a owl:DatatypeProperty;
+  rdfs:label "datum schorsing"@nl;
+  rdfs:comment "Geeft de datum weer waarop het plan werd geschorst."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#SchorsingInfo>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range xsd:dateTime .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#dominanteEconomischeActiviteit> a owl:ObjectProperty;
+  rdfs:label "dominante economische activiteit"@nl;
+  rdfs:comment "De voornaamste economische activiteit dat geassocieerd kan worden met het Economisch Gebied"@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#EconomischGebied>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#dossierfase> a owl:ObjectProperty;
+  rdfs:label "dossierfase"@nl;
+  rdfs:comment "De dossierfase geeft aan in welke procedurefase het plan zich bevindt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Plan>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#functie> a owl:ObjectProperty;
+  rdfs:label "functie"@nl;
+  rdfs:comment "De functie geeft de (verschillende) functies aan die men kan terugvinden op het Bedrijventerreinperceel en het percentage van het perceel dat gedekt wordt door elke functie."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerreinperceel>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range <https://data.vlaanderen.be/ns/bedrijventerrein#Functiewaarde> .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#geschorst> a owl:DatatypeProperty;
+  rdfs:label "geschorst"@nl;
+  rdfs:comment "Geeft aan of het plan al dan niet geschorst is."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#SchorsingInfo>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range xsd:boolean .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#inGebruik> a owl:ObjectProperty;
+  rdfs:label "in gebruik"@nl;
+  rdfs:comment "Dit attribuut geeft aan in welke mate een Bedrijventerreinperceel in gebruik is."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerreinperceel>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#isGerelateerdAanEconomischGebied> a owl:ObjectProperty;
+  rdfs:label "is gerelateerd aan economisch gebied"@nl;
+  rdfs:comment "Economisch Gebied waarmee het bedrijventerrein kan geassocieerd worden."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range <https://data.vlaanderen.be/ns/bedrijventerrein#EconomischGebied> .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#linkSchorsing> a owl:DatatypeProperty;
+  rdfs:label "link schorsing"@nl;
+  rdfs:comment "Link naar het arrest van de schorsing"@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#SchorsingInfo>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range xsd:string .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#percentage> a owl:DatatypeProperty;
+  rdfs:label "percentage"@nl;
+  rdfs:comment "Percentage van het perceel dat gedekt wordt door de functie."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Functiewaarde>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range xsd:integer .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#planningsNiveau> a owl:ObjectProperty;
+  rdfs:label "planningsniveau"@nl;
+  rdfs:comment "Geeft het planningsniveau aan van het plan."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Plan>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#publicatiedatum> a owl:DatatypeProperty;
+  rdfs:label "publicatiedatum"@nl;
+  rdfs:comment "Publicatiedatum van de dossierfase in het Belgische Staatsblad."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Plan>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range xsd:dateTime .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#schorsing> a owl:ObjectProperty;
+  rdfs:label "schorsing"@nl;
+  rdfs:comment "De schorsing geeft aan of het plan al dan niet geschorst is en bijhorende metadata over de schorsing."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Plan>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range <https://data.vlaanderen.be/ns/bedrijventerrein#SchorsingInfo> .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#schorsingOpmerking> a owl:DatatypeProperty;
+  rdfs:label "schorsing opmerking"@nl;
+  rdfs:comment "Opmerkingen in het kader van de schorsing."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#SchorsingInfo>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range rdf:langString .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#startdatum> a owl:DatatypeProperty;
+  rdfs:label "startdatum"@nl;
+  rdfs:comment "Datum van de start van het plan."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Plan>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range xsd:dateTime .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#status> a owl:ObjectProperty;
+  rdfs:label "status"@nl;
+  rdfs:comment "Geeft de status aan waarin het plan zich bevindt."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Plan>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#statusOntwikkeling> a owl:ObjectProperty;
+  rdfs:label "status ontwikkeling"@nl;
+  rdfs:comment "Geeft de status aan van de Ontwikkelbare Bedrijvezone."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#OntwikkelbareBedrijvenzone>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#stedenbouwkundigeVoorschriften> a owl:DatatypeProperty;
+  rdfs:label "stedenbouwkundige voorschriften"@nl;
+  rdfs:comment "Link naar de tekst met het stedenbouwkundige voorschrift van het plan."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Plan>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range xsd:string .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#subsidie> a owl:DatatypeProperty;
+  rdfs:label "subsidie"@nl;
+  rdfs:comment "Geeft aan of er al dan niet subsidies actief zijn voor de Beheerde Bedrijvenzone."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#BeheerdeBedrijvenzone>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range xsd:boolean .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#subsidietype> a owl:ObjectProperty;
+  rdfs:label "subsidietype"@nl;
+  rdfs:comment "De aard van de subsidie geassocieerd met een Beheerde Bedrijvenzone."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#BeheerdeBedrijvenzone>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range skos:Concept .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#toelichtingsnota> a owl:DatatypeProperty;
+  rdfs:label "toelichtingsnota"@nl;
+  rdfs:comment "Link naar de tekst met de toelichtingsnota van het plan."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#Plan>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range xsd:string .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#voorzieneUitgifte> a owl:DatatypeProperty;
+  rdfs:label "voorziene uitgifte"@nl;
+  rdfs:comment "Het voorziene tijdstip waarop het eerste Bedrijventerreinperceel binnen een ontwikkelbare zone in verkoop zal gaan."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/bedrijventerrein#OntwikkelbareBedrijvenzone>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:range xsd:date .
+
+dc:isPartOf a rdf:Property;
+  rdfs:label "is deel van"@nl .
+
+dc:relation a rdf:Property;
+  rdfs:label "is gerelateerd aan"@nl .
+
+skos:altLabel a rdf:Property;
+  rdfs:label "commerciële naam"@nl .
+
+skos:prefLabel a rdf:Property;
+  rdfs:label "naam"@nl .
+
+<http://www.w3.org/ns/adms#identifier> a rdf:Property;
+  rdfs:label "identificator"@nl .
+
+foaf:homepage a rdf:Property;
+  rdfs:label "homepage"@nl .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#BeheerdeBedrijvenzone> a owl:Class;
+  rdfs:label "Beheerde Bedrijvenzone"@nl;
+  rdfs:comment "Een ruimtelijke eenheid binnen een bedrijventerrein afgebakend door het beheer van een agent."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:subClassOf <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid> .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#EconomischGebied> a owl:Class;
+  rdfs:label "Economisch Gebied"@nl;
+  rdfs:comment "Een economisch gebied is een gebied dat afgebakend wordt op basis van dichtheid van hoofdzakelijk bebouwde percelen met economische activiteiten, waarbij de dichtheid wordt uitgedrukt in nabijheid of de afstand tussen deze percelen. De afstand tussen deze percelen, de mix van economische activiteiten en het voorkomen van een gedeelde infrastructuur zijn bepalend voor de differentiatie tussen de types economische gebieden."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:subClassOf <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid> .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#OntwikkelbareBedrijvenzone> a owl:Class;
+  rdfs:label "Ontwikkelbare Bedrijvenzone"@nl;
+  rdfs:comment "Een (deel van) een Bedrijventerrein vanaf de mijlpaal publicatie in het Belgisch Staatsblad tot aan de oplevering van de nutsvoorzieningen en infrastructuur. Deze zones kunnen nieuwe terreinen zijn of herontwikkelingstrajecten. Wanneer een (her)ontwikkeling in meerdere fasen gebeurt, dan wordt de ontwikkelbare zone opgesplitst volgens deze fasen."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:subClassOf <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid> .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein> a owl:Class;
+  rdfs:label "Bedrijventerrein"@nl;
+  rdfs:comment "Som van alle ruimtelijke eenheden uit de ruimtelijke planningsprocedure en met een economische bestemming vanaf de dossierfase Publicatie in Belgisch Staatsblad. Een bedrijventerrein is altijd de unie van de percelen die ertoe behoren."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:subClassOf <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid> .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#Functiewaarde> a owl:Class;
+  rdfs:label "Functiewaarde"@nl;
+  rdfs:comment "Dit data type geeft weer welke functies aanwezig zijn binnen een Bedrijventerreinperceel en de overeenkomstige percentages."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein> .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerreinperceel> a owl:Class;
+  rdfs:label "Bedrijventerreinperceel"@nl;
+  rdfs:comment "Een ruimtelijke eenheid binnen een Bedrijventerrein met eenzelfde gebruik, functie of eigenaar."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein>;
+  rdfs:subClassOf <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid> .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#SchorsingInfo> a owl:Class;
+  rdfs:label "SchorsingInfo"@nl;
+  rdfs:comment "Geeft informatie over een mogelijke schorsing van het plan."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein> .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein#Plan> a owl:Class;
+  rdfs:label "Plan"@nl;
+  rdfs:comment "Een plan waarmee de overheid in een bepaald gebied de bodembestemming vastlegt."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/bedrijventerrein> .
+
+<https://data.vlaanderen.be/ns/bedrijventerrein> a owl:Ontology;
+  rdfs:label "bedrijventerrein"@en,
+    "bedrijventerrein"@nl;
+  dc:contributor [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Aura"];
+    foaf:firstName "Raf";
+    foaf:lastName "Deblay";
+    foaf:mbox <mailto:raf.deblay@aura.eu.com>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Futurn NV"];
+    foaf:firstName "Ben";
+    foaf:lastName "Six";
+    foaf:mbox <mailto:ben@futurn.com>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Interleuven"];
+    foaf:firstName "Emma";
+    foaf:lastName "De Proft";
+    foaf:mbox <mailto:emma.de.proft@interleuven.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Agentschap Innoveren en Ondernemen"];
+    foaf:firstName "Pascal";
+    foaf:lastName "De Greve";
+    foaf:mbox <mailto:pascal.degreve@vlaio.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "VLINTER (Interleuven)"];
+    foaf:firstName "Bram";
+    foaf:lastName "Adams";
+    foaf:mbox <mailto:bram.adams@interleuven.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Provinciale Ontwikkelingsmaatschappij West-Vlaanderen"];
+    foaf:firstName "Tom";
+    foaf:lastName "Decock";
+    foaf:mbox <mailto:tom.decock@pomwvl.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Veneco"];
+    foaf:firstName "Frederik";
+    foaf:lastName "Bracke";
+    foaf:mbox <mailto:frederik.bracke@veneco.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Departement Omgeving"];
+    foaf:firstName "Sophie";
+    foaf:lastName "De Mulder";
+    foaf:mbox <mailto:sophie.demulder@vlaanderen.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Provinciale Ontwikkelingsmaatschappij Oost-Vlaanderen"];
+    foaf:firstName "Benoit";
+    foaf:lastName "Bodré";
+    foaf:mbox <mailto:benoit.bodere@pomov.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Provinciale Ontwikkelingsmaatschappij Vlaams-Brabant"];
+    foaf:firstName "Jana";
+    foaf:lastName "Van Rompaey";
+    foaf:mbox <mailto:jana.vanrompaey@pomvlaamsbrabant.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Agentschap Innoveren en Ondernemen"];
+    foaf:firstName "Floris";
+    foaf:lastName "Van den Broeck";
+    foaf:mbox <mailto:floris.vandenbroeck@vlaio.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Agentschap Informatie Vlaanderen"];
+    foaf:firstName "Dirk";
+    foaf:lastName "De Baere";
+    foaf:mbox <mailto:dirk.debaere@kb.vlaanderen.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Departement Omgeving"];
+    foaf:firstName "Veronique";
+    foaf:lastName "Lavaert";
+    foaf:mbox <mailto:Veronique.Lavaert@vlaanderen.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "WVI"];
+    foaf:firstName "Bart";
+    foaf:lastName "Boute";
+    foaf:mbox <mailto:b.boute@wvi.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Provinciale Ontwikkelingsmaatschappij Vlaams-Brabant"];
+    foaf:firstName "Iris";
+    foaf:lastName "Deliever";
+    foaf:mbox <mailto:iris.deliever@pomvlaamsbrabant.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "VLINTER (Interleuven)"];
+    foaf:firstName "Caroline";
+    foaf:lastName "Vandendriessche";
+    foaf:mbox <mailto:caroline.vandendriessche@interleuven.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Departement Omgeving"];
+    foaf:firstName "Geert";
+    foaf:lastName "Van Haute";
+    foaf:mbox <mailto:geert.vanhaute@vlaanderen.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Agentschap Informatie Vlaanderen"];
+    foaf:firstName "Hendrik";
+    foaf:lastName "Van Hemelryck";
+    foaf:mbox <mailto:hendrik.vanhemelryck@kb.vlaanderen.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Mathieu Gijbels"];
+    foaf:firstName "Griet";
+    foaf:lastName "Keersmaekers";
+    foaf:mbox <mailto:griet.keersmaekers@gijbels.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Agentschap Informatie Vlaanderen"];
+    foaf:firstName "Koen";
+    foaf:lastName "De Baets";
+    foaf:mbox <mailto:Koen.DeBaets@kb.vlaanderen.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Intercommunale Leiedal"];
+    foaf:firstName "Robin";
+    foaf:lastName "Noulez";
+    foaf:mbox <mailto:robin.noulez@leiedal.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Quares"];
+    foaf:firstName "Toon";
+    foaf:lastName "Dirckx";
+    foaf:mbox <mailto:toon.dirckx@quares.be>
+  ];
+  dc:issued "2019-08-20";
+  dc:license "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0",
+    <https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0>;
+  dc:mediator [
+    foaf:homepage <https://data.vlaanderen.be>;
+    foaf:mbox <mailto:oslo@kb.vlaanderen.be>;
+    foaf:name "Data Vlaanderen"
+  ];
+  rdfs:seeAlso skos:prefLabel,
+    foaf:homepage,
+    skos:altLabel,
+    dc:isPartOf,
+    <http://www.w3.org/ns/adms#identifier>,
+    skos:Concept,
+    dc:relation;
+  <http://www.w3.org/2001/02pd/rec54#editor> [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Agentschap Informatie Vlaanderen"];
+    foaf:firstName "Bert";
+    foaf:lastName "Van Nuffelen";
+    foaf:mbox <mailto:bert.vannuffelen@kb.vlaanderen.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Agentschap Informatie Vlaanderen"];
+    foaf:firstName "Martin";
+    foaf:lastName "Vanbrabant";
+    foaf:mbox <mailto:martin.vanbrabant@vlaanderen.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Agentschap Informatie Vlaanderen"];
+    foaf:firstName "Bert";
+    foaf:lastName "Van Nuffelen";
+    foaf:mbox <mailto:bert.vannuffelen@kb.vlaanderen.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <http://www.pwc.be>;
+      foaf:name "PwC"
+    ];
+    foaf:firstName "Michiel";
+    foaf:lastName "De Keyzer";
+    foaf:mbox <mailto:michiel.de.keyzer@pwc.com>
+  ], [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <http://www.pwc.be>;
+      foaf:name "PwC"
+    ];
+    foaf:firstName "Kevin";
+    foaf:lastName "Haleydt";
+    foaf:mbox <mailto:kevin.haleydt@pwc.com>
+  ];
+  foaf:maker [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Agentschap Innoveren en Ondernemen"];
+    foaf:firstName "Idris";
+    foaf:lastName "Peiren";
+    foaf:mbox <mailto:idris.peiren@vlaio.be>
+  ] .
