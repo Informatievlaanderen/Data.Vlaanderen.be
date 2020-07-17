@@ -1,0 +1,942 @@
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcmitype:Collection a rdfs:Class;
+  rdfs:label "Collectie"@nl .
+
+crm:E10_Transfer_of_Custody a rdfs:Class;
+  rdfs:label "Overdracht van Bewaring"@nl .
+
+crm:E11_Modification a rdfs:Class;
+  rdfs:label "Wijziging"@nl .
+
+crm:E12_Production a rdfs:Class;
+  rdfs:label "Productie"@nl .
+
+crm:E13_Attribute_Assignment a rdfs:Class;
+  rdfs:label "Attribuuttoekenning"@nl .
+
+crm:E14_Condition_Assessment a rdfs:Class;
+  rdfs:label "Conditiebeoordeling"@nl .
+
+crm:E16_Measurement a rdfs:Class;
+  rdfs:label "Meting"@nl .
+
+crm:E17_Type_Assignment a rdfs:Class;
+  rdfs:label "Type Toekenning"@nl .
+
+crm:E18_Physical_Thing a rdfs:Class;
+  rdfs:label "Fysiek Ding"@nl .
+
+crm:E1_CRM_Entity a rdfs:Class;
+  rdfs:label "CRM-entiteit"@nl .
+
+crm:E22_Man-Made_Object a rdfs:Class;
+  rdfs:label "Mensgemaakt Object"@nl .
+
+crm:E25_Man-Made_Feature a rdfs:Class;
+  rdfs:label "Mensgemaakt Kenmerk"@nl .
+
+crm:E28_Conceptual_Object a rdfs:Class;
+  rdfs:label "Conceptueel Object"@nl .
+
+crm:E29_Design_or_Procedure a rdfs:Class;
+  rdfs:label "Ontwerp of Procedure"@nl .
+
+crm:E2_Temporal_Entity a rdfs:Class;
+  rdfs:label "Temporele Entiteit"@nl .
+
+crm:E30_Right a rdfs:Class;
+  rdfs:label "Recht"@nl .
+
+crm:E31_Document a rdfs:Class;
+  rdfs:label "Document"@nl .
+
+crm:E33_Linguistic_Object a rdfs:Class;
+  rdfs:label "Taalkundig Object"@nl .
+
+crm:E36_Visual_Item a rdfs:Class;
+  rdfs:label "Visueel Item"@nl .
+
+crm:E3_Condition_State a rdfs:Class;
+  rdfs:label "Conditiestatus"@nl .
+
+crm:E54_Dimension a rdfs:Class;
+  rdfs:label "Dimensie"@nl .
+
+crm:E5_Event a rdfs:Class;
+  rdfs:label "Gebeurtenis"@nl .
+
+crm:E65_Creation a rdfs:Class;
+  rdfs:label "Creatie"@nl .
+
+crm:E6_Destruction a rdfs:Class;
+  rdfs:label "Vernietiging"@nl .
+
+crm:E72_Legal_Object a rdfs:Class;
+  rdfs:label "Wettelijk Object"@nl .
+
+crm:E73_Information_Object a rdfs:Class;
+  rdfs:label "Informatie-object"@nl .
+
+crm:E78_Collection a rdfs:Class;
+  rdfs:label "Gecureerde Collectie"@nl .
+
+crm:E79_Part_Addition a rdfs:Class;
+  rdfs:label "Toevoeging Deel"@nl .
+
+crm:E7_Activity a rdfs:Class;
+  rdfs:label "Activiteit"@nl .
+
+crm:E80_Part_Removal a rdfs:Class;
+  rdfs:label "Verwijdering Deel"@nl .
+
+crm:E87_Curation_Activity a rdfs:Class;
+  rdfs:label "Curatie-activiteit"@nl .
+
+crm:E8_Acquisition a rdfs:Class;
+  rdfs:label "Verwerving"@nl .
+
+crm:E9_Move a rdfs:Class;
+  rdfs:label "Verhuis"@nl .
+
+skos:Concept a rdfs:Class;
+  rdfs:label "Type Conditie"@nl,
+    "Type Materiaal"@nl,
+    "Type Recht"@nl,
+    "Type Techniek"@nl,
+    "Type Rol"@nl,
+    "Type Dimensie"@nl,
+    "Type Entiteit"@nl,
+    "Type Beschrijving"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F1> a rdfs:Class;
+  rdfs:label "Werk"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F14> a rdfs:Class;
+  rdfs:label "Individueel Werk"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F15> a rdfs:Class;
+  rdfs:label "Complex Werk"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F17> a rdfs:Class;
+  rdfs:label "Aggregatiewerk"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F18> a rdfs:Class;
+  rdfs:label "Serieel Werk"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F19> a rdfs:Class;
+  rdfs:label "Publicatiewerk"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F20> a rdfs:Class;
+  rdfs:label "Voorstellingswerk"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F21> a rdfs:Class;
+  rdfs:label "Opnamewerk"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F22> a rdfs:Class;
+  rdfs:label "Zelfstandige Expressie"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F24> a rdfs:Class;
+  rdfs:label "Publicatie-expressie"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F25> a rdfs:Class;
+  rdfs:label "Voorstellingsplan"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F26> a rdfs:Class;
+  rdfs:label "Opname"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F27> a rdfs:Class;
+  rdfs:label "Werk Conceptie"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F28> a rdfs:Class;
+  rdfs:label "Expressiecreatie"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F29> a rdfs:Class;
+  rdfs:label "Opnamegebeurtenis"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F30> a rdfs:Class;
+  rdfs:label "Publicatiegebeurtenis"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F31> a rdfs:Class;
+  rdfs:label "Voorstelling"@nl .
+
+<https://data.vlaanderen.be/ns/cultureel-erfgoed#Rol.activiteit> a owl:ObjectProperty;
+  rdfs:label "activiteit"@nl;
+  rdfs:comment "Referentie naar verbonden klasse."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/cultureel-erfgoed#Rol>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/cultureel-erfgoed>;
+  rdfs:range crm:E7_Activity .
+
+<https://data.vlaanderen.be/ns/cultureel-erfgoed#Rol.agent> a owl:ObjectProperty;
+  rdfs:label "agent"@nl;
+  rdfs:comment "Referentie naar verbonden klasse."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/cultureel-erfgoed#Rol>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/cultureel-erfgoed>;
+  rdfs:range dc:Agent .
+
+<https://data.vlaanderen.be/ns/cultureel-erfgoed#Waarde> a owl:Class;
+  rdfs:label "Waarde"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Kwantitatief bv gewicht, kwalitatief bv categorie. Het datatype wordt overeenkomstig de invulling gekozen, bv Getal voor een kwantitatieve grootheid en een enumeratie voor een kwalitatieve grootheid."@nl;
+  rdfs:comment "De concrete, kwantitatieve of kwalitatieve invulling van een grootheid of categorie."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/cultureel-erfgoed> .
+
+<https://data.vlaanderen.be/ns/cultureel-erfgoed#tekst> a owl:DatatypeProperty;
+  rdfs:label "tekst"@nl;
+  rdfs:comment "Tekst van de beschrijving."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/cultureel-erfgoed#Beschrijving>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/cultureel-erfgoed>;
+  rdfs:range rdf:langString .
+
+<https://data.vlaanderen.be/ns/cultureel-erfgoed#type> a owl:ObjectProperty;
+  rdfs:label "type"@nl;
+  rdfs:comment "Aard van de beschrijving."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/cultureel-erfgoed#Beschrijving>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/cultureel-erfgoed>;
+  rdfs:range skos:Concept .
+
+dc:hasPart a rdf:Property;
+  rdfs:label "heeft deel"@nl .
+
+dc:isPartOf a rdf:Property;
+  rdfs:label "is deel van"@nl .
+
+crm:P102_has_title a rdf:Property;
+  rdfs:label "heeft titel"@nl .
+
+crm:P104_is_subject_to a rdf:Property;
+  rdfs:label "is onderworpen aan"@nl .
+
+crm:P104i_applies_to a rdf:Property;
+  rdfs:label "is van toepassing op"@nl .
+
+crm:P105_right_held_by a rdf:Property;
+  rdfs:label "recht in bezit van"@nl .
+
+crm:P105i_has_right_on a rdf:Property;
+  rdfs:label "heeft recht op"@nl .
+
+crm:P108_has_produced a rdf:Property;
+  rdfs:label "heeft geproduceerd"@nl .
+
+crm:P108i_was_produced_by a rdf:Property;
+  rdfs:label "werd geproduceerd door"@nl .
+
+crm:P109_has_current_or_former_curator a rdf:Property;
+  rdfs:label "heeft vroegere of huidige curator"@nl .
+
+crm:P110_augmented a rdf:Property;
+  rdfs:label "uitgebreid"@nl .
+
+crm:P110i_was_augmented_by a rdf:Property;
+  rdfs:label "werd aangevuld door"@nl .
+
+crm:P111_added a rdf:Property;
+  rdfs:label "toegevoegd"@nl .
+
+crm:P111i_was_added_by a rdf:Property;
+  rdfs:label "werd toegevoegd door"@nl .
+
+crm:P112_diminished a rdf:Property;
+  rdfs:label "verminderd"@nl .
+
+crm:P112i_was_diminished_by a rdf:Property;
+  rdfs:label "werd verminderd door"@nl .
+
+crm:P113_removed a rdf:Property;
+  rdfs:label "verwijderd"@nl .
+
+crm:P113i_was_removed_by a rdf:Property;
+  rdfs:label "werd verwijderd door"@nl .
+
+crm:P11_had_participant a rdf:Property;
+  rdfs:label "had deelnemer"@nl .
+
+crm:P126_employed a rdf:Property;
+  rdfs:label "gebruikt"@nl .
+
+crm:P128_carries a rdf:Property;
+  rdfs:label "draagt"@nl .
+
+crm:P128i_is_carried_by a rdf:Property;
+  rdfs:label "wordt gedragen door"@nl .
+
+crm:P129_is_about a rdf:Property;
+  rdfs:label "gaat over"@nl .
+
+crm:P129i_is_subject_of a rdf:Property;
+  rdfs:label "is het onderwerp van"@nl .
+
+crm:P138_represents a rdf:Property;
+  rdfs:label "vertegenwoordigt"@nl .
+
+crm:P138i_has_representation a rdf:Property;
+  rdfs:label "heeft voorstelling"@nl .
+
+crm:P13_destroyed a rdf:Property;
+  rdfs:label "vernietigde"@nl .
+
+crm:P13i_was_destroyed_by a rdf:Property;
+  rdfs:label "werd vernietigd door"@nl .
+
+crm:P14.1_in_the_role_of a rdf:Property;
+  rdfs:label "in de rol van"@nl .
+
+crm:P140_assigned_attribute_to a rdf:Property;
+  rdfs:label "attribuut toegekend aan"@nl .
+
+crm:P140i_was_attributed_by a rdf:Property;
+  rdfs:label "werd toegekend door"@nl .
+
+crm:P141_assigned a rdf:Property;
+  rdfs:label "toegekend"@nl .
+
+crm:P147_curated a rdf:Property;
+  rdfs:label "cureerde"@nl .
+
+crm:P147i_was_curated_by a rdf:Property;
+  rdfs:label "werd gecureerd door"@nl .
+
+crm:P148_has_component a rdf:Property;
+  rdfs:label "heeft component"@nl .
+
+crm:P14_carried_out_by a rdf:Property;
+  rdfs:label "uitgevoerd door"@nl .
+
+crm:P14i_performed a rdf:Property;
+  rdfs:label "voerde uit"@nl .
+
+crm:P165_incorporates a rdf:Property;
+  rdfs:label "bevat"@nl .
+
+crm:P177_assigned_property_type a rdf:Property;
+  rdfs:label "toegekend type eigenschap"@nl .
+
+crm:P1_is_identified_by a rdf:Property;
+  rdfs:label "wordt geïdentificeerd door"@nl .
+
+crm:P22_transferred_title_to a rdf:Property;
+  rdfs:label "titel overgedragen aan"@nl .
+
+crm:P22i_acquired_title_through a rdf:Property;
+  rdfs:label "verwierf titel door"@nl .
+
+crm:P23_transfered_title_from a rdf:Property;
+  rdfs:label "titel overgedragen van"@nl .
+
+crm:P23i_surrendered_title_through a rdf:Property;
+  rdfs:label "droegt titel over door"@nl .
+
+crm:P24_transferred_title_of a rdf:Property;
+  rdfs:label "titel overgedragen van"@nl .
+
+crm:P24i_changed_ownership_through a rdf:Property;
+  rdfs:label "eigendom overgedragen via"@nl .
+
+crm:P25_moved a rdf:Property;
+  rdfs:label "verhuisd"@nl .
+
+crm:P25i_moved_by a rdf:Property;
+  rdfs:label "verhuisd door"@nl .
+
+crm:P26_moved_to a rdf:Property;
+  rdfs:label "verhuisd naar"@nl .
+
+crm:P27_moved_from a rdf:Property;
+  rdfs:label "verhuisd van"@nl .
+
+crm:P28_custody_surrendered_by a rdf:Property;
+  rdfs:label "bewaring overgedragen door"@nl .
+
+crm:P28i_surrendered_custody_through a rdf:Property;
+  rdfs:label "droeg bewaring over door"@nl .
+
+crm:P29_custody_received_by a rdf:Property;
+  rdfs:label "bewaring ontvangen door"@nl .
+
+crm:P29i_received_custody_through a rdf:Property;
+  rdfs:label "kreeg bewaring door"@nl .
+
+crm:P2_has_type a rdf:Property;
+  rdfs:label "heeft type"@nl .
+
+crm:P30_transferred_custody_of a rdf:Property;
+  rdfs:label "bewaring overgedragen van"@nl .
+
+crm:P30i_custody_transferred_through a rdf:Property;
+  rdfs:label "bewaring overgedragen via"@nl .
+
+crm:P31_has_modified a rdf:Property;
+  rdfs:label "is gewijzigd"@nl .
+
+crm:P31i_was_modified_by a rdf:Property;
+  rdfs:label "werd gewijzigd door"@nl .
+
+crm:P32_used_general_technique a rdf:Property;
+  rdfs:label "gebruikte algemene techniek"@nl .
+
+crm:P34_concerned a rdf:Property;
+  rdfs:label "betreffende"@nl .
+
+crm:P34i_was_assessed_by a rdf:Property;
+  rdfs:label "werd beoordeeld door"@nl .
+
+crm:P35_has_identified a rdf:Property;
+  rdfs:label "heeft vastgesteld"@nl .
+
+crm:P39_measured a rdf:Property;
+  rdfs:label "gemeten"@nl .
+
+crm:P39i_was_measured_by a rdf:Property;
+  rdfs:label "werd gemeten door"@nl .
+
+crm:P3_has_note a rdf:Property;
+  rdfs:label "heeft notitie"@nl .
+
+crm:P40_observed_dimension a rdf:Property;
+  rdfs:label "waargenomen dimensie"@nl .
+
+crm:P41_classified a rdf:Property;
+  rdfs:label "geclassificeerd"@nl .
+
+crm:P41i_was_classified_by a rdf:Property;
+  rdfs:label "werd geclassificeerd door"@nl .
+
+crm:P42_assigned a rdf:Property;
+  rdfs:label "toegekend"@nl .
+
+crm:P43_has_dimension a rdf:Property;
+  rdfs:label "heeft dimensie"@nl .
+
+crm:P44_has_condition a rdf:Property;
+  rdfs:label "heeft conditie"@nl .
+
+crm:P45_consists_of a rdf:Property;
+  rdfs:label "bestaat uit"@nl .
+
+crm:P46_is_composed_of a rdf:Property;
+  rdfs:label "is samengesteld uit"@nl .
+
+crm:P46i_forms_part_of a rdf:Property;
+  rdfs:label "maakt deel uit van"@nl .
+
+crm:P4_has_time-span a rdf:Property;
+  rdfs:label "heeft tijdspanne"@nl .
+
+crm:P50_has_current_keeper a rdf:Property;
+  rdfs:label "heeft huidig beheerder"@nl .
+
+crm:P52_has_current_owner a rdf:Property;
+  rdfs:label "heeft huidig eigenaar"@nl .
+
+crm:P53_has_former_or_current_location a rdf:Property;
+  rdfs:label "heeft vroegere of huidige locatie"@nl .
+
+crm:P54_has_current_permanent_location a rdf:Property;
+  rdfs:label "heeft huidige permanente locatie"@nl .
+
+crm:P55_has_current_location a rdf:Property;
+  rdfs:label "heeft huidige locatie"@nl .
+
+crm:P62_depicts a rdf:Property;
+  rdfs:label "beeldt uit"@nl .
+
+crm:P62i_is_depicted_by a rdf:Property;
+  rdfs:label "wordt uitgebeeld door"@nl .
+
+crm:P67_refers_to a rdf:Property;
+  rdfs:label "verwijst naar"@nl .
+
+crm:P67i_is_referred_to_by a rdf:Property;
+  rdfs:label "wordt naar verwezen door"@nl .
+
+crm:P69_is_associated_with a rdf:Property;
+  rdfs:label "is geassocieerd met"@nl .
+
+crm:P70_documents a rdf:Property;
+  rdfs:label "documenteert"@nl .
+
+crm:P70i_is_documented_in a rdf:Property;
+  rdfs:label "is gedocumenteerd in"@nl .
+
+crm:P72_has_language a rdf:Property;
+  rdfs:label "heeft taal"@nl .
+
+crm:P73i_is_translation_of a rdf:Property;
+  rdfs:label "is vertaling van"@nl .
+
+crm:P74_has_current_or_former_residence a rdf:Property;
+  rdfs:label "heeft huidige of vroegere residentie"@nl .
+
+crm:P75_possesses a rdf:Property;
+  rdfs:label "bezit"@nl .
+
+crm:P75i_is_possessed_by a rdf:Property;
+  rdfs:label "is in het bezit van"@nl .
+
+crm:P76_has_contact_point a rdf:Property;
+  rdfs:label "heeft contactpunt"@nl .
+
+crm:P7_took_place_at a rdf:Property;
+  rdfs:label "vond plaats te"@nl .
+
+crm:P94_has_created a rdf:Property;
+  rdfs:label "heeft gecreëerd"@nl .
+
+crm:P94i_was_created_by a rdf:Property;
+  rdfs:label "werd gecreëerd door"@nl .
+
+<http://www.w3.org/ns/adms#identifier> a rdf:Property;
+  rdfs:label "identificator"@nl .
+
+<https://schema.org/unitCode> a rdf:Property;
+  rdfs:label "eenheidscode"@nl .
+
+<https://schema.org/unitText> a rdf:Property;
+  rdfs:label "eenheidstekst"@nl .
+
+<https://schema.org/value> a rdf:Property;
+  rdfs:label "waarde"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R10> a rdf:Property;
+  rdfs:label "heeft lid"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R11> a rdf:Property;
+  rdfs:label "heeft uitgaveregel"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R16> a rdf:Property;
+  rdfs:label "initieerde"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R16i> a rdf:Property;
+  rdfs:label "is geïnitieerd door"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R17> a rdf:Property;
+  rdfs:label "creëerde"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R17i> a rdf:Property;
+  rdfs:label "werd gecreëerd door"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R19> a rdf:Property;
+  rdfs:label "creëerde een realisatie van"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R19i> a rdf:Property;
+  rdfs:label "werd gerealiseerd door"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R2> a rdf:Property;
+  rdfs:label "is afgeleid van"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R20> a rdf:Property;
+  rdfs:label "opgenomen"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R21> a rdf:Property;
+  rdfs:label "creëerde"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R21i> a rdf:Property;
+  rdfs:label "werd gecreëerd door"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R22> a rdf:Property;
+  rdfs:label "creëerde een realisatie van"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R22i> a rdf:Property;
+  rdfs:label "werd gerealiseerd door"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R23> a rdf:Property;
+  rdfs:label "creëerde een realisatie van"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R23i> a rdf:Property;
+  rdfs:label "werd gerealiseerd door"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R24> a rdf:Property;
+  rdfs:label "creëerde"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R24i> a rdf:Property;
+  rdfs:label "werd gecreëerd door"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R25> a rdf:Property;
+  rdfs:label "voerde uit"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R25i> a rdf:Property;
+  rdfs:label "werd uitgevoerd in"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R3> a rdf:Property;
+  rdfs:label "wordt gerealiseerd in"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R3i> a rdf:Property;
+  rdfs:label "realiseert"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R66> a rdf:Property;
+  rdfs:label "inbegrepen uitgevoerde versie van"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R9> a rdf:Property;
+  rdfs:label "is gerealiseerd in"@nl .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R9i> a rdf:Property;
+  rdfs:label "realiseert"@nl .
+
+<https://data.vlaanderen.be/ns/cultureel-erfgoed#Beschrijving> a owl:Class;
+  rdfs:label "Beschrijving"@nl;
+  rdfs:comment "Schriftelijke weergave van kenmerken van iets of iemand."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/cultureel-erfgoed> .
+
+<https://data.vlaanderen.be/ns/cultureel-erfgoed#Rol> a owl:Class;
+  rdfs:label "Rol"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv schilder bij de Productie van een schilderij of muzikant bij de uitvoering van een Voorstelling."@nl;
+  rdfs:comment "Aard van de deelname van de Agent aan de Activiteit."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/cultureel-erfgoed> .
+
+<https://data.vlaanderen.be/ns/cultureel-erfgoed> a owl:Ontology;
+  rdfs:label "cultureel-erfgoed-voc"@nl,
+    "cultureel-erfgoed-voc"@en;
+  dc:contributor [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Amsab-ISG"];
+    foaf:firstName "Kim";
+    foaf:lastName "Robensyn"
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Archiefbank Vlaanderen"];
+    foaf:firstName "Bert";
+    foaf:lastName "Aernouts"
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Histories vzw"];
+    foaf:firstName "Hendrik";
+    foaf:lastName "Vandeginste"
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "meemoo"];
+    foaf:firstName "Matthias";
+    foaf:lastName "Priem"
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Werkplaats Immaterieel Erfgoed"];
+    foaf:firstName "Shana";
+    foaf:lastName "Van Hauwermeiren"
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "meemoo"];
+    foaf:firstName "Bert";
+    foaf:lastName "Lemmens"
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Vlaamse Kunstcollectie"];
+    foaf:firstName "Pascal";
+    foaf:lastName "Ennaert"
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Agentschap Onroerend Erfgoed"];
+    foaf:firstName "Koen";
+    foaf:lastName "Van Daele"
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Werkplaats Immaterieel Erfgoed"];
+    foaf:firstName "Floris";
+    foaf:lastName "Zuallaert"
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Werkplaats Immaterieel Erfgoed"];
+    foaf:firstName "Jorijn";
+    foaf:lastName "Neyrinck"
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "LIBIS - KU Leuven"];
+    foaf:firstName "Roxanne";
+    foaf:lastName "Wyns"
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Agentschap Onroerend Erfgoed"];
+    foaf:firstName "Annelies";
+    foaf:lastName "Van Daele"
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "meemoo"];
+    foaf:firstName "Miel";
+    foaf:lastName "Vander Sande"
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Vlaamse Erfgoedbibliotheek"];
+    foaf:firstName "David";
+    foaf:lastName "Coppoolse"
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "FARO"];
+    foaf:firstName "Bram";
+    foaf:lastName "Wiercx"
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "meemoo"];
+    foaf:firstName "Ronny";
+    foaf:lastName "Vissers"
+  ], [
+    a foaf:Person;
+    schema:affiliation [foaf:name "Agentschap Onroerend Erfgoed"];
+    foaf:firstName "Sofie";
+    foaf:lastName "Marchand"
+  ];
+  dc:issued "2020-04-24";
+  dc:license "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0",
+    <https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0>;
+  dc:mediator [
+    foaf:homepage <https://data.vlaanderen.be>;
+    foaf:mbox <mailto:oslo@kb.vlaanderen.be>;
+    foaf:name "Data Vlaanderen"
+  ];
+  rdfs:seeAlso crm:P105_right_held_by,
+    crm:E65_Creation,
+    crm:E14_Condition_Assessment,
+    crm:P110_augmented,
+    crm:E54_Dimension,
+    crm:P140i_was_attributed_by,
+    crm:E12_Production,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F31>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F26>,
+    crm:P30i_custody_transferred_through,
+    crm:E10_Transfer_of_Custody,
+    crm:P112_diminished,
+    crm:P1_is_identified_by,
+    crm:E1_CRM_Entity,
+    crm:E13_Attribute_Assignment,
+    crm:P102_has_title,
+    dcmitype:Collection,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F28>,
+    crm:P72_has_language,
+    crm:E78_Collection,
+    crm:P39i_was_measured_by,
+    crm:E11_Modification,
+    crm:E36_Visual_Item,
+    crm:E9_Move,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F24>,
+    crm:E8_Acquisition,
+    crm:E16_Measurement,
+    crm:P113i_was_removed_by,
+    crm:E28_Conceptual_Object,
+    crm:E31_Document,
+    crm:P11_had_participant,
+    crm:E2_Temporal_Entity,
+    crm:P35_has_identified,
+    crm:P108i_was_produced_by,
+    crm:P13i_was_destroyed_by,
+    crm:P54_has_current_permanent_location,
+    crm:P23_transfered_title_from,
+    crm:P39_measured,
+    crm:P111i_was_added_by,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F14>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R11>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F25>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R23>,
+    <http://www.w3.org/ns/adms#identifier>,
+    crm:P104i_applies_to,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F22>,
+    crm:P128_carries,
+    dc:isPartOf,
+    crm:E18_Physical_Thing,
+    crm:P138_represents,
+    crm:P41i_was_classified_by,
+    crm:P141_assigned,
+    crm:P177_assigned_property_type,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F18>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R9i>,
+    crm:P31i_was_modified_by,
+    <https://schema.org/value>,
+    crm:P34_concerned,
+    crm:P55_has_current_location,
+    crm:P109_has_current_or_former_curator,
+    crm:P13_destroyed,
+    crm:P129i_is_subject_of,
+    crm:P148_has_component,
+    crm:P28i_surrendered_custody_through,
+    crm:P40_observed_dimension,
+    crm:P7_took_place_at,
+    crm:P46_is_composed_of,
+    crm:P53_has_former_or_current_location,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R24i>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R21i>,
+    dc:hasPart,
+    crm:P105i_has_right_on,
+    crm:P44_has_condition,
+    crm:P50_has_current_keeper,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R19i>,
+    crm:P43_has_dimension,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R23i>,
+    crm:P25i_moved_by,
+    crm:E87_Curation_Activity,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F19>,
+    crm:E3_Condition_State,
+    crm:P42_assigned,
+    crm:P74_has_current_or_former_residence,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R22i>,
+    crm:E6_Destruction,
+    crm:P75_possesses,
+    crm:P110i_was_augmented_by,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F21>,
+    crm:P76_has_contact_point,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R24>,
+    crm:P22i_acquired_title_through,
+    crm:P67i_is_referred_to_by,
+    crm:P24_transferred_title_of,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R20>,
+    crm:P67_refers_to,
+    crm:P26_moved_to,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R2>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R66>,
+    crm:P27_moved_from,
+    crm:P14i_performed,
+    crm:P70_documents,
+    crm:P104_is_subject_to,
+    crm:P29_custody_received_by,
+    crm:E30_Right,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F20>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R16>,
+    crm:P23i_surrendered_title_through,
+    crm:P41_classified,
+    crm:E79_Part_Addition,
+    crm:E33_Linguistic_Object,
+    crm:P28_custody_surrendered_by,
+    crm:E7_Activity,
+    crm:E17_Type_Assignment,
+    crm:P3_has_note,
+    crm:P29i_received_custody_through,
+    crm:P140_assigned_attribute_to,
+    crm:P128i_is_carried_by,
+    crm:P113_removed,
+    <https://schema.org/unitCode>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R25>,
+    crm:P75i_is_possessed_by,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R25i>,
+    crm:P46i_forms_part_of,
+    crm:P31_has_modified,
+    crm:P73i_is_translation_of,
+    crm:P52_has_current_owner,
+    crm:P62_depicts,
+    crm:E25_Man-Made_Feature,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R3>,
+    crm:E22_Man-Made_Object,
+    crm:E5_Event,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R17i>,
+    crm:P147_curated,
+    crm:P126_employed,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R9>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F29>,
+    crm:P94_has_created,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F1>,
+    crm:P165_incorporates,
+    crm:P112i_was_diminished_by,
+    crm:P138i_has_representation,
+    crm:P30_transferred_custody_of,
+    <https://schema.org/unitText>,
+    crm:P129_is_about,
+    crm:P34i_was_assessed_by,
+    crm:P111_added,
+    crm:P14.1_in_the_role_of,
+    crm:P94i_was_created_by,
+    crm:P22_transferred_title_to,
+    crm:P14_carried_out_by,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F15>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R22>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F27>,
+    crm:E29_Design_or_Procedure,
+    crm:P45_consists_of,
+    crm:E73_Information_Object,
+    crm:P32_used_general_technique,
+    crm:P70i_is_documented_in,
+    crm:P2_has_type,
+    crm:P24i_changed_ownership_through,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R10>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R19>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R21>,
+    crm:E72_Legal_Object,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F17>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R3i>,
+    crm:P62i_is_depicted_by,
+    crm:P4_has_time-span,
+    crm:E80_Part_Removal,
+    crm:P108_has_produced,
+    crm:P25_moved,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R16i>,
+    crm:P147i_was_curated_by,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F30>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R17>,
+    crm:P69_is_associated_with,
+    skos:Concept;
+  <http://www.w3.org/2001/02pd/rec54#editor> [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen>;
+      foaf:name "Informatie Vlaanderen"
+    ];
+    foaf:firstName "Martin";
+    foaf:lastName "Vanbrabant";
+    foaf:mbox <mailto:martin.vanbrabant@vlaanderen.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://www.pwc.be>;
+      foaf:name "PwC"
+    ];
+    foaf:firstName "Anthony";
+    foaf:lastName "Van Heymbeeck";
+    foaf:mbox <mailto:anthony.van.heymbeeck@pwc.com>
+  ], [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen>;
+      foaf:name "Informatie Vlaanderen"
+    ];
+    foaf:firstName "Raf";
+    foaf:lastName "Buyle";
+    foaf:mbox <mailto:raf.buyle@vlaanderen.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://overheid.vlaanderen.be/informatie-vlaanderen>;
+      foaf:name "Informatie Vlaanderen"
+    ];
+    foaf:firstName "Geert";
+    foaf:lastName "Thijs";
+    foaf:mbox <mailto:geert.thijs@vlaanderen.be>
+  ], [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://www.pwc.be>;
+      foaf:name "PwC"
+    ];
+    foaf:firstName "Laurens";
+    foaf:lastName "Vercauteren";
+    foaf:mbox <mailto:laurens.vercauteren@pwc.com>
+  ], [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://www.pwc.be>;
+      foaf:name "PwC"
+    ];
+    foaf:firstName "Dimitri";
+    foaf:lastName "Schepers";
+    foaf:mbox <mailto:dimitri.schepers@pwc.com>
+  ], [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://imec.be>;
+      foaf:name "UGent - imec"
+    ];
+    foaf:firstName "Brecht";
+    foaf:lastName "Van De Vyvere";
+    foaf:mbox <mailto:brecht.vandevyvere@ugent.be>
+  ];
+  foaf:maker [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://www.vlaanderen.be/cjm/nl>;
+      foaf:name "Departement Cultuur, Jeugd en Media"
+    ];
+    foaf:firstName "Hans";
+    foaf:lastName "van der Linden";
+    foaf:mbox <mailto:hans.vanderlinden@vlaanderen.be>
+  ] .

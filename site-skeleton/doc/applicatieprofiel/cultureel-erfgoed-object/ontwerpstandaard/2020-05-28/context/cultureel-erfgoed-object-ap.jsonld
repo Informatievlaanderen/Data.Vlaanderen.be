@@ -1,0 +1,850 @@
+{
+  "@context": {
+    "Adresvoorstelling": "http://www.w3.org/ns/locn#Address",
+    "Adresvoorstelling.volledigAdres": {
+      "@id": "http://www.w3.org/ns/locn#fullAddress",
+      "@type": ""
+    },
+    "Agent": "http://purl.org/dc/terms/Agent",
+    "Agent.contactinfo": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P76_has_contact_point",
+      "@type": "@id"
+    },
+    "Agent.heeft": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P75_possesses",
+      "@type": "@id"
+    },
+    "Agent.residentie": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P74_has_current_or_former_residence",
+      "@type": "@id"
+    },
+    "Aggregatiewerk": "https://wherever/TODO",
+    "Beschrijving": "https://wherever/TODO",
+    "Beschrijving.tekst": {
+      "@id": "https://wherever/TODO",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "Beschrijving.type": {
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Bewaring": "http://www.cidoc-crm.org/cidoc-crm/E10_Transfer_of_Custody",
+    "Bewaring.bewaringOvergedragenVan": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Bewaring.inBewaringGegevenAan": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Bewaring.inBewaringGekregenVan": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Classificatie": "http://www.cidoc-crm.org/cidoc-crm/E17_Type_Assignment",
+    "Classificatie.getypeerdObject": {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P41_classified",
+      "@type": "@id"
+    },
+    "Classificatie.toegekendType": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P42_assigned",
+      "@type": "@id"
+    },
+    "Collectie": "http://purl.org/dc/dcmitype/Collection",
+    "Collectie.bestaatUit": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "ComplexWerk": "https://wherever/TODO",
+    "ComplexWerk.heeftComponent": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Conceptie": "https://wherever/TODO",
+    "Conceptie.werk": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "ConceptueelDing": "http://www.cidoc-crm.org/cidoc-crm/E28_Conceptual_Object",
+    "ConceptueelDing.creatie": {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P94i_was_created_by",
+      "@type": "@id"
+    },
+    "Conditie": "http://www.cidoc-crm.org/cidoc-crm/E3_Condition_State",
+    "Conditie.nota": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
+      "@type": "@id"
+    },
+    "Conditie.periode": {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span",
+      "@type": "@id"
+    },
+    "Conditie.type": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+      "@type": "@id"
+    },
+    "Conditiebeoordeling": "http://www.cidoc-crm.org/cidoc-crm/E14_Condition_Assessment",
+    "Conditiebeoordeling.conditieVan": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P34_concerned",
+      "@type": "@id"
+    },
+    "Conditiebeoordeling.vastgesteldeStaat": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P35_has_identified",
+      "@type": "@id"
+    },
+    "Contactinfo": "http://schema.org/ContactPoint",
+    "Contactinfo.adres": {
+      "@id": "http://www.w3.org/ns/locn#address",
+      "@type": "@id"
+    },
+    "Contactinfo.contactnaam": {
+      "@id": "http://xmlns.com/foaf/0.1/name",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Contactinfo.email": {
+      "@id": "http://schema.org/email",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Contactinfo.fax": {
+      "@id": "http://schema.org/faxNumber",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Contactinfo.telefoon": {
+      "@id": "http://schema.org/telephone",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Contactinfo.website": {
+      "@id": "http://xmlns.com/foaf/0.1/page",
+      "@type": "http://www.w3.org/2001/XMLSchema#anyURI"
+    },
+    "Creatie": "http://www.cidoc-crm.org/cidoc-crm/E65_Creation",
+    "Creatie.gebruikteTechniek": {
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Creatie.plaats": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Creatie.tijd": {
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Creatie.uitgevoerdDoor": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Curatie": "http://www.cidoc-crm.org/cidoc-crm/E87_Curation_Activity",
+    "Curatie.cureerde": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P147_curated",
+      "@type": "@id"
+    },
+    "Dimensie": "http://www.cidoc-crm.org/cidoc-crm/E54_Dimension",
+    "Dimensie.beschrijving": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
+      "@type": "@id"
+    },
+    "Dimensie.grootheid": {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P91_has_unit",
+      "@type": "@id"
+    },
+    "Dimensie.kwantitatieveWaarde": {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P90_has_value",
+      "@type": "@id"
+    },
+    "Document": "http://www.cidoc-crm.org/cidoc-crm/E31_Document",
+    "Document.documenteert": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P70_documents",
+      "@type": "@id"
+    },
+    "ExpressieCreatie": "https://wherever/TODO",
+    "ExpressieCreatie.expressie": {
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "ExpressieCreatie.gerealiseerdWerk": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "GecureerdeCollectie": "http://www.cidoc-crm.org/cidoc-crm/E78_Collection",
+    "GecureerdeCollectie.bestaatUit": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "GecureerdeCollectie.curator": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "GecureerdeCollectie.dimensie": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension",
+      "@type": "@id"
+    },
+    "GecureerdeCollectie.gecureerdBij": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P147i_was_curated_by",
+      "@type": "@id"
+    },
+    "GecureerdeCollectie.locatie": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P55_has_current_location",
+      "@type": "@id"
+    },
+    "GecureerdeCollectie.titel": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P102_has_title",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "GecureerdeCollectie.toont": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Getal": "https://schema.org/Number",
+    "Identificator": "http://www.w3.org/ns/adms#Identifier",
+    "Identificator.identificator": {
+      "@id": "http://www.w3.org/2004/02/skos/core#notation",
+      "@type": "http://www.w3.org/2000/01/rdf-schema#Literal"
+    },
+    "Identificator.toegekendDoor": {
+      "@id": "http://purl.org/dc/terms/creator",
+      "@type": "@id"
+    },
+    "Identificator.toegekendDoor (string)": {
+      "@id": "http://www.w3.org/ns/adms#schemaAgency",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Identificator.toegekendOp": {
+      "@id": "http://purl.org/dc/terms/issued",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "IndividueelWerk": "https://wherever/TODO",
+    "IndividueelWerk.isGerealiseerdIn": {
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "InformatieObject": "http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object",
+    "InformatieObject.drager": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P128i_is_carried_by",
+      "@type": "@id"
+    },
+    "InformatieObject.gaatOver": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P129_is_about",
+      "@type": "@id"
+    },
+    "InformatieObject.heeftComponent": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P148_has_component",
+      "@type": "@id"
+    },
+    "InformatieObject.omvat": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P165_incorporates",
+      "@type": "@id"
+    },
+    "InformatieObject.titel": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P102_has_title",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "InformatieObject.verwijstNaar": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P67_refers_to",
+      "@type": "@id"
+    },
+    "KwantitatieveWaarde": "https://schema.org/QuantitativeValue",
+    "KwantitatieveWaarde.eenheid": {
+      "@id": "https://schema.org/unitText",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "KwantitatieveWaarde.standaardEenheid": {
+      "@id": "https://schema.org/unitCode",
+      "@type": "@id"
+    },
+    "KwantitatieveWaarde.waarde": {
+      "@id": "https://schema.org/value",
+      "@type": "@id"
+    },
+    "Locatie": "http://www.w3.org/ns/prov#Location",
+    "MaterieelDing": "https://wherever/TODO",
+    "MaterieelDing.beheerder": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "MaterieelDing.conditiebeoordeling": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P34i_was_assessed_by",
+      "@type": "@id"
+    },
+    "MaterieelDing.eigenaar": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "MaterieelDing.isIngekrompenBij": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P113i_was_removed_by",
+      "@type": "@id"
+    },
+    "MaterieelDing.isOvergedragenBijBewaring": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P30i_custody_transferred_through",
+      "@type": "@id"
+    },
+    "MaterieelDing.isOvergedragenBijVerwerving": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P24i_changed_ownership_through",
+      "@type": "@id"
+    },
+    "MaterieelDing.isToegevoegdBij": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P111i_was_added_by",
+      "@type": "@id"
+    },
+    "MaterieelDing.isUitgebreidBij": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P110i_was_augmented_by",
+      "@type": "@id"
+    },
+    "MaterieelDing.isVerwijderdBij": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P112i_was_diminished_by",
+      "@type": "@id"
+    },
+    "MaterieelDing.productie": {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P108i_was_produced_by",
+      "@type": "@id"
+    },
+    "MaterieelDing.vernietiging": {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P13i_was_destroyed_by",
+      "@type": "@id"
+    },
+    "MaterieelDing.wijziging": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P31i_was_modified_by",
+      "@type": "@id"
+    },
+    "MensgemaaktKenmerk": "http://www.cidoc-crm.org/cidoc-crm/E25_Man-Made_Feature",
+    "MensgemaaktKenmerk.beeldtUit": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P62_depicts",
+      "@type": "@id"
+    },
+    "MensgemaaktKenmerk.bestaatUit": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P46_is_composed_of",
+      "@type": "@id"
+    },
+    "MensgemaaktKenmerk.conditie": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P44_has_condition",
+      "@type": "@id"
+    },
+    "MensgemaaktKenmerk.dimensie": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension",
+      "@type": "@id"
+    },
+    "MensgemaaktKenmerk.draagt": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P128_carries",
+      "@type": "@id"
+    },
+    "MensgemaaktKenmerk.maaktDeelUitVan": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "MensgemaaktKenmerk.materiaal": {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P45_consists_of",
+      "@type": "@id"
+    },
+    "MensgemaaktKenmerk.titel": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P102_has_title",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "MensgemaaktObject": "https://wherever/TODO",
+    "MensgemaaktObject.beeldtUit": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P62_depicts",
+      "@type": "@id"
+    },
+    "MensgemaaktObject.bestaatUit": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P46_is_composed_of",
+      "@type": "@id"
+    },
+    "MensgemaaktObject.conditie": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P44_has_condition",
+      "@type": "@id"
+    },
+    "MensgemaaktObject.dimensie": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension",
+      "@type": "@id"
+    },
+    "MensgemaaktObject.draagt": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P128_carries",
+      "@type": "@id"
+    },
+    "MensgemaaktObject.locatie": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P55_has_current_location",
+      "@type": "@id"
+    },
+    "MensgemaaktObject.maaktDeelUitVan": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P46i_forms_part_of",
+      "@type": "@id"
+    },
+    "MensgemaaktObject.materiaal": {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P45_consists_of",
+      "@type": "@id"
+    },
+    "MensgemaaktObject.permanenteLocatie": {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P54_has_current_permanent_location",
+      "@type": "@id"
+    },
+    "MensgemaaktObject.titel": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P102_has_title",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "MensgemaaktObject.verhuis": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P25i_moved_by",
+      "@type": "@id"
+    },
+    "Meting": "http://www.cidoc-crm.org/cidoc-crm/E16_Measurement",
+    "Meting.gemetenObject": {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P39_measured",
+      "@type": "@id"
+    },
+    "Meting.vastgesteldeWaarde": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P40_observed_dimension",
+      "@type": "@id"
+    },
+    "Object": "http://www.w3.org/ns/prov#Entity",
+    "Object.beschrijving": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Object.classificatie": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Object.identificator": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/adms#identifier",
+      "@type": "@id"
+    },
+    "Object.isHetOnderwerpVan": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Object.maaktDeelUitVan": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Object.meting": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Object.toekenning": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Object.type": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Object.wordtGedocumenteerdDoor": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Object.wordtNaarVerwezenDoor": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Object.wordtUitgebeeldDoor": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Object.wordtVoorgesteldDoor": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "OntwerpOfProcedure": "http://www.cidoc-crm.org/cidoc-crm/E29_Design_or_Procedure",
+    "OntwerpOfProcedure.isGeassocieerdMet": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Opname": "https://wherever/TODO",
+    "Opname.creatie": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Opnamesessie": "https://wherever/TODO",
+    "Opnamesessie.opname": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Opnamesessie.opnameVan": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": ""
+    },
+    "Opnamesessie.opnamewerk": {
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Opnamewerk": "https://wherever/TODO",
+    "Opnamewerk.realisatie": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Organisatie": "http://www.w3.org/ns/org#Organization",
+    "Organisatie.voorkeursnaam": {
+      "@id": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "Periode": "http://data.europa.eu/m8g/PeriodOfTime",
+    "Periode.begin": {
+      "@id": "http://data.europa.eu/m8g/startTime",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "Periode.einde": {
+      "@id": "http://data.europa.eu/m8g/endTime",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "Persoon": "http://www.w3.org/ns/person#Person",
+    "Persoon.achternaam": {
+      "@id": "http://xmlns.com/foaf/0.1/familyName",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Persoon.voornaam": {
+      "@container": "@set",
+      "@id": "http://xmlns.com/foaf/0.1/givenName",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Productie": "http://www.cidoc-crm.org/cidoc-crm/E12_Production",
+    "Productie.gebruikteTechniek": {
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Productie.plaats": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Productie.tijd": {
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Productie.uitgevoerdDoor": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Publicatie": "https://wherever/TODO",
+    "Publicatie.publicatiewerk": {
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Publicatie.publicatiexpressie": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Publicatieexpressie": "https://wherever/TODO",
+    "Publicatieexpressie.creatie": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Publicatiewerk": "https://wherever/TODO",
+    "Publicatiewerk.realisatie": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Recht": "http://www.cidoc-crm.org/cidoc-crm/E30_Right",
+    "Recht.beschrijving": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
+      "@type": "@id"
+    },
+    "Recht.gebaseerdOp": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Recht.titel": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P102_has_title",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "Recht.type": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+      "@type": "@id"
+    },
+    "Rechtsgrond": "http://data.europa.eu/eli/ontology#LegalResource",
+    "SerieelWerk": "https://wherever/TODO",
+    "SerieelWerk.uitgaveregel": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Taalobject": "http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object",
+    "Taalobject.isVertalingVan": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P73i_is_translation_of",
+      "@type": "@id"
+    },
+    "Taalobject.taal": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P72_has_language",
+      "@type": "@id"
+    },
+    "Toekenning": "http://www.cidoc-crm.org/cidoc-crm/E13_Attribute_Assignment",
+    "Toekenning.toegekendAan": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P140°assigned_attribute_to",
+      "@type": "@id"
+    },
+    "Toekenning.toegekendAttribuut": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": ""
+    },
+    "Toekenning.toegkendeWaarde": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P141_assigned",
+      "@type": ""
+    },
+    "ToevoegingDeel": "http://www.cidoc-crm.org/cidoc-crm/E79_Part_Addition",
+    "ToevoegingDeel.aanwinst": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "ToevoegingDeel.uitbreidingVan": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P110_augmented",
+      "@type": "@id"
+    },
+    "TypeBeschrijving": "http://www.w3.org/2004/02/skos/core#Concept",
+    "TypeConditie": "http://www.w3.org/2004/02/skos/core#Concept",
+    "TypeGrootheid": "http://www.w3.org/2004/02/skos/core#Concept",
+    "TypeMateriaal": "http://www.w3.org/2004/02/skos/core#Concept",
+    "TypeObject": "http://www.w3.org/2004/02/skos/core#Concept",
+    "TypeRecht": "http://www.w3.org/2004/02/skos/core#Concept",
+    "Verhuis": "http://www.cidoc-crm.org/cidoc-crm/E9_Move",
+    "Verhuis.verhuisd": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P25_moved",
+      "@type": "@id"
+    },
+    "Verhuis.verhuisdNaar": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P26_moved_to",
+      "@type": "@id"
+    },
+    "Verhuis.verhuisdVan": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P27_moved_from",
+      "@type": "@id"
+    },
+    "Vernietiging": "http://www.cidoc-crm.org/cidoc-crm/E81_Transformation",
+    "Vernietiging.deelnemer": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Vernietiging.identificator": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Vernietiging.nota": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "Vernietiging.plaats": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Vernietiging.tijd": {
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Vernietiging.type": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Vernietiging.vernietigingVan": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P13_destroyed",
+      "@type": "@id"
+    },
+    "Verwerving": "http://www.cidoc-crm.org/cidoc-crm/E8_Acquisition",
+    "Verwerving.aankoopVan": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Verwerving.verworvenDoor": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Verwerving.verworvenVan": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "VerwijderingDeel": "http://www.cidoc-crm.org/cidoc-crm/E80_Part_Removal",
+    "VerwijderingDeel.verlies": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "VerwijderingDeel.verminderingVan": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "VisueelItem": "http://www.cidoc-crm.org/cidoc-crm/E37_Visual_Item",
+    "VisueelItem.steltVoor": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P138_represents",
+      "@type": "@id"
+    },
+    "Voorstellingsplan": "https://wherever/TODO",
+    "Voorstellingsplan.uitvoering": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Voorstellingswerk": "https://wherever/TODO",
+    "Werk": "https://wherever/TODO",
+    "Werk.afgeleidVan": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Werk.conceptie": {
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Werk.gaatOver": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Werk.heeftComponent": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Werk.isGerealiseerdIn": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Werk.realisatie": {
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Werk.titel": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "Werk.verwijstNaar": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "WettelijkObject": "http://www.cidoc-crm.org/cidoc-crm/E72_Legal_Object",
+    "WettelijkObject.isOnderworpenAan": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P104_is_subject_to",
+      "@type": "@id"
+    },
+    "WettelijkObject.rechtenhouder": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Wijziging": "http://www.cidoc-crm.org/cidoc-crm/E11_Modification",
+    "Wijziging.gebruiktMateriaalk": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "Wijziging.isGewijzigd": {
+      "@container": "@set",
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P31_has_modified",
+      "@type": "@id"
+    },
+    "ZelfstandigeExpressie": "https://wherever/TODO",
+    "ZelfstandigeExpressie.creatie": {
+      "@container": "@set",
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    },
+    "ZelfstandigeExpressie.realiseert": {
+      "@id": "https://wherever/TODO",
+      "@type": "@id"
+    }
+  }
+}
