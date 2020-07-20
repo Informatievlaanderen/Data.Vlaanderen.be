@@ -32,5 +32,8 @@ if [ $CASE = "true" ] ; then
 pushd site-skeleton/doc
  find . -exec sed -i "s/test.data.vlaanderen.be/data.vlaanderen.be/g" {} \;
 popd
+pushd site-skeleton/ns
+ find . -exec sed -i "s/test.data.vlaanderen.be/data.vlaanderen.be/g" {} \;
+popd
 fi
 
