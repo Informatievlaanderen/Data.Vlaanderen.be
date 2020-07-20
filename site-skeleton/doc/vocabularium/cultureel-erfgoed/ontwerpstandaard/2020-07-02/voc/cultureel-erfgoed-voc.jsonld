@@ -1,0 +1,673 @@
+{
+  "@id": "https://data.vlaanderen.be/ns/cultureel-erfgoed",
+  "@type": "http://www.w3.org/2002/07/owl#Ontology",
+  "authors": [
+    {
+      "@type": "foaf:Person",
+      "affiliation": {
+        "foaf:homepage": "https://auteurwebsiteurl",
+        "foaf:name": "AuteurAffiliatie"
+      },
+      "foaf:firstName": "AuteurVoornaam",
+      "foaf:lastName": "AuteurNaam",
+      "foaf:mbox": "mailto:auteurvoornaam.auteurnaam@auteurdomein"
+    }
+  ],
+  "baseURI": null,
+  "baseURIabbrev": null,
+  "contributors": [
+    {
+      "@type": "foaf:Person",
+      "affiliation": {
+        "foaf:homepage": "https://medewerkerwebsiteurl",
+        "foaf:name": "MedewerkerAffiliatie"
+      },
+      "foaf:firstName": "MedewerkerVoornaam",
+      "foaf:lastName": "MedewerkerNaam",
+      "foaf:mbox": "mailto:medewerkervoornaam.medewerkernaam@medewerkerdomein"
+    }
+  ],
+  "editors": [
+    {
+      "@type": "foaf:Person",
+      "affiliation": {
+        "foaf:homepage": "https://editorwebsiteurl",
+        "foaf:name": "EditorAffiliatie"
+      },
+      "foaf:firstName": "EditorVoornaam",
+      "foaf:lastName": "EditorNaam",
+      "foaf:mbox": "mailto:editorvoornaam.editornaam@editordomein"
+    }
+  ],
+  "issued": "TODO",
+  "label": {
+    "en": "cultureel-erfgoed-voc",
+    "nl": "cultureel-erfgoed-voc"
+  },
+  "license": "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0",
+  "namespace": null,
+  "navigation": {
+    "next": "/doc/vocabularium/cultureel-erfgoed/kandidaatstandaard/2020-07-17"
+  },
+  "publication-date": "2020-07-02",
+  "publication-state": "https://data.vlaanderen.be/id/concept/StandaardStatus/OntwerpStandaard",
+  "title": "Cultureel Erfgoed (Vocabularium)",
+  "dcterms:license": "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0",
+  "dcterms:mediator": {
+    "foaf:homepage": "https://data.vlaanderen.be",
+    "foaf:mbox": "mailto:oslo@kb.vlaanderen.be",
+    "foaf:name": "Data Vlaanderen"
+  },
+  "classes": [
+    {
+      "@id": "https://data.vlaanderen.be/ns/cultureel-erfgoed#Beschrijving",
+      "@type": "http://www.w3.org/2002/07/owl#Class",
+      "description": {
+        "nl": "Schriftelijke weergave van kenmerken van iets of iemand."
+      },
+      "name": {
+        "nl": "Beschrijving"
+      },
+      "parents": [],
+      "usage": {}
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/cultureel-erfgoed#Rol",
+      "@type": "http://www.w3.org/2002/07/owl#Class",
+      "description": {
+        "nl": "Aard van de deelname van de Agent aan de Activiteit."
+      },
+      "name": {
+        "nl": "Rol"
+      },
+      "parents": [],
+      "usage": {
+        "nl": "Bv schilder bij de Productie van een schilderij of muzikant bij de uitvoering van een Voorstelling."
+      }
+    }
+  ],
+  "properties": [
+    {
+      "@id": "https://data.vlaanderen.be/ns/cultureel-erfgoed#Rol.activiteit",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "Referentie naar verbonden klasse."
+      },
+      "domain": [
+        "https://data.vlaanderen.be/ns/cultureel-erfgoed#Rol"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "activiteit"
+      },
+      "range": [
+        "http://www.cidoc-crm.org/cidoc-crm/E7_Activity"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/cultureel-erfgoed#Rol.agent",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "Referentie naar verbonden klasse."
+      },
+      "domain": [
+        "https://data.vlaanderen.be/ns/cultureel-erfgoed#Rol"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "agent"
+      },
+      "range": [
+        "http://purl.org/dc/terms/Agent"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/cultureel-erfgoed#tekst",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "description": {
+        "nl": "Tekst van de Beschrijving."
+      },
+      "domain": [
+        "https://data.vlaanderen.be/ns/cultureel-erfgoed#Beschrijving"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "tekst"
+      },
+      "range": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "https://data.vlaanderen.be/ns/cultureel-erfgoed#type",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "Aard van de beschrijving."
+      },
+      "domain": [
+        "https://data.vlaanderen.be/ns/cultureel-erfgoed#Beschrijving"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "type"
+      },
+      "range": [
+        "https://data.vlaanderen.be/ns/cultureel-erfgoed#TypeBeschrijving"
+      ],
+      "usage": {}
+    }
+  ],
+  "externals": [
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/E10_Transfer_of_Custody",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/E11_Modification",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/E12_Production",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/E13_Attribute_Assignment",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/E14_Condition_Assessment",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/E16_Measurement",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/E17_Type_Assignment",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/E2_Temporal_Entity",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/E5_Event",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/E65_Creation",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/E79_Part_Addition",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/E7_Activity",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/E80_Part_Removal",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/E81_Transformation",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/E87_Curation_Activity",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/E8_Acquisition",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/E9_Move",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.w3.org/2004/02/skos/core#Concept",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "http://www.w3.org/2004/02/skos/core#Concept",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "https://www.iflastandards.info/fr/frbr/frbroo#F27",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "https://www.iflastandards.info/fr/frbr/frbroo#F28",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "https://www.iflastandards.info/fr/frbr/frbroo#F29",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "https://www.iflastandards.info/fr/frbr/frbroo#F30",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "https://www.iflastandards.info/fr/frbr/frbroo#F31",
+      "@type": "rdfs:Class",
+      "name": {}
+    }
+  ],
+  "externalproperties": [
+    {
+      "@id": " http://www.cidoc-crm.org/cidoc-crm/P177_assigned_property_type",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P108_has_produced",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P110_augmented",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P111_added",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P112_diminished",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P113_removed",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P11_had_participant",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P126_employed",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P13_destroyed",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P14.1_in_the_role_of",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P140_assigned_attribute_to",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P141_assigned",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P147_curated",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P14i_performed",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P22_transferred_title_to",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P22i_acquired_title_through",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P23_transfered_title_from",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P23i_surrendered_title_through",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P24_transferred_title_of",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P25_moved",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P26_moved_to",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P27_moved_from",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P28_custody_surrendered_by",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P28i_surrendered_custody_through",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P29_custody_received_by",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P29i_received_custody_through",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P30_transferred_custody_of",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P31_has_modified",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P32_used_general_technique",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P34_concerned",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P35_has_identified",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P39_measured",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P3_has_note",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P40_observed_dimension",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P41_classified",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P42_assigned",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P76_has_contact_point",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "http://www.cidoc-crm.org/cidoc-crm/P94_has_created",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "https://www.iflastandards.info/fr/frbr/frbroo#R16",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "https://www.iflastandards.info/fr/frbr/frbroo#R17",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "https://www.iflastandards.info/fr/frbr/frbroo#R19",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "https://www.iflastandards.info/fr/frbr/frbroo#R20",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "https://www.iflastandards.info/fr/frbr/frbroo#R21",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "https://www.iflastandards.info/fr/frbr/frbroo#R22",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "https://www.iflastandards.info/fr/frbr/frbroo#R23",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "https://www.iflastandards.info/fr/frbr/frbroo#R24",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "https://www.iflastandards.info/fr/frbr/frbroo#R25",
+      "@type": "rdf:Property",
+      "name": {}
+    },
+    {
+      "@id": "https://www.iflastandards.info/fr/frbr/frbroo#R66",
+      "@type": "rdf:Property",
+      "name": {}
+    }
+  ],
+  "@context": {
+    "vlaanderen": "http://data.vlaanderen.be/ns/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "void": "http://rdfs.org/ns/void#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "sdmx-dimension": "http://purl.org/linked-data/sdmx/2009/dimension#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sdmx-attribute": "http://purl.org/linked-data/sdmx/2009/attribute#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "sdmx-concept": "http://purl.org/linked-data/sdmx/2009/concept#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "person": "http://www.w3.org/ns/person#",
+    "rec": "http://www.w3.org/2001/02pd/rec54#",
+    "vann": "http://purl.org/vocab/vann/",
+    "sh": "http://w3.org/ns/shacl#",
+    "label": {
+      "@id": "rdfs:label",
+      "@container": "@language"
+    },
+    "modified": {
+      "@id": "dcterms:modified",
+      "@type": "xsd:date"
+    },
+    "license": {
+      "@id": "dcterms:license",
+      "@type": "@id"
+    },
+    "issued": {
+      "@id": "dcterms:issued"
+    },
+    "authors": {
+      "@type": "person:Person",
+      "@id": "foaf:maker"
+    },
+    "editors": {
+      "@type": "person:Person",
+      "@id": "rec:editor"
+    },
+    "contributors": {
+      "@type": "person:Person",
+      "@id": "dcterms:contributor"
+    },
+    "affiliation": {
+      "@id": "http://schema.org/affiliation"
+    },
+    "classes": {
+      "@reverse": "rdfs:isDefinedBy"
+    },
+    "datatypes": {
+      "@reverse": "rdfs:isDefinedBy"
+    },
+    "name": {
+      "@id": "rdfs:label",
+      "@container": "@language"
+    },
+    "description": {
+      "@id": "rdfs:comment",
+      "@container": "@language"
+    },
+    "properties": {
+      "@reverse": "rdfs:isDefinedBy"
+    },
+    "domain": {
+      "@id": "rdfs:domain",
+      "@type": "@id"
+    },
+    "range": {
+      "@id": "rdfs:range",
+      "@type": "@id"
+    },
+    "minCardinality": {
+      "@id": "sh:minCount"
+    },
+    "maxCardinality": {
+      "@id": "sh:maxCount"
+    },
+    "generalization": {
+      "@id": "rdfs:subPropertyOf",
+      "@type": "@id"
+    },
+    "externals": {
+      "@id": "rdfs:seeAlso"
+    },
+    "externalproperties": {
+      "@id": "rdfs:seeAlso"
+    },
+    "usage": {
+      "@id": "vann:usageNote",
+      "@container": "@language"
+    },
+    "parents": {
+      "@id": "rdfs:subClassOf",
+      "@type": "@id"
+    },
+    "foaf:homepage": {
+      "@id": "foaf:homepage",
+      "@type": "@id"
+    },
+    "foaf:mbox": {
+      "@id": "foaf:mbox",
+      "@type": "@id"
+    },
+    "equivalent": {
+      "@id": "owl:equivalentClass",
+      "@type": "@id"
+    }
+  }
+}

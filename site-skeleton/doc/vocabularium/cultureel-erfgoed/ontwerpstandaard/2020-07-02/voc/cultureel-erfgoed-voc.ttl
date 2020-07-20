@@ -1,0 +1,312 @@
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+crm:E10_Transfer_of_Custody a rdfs:Class .
+
+crm:E11_Modification a rdfs:Class .
+
+crm:E12_Production a rdfs:Class .
+
+crm:E13_Attribute_Assignment a rdfs:Class .
+
+crm:E14_Condition_Assessment a rdfs:Class .
+
+crm:E16_Measurement a rdfs:Class .
+
+crm:E17_Type_Assignment a rdfs:Class .
+
+crm:E2_Temporal_Entity a rdfs:Class .
+
+crm:E5_Event a rdfs:Class .
+
+crm:E65_Creation a rdfs:Class .
+
+crm:E79_Part_Addition a rdfs:Class .
+
+crm:E7_Activity a rdfs:Class .
+
+crm:E80_Part_Removal a rdfs:Class .
+
+crm:E81_Transformation a rdfs:Class .
+
+crm:E87_Curation_Activity a rdfs:Class .
+
+crm:E8_Acquisition a rdfs:Class .
+
+crm:E9_Move a rdfs:Class .
+
+skos:Concept a rdfs:Class .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F27> a rdfs:Class .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F28> a rdfs:Class .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F29> a rdfs:Class .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F30> a rdfs:Class .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#F31> a rdfs:Class .
+
+<https://data.vlaanderen.be/ns/cultureel-erfgoed#Rol.activiteit> a owl:ObjectProperty;
+  rdfs:label "activiteit"@nl;
+  rdfs:comment "Referentie naar verbonden klasse."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/cultureel-erfgoed#Rol>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/cultureel-erfgoed>;
+  rdfs:range crm:E7_Activity .
+
+<https://data.vlaanderen.be/ns/cultureel-erfgoed#Rol.agent> a owl:ObjectProperty;
+  rdfs:label "agent"@nl;
+  rdfs:comment "Referentie naar verbonden klasse."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/cultureel-erfgoed#Rol>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/cultureel-erfgoed>;
+  rdfs:range dc:Agent .
+
+<https://data.vlaanderen.be/ns/cultureel-erfgoed#tekst> a owl:DatatypeProperty;
+  rdfs:label "tekst"@nl;
+  rdfs:comment "Tekst van de Beschrijving."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/cultureel-erfgoed#Beschrijving>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/cultureel-erfgoed>;
+  rdfs:range rdf:langString .
+
+<https://data.vlaanderen.be/ns/cultureel-erfgoed#type> a owl:ObjectProperty;
+  rdfs:label "type"@nl;
+  rdfs:comment "Aard van de beschrijving."@nl;
+  rdfs:domain <https://data.vlaanderen.be/ns/cultureel-erfgoed#Beschrijving>;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/cultureel-erfgoed>;
+  rdfs:range <https://data.vlaanderen.be/ns/cultureel-erfgoed#TypeBeschrijving> .
+
+crm:P108_has_produced a rdf:Property .
+
+crm:P110_augmented a rdf:Property .
+
+crm:P111_added a rdf:Property .
+
+crm:P112_diminished a rdf:Property .
+
+crm:P113_removed a rdf:Property .
+
+crm:P11_had_participant a rdf:Property .
+
+crm:P126_employed a rdf:Property .
+
+crm:P13_destroyed a rdf:Property .
+
+crm:P14.1_in_the_role_of a rdf:Property .
+
+crm:P140_assigned_attribute_to a rdf:Property .
+
+crm:P141_assigned a rdf:Property .
+
+crm:P147_curated a rdf:Property .
+
+crm:P14i_performed a rdf:Property .
+
+crm:P1_is_identified_by a rdf:Property .
+
+crm:P22_transferred_title_to a rdf:Property .
+
+crm:P22i_acquired_title_through a rdf:Property .
+
+crm:P23_transfered_title_from a rdf:Property .
+
+crm:P23i_surrendered_title_through a rdf:Property .
+
+crm:P24_transferred_title_of a rdf:Property .
+
+crm:P25_moved a rdf:Property .
+
+crm:P26_moved_to a rdf:Property .
+
+crm:P27_moved_from a rdf:Property .
+
+crm:P28_custody_surrendered_by a rdf:Property .
+
+crm:P28i_surrendered_custody_through a rdf:Property .
+
+crm:P29_custody_received_by a rdf:Property .
+
+crm:P29i_received_custody_through a rdf:Property .
+
+crm:P2_has_type a rdf:Property .
+
+crm:P30_transferred_custody_of a rdf:Property .
+
+crm:P31_has_modified a rdf:Property .
+
+crm:P32_used_general_technique a rdf:Property .
+
+crm:P34_concerned a rdf:Property .
+
+crm:P35_has_identified a rdf:Property .
+
+crm:P39_measured a rdf:Property .
+
+crm:P3_has_note a rdf:Property .
+
+crm:P40_observed_dimension a rdf:Property .
+
+crm:P41_classified a rdf:Property .
+
+crm:P42_assigned a rdf:Property .
+
+crm:P4_has_time-span a rdf:Property .
+
+crm:P76_has_contact_point a rdf:Property .
+
+crm:P7_took_place_at a rdf:Property .
+
+crm:P94_has_created a rdf:Property .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R16> a rdf:Property .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R17> a rdf:Property .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R19> a rdf:Property .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R20> a rdf:Property .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R21> a rdf:Property .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R22> a rdf:Property .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R23> a rdf:Property .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R24> a rdf:Property .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R25> a rdf:Property .
+
+<https://www.iflastandards.info/fr/frbr/frbroo#R66> a rdf:Property .
+
+<https://data.vlaanderen.be/ns/cultureel-erfgoed#Beschrijving> a owl:Class;
+  rdfs:label "Beschrijving"@nl;
+  rdfs:comment "Schriftelijke weergave van kenmerken van iets of iemand."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/cultureel-erfgoed> .
+
+<https://data.vlaanderen.be/ns/cultureel-erfgoed#Rol> a owl:Class;
+  rdfs:label "Rol"@nl;
+  <http://purl.org/vocab/vann/usageNote> "Bv schilder bij de Productie van een schilderij of muzikant bij de uitvoering van een Voorstelling."@nl;
+  rdfs:comment "Aard van de deelname van de Agent aan de Activiteit."@nl;
+  rdfs:isDefinedBy <https://data.vlaanderen.be/ns/cultureel-erfgoed> .
+
+<https://data.vlaanderen.be/ns/cultureel-erfgoed> a owl:Ontology;
+  rdfs:label "cultureel-erfgoed-voc"@en,
+    "cultureel-erfgoed-voc"@nl;
+  dc:contributor [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://medewerkerwebsiteurl>;
+      foaf:name "MedewerkerAffiliatie"
+    ];
+    foaf:firstName "MedewerkerVoornaam";
+    foaf:lastName "MedewerkerNaam";
+    foaf:mbox <mailto:medewerkervoornaam.medewerkernaam@medewerkerdomein>
+  ];
+  dc:issued "TODO";
+  dc:license <https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0>,
+    "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0";
+  dc:mediator [
+    foaf:homepage <https://data.vlaanderen.be>;
+    foaf:mbox <mailto:oslo@kb.vlaanderen.be>;
+    foaf:name "Data Vlaanderen"
+  ];
+  rdfs:seeAlso crm:P23_transfered_title_from,
+    crm:P39_measured,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F29>,
+    crm:P13_destroyed,
+    crm:P23i_surrendered_title_through,
+    crm:P126_employed,
+    crm:E14_Condition_Assessment,
+    crm:E11_Modification,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F28>,
+    crm:E87_Curation_Activity,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F30>,
+    crm:P147_curated,
+    crm:E7_Activity,
+    crm:E16_Measurement,
+    crm:E81_Transformation,
+    crm:E2_Temporal_Entity,
+    crm:E65_Creation,
+    crm:P140_assigned_attribute_to,
+    crm:E80_Part_Removal,
+    crm:P111_added,
+    crm:P22i_acquired_title_through,
+    crm:P32_used_general_technique,
+    crm:E17_Type_Assignment,
+    crm:P141_assigned,
+    crm:E9_Move,
+    crm:P2_has_type,
+    crm:E5_Event,
+    crm:E10_Transfer_of_Custody,
+    crm:E79_Part_Addition,
+    crm:P22_transferred_title_to,
+    crm:P29_custody_received_by,
+    crm:P28i_surrendered_custody_through,
+    crm:P11_had_participant,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R23>,
+    crm:P14i_performed,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F31>,
+    crm:P35_has_identified,
+    crm:E13_Attribute_Assignment,
+    crm:P29i_received_custody_through,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R24>,
+    crm:E12_Production,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R66>,
+    crm:P4_has_time-span,
+    crm:P40_observed_dimension,
+    crm:P31_has_modified,
+    crm:P14.1_in_the_role_of,
+    crm:P3_has_note,
+    crm:P28_custody_surrendered_by,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R22>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R20>,
+    crm:P30_transferred_custody_of,
+    crm:P108_has_produced,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R19>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#F27>,
+    crm:P41_classified,
+    crm:E8_Acquisition,
+    crm:P42_assigned,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R21>,
+    crm:P113_removed,
+    crm:P76_has_contact_point,
+    crm:P94_has_created,
+    crm:P25_moved,
+    crm:P110_augmented,
+    skos:Concept,
+    crm:P112_diminished,
+    crm:P1_is_identified_by,
+    crm:P34_concerned,
+    crm:P24_transferred_title_of,
+    crm:P26_moved_to,
+    crm:P7_took_place_at,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R25>,
+    crm:P27_moved_from,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R17>,
+    <https://www.iflastandards.info/fr/frbr/frbroo#R16>;
+  <http://www.w3.org/2001/02pd/rec54#editor> [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://editorwebsiteurl>;
+      foaf:name "EditorAffiliatie"
+    ];
+    foaf:firstName "EditorVoornaam";
+    foaf:lastName "EditorNaam";
+    foaf:mbox <mailto:editorvoornaam.editornaam@editordomein>
+  ];
+  foaf:maker [
+    a foaf:Person;
+    schema:affiliation [
+      foaf:homepage <https://auteurwebsiteurl>;
+      foaf:name "AuteurAffiliatie"
+    ];
+    foaf:firstName "AuteurVoornaam";
+    foaf:lastName "AuteurNaam";
+    foaf:mbox <mailto:auteurvoornaam.auteurnaam@auteurdomein>
+  ] .
