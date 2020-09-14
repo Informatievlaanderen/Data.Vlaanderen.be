@@ -1,0 +1,820 @@
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein> <https://data.vlaanderen.be/shacl/bedrijventerreinshapes> <https://data.vlaanderen.be/shacl/bedrijventerrein#DominanteEconomischeActiviteitShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#BeheerdeBedrijvenzoneShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#PlanningszoneShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#GeometrieMethodeWaardeShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#OntwikkelbareBedrijvenzoneShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#VerantwoordelijkheidShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#BedrijventerreinperceelShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#GebruikShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#OppervlaktetypeShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#PlanningsniveauShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#RuimtelijkeEenheidGeometrieShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#StatusOntwikkelingShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#BeschikbaarheidShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#BedrijventerreinShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#StandaardEenheidShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#RechttypeShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#GeometrieShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#BestemmingShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#PeriodeShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#PlanShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#AgentShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#GestructureerdeIdentificatorShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#SchorsingInfoShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#FunctietypeShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#EconomischGebiedShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#BebouwingShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#RechtShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#ContactInfoShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#FunctiewaardeShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#BeperkingShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#IdentificatorShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#DossierfaseShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#RuimtelijkeEenheidtypeShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#RuimtelijkeEenheidShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#LandgebruikShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#GetalShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#KadastraalPlanperceelShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#SubsidietypeShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#KwantitatieveWaardeShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#VerantwoordelijkheidtypeShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#OpmetingtypeShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#RuimtelijkeEenheidOppervlakteShape>,
+    <https://data.vlaanderen.be/shacl/bedrijventerrein#StatusShape> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#AgentShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:class schema:ContactPoint;
+    sh:description "Informatie zoals email, telefoon, adres die toelaat om iemand of iets te contacteren.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "contactinfo";
+    sh:path schema:contactPoint
+  ];
+  sh:targetClass <https://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid.agent> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#BebouwingShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#BedrijventerreinShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:datatype rdf:langString;
+    sh:description "Andere naam waaronder het bedrijventerrein bekend is.";
+    sh:maxCount 1;
+    sh:name "alternatieveNaam";
+    sh:path skos:altLabel
+  ], [
+    sh:class <https://data.vlaanderen.be/ns/bedrijventerrein#Planningszone>;
+    sh:description "Planningszone waarmee het bedrijventerrein kan geassocieerd worden.";
+    sh:minCount 1;
+    sh:name "isGerelateerdAan";
+    sh:path dc:relation
+  ], [
+    sh:class <https://data.vlaanderen.be/ns/bedrijventerrein#EconomischGebied>;
+    sh:description "Economisch Gebied waarmee het bedrijventerrein kan geassocieerd worden.";
+    sh:maxCount 1;
+    sh:name "isGerelateerdAanEconomischGebied";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#isGerelateerdAanEconomischGebied>
+  ], [
+    sh:datatype rdf:langString;
+    sh:description "Voorkeursnaam van het Bedrijventerrein.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "naam";
+    sh:path skos:prefLabel
+  ], [
+    sh:datatype xsd:boolean;
+    sh:description "Deze eigenschap geeft aan of er al dan niet beschikbare kavels aanwezig zijn op het bedrijventerrein.";
+    sh:maxCount 1;
+    sh:name "beschikbareKavels";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#beschikbareKavels>
+  ], [
+    sh:class <https://schema.org/QuantitativeValue>;
+    sh:description "Deze eigenschap geeft aan hoeveel oppervlakte nog beschikbaar is op het bedrijventerrein.";
+    sh:maxCount 1;
+    sh:name "beschikbareOppervlakte";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#beschikbareOppervlakte>
+  ];
+  sh:targetClass <https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#BedrijventerreinperceelShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:class <https://data.vlaanderen.be/ns/bedrijventerrein#Functiewaarde>;
+    sh:description "De functie geeft de (verschillende) functies aan die men kan terugvinden op het Bedrijventerreinperceel en het percentage van het perceel dat gedekt wordt door elke functie.";
+    sh:minCount 1;
+    sh:name "functie";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#functie>
+  ], [
+    sh:class skos:Concept;
+    sh:description "Deze eigenschap geeft de beschikbaarheid aan van een Bedrijventerreinperceel.";
+    sh:maxCount 1;
+    sh:name "beschikbaarheid";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#beschikbaarheid>
+  ], [
+    sh:class skos:Concept;
+    sh:description "Deze eigenschap geeft aan welke mogelijke beperking(en) een bepaald bedrijventerreinperceel momenteel ondervindt.";
+    sh:name "beperking";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#beperking>
+  ], [
+    sh:class skos:Concept;
+    sh:description "Deze eigenschap geeft de aanwezigheid van bebouwing aan op het Bedrijventerreinperceel.";
+    sh:maxCount 1;
+    sh:name "bebouwing";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#bebouwing>
+  ], [
+    sh:class skos:Concept;
+    sh:description "Dit attribuut geeft aan in welke mate een Bedrijventerreinperceel in gebruik is.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "inGebruik";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#inGebruik>
+  ], [
+    sh:class <https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein>;
+    sh:description "Geeft aan tot welk Bedrijventerrein het Bedrijventerreinperceel behoort.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "isDeelVan";
+    sh:path dc:isPartOf
+  ];
+  sh:targetClass <https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerreinperceel> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#BeheerdeBedrijvenzoneShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:datatype xsd:boolean;
+    sh:description "Geeft aan of er al dan niet subsidies actief zijn voor de Beheerde Bedrijvenzone.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "subsidie";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#subsidie>
+  ], [
+    sh:datatype rdf:langString;
+    sh:description "Voorkeursnaam van de Beheerde bedrijvenzone";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "naam";
+    sh:path skos:prefLabel
+  ], [
+    sh:class skos:Concept;
+    sh:description "De aard van de subsidie geassocieerd met een Beheerde Bedrijvenzone.";
+    sh:name "subsidietype";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#subsidietype>
+  ], [
+    sh:class <https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein>;
+    sh:description "Geeft aan tot welk Bedrijventerrein de Beheerde Bedrijvenzone behoort.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "isDeelVan";
+    sh:path dc:isPartOf
+  ];
+  sh:targetClass <https://data.vlaanderen.be/ns/bedrijventerrein#BeheerdeBedrijvenzone> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#BeperkingShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#BeschikbaarheidShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#BestemmingShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#ContactInfoShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:class schema:OpeningHoursSpecification;
+    sh:description "Periode waarin contact kan worden opgenomen.";
+    sh:maxCount 1;
+    sh:name "beschikbaarheid";
+    sh:path schema:hoursAvailable
+  ], [
+    sh:datatype xsd:string;
+    sh:description "Telefoonnummer waarop men kan bellen.";
+    sh:maxCount 1;
+    sh:name "telefoon";
+    sh:path schema:telephone
+  ], [
+    sh:datatype rdf:langString;
+    sh:description "Titel waarmee iemand wordt aangeschreven of aangesproken of waarmee naar iemand wordt verwezen.";
+    sh:maxCount 1;
+    sh:name "aanschrijfvorm";
+    sh:path vcard:honorific-prefix
+  ], [
+    sh:datatype xsd:string;
+    sh:description "Faxnummer waarnaar men kan faxen.";
+    sh:maxCount 1;
+    sh:name "fax";
+    sh:path schema:faxNumber
+  ], [
+    sh:datatype xsd:string;
+    sh:description "Naam van bvb de persoon die men kan contacteren.";
+    sh:maxCount 1;
+    sh:name "contactnaam";
+    sh:path foaf:name
+  ], [
+    sh:datatype rdfs:Literal;
+    sh:description "Uren waarbinnen contact kan worden opgenomen.";
+    sh:maxCount 1;
+    sh:name "openingsuren";
+    sh:path schema:openingHours
+  ], [
+    sh:class <http://www.w3.org/ns/locn#Address>;
+    sh:description "Adres dat men kan aanschrijven of bezoeken.";
+    sh:maxCount 1;
+    sh:name "adres";
+    sh:path <http://www.w3.org/ns/locn#address>
+  ], [
+    sh:datatype xsd:string;
+    sh:description "Email-adres waarnaar men kan mailen.";
+    sh:maxCount 1;
+    sh:name "email";
+    sh:path schema:email
+  ], [
+    sh:datatype xsd:anyURI;
+    sh:description "Website waarnaar men kan surfen.";
+    sh:maxCount 1;
+    sh:name "website";
+    sh:path foaf:page
+  ];
+  sh:targetClass schema:ContactPoint .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#DominanteEconomischeActiviteitShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#DossierfaseShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#EconomischGebiedShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:class skos:Concept;
+    sh:description "De voornaamste economische activiteit dat geassocieerd kan worden met het Economisch Gebied";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "dominanteEconomischeActiviteit";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#dominanteEconomischeActiviteit>
+  ];
+  sh:targetClass <https://data.vlaanderen.be/ns/bedrijventerrein#EconomischGebied> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#FunctietypeShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#FunctiewaardeShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:datatype xsd:integer;
+    sh:description "Percentage van het perceel dat gedekt wordt door de functie.";
+    sh:maxCount 1;
+    sh:name "percentage";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#percentage>
+  ], [
+    sh:class skos:Concept;
+    sh:description "Aanduiding van het functietype.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "functietype";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#Functiewaarde.type>
+  ];
+  sh:targetClass <https://data.vlaanderen.be/ns/bedrijventerrein#Functiewaarde> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#GebruikShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#GeometrieMethodeWaardeShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#GeometrieShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:datatype rdfs:Literal;
+    sh:description "Geometrie uitgedrukt in wkt-formaat.";
+    sh:maxCount 1;
+    sh:name "wkt";
+    sh:path <http://www.opengis.net/ont/geosparql#asWKT>
+  ], [
+    sh:datatype rdfs:Literal;
+    sh:description "Geometrie uitgedrukt in gml-formaat.";
+    sh:maxCount 1;
+    sh:name "gml";
+    sh:path <http://www.opengis.net/ont/geosparql#asGML>
+  ];
+  sh:targetClass <http://www.w3.org/ns/locn#Geometry> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#GestructureerdeIdentificatorShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:datatype xsd:string;
+    sh:description "String gebruikt om het object uniek te identificeren binnen de naamruimte.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "lokaleIdentificator";
+    sh:path <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator>
+  ], [
+    sh:datatype xsd:string;
+    sh:description "Identificator van de specifieke versie van een object.";
+    sh:maxCount 1;
+    sh:name "versieIdentificator";
+    sh:path <https://data.vlaanderen.be/ns/generiek#versieIdentificator>
+  ], [
+    sh:datatype xsd:string;
+    sh:description "String die toegvoegd wordt aan de lokaleidentificator om deze globaal uniek te maken.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "naamruimte";
+    sh:path <https://data.vlaanderen.be/ns/generiek#naamruimte>
+  ];
+  sh:targetClass <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#GetalShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass <https://schema.org/Number> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#IdentificatorShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:datatype xsd:dateTime;
+    sh:description "Tijdstip waarop de identificator werd uitgegeven.";
+    sh:maxCount 1;
+    sh:name "toegekendOp";
+    sh:path dc:issued
+  ], [
+    sh:datatype rdfs:Literal;
+    sh:description "String gebruikt om het object uniek te identificeren. ";
+    sh:maxCount 1;
+    sh:name "identificator";
+    sh:path skos:notation
+  ], [
+    sh:datatype xsd:string;
+    sh:description "Naam vd agent die de identificator heeft toegekend.";
+    sh:maxCount 1;
+    sh:name "toegekendDoorString";
+    sh:path <http://www.w3.org/ns/adms#schemaAgency>
+  ], [
+    sh:class <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+    sh:description "Identificator vh object opgesplitst in zijn onderdelen.";
+    sh:maxCount 1;
+    sh:name "gestructureerdeIdentificator";
+    sh:path <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator>
+  ], [
+    sh:class dc:Agent;
+    sh:description "Link naar de agent die de identificator heeft uitgegeven.";
+    sh:maxCount 1;
+    sh:name "toegekendDoor";
+    sh:path dc:creator
+  ];
+  sh:targetClass <http://www.w3.org/ns/adms#Identifier> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#KadastraalPlanperceelShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:datatype xsd:dateTime;
+    sh:description "Datum van de laatste bijwerking.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "datumbijwerking";
+    sh:path <https://data.vlaanderen.be/ns/perceel#datumbijwerking>
+  ];
+  sh:targetClass <https://data.vlaanderen.be/ns/perceel#KadastraalPlanperceel> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#KwantitatieveWaardeShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:datatype xsd:string;
+    sh:description "De eenheid waarin de waarde is uitgedrukt.";
+    sh:maxCount 1;
+    sh:name "eenheid";
+    sh:path <https://schema.org/unitText>
+  ], [
+    sh:class <https://data.vlaanderen.be/ns/generiek#StandaardEenheid>;
+    sh:description "De gestandaardiseerde eenheid waarin de waarde is uitgedrukt.";
+    sh:maxCount 1;
+    sh:name "standaardEenheid";
+    sh:path <https://schema.org/unitCode>
+  ], [
+    sh:class <https://schema.org/Number>;
+    sh:description "Getal waarmee de kwantiteit van het kenmerk kan worden uitgedrukt.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "waarde";
+    sh:path <https://schema.org/value>
+  ];
+  sh:targetClass <https://schema.org/QuantitativeValue> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#LandgebruikShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#OntwikkelbareBedrijvenzoneShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:class <https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerrein>;
+    sh:description "Geeft aan tot welk Bedrijventerrein de Ontwikkelbare Bedrijvenzone behoort.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "isDeelVan";
+    sh:path dc:isPartOf
+  ], [
+    sh:datatype xsd:string;
+    sh:description "Adres van de homepage van de website van de ontwikkelbare bedrijvenzone of ontwikkelaar.";
+    sh:maxCount 1;
+    sh:name "homepage";
+    sh:path foaf:homepage
+  ], [
+    sh:datatype xsd:date;
+    sh:description "Het voorziene tijdstip waarop het eerste Bedrijventerreinperceel binnen een ontwikkelbare zone in verkoop zal gaan.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "voorzieneUitgifte";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#voorzieneUitgifte>
+  ], [
+    sh:class skos:Concept;
+    sh:description "Geeft de status aan van de Ontwikkelbare Bedrijvezone.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "statusOntwikkeling";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#statusOntwikkeling>
+  ], [
+    sh:class <https://data.vlaanderen.be/ns/bedrijventerrein#Bedrijventerreinperceel>;
+    sh:description "Bedrijventerreinperceel waarmee de ontwikkelbare bedrijvenzone kan geassocieerd worden.";
+    sh:name "isGerelateerdAan";
+    sh:path dc:relation
+  ], [
+    sh:datatype rdf:langString;
+    sh:description "Voorkeursnaam van de Ontwikkelbare Bedrijvenzone.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "naam";
+    sh:path skos:prefLabel
+  ];
+  sh:targetClass <https://data.vlaanderen.be/ns/bedrijventerrein#OntwikkelbareBedrijvenzone> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#OpmetingtypeShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#OppervlaktetypeShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#PeriodeShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:datatype xsd:dateTime;
+    sh:description "Aanvang van de tijdsduur.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "begin";
+    sh:path <http://data.europa.eu/m8g/startTime>
+  ], [
+    sh:datatype xsd:dateTime;
+    sh:description "Einde vd tijdsduur.";
+    sh:maxCount 1;
+    sh:name "einde";
+    sh:path <http://data.europa.eu/m8g/endTime>
+  ];
+  sh:targetClass <http://data.europa.eu/m8g/PeriodOfTime> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#PlanShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:datatype xsd:string;
+    sh:description "Link naar de tekst met het stedenbouwkundige voorschrift van het plan.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "stedenbouwkundigeVoorschriften";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#stedenbouwkundigeVoorschriften>
+  ], [
+    sh:class skos:Concept;
+    sh:description "Geeft de geplande bestemming aan van de planningszone.";
+    sh:maxCount 1;
+    sh:name "bestemming";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#bestemming>
+  ], [
+    sh:class <https://data.vlaanderen.be/ns/bedrijventerrein#SchorsingInfo>;
+    sh:description "De schorsing geeft aan of het plan al dan niet geschorst is en bijhorende metadata over de schorsing.";
+    sh:maxCount 1;
+    sh:name "schorsing";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#schorsing>
+  ], [
+    sh:class skos:Concept;
+    sh:description "Geeft het planningsniveau aan van het plan.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "planningsNiveau";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#planningsNiveau>
+  ], [
+    sh:datatype xsd:dateTime;
+    sh:description "Publicatiedatum van de dossierfase in het Belgische Staatsblad.";
+    sh:maxCount 1;
+    sh:name "publicatiedatum";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#publicatiedatum>
+  ], [
+    sh:class <http://www.w3.org/ns/adms#Identifier>;
+    sh:description "De identificator van het plan.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "identificator";
+    sh:path <http://www.w3.org/ns/adms#identifier>
+  ], [
+    sh:class skos:Concept;
+    sh:description "De dossierfase geeft aan in welke procedurefase het plan zich bevindt.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "dossierfase";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#dossierfase>
+  ], [
+    sh:datatype xsd:dateTime;
+    sh:description "Datum van de start van het plan.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "startdatum";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#startdatum>
+  ], [
+    sh:class skos:Concept;
+    sh:description "Geeft de status aan waarin het plan zich bevindt.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "status";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#status>
+  ], [
+    sh:datatype xsd:string;
+    sh:description "Link naar de tekst met de toelichtingsnota van het plan.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "toelichtingsnota";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#toelichtingsnota>
+  ], [
+    sh:datatype rdf:langString;
+    sh:description "Voorkeursnaam van het plan.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "naam";
+    sh:path skos:prefLabel
+  ];
+  sh:targetClass <https://data.vlaanderen.be/ns/bedrijventerrein#Plan> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#PlanningsniveauShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#PlanningszoneShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:class <https://data.vlaanderen.be/ns/bedrijventerrein#Plan>;
+    sh:description "Plan waarmee de planningszone kan geassocieerd worden.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "isGerelateerdAan";
+    sh:path dc:relation
+  ];
+  sh:targetClass <https://data.vlaanderen.be/ns/bedrijventerrein#Planningszone> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#RechtShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:class <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid>;
+    sh:description "Referentie naar verbonden klasse.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "RuimtelijkeEenheid";
+    sh:path <https://data.vlaanderen.be/ns/perceel#Recht.ruimtelijkeEenheid>
+  ], [
+    sh:class dc:Agent;
+    sh:description "Referentie naar verbonden klasse.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "Agent";
+    sh:path <https://data.vlaanderen.be/ns/perceel#Recht.agent>
+  ], [
+    sh:class skos:Concept;
+    sh:description "De aard van het recht dat een agent heeft ten opzichte van een ruimtelijke eenheid.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "rechttype";
+    sh:path <https://data.vlaanderen.be/ns/perceel#Recht.type>
+  ];
+  sh:targetClass <https://data.vlaanderen.be/ns/perceel#Recht> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#RechttypeShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#RuimtelijkeEenheidGeometrieShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:datatype xsd:boolean;
+    sh:description "Geometrie die moet worden gebruikt bv bij voorstelling op kaart.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "default";
+    sh:path <https://data.vlaanderen.be/ns/perceel#default>
+  ], [
+    sh:class <http://www.w3.org/ns/locn#Geometry>;
+    sh:description "Geometrische voorstelling van een ruimtelijke eenheid.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "geometrie";
+    sh:path <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie.geometrie>
+  ], [
+    sh:class skos:Concept;
+    sh:description "De methode geeft aan op welke manier de geometrie tot stand is gekomen.";
+    sh:maxCount 1;
+    sh:name "methode";
+    sh:path <https://data.vlaanderen.be/ns/perceel#methode>
+  ];
+  sh:targetClass <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#RuimtelijkeEenheidOppervlakteShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:class <https://schema.org/QuantitativeValue>;
+    sh:description "Afmeting van een twee-dimensionaal gebied.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "oppervlakte";
+    sh:path <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte.oppervlakte>
+  ], [
+    sh:datatype xsd:boolean;
+    sh:description "Geeft aan of de oppervlakte al dan niet officieel is.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "officieleOppervlakte";
+    sh:path <https://data.vlaanderen.be/ns/perceel#officieleOppervlakte>
+  ], [
+    sh:class skos:Concept;
+    sh:description "De methode waarop de oppervlakte bepaald werd;";
+    sh:maxCount 1;
+    sh:name "oppervlaktetype";
+    sh:path <https://data.vlaanderen.be/ns/perceel#oppervlaktetype>
+  ];
+  sh:targetClass <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#RuimtelijkeEenheidShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:class dc:Agent;
+    sh:description "Agent die een restrictie heeft met betrekking tot een ruimtelijke eenheid.";
+    sh:name "agentMetVerantwoordelijkheid";
+    sh:path <https://data.vlaanderen.be/ns/perceel#agentMetVerantwoordelijkheid>
+  ], [
+    sh:class <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie>;
+    sh:description "Geometrie van de ruimtelijke eenheid en metadata over hoe deze werd bepaald.";
+    sh:minCount 1;
+    sh:name "geometrie";
+    sh:path <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid.geometrie>
+  ], [
+    sh:class dc:Agent;
+    sh:description "Agent die een recht heeft op een ruimtelijke eenheid.";
+    sh:name "agentMetRecht";
+    sh:path <https://data.vlaanderen.be/ns/perceel#agentMetRecht>
+  ], [
+    <http://purl.org/linked-data/cube#codeList> <http://inspire.ec.europa.eu/codelist/HILUCSValue/>;
+    sh:class skos:Concept;
+    sh:description "Geeft het gebruik aan van de ruimtelijke eenheid.";
+    sh:maxCount 1;
+    sh:name "landgebruik";
+    sh:path <https://data.vlaanderen.be/ns/perceel#landgebruik>
+  ], [
+    sh:class skos:Concept;
+    sh:description "De aard van een ruimtelijke eenheid.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "ruimtelijkeeenheidtype";
+    sh:path <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid.type>
+  ], [
+    sh:class <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid>;
+    sh:description "Andere ruimtelijke eenheid waarmee deze ruimtelijke eenheid kan worden gekoppeld.";
+    sh:name "isGerelateerdAan";
+    sh:path dc:relation
+  ], [
+    sh:class <http://www.w3.org/ns/adms#Identifier>;
+    sh:description "De identificator van de Ruimtelijke Eenheid.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "identificator";
+    sh:path <http://www.w3.org/ns/adms#identifier>
+  ], [
+    sh:class skos:Concept;
+    sh:description "De dimensie van de ruimtelijke eenheid.";
+    sh:maxCount 1;
+    sh:name "dimensie";
+    sh:path <https://data.vlaanderen.be/ns/perceel#dimensie>
+  ], [
+    sh:class <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte>;
+    sh:description "Oppervlakte van de ruimtelijke eenheid en metadata over de manier waarop deze bepaald werd.";
+    sh:name "oppervlakte";
+    sh:path <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid.oppervlakte>
+  ], [
+    sh:class <http://data.europa.eu/m8g/PeriodOfTime>;
+    sh:description "Tijdsinterval waarbinnen de ruimtelijke eenheid van toepassing is.";
+    sh:maxCount 1;
+    sh:name "geldigheidsperiode";
+    sh:path <https://data.vlaanderen.be/ns/perceel#geldigheidsperiode>
+  ], [
+    sh:datatype xsd:integer;
+    sh:description "Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten.";
+    sh:maxCount 1;
+    sh:name "niveau";
+    sh:path <https://data.vlaanderen.be/ns/perceel#niveau>
+  ];
+  sh:targetClass <https://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid.ruimtelijkeEenheid> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#RuimtelijkeEenheidtypeShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#SchorsingInfoShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:datatype rdf:langString;
+    sh:description "Opmerkingen in het kader van de schorsing.";
+    sh:maxCount 1;
+    sh:name "schorsingOpmerking";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#schorsingOpmerking>
+  ], [
+    sh:datatype xsd:boolean;
+    sh:description "Geeft aan of het plan al dan niet geschorst is.";
+    sh:maxCount 1;
+    sh:name "geschorst";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#geschorst>
+  ], [
+    sh:datatype xsd:dateTime;
+    sh:description "Geeft de datum weer waarop het plan werd geschorst.";
+    sh:maxCount 1;
+    sh:name "datumSchorsing";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#datumSchorsing>
+  ], [
+    sh:datatype xsd:string;
+    sh:description "Link naar het arrest van de schorsing";
+    sh:maxCount 1;
+    sh:name "linkSchorsing";
+    sh:path <https://data.vlaanderen.be/ns/bedrijventerrein#linkSchorsing>
+  ];
+  sh:targetClass <https://data.vlaanderen.be/ns/bedrijventerrein#SchorsingInfo> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#StandaardEenheidShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass <https://data.vlaanderen.be/ns/generiek#StandaardEenheid> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#StatusOntwikkelingShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#StatusShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#SubsidietypeShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#VerantwoordelijkheidShape> a sh:NodeShape;
+  sh:closed false;
+  sh:property [
+    sh:class <https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid>;
+    sh:description "Referentie naar verbonden klasse.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "RuimtelijkeEenheid";
+    sh:path <https://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid.ruimtelijkeEenheid>
+  ], [
+    sh:class dc:Agent;
+    sh:description "Referentie naar verbonden klasse.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "Agent";
+    sh:path <https://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid.agent>
+  ], [
+    sh:class skos:Concept;
+    sh:description "De aard van de verantwoordelijkheid die een agent heeft ten opzichte van een ruimtelijke eenheid.";
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "verantwoordelijkheidtype";
+    sh:path <https://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid.type>
+  ];
+  sh:targetClass <https://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid> .
+
+<https://data.vlaanderen.be/shacl/bedrijventerrein#VerantwoordelijkheidtypeShape> a sh:NodeShape;
+  sh:closed false;
+  sh:targetClass skos:Concept .

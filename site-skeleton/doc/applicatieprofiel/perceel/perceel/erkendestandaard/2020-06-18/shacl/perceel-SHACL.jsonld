@@ -1,0 +1,696 @@
+{
+  "@context": {
+    "@vocab": "https://data.vlaanderen.be/shacl/perceel",
+    "qb": "http://purl.org/linked-data/cube#",
+    "qb:codeList": {
+      "@type": "@id"
+    },
+    "sh": "http://www.w3.org/ns/shacl#",
+    "sh:class": {
+      "@type": "@id"
+    },
+    "sh:datatype": {
+      "@type": "@id"
+    },
+    "sh:maxCount": {
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "sh:minCount": {
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "sh:path": {
+      "@type": "@id"
+    },
+    "sh:property": {
+      "@type": "@id"
+    },
+    "sh:targetClass": {
+      "@type": "@id"
+    },
+    "shapes": {
+      "@type": "@id"
+    }
+  },
+  "@id": "https://data.vlaanderen.be/shacl/perceel",
+  "shapes": [
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#KadastraalPatrimoniumperceelShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://www.w3.org/ns/adms#Identifier",
+          "sh:description": "De identificator van het Kadastraal Patrimoniumperceel.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "^identificator",
+          "sh:path": "http://www.w3.org/ns/adms#identifier"
+        },
+        {
+          "sh:class": "http://purl.org/dc/terms/Agent",
+          "sh:description": "Agent die een zakelijk recht heeft op een kadastraal patrimoniumperceel.",
+          "sh:minCount": "1",
+          "sh:name": "agentMetZakelijkRecht",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#agentMetZakelijkRecht"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "sh:description": "Datum van de laatste bijwerking.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "datumbijwerking",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#datumbijwerking"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/perceel#KadastraalPlanperceel",
+          "sh:description": "Duidt het kadastraal planperceel aan waaraan het patrimoniumperceel gekoppeld kan worden.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "isGerelateerdAan",
+          "sh:path": "http://purl.org/dc/terms/relation"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/perceel#ZakelijkRecht.kadastraalPatrimoniumperceel"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#KadastraalPlanperceelShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "sh:description": "Datum van de laatste bijwerking.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "datumbijwerking",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#datumbijwerking"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/perceel#KadastraalPlanperceel"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#RechtShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://purl.org/dc/terms/Agent",
+          "sh:description": "Referentie naar verbonden klasse.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "Agent",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#Recht.agent"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid",
+          "sh:description": "Referentie naar verbonden klasse.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "RuimtelijkeEenheid",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#Recht.ruimtelijkeEenheid"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#double",
+          "sh:description": "Procentuele aanduiding van het recht.",
+          "sh:maxCount": "1",
+          "sh:name": "aandeel",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#aandeel"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/PeriodOfTime",
+          "sh:description": "Tijdsinterval waarbinnen het recht van toepassing is.",
+          "sh:maxCount": "1",
+          "sh:name": "geldigheidsperiode",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#geldigheidsperiode"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:description": "Een beschrijving van het recht.",
+          "sh:maxCount": "1",
+          "sh:name": "omschrijving",
+          "sh:path": "http://purl.org/dc/terms/description"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "De aard van het recht dat een agent heeft ten opzichte van een ruimtelijke eenheid.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "rechttype",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#Recht.type"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/perceel#Recht"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#RestrictieShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://purl.org/dc/terms/Agent",
+          "sh:description": "Referentie naar verbonden klasse.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "Agent",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#Restrictie.agent"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid",
+          "sh:description": "Referentie naar verbonden klasse.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "RuimtelijkeEenheid",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#Restrictie.ruimtelijkeEenheid"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#double",
+          "sh:description": "Procentuele aanduiding van de restrictie.",
+          "sh:maxCount": "1",
+          "sh:name": "aandeel",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#aandeel"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/PeriodOfTime",
+          "sh:description": "Tijdsinterval waarbinnen de restrictie van toepassing is.",
+          "sh:maxCount": "1",
+          "sh:name": "geldigheidperiode",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#geldigheidperiode"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:description": "Een beschrijving van de restrictie.",
+          "sh:maxCount": "1",
+          "sh:name": "omschrijving",
+          "sh:path": "http://purl.org/dc/terms/description"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "De aard van de restrictie die een agent heeft ten opzichte van een ruimtelijke eenheid.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "restrictietype",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#Restrictie.type"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/perceel#Restrictie"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#RuimtelijkeEenheidShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://purl.org/dc/terms/Agent",
+          "sh:description": "Agent die een recht heeft op een ruimtelijke eenheid.",
+          "sh:name": "agentMetRecht",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#agentMetRecht"
+        },
+        {
+          "sh:class": "http://purl.org/dc/terms/Agent",
+          "sh:description": "Agent die een restrictie heeft met betrekking tot een ruimtelijke eenheid.",
+          "sh:name": "agentMetRestrictie",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#agentMetRestrictie"
+        },
+        {
+          "sh:class": "http://purl.org/dc/terms/Agent",
+          "sh:description": "Agent die een verantwoordelijkheid heeft ten opzichte van een ruimtelijke eenheid.",
+          "sh:name": "agentMetVerantwoordelijkheid",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#agentMetVerantwoordelijkheid"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "De dimensie van de ruimtelijke eenheid.",
+          "sh:maxCount": "1",
+          "sh:name": "dimensie",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#dimensie"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/PeriodOfTime",
+          "sh:description": "Tijdsinterval waarbinnen de ruimtelijke eenheid van toepassing is.",
+          "sh:maxCount": "1",
+          "sh:name": "geldigheidsperiode",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#geldigheidsperiode"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie",
+          "sh:description": "Geometrie van de ruimtelijke eenheid en metadata over hoe deze werd bepaald.",
+          "sh:minCount": "1",
+          "sh:name": "geometrie",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid.geometrie"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/adms#Identifier",
+          "sh:description": "De identificator van de Ruimtelijke Eenheid.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "identificator",
+          "sh:path": "http://www.w3.org/ns/adms#identifier"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid",
+          "sh:description": "Andere ruimtelijke eenheid waarmee deze ruimtelijke eenheid kan worden gekoppeld.",
+          "sh:name": "isGerelateerdAan",
+          "sh:path": "http://purl.org/dc/terms/relation"
+        },
+        {
+          "qb:codeList": "http://inspire.ec.europa.eu/codelist/HILUCSValue/",
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "Geeft het gebruik aan van de ruimtelijke eenheid.",
+          "sh:maxCount": "1",
+          "sh:name": "landgebruik",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#landgebruik"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "sh:description": "Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten.",
+          "sh:maxCount": "1",
+          "sh:name": "niveau",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#niveau"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte",
+          "sh:description": "Oppervlakte van de ruimtelijke eenheid en metadata over de manier waarop deze bepaald werd.",
+          "sh:name": "oppervlakte",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid.oppervlakte"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "De aard van een ruimtelijke eenheid.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "ruimtelijkeeenheidtype",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid.type"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid.ruimtelijkeEenheid"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#RuimtelijkeEenheidGeometrieShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+          "sh:description": "Geometrie die moet worden gebruikt bv bij voorstelling op kaart.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "default",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#default"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/locn#Geometry",
+          "sh:description": "Geometrische voorstelling van een ruimtelijke eenheid.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "geometrie",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie.geometrie"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "De methode geeft aan op welke manier de geometrie tot stand is gekomen.",
+          "sh:maxCount": "1",
+          "sh:name": "methode",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#methode"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#RuimtelijkeEenheidOppervlakteShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+          "sh:description": "Geeft aan of de oppervlakte al dan niet officieel is.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "officieleOppervlakte",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#officieleOppervlakte"
+        },
+        {
+          "sh:class": "https://schema.org/QuantitativeValue",
+          "sh:description": "Afmeting van een twee-dimensionaal gebied.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "oppervlakte",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte.oppervlakte"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "De methode waarop de oppervlakte bepaald werd;",
+          "sh:maxCount": "1",
+          "sh:name": "oppervlaktetype",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#oppervlaktetype"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#VerantwoordelijkheidShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://purl.org/dc/terms/Agent",
+          "sh:description": "Referentie naar verbonden klasse.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "Agent",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid.agent"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid",
+          "sh:description": "Referentie naar verbonden klasse.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "RuimtelijkeEenheid",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid.ruimtelijkeEenheid"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#double",
+          "sh:description": "Procentuele aanduiding van de verantwoordelijkheid",
+          "sh:maxCount": "1",
+          "sh:name": "aandeel",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#aandeel"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/PeriodOfTime",
+          "sh:description": "Tijdsinterval waarbinnen de verantwoordelijkheid van toepassing is.",
+          "sh:maxCount": "1",
+          "sh:name": "geldigheidsperiode",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#geldigheidsperiode"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:description": "Een beschrijving van de verantwoordelijkheid.",
+          "sh:maxCount": "1",
+          "sh:name": "omschrijving",
+          "sh:path": "http://purl.org/dc/terms/description"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "De aard van de verantwoordelijkheid die een agent heeft ten opzichte van een ruimtelijke eenheid.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "verantwoordelijkheidtype",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid.type"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#ZakelijkRechtShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://purl.org/dc/terms/Agent",
+          "sh:description": "Referentie naar verbonden klasse.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "Agent",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#ZakelijkRecht.agent"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/perceel#KadastraalPatrimoniumperceel",
+          "sh:description": "Referentie naar verbonden klasse.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "KadastraalPatrimoniumperceel",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#ZakelijkRecht.kadastraalPatrimoniumperceel"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#double",
+          "sh:description": "Procentuele aanduiding van het zakelijk recht.",
+          "sh:maxCount": "1",
+          "sh:name": "aandeel",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#aandeel"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/PeriodOfTime",
+          "sh:description": "Tijdsinterval waarbinnen het zakelijk recht van toepassing is.",
+          "sh:maxCount": "1",
+          "sh:name": "geldigheidsperiode",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#geldigheidsperiode"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "De aard van het zakelijk recht.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "zakelijkrechttype",
+          "sh:path": "https://data.vlaanderen.be/ns/perceel#ZakelijkRecht.type"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/perceel#ZakelijkRecht"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#PeriodeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "sh:description": "Aanvanh van de tijdsduur.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "begin",
+          "sh:path": "http://data.europa.eu/m8g/startTime"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "sh:description": "Einde vd tijdsduur.",
+          "sh:maxCount": "1",
+          "sh:name": "einde",
+          "sh:path": "http://data.europa.eu/m8g/endTime"
+        }
+      ],
+      "sh:targetClass": "http://data.europa.eu/m8g/PeriodOfTime"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#AgentShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/perceel#ZakelijkRecht.agent"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#VerantwoordelijkheidtypeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#RuimtelijkeEenheidtypeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#RestrictietypeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#RechttypeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#OppervlaktetypeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#LandgebruikShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#DimensieShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#ZakelijkRechttypeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#GeometrieMethodeWaardeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#IdentificatorShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
+          "sh:description": "Identificator vh object opgesplitst in zijn onderdelen.",
+          "sh:maxCount": "1",
+          "sh:name": "gestructureerdeIdentificator",
+          "sh:path": "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "String gebruikt om het object uniek te identificeren. ",
+          "sh:maxCount": "1",
+          "sh:name": "identificator",
+          "sh:path": "http://www.w3.org/2004/02/skos/core#notation"
+        },
+        {
+          "sh:class": "http://purl.org/dc/terms/Agent",
+          "sh:description": "Link naar de agent die de identificator heeft uitgegeven.",
+          "sh:maxCount": "1",
+          "sh:name": "toegekendDoor",
+          "sh:path": "http://purl.org/dc/terms/creator"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:description": "Naam vd agent die de identificator heeft toegekend.",
+          "sh:maxCount": "1",
+          "sh:name": "toegekendDoorString",
+          "sh:path": "http://www.w3.org/ns/adms#schemaAgency"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "sh:description": "Tijdstip waarop de identificator werd uitgegeven.",
+          "sh:maxCount": "1",
+          "sh:name": "toegekendOp",
+          "sh:path": "http://purl.org/dc/terms/issued"
+        }
+      ],
+      "sh:targetClass": "http://www.w3.org/ns/adms#Identifier"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#GeometrieShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "Geometrie uitgedrukt in gml-formaat.",
+          "sh:maxCount": "1",
+          "sh:name": "gml",
+          "sh:path": "http://www.opengis.net/ont/geosparql#asGML"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "Geometrie uitgedrukt in wkt-formaat.",
+          "sh:maxCount": "1",
+          "sh:name": "wkt",
+          "sh:path": "http://www.opengis.net/ont/geosparql#asWKT"
+        }
+      ],
+      "sh:targetClass": "http://www.w3.org/ns/locn#Geometry"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#GebouwShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/perceel#KadastraalPlanperceel",
+          "sh:description": "De kadastrale planpercelen waarmee het gebouw officieel geassocieerd is.",
+          "sh:name": "ligtOp",
+          "sh:path": "https://data.vlaanderen.be/ns/gebouw#ligtOp"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/gebouw#Gebouw"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#GestructureerdeIdentificatorShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:description": "String gebruikt om het object uniek te identificeren binnen de naamruimte.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "lokaleIdentificator",
+          "sh:path": "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:description": "String die toegvoegd wordt aan de lokaleidentificator om deze globaal uniek te maken.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "naamruimte",
+          "sh:path": "https://data.vlaanderen.be/ns/generiek#naamruimte"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:description": "Identificator van de specifieke versie van een object.",
+          "sh:maxCount": "1",
+          "sh:name": "versieIdentificator",
+          "sh:path": "https://data.vlaanderen.be/ns/generiek#versieIdentificator"
+        }
+      ],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#StandaardEenheidShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "https://data.vlaanderen.be/ns/generiek#StandaardEenheid"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#GetalShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "https://schema.org/Number"
+    },
+    {
+      "@id": "https://data.vlaanderen.be/shacl/perceel#KwantitatieveWaardeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:description": "De eenheid waarin de waarde is uitgedrukt.",
+          "sh:maxCount": "1",
+          "sh:name": "eenheid",
+          "sh:path": "https://schema.org/unitText"
+        },
+        {
+          "sh:class": "https://data.vlaanderen.be/ns/generiek#StandaardEenheid",
+          "sh:description": "De gestandaardiseerde eenheid waarin de waarde is uitgedrukt.",
+          "sh:maxCount": "1",
+          "sh:name": "standaardEenheid",
+          "sh:path": "https://schema.org/unitCode"
+        },
+        {
+          "sh:class": "https://schema.org/Number",
+          "sh:description": "Getal waarmee de kwantiteit van het kenmerk kan worden uitgedrukt.",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": "waarde",
+          "sh:path": "https://schema.org/value"
+        }
+      ],
+      "sh:targetClass": "https://schema.org/QuantitativeValue"
+    }
+  ]
+}

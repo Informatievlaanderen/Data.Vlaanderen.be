@@ -1,0 +1,864 @@
+{
+  "@id": "http://data.vlaanderen.be/ns/perceel",
+  "@type": "http://www.w3.org/2002/07/owl#Ontology",
+  "authors": [],
+  "baseURI": null,
+  "baseURIabbrev": null,
+  "contributors": [],
+  "editors": [],
+  "issued": "2019-06-19",
+  "label": {
+    "en": "perceel",
+    "nl": "perceel"
+  },
+  "license": "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0",
+  "namespace": null,
+  "navigation": {
+    "next": "/doc/vocabularium/perceel/kandidaatstandaard/2020-04-23"
+  },
+  "publication-date": "2019-08-21",
+  "publication-state": "https://data.vlaanderen.be/id/conceptscheme/StandaardStatus/OntwerpdocumentInOntwikkeling",
+  "title": "Perceel",
+  "dcterms:license": "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0",
+  "dcterms:mediator": {
+    "foaf:homepage": "https://data.vlaanderen.be",
+    "foaf:mbox": "mailto:oslo@kb.vlaanderen.be",
+    "foaf:name": "Data Vlaanderen"
+  },
+  "classes": [
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#KadastraalPatrimoniumperceel",
+      "@type": "http://www.w3.org/2002/07/owl#Class",
+      "description": {
+        "nl": "Een onroerend goed of onroerend recht dat in hoofde van één of meerdere titularissen van een zakelijk recht onderworpen is aan een bepaald eigendomsstatuut."
+      },
+      "name": {
+        "nl": "Kadastraal Patrimoniumperceel"
+      },
+      "parents": [],
+      "usage": {
+        "nl": "Deze definitie is gealigneerd met de definitie van de Algemene Administratie van de PatrimoniumDocumentatie (AAPD). Kadastraal Patrimoniumperceel komt overeen met de entiteit BasicPropertyUnit uit INSPIRE Cadastral Parcel."
+      }
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#KadastraalPlanperceel",
+      "@type": "http://www.w3.org/2002/07/owl#Class",
+      "description": {
+        "nl": "Een gedeelte van het Belgische grondgebied, geografische afgebakend en geïdentificeerd door de AAPD op het kadastraal percelenplan, dat overeenstemt met het grondoppervlak van één of meerdere kadastrale patrimoniale percelen."
+      },
+      "name": {
+        "nl": "Kadastraal Planperceel"
+      },
+      "parents": [
+        "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid"
+      ],
+      "usage": {
+        "nl": "Kadastraal Planperceel komt overeen met de entiteit CadastralParcel uit INSPIRE Cadastral Parcel. De identificator dat gedefinieerd kan worden voor een Kadastraal planperceel komt overeen met de CaPaKey (bijvoorbeeld 44024A0034/00B002)."
+      }
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#Recht",
+      "@type": "http://www.w3.org/2002/07/owl#Class",
+      "description": {
+        "nl": "Actie, activiteit of verzameling van acties dat een systeemparticipant mag uitvoeren of mag gebruik maken van een geassocieerde resource."
+      },
+      "name": {
+        "nl": "Recht"
+      },
+      "parents": [],
+      "usage": {
+        "nl": "Definitie conform ISO 19152 - Land Administration Domain Model."
+      }
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#Restrictie",
+      "@type": "http://www.w3.org/2002/07/owl#Class",
+      "description": {
+        "nl": "Formele of informele verplichting om zich te weerhouden van iets te doen"
+      },
+      "name": {
+        "nl": "Restrictie"
+      },
+      "parents": [],
+      "usage": {
+        "nl": "Definitie conform ISO 19152 - Land Administration Domain Model."
+      }
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid",
+      "@type": "http://www.w3.org/2002/07/owl#Class",
+      "description": {
+        "nl": "Eén gebied (of meerdere gebieden) van land en/of water, of één enkel volume (of meerdere volumes) ruimte, afgebakend voor een bepaald doel."
+      },
+      "name": {
+        "nl": "Ruimtelijke Eenheid"
+      },
+      "parents": [],
+      "usage": {
+        "nl": "Definitie conform ISO 19152 - Land Administration Domain Model."
+      }
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie",
+      "@type": "http://www.w3.org/2002/07/owl#Class",
+      "description": {
+        "nl": "Geometrie van de ruimtelijke eenheid en metadata over hoe deze werd bepaald."
+      },
+      "name": {
+        "nl": "RuimtelijkeEenheidGeometrie"
+      },
+      "parents": [],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte",
+      "@type": "http://www.w3.org/2002/07/owl#Class",
+      "description": {
+        "nl": "Oppervlakte van de ruimtelijke eenheid en metadata over de manier waarop deze bepaald werd."
+      },
+      "name": {
+        "nl": "RuimtelijkeEenheidOppervlakte"
+      },
+      "parents": [],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid",
+      "@type": "http://www.w3.org/2002/07/owl#Class",
+      "description": {
+        "nl": "Formele of informele verplichting om iets te doen."
+      },
+      "name": {
+        "nl": "Verantwoordelijkheid"
+      },
+      "parents": [],
+      "usage": {
+        "nl": "Definitie conform ISO 19152 - Land Administration Domain Model."
+      }
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#ZakelijkRecht",
+      "@type": "http://www.w3.org/2002/07/owl#Class",
+      "description": {
+        "nl": "De zakelijke rechten zijn rechten die rechtstreeks op een zaak worden uitgeoefend. Een zakelijk recht geef aan zijn titularis een rechtstreekse en onmiddellijke macht over de zaak waarop het is gevestigd. Een zakelijk recht is een absoluut recht, in die zin dat zijn titularis het tegen iedereen kan doen gelden."
+      },
+      "name": {
+        "nl": "Zakelijk Recht"
+      },
+      "parents": [],
+      "usage": {
+        "nl": "Deze definitie is gealigneerd met de definitie van de Algemene Administratie van de PatrimoniumDocumentatie (AAPD)."
+      }
+    }
+  ],
+  "properties": [
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#Recht.type",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "De aard van een resource."
+      },
+      "domain": [
+        "https://www.w3.org/2000/01/rdf-schema#Resource"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "type (Recht)"
+      },
+      "range": [
+        "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#Restrictie.type",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "De aard van een resource."
+      },
+      "domain": [
+        "https://www.w3.org/2000/01/rdf-schema#Resource"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "type (Restrictie)"
+      },
+      "range": [
+        "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid.type",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "De aard van een resource."
+      },
+      "domain": [
+        "https://www.w3.org/2000/01/rdf-schema#Resource"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "type (RuimtelijkeEenheid)"
+      },
+      "range": [
+        "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+      ],
+      "usage": {
+        "nl": "Via deze eigenschap kan men aangeven over welk soort ruimtelijke eenheid men het heeft. Mogelijke voorbeelden zijn onder meer Gebruiksperceel, akteperceel, vervuilingsperceel, openbaar domein, kadastraal planperceel\r\n"
+      }
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid.type",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "De aard van een resource."
+      },
+      "domain": [
+        "https://www.w3.org/2000/01/rdf-schema#Resource"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "type (Verantwoordelijkheid)"
+      },
+      "range": [
+        "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#ZakelijkRecht.type",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "De aard van een resource."
+      },
+      "domain": [
+        "https://www.w3.org/2000/01/rdf-schema#Resource"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "type (ZakelijkRecht)"
+      },
+      "range": [
+        "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#aandeel",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+      "description": {
+        "nl": "Procentuele aanduiding van een resource."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#ZakelijkRecht"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "aandeel"
+      },
+      "range": [],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#aandeel",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+      "description": {
+        "nl": "Procentuele aanduiding van een resource."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#Recht"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "aandeel"
+      },
+      "range": [],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#aandeel",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+      "description": {
+        "nl": "Procentuele aanduiding van een resource."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#Restrictie"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "aandeel"
+      },
+      "range": [],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#aandeel",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+      "description": {
+        "nl": "Procentuele aanduiding van een resource."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "aandeel"
+      },
+      "range": [],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#datumbijwerking",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "description": {
+        "nl": "Datum van de laatste bijwerking."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#KadastraalPatrimoniumperceel"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "datumBijwerking"
+      },
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#datumbijwerking",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "description": {
+        "nl": "Datum van de laatste bijwerking."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#KadastraalPlanperceel"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "datumBijwerking"
+      },
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#dateTime"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#default",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "description": {
+        "nl": "Geometrie die moet worden gebruikt bv bij voorstelling op kaart."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "default"
+      },
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#boolean"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#dimensie",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "De dimensie van de ruimtelijke eenheid."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "dimensie"
+      },
+      "range": [
+        "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#geldigheidperiode",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "Tijdsinterval waarbinnen iets geldig is."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#Restrictie"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "geldigheidsperiode"
+      },
+      "range": [
+        "http://data.europa.eu/m8g/PeriodOfTime"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#geldigheidsperiode",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "Tijdsinterval waarbinnen iets geldig is."
+      },
+      "domain": [
+        "https://www.w3.org/2000/01/rdf-schema#Resource"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "geldigheidsperiode"
+      },
+      "range": [
+        "http://data.europa.eu/m8g/PeriodOfTime"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#geldigheidsperiode",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "Tijdsinterval waarbinnen iets geldig is."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#ZakelijkRecht"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "geldigheidsperiode"
+      },
+      "range": [
+        "http://data.europa.eu/m8g/PeriodOfTime"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#geldigheidsperiode",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "Tijdsinterval waarbinnen iets geldig is."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#Recht"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "geldigheidsperiode"
+      },
+      "range": [
+        "http://data.europa.eu/m8g/PeriodOfTime"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#geldigheidsperiode",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "Tijdsinterval waarbinnen iets geldig is."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#Verantwoordelijkheid"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "geldigheidsperiode"
+      },
+      "range": [
+        "http://data.europa.eu/m8g/PeriodOfTime"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#geometrie",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "Vorm- en positiekenmerken van een object."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "geometrie"
+      },
+      "range": [
+        "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#geometrie",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "Geometrische voorstelling van een ruimtelijke eenheid."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "geometrie"
+      },
+      "range": [
+        "http://www.w3.org/ns/locn#Geometry"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#identificator",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "De identificator van resource."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#KadastraalPatrimoniumperceel"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "Identificator"
+      },
+      "range": [
+        "http://www.w3.org/ns/adms#Identifier"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#identificator",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "De identificator van resource.\r\n"
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "Identificator"
+      },
+      "range": [
+        "http://www.w3.org/ns/adms#Identifier"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#landgebruik",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "Geeft het gebruik aan van de ruimtelijke eenheid."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "Landgebruik"
+      },
+      "range": [
+        "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#methode",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "De methode geeft aan op welke manier de geometrie tot stand is gekomen."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidGeometrie"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "methode"
+      },
+      "range": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#niveau",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "description": {
+        "nl": "Het niveau waarop het object zich bevindt, relatief ten opzichte van andere objecten."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "niveau"
+      },
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#integer"
+      ],
+      "usage": {
+        "nl": "Negatieve waarden worden geassocieerd met ondergronds en positieve waarden met bovengronds. Nul wordt beschouwd als een absolute waarde om het maaiveld aan te duiden."
+      }
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#officiëleOppervlakte",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "description": {
+        "nl": "Geeft aan of de oppervlakte al dan niet officieel is."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "officiëleOppervlakte"
+      },
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#boolean"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#oppervlakte",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "Oppervlakte van de ruimtelijke eenheid en metadata over de manier waarop deze bepaald werd."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheid"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "oppervlakte"
+      },
+      "range": [
+        "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#oppervlakte",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "Afmeting van een twee-dimensionaal gebied."
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "oppervlakte"
+      },
+      "range": [
+        "https://schema.org/QuantitativeValue"
+      ],
+      "usage": {}
+    },
+    {
+      "@id": "http://data.vlaanderen.be/ns/perceel#oppervlaktetype",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "description": {
+        "nl": "De methode waarop de oppervlakte bepaald werd;"
+      },
+      "domain": [
+        "http://data.vlaanderen.be/ns/perceel#RuimtelijkeEenheidOppervlakte"
+      ],
+      "generalization": [],
+      "name": {
+        "nl": "oppervlaktetype"
+      },
+      "range": [
+        "https://www.w3.org/2009/08/skos-reference/skos.html#Concept"
+      ],
+      "usage": {}
+    }
+  ],
+  "externals": [
+    {
+      "@id": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+      "@type": "rdfs:Class",
+      "name": {}
+    },
+    {
+      "@id": "https://www.w3.org/2009/08/skos-reference/skos.html#Concept",
+      "@type": "rdfs:Class",
+      "name": {}
+    }
+  ],
+  "externalproperties": [
+    {
+      "@id": "http://purl.org/dc/terms/description",
+      "@type": "rdf:Property",
+      "name": {
+        "nl": "omschrijving"
+      }
+    },
+    {
+      "@id": "http://purl.org/dc/terms/description",
+      "@type": "rdf:Property",
+      "name": {
+        "nl": "omschrijving"
+      }
+    },
+    {
+      "@id": "http://purl.org/dc/terms/description",
+      "@type": "rdf:Property",
+      "name": {
+        "nl": "omschrijving"
+      }
+    },
+    {
+      "@id": "http://purl.org/dc/terms/relation",
+      "@type": "rdf:Property",
+      "name": {
+        "nl": "isGerelateerdAan"
+      }
+    },
+    {
+      "@id": "http://purl.org/dc/terms/relation",
+      "@type": "rdf:Property",
+      "name": {
+        "nl": "isGerelateerdAan"
+      }
+    }
+  ],
+  "@context": {
+    "vlaanderen": "http://data.vlaanderen.be/ns/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "void": "http://rdfs.org/ns/void#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "sdmx-dimension": "http://purl.org/linked-data/sdmx/2009/dimension#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sdmx-attribute": "http://purl.org/linked-data/sdmx/2009/attribute#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "sdmx-concept": "http://purl.org/linked-data/sdmx/2009/concept#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "person": "http://www.w3.org/ns/person#",
+    "rec": "http://www.w3.org/2001/02pd/rec54#",
+    "vann": "http://purl.org/vocab/vann/",
+    "sh": "http://w3.org/ns/shacl#",
+    "label": {
+      "@id": "rdfs:label",
+      "@container": "@language"
+    },
+    "modified": {
+      "@id": "dcterms:modified",
+      "@type": "xsd:date"
+    },
+    "license": {
+      "@id": "dcterms:license",
+      "@type": "@id"
+    },
+    "issued": {
+      "@id": "dcterms:issued"
+    },
+    "authors": {
+      "@type": "person:Person",
+      "@id": "foaf:maker"
+    },
+    "editors": {
+      "@type": "person:Person",
+      "@id": "rec:editor"
+    },
+    "contributors": {
+      "@type": "person:Person",
+      "@id": "dcterms:contributor"
+    },
+    "affiliation": {
+      "@id": "http://schema.org/affiliation"
+    },
+    "classes": {
+      "@reverse": "rdfs:isDefinedBy"
+    },
+    "datatypes": {
+      "@reverse": "rdfs:isDefinedBy"
+    },
+    "name": {
+      "@id": "rdfs:label",
+      "@container": "@language"
+    },
+    "description": {
+      "@id": "rdfs:comment",
+      "@container": "@language"
+    },
+    "properties": {
+      "@reverse": "rdfs:isDefinedBy"
+    },
+    "domain": {
+      "@id": "rdfs:domain",
+      "@type": "@id"
+    },
+    "range": {
+      "@id": "rdfs:range",
+      "@type": "@id"
+    },
+    "minCardinality": {
+      "@id": "sh:minCount"
+    },
+    "maxCardinality": {
+      "@id": "sh:maxCount"
+    },
+    "generalization": {
+      "@id": "rdfs:subPropertyOf",
+      "@type": "@id"
+    },
+    "externals": {
+      "@id": "rdfs:seeAlso"
+    },
+    "externalproperties": {
+      "@id": "rdfs:seeAlso"
+    },
+    "usage": {
+      "@id": "vann:usageNote",
+      "@container": "@language"
+    },
+    "parents": {
+      "@id": "rdfs:subClassOf",
+      "@type": "@id"
+    },
+    "foaf:homepage": {
+      "@id": "foaf:homepage",
+      "@type": "@id"
+    },
+    "foaf:mbox": {
+      "@id": "foaf:mbox",
+      "@type": "@id"
+    },
+    "equivalent": {
+      "@id": "owl:equivalentClass",
+      "@type": "@id"
+    }
+  }
+}

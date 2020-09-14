@@ -7,7 +7,8 @@ GENERATED=$2
 TARGET=$3
 
 echo "copy document paths"
-TARGETS="/doc/applicatieprofiel/cultureel-erfgoed-object /doc/applicatieprofiel/cultureel-erfgoed-event /doc/vocabularium/cultureel-erfgoed/kandidaatstandaard/2020-07-17 /doc/applicatieprofiel/cultureel-erfgoed-object/kandidaatstandaard/2020-07-17 /doc/applicatieprofiel/cultureel-erfgoed-event/kandidaatstandaard/2020-07-17 /doc/vocabularium/cultureel-erfgoed/ontwerpstandaard/2020-07-02 /doc/applicatieprofiel/cultureel-erfgoed-object/ontwerpstandaard/2020-07-02 /doc/applicatieprofiel/cultureel-erfgoed-event/ontwerpstandaard/2020-07-02 /doc/applicatieprofiel/cultureel-erfgoed-object/ontwerpstandaard/2020-05-28 /doc/applicatieprofiel/cultureel-erfgoed-event/ontwerpstandaard/2020-05-28 /doc/applicatieprofiel/cultureel-erfgoed-object/ontwerpstandaard/2020-05-05"
+TARGETS="/doc/applicatieprofiel/perceel /doc/applicatieprofiel/bedrijventerrein /doc/vocabularium/perceel /doc/vocabularium/bedrijventerrein"
+
 #TARGETS="/doc/applicatieprofiel/cultureel-erfgoed-object"
 
 
@@ -20,7 +21,7 @@ done
 
 echo "copy ns paths"
 echo "CHECK IF THE FILENAME FITS THE URL" 
-TARGETS="/ns/cultureel-erfgoed"
+TARGETS="/ns/perceel /ns/bedrijventerrein"
 
 for i in $TARGETS ; do
 	echo copy $i
