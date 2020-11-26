@@ -181,4 +181,5 @@ then
     touch $ROOTDIR/rawcheckouts.txt
 else
     echo "problem in processing: ${PUBCONFIG}"
+    exit -1
 fi
