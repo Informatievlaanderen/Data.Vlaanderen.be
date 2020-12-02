@@ -2,7 +2,7 @@
 
 <html lang="nl">
 <head>
-	<title>AWV OTL implementatiemodel Data.Vlaanderen.be</title>
+	<title>OTL implementatiemodel Data.Vlaanderen.be</title>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, initial-scale=1" name="viewport">
@@ -36,7 +36,7 @@
 
 				<div class="layout layout--wide">
 					<div class="content-header__content">
-						<h1 class="content-header__title"><span class="content-header__title__content">AWV implementatiemodel en vocabularia</span>
+						<h1 class="content-header__title"><span class="content-header__title__content">Beleidsdomein MOW implementatiemodel en vocabularia</span>
 						</h1>
 					</div>
 				</div>
@@ -50,16 +50,9 @@
 					<div class="grid">
 						<div class="col--8-12 col--12-12--s">
 							<div class="typography introduction">
-								Met het programma Open Standaarden voor Linkende Organisaties (OSLO) zet de Vlaamse overheid in op een éénduidige standaard voor de uitwisseling van informatie. De AWV-objecttypebibliotheek (OTL) specifieert een implementatiemodel voor de datauitwisseling gedurende de volledige levenscyclus van onderdelen en installaties die in brede zin verband houden met wegen en verkeer zoals gespecifieerd in de verschillende standaardbestekken 250, 260 en 270. Ontdek hier de beschikbare vocabularia en implementatiemodellen, alsook codelijsten.
+								Met het programma Open Standaarden voor Linkende Organisaties (OSLO) zet de Vlaamse overheid in op een éénduidige standaard voor de uitwisseling van informatie. De objecttypenbibliotheek (OTL) specificeert een implementatiemodel voor de data-uitwisseling gedurende de volledige levenscyclus van onderdelen en installaties die in brede zin verband houden met wegen en verkeer zoals gespecificeerd in de verschillende Standaardbestekken 250, 260 en 270. Ontdek hier de beschikbare vocabularia en implementatiemodellen, alsook codelijsten.
 							</div>
 							<br>
-							<br>
-							<div style="border:1px red solid; color:black; font-size:14px;padding:2px">
-								<p>De productieomgeving (vanaf de lente 2020) bevat de definitieve implementatiemodellen en is te raadplegen op <a href="https://wegenenverkeer.data.vlaanderen.be/">wegenenverkeer.data.vlaanderen.be</a>.</p>
-								<p>De testomgeving bevatten alle implementatiemodellen inclusief diegene die in opbouw/review zijn en is te raadplegen op <a href="https://wegenenverkeer-test.data.vlaanderen.be/">wegenenverkeer-test.data.vlaanderen.be</a>.</p>
-								<span style="color:red;font-weight:bold">Momenteel bevat de productieomgeving nog geen definitieve modellen!</span>
-							</div>
-
 						</div>
 
 
@@ -77,7 +70,7 @@
 											</li>
 
 											<li class="side-navigation__item">
-												<a href="https://github.com/Informatievlaanderen/OSLOthema-wegenenverkeer/tree/master/codelijsten">Codelijsten</a>
+												<a href="https://github.com/Informatievlaanderen/OSLOthema-wegenenverkeer/tree/test/codelijsten">Codelijsten</a>
 											</li>
 
 											<li class="side-navigation__item">
@@ -103,13 +96,17 @@
 											<li class="side-navigation__item">
 												<a class="link--icon--caret link--icon--block" href="/doc/implementatiemodel/master/html/OTL-SQLite.pdf" target="_blank">SQLite datamodel</a>
 											</li>
+											
+											<li class="side-navigation__item">
+												<a class="link--icon--caret link--icon--block" href="https://opendata.apps.mow.vlaanderen.be/otltool" target="_blank">SQLite subset aanmaken</a>
+											</li>
 
 											<li class="side-navigation__item">
 												<a class="link--icon--caret link--icon--block" href="/doc/implementatiemodel/master/html/OTL.zip" target="_blank">XMI download</a>
 											</li>
 											
 											<li class="side-navigation__item">
-												<a class="link--icon--caret link--icon--block" href="/doc/implementatiemodel/master/html/OTL-TechnischeDocumentatie.pdf" target="_blank">AWV OTL concepten</a>
+												<a class="link--icon--caret link--icon--block" href="/doc/implementatiemodel/master/html/OTL-TechnischeDocumentatie.pdf" target="_blank">OTL concepten</a>
 											</li>
 										</ul>
 									</div>
@@ -133,28 +130,29 @@
 					<p>Het implementatiemodel (OTL) wegenenverkeer bouwt voort op een reeks bestaanden standaarden waaronder:<br>
 						<ul> 
 							<li><a href="https://overheid.vlaanderen.be/informatie-vlaanderen/producten-diensten/basiskaart-vlaanderen-grb">Grootschalig Referentiebestand (GRB)</a></li>
-							<li><a href="http://docs.wegenenverkeer.be/Templates%20&%20Legendeboek/">AWV-legendeboek</a></li>
+							<li><a href="https://www.wegenenverkeer.be/zakelijk/documenten?search=legendeboek">MOW-AWV Legendeboek</a></li>
 							<li><a href="https://wegenenverkeer.be/standaardbestek">Standaardbestek 250</a></li>
 							<li><a href="http://www.expertisebetonenstaal.be/standaardbestek-260">Standaardbestek 260</a></li>
 							<li><a href="http://wegenenverkeer.be/standaardbestek">Standaardbestek 270</a></li>
-							<li><a href="https://data.vlaanderen.be/cms/openbaardomein">OSLO openbaar-domein</a></li>
+							<li><a href="https://data.vlaanderen.be/cms/openbaardomein">OSLO Openbaar-domein</a></li>
 						</ul>
 					</p><br/>
 		   			<p>Op basis van bovenstaande standaarden is er één master-implementatiemodel ontwikkeld waarmee alle data rond weg(aanhorigheden) als één datastroom uitgewisseld kan worden. Met de OTL kan tijdens alle levensfases van een object data uniform uitgewisseld worden. Te beginnen bij het voorontwerp en zo verder tijdens ontwerp, uitvoering en uiteindelijk beheer en onderhoud. <br>
 					Dit implementatiemodel maakt het mogelijk om een digitale tweeling op te bouwen die voldoende gedetailleerd overeenkomt met de toestand buiten op het terrein. De klassieke as-builtplannen na uitvoering zijn hier uiteraard ook een deel van.</p><br/>
 					<p>Vanuit het implementatiemodel wordt een OSLO standaard ontwikkeld die een maximaal hergebruik van gedefinieerde objecten zal toelaten.</p>
-					<p>De overeenkomst met de objectcatalogus OSLO-openbaar domein wordt beschreven in de <a href="https://test.data.vlaanderen.be/cms/openbaardomein/AWV_mapping.html">mapping OD OTL</a></p>
+					<p>De overeenkomst met de objectcatalogus OSLO-openbaar domein wordt beschreven in de <a href="https://data.vlaanderen.be/cms/openbaardomein/AWV_mapping.html">mapping OD OTL</a></p>
 					<br>
 
 					<p>De informatie in de vocabularia en implementatiemodellen is georganiseerd volgens het <a href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/" target="_blank">Resource Description Framework (RDF)</a>, wat ze geschikt maakt voor gebruik in Linked Data toepassingen.<br>
 					Niet alle concepten die in de implementatiemodellen beschreven worden zijn vandaag ondersteund door de RDF specificaties, details hierover vindt u in volgende <a href="https://wegenenverkeer.data.vlaanderen.be/cms/disclaimer">disclaimer</a>.</p>
 					<br>
-					<p>Daarnaast is het integrale implementatiemodel AWV OTL in een machine-leesbare versie digitaal beschikbaar in volgende formaten:<br>
+					<p>Daarnaast is het integrale implementatiemodel OTL in een machine-leesbare versie digitaal beschikbaar in volgende formaten:<br>
 					<ul>				
 					<li><a href="/doc/implementatiemodel/master/html/OTL.zip">XMI</a></li>
 					<li><a href="/doc/implementatiemodel/master/html/OTL.db">SQLITE</a></li>				
-					</ul>
+					</ul>			
 					<br>
+					Aan de hand van deze <a href="https://opendata.apps.mow.vlaanderen.be/otltool">tool</a> kan je van de SQLite je eigen subset aanmaken.
 					</p>
 					<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeaxOnrCkcarNHWI21YfPJ7sZChHVzOB2-P9ptzxkD9YX69-g/viewform" target="_blank">Contacteer ons</a> voor alle mogelijke vragen, opmerking of feedback.
 					</p>
@@ -169,7 +167,7 @@
 						<h1 class="info-block__title">Implementatiemodellen</h1>
 					</header>
 				<div>
-				Het volledige master-implementatiemodel wordt opgesplitst in een aantal thematische deel-implementatiemodellen. Deze deelmodellen zijn een overzichtelijke manier om een bepaald deeldomein uit de master weer te geven. Ze behoren echter steeds tot het grotere geheel omdat er immers steeds raakvlakken zijn met andere deeldomeinen. Hieronder volgt een overzicht van de verschillende deel-implementatiemodellen.
+				Het volledige master-implementatiemodel wordt opgesplitst in een aantal thematische deel-implementatiemodellen. Deze deel-modellen zijn een overzichtelijke manier om een bepaald deeldomein uit de master weer te geven. Ze behoren echter steeds tot het grotere geheel omdat er immers steeds raakvlakken zijn met andere deeldomeinen. Hieronder volgt een overzicht van de verschillende deel-implementatiemodellen.
 				</div>
 
 
@@ -209,31 +207,25 @@
 									</div>
 									<span class="doormat__text">Geeft een technisch overzicht van de soorten relaties die tussen objecten kunnen voorkomen.</span></a>
 								</li>
-								
-								<li class="col--4-12 col--1-2--s col--12-12--xs">
-									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/levelofgeometry/" id="doormat">
-									<div class="doormat__title">
-										Level of geometry (LoG)
-									</div>
-									<span class="doormat__text">Geeft een totaal overzicht van de objecten en de gekoppelde geometrische objecttypen (GRB) met de verwachte geometrie (punt, lijn, polygoon, ...).</span></a>
-								</li>
-								
+														
 								<li class="col--4-12 col--1-2--s col--12-12--xs">
 									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/master/" id="doormat">
 									<div class="doormat__title">
-										Master implementatiemodel
+										Master-implementatiemodel
 									</div>
 									<span class="doormat__text">Geeft een overzicht van alle objecten die voorkomen in het implementatiemodel wegenenverkeer.</span></a>
 								</li>
 								
 								<li class="col--4-12 col--1-2--s col--12-12--xs">
-									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/awv-object/" id="doormat">
+									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/aim-object/" id="doormat">
 									<div class="doormat__title">
-										AWV Object
+										AIM Object
 									</div>
-									<span class="doormat__text">Geeft een overzicht van de technische specificaties die nodig zijn voor datauitwisseling met de AWV AIM-omgeving.</span></a>
+									<span class="doormat__text">Geeft een overzicht van de technische specificaties die nodig zijn voor data-uitwisseling met de MOW AIM-omgeving.</span></a>
 								</li>
 							</ul>
+							<br>
+							<br>
 							<br>
 							<br>
 							<ul class="grid grid--is-stacked js-equal-height-container">
@@ -293,15 +285,15 @@
 									</div>
 									<span class="doormat__text">Geeft een overzicht van de objecten die horen bij de elektrische keten te beginnen aan de distributienetbeheerder tot aan een stroomkring.</span></a>
 								</li>
-																				
-								<li class="col--4-12 col--1-2--s col--12-12--xs">
-									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/grondwerken/" id="doormat">
-									<div class="doormat__title">
-										Grondwerken
-									</div>
-									<span class="doormat__text">Geeft een overzicht van de objecten die horen bij grondwerken zoals gespecificeerd in hoofdstuk 4 van Standaardbestek 250.</span></a>
-								</li>
 								
+								<li class="col--4-12 col--1-2--s col--12-12--xs">
+									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/fietstelinstallatie/" id="doormat">
+									<div class="doormat__title">
+										Fietstelinstallatie
+									</div>
+									<span class="doormat__text">Geeft een overzicht van de objecten die horen bij punten waar voorbijrijdende fietsers geteld worden.</span></a>
+								</li>
+																																		
 								<li class="col--4-12 col--1-2--s col--12-12--xs">
 									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/hulpposten/" id="doormat">
 									<div class="doormat__title">
@@ -311,11 +303,19 @@
 								</li>
 								
 								<li class="col--4-12 col--1-2--s col--12-12--xs">
-									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/kasten-cabines-ruimtes/" id="doormat">
+									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/inbreuken-zwaar-vervoer/" id="doormat">
 									<div class="doormat__title">
-										Kasten, cabines, ruimtes
+										Inbreuken zwaar vervoer
 									</div>
-									<span class="doormat__text">Geeft een overzicht van de objecten die horen bij kasten, cabines of ruimtes als “omhulsel” voor EM-componenten.</span></a>
+									<span class="doormat__text">Geeft een overzicht van de objecten die horen bij een opstelling om inbreuken op de wetgeving rond zwaar vervoer vast te stellen.</span></a>
+								</li>
+								
+								<li class="col--4-12 col--1-2--s col--12-12--xs">
+									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/kasten-cabines-behuizing/" id="doormat">
+									<div class="doormat__title">
+										Kasten, cabines, behuizing
+									</div>
+									<span class="doormat__text">Geeft een overzicht van de objecten die horen bij kasten, cabines of behuizingen als “omhulsel” voor EM-componenten.</span></a>
 								</li>
 								
 								<li class="col--4-12 col--1-2--s col--12-12--xs">
@@ -331,7 +331,7 @@
 									<div class="doormat__title">
 										Lijnvormige elementen
 									</div>
-									<span class="doormat__text">Geeft een overzicht van de objecten die horen bij lijnvormige elementen zoals gespecifieerd in hoofdstuk 8 van Standaardbestek 250.</span></a>
+									<span class="doormat__text">Geeft een overzicht van de objecten die horen bij lijnvormige elementen zoals gespecificeerd in hoofdstuk 8 van Standaardbestek 250.</span></a>
 								</li>
 								
 								<li class="col--4-12 col--1-2--s col--12-12--xs">
@@ -357,15 +357,7 @@
 									</div>
 									<span class="doormat__text">Geeft een overzicht van de objecten die horen bij het optisch transport netwerk (OTN).</span></a>
 								</li>
-								
-								<li class="col--4-12 col--1-2--s col--12-12--xs">
-									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/pompstation/" id="doormat">
-									<div class="doormat__title">
-										Pompstation
-									</div>
-									<span class="doormat__text">Beschrijft het hydraulisch systeem voor de aansluiting van verschillende types pompen op het rioleringssysteem voor tunnels.</span></a>
-								</li>
-								
+																
 								<li class="col--4-12 col--1-2--s col--12-12--xs">
 									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/proeven-metingen/" id="doormat">
 									<div class="doormat__title">
@@ -379,7 +371,7 @@
 									<div class="doormat__title">
 										Riolering
 									</div>
-									<span class="doormat__text">Geeft een overzicht van de objecten die horen bij riolering zoals gespecifieerd in hoofdstuk 7 en 9 van Standaardbestek 250.</span></a>
+									<span class="doormat__text">Geeft een overzicht van de objecten die horen bij riolering zoals gespecificeerd in hoofdstuk 7 en 9 van Standaardbestek 250.</span></a>
 								</li>
 								
 								<li class="col--4-12 col--1-2--s col--12-12--xs">
@@ -387,7 +379,7 @@
 									<div class="doormat__title">
 										Signalisatie
 									</div>
-									<span class="doormat__text">Beschrijft de objecten die horen bij signalisatie zoals gespecifieerd in hoofdstuk 10 van Standaardbestek 250.</span></a>
+									<span class="doormat__text">Beschrijft de objecten die horen bij signalisatie zoals gespecificeerd in hoofdstuk 10 van Standaardbestek 250.</span></a>
 								</li>
 								
 								<li class="col--4-12 col--1-2--s col--12-12--xs">
@@ -413,21 +405,13 @@
 									</div>
 									<span class="doormat__text">Beschrijft evacuatiesystemen van tunnels en de bijbehorende gebouwen.</span></a>
 								</li>
-								
-								<li class="col--4-12 col--1-2--s col--12-12--xs">
-									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/tussenafstanden/" id="doormat">
-									<div class="doormat__title">
-										Tussenafstanden
-									</div>
-									<span class="doormat__text">Geeft een overzicht van de objecten die horen bij een tussenafstanden-opstelling.</span></a>
-								</li>
-
+																
 								<li class="col--4-12 col--1-2--s col--12-12--xs">
 									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/vegetatie/" id="doormat">
 									<div class="doormat__title">
 										Vegetatie
 									</div>
-									<span class="doormat__text">Beschrijft de objecten die horen bij vegetatie zoals gespecifieerd in hoofdstuk 11 van Standaardbestek 250.</span></a>
+									<span class="doormat__text">Beschrijft de objecten die horen bij vegetatie zoals voornamelijk gespecificeerd in hoofdstuk 11 en ook deels in hoofdstuk 4 en 13 van Standaardbestek 250.</span></a>
 								</li>
 								
 								<li class="col--4-12 col--1-2--s col--12-12--xs">
@@ -439,11 +423,11 @@
 								</li>
 
 								<li class="col--4-12 col--1-2--s col--12-12--xs">
-									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/verhardingen-funderingen/" id="doormat">
+									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/verharding-wegfundering/" id="doormat">
 									<div class="doormat__title">
-										Verhardingen en funderingen
+										Verharding en wegfundering
 									</div>
-									<span class="doormat__text">Beschrijft de objecten die horen bij vegetatie zoals gespecifieerd in hoofdstuk 5, 6 en 12 van Standaardbestek 250.</span></a>
+									<span class="doormat__text">Beschrijft de objecten die horen bij verharding, wegfundering en onderfundering zoals gespecificeerd in hoofdstuk 5, 6 en 12 van Standaardbestek 250.</span></a>
 								</li>
 								
 								<li class="col--4-12 col--1-2--s col--12-12--xs">
@@ -462,23 +446,7 @@
 									<span class="doormat__text">Geeft een overzicht van objecten die horen bij verlichting in het algemeen en wegverlichting in het bijzonder binnen het kader van Standaardbestek 270.</span></a>
 								</li>
 								
-								
-								<li class="col--4-12 col--1-2--s col--12-12--xs">
-									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/waterlopen/" id="doormat">
-									<div class="doormat__title">
-										Waterlopen
-									</div>
-									<span class="doormat__text">Beschrijft de objecten die horen bij waterwegen zoals gespecifieerd in hoofdstuk 13 van Standaardbestek 250.</span></a>
-								</li>
-								
-								<li class="col--4-12 col--1-2--s col--12-12--xs">
-									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/weigh-in-motion/" id="doormat">
-									<div class="doormat__title">
-										Weigh in motion
-									</div>
-									<span class="doormat__text">Geeft een overzicht van de objecten die horen bij een weigh-in-motion (WIM) opstelling.</span></a>
-								</li>
-								
+															
 								<li class="col--4-12 col--1-2--s col--12-12--xs">
 									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/doc/implementatiemodel/zone-30/" id="doormat">
 									<div class="doormat__title">
@@ -487,14 +455,7 @@
 									<span class="doormat__text">Geeft een overzicht van de objecten die horen bij een zone-30 installatie.</span></a>
 								</li>
 																							
-								<li class="col--4-12 col--1-2--s col--12-12--xs">
-									<a class="doormat js-equal-height u-mobile-no-equal-height" href="" id="doormat">
-									<div class="doormat__title">
-										SB260
-									</div>
-									<span class="doormat__text">In de komende maanden zullen gradueel implementatiemodellen toegevoegd worden die de bouwkundige aspecten van civiele constructies beschrijven.</span></a>
-								</li>
-												
+																			
 							</ul>
 						</div>
 					</div>
@@ -508,7 +469,7 @@
 						<h1 class="info-block__title">Vocabularia</h1>
 					</header>
 					<div>
-					Het domeinoverkoepelende OTL master-implementatiemodel vormt de basis voor datauitwisseling met AWV conform de verschillende standaardbestekken. Dit overkoepelende implementatiemodel maakt gebruik van volgende vocabularia binnen het wegenenverkeer domein:
+					Het domeinoverkoepelende OTL master-implementatiemodel vormt de basis voor data-uitwisseling conform de verschillende Standaardbestekken. Dit overkoepelende implementatiemodel maakt gebruik van volgende vocabularia binnen het wegenenverkeer domein:
 					</div>
 
 					<div class="info-block__content">
@@ -525,9 +486,9 @@
 								<li class="col--4-12 col--1-2--s col--12-12--xs">
 									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/ns/implementatieelement/" id="doormat">
 									<div class="doormat__title">
-										Implementatieelement
+										Implementatie-element
 									</div>
-									<span class="doormat__text">Definieert technische objecten nodig voor de datauitwisseling met de AWV AIM-omgeving.</span></a>
+									<span class="doormat__text">Definieert technische objecten nodig voor de data-uitwisseling met de AIM-omgeving.</span></a>
 								</li>
 								
 								<li class="col--4-12 col--1-2--s col--12-12--xs">
@@ -538,13 +499,6 @@
 									<span class="doormat__text">Definieert de installaties en groeperingen die een samenvoeging zijn van onderdelen.</span></a>
 								</li>
 								
-								<li class="col--4-12 col--1-2--s col--12-12--xs">
-									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/ns/levelofgeometry/" id="doormat">
-									<div class="doormat__title">
-										Level of geometry (LoG)
-									</div>
-									<span class="doormat__text">Definieert objecten die verband houden met de level of geometrie van objecten.</span></a>
-								</li>
 								
 								<li class="col--4-12 col--1-2--s col--12-12--xs">
 									<a class="doormat js-equal-height u-mobile-no-equal-height" href="/ns/levenscyclus/" id="doormat">
@@ -587,19 +541,10 @@
 								<h1 class="label-above info-block__title">Veelgestelde vragen</h1>
 							</header>
 
-
 							<div class="info-block__content">
 								<div class="view-ip-related-questions view-display-id-default">
 									<ul class="grid">
-										<li class="col--6-12 col--12-12--s">
-											<ul class="link-list">
-												<li>
-													<a class="toggle--arrow-down link--icon--caret link--block" data-drawer-content-id="270933" data-drawer-id="related-questions" href="#">Waar lees ik meer over vocabularia, applicatieprofielen en hoe deze zich verhouden tengenover elkaar?</a>
-												</li>
-											</ul>
-										</li>
-
-
+										
 										<li class="col--6-12 col--12-12--s">
 											<ul class="link-list">
 												<li>
