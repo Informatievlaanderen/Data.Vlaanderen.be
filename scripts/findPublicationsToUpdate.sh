@@ -36,7 +36,7 @@ if jq -e . $ROOT_DIR/commit.json; then
 
   mkdir -p tmp/prev/config/$OTHER_FOLDER tmp/prev/config/$TEST_FOLDER tmp/prev/config/$PRODUCTION_FOLDER
   mkdir -p tmp/next/config/$OTHER_FOLDER tmp/next/config/$TEST_FOLDER tmp/next/config/$PRODUCTION_FOLDER
-  for filename in ${listOfChanges}; do
+  for filename in "${listOfChanges[@]}"; do
     if [[  $filename == "$CONFIG_FOLDER/$PUB_FILE" \
        || ($filename == $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE && ($CIRCLE_BRANCH == "$TEST_BRANCH" || $CIRCLE_BRANCH == "$PRODUCTION_BRANCH")) \
        || ($filename == $CONFIG_FOLDER/$TEST_FOLDER/*.$PUB_FILE && $CIRCLE_BRANCH == "$TEST_BRANCH") \
