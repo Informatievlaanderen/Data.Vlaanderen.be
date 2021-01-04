@@ -35,10 +35,9 @@ commands:
                   HOSTNAME: <<parameters.test_hostname>>
       - unless:
           condition:
-            not:
-              or:
-                - equal: [ << pipeline.git.branch >>,<<parameters.test_branch>> ]
-                - equal: [ << pipeline.git.branch >>,<<parameters.production_branch>> ]
+            or:
+              - equal: [ << pipeline.git.branch >>,<<parameters.test_branch>> ]
+              - equal: [ << pipeline.git.branch >>,<<parameters.production_branch>> ]
           steps:
             - run:
                 command: $PWD/scripts/checkoutRepositories.sh /tmp/workspace $PWD/config/publication.json
