@@ -36,7 +36,7 @@ if jq -e . $ROOT_DIR/commit.json; then
 
   mkdir -p tmp/prev/config/$OTHER_FOLDER tmp/prev/config/$TEST_FOLDER tmp/prev/config/$PRODUCTION_FOLDER
   mkdir -p tmp/next/config/$OTHER_FOLDER tmp/next/config/$TEST_FOLDER tmp/next/config/$PRODUCTION_FOLDER
-  for filename in "${listOfChanges[@]}"; do
+  while read -r filename;  do
     if [[  $filename == "$CONFIG_FOLDER/$PUB_FILE" \
        || ($filename == $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE && ($CIRCLE_BRANCH == "$TEST_BRANCH" || $CIRCLE_BRANCH == "$PRODUCTION_BRANCH")) \
        || ($filename == $CONFIG_FOLDER/$TEST_FOLDER/*.$PUB_FILE && $CIRCLE_BRANCH == "$TEST_BRANCH") \
@@ -57,16 +57,15 @@ if jq -e . $ROOT_DIR/commit.json; then
       changesRequireBuild=true
       onlyChangedPublicationFiles=false
     fi
-
-  done
+  done <<<"$listOfChanges"
 else
   changesRequireBuild=true
   onlyChangedPublicationFiles=false
 fi
 
 if [[ $changesRequireBuild == "true" && $onlyChangedPublicationFiles == "true" ]]; then
-  jq --slurp -S '[.[][]]' "$(find tmp/next/config -type f)" | jq '[.[] | select( .disabled | not )]' | jq '.|=sort_by(.urlref)' > tmp/next/publication.json
-  jq --slurp -S '[.[][]]' "$(find tmp/prev/config -type f)" | jq '[.[] | select( .disabled | not )]' | jq '.|=sort_by(.urlref)' > tmp/prev/publication.json
+  jq --slurp -S '[.[][]]' $(find tmp/next/config -type f) | jq '[.[] | select( .disabled | not )]' | jq '.|=sort_by(.urlref)' > tmp/next/publication.json
+  jq --slurp -S '[.[][]]' $(find tmp/prev/config -type f) | jq '[.[] | select( .disabled | not )]' | jq '.|=sort_by(.urlref)' > tmp/prev/publication.json
   jq -s '.[0] - .[1]' tmp/next/publication.json tmp/prev/publication.json > tmp/addedOrChanged.json
   jq -s '.[1] - .[0]' tmp/next/publication.json tmp/prev/publication.json > tmp/removedOrChanged.json
   jq ' [.[] | .urlref ]' tmp/addedOrChanged.json > tmp/addedOrChangedUri.json
@@ -111,12 +110,10 @@ else
     cp $CONFIG_FOLDER/$PUB_FILE tmp/all
     cp $CONFIG_FOLDER/$OTHER_FOLDER/*.$PUB_FILE tmp/all/$OTHER_FOLDER
   fi
-  jq --slurp -S '[.[][]]' "$( find tmp/all -type f )" | jq '[.[] | select( .disabled | not )]' | jq '.|=sort_by(.urlref)' > $ROOT_DIR/allPublications.json
+  jq --slurp -S '[.[][]]' $( find tmp/all -type f ) | jq '[.[] | select( .disabled | not )]' | jq '.|=sort_by(.urlref)' > $ROOT_DIR/allPublications.json
   echo "false" > $ROOT_DIR/haschangedpublications.json
   cp ${PUB_CONFIG} $ROOT_DIR/publications.json.old
   cp $ROOT_DIR/allPublications.json ${PUB_CONFIG}
   cp $ROOT_DIR/allPublications.json $ROOT_DIR/changedpublications.json
   echo "process all publication points"
 fi
-
-rm -rf tmp
