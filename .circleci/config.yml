@@ -1,13 +1,94 @@
-version: 2
+version: 2.1
+
+commands:
+  checkout-repositories:
+    description: "checkout the repositories and set correct publishing url"
+    parameters:
+      production_branch:
+        type: string
+        default: master
+      test_branch:
+        type: string
+        default: test
+      other_hostname:
+        type: string
+      test_hostname:
+        type: string
+      production_hostname:
+        type: string
+    steps:
+      - when:
+          condition:
+            equal: [ << pipeline.git.branch >>, <<parameters.production_branch>> ]
+          steps:
+            - run:
+                command: $PWD/scripts/checkoutRepositories.sh /tmp/workspace $PWD/config/publication.json
+                environment:
+                  HOSTNAME: <<parameters.production_hostname>>
+      - when:
+          condition:
+            equal: [ << pipeline.git.branch >>,<<parameters.test_branch>> ]
+          steps:
+            - run:
+                command: $PWD/scripts/checkoutRepositories.sh /tmp/workspace $PWD/config/publication.json
+                environment:
+                  HOSTNAME: <<parameters.test_hostname>>
+      - unless:
+          condition:
+            not:
+              or:
+                - equal: [ << pipeline.git.branch >>,<<parameters.test_branch>> ]
+                - equal: [ << pipeline.git.branch >>,<<parameters.production_branch>> ]
+          steps:
+            - run:
+                command: $PWD/scripts/checkoutRepositories.sh /tmp/workspace $PWD/config/publication.json
+                environment:
+                  HOSTNAME: <<parameters.other_hostname>>
 jobs:
   checkout:
-    docker: 
+    parameters:
+      production_branch:
+        type: string
+        default: master
+      test_branch:
+        type: string
+        default: test
+      production_folder:
+        type: string
+        default: production
+      test_folder:
+        type: string
+        default: test
+      other_folder:
+        type: string
+        default: dev
+      other_hostname:
+        type: string
+      test_hostname:
+        type: string
+      production_hostname:
+        type: string
+    docker:
       - image: circleci/python
+    environment:
+      PRODUCTION_BRANCH: <<parameters.production_branch>>
+      TEST_BRANCH: <<parameters.test_branch>>
     steps:
       - checkout
       - run: mkdir -p workspace
       - run: ls -al workspace
-      - run: $PWD/scripts/checkout.sh /tmp/workspace $PWD/config/publication.json
+      - run:
+          command: $PWD/scripts/findPublicationsToUpdate.sh /tmp/workspace $PWD/config/publication.json
+          environment:
+            PRODUCTION_FOLDER: <<parameters.production_folder>>
+            TEST_FOLDER: <<parameters.test_folder>>
+            OTHER_FOLDER: <<parameters.other_folder>>
+      - checkout-repositories:
+          production_branch: <<parameters.production_branch>>
+          test_branch: <<parameters.test_branch>>
+          other_hostname: <<parameters.other_hostname>>
+          test_hostname: <<parameters.test_hostname>>
+          production_hostname: <<parameters.production_hostname>>
       - run: if [ -e /tmp/workspace/checkouts.txt ] ; then cat /tmp/workspace/checkouts.txt ; fi
       - run: if [ -e /tmp/workspace/rawcheckouts.txt ] ; then cat /tmp/workspace/rawcheckouts.txt ; fi
       - run: if [ -e /home/circleci/project/changes.txt ] ; then cat /home/circleci/project/changes.txt ; fi
@@ -37,11 +118,11 @@ jobs:
       - run:
           name: Show the report (for debugging purposes)
           command: |
-             if [ -d /tmp/workspace/report ] ; then cat /tmp/workspace/report/*.report ; fi
+            if [ -d /tmp/workspace/report ] ; then cat /tmp/workspace/report/*.report ; fi
       - run:
           name: List the files which have been created
           command: |
-             if [ -d /tmp/workspace/report ] ; then ls -al /tmp/workspace/report/* ; fi
+            if [ -d /tmp/workspace/report ] ; then ls -al /tmp/workspace/report/* ; fi
       - run:
           name: Show the errors found (for debugging purposes)
           command:
@@ -76,7 +157,8 @@ jobs:
           at: /tmp/workspace
       - run:
           name: Make sure pretty print is runnable
-          command: cd /app/pretty-print ; sudo npm install
+          workdir: /app/pretty-print
+          command: sudo npm install
       - run:
           name: Normalise the recovered JSON-LD files (in the src directory)
           command: |
@@ -172,13 +254,13 @@ jobs:
           name: List the -SHACL.ttl and context files found
           command: |
             if [ -d /tmp/workspace/target ] ; then find /tmp/workspace/target -name \*-SHACL.ttl -type f ; fi
-            if [ -d /tmp/workspace/target ] ; then find /tmp/workspace/target -name \*.ttl -type f ; fi   
+            if [ -d /tmp/workspace/target ] ; then find /tmp/workspace/target -name \*.ttl -type f ; fi
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
             - target/
   expand-links:
-    docker: 
+    docker:
       - image: circleci/node:4.8.2
     steps:
       - checkout
@@ -189,9 +271,9 @@ jobs:
           workdir: /tmp/workspace
           command: |
             if [ -d raw ] ; then count="$( find raw -mindepth 1 -maxdepth 1 | wc -l )" ; if [ $count -ne 0 ] ; then cp -R raw/* /tmp/workspace/target/ ; fi  ; fi
-      - run: 
+      - run:
           name: expand default links
-          command: | 
+          command: |
             $PWD/scripts/expand-links.sh /tmp/workspace
       - persist_to_workspace:
           root: /tmp/workspace
@@ -207,7 +289,8 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            gem install linkeddata && mkdir -p /tmp/workspace/voc
+            gem install linkeddata
+            mkdir -p /tmp/workspace/voc
             mkdir -p /tmp/workspace/target
       - run:
           name: Generate vocabulary in baseformat jsonld
@@ -227,7 +310,7 @@ jobs:
           command: |
             find /tmp/workspace/target/doc/vocabularium -name \*.jsonld -type f | $PWD/scripts/convert_to_any.sh rdfxml
       - run:
-          name: list results 
+          name: list results
           command: |
             if [ -d /tmp/workspace/voc ]; then ls /tmp/workspace/voc ; fi
       - persist_to_workspace:
@@ -244,11 +327,11 @@ jobs:
       - run:
           name: List the files which should have been created
           command: |
-             if [ -d /tmp/workspace/raw-input ] ; then ls -al /tmp/workspace/raw-input ; fi
-      - run: 
+            if [ -d /tmp/workspace/raw-input ] ; then ls -al /tmp/workspace/raw-input ; fi
+      - run:
           name: copy /raw-input to where it is needed
           command: $PWD/scripts/extract-raw.sh raw
-      - run: 
+      - run:
           name: List the subdirs in raw
           command: |
             if [ -d /tmp/workspace/raw ] ; then ls -al /tmp/workspace/raw; else mkdir -p /tmp/workspace/raw ; fi
@@ -257,6 +340,9 @@ jobs:
           paths:
             - raw/
   create-artifact:
+    parameters:
+      repository:
+        type: string
     docker:
       - image: circleci/node
     steps:
@@ -270,11 +356,11 @@ jobs:
           name: Checkout target repo
           workdir: /tmp
           command: |
-            rm -rf OSLO-Generated
-            git clone git@github.com:Informatievlaanderen/OSLO-Generated.git
+            rm -rf generated
+            git clone <<parameters.repository>> generated
       - run:
           name: clean the generated directory
-          workdir: /tmp/OSLO-Generated
+          workdir: /tmp/generated
           command: |
             git fetch origin
             git checkout -b "${CIRCLE_BRANCH}" --track "origin/${CIRCLE_BRANCH}"
@@ -282,30 +368,32 @@ jobs:
       - run:
           name: Copy static assets
           command: |
-            cp -R site-skeleton/* /tmp/OSLO-Generated/
+            cp -R site-skeleton/* /tmp/generated/
       - run:
           name: Copy generated assets
           workdir: /tmp/workspace
           command: |
-            mkdir -p /tmp/OSLO-Generated/report
-            if [ -d target ] ; then if [ ! "$(ls -A target)" ] ; then echo "directory target is empty" ; else cp -R target/* /tmp/OSLO-Generated ; fi fi
-            if [ -d report ] ; then if [ ! "$(ls -A report)" ] ; then echo "directory report is empty" ; else cp -R report/* /tmp/OSLO-Generated/report ; fi fi
-            if [ -d reporthtml ] ; then if [ ! "$(ls -A reporthtml)" ] ; then echo "directory reporthtml is empty" ; else cp -R reporthtml/* /tmp/OSLO-Generated/report ; fi fi
-            if [ -d json ] ; then if [ ! "$(ls -A json)" ] ; then echo "directory json is empty" ; else cp -R json/*   /tmp/OSLO-Generated/report ; fi fi
+            mkdir -p /tmp/generated/report
+            if [ -d target ] ; then if [ ! "$(ls -A target)" ] ; then echo "directory target is empty" ; else cp -R target/* /tmp/generated ; fi fi
+            if [ -d report ] ; then if [ ! "$(ls -A report)" ] ; then echo "directory report is empty" ; else cp -R report/* /tmp/generated/report ; fi fi
+            if [ -d reporthtml ] ; then if [ ! "$(ls -A reporthtml)" ] ; then echo "directory reporthtml is empty" ; else cp -R reporthtml/* /tmp/generated/report ; fi fi
+            if [ -d json ] ; then if [ ! "$(ls -A json)" ] ; then echo "directory json is empty" ; else cp -R json/*   /tmp/generated/report ; fi fi
       - run:
           name: List the files which have been created
+          workdir: /tmp/generated
           command: |
-            ls -al /tmp/OSLO-Generated/*
-            if [ -d /tmp/OSLO-Generated/report ] ; then ls -al /tmp/OSLO-Generated/report/* ; fi
-            find /tmp/OSLO-Generated/report
-      - run: 
+            ls -al *
+            if [ -d report ] ; then ls -al report/* ; fi
+            find report
+      - run:
           name: insert the commit
+          workdir: /tmp/generated
           command: |
             export TAG=`echo "${CIRCLE_SHA1}" | cut -c1-15`
-            echo "{\"commit\" : \"$TAG\"}" > /tmp/OSLO-Generated/report/commit.json
+            echo "{\"commit\" : \"$TAG\"}" > report/commit.json
       - run:
           name: Push results to github
-          workdir: /tmp/OSLO-Generated
+          workdir: /tmp/generated
           command: |
             git config user.email "oslo@kb.vlaanderen.be"
             git config user.name "Circle CI Builder"
@@ -320,13 +408,21 @@ workflows:
   version: 2
   generate_documentation:
     jobs:
-      - checkout
+      - checkout:
+          test_branch: test
+          production_branch: production
+          other_folder: dev
+          test_folder: test
+          production_folder: production
+          other_hostname: https://dev.data.vlaanderen.be
+          test_hostname: https://test.data.vlaanderen.be
+          production_hostname: https://data.vlaanderen.be
       - extract-jsonld-details:
           requires:
             - checkout
       - normalise-jsonld:
           requires:
-            - extract-jsonld-details          
+            - extract-jsonld-details
       - validate-report:
           requires:
             - extract-jsonld-details
@@ -356,5 +452,6 @@ workflows:
           requires:
             - checkout
       - create-artifact:
+          repository: git@github.com:Informatievlaanderen/OSLO-Generated.git
           requires:
             - expand-links

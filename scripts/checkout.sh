@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "this script is deprecated, please use findPublicationsToUpdate.sh followed by checkoutRepositories.sh"
+
+
 PUBCONFIG=$2
 ROOTDIR=$1
 
