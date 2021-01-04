@@ -74,7 +74,10 @@ then
       mkdir -p $ROOTDIR/$MAIN/$RDIR
       mkdir -p $ROOTDIR/target/$RDIR
       mkdir -p $ROOTDIR/report/$RDIR
-      if ! git clone --depth 1 -b $(_jq '.branchtag') $(_jq '.repository') $ROOTDIR/$MAIN/$RDIR
+      git clone $(_jq '.repository') $ROOTDIR/$MAIN/$RDIR
+
+      pushd $ROOTDIR/$MAIN/$RDIR
+      if ! git checkout $(_jq '.branchtag')
       then
         # branch could not be checked out for some reason
         echo "failed: $ROOTDIR/$MAIN/$RDIR $(_jq '.branchtag')" >>$ROOTDIR/failed.txt
