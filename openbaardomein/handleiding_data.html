@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>OSLO Openbaar Domein: Hoe data beschrijven in lijn met OSLO Openbaar Domein?</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui.css">
+    <link rel="stylesheet" href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui-corporate.css">
+    <link rel="stylesheet" href="css/custom.css"/>
+
+    <link href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/icon-highres-precomposed.png" rel="icon" sizes="192x192">
+    <link href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-precomposed.png" rel="apple-touch-icon">
+    <link href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-ipad-precomposed.png" rel="apple-touch-icon" sizes="76x76">
+    <link href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-retina-precomposed.png" rel="apple-touch-icon" sizes="120x120">
+    <link href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-ipad-retina-precomposed.png" rel="apple-touch-icon" sizes="152x152">
+
+	<meta content="https://dij151upo6vad.net.cloudfront/2.latest/icons/app-icon/tile-small.png" name= "msapplication-square70x70logo">
+    <meta content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-medium.png" name="msapplication-square150x150logo">
+    <meta content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-wide.png" name="msapplication-wide310x150logo">
+    <meta content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-large.png" name="msapplication-square310x310logo">
+    <meta content="#FFE615" name="msapplication-TileColor">
+</head>
+
+<body>
+
+<div id="vlaanderen-header" style="min-height:44px;">
+    <!-- insert your global header here -->
+    <script src="//widgets.vlaanderen.be/widget/live/5ecf33a0a922428cb9d944c55362ed15" type=
+            "text/javascript">
+    <![CDATA[
+    ]]>
+    </script> <!-- end global header-->
+</div>
+
+<header class="content-header content-header--large content-header--has-context u-spacer--large">
+    <div class="content-header__wrapper">
+        <picture class="content-header__bg">
+            <img sizes="100vw" src="//www.vlaanderen.be/sites/default/files/ip_acm/page_banner_wide_alt/header.jpg"
+                 srcset="//www.vlaanderen.be/sites/default/files/ip_acm/page_banner_mobile_alt/header.jpg 320w, //www.vlaanderen.be/sites/default/files/ip_acm/page_banner_narrow/header.jpg 1024w, //www.vlaanderen.be/sites/default/files/ip_acm/page_banner_wide_alt/header.jpg 1600w"
+                 alt="" title="">
+        </picture>
+        <div class="layout layout--wide">
+            <div class="content-header__content">
+                <div class="content-header__logo-wrapper">
+                    <a href="https://overheid.vlaanderen.be/informatie-vlaanderen" class="content-header__entity-logo content-header__entity-logo--small">
+                        <span class="content-header__entity-logo__title">Informatie Vlaanderen</span>
+                    </a>
+                </div>
+                <div class="content-header__context content-header__context--has-link">
+                    <a class="content-header__context__link" href="https://data.vlaanderen.be">OSLO</a>
+                </div>
+                <div class="content-header__title content-header__title--has-link" itemprop="name">
+                    <a class="content-header__title__link" href="https://data.vlaanderen.be/cms/openbaardomein">Openbaar Domein</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="main" itemprop="mainContentOfPage" role="main" tabindex="-1" class="main-content">
+    <main>
+        <section>
+            <div class="layout layout--wide">
+                <div class="grid">
+                    <div class="col--8-12">
+                        <h1 class="h1">Hoe data beschrijven in lijn met OSLO Openbaar Domein?</h1>
+                        <div class="introduction">
+                            Deze webpagina beschrijft een praktische handleiding voor steden en gemeenten
+                            om de data van hun openbaar domein-inventaris te aligneren met OSLO Openbaar Domein.
+                            We beschrijven stapsgewijs hoe we een voorbeelddataset kunnen omvormen naar
+                            Linked Data. We doen dit startende van zowel tabulaire data als van diezelfde data in JSON-formaat.
+                        </div>
+                    </div>
+                    <div class="col--4-12">
+                        <nav class="side-navigation js-sticky js-scrollspy" data-scrollspy-mobile="Componenten"
+                             data-sticky-offset-top="25">
+                            <div class="side-navigation__content">
+                                <div class="side-navigation__title">
+                                    Zie ook
+                                </div>
+                                <ul class="side-navigation__group">
+                                    <li class="side-navigation__item">
+                                        <a href="https://overheid.vlaanderen.be/producten-diensten/oslo" class="link--icon--caret link--icon--block">OSLO</a>
+                                    </li>
+                                    <li class="side-navigation__item">
+                                        <a href="https://data.vlaanderen.be" class="link--icon--caret link--icon--block">Data.Vlaanderen.be</a>
+                                    </li>
+                                    <li class="side-navigation__item">
+                                        <a href="https://data.vlaanderen.be/cms/openbaardomein" class="link--icon--caret link--icon--block">OSLO Openbaar Domein</a>
+                                    </li>
+                                    <li class="side-navigation__item">
+                                        <a href="https://data.vlaanderen.be/cms/openbaardomein/handleiding_index.html" class="link--icon--caret link--icon--block">OSLO Openbaar Domein: handleidingen</a>
+                                    </li>
+                                    <li class="side-navigation__item">
+                                        <a href="https://data.vlaanderen.be/cms/openbaardomein/handleiding_URI.html" class="link--icon--caret link--icon--block">OSLO Openbaar Domein: URI handleiding</a>
+                                    </li>
+                                    <li class="side-navigation__item">
+                                        <a href="https://data.vlaanderen.be/cms/openbaardomein/handleiding_API.html" class="link--icon--caret link--icon--block">OSLO Openbaar Domein: API handleiding</a>
+                                    </li>
+									<li class="side-navigation__item">
+                                        <a href="https://informatievlaanderen.github.io/handreikingOslo/ontwikkelaar.html" class="link--icon--caret link--icon--block">OSLO handleiding voor de ontwikkelaar</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-block info-block--publications">
+            <div class="layout layout--wide">
+                <h2 class="title--alt">Voorbeelddataset</h2>
+                <div class="info-block__content">
+                    <div class="grid">
+                        <div class="col--12-12">
+                            <p>
+                                We maken in deze handleiding gebruik van het voorbeeld van
+                                <a href="https://www.antwerpen.be/nl/info/5b3e06082d2a3c97022787f5/groeninventaris">de groeninventaris van de stad Antwerpen</a>,
+                                die het openbaar groen in Antwerpen in kaart brengt en zo
+                                zorgt voor een handig overzicht van bomen, parken, planten, watervlaktes enzovoort.
+                                In het voorbeeld zullen we werken met de
+                                <a href="http://portaal-stadantwerpen.opendata.arcgis.com/datasets/boom">boom-dataset</a>
+                                en behandelen we dus een
+                                <a href="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#VegetatieElement" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#VegetatieElement" data-placement="right">Vegetatie Element</a>.
+                                Tabel 1 geeft acht attributen van drie willekeurige bomen uit de
+                                Antwerpse boom-dataset weer. Elke rij beschrijft één unieke boom.
+                            </p>
+                            </br>
+
+                            <div class="u-table-overflow" style="padding-bottom: 6rem">
+                                <table class="data-table data-table--lined u-align-center">
+                                    <caption>Tabel 1: Voorbeelddata van drie bomen uit de boom-dataset van Stad Antwerpen.</br></br></caption>
+                                    <thead>
+                                    <tr>
+                                        <th rowspan="2">OBJECTID</th>
+                                        <th rowspan="2">ANTW_ID</th>
+                                        <th rowspan="2">LATBOOMSOORT</th>
+                                        <th rowspan="2">GENUS</th>
+                                        <th rowspan="2">DISTRICT</th>
+                                        <th rowspan="2">STAMOMTREK</th>
+                                        <th colspan="2">geometry</th>
+                                    </tr>
+                                    <tr>
+                                        <th>x</th>
+                                        <th>y</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>16805215</td>
+                                        <td>63722</td>
+                                        <td>Tilia tomentosa 'Brabant'</td>
+                                        <td>Tilia</td>
+                                        <td>ANTWERPEN</td>
+                                        <td>72</td>
+                                        <td>4.394028</td>
+                                        <td>51.216636</td>
+                                    </tr>
+                                    <tr>
+                                        <td>16820158</td>
+                                        <td>37468</td>
+                                        <td>Ginkgo biloba 'Tremonia'</td>
+                                        <td>Ginkgo</td>
+                                        <td>ANTWERPEN</td>
+                                        <td>23</td>
+                                        <td>4.394560</td>
+                                        <td>51.216708</td>
+                                    </tr>
+                                    <tr>
+                                        <td>16805217</td>
+                                        <td>33394</td>
+                                        <td>Malus tschonoskii</td>
+                                        <td>Malus</td>
+                                        <td>ANTWERPEN</td>
+                                        <td>47</td>
+                                        <td>4.394963</td>
+                                        <td>51.216030</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+						</div>
+
+						<div class="col--4-12">
+							<figure class="u-align-center">
+								<img style="display:inline-block; width:250px; height:400px" src="images/boom1.png">
+							</figure>
+						</div>
+
+						<div class="col--4-12">
+							<figure class="u-align-center">
+								<img style="display:inline-block; width:250px; height:400px" src="images/boom2.png">
+							</figure>
+						</div>
+
+						<div class="col--4-12">
+							<figure class="u-align-center">
+								<img style="display:inline-block; width:250px; height:400px" src="images/boom3.png">
+							</figure>
+						</div>
+
+						<div class="col--12-12" style="margin-top: 2rem">
+							<p class="u-align-center">
+								Figuur 1: Foto’s van de drie bomen in kwestie (bron: Google Street View).
+							</p>
+						</div>
+
+                    </div>
+                </div>
+			</div>
+		</section>
+
+		<section class="info-block info-block--publications">
+            <div class="layout layout--wide">
+                <h2 class="title--alt">Van data naar linked data</h2>
+                <div class="info-block__content">
+                    <div class="grid grid--is-stacked js-equal-height-container">
+                        <div class="col--12-12">
+                            <p style="margin-bottom: 3rem">
+								Vooraleer men aan de “technische” transformatie van de data kan beginnen,
+								moeten er eerst een aantal meer conceptuele zaken worden uitgeklaard.
+								De volgende vier stappen moeten hiervoor doorlopen worden.
+                            </p>
+
+							<ul class="steps steps--timeline">
+
+								<li id="step_1" class="step step--accordion js-accordion">
+									<div class="step__icon">1.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle")>
+											<div class="step__header__titles">
+												<h3 class="step__title">Bepaal welke data je online wilt publiceren.</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													Eerst moet bepaald worden of men de volledige dataset online wil publiceren,
+													dan wel een subset daarvan. Vaak zullen bepaalde eigenschappen immers slechts
+													betekenisvol zijn voor personen binnen dezelfde organisatie en bijgevolg
+													irrelevant voor externen. Overweeg dan ook om deze data niet te publiceren
+													om verwarring te vermijden. In de voorbeelddata van Tabel 1 zullen we
+													daarom de eigenschap OBJECTID weggelaten omdat deze geen semantische meerwaarde
+													heeft, noch relevant is voor uitwisseling met derden. (Dit is slechts een assumptie die we maken in dit voorbeeld.
+													Het is zeker mogelijk dat in de realiteit OBJECTID wel een meerwaarde heeft voor derden.) Verderop wordt duidelijk
+													waarom we ANTW_ID wel behouden.
+												</p>
+												<br>
+												<table class="data-table data-table--lined u-align-center">
+													<caption>Tabel 2: Voorbeelddata van de drie bomen na stap 1.</br></br></caption>
+													<thead>
+													<tr>
+														<th rowspan="2">ANTW_ID</th>
+														<th rowspan="2">LATBOOMSOORT</th>
+														<th rowspan="2">GENUS</th>
+														<th rowspan="2">DISTRICT</th>
+														<th rowspan="2">STAMOMTREK</th>
+														<th colspan="2">geometry</th>
+													</tr>
+													<tr>
+														<th>x</th>
+														<th>y</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td>63722</td>
+														<td>Tilia tomentosa 'Brabant'</td>
+														<td>Tilia</td>
+														<td>ANTWERPEN</td>
+														<td>72</td>
+														<td>4.394028</td>
+														<td>51.216636</td>
+													</tr>
+													<tr>
+														<td>37468</td>
+														<td>Ginkgo biloba 'Tremonia'</td>
+														<td>Ginkgo</td>
+														<td>ANTWERPEN</td>
+														<td>23</td>
+														<td>4.394560</td>
+														<td>51.216708</td>
+													</tr>
+													<tr>
+														<td>33394</td>
+														<td>Malus tschonoskii</td>
+														<td>Malus</td>
+														<td>ANTWERPEN</td>
+														<td>47</td>
+														<td>4.394963</td>
+														<td>51.216030</td>
+													</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</li>
+
+								<li id="step_2" class="step step--accordion js-accordion">
+									<div class="step__icon">2.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle">
+											<div class="step__header__titles">
+												<h3 class="step__title">Map de gekozen data op OSLO Openbaar Domein.</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													Nadat je bepaald hebt welke data je wilt publiceren,
+													neem je best <a href="https://data.vlaanderen.be/cms/openbaardomein">OSLO Openbaar Domein</a>
+													volledig door zodat je weet welke objecten en bijhorende
+													eigenschappen gedefinieerd zijn binnen deze standaard.
+													Vervolgens probeer je voor ieder van de objecten en eigenschappen
+													in jouw data een relevant concept te zoeken binnen OSLO Openbaar Domein.
+													Om deze mapping een waarde te kunnen toekennen,
+													maken we gebruik van de <a href="https://www.w3.org/TR/skos-reference/#mapping">SKOS mapping-eigenschappen</a>,
+													zoals weergegeven in Figuur 2.
+												</p>
+												<br>
+
+												<figure class="u-align-center">
+													<a href="images/skos.png">
+														<img width="80%" src="images/skos.png"/>
+													</a>
+													<figcaption>Figuur 2: De SKOS mapping-eigenschappen.</figcaption>
+												</figure>
+
+												<p>
+												Enkele voorbeelden verduidelijken:
+												<ul class="bullet-list" style="list-style-type: disc!important; padding-left:40px">
+													<li class="bullet-list__item">"Auto" heeft een close match met "wagen".</li>
+													<li class="bullet-list__item">"Auto" heeft een exact match met "personenvoertuig".</li>
+													<li class="bullet-list__item">"Tafel" heeft een related match met "tafelpoot".</li>
+													<li class="bullet-list__item">"Hond" heeft een broad match met "dier".</li>
+													<li class="bullet-list__item">"Dier" heeft een narrow match met "hond".</li>
+												</ul>
+												</p>
+
+												<p>
+													Door in de applicatieprofielen over de concepten te hoveren met de muis,
+													wordt de URI van het concept zichtbaar. Door erop te klikken,
+													word je doorverwezen naar het vocabularium waar de respectievelijke term beschreven staat.
+													Merk op dat dit zowel een OSLO-vocabularium kan zijn (bv. voor Boomvorm - zie figuur 3)
+													als een extern vocabularium (bv. voor wetenschappelijke naam - zie figuur 4).
+												</p>
+												</br>
+
+												<figure class="u-align-center">
+													<a href="images/boomvorm_URI.png">
+														<img width="60%" style="border: 1px solid black;" src="images/boomvorm_URI.png"/>
+													</a>
+													<figcaption>Figuur 3: De URI van de klasse Boomvorm.</figcaption>
+												</figure>
+												</br>
+												</br>
+
+												<figure class="u-align-center">
+													<a href="images/wetenschappelijkeSoortnaam_URI.png">
+														<img width="60%" style="border: 1px solid black;" src="images/wetenschappelijkeSoortnaam_URI.png"/>
+													</a>
+													<figcaption>Figuur 4: De URI van het attribuut wetenschappelijke naam.</figcaption>
+												</figure>
+												</br>
+
+												<p>
+													Tabel 3 geeft het resultaat van deze mappingsoefening weer voor de
+													eigenschappen en het object (Boom) in onze voorbeelddataset.
+												</p>
+												</br>
+
+												<table id="tabel3" class="data-table data-table--lined u-align-center">
+													<caption>Tabel 3: SKOS-mapping van de concepten van de voorbeelddataset op OSLO OD.</br></br></caption>
+													<thead>
+													<tr>
+														<th rowspan="2">Origineel concept</th>
+														<th rowspan="2">SKOS mapping</th>
+														<th rowspan="2">OSLO OD concept</th>
+														<th rowspan="2">URI van het OSLO OD concept</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td>Boom</td>
+														<td>exact match</td>
+														<td>Boomvorm</td>
+														<td><a href="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#Boomvorm">https://data.vlaanderen.be/ns/openbaardomein/vegetatie#Boomvorm</a></td>
+													</tr>
+													<tr>
+														<td>ANTW_ID</td>
+														<td colspan="3">Deze eigenschap zal gebruikt worden om de URI van de objecten aan te maken (zie de <a href="handleiding_URI.html">URI handleiding</a>).</td>
+													</tr>
+													<tr>
+														<td>LATBOOMSOORT</td>
+														<td>exact match</td>
+														<td>wetenschappelijke naam</td>
+														<td><a href="http://rs.tdwg.org/dwc/terms/scientificName">http://rs.tdwg.org/dwc/terms/scientificName</a></td>
+													</tr>
+													<tr>
+														<td>GENUS</td>
+														<td>no match</td>
+														<td></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td>DISTRICT</td>
+														<td>close match</td>
+														<td>beheerder</td>
+														<td><a href="https://data.vlaanderen.be/ns/openbaardomein#beheerder">https://data.vlaanderen.be/ns/openbaardomein#beheerder</a></td>
+													</tr>
+													<tr>
+														<td>STAMOMTREK</td>
+														<td>exact match</td>
+														<td>stamomtrek</td>
+														<td><a href="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#stamomtrek">https://data.vlaanderen.be/ns/openbaardomein/vegetatie#stamomtrek</a></td>
+													</tr>
+													<tr>
+														<td>geometry</td>
+														<td>exact match</td>
+														<td>geometrie</td>
+														<td><a href="http://www.w3.org/ns/locn#geometry">http://www.w3.org/ns/locn#geometry</a></td>
+													</tr>
+													<tr>
+														<td>(x,y)</td>
+														<td>exact match</td>
+														<td>Punt</td>
+														<td><a href="http://www.opengis.net/ont/sf#Point">http://www.opengis.net/ont/sf#Point</a></td>
+													</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</li>
+
+								<li id="step_3" class="step step--accordion js-accordion">
+									<div class="step__icon">3.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle">
+											<div class="step__header__titles">
+												<h3 class="step__title">Zoek een oplossing voor niet-gemapte concepten.</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													Indien er concepten (klassen of eigenschappen) zijn die je niet kon mappen op een OSLO Openbaar Domein concept,
+													stel dan achtereenvolgens de volgende vragen.
+												</p>
+												<ul class="bullet-list bullet-list--tag">
+													<li class="bullet-list__item">Wil ik deze informatie publiceren?</li>
+													<li class="bullet-list__item">Indien ja, bestaat er een bruikbaar concept binnen een andere OSLO standaard?</li>
+													<li class="bullet-list__item">Indien nee, bestaat er een bruikbaar concept binnen een andere datastandaard?
+													De website van <a href="https://lov.linkeddata.es/">Linked Open Vocabularies</a> kan hierbij een goed startpunt zijn.</li>
+													<li class="bullet-list__item">
+														Indien nee, zijn er drie opties:
+														<ul style="list-style-type: disc!important; padding-left:40px">
+															<li>Je logt een issue op <a href="https://github.com/Informatievlaanderen/OSLOthema-openbaardomein/issues">Github</a> om kenbaar te maken dat de standaard Openbaar Domein uitgebreid/aangepast moet worden.</li>
+															<li>Je definieert dit concept zelf (zie hieronder).</li>
+															<li>Je mapt dit concept niet (niet aangeraden).</li>
+														</ul>
+													</li>
+												</ul>
+												<p>
+													Voor onze voorbeelddataset kunnen we geen equivalente eigenschap terugvinden in
+													OSLO Openbaar Domein voor de eigenschap GENUS.
+													Omdat deze informatie vervat zit in de wetenschappelijke soortnaam,
+													beslissen we om dit attribuut niet expliciet op te nemen.
+													We hadden echter ook kunnen beslissen om GENUS te mappen
+													op de <a href="http://rs.tdwg.org/dwc/terms/genus" data-toggle="tooltip" data-content="http://rs.tdwg.org/dwc/terms/genus" data-placement="right">equivalente eigenschap</a> van de Darwin Core standaard.
+												</p>
+											</div>
+										</div>
+									</div>
+								</li>
+
+								<li id="step_4" class="step step--accordion js-accordion">
+									<div class="step__icon">4.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle">
+											<div class="step__header__titles">
+												<h3 class="step__title">Maak URI’s aan voor de te publiceren objecten.</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													Voor ieder individueel object waar we informatie over willen uitwisselen (hier: een Boomvorm)
+													moet een unieke identificator (URI) aangemaakt worden.
+													Voor richtlijnen over hoe deze URI het beste opgesteld wordt,
+													verwijzen we naar de <a href="handleiding_URI.html">URI-handleiding</a>.
+													In ons voorbeeld zullen we hiervoor gebruik maken van de eigenschap ANTW_ID.
+													Merk op dat we ook gebruik hadden kunnen maken van de eigenschap OBJECTID.
+													Dit is een keuze voor de databeheerder.
+													Het is uiterst belangrijk dat voor de URI een uniek attribuut wordt gekozen
+													waarmee één specifieke boom wordt geïdentificeerd.
+												</p>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<p>
+								In de twee hieropvolgende secties werken we een concreet voorbeeld uit van hoe het men in de praktijk data kan omzetten naar linked data,
+								startende van tabulaire data en vervolgens van diezelfde data in JSON-formaat. We raden aan om met JSON(-LD) te werken indien mogelijk.
+							</p>
+							</br>
+							<p>
+								We verwijzen naar de <a href="https://informatievlaanderen.github.io/handreikingOslo/ontwikkelaar.html">OSLO Handleiding voor de Onwikkelaar</a>
+								voor meer (technische) informatie over het belang en de verschillende mogelijkheden van Linked Data, en in het bijzonder van JSON-LD.
+							</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</section>
+
+		<section class="info-block info-block--publications">
+            <div class="layout layout--wide">
+                <h2 class="title--alt">Van tabulaire data naar linked data</h2>
+                <div class="info-block__content">
+                    <div class="grid grid--is-stacked js-equal-height-container">
+                        <div class="col--12-12">
+
+							<p>
+									Het merendeel van de bestaande data is enkel beschikbaar in tabulair formaat zoals Excel of CSV-bestanden.
+									Het omzetten van deze tabulaire data naar linked data kan op verschillende manieren gebeuren.
+									De meest geautomatiseerde manier is om een transformatiescript te schrijven die de relevante <a href="https://en.wikipedia.org/wiki/Semantic_triple">triples</a> genereert op basis van de tabulaire data.
+									Deze aanpak vereist echter wel een zekere programmeerervaring.
+									Hier stellen we een alternatieve en meer toegankelijke werkwijze voor die steunt op <a href="http://openrefine.org/">Open Refine</a>.
+									Om via Open Refine met linked data formaten te kunnen werken,
+									is de <a href="https://github.com/stkenny/grefine-rdf-extension">RDF extensie</a> nodig.
+									Eenmaal de software is geïnstalleerd,
+									kunnen de volgende stappen doorlopen worden om van tabulaire data naar linked data te gaan.
+							</p>
+							</br>
+							<h4 class="h4">Stappenplan</h4>
+							</br>
+
+							<ul class="steps steps--timeline">
+
+								<li id="step_1" class="step step--accordion js-accordion">
+									<div class="step__icon">1.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle")>
+											<div class="step__header__titles">
+												<h3 class="step__title">Importeer de data in OpenRefine.</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+											</div>
+												<p>
+													We importeren de data uit Tabel 1 (in .csv-formaat) in OpenRefine en maken een project aan.
+													De tabulaire data moet zo geordend zijn zodat elke rij één object (bv. een Boomvorm) beschrijft
+													en elke kolom een eigenschap van dat object (bv. stamomtrek).
+													De figuur hieronder geeft de geïmporteerde data weer. Via <a href="data/drie-bomen.csv" download="data/drie-bomen.csv">deze link</a> kan je de dataset met de gegevens over deze drie bomen downloaden.
+												</p>
+												</br>
+												<figure class="u-align-center">
+													<img style="display:inline-block; width:100%" src="images/OpenRefineImport.PNG">
+												</figure>
+										</div>
+									</div>
+								</li>
+
+								<li id="step_2" class="step step--accordion js-accordion">
+									<div class="step__icon">2.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle">
+											<div class="step__header__titles">
+												<h3 class="step__title">Pas de nodige transformaties toe (indien nodig).</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													Vooraleer we kunnen starten met de mapping van de data naar OSLO Openbaar Domein,
+													moeten we eerst een aantal transformaties uitvoeren. Open Refine is echter een software-tool
+													die exact met dit doel voor ogen is ontwikkeld, i.e. het opschonen en transformeren van data.
+												</p>
+												</br>
+												<p>
+													Voor de geografische informatie werken we hier met het <a href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">WKT-formaat</a>.
+													OSLO laat daarnaast ook toe om met het <a href="https://en.wikipedia.org/wiki/Geography_Markup_Language">GML-formaat</a> te werken.
+													Merk op dat het mogelijk is om het gebruikte coördinatenstelsel mee te geven bij een WKT-literal (en bij een GML-literal), bv. <span class="code-inline">"&lt;http://www.opengis.net/def/crs/OGC/1.3/CRS84&gt; POINT(33.95 -83.38)"^^&lt;http://www.opengis.net/ont/geosparql#wktLiteral&gt;</span>.
+													Indien er echter geen coördinatenstelsel wordt gespecifieerd, wordt er <a href="https://www.w3.org/2015/spatial/wiki/Coordinate_Reference_Systems#GeoSPARQL">standaard uitgegaan</a> van <a href="http://www.opengis.net/def/crs/OGC/1.3/CRS84" data-toggle="tooltip" data-content="http://www.opengis.net/def/crs/OGC/1.3/CRS84" data-placement="right">WGS 84</a>, het meest gebruikte coördinatenstelsel.
+													</br></br>
+													De kolommen [x] en [y] omvormen naar één kolom [geometry] in het WKT-formaat kan via (1) de functie <strong>Edit column > Join columns</strong> op de kolommen [x] en [y] met een spatie als separator (niet zichtbaar in de figuur).
+												</p>
+												</br>
+												<figure class="u-align-center">
+													<img style="display:inline-block; width:60%" src="images/OpenRefineJoinColumns.PNG">
+												</figure>
+												</br>
+												<p>
+													Vervolgens kan men de vereiste prefix en suffix voor de WKT-literal toevoegen via (2) de functie <strong>Edit cells > Transform</strong> met als expressie <span class="code-inline">"POINT(" + value + ")"</span>. Merk op dat we hier geen coördinatenstelsel expliciet definiëren.
+													Indien dit echter nodig is, kan dit eenvoudig via de bovenstaande expressie uit te breiden.
+												</p>
+												</br>
+												<figure class="u-align-center">
+													<img style="display:inline-block; width:60%" src="images/OpenRefineTransformGeometry.PNG">
+												</figure>
+											</div>
+										</div>
+									</div>
+								</li>
+
+								<li id="step_3" class="step step--accordion js-accordion">
+									<div class="step__icon">3.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle">
+											<div class="step__header__titles">
+												<h3 class="step__title">Leg de link naar andere databronnen (indien mogelijk).</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													Het algemene idee van Linked Data is dat men van data gemakkelijk naar andere data kan doorverwijzen, gelijkaardig
+													aan hoe hyperlinks op het World Wide Web de ene webpagina aan de andere linken.
+													Hier maken we gebruik van <a href="https://wegwijs.vlaanderen.be/">Wegwijs</a>, een databron met informatie over publieke organisaties,
+													om de URI van het District Antwerpen (<a href="https://data.vlaanderen.be/id/organisatie/OVO003105">https://data.vlaanderen.be/id/organisatie/OVO003105</a>) terug te vinden.
+													</br></br>
+													Vervolgens kunnen we dan de tekstwaarde "District Antwerpen" in de kolom [DISTRICT] van onze voorbeeldataset vervangen door diens semantisch waardevollere URI, via de functie <strong>Edit cell > Replace</strong>.
+												</p>
+												</br>
+												<figure class="u-align-center">
+													<img style="display:inline-block; width:60%" src="images/OpenRefineAddLink.PNG">
+												</figure>
+												</br>
+												<p>
+													Na deze laatste formatie, bekomen we de finale voorbeelddataset, zoals weergegeven in de onderstaande figuur, waarmee we verder aan de slag kunnen.
+												</p>
+												</br>
+												<figure class="u-align-center">
+													<img style="display:inline-block; width:100%" src="images/OpenRefineDataAfterTransform.PNG">
+												</figure>
+											</div>
+										</div>
+									</div>
+								</li>
+
+								<li id="step_4" class="step step--accordion js-accordion">
+									<div class="step__icon">4.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle">
+											<div class="step__header__titles">
+												<h3 class="step__title">Voeg de benodigde vocabularia toe.</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													Nu dat stappen 1 tot 3 zijn uitgevoerd, kunnen we beginnen met onze voorbeelddataset semantisch te verrijken door alle data te mappen naar de relevante concepten uit OSLO Openbaar Domein.
+													Dit doen we via de RDF-extensie en meer specifiek, de functie <strong>Edit RDF Skeleton</strong>. Deze functie opent een venster waarin
+													we de volledige mapping kunnen specifiëren.
+												</p>
+												</br>
+												<figure class="u-align-center">
+													<img style="display:inline-block; width:60%" src="images/OpenRefineRDFSkeleton.PNG">
+												</figure>
+												</br>
+												<p>
+													We starten met de benodigde vocabularia toe te voegen via <strong>Add (available prefixes)</strong>.
+													Voor het vocabularium openbaar domein, bijvoorbeeld,
+													is de URI <a href="https://data.vlaanderen.be/ns/openbaardomein#">https://data.vlaanderen.be/ns/openbaardomein#</a>
+													met od als prefix (deze prefix is vrij te kiezen). De verschillende taxonomieën, bijvoorbeeld Vegetatie-elementen, hebben ieder hun eigen vocabularium
+													en moeten dus ook afzonderlijk toegevoegd worden. In dit geval: <a href="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#">https://data.vlaanderen.be/ns/openbaardomein/vegetatie#</a> met als prefix odv.
+												</p>
+												</br>
+												<figure class="u-align-center">
+													<img style="display:inline-block; width:60%" src="images/OpenRefinePrefix.PNG">
+												</figure>
+											</div>
+										</div>
+									</div>
+								</li>
+
+								<li id="step_5" class="step step--accordion js-accordion">
+									<div class="step__icon">5.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle">
+											<div class="step__header__titles">
+												<h3 class="step__title">Bepaal de URI van de objecten.</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													Bepaal hoe de base URI voor nieuwe instanties van de aangemaakte entiteit (Boomvorm) eruit zullen zien.
+													In ons geval is dit <span class="code-inline">https://antwerpen.be/id/boomvorm/</span>.
+													In de <a href="handleiding_URI.html">URI-handleiding</a> gaan we dieper in op de richtlijnen die gevolgd moeten worden
+													voor de samenstelling van een dergelijke URI.
+												</p></br>
+												<p>
+													Vervolgens moeten we bepalen welke eigenschap gebruikt zal worden om de base URI te vervolledigen om
+													een unieke URI te kunnen creëren per instantie. Dit kan via de functie <strong>(Row index) URI</strong>.
+													In ons voorbeeld gebruiken we de kolom ANTW_ID om unieke URI’s te creëren per Boomvorm.
+													Een URI van een Antwerpse boom wordt dus bijvoorbeeld <span class="code-inline">https://antwerpen.be/id/boomvorm/63722</span>.
+												</p>
+												</br>
+												<figure class="u-align-center">
+													<img style="display:inline-block; width:60%" src="images/OpenRefineURI.PNG">
+												</figure>
+											</div>
+										</div>
+									</div>
+								</li>
+
+								<li id="step_6" class="step step--accordion js-accordion">
+									<div class="step__icon">6.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle">
+											<div class="step__header__titles">
+												<h3 class="step__title">Bepaal het type van de objecten.</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													Voeg het type toe van de instanties die gecreëerd worden.
+													Dit kan via de functie <strong>Add type</strong>.
+													In ons voorbeeld stelt iedere rij van de tabel een instantie van <span class="code-inline">odv:Boomvorm</span> voor.
+												</p>
+												</br>
+												<figure class="u-align-center">
+													<img style="display:inline-block; width:60%" src="images/OpenRefineType.PNG">
+												</figure>
+											</div>
+										</div>
+									</div>
+								</li>
+
+								<li id="step_7" class="step step--accordion js-accordion">
+									<div class="step__icon">7.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle">
+											<div class="step__header__titles">
+												<h3 class="step__title">Maak de mapping van de overige attributen naar OSLO Openbaar Domein.</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													Map de overige kolommen van de tabulaire data naar de eigenschappen van het model. Zie <a href="#tabel3">tabel 3</a> voor deze mapping.
+													Bijvoorbeeld: de kolom STAMOMTREK wordt gemapt op <span class="code-inline">odv:stamomtrek</span>.
+													Merk op dat we de kolom ANTW_ID al hebben gebruikt voor de URI. Omdat we deze kolom niet ook nog als
+													een attribuut willen opnemen, hebben we deze property verwijderd.
+												</p>
+												</br>
+												<figure class="u-align-center">
+													<img style="display:inline-block; width:60%" src="images/OpenRefineMapping1.PNG">
+												</figure>
+											</div>
+										</div>
+									</div>
+								</li>
+
+								<li id="step_8" class="step step--accordion js-accordion">
+									<div class="step__icon">8.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle">
+											<div class="step__header__titles">
+												<h3 class="step__title">Verwerk de complexe datatypes.</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													Ieder attribuut in OSLO heeft een verwacht type (ook wel "bereik" genoemd). Vaak is dit een primitief type, zoals boolean, string of integer.
+													Soms is dit verwacht type echter een andere klasse, bv. de eigenschap
+													<a href="https://data.vlaanderen.be/ns/openbaardomein#beheerder" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein#beheerder" data-placement="right">beheerder</a>
+													verwacht een
+													<a href="http://www.w3.org/ns/org#Organization" data-toggle="tooltip" data-content="http://www.w3.org/ns/org#Organization" data-placement="right">Organisatie</a>
+													als type.
+													En in nog andere gevallen is dit verwacht type een complex datatype, bv. de eigenschap
+													<a href="http://www.w3.org/ns/locn#geometry" data-toggle="tooltip" data-content="http://www.w3.org/ns/locn#geometry" data-placement="right">geometrie</a>
+													verwacht een
+													<a href="http://www.opengis.net/ont/geosparql#Geometry" data-toggle="tooltip" data-content="http://www.opengis.net/ont/geosparql#Geometry" data-placement="right">Geometrie</a>
+													als type.
+													Het verschil tussen een klasse en een complex datatype is dat we voor een complex datatype niet de vereiste opleggen dat deze een URI heeft. Een complex datatype krijgt een "blank node identifier" binnen een bepaalde
+													data-uitwisseling, die enkel uniek is binnen die specifieke uitwisseling. Het datavoorbeeld verderop zal dit verduidelijken.
+												</p>
+												</br>
+												<p>
+													Voor drie van de vier eigenschappen die we hier gebruiken, moeten we bijgevolg nog een aantal extra stappen doorloppen.
+													De eigenschap "beheerder" verwacht een klasse (en dus een URI) als type en moet bijgevolg niet verder uitgewerkt worden.
+													De drie resterende eigenschappen bespreken we vervolgens.
+												</p>
+												</br>
+												<h4 class="h4">Stamomtrek</h4>
+												<p>
+													De eigenschap
+													<a href="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#stamomtrek" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#stamomtrek" data-placement="right">stamomtrek</a>
+													verwacht het complexe datatype
+													<a href="https://schema.org/QuantitativeValue" data-toggle="tooltip" data-content="https://schema.org/QuantitativeValue" data-placement="right">Kwantitatieve Waarde</a>
+													als type. Het idee is dat we de waarde van de stamomtrek ook semantisch verrijken. Als we bijvoorbeeld enkel de waarde "72" meegeven, is het niet duidelijk of dit centimeters of meters betreft. Alhoewel dit voor een
+													mens soms wel af te leiden valt uit de context, wordt het voor een machine onmogelijk gemaakt om hier verder mee te redeneren. Door zowel de waarde als de (standaard)eenheid mee te geven, kunnen enerzijds organisaties zelf kiezen
+													in welke eenheid ze hun waarden publiceren en anderzijds kan er machinaal met de data geredeneerd worden.
+												</p>
+												</br>
+												<p>
+													Via <strong>STAMOMTREK Cell</strong> kunnen we de content in "Blank" veranderen en hiermee een blank node creëren.
+													Vervolgens voegen we het type toe via <strong>Add type</strong>, zijnde Kwantitatieve Waarde, en de bijhorende properties
+													<span class="code-inline">schema:value</span> en <span class="code-inline">schema:unitCode</span>.
+													Via <strong>Configure?</strong> maken we duidelijk dat STAMOMTREK (Cell) de waarde geeft voor value met als "Content used" een <a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right"><span class="code-inline">xsd:Double</span></a>,
+													en voor unitCode geven vullen we de constant value "http://qudt.org/vocab/unit/CentiM" in met als "Content used" URI,
+													waarmee we weergeven dat de stamomtrek in centimeters is geïnventariseerd.
+												</p>
+												</br>
+												<figure class="u-align-center">
+													<img style="display:inline-block; width:60%" src="images/OpenRefineStamomtrek.PNG">
+												</figure>
+												</br>
+												<figure class="u-align-center">
+													<img style="display:inline-block; width:60%" src="images/OpenRefineStamomtrek2.PNG">
+												</figure>
+												</br>
+												</br>
+												<h4 class="h4">Wetenschappelijke soortnaam</h4>
+												<p>
+													De eigenschap
+													<a href="http://rs.tdwg.org/dwc/terms/scientificName" data-toggle="tooltip" data-content="http://rs.tdwg.org/dwc/terms/scientificName" data-placement="right">wetenschappelijke soortnaam</a>
+													verwacht een
+													<a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right"><span class="code-inline">skos:Concept</span></a>
+													als type. Idealiter maakt men een codelijst aan met behulp van SKOS <a href="https://www.w3.org/TR/2009/REC-skos-reference-20090818/">(Simple Knowledge Organization System)</a> of gebruikt men een bestaande codelijst.
+													Ieder concept in een SKOS-codelijst wordt geïdentificeerd met behulp van een URI. Indien men een dergelijke codelijst heeft, kan men simpelweg de URI gebruiken als waarde van de wetenschappelijke soortnaam (idem zoals dit gebeurt voor de Organisatie bij de eigenschap beheerder).
+													Hier maken we nu (ter vereenvoudiging) blank nodes aan voor de benodigde concepten met als enige eigenschap <span class="code-inline">skos:prefLabel</span>, zonder daarbij een volledige <span class="code-inline">skos:ConceptScheme</span> uit te werken.
+												</p>
+												</br>
+												<p>
+													De uit te voeren stappen zijn gelijkaardig aan deze voor stamomtrek. De onderstaande figuren geven de te bekomen configuratie weer.
+												</p>
+												</br>
+												<figure class="u-align-center">
+													<img style="display:inline-block; width:60%" src="images/OpenRefineWetenschSoortnaam.PNG">
+												</figure>
+												</br>
+												<figure class="u-align-center">
+													<img style="display:inline-block; width:60%" src="images/OpenRefineWetenschSoortnaam2.PNG">
+												</figure>
+												</br>
+												<figure class="u-align-center">
+													<img style="display:inline-block; width:60%" src="images/OpenRefineWetenschSoortnaam3.PNG">
+												</figure>
+												</br>
+												</br>
+												<h4 class="h4">Geometrie</h4>
+												<p>
+													Het bijhouden van de locatie van een object, zoals een boomvorm,
+													gebeurt via het complexe datatype <a href="https://www.w3.org/ns/locn#Geometry" data-toggle="tooltip" data-content="https://www.w3.org/ns/locn#Geometry" data-placement="right">Geometrie</a>.
+													Deze wordt verder onderverdeeld in
+													<a href="http://www.opengis.net/ont/sf#Point" data-toggle="tooltip" data-content="http://www.opengis.net/ont/sf#Point" data-placement="right">Punt</a>,
+													<a href="http://www.opengis.net/ont/sf#LineString" data-toggle="tooltip" data-content="http://www.opengis.net/ont/sf#LineString" data-placement="right">Lijnstring</a> en
+													<a href="http://www.opengis.net/ont/sf#Polygon" data-toggle="tooltip" data-content="http://www.opengis.net/ont/sf#Polygon" data-placement="right">Polygoon</a>
+													Er zijn twee attributen gedefinieerd voor Geometrie: <a href="http://www.opengis.net/ont/geosparql#asWKT" data-toggle="tooltip" data-content="http://www.opengis.net/ont/geosparql#asWKT" data-placement="right"><span class="code-inline">geosparql:asWKT</span></a>, well-known text representation of geometry,
+													en <a href="http://www.opengis.net/ont/geosparql#asGML" data-toggle="tooltip" data-content="http://www.opengis.net/ont/geosparql#asGML" data-placement="right"><span class="code-inline">geosparql:asGML</span></a>, Geography Markup Language.
+												</p>
+												</br>
+												<p>
+													We laden de hierboven vermelde vocabularia in OpenRefine in en voeren de benodigde stappen uit zoals we deden voor stamomtrek en wetenschappelijke soortnaam. De onderstaande figuren geven de te bekomen configuratie weer.
+												</p>
+												</br>
+												<figure class="u-align-center">
+													<img style="display:inline-block; width:60%" src="images/OpenRefineGeometrie.PNG">
+												</figure>
+												</br>
+												<figure class="u-align-center">
+													<img style="display:inline-block; width:60%" src="images/OpenRefineGeometrie2.PNG">
+												</figure>
+											</div>
+										</div>
+									</div>
+								</li>
+
+								<li id="step_9" class="step step--accordion js-accordion">
+									<div class="step__icon">9.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle">
+											<div class="step__header__titles">
+												<h3 class="step__title">Exporteer de data in het gewenste formaat.</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													Nadat de RDF skeleton volledig geconfigureerd is, kunnen we de data exporteren.
+													OpenRefine biedt een export-functie aan in Turtle- (.ttl) en RDF/XML-syntax (.rdf).
+													Via verschillende online tools kan men deze output ook nog naar andere formaten transformeren, zoals N-Triples, RDFa, JSON-LD etc.
+													Hieronder geven we de bekomen output in deze twee formaten weer.
+												</p>
+												</br>
+												<div class="code-wrapper">
+													<strong>Datavoorbeeld:</strong> Turtle-syntax met OSLO Openbaar Domein linked data over drie willekeurige bomen in Antwerpen, gegenereerd met Open Refine. Door over de verschillende elementen te hoveren, wordt er extra informatie weergegeven. Merk op dat we hier werken met de "embedded approach", waarbij de blank nodes impliciet verwerkt worden. Bij het volgende datavoorbeeld in RDF/XML werken we wel met expliciete blank nodes. Deze manier van werken is ook mogelijk in de Turtle-syntax.<br><br>
+<pre class="code"><code>
+<div class="boldhover" data-toggle="tooltip" data-content="Hier staan de vocabularia en hun prefix die gebruikt worden in dit datavoorbeeld. De prefix maakt het mogelijk om de syntax te vereenvoudigen, wat ook de (mens)leesbaarheid van de data ten goede komt." data-placement="right">@prefix dwc: &lt;http://rs.tdwg.org/dwc/terms/&gt; .
+@prefix geo: &lt;http://www.opengis.net/ont/geosparql#&gt; .
+@prefix geosparql: &lt;http://www.opengis.net/ont/geosparql#&gt; .
+@prefix locn: &lt;http://www.w3.org/ns/locn#&gt; .
+@prefix od: &lt;https://data.vlaanderen.be/ns/openbaardomein#&gt; .
+@prefix odv: &lt;https://data.vlaanderen.be/ns/openbaardomein/vegetatie#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix schema: &lt;http://schema.org/&gt; .
+@prefix sf: &lt;http://www.opengis.net/ont/sf#&gt; .
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+@prefix xml: &lt;http://www.w3.org/XML/1998/namespace&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .</div>
+
+<div class="boldhover" data-toggle="tooltip" data-content="Met deze lijn wordt aangeduid dat de resource 'https://data.vlaanderen.be/id/boomvorm/33394' een Boomvorm is, zoals beschreven in het vocabularium odv, i.e. het Vegetatie-vocabularium van OSLO Openbaar Domein." data-placement="right">&lt;https://antwerpen.be/id/boomvorm/33394&gt; a odv:Boomvorm ;</div>
+	<div class="boldhover" data-toggle="tooltip" data-content="Deze blok beschrijft het attribuut wetenschappelijke soortnaam van de Boomvorm. Dit betreft een skos:Concept met als skos:prefLabel de effectieve soortnaam." data-placement="right">dwc:scientificName [
+		a skos:Concept ;
+		skos:prefLabel "Malus tschonoskii"
+	] ;</div>
+	<div class="boldhover" data-toggle="tooltip" data-content="Deze lijnen beschrijven de locatie (geometrie) van de boom. Het betreft een puntlocatie uitgedruikt in het WKT-formaat. Aangezien er geen coördinatenstelsel expliciet is vermeld, wordt er standaard uitgegaan van WGS 84." data-placement="right">locn:geometry [
+		a sf:Point ;
+		geosparql:asWKT "POINT(4.394962791465566 51.21602952257024)"^^geosparql:wktLiteral
+	] ;</div>
+	<div class="boldhover" data-toggle="tooltip" data-content="Deze lijn beschrijft dat de boom beheert wordt door het District Antwerpen. Door deze URI in je browser te kopiëren zal je meer informatie over deze organisatie kunnen terugvinden." data-placement="right">od:beheerder "https://data.vlaanderen.be/id/organisatie/OVO003105" ;</div>
+	<div class="boldhover" data-toggle="tooltip" data-content="Deze blok beschrijft de stamomtrek van de boom. De eigenlijke waarde wordt in wetenschappelijke notatie weergeven en er wordt meegegeven dat deze waarde centimeter als eenheid heeft a.d.h.v. het gestandaardiseerde QUDT vocabularium." data-placement="right">odv:stamomtrek [
+		a &lt;https://schema.org/QuantitativeValue&gt; ;
+		schema:unitCode &lt;http://qudt.org/vocab/unit/CentiM&gt; ;
+		schema:value 4.7e+01
+	] .</div>
+
+<div class="boldhover" data-toggle="tooltip" data-content="Deze blok beschrijft de tweede boom in onze voorbeelddataset, analoog aan hierboven." data-placement="right">&lt;https://antwerpen.be/id/boomvorm/37468&gt; a odv:Boomvorm ;
+	dwc:scientificName [
+		a skos:Concept ;
+		skos:prefLabel "Ginkgo biloba 'Tremonia'"
+	] ;
+	locn:geometry [
+		a sf:Point ;
+		geosparql:asWKT "POINT(4.394558773210101 51.21670803598568)"^^geosparql:wktLiteral
+	] ;
+	od:beheerder "https://data.vlaanderen.be/id/organisatie/OVO003105" ;
+	odv:stamomtrek [
+		a &lt;https://schema.org/QuantitativeValue&gt; ;
+		schema:unitCode &lt;http://qudt.org/vocab/unit/CentiM&gt; ;
+		schema:value 2.3e+01
+	] .</div>
+
+<div class="boldhover" data-toggle="tooltip" data-content="Deze blok beschrijft de derde boom in onze voorbeelddataset, analoog aan hierboven." data-placement="right">&lt;https://antwerpen.be/id/boomvorm/63722&gt; a odv:Boomvorm ;
+	dwc:scientificName [
+		a skos:Concept ;
+		skos:prefLabel "Tilia tomentosa 'Brabant'"
+	] ;
+	locn:geometry [
+		a sf:Point ;
+		geosparql:asWKT "POINT(4.394027702447957 51.216636262795554)"^^geosparql:wktLiteral
+	] ;
+	od:beheerder "https://data.vlaanderen.be/id/organisatie/OVO003105" ;
+	odv:stamomtrek [ a &lt;https://schema.org/QuantitativeValue&gt; ;
+		schema:unitCode &lt;http://qudt.org/vocab/unit/CentiM&gt; ;
+		schema:value 7.2e+01
+	] .</div>
+</code></pre>
+												</div>
+												</br>
+												<div class="code-wrapper">
+													<strong>Datavoorbeeld:</strong> RDF/XML-syntax-syntax met OSLO Openbaar Domein linked data over drie willekeurige bomen in Antwerpen, gegenereerd met Open Refine.<br><br>
+<pre class="code"><code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;rdf:RDF
+	xmlns="http://rs.tdwg.org/dwc/terms/"
+	xmlns:od="https://data.vlaanderen.be/ns/openbaardomein#"
+	xmlns:odv="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#"
+	xmlns:locn="http://www.w3.org/ns/locn#"
+	xmlns:geo="http://www.opengis.net/ont/geosparql#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:schema="http://schema.org/"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+&gt;
+
+&lt;rdf:Description rdf:about="https://antwerpen.be/id/boomvorm/33394"&gt;
+	&lt;rdf:type rdf:resource="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#Boomvorm"/&gt;
+	&lt;od:beheerder&gt;https://data.vlaanderen.be/id/organisatie/OVO003105&lt;/od:beheerder&gt;
+	&lt;scientificName rdf:nodeID="N4bf6a69abf01467cb2c4cc358b6c5baa"/&gt;
+	&lt;locn:geometry rdf:nodeID="N179459f95c9e447a9fcb9ecff1f0968f"/&gt;
+	&lt;odv:stamomtrek rdf:nodeID="Nb939c1ea424c4a0ba02bd9cb4f3f5ffd"/&gt;
+&lt;/rdf:Description&gt;
+
+&lt;rdf:Description rdf:nodeID="N4bf6a69abf01467cb2c4cc358b6c5baa"&gt;
+	&lt;rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/&gt;
+	&lt;skos:prefLabel&gt;Malus tschonoskii&lt;/skos:prefLabel&gt;
+	&lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+
+&lt;rdf:Description rdf:nodeID="N179459f95c9e447a9fcb9ecff1f0968f"&gt;
+	&lt;rdf:type rdf:resource="http://www.opengis.net/ont/sf#Point"/&gt;
+	&lt;geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"&gt;POINT(4.394962791465566 51.21602952257024)&lt;/geo:asWKT&gt;
+&lt;/rdf:Description&gt;
+
+&lt;rdf:Description rdf:nodeID="Nb939c1ea424c4a0ba02bd9cb4f3f5ffd"&gt;
+	&lt;schema:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"&gt;47.0&lt;/schema:value&gt;
+	&lt;rdf:type rdf:resource="https://schema.org/QuantitativeValue"/&gt;
+	&lt;schema:unitCode rdf:resource="http://qudt.org/vocab/unit/CentiM"/&gt;
+&lt;/rdf:Description&gt;
+
+&lt;rdf:Description rdf:about="https://antwerpen.be/id/boomvorm/37468"&gt;
+	&lt;rdf:type rdf:resource="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#Boomvorm"/&gt;
+	&lt;od:beheerder&gt;https://data.vlaanderen.be/id/organisatie/OVO003105&lt;/od:beheerder&gt;
+	&lt;scientificName rdf:nodeID="Nc18a63654ee74fb2a910c88f5628f00e"/&gt;
+	&lt;locn:geometry rdf:nodeID="N5de71a91a17948f9a9e12594f4baa2d7"/&gt;
+	&lt;odv:stamomtrek rdf:nodeID="N1479249971fb4fa19919b67c15722a98"/&gt;
+&lt;/rdf:Description&gt;
+
+&lt;rdf:Description rdf:nodeID="Nc18a63654ee74fb2a910c88f5628f00e"&gt;
+	&lt;skos:prefLabel&gt;Ginkgo biloba 'Tremonia'&lt;/skos:prefLabel&gt;
+	&lt;rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/&gt;
+&lt;/rdf:Description&gt;
+
+&lt;rdf:Description rdf:nodeID="N5de71a91a17948f9a9e12594f4baa2d7"&gt;
+	&lt;rdf:type rdf:resource="http://www.opengis.net/ont/sf#Point"/&gt;
+	&lt;geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"&gt;POINT(4.394558773210101 51.21670803598568)&lt;/geo:asWKT&gt;
+&lt;/rdf:Description&gt;
+
+&lt;rdf:Description rdf:nodeID="N1479249971fb4fa19919b67c15722a98"&gt;
+	&lt;rdf:type rdf:resource="https://schema.org/QuantitativeValue"/&gt;
+	&lt;schema:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"&gt;23.0&lt;/schema:value&gt;
+	&lt;schema:unitCode rdf:resource="http://qudt.org/vocab/unit/CentiM"/&gt;
+&lt;/rdf:Description&gt;
+
+&lt;rdf:Description rdf:about="https://antwerpen.be/id/boomvorm/63722"&gt;
+	&lt;rdf:type rdf:resource="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#Boomvorm"/&gt;
+	&lt;od:beheerder&gt;https://data.vlaanderen.be/id/organisatie/OVO003105&lt;/od:beheerder&gt;
+	&lt;scientificName rdf:nodeID="Nc201c636cf2648248efcc0c8a1cb63c6"/&gt;
+	&lt;locn:geometry rdf:nodeID="N0c2a8189ebf148a6af4e7a50ca69bfbe"/&gt;
+	&lt;odv:stamomtrek rdf:nodeID="Nafcd4cfef963474a9a5e2ce78e1a5b1d"/&gt;
+&lt;/rdf:Description&gt;
+
+&lt;rdf:Description rdf:nodeID="Nc201c636cf2648248efcc0c8a1cb63c6"&gt;
+	&lt;rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/&gt;
+	&lt;skos:prefLabel&gt;Tilia tomentosa 'Brabant'&lt;/skos:prefLabel&gt;
+&lt;/rdf:Description&gt;
+
+&lt;rdf:Description rdf:nodeID="N0c2a8189ebf148a6af4e7a50ca69bfbe"&gt;
+	&lt;geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"&gt;POINT(4.394027702447957 51.216636262795554)&lt;/geo:asWKT&gt;
+	&lt;rdf:type rdf:resource="http://www.opengis.net/ont/sf#Point"/&gt;
+&lt;/rdf:Description&gt;
+
+&lt;rdf:Description rdf:nodeID="Nafcd4cfef963474a9a5e2ce78e1a5b1d"&gt;
+	&lt;schema:value rdf:datatype="http://www.w3.org/2001/XMLSchema#double"&gt;72.0&lt;/schema:value&gt;
+	&lt;rdf:type rdf:resource="https://schema.org/QuantitativeValue"/&gt;
+	&lt;schema:unitCode rdf:resource="http://qudt.org/vocab/unit/CentiM"/&gt;
+&lt;/rdf:Description&gt;
+</code></pre>
+</br>
+</br>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+
+							</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+		<section class="info-block info-block--publications">
+            <div class="layout layout--wide">
+                <h2 class="title--alt">Van JSON naar JSON-LD</h2>
+                <div class="info-block__content">
+                    <div class="grid grid--is-stacked js-equal-height-container">
+                        <div class="col--12-12">
+							<p>
+								Het gebruik van het gegevensformaat JSON voor data-uitwisseling is de laatste jaren
+								sterk toegenomen, mede dankzij de proliferatie van (REST) API’s.
+								Datavoorbeeld X geeft dezelfde data uit Tabel 2 weer,
+								maar nu in JSON-formaat. Om het mogelijk te maken om de semantiek
+								van de data mee te geven aan dergelijke JSON-bestanden,
+								is JSON-LD (JSON Linked Data) ontwikkeld.
+								JSON-LD laat ontwikkelaars toe om applicaties en diensten die gebruik
+								maken van JSON, met een minimale inspanning Linked Data enabled te maken.
+							</p>
+							</br>
+							<div class="alert aanbeveling">
+							  <div class="alert__icon" aria-hidden="true"></div>
+							  <div class="alert__content">
+								<div class="alert__title">Aanbeveling</div>
+								<div class="alert__message">
+								  <p>We raden aan om met data in JSON-formaat te werken,
+								indien deze voorhanden is,
+								aangezien het minder werk vereist om deze om te zetten naar linked data,
+								dan voor tabulaire data.</p>
+								</div>
+							  </div>
+							</div>
+							<div class="code-wrapper">
+								<strong>Datavoorbeeld X:</strong> JSON-bestand met data over drie willekeurige bomen uit de boom-dataset van Antwerpen (JSON-equivalent van Tabel 2 zonder GENUS).<br><br>
+<pre class="code"><code>
+{
+	"features": [
+		{
+			"LATBOOMSOORT": "Tilia tomentosa 'Brabant'",
+			"ANTW_ID": 63722,
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 72,
+			"geometry": {
+				"x": 4.394027702447957,
+				"y": 51.21663626279555
+			}
+		},
+		{
+			"LATBOOMSOORT": "Ginkgo biloba 'Tremonia'",
+			"ANTW_ID": 37468,
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 23,
+			"geometry": {
+				"x": 4.394558773210101,
+				"y": 51.21670803598568
+			}
+		},
+		{
+			"LATBOOMSOORT": "Malus tschonoskii",
+			"ANTW_ID": 33394,
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 47,
+			"geometry": {
+				"x": 4.394962791465566,
+				"y": 51.21602952257024
+			}
+		}
+	]
+}
+</code></pre>
+							</div>
+							<p>
+								De <a href="https://www.w3.org/TR/json-ld11/">JSON-LD 1.1 specificatie</a> werd gepubliceerd door W3C als een Proposed Recommendation. Versie 1.0 is de stabiele specificatie,
+								maar we raden aan om met versie 1.1 te werken omwille van verschillende verbeteringen.
+								De meest recente specificatie en andere documentatie is terug te vinden op <a href="http://json-ld.org">json-ld.org</a>.
+							</p>
+							</br>
+							<p>
+								JSON-LD kenmerkt zich door het toevoegen van o.a. de onderstaande elementen aan een klassiek JSON-object. Voor een beschrijving van de volledige
+								functionaliteit verwijzen we echter naar de specificatie.
+								<ul class="bullet-list" style="list-style-type: disc!important; padding-left:40px">
+									<li class="bullet-list__item"><strong>@context</strong>: bevat een oplijsting van de keys die doorheen het JSON(-LD) object gebruikt worden samen met een link (URI) die verwijst naar hun definitie en, indien relevant, een type die aangeeft wat de verwachte value is voor een bepaalde key. Op deze manier wordt de “context”, i.e. metadata, meegegeven aan de ontvanger van het JSON object.</li>
+									<li class="bullet-list__item"><strong>@id</strong>: een unieke identificator voor objecten.</li>
+									<li class="bullet-list__item"><strong>@type</strong>: het type van het object.</li>
+								</ul>
+							</p>
+							</br>
+							<p>
+								Het @context-element heeft dus als doel om de semantiek samen met de data te ontsluiten.
+								Dit kan op verschillende manieren gebeuren. We verwijzen naar de <a href="https://informatievlaanderen.github.io/handreikingOslo/ontwikkelaar.html">OSLO handleiding voor de ontwikkelaar</a> voor meer informatie omtrent deze verschillende mogelijkheden.
+								<ul class="bullet-list" style="list-style-type: disc!important; padding-left:40px">
+									<li class="bullet-list__item">hergebruik van een bestaande contextdefinitie;</li>
+									<li class="bullet-list__item">combineren van meerdere bestaande contextdefinities;</li>
+									<li class="bullet-list__item">gebruik van eigen termen;</li>
+									<li class="bullet-list__item">bestaande contextdefinitie uitbreiden; en/of</li>
+									<li class="bullet-list__item">overschrijven van contextdefinities.</li>
+								</ul>
+							</p>
+							</br>
+							<p>
+								Voor de bestaande OSLO applicatieprofielen, waaronder Openbaar Domein,
+								bestaan echter herbruikbare contextdefinities in JSON-LD-formaat,
+								waarnaar verwezen kan worden vanuit een JSON-LD-object. Deze zijn terug te vinden
+								onderaan de webpagina van de applicatieprofielen (zie bijvoorbeeld <a href="https://data.vlaanderen.be/doc/applicatieprofiel/waterdelen/#jsonld">de JSON-LD-context</a> van het applicatieprofiel Waterdeel).
+								In Datavoorbeeld X geven we dit JSON-LD-contextbestand ook weer.
+							</p>
+							<div class="code-wrapper">
+								<div id="linked_data_info" class="js-accordion">
+									<a class="toggle--plus-minus js-accordion__toggle" style="color: #333"><i class="toggle__icon" aria-hidden="true"><strong style="padding-left: 1rem;">Datavoorbeeld X:</strong> JSON-LD-contextbestand van het applicatieprofiel Waterdelen.</i></a>
+									<div class="accordion__content">
+										</br>
+<pre class="code"><code>
+{
+	"@context": {
+		"Beek": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#Beek",
+		"Deel": "https://data.vlaanderen.be/ns/openbaardomein#Deel",
+		"Deel.oppervlakte": {
+			"@id": "https://data.vlaanderen.be/ns/openbaardomein#oppervlakte",
+			"@type": "@id"
+		},
+		"FysiekObject": "https://data.vlaanderen.be/ns/openbaardomein#FysiekObject",
+		"FysiekObject.begindatum": {
+			"@id": "https://data.vlaanderen.be/ns/openbaardomein#begindatum",
+			"@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+		},
+		"FysiekObject.einddatum": {
+			"@id": "https://data.vlaanderen.be/ns/openbaardomein#einddatum",
+			"@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+		},
+		"FysiekObject.geometrie": {
+			"@id": "http://www.w3.org/ns/locn#geometry",
+			"@type": "@id"
+		},
+		"FysiekObject.nauwkeurigheid": {
+			"@id": "https://data.vlaanderen.be/ns/openbaardomein#nauwkeurigheid",
+			"@type": "@id"
+		},
+		"FysiekObject.niveau": {
+			"@id": "https://data.vlaanderen.be/ns/openbaardomein#niveau",
+			"@type": "http://www.w3.org/2001/XMLSchema#integer"
+		},
+		"FysiekObject.relatie": {
+			"@container": "@set",
+			"@id": "http://purl.org/dc/terms/relation",
+			"@type": "@id"
+		},
+		"Gracht": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#Gracht",
+		"Kanaal": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#Kanaal",
+		"KunstmatigeGracht": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#KunstmatigeGracht",
+		"KunstmatigeWaterloop": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#KunstmatigeWaterloop",
+		"KwantitatieveWaarde": "https://schema.org/QuantitativeValue",
+		"KwantitatieveWaarde.eenheid": {
+			"@id": "https://schema.org/unitText",
+			"@type": "http://www.w3.org/2001/XMLSchema#string"
+		},
+		"KwantitatieveWaarde.standaardEenheid": {
+			"@id": "https://schema.org/unitCode",
+			"@type": ""
+		},
+		"KwantitatieveWaarde.waarde": {
+			"@id": "https://schema.org/value",
+			"@type": "@id"
+		},
+		"Meer": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#Meer",
+		"NatuurlijkeGracht": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#NatuurlijkeGracht",
+		"NatuurlijkeWaterloop": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#NatuurlijkeWaterloop",
+		"Poel": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#Poel",
+		"Rivier": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#Rivier",
+		"Slotgracht": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#Slotgracht",
+		"Ven": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#Ven",
+		"Vijver": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#Vijver",
+		"WaterVoorkomen": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#WaterVoorkomen",
+		"Waterdeel": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#Waterdeel",
+		"Waterdeel.voorkomen": {
+			"@id": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#voorkomen",
+			"@type": "@id"
+		},
+		"Waterloop": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#Waterloop",
+		"Waterloop.breedte": {
+			"@id": "http://schema.org/width",
+			"@type": "@id"
+		},
+		"Waterloop.lengte": {
+			"@id": "http://open.vocab.org/terms/length",
+			"@type": "@id"
+		},
+		"Waterloop.naam": {
+			"@id": "http://purl.org/dc/terms/title",
+			"@type": "http://www.w3.org/2001/XMLSchema#string"
+		},
+		"Watervlak": "https://data.vlaanderen.be/ns/openbaardomein/waterdeel#Watervlak",
+		"Watervlak.naam": {
+			"@id": "http://purl.org/dc/terms/title",
+			"@type": "http://www.w3.org/2001/XMLSchema#string"
+		}
+	}
+}
+</code></pre>
+									</div>
+								</div>
+							</div>
+							<p>
+							Merk op dat ieder concept een URI krijgt als identificator;
+							voor properties wordt dit aangeduid met de key <span class="code-inline">@id</span>.
+							Om hier invulling aan te geven kan gebruik gemaakt worden van absolute URI’s,
+							relatieve URI’s of ‘blank node identifiers’.
+							Het type van een bepaald concept wordt meegegeven met behulp van <span class="code-inline">@type</span>.
+							Zo heeft FysiekObject.begindatum bijvoorbeeld een dateTime als type.
+							Met <span class="code-inline">"@type": "@id"</span> wordt aangeduid dat men een URI (of blank node identifier) als input verwacht.
+							</p>
+							</br>
+							<p>
+
+							<h4 class="h4">Stappenplan</h4>
+							</br>
+
+							<ul class="steps steps--timeline">
+
+								<li id="step_1" class="step step--accordion js-accordion">
+									<div class="step__icon">1.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle")>
+											<div class="step__header__titles">
+												<h3 class="step__title">Voeg de @context-key toe.</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													De elementen in het @context-element worden gebruikt om de data in het originele JSON-bestand semantisch te verrijken.
+													Deze elementen beschrijven hoe de data zich verhoudt tot de gebruikte vocabularia, i.e. de mapping.
+													Eerst moeten echter de benodigde JSON-LD-contextbestanden van deze vocabularia ingeladen worden, zoals hieronder weergeven.
+													De lijnen in bold zijn steeds de lijnen die gewijzigd zijn t.o.v. de vorige stap (in dit geval, het originele JSON-bestand).
+												</p>
+												<div class="code-wrapper">
+													<strong>Datavoorbeeld X:</strong> JSON-bestand van de drie bomen na stap 1.<br><br>
+<pre class="code"><code>
+{
+	<span class="bold">"@context": [
+		"https://test.data.vlaanderen.be/doc/applicatieprofiel/openbaar-domein/kandidaatstandaard/2020-06-18/context/openbaar-domein-ap.jsonld",
+		"https://test.data.vlaanderen.be/doc/applicatieprofiel/vegetatie-elementen/kandidaatstandaard/2020-06-18/context/vegetatie-elementen-ap.jsonld"
+	],</span>
+	"features": [
+		{
+			"LATBOOMSOORT": "Tilia tomentosa 'Brabant'",
+			"ANTW_ID": 63722,
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 72,
+			"geometry": {
+				"x": 4.394027702447957,
+				"y": 51.21663626279555
+			}
+		},
+		{
+			"LATBOOMSOORT": "Ginkgo biloba 'Tremonia'",
+			"ANTW_ID": 37468,
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 23,
+			"geometry": {
+				"x": 4.394558773210101,
+				"y": 51.21670803598568
+			}
+		},
+		{
+			"LATBOOMSOORT": "Malus tschonoskii",
+			"ANTW_ID": 33394,
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 47,
+			"geometry": {
+				"x": 4.394962791465566,
+				"y": 51.21602952257024
+			}
+		}
+	]
+}
+</code></pre>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+
+								<li id="step_2" class="step step--accordion js-accordion">
+									<div class="step__icon">2.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle">
+											<div class="step__header__titles">
+												<h3 class="step__title">Bepaal de URI van de objecten.</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													Vervolgens moet men bepalen hoe de base URI voor nieuwe instanties van de aangemaakte entiteit (Boomvorm) eruit zullen zien.
+													In ons geval is dit <span class="code-inline">https://antwerpen.be/id/boomvorm/</span>, wat we meegeven via de key <span class="code-inline">@base</span>.
+													In de <a href="handleiding_URI.html">URI-handleiding</a> gaan we dieper in op de richtlijnen die gevolgd moeten worden
+													voor de samenstelling van een dergelijke URI.
+												</p></br>
+												<p>
+													Via <span class="code-inline">"ANTW_ID": "@id"</span> geven we aan dat de eigenschap ANTW_ID gebruikt zal worden om de base URI te vervolledigen om
+													een unieke URI te kunnen creëren per instantie van Boomvorm. Een URI van een Antwerpse boom wordt dus bijvoorbeeld <span class="code-inline">https://antwerpen.be/id/boomvorm/63722</span>.
+													Merk op dat men een string verwacht om de URI te vervolledigen, terwijl ANTW_ID een integer is. Deze data moet dus getransformeerd worden.
+												</p>
+												<div class="code-wrapper">
+													<strong>Datavoorbeeld X:</strong> JSON-bestand van de drie bomen na stap 2.<br><br>
+<pre class="code"><code>
+{
+	"@context": [
+		"https://test.data.vlaanderen.be/doc/applicatieprofiel/openbaar-domein/kandidaatstandaard/2020-06-18/context/openbaar-domein-ap.jsonld",
+		"https://test.data.vlaanderen.be/doc/applicatieprofiel/vegetatie-elementen/kandidaatstandaard/2020-06-18/context/vegetatie-elementen-ap.jsonld",
+		<span class="bold">{
+			"@base": "https://antwerpen.be/id/boomvorm/",
+			"ANTW_ID": "@id"
+		}</span>
+	],
+	"features": [
+		{
+			"LATBOOMSOORT": "Tilia tomentosa 'Brabant'",
+			<span class="bold">"ANTW_ID": "63722"</span>,
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 72,
+			"geometry": {
+				"x": 4.394027702447957,
+				"y": 51.21663626279555
+			}
+		},
+		{
+			"LATBOOMSOORT": "Ginkgo biloba 'Tremonia'",
+			<span class="bold">"ANTW_ID": "37468"</span>,
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 23,
+			"geometry": {
+				"x": 4.394558773210101,
+				"y": 51.21670803598568
+			}
+		},
+		{
+			"LATBOOMSOORT": "Malus tschonoskii",
+			<span class="bold">"ANTW_ID": "33394"</span>,
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 47,
+			"geometry": {
+				"x": 4.394962791465566,
+				"y": 51.21602952257024
+			}
+		}
+	]
+}
+</code></pre>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+
+								<li id="step_3" class="step step--accordion js-accordion">
+									<div class="step__icon">3.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle">
+											<div class="step__header__titles">
+												<h3 class="step__title">Bepaal het type van de objecten.</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													In deze stap maken we duidelijk wat het type is van de objecten die beschreven worden in het JSON-bestand.
+													Dit kan via de key <span class="code-inline">@type</span>, met in dit voorbeeld de waarde Boomvorm.
+												</p>
+												<div class="code-wrapper">
+													<strong>Datavoorbeeld X:</strong> JSON-bestand van de drie bomen na stap 3.<br><br>
+<pre class="code"><code>
+{
+	"@context": [
+		"https://test.data.vlaanderen.be/doc/applicatieprofiel/openbaar-domein/kandidaatstandaard/2020-06-18/context/openbaar-domein-ap.jsonld",
+		"https://test.data.vlaanderen.be/doc/applicatieprofiel/vegetatie-elementen/kandidaatstandaard/2020-06-18/context/vegetatie-elementen-ap.jsonld",
+		{
+			"@base": "https://antwerpen.be/id/boomvorm/",
+			"ANTW_ID": "@id"
+		}
+	],
+	"features": [
+		{
+			"LATBOOMSOORT": "Tilia tomentosa 'Brabant'",
+			<span class="bold">"@type": "Boomvorm",</span>
+			"ANTW_ID": "63722",
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 72,
+			"geometry": {
+				"x": 4.394027702447957,
+				"y": 51.21663626279555
+			}
+		},
+		{
+			"LATBOOMSOORT": "Ginkgo biloba 'Tremonia'",
+			<span class="bold">"@type": "Boomvorm",</span>
+			"ANTW_ID": "37468",
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 23,
+			"geometry": {
+				"x": 4.394558773210101,
+				"y": 51.21670803598568
+			}
+		},
+		{
+			"LATBOOMSOORT": "Malus tschonoskii",
+			<span class="bold">"@type": "Boomvorm",</span>
+			"ANTW_ID": "33394",
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 47,
+			"geometry": {
+				"x": 4.394962791465566,
+				"y": 51.21602952257024
+			}
+		}
+	]
+}
+</code></pre>
+												</div>
+												<p>
+													Regelmatig wordt het type van het object echter meegeven met behulp van een attribuut, bv. TYPE. Indien dit het geval zou zijn,
+													dan zou men eenvoudigweg via de context kunnen laten weten dat het attribuut TYPE overeenkomt met @type via <span class="code-inline">"TYPE": "@type"</span>.
+												</p></br>
+												<p>
+													Bovendien zou het ook kunnen dat men wel een equivalent type kan terugvinden in OSLO Openbaar Domein,
+													maar dat de naamgeving niet exact overeenkomt met deze die intern gebruikt wordt, bv. "boom" i.p.v. "Boomvorm".
+													Ook dit kan men in de context meegeven via <span class="code-inline">"boom": "Boomvorm"</span>.
+													Het volgende datavoorbeeld geeft deze situatie weer.
+												</p></br>
+												<p>
+													Merk op dat het helaas niet mogelijk is om in de context mee te geven dat alle objecten in het JSON-bestand van hetzelfde type zijn.
+													Dit moet steeds per individueel object expliciet beschreven worden. Het is daarnaast wel mogelijk om objecten van verschillende types in één JSON-LD-bestand te combineren.
+												</p>
+												<div class="code-wrapper">
+													<strong>Datavoorbeeld X:</strong> JSON-bestand van de drie bomen na stap 3 (alternatief).<br><br>
+<pre class="code"><code>
+{
+	"@context": [
+		"https://test.data.vlaanderen.be/doc/applicatieprofiel/openbaar-domein/kandidaatstandaard/2020-06-18/context/openbaar-domein-ap.jsonld",
+		"https://test.data.vlaanderen.be/doc/applicatieprofiel/vegetatie-elementen/kandidaatstandaard/2020-06-18/context/vegetatie-elementen-ap.jsonld",
+		{
+			"@base": "https://antwerpen.be/id/boomvorm/",
+			"ANTW_ID": "@id",
+			<span class="bold">"TYPE": "@type",
+			"boom": "Boomvorm"
+		}</span>
+	],
+	"features": [
+		{
+			"LATBOOMSOORT": "Tilia tomentosa 'Brabant'",
+			<span class="bold">"TYPE": "boom",</span>
+			"ANTW_ID": "63722",
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 72,
+			"geometry": {
+				"x": 4.394027702447957,
+				"y": 51.21663626279555
+			}
+		},
+		{
+			"LATBOOMSOORT": "Ginkgo biloba 'Tremonia'",
+			<span class="bold">"TYPE": "boom",</span>
+			"ANTW_ID": "37468",
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 23,
+			"geometry": {
+				"x": 4.394558773210101,
+				"y": 51.21670803598568
+			}
+		},
+		{
+			"LATBOOMSOORT": "Malus tschonoskii",
+			<span class="bold">"TYPE": "boom",</span>
+			"ANTW_ID": "33394",
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 47,
+			"geometry": {
+				"x": 4.394962791465566,
+				"y": 51.21602952257024
+			}
+		}
+	]
+}
+</code></pre>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+
+								<li id="step_4" class="step step--accordion js-accordion">
+									<div class="step__icon">4.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle">
+											<div class="step__header__titles">
+												<h3 class="step__title">Maak de mapping van de overige keys naar de JSON-LD-context.</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													Vervolgens mappen we de overige attributen in het JSON-bestand op de respectievelijke klassen en attributen uit OSLO Openbaar Domein.
+													Zie <a href="tabel3">Tabel 3</a> voor deze mapping.
+													Voor de concepten uit OSLO Openbaar Domein, gebruiken hiervoor de naamgeving uit het JSON-LD-contextbestand.
+												</p></br>
+												<p>
+													De eigenschap
+													<a href="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#stamomtrek" data-toggle="tooltip" data-content="https://data.vlaanderen.be/ns/openbaardomein/vegetatie#stamomtrek" data-placement="right">stamomtrek</a>
+													verwacht het complexe datatype
+													<a href="https://schema.org/QuantitativeValue" data-toggle="tooltip" data-content="https://schema.org/QuantitativeValue" data-placement="right">Kwantitatieve Waarde</a>
+													als type. Het idee is dat we de waarde van de stamomtrek ook semantisch verrijken. Als we bijvoorbeeld enkel de waarde "72" meegeven, is het niet duidelijk of dit centimeters of meters betreft. Alhoewel dit voor een
+													mens soms wel af te leiden valt uit de context, wordt het voor een machine onmogelijk gemaakt om hier verder mee te redeneren. Door zowel de waarde als de (standaard)eenheid mee te geven, kunnen enerzijds organisaties zelf kiezen
+													in welke eenheid ze hun waarden publiceren en anderzijds kan er machinaal met de data geredeneerd worden.
+												</p>
+												</br>
+												<p>
+													Het attribuut waarde van het complexe datatype Kwantitatieve Waarde heeft een Getal als verwacht type,
+													waarbij het open wordt gelaten of dit een integer, double of een ander numeriek datatype moet zijn.
+													In deze context, beslissen we om het te instantiëren als een <a href="http://www.w3.org/2001/XMLSchema#double" data-toggle="tooltip" data-content="http://www.w3.org/2001/XMLSchema#double" data-placement="right"><span class="code-inline">xsd:Double</span></a>.
+													Daarnaast importeren we ook nog SKOS om de wetenschappelijke soortnaam te kunnen mappen (zie verder).
+												</p>
+												<div class="code-wrapper">
+													<strong>Datavoorbeeld X:</strong> JSON-bestand van de drie bomen na stap 4.<br><br>
+<pre class="code"><code>
+{
+	"@context": [
+		"https://test.data.vlaanderen.be/doc/applicatieprofiel/openbaar-domein/kandidaatstandaard/2020-06-18/context/openbaar-domein-ap.jsonld",
+		"https://test.data.vlaanderen.be/doc/applicatieprofiel/vegetatie-elementen/kandidaatstandaard/2020-06-18/context/vegetatie-elementen-ap.jsonld",
+		{
+			"@base": "https://antwerpen.be/id/boomvorm/",
+			"ANTW_ID": "@id",
+			"TYPE": "@type",
+			"boom": "Boomvorm",
+			<span class="bold">"LATBOOMSOORT": "VegetatieElement.wetenschappelijkeSoortnaam",
+			"DISTRICT": "FysiekObject.beheerder",
+			"STAMOMTREK": "Boomvorm.stamomtrek",
+			"geometry": "FysiekObject.geometrie",
+			"KwantitatieveWaarde.waarde": {
+				"@id": "https://schema.org/value",
+				"@type": "http://www.w3.org/2001/XMLSchema#double"
+			},
+			"skos": "http://www.w3.org/2004/02/skos/core#"</span>
+		}
+	],
+	"features": [
+		{
+			"LATBOOMSOORT": "Tilia tomentosa 'Brabant'",
+			"TYPE": "boom",
+			"ANTW_ID": "63722",
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 72,
+			"geometry": {
+				"x": 4.394027702447957,
+				"y": 51.21663626279555
+			}
+		},
+		{
+			"LATBOOMSOORT": "Ginkgo biloba 'Tremonia'",
+			"TYPE": "boom",
+			"ANTW_ID": "37468",
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 23,
+			"geometry": {
+				"x": 4.394558773210101,
+				"y": 51.21670803598568
+			}
+		},
+		{
+			"LATBOOMSOORT": "Malus tschonoskii",
+			"TYPE": "boom",
+			"ANTW_ID": "33394",
+			"DISTRICT": "ANTWERPEN",
+			"STAMOMTREK": 47,
+			"geometry": {
+				"x": 4.394962791465566,
+				"y": 51.21602952257024
+			}
+		}
+	]
+}
+</code></pre>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+
+								<li id="step_5" class="step step--accordion js-accordion">
+									<div class="step__icon">5.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle">
+											<div class="step__header__titles">
+												<h3 class="step__title">Pas de nodige transformaties toe (indien nodig).</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													Voor de geografische informatie werken we hier met het <a href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">WKT-formaat</a>.
+													OSLO laat daarnaast ook toe om met het <a href="https://en.wikipedia.org/wiki/Geography_Markup_Language">GML-formaat</a> te werken.
+													Merk op dat het mogelijk is om het gebruikte coördinatenstelsel mee te geven bij een WKT-literal (en bij een GML-literal), bv. <span class="code-inline">"&lt;http://www.opengis.net/def/crs/OGC/1.3/CRS84&gt; POINT(33.95 -83.38)"^^&lt;http://www.opengis.net/ont/geosparql#wktLiteral&gt;</span>.
+													Indien er echter geen coördinatenstelsel wordt gespecifieerd, wordt er <a href="https://www.w3.org/2015/spatial/wiki/Coordinate_Reference_Systems#GeoSPARQL">standaard uitgegaan</a> van <a href="http://www.opengis.net/def/crs/OGC/1.3/CRS84" data-toggle="tooltip" data-content="http://www.opengis.net/def/crs/OGC/1.3/CRS84" data-placement="right">WGS 84</a>, het meest gebruikte coördinatenstelsel.
+													We gebruiken de key <span class="code-inline">@value</span> om de eigenlijke waarde van het Punt mee te geven.
+													</br></br>
+													Daarnaast transformeren we ook de de stamomtrek-gegevens zoals beschreven in stap 4.
+													<span class="code-inline">KwantitatieveWaarde.standaardEenheid</span> heeft de waarde "http://qudt.org/vocab/unit/CentiM", waarmee we weergeven dat de stamomtrek in centimeters is geïnventariseerd.
+												</p>
+												</br>
+												<div class="code-wrapper">
+													<strong>Datavoorbeeld X:</strong> JSON-bestand van de drie bomen na stap 5.<br><br>
+<pre class="code"><code>
+{
+	"@context": [
+		"https://test.data.vlaanderen.be/doc/applicatieprofiel/openbaar-domein/kandidaatstandaard/2020-06-18/context/openbaar-domein-ap.jsonld",
+		"https://test.data.vlaanderen.be/doc/applicatieprofiel/vegetatie-elementen/kandidaatstandaard/2020-06-18/context/vegetatie-elementen-ap.jsonld",
+		{
+			"@base": "https://antwerpen.be/id/boomvorm/",
+			"ANTW_ID": "@id",
+			"TYPE": "@type",
+			"boom": "Boomvorm",
+			"LATBOOMSOORT": "VegetatieElement.wetenschappelijkeSoortnaam",
+			"DISTRICT": "FysiekObject.beheerder",
+			"STAMOMTREK": "Boomvorm.stamomtrek",
+			"geometry": "FysiekObject.geometrie",
+			"KwantitatieveWaarde.waarde": {
+				"@id": "https://schema.org/value",
+				"@type": "http://www.w3.org/2001/XMLSchema#double"
+			},
+			"skos": "http://www.w3.org/2004/02/skos/core#"
+		}
+	],
+	"features": [
+		{
+			"LATBOOMSOORT": "Tilia tomentosa 'Brabant'",
+			"TYPE": "boom",
+			"ANTW_ID": "63722",
+			"DISTRICT": "ANTWERPEN",
+			<span class="bold">"STAMOMTREK": {
+				"@type": "KwantitatieveWaarde",
+				"KwantitatieveWaarde.waarde":  72,
+				"KwantitatieveWaarde.standaardEenheid": "http://qudt.org/vocab/unit/CentiM"
+			},
+			"geometry": {
+				"@type": "Punt",
+				"Geometrie.wkt": {
+					"@type": "http://www.opengis.net/ont/geosparql#wktLiteral",
+					"@value": "POINT(4.394027702447957 51.21663626279555)"
+				}
+			}</span>
+		},
+		{
+			"LATBOOMSOORT": "Ginkgo biloba 'Tremonia'",
+			"TYPE": "boom",
+			"ANTW_ID": "37468",
+			"DISTRICT": "ANTWERPEN",
+			<span class="bold">"STAMOMTREK": {
+				"@type": "KwantitatieveWaarde",
+				"KwantitatieveWaarde.waarde":  23,
+				"KwantitatieveWaarde.standaardEenheid": "http://qudt.org/vocab/unit/CentiM"
+			},
+			"geometry": {
+				"@type": "Punt",
+				"Geometrie.wkt": {
+					"@type": "http://www.opengis.net/ont/geosparql#wktLiteral",
+					"@value": "POINT(4.394558773210101 51.21670803598568)"
+				}
+			}</span>
+		},
+		{
+			"LATBOOMSOORT": "Malus tschonoskii",
+			"TYPE": "boom",
+			"ANTW_ID": "33394",
+			"DISTRICT": "ANTWERPEN",
+			<span class="bold">"STAMOMTREK": {
+				"@type": "KwantitatieveWaarde",
+				"KwantitatieveWaarde.waarde":  47,
+				"KwantitatieveWaarde.standaardEenheid": "http://qudt.org/vocab/unit/CentiM"
+			},
+			"geometry": {
+				"@type": "Punt",
+				"Geometrie.wkt": {
+					"@type": "http://www.opengis.net/ont/geosparql#wktLiteral",
+					"@value": "POINT(4.394962791465566 51.21602952257024)"
+				}
+			}</span>
+		}
+	]
+}
+</code></pre>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+
+								<li id="step_6" class="step step--accordion js-accordion">
+									<div class="step__icon">6.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle">
+											<div class="step__header__titles">
+												<h3 class="step__title">Leg de link naar andere databronnen (indien mogelijk).</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													Het algemene idee van Linked Data is dat men van data gemakkelijk naar andere data kan doorverwijzen, gelijkaardig
+													aan hoe hyperlinks op het World Wide Web de ene webpagina aan de andere linken.
+													Hier maken we gebruik van <a href="https://wegwijs.vlaanderen.be/">Wegwijs</a>, een databron met informatie over publieke organisaties,
+													om de URI van het District Antwerpen (<a href="https://data.vlaanderen.be/id/organisatie/OVO003105">https://data.vlaanderen.be/id/organisatie/OVO003105</a>) terug te vinden.
+													Vervolgens kunnen we dan de tekstwaarde "District Antwerpen" vervangen door diens semantisch waardevollere URI.
+												</p>
+												<div class="code-wrapper">
+													<strong>Datavoorbeeld X:</strong> JSON-bestand van de drie bomen na stap 6.<br><br>
+<pre class="code"><code>
+{
+	"@context": [
+		"https://test.data.vlaanderen.be/doc/applicatieprofiel/openbaar-domein/kandidaatstandaard/2020-06-18/context/openbaar-domein-ap.jsonld",
+		"https://test.data.vlaanderen.be/doc/applicatieprofiel/vegetatie-elementen/kandidaatstandaard/2020-06-18/context/vegetatie-elementen-ap.jsonld",
+		{
+			"@base": "https://antwerpen.be/id/boomvorm/",
+			"ANTW_ID": "@id",
+			"TYPE": "@type",
+			"boom": "Boomvorm",
+			"LATBOOMSOORT": "VegetatieElement.wetenschappelijkeSoortnaam",
+			"DISTRICT": "FysiekObject.beheerder",
+			"STAMOMTREK": "Boomvorm.stamomtrek",
+			"geometry": "FysiekObject.geometrie",
+			"KwantitatieveWaarde.waarde": {
+				"@id": "https://schema.org/value",
+				"@type": "http://www.w3.org/2001/XMLSchema#double"
+			},
+			"skos": "http://www.w3.org/2004/02/skos/core#"
+		}
+	],
+	"features": [
+		{
+			"LATBOOMSOORT": "Tilia tomentosa 'Brabant'",
+			"TYPE": "boom",
+			"ANTW_ID": "63722",
+			<span class="bold">"DISTRICT": "https://data.vlaanderen.be/id/organisatie/OVO003105",</span>
+			"STAMOMTREK": {
+				"@type": "KwantitatieveWaarde",
+				"KwantitatieveWaarde.waarde":  72,
+				"KwantitatieveWaarde.standaardEenheid": "http://qudt.org/vocab/unit/CentiM"
+			},
+			"geometry": {
+				"@type": "Punt",
+				"Geometrie.wkt": {
+					"@type": "http://www.opengis.net/ont/geosparql#wktLiteral",
+					"@value": "POINT(4.394027702447957 51.21663626279555)"
+				}
+			}
+		},
+		{
+			"LATBOOMSOORT": "Ginkgo biloba 'Tremonia'",
+			"TYPE": "boom",
+			"ANTW_ID": "37468",
+			<span class="bold">"DISTRICT": "https://data.vlaanderen.be/id/organisatie/OVO003105",</span>
+			"STAMOMTREK": {
+				"@type": "KwantitatieveWaarde",
+				"KwantitatieveWaarde.waarde":  23,
+				"KwantitatieveWaarde.standaardEenheid": "http://qudt.org/vocab/unit/CentiM"
+			},
+			"geometry": {
+				"@type": "Punt",
+				"Geometrie.wkt": {
+					"@type": "http://www.opengis.net/ont/geosparql#wktLiteral",
+					"@value": "POINT(4.394558773210101 51.21670803598568)"
+				}
+			}
+		},
+		{
+			"LATBOOMSOORT": "Malus tschonoskii",
+			"TYPE": "boom",
+			"ANTW_ID": "33394",
+			<span class="bold">"DISTRICT": "https://data.vlaanderen.be/id/organisatie/OVO003105",</span>
+			"STAMOMTREK": {
+				"@type": "KwantitatieveWaarde",
+				"KwantitatieveWaarde.waarde":  47,
+				"KwantitatieveWaarde.standaardEenheid": "http://qudt.org/vocab/unit/CentiM"
+			},
+			"geometry": {
+				"@type": "Punt",
+				"Geometrie.wkt": {
+					"@type": "http://www.opengis.net/ont/geosparql#wktLiteral",
+					"@value": "POINT(4.394962791465566 51.21602952257024)"
+				}
+			}
+		}
+	]
+}
+</code></pre>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+
+								<li id="step_7" class="step step--accordion js-accordion">
+									<div class="step__icon">7.</div>
+									<div class="step__wrapper">
+										<a class="step__header js-accordion__toggle">
+											<div class="step__header__titles">
+												<h3 class="step__title">Voeg de @graph-key toe (indien meer dan 1 object).</h3>
+											</div>
+											<div class="step__header__info">
+												<i class="step__accordion-toggle"></i>
+											</div>
+										</a>
+										<div class="step__content-wrapper">
+											<div class="step__content">
+												<p>
+													Ten slotte, veranderen we de <span class="code-inline">features</span>-key uit het originele GeoJSON-bestand in <span class="code-inline">@graph</span>,
+													omdat we meerdere objecten in één JSON-LD-bestand willen combineren.
+												</p>
+												</br>
+												<p>
+													Na deze laatste stap bekomen we het finale JSON-LD-bestand, dat ook via de
+													<a href="https://json-ld.org/playground/#startTab=tab-expanded&json-ld=%7B%22%40context%22%3A%5B%22https%3A%2F%2Ftest.data.vlaanderen.be%2Fdoc%2Fapplicatieprofiel%2Fopenbaar-domein%2Fkandidaatstandaard%2F2020-06-18%2Fcontext%2Fopenbaar-domein-ap.jsonld%22%2C%22https%3A%2F%2Ftest.data.vlaanderen.be%2Fdoc%2Fapplicatieprofiel%2Fvegetatie-elementen%2Fkandidaatstandaard%2F2020-06-18%2Fcontext%2Fvegetatie-elementen-ap.jsonld%22%2C%7B%22%40base%22%3A%22https%3A%2F%2Fantwerpen.be%2Fid%2Fboomvorm%2F%22%2C%22ANTW_ID%22%3A%22%40id%22%2C%22TYPE%22%3A%22%40type%22%2C%22boom%22%3A%22Boomvorm%22%2C%22LATBOOMSOORT%22%3A%22VegetatieElement.wetenschappelijkeSoortnaam%22%2C%22DISTRICT%22%3A%22FysiekObject.beheerder%22%2C%22STAMOMTREK%22%3A%22Boomvorm.stamomtrek%22%2C%22geometry%22%3A%22FysiekObject.geometrie%22%2C%22KwantitatieveWaarde.waarde%22%3A%7B%22%40id%22%3A%22https%3A%2F%2Fschema.org%2Fvalue%22%2C%22%40type%22%3A%22http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23double%22%7D%2C%22skos%22%3A%22http%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%22%7D%5D%2C%22%40graph%22%3A%5B%7B%22LATBOOMSOORT%22%3A%22Tilia%20tomentosa%20'Brabant'%22%2C%22TYPE%22%3A%22boom%22%2C%22ANTW_ID%22%3A%2263722%22%2C%22DISTRICT%22%3A%22https%3A%2F%2Fdata.vlaanderen.be%2Fid%2Forganisatie%2FOVO003105%22%2C%22STAMOMTREK%22%3A%7B%22%40type%22%3A%22KwantitatieveWaarde%22%2C%22KwantitatieveWaarde.waarde%22%3A72%2C%22KwantitatieveWaarde.standaardEenheid%22%3A%22http%3A%2F%2Fqudt.org%2Fvocab%2Funit%2FCentiM%22%7D%2C%22geometry%22%3A%7B%22%40type%22%3A%22Punt%22%2C%22Geometrie.wkt%22%3A%7B%22%40type%22%3A%22http%3A%2F%2Fwww.opengis.net%2Font%2Fgeosparql%23wktLiteral%22%2C%22%40value%22%3A%22POINT(4.394027702447957%2051.21663626279555)%22%7D%7D%7D%2C%7B%22LATBOOMSOORT%22%3A%22Ginkgo%20biloba%20'Tremonia'%22%2C%22TYPE%22%3A%22boom%22%2C%22ANTW_ID%22%3A%2237468%22%2C%22DISTRICT%22%3A%22https%3A%2F%2Fdata.vlaanderen.be%2Fid%2Forganisatie%2FOVO003105%22%2C%22STAMOMTREK%22%3A%7B%22%40type%22%3A%22KwantitatieveWaarde%22%2C%22KwantitatieveWaarde.waarde%22%3A23%2C%22KwantitatieveWaarde.standaardEenheid%22%3A%22http%3A%2F%2Fqudt.org%2Fvocab%2Funit%2FCentiM%22%7D%2C%22geometry%22%3A%7B%22%40type%22%3A%22Punt%22%2C%22Geometrie.wkt%22%3A%7B%22%40type%22%3A%22http%3A%2F%2Fwww.opengis.net%2Font%2Fgeosparql%23wktLiteral%22%2C%22%40value%22%3A%22POINT(4.394558773210101%2051.21670803598568)%22%7D%7D%7D%2C%7B%22LATBOOMSOORT%22%3A%22Malus%20tschonoskii%22%2C%22TYPE%22%3A%22boom%22%2C%22ANTW_ID%22%3A%2233394%22%2C%22DISTRICT%22%3A%22https%3A%2F%2Fdata.vlaanderen.be%2Fid%2Forganisatie%2FOVO003105%22%2C%22STAMOMTREK%22%3A%7B%22%40type%22%3A%22KwantitatieveWaarde%22%2C%22KwantitatieveWaarde.waarde%22%3A47%2C%22KwantitatieveWaarde.standaardEenheid%22%3A%22http%3A%2F%2Fqudt.org%2Fvocab%2Funit%2FCentiM%22%7D%2C%22geometry%22%3A%7B%22%40type%22%3A%22Punt%22%2C%22Geometrie.wkt%22%3A%7B%22%40type%22%3A%22http%3A%2F%2Fwww.opengis.net%2Font%2Fgeosparql%23wktLiteral%22%2C%22%40value%22%3A%22POINT(4.394962791465566%2051.21602952257024)%22%7D%7D%7D%5D%7D&context=%7B%7D">JSON-LD playground</a>
+													te bekijken is.
+												</p>
+												<div class="code-wrapper">
+													<strong>Datavoorbeeld X:</strong> JSON-bestand van de drie bomen na stap 7.<br><br>
+<pre class="code"><code>
+{
+	"@context": [
+		"https://test.data.vlaanderen.be/doc/applicatieprofiel/openbaar-domein/kandidaatstandaard/2020-06-18/context/openbaar-domein-ap.jsonld",
+		"https://test.data.vlaanderen.be/doc/applicatieprofiel/vegetatie-elementen/kandidaatstandaard/2020-06-18/context/vegetatie-elementen-ap.jsonld",
+		{
+			"@base": "https://antwerpen.be/id/boomvorm/",
+			"ANTW_ID": "@id",
+			"TYPE": "@type",
+			"boom": "Boomvorm",
+			"LATBOOMSOORT": "VegetatieElement.wetenschappelijkeSoortnaam",
+			"DISTRICT": "FysiekObject.beheerder",
+			"STAMOMTREK": "Boomvorm.stamomtrek",
+			"geometry": "FysiekObject.geometrie",
+			"KwantitatieveWaarde.waarde": {
+				"@id": "https://schema.org/value",
+				"@type": "http://www.w3.org/2001/XMLSchema#double"
+			},
+			"skos": "http://www.w3.org/2004/02/skos/core#"
+		}
+	],
+	<span class="bold">"@graph"</span>: [
+		{
+			"LATBOOMSOORT": "Tilia tomentosa 'Brabant'",
+			"TYPE": "boom",
+			"ANTW_ID": "63722",
+			"DISTRICT": "https://data.vlaanderen.be/id/organisatie/OVO003105",
+			"STAMOMTREK": {
+				"@type": "KwantitatieveWaarde",
+				"KwantitatieveWaarde.waarde":  72,
+				"KwantitatieveWaarde.standaardEenheid": "http://qudt.org/vocab/unit/CentiM"
+			},
+			"geometry": {
+				"@type": "Punt",
+				"Geometrie.wkt": {
+					"@type": "http://www.opengis.net/ont/geosparql#wktLiteral",
+					"@value": "POINT(4.394027702447957 51.21663626279555)"
+				}
+			}
+		},
+		{
+			"LATBOOMSOORT": "Ginkgo biloba 'Tremonia'",
+			"TYPE": "boom",
+			"ANTW_ID": "37468",
+			"DISTRICT": "https://data.vlaanderen.be/id/organisatie/OVO003105",
+			"STAMOMTREK": {
+				"@type": "KwantitatieveWaarde",
+				"KwantitatieveWaarde.waarde":  23,
+				"KwantitatieveWaarde.standaardEenheid": "http://qudt.org/vocab/unit/CentiM"
+			},
+			"geometry": {
+				"@type": "Punt",
+				"Geometrie.wkt": {
+					"@type": "http://www.opengis.net/ont/geosparql#wktLiteral",
+					"@value": "POINT(4.394558773210101 51.21670803598568)"
+				}
+			}
+		},
+		{
+			"LATBOOMSOORT": "Malus tschonoskii",
+			"TYPE": "boom",
+			"ANTW_ID": "33394",
+			"DISTRICT": "https://data.vlaanderen.be/id/organisatie/OVO003105",
+			"STAMOMTREK": {
+				"@type": "KwantitatieveWaarde",
+				"KwantitatieveWaarde.waarde":  47,
+				"KwantitatieveWaarde.standaardEenheid": "http://qudt.org/vocab/unit/CentiM"
+			},
+			"geometry": {
+				"@type": "Punt",
+				"Geometrie.wkt": {
+					"@type": "http://www.opengis.net/ont/geosparql#wktLiteral",
+					"@value": "POINT(4.394962791465566 51.21602952257024)"
+				}
+			}
+		}
+	]
+}
+</code></pre>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+
+<div id="vlaanderen-footer">
+    <!-- insert your Vlaanderen-footer-code here -->
+    <script src="//widgets.vlaanderen.be/widget/live/d6d44414e7c242f396ab6da8f8da5198" type=
+            "text/javascript">
+    </script> <!-- End global footer-->
+</div>
+
+<style>
+	.tooltip {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 800;
+		display: none;
+		max-width: 128rem;
+		background: #fff;
+		border: 1px solid #ccc;
+		margin-bottom: 1.5rem;
+		text-align: center;
+		font-size: 1.4rem;
+		color: #000;
+		background-clip: padding-box;
+	}
+</style>
+
+<script src="https://dij151upo6vad.cloudfront.net/2.latest/js/vlaanderen-ui.js">
+</script>
+
+</body>
+</html>
