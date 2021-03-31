@@ -16,7 +16,6 @@ function getShapes(area){
         case 'session6':
         case 'session7':
         case 'oslo':
-        case 'proces':
             shapes = Array.from(document.getElementById(area).getElementsByTagName('rect'));
             break;
     }
