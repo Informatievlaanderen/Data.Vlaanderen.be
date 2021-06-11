@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>API Kennishub</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui-corporate.css"
+    />
+
+    <link
+      rel="icon"
+      sizes="192x192"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/icon-highres-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-ipad-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-retina-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-ipad-retina-precomposed.png"
+    />
+
+    <meta
+      name="msapplication-square70x70logo"
+      content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-small.png"
+    />
+    <meta
+      name="msapplication-square150x150logo"
+      content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-medium.png"
+    />
+    <meta
+      name="msapplication-wide310x150logo"
+      content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-wide.png"
+    />
+    <meta
+      name="msapplication-square310x310logo"
+      content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-large.png"
+    />
+    <meta name="msapplication-TileColor" content="#FFE615" />
+    <!-- HTML icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <header
+      class="content-header content-header--small content-header--half-image u-spacer--large"
+    >
+      <div class="content-header__wrapper">
+        <picture class="content-header__bg">
+          <img
+            sizes="50vw"
+            src="//www.vlaanderen.be/sites/default/files/ip_acm/page_banner_wide_alt/header.jpg"
+            srcset="
+              //www.vlaanderen.be/sites/default/files/ip_acm/page_banner_mobile_alt/header.jpg  320w,
+              //www.vlaanderen.be/sites/default/files/ip_acm/page_banner_narrow/header.jpg     1024w,
+              //www.vlaanderen.be/sites/default/files/ip_acm/page_banner_wide_alt/header.jpg   1600w
+            "
+            alt=""
+            title=""
+          />
+        </picture>
+        <div class="layout layout--wide">
+          <div class="content-header__content">
+            <div class="content-header__logo-wrapper">
+              <a
+                href="../oslo-services.html"
+                class="content-header__entity-logo"
+              >
+                <span class="content-header__entity-logo__prefix"
+                  >OSLO-Tools</span
+                >
+                <span class="content-header__entity-logo__title"
+                  >API Kennishub</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="layout layout--wide">
+        <ul class="nav_bar">
+          <li>
+            <a class="button" href="./intro.html">Intro</a>
+          </li>
+          <li>
+            <a class="button" href="./generieke_hypermedia_api.html"
+              >Generieke Hypermedia API</a
+            >
+          </li>
+          <li><a class="button" href="./paginering.html">Paginering</a></li>
+          <li>
+            <a class="button" href="./crud_operaties.html">CRUD operaties</a>
+          </li>
+          <li>
+            <a class="button" href="./taal_selectie_ontdekking.html"
+              >Taal-selectie/ontdekking</a
+            >
+          </li>
+        </ul>
+        <h1 class="h1">Taal-selectie/ontdekking</h1>
+        <h2 class="h2">Introductie</h2>
+        <p>
+          De <strong>detectie</strong> van de taal van een bepaalde resource is
+          belangrijk voor clients met taal-afhankelijke functionaliteiten, zoals
+          bijvoorbeeld het samenvatten en beschrijven van bepaalde resources
+          afhankelijk van de taal van de gebruiker.
+        </p>
+        <br />
+        <p>
+          Anderzijds gaat de selectie van een taal een stap verder, hierbij
+          kunnen protocollen zoals
+          <a href="https://www.w3.org/International/questions/qa-when-lang-neg"
+            >HTTP language negotiation</a
+          >
+          door clients gebruikt worden om een bepaalde resource in een gegeven
+          taal op te vragen.
+        </p>
+        <br />
+        <p>
+          Een API MOET minimaal ondersteuning bieden voor één van de volgende
+          taalcodes:
+        </p>
+        <br />
+        <ul class="bullet-list bullet-list--tag">
+          <li class="bullet-list__item">nl-BE</li>
+          <li class="bullet-list__item">nl</li>
+        </ul>
+        <br />
+        <p>
+          <strong>Opmerking:</strong> We spreken hier over de taal van de data,
+          niet van de controle. Hier zijn bijvoorbeeld de taal van de naam en
+          beschrijving van resources van belang. De taal die (eventueel)
+          gebruikt wordt binnen URLs of andere API-specifieke benamingen is
+          irrelevant, aangezien clients hier geen interpretatie van (zouden)
+          moeten doen.
+        </p>
+        <h2 class="h2">Nakomingsniveaus</h2>
+        <p>
+          Zie ook:
+          <a
+            href="https://github.com/Informatievlaanderen/generieke-hypermedia-api#nakomingsniveaus"
+            >https://github.com/Informatievlaanderen/generieke-hypermedia-api#nakomingsniveaus</a
+          >
+        </p>
+        <h3 class="h3">HTTP</h3>
+        <p>
+          Voor het toelaten van de <strong>detectie</strong> van de taal van een
+          resource MOET een
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Language"
+            >Content-Language</a
+          >
+          HTTP header beschikbaar te zijn voor de resource binnen een server
+          response.
+        </p>
+        <br />
+        <p>
+          Voor het toelaten van de <strong>selectie</strong> van de taal van een
+          resource MOET een server de
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language"
+            >Accept-Language</a
+          >
+          in de client request correct behandelen, zodat
+          <a href="https://www.w3.org/International/questions/qa-when-lang-neg"
+            >HTTP language negotiation</a
+          >
+          kan plaats vinden.
+        </p>
+        <h3 class="h3">Semantisch</h3>
+        <p>
+          Voor het toelaten van de <strong>detectie</strong> van de taal van een
+          resource MOET tekst geannoteerd te zijn met een taal door middel van
+          <a
+            href="https://www.w3.org/TR/rdf11-concepts/#dfn-language-tagged-string"
+            >RDF language tagged strings</a
+          >.
+        </p>
+        <br />
+        <p>
+          Voor de <strong>selectie</strong> van een taal schrijven we op
+          semantisch niveau geen vereisten voor. Hiervoor kan ofwel enkel
+          selectie door middel van
+          <a href="https://www.w3.org/International/questions/qa-when-lang-neg"
+            >HTTP language negotiation</a
+          >
+          gebruikt worden, ofwel kan een eigen hypermedia operatie beschreven
+          worden met een taal-parameter.
+        </p>
+        <br />
+        <p>
+          Opmerking: De HTTP en Semantische nakomingsniveaus moeten compatibel
+          zijn met elkaar. Dit wilt zeggen dat wanneer een
+          <strong>Content-Language</strong>
+          header beschikbaar binnen de (RDF) response voor een resource, dat
+          minstens language tagged strings in die taal beschikbaar moeten zijn.
+        </p>
+        <h2 class="h2">Code voorbeelden</h2>
+        <h3 class="h3">HTTP</h3>
+        <p>Client request:</p>
+        <pre class="background">
+          <code>
+            GET /api/resource/1 HTTP/1.1
+            Host: example.org
+            Accept-Language: nl-be,nl-nl;q=0.7
+          </code>
+        </pre>
+        <p>Server response:</p>
+        <pre class="background">
+          <code>
+            HTTP/1.1 200 OK 
+            Content-Language: nl-be
+            ...
+          </code>
+        </pre>
+        <h3 class="h3">Semantisch</h3>
+        <p>RDF response:</p>
+        <pre class="background">
+          <code>
+            <http://example.org/gent> rdfs:label "Gent"@nl-be
+                            "Ghent"@en-us.
+          </code>
+        </pre>
+        <p>JSON-LD response</p>
+        <pre class="background">
+          <code>
+            {
+              "@context": {
+                "label": { "@id": "http://www.w3.org/2000/01/rdf-schema#label", "@container": "@language" }
+              },
+              "@id": "/api/resource/1",
+              "label": {
+                "nl-be": "Gent",
+                "en-us": "Ghent"
+              }
+            }            
+          </code>
+        </pre>
+        <h2 class="h2">Algoritme voor language negotiation</h2>
+        <p>
+          <a href="https://www.ietf.org/rfc/rfc4647.txt"
+            >https://www.ietf.org/rfc/rfc4647.txt</a
+          >
+        </p>
+        <h2 class="h2">Herbruikbare library</h2>
+        <ul class="bullet-list bullet-list--tag">
+          <li class="bullet-list__item">
+            <a
+              href="https://github.com/Informatievlaanderen/generic-hypermedia-api-client"
+              >generic-hypermedia-api-client</a
+            >
+          </li>
+          <li class="bullet-list__item">
+            <a href="https://www.npmjs.com/package/accept-language-negotiator"
+              >https://www.npmjs.com/package/accept-language-negotiator</a
+            >
+          </li>
+        </ul>
+        <br />
+      </div>
+
+      <div class="next">
+        <a class="button" href="./intro.html">Terug naar intro</a>
+      </div>
+    </main>
+
+    <style>
+      .equal-height {
+        height: 100%;
+        justify-content: normal;
+      }
+
+      .nav_bar {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .nav_bar li {
+        display: inline-block;
+      }
+
+      h1 {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      h2 {
+        margin-top: 20px;
+      }
+
+      h3 {
+        margin-top: 15px;
+      }
+
+      .next {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 30px;
+      }
+
+      table {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      th {
+        padding: 10px;
+        border: 2px solid black;
+        border-collapse: collapse;
+        font-weight: bold;
+        background-color: lightblue;
+      }
+
+      td {
+        padding: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+      pre {
+        text-align: left;
+        overflow: auto;
+        font-weight: bold;
+        height: fit-content;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width: 70%;
+      }
+
+      pre.background {
+        background-color: #333;
+        height: auto;
+      }
+
+      code {
+        color: #4dd0e1;
+        font-family: "Inconsolata", "Monaco", "Consolas", "Andale Mono",
+          "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+      }
+    </style>
+
+    <script></script>
+  </body>
+</html>
