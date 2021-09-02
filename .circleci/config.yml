@@ -106,7 +106,7 @@ jobs:
             - raw-input/
   extract-jsonld-details:
     docker:
-      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-v3.0.9
+      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-m1.1.1
     steps:
       - checkout
       - attach_workspace:
@@ -137,7 +137,7 @@ jobs:
             - src/
   validate-report:
     docker:
-      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-v3.0.9
+      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-m1.0.1
     steps:
       - checkout
       - attach_workspace:
@@ -149,7 +149,7 @@ jobs:
             [ $( egrep " ERROR " /tmp/workspace/report/*.report | wc -l ) == 0 ] || exit 1
   normalise-jsonld:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev
     steps:
       - checkout
       - attach_workspace:
@@ -169,9 +169,65 @@ jobs:
             - report/
             - json/
             - src/
+  render-translation-json:
+    docker:
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Render translation JSON from jsonld
+          command: |
+            mkdir -p /tmp/workspace/translation
+            $PWD/scripts/render-details.sh /tmp/workspace multilingual
+      - run:
+          name: touch a file
+          command: |
+            touch /tmp/workspace/translation/.ignore04
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - translation/
+  validate-and-generate-translation-report:
+    docker:
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: generate the reports
+          command: |
+            $PWD/scripts/render-details.sh /tmp/workspace report
+      - run:
+          name: Check no warnings found in the reports
+          command:
+            egrep " WARNING " /tmp/workspace/report/translation/*.report || true ;
+            [ $( egrep " WARNING " /tmp/workspace/report/translation/*.report | wc -l ) == 0 ] || exit 1
+  render-merged-jsonld:
+    docker:
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Render merged JSONLD from jsonld and translationjson
+          command: |
+            mkdir -p  /tmp/workspace/report
+            $PWD/scripts/render-details.sh /tmp/workspace merge
+      - run:
+          name: touch a file
+          command: |
+            touch /tmp/workspace/report/.ignore05
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - report/
   render-html-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev
     steps:
       - checkout
       - attach_workspace:
@@ -179,8 +235,8 @@ jobs:
       - run:
           name: Render HTML version of merged json file (a)
           command: |
-            $PWD/scripts/render-details.sh /tmp/workspace html
             mkdir -p /tmp/workspace/target /tmp/workspace/reporthtml
+            $PWD/scripts/render-details.sh /tmp/workspace html
       - run:
           name: copy the site-skeleton for the html
           command: $PWD/scripts/copy_skeleton.sh
@@ -193,9 +249,29 @@ jobs:
           paths:
             - target/
             - reporthtml/
+  render-example-templates:
+    docker:
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Render example templates
+          command: |
+            mkdir -p /tmp/workspace/examples
+            $PWD/scripts/render-details.sh /tmp/workspace example
+      - run:
+          name: touch a file
+          command: |
+            touch /tmp/workspace/examples/.ignore06
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - examples/
   render-context-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev
     steps:
       - checkout
       - attach_workspace:
@@ -215,7 +291,7 @@ jobs:
             - target/
   render-shacl-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:javascript-circleci
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev
     steps:
       - checkout
       - attach_workspace:
@@ -223,8 +299,13 @@ jobs:
       - run:
           name: Render Shacl details
           command: |
-            $PWD/scripts/render-details.sh /tmp/workspace shacl
             mkdir -p /tmp/workspace/target /tmp/workspace/report
+            $PWD/scripts/render-details.sh /tmp/workspace shacl
+      - run:
+          name: touch a file
+          command: |
+            touch /tmp/workspace/target/.ignore08
+            touch /tmp/workspace/report/.ignore09
       - run:
           name: List the shacl files found
           command: find /tmp/workspace/target -name \*-SHACL.jsonld -type f
@@ -278,6 +359,30 @@ jobs:
           root: /tmp/workspace
           paths:
             - target/
+  render-voc-jsonld:
+    docker:
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Install dependencies
+          command: |
+            mkdir -p /tmp/workspace/voc
+      - run:
+          name: touch a file
+          command: |
+            touch /tmp/workspace/voc/.ignore11
+      - run:
+          name: Generate vocabulary in baseformat jsonld
+          command: |
+            mkdir -p /tmp/workspace/target/doc/vocabularium
+            $PWD/scripts/generate-voc.sh /tmp/workspace json $PWD/config
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - voc/
   render-voc-rdf:
     docker:
       - image: circleci/ruby:2.6.5-stretch
@@ -289,13 +394,11 @@ jobs:
           name: Install dependencies
           command: |
             gem install linkeddata
-            mkdir -p /tmp/workspace/voc
-            mkdir -p /tmp/workspace/target
-      - run:
-          name: Generate vocabulary in baseformat jsonld
-          command: |
-            $PWD/scripts/generate-voc.sh /tmp/workspace json $PWD/config
             mkdir -p /tmp/workspace/target/doc/vocabularium
+      - run:
+          name: touch a file
+          command: |
+            touch /tmp/workspace/target/.ignore12
       - run:
           name: Convert vocabulary to turtle
           command: |
@@ -425,28 +528,47 @@ workflows:
       - validate-report:
           requires:
             - extract-jsonld-details
+      - render-merged-jsonld:
+          requires:
+            - render-translation-json
+      - render-example-templates:
+          requires:
+            - render-merged-jsonld
       - render-html-details:
           requires:
-            - normalise-jsonld
+            - render-merged-jsonld
+      - render-voc-jsonld:
+          requires:
+            - render-merged-jsonld
       - render-voc-rdf:
           requires:
-            - normalise-jsonld
+            - render-voc-jsonld
       - render-shacl-details:
           requires:
-            - normalise-jsonld
+            - render-merged-jsonld
       - convert-json-to-ttl:
           requires:
             - render-shacl-details
       - render-context-details:
           requires:
+            - render-merged-jsonld
+      - render-translation-json:
+          requires:
             - normalise-jsonld
+      - validate-and-generate-translation-report:
+          requires:
+            - render-translation-json
+      - copy-raw:
+          requires:
+            - checkout
       - expand-links:
           requires:
+            - render-example-templates
+            - convert-json-to-ttl
+            - render-html-details
             - copy-raw
             - render-context-details
-            - convert-json-to-ttl
             - render-voc-rdf
-            - render-html-details
       - copy-raw:
           requires:
             - checkout
