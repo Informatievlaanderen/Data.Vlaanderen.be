@@ -7,7 +7,7 @@ PID=$$
 
 ( find ${SRCDIR} -name \*.jsonld -type f ; find ${JSONDIR} -name \*.jsonld -type f ) > /tmp/files.txt
 
-pushd /app/pretty-print
+pushd /app
  cat /tmp/files.txt | while read line
  do
      echo "node pretty-print.js --input $line --output $line.out"
