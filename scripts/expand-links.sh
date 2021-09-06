@@ -15,7 +15,7 @@ TARGET=${TARGETDIR}/target
 
 clean_links(){
 	
-        rm /tmp/cleanedlinks.txt
+        rm -f /tmp/cleanedlinks.txt
 	echo "[]" > /tmp/cleanedlinks.txt
 	jq -c '.[]' ${LINKS} | while read i; do
 	SEEALSO=$(echo $i | jq -r '.seealso'  )
