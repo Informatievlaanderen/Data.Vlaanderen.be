@@ -4,8 +4,8 @@ TARGETDIR=$1
 DETAILS=$2
 CONFIGDIR=$3
 
-PRIMELANGUAGECONFIG=$(jq .primeLanguage ${CONFIGDIR}/config.json)
-GOALLANGUAGECONFIG=$(jq '.otherLanguages | @sh'  ${CONFIGDIR}/config.json)
+PRIMELANGUAGECONFIG=$(jq -r .primeLanguage ${CONFIGDIR}/config.json)
+GOALLANGUAGECONFIG=$(jq -r '.otherLanguages | @sh'  ${CONFIGDIR}/config.json)
 
 PRIMELANGUAGE=${4-${PRIMELANGUAGECONFIG}}
 GOALLANGUAGE=${5-${GOALLANGUAGECONFIG}}
