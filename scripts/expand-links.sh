@@ -18,19 +18,23 @@ clean_links(){
         rm /tmp/cleanedlinks.txt
 	echo "[]" > /tmp/cleanedlinks.txt
 	jq -c '.[]' ${LINKS} | while read i; do
-	SEEALSO=$(jq .seealso $i)
+	SEEALSO=$(echo $i | jq -r '.seealso'  )
 	if [ -d "${TARGET}${SEEALSO}" ] ; then
-		jq . += $i /tmp/cleanedlinks.txt
+		jq '. + [$i]'  /tmp/cleanedlinks.txt > /tmp/cleanedlinks.txt1
+		mv /tmp/cleanedlinks.txt1 /tmp/cleanedlinks.txt
+	else
+		echo "ERROR: ${TARGET}${SEEALSO} does not exist"
 	fi		
         done
 	cat /tmp/cleanedlinks.txt
 	diff -q /tmp/cleanedlinks.txt ${LINKS}
 }
 
-if [ -f $LINKS ] 
+if [ -f ${LINKS} ] 
 then
 
    clean_links
+   LINKS=/tmp/cleanedlinks.txt
    mkdir -p ${TARGET} ${TARGET}/context ${TARGET}/shacl ${TARGET}/ns
 
    jq  --arg src ${TARGET} --arg tgt ${TARGET} -r '.[] | @sh "mkdir -p \($tgt)\(.urlref)"'  $LINKS | bash -e
