@@ -14,25 +14,25 @@ upgrade_config() {
 
     PRIMELANGUAGE=$(jq .primeLanguage ${CONFIGDIR}/config.json)
 
-    TITLE=$(jq .title ${SLINE}/.names.json)
-    TEMPLATE=$(jq .template ${SLINE}/.names.json)
-    NAME=$(jq .name ${SLINE}/.names.json)
+    TITLE=$(jq .[0].title ${SLINE}/.names.json)
+    TEMPLATE=$(jq .[0].template ${SLINE}/.names.json)
+    NAME=$(jq .[0].name ${SLINE}/.names.json)
 
-    TRANSLATIONOBJTEMPLATE='"translation" : [{
+    TRANSLATIONOBJTEMPLATE='"{translation" : [{
        "language" : $jqlanguage,
        "title" : $jqtitle,
        "template" : $jqtemplate,
        "translationjson" : $jqtranslation,
        "mergefile" : $jqmergefile
-     }]'
+     }]}'
 
     TRANSLATIONOBJ=$(jq -n \
 	    --arg jqlanguage "${PRIMELANGUAGE} " --arg jqtitle "${TITLE}" --arg jqtemplate "${TEMPLATE}" \
 	    --arg jqtranslation "${NAME}_${PRIMELANGUAGE}.json" --arg jqmergefile "${NAME}_${PRIMELANGUAGE}_merged.json" \
-	    ${TRANSLATIONOBJTEMPLATE})
+	    "${TRANSLATIONOBJTEMPLATE}")
     echo $TRANSLATIONOBJ > /tmp/upgrade.json
 
-    jq -s '.[0] * .[1]' ${SLINE}/.names.json /tmp/upgrade.json > tmp/mergedupgrade.json
+    jq -s '.[0][0] * .[1]' ${SLINE}/.names.json /tmp/upgrade.json > tmp/mergedupgrade.json
     cp /tmp/mergedupgrade.json > ${SLINE}/.names.json
 
         
