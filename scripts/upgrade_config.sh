@@ -12,17 +12,17 @@ upgrade_config() {
     local SLINE=$1
     echo "upgrade config for $LINE"
 
-    PRIMELANGUAGE=$(jq .primeLanguage ${CONFIGDIR}/config.json)
+    PRIMELANGUAGE=$(jq -r ".primeLanguage" ${CONFIGDIR}/config.json)
 
 
-    HASTRANSLATION=$(jq .[0].translation[0].language ${SLINE}/.names.json)
+    HASTRANSLATION=$(jq -r .[0].translation[0].language ${SLINE}/.names.json)
     echo "${HASTRANSLATION}"
 
-    TITLE=$(jq .[0].title ${SLINE}/.names.json)
-    TEMPLATE=$(jq .[0].template ${SLINE}/.names.json)
-    NAME=$(jq .[0].name ${SLINE}/.names.json)
+    TITLE=$(jq -r .[0].title ${SLINE}/.names.json)
+    TEMPLATE=$(jq -r .[0].template ${SLINE}/.names.json)
+    NAME=$(jq -r .[0].name ${SLINE}/.names.json)
 
-    TRANSLATIONOBJTEMPLATE='"{translation" : [{
+    TRANSLATIONOBJTEMPLATE='{"translation" : [{
        "language" : $jqlanguage,
        "title" : $jqtitle,
        "template" : $jqtemplate,
@@ -30,9 +30,13 @@ upgrade_config() {
        "mergefile" : $jqmergefile
      }]}'
 
+    
+    JQTRANSLATION="${NAME}_${PRIMELANGUAGE}.json"
+
+
     TRANSLATIONOBJ=$(jq -n \
-	    --arg jqlanguage "${PRIMELANGUAGE} " --arg jqtitle "${TITLE}" --arg jqtemplate "${TEMPLATE}" \
-	    --arg jqtranslation "${NAME}_${PRIMELANGUAGE}.json" --arg jqmergefile "${NAME}_${PRIMELANGUAGE}_merged.json" \
+	    --arg jqlanguage "${PRIMELANGUAGE} " --arg jqtitle "${TITLE}" --arg jqtemplate ${TEMPLATE} \
+	    --arg jqtranslation $JQTRANSLATION --arg jqmergefile ${NAME}_${PRIMELANGUAGE}_merged.json \
 	    "${TRANSLATIONOBJTEMPLATE}")
     echo $TRANSLATIONOBJ > /tmp/upgrade.json
 
