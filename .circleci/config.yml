@@ -155,14 +155,16 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run:
-          name: Make sure pretty print is runnable
-          workdir: /app/pretty-print
-          command: sudo npm install
-      - run:
           name: Normalise the recovered JSON-LD files (in the src directory)
           command: |
             $PWD/scripts/pretty-print-jsonfiles.sh /tmp/workspace
             mkdir -p /tmp/workspace/report /tmp/workspace/json /tmp/workspace/json
+      - run:
+          name: touch a file
+          command: |
+            touch /tmp/workspace/report/.ignore01
+            touch /tmp/workspace/json/.ignore02
+            touch /tmp/workspace/src/.ignore03
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
@@ -180,7 +182,12 @@ jobs:
           name: Render translation JSON from jsonld
           command: |
             mkdir -p /tmp/workspace/translation
-            $PWD/scripts/render-details.sh /tmp/workspace multilingual
+            $PWD/scripts/upgrade_config.sh /tmp/workspace $PWD/config
+      - run:
+          name: Render translation JSON from jsonld
+          command: |
+            mkdir -p /tmp/workspace/translation
+            $PWD/scripts/render-details.sh /tmp/workspace multilingual $PWD/config
       - run:
           name: touch a file
           command: |
@@ -199,7 +206,7 @@ jobs:
       - run:
           name: generate the reports
           command: |
-            $PWD/scripts/render-details.sh /tmp/workspace report
+            $PWD/scripts/render-details.sh /tmp/workspace report $PWD/config
       - run:
           name: Check no warnings found in the reports
           command:
@@ -216,7 +223,7 @@ jobs:
           name: Render merged JSONLD from jsonld and translationjson
           command: |
             mkdir -p  /tmp/workspace/report
-            $PWD/scripts/render-details.sh /tmp/workspace merge
+            $PWD/scripts/render-details.sh /tmp/workspace merge $PWD/config
       - run:
           name: touch a file
           command: |
@@ -236,7 +243,7 @@ jobs:
           name: Render HTML version of merged json file (a)
           command: |
             mkdir -p /tmp/workspace/target /tmp/workspace/reporthtml
-            $PWD/scripts/render-details.sh /tmp/workspace html
+            $PWD/scripts/render-details.sh /tmp/workspace html $PWD/config
       - run:
           name: copy the site-skeleton for the html
           command: $PWD/scripts/copy_skeleton.sh
@@ -260,7 +267,7 @@ jobs:
           name: Render example templates
           command: |
             mkdir -p /tmp/workspace/examples
-            $PWD/scripts/render-details.sh /tmp/workspace example
+            $PWD/scripts/render-details.sh /tmp/workspace example $PWD/config
       - run:
           name: touch a file
           command: |
@@ -279,7 +286,7 @@ jobs:
       - run:
           name: Render Context Details
           command: |
-            $PWD/scripts/render-details.sh /tmp/workspace context
+            $PWD/scripts/render-details.sh /tmp/workspace context $PWD/config
             mkdir -p /tmp/workspace/target
       - run:
           name: List the context files found
@@ -300,7 +307,7 @@ jobs:
           name: Render Shacl details
           command: |
             mkdir -p /tmp/workspace/target /tmp/workspace/report
-            $PWD/scripts/render-details.sh /tmp/workspace shacl
+            $PWD/scripts/render-details.sh /tmp/workspace shacl $PWD/config
       - run:
           name: touch a file
           command: |

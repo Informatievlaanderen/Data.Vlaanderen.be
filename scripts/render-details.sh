@@ -2,8 +2,15 @@
 
 TARGETDIR=$1
 DETAILS=$2
-PRIMELANGUAGE=${3-'en'}
-GOALLANGUAGE=${4-'nl'}
+CONFIGDIR=$3
+
+PRIMELANGUAGECONFIG=$(jq .primeLanguage ${CONFIGDIR}/config.json)
+GOALLANGUAGECONFIG=$(jq '.otherLanguages | @sh'  ${CONFIGDIR}/config.json)
+
+PRIMELANGUAGE=${4-${PRIMELANGUAGECONFIG}}
+GOALLANGUAGE=${5-${GOALLANGUAGECONFIG}}
+
+
 CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 export NODE_PATH=/app/node_modules
 
@@ -375,31 +382,52 @@ cat ${CHECKOUTFILE} | while read line; do
                 RLINE=${TARGETDIR}/reporthtml/${line}
                 mkdir -p ${RLINE}
                 render_html $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report/${line} ${PRIMELANGUAGE} true
+		for g in ${GOALLANGUAGE} 
+		do 
                 render_html $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report/${line} ${GOALLANGUAGE}
+	        done
                 ;;
             shacl) # render_shacl $SLINE $TLINE $i $RLINE
                 render_shacl_languageaware $SLINE $TLINE $i $RLINE ${PRIMELANGUAGE}
+		for g in ${GOALLANGUAGE} 
+		do 
                 render_shacl_languageaware $SLINE $TLINE $i $RLINE ${GOALLANGUAGE}
+	        done
                 ;;
             context)
                 render_context $SLINE $TLINE $i $RLINE ${PRIMELANGUAGE}
+		for g in ${GOALLANGUAGE} 
+		do 
                 render_context $SLINE $TLINE $i $RLINE ${GOALLANGUAGE}
+	        done
                 ;;
             multilingual)
+		for g in ${GOALLANGUAGE} 
+		do 
                 render_translationfiles ${PRIMELANGUAGE} ${GOALLANGUAGE} $i ${SLINE} ${TRLINE}
+	        done
                 render_translationfiles ${PRIMELANGUAGE} ${PRIMELANGUAGE} $i ${SLINE} ${TRLINE}
                 ;;
             merge)
                 render_merged_files $i ${PRIMELANGUAGE} ${SLINE} ${TRLINE} ${RLINE}
+		for g in ${GOALLANGUAGE} 
+	        do
                 render_merged_files $i ${GOALLANGUAGE} ${SLINE} ${TRLINE} ${RLINE}
+	        done
                 ;;
             report)
                 write_report $i ${PRIMELANGUAGE} ${SLINE} ${TRLINE} ${RLINE}
+		for g in ${GOALLANGUAGE} 
+		do
                 write_report $i ${GOALLANGUAGE} ${SLINE} ${TRLINE} ${RLINE}
+	        done
                 ;;
             example)
                 render_example_template $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report/${line} ${PRIMELANGUAGE}
+		for g in ${GOALLANGUAGE} 
+		do
                 render_example_template $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report/${line} ${GOALLANGUAGE}
+	        done
                 ;;
             *) echo "RENDER-DETAILS: ${DETAILS} not handled yet" ;;
             esac
