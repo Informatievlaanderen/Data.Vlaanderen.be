@@ -42,7 +42,7 @@ upgrade_config() {
 
     jq -s '.[0][0] * .[1]' ${SLINE}/.names.json /tmp/upgrade.json > /tmp/mergedupgrade.json
     cat /tmp/mergedupgrade.json
-    cp /tmp/mergedupgrade.json > ${SLINE}/.names.json
+    cp /tmp/mergedupgrade.json ${SLINE}/.names.json
 
         
 
