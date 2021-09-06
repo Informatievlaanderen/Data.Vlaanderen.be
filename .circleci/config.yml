@@ -159,12 +159,6 @@ jobs:
           command: |
             $PWD/scripts/pretty-print-jsonfiles.sh /tmp/workspace
             mkdir -p /tmp/workspace/report /tmp/workspace/json /tmp/workspace/json
-      - run:
-          name: touch a file
-          command: |
-            touch /tmp/workspace/report/.ignore01
-            touch /tmp/workspace/json/.ignore02
-            touch /tmp/workspace/src/.ignore03
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
