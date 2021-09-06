@@ -40,9 +40,19 @@ upgrade_config() {
 	    "${TRANSLATIONOBJTEMPLATE}")
     echo $TRANSLATIONOBJ > /tmp/upgrade.json
 
-    jq -s '.[0][0] * .[1]' ${SLINE}/.names.json /tmp/upgrade.json > /tmp/mergedupgrade.json
-    cat /tmp/mergedupgrade.json
-    cp /tmp/mergedupgrade.json ${SLINE}/.names.json
+    # check for the amount of items in the .names.json
+    AMOUNT=$(jq length ${SLINE}/.names.json)
+
+    if [ ${AMOUNT} -eq 1 ] ; then
+    	jq -s '[.[0][0] * .[1]]' ${SLINE}/.names.json /tmp/upgrade.json > /tmp/mergedupgrade.json
+    	cp /tmp/mergedupgrade.json ${SLINE}/.names.json
+
+    else 
+	   echo "ERROR only a list with a single matching value should be in the specification config"
+	   cat ${SLINE}/.names.json
+	   exit -1
+    fi
+
 
         
 
