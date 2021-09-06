@@ -11,9 +11,16 @@ GOALLANGUAGECONFIG=`echo ${GOALLANGUAGECONFIG} | sed -e "s/'//g"`
 PRIMELANGUAGE=${4-${PRIMELANGUAGECONFIG}}
 GOALLANGUAGE=${5-${GOALLANGUAGECONFIG}}
 
+STRICT=$(jq -r .toolchain.strickness ${CONFIGDIR}/config.json)
 
 CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 export NODE_PATH=/app/node_modules
+
+execution_strickness() {
+	if [ "${STRICT}" != "lazy" ] ; then
+		exit -1
+	fi
+}
 
 render_merged_files() {
     echo "Rendering the merged version of $1 with the json in $2 from $3 and to $4"
@@ -38,7 +45,7 @@ render_merged_files() {
         echo "RENDER-DETAILS(mergefile): node /app/jsonld-merger.js -i ${JSONI} -m ${TRANSLATIONFILE} -l ${LANGUAGE} -o ${MERGEDJSONLD}"
         if ! node /app/jsonld-merger.js -i ${JSONI} -m ${TRANSLATIONFILE} -l ${LANGUAGE} -o ${MERGEDJSONLD}; then
             echo "RENDER-DETAILS: failed"
-            exit -1
+	    execution_strickness
         else
             echo "RENDER-DETAILS: Files succesfully merged and saved to: ${MERGEDJSONLD}"
             prettyprint_jsonld ${MERGEDJSONLD}
@@ -76,7 +83,7 @@ render_translationfiles() {
         echo "UPDATE-TRANSLATIONFILE: node /app/translation-json-update.js -i ${FILE} -f ${JSONI} -m ${PRIMELANGUAGE} -g ${GOALLANGUAGE} -o ${OUTPUTFILE}"
         if ! node /app/translation-json-update.js -i ${FILE} -f ${JSONI} -m ${PRIMELANGUAGE} -g ${GOALLANGUAGE} -o ${OUTPUTFILE}; then
             echo "RENDER-DETAILS: failed"
-            exit -1
+            execution_strickness
         else
             echo "RENDER-DETAILS: File succesfully updated"
             pretty_print_json ${OUTPUTFILE}
@@ -86,7 +93,7 @@ render_translationfiles() {
         echo "CREATE-TRANSLATIONFILE: node /app/translation-json-generator.js -i ${JSONI} -m ${PRIMELANGUAGE} -g ${GOALLANGUAGE} -o ${OUTPUTFILE}"
         if ! node /app/translation-json-generator.js -i ${JSONI} -m ${PRIMELANGUAGE} -g ${GOALLANGUAGE} -o ${OUTPUTFILE}; then
             echo "RENDER-DETAILS: failed"
-            exit -1
+            execution_strickness
         else
             echo "RENDER-DETAILS: File succesfully created"
             pretty_print_json ${OUTPUTFILE}
@@ -135,7 +142,7 @@ render_html() { # SLINE TLINE JSON
 
     if ! node /app/html-generator2.js -s ${TYPE} -i ${MERGEDJSONLD} -x ${RLINE}/html-nj_${LANGUAGE}.json -r /${DROOT} -t ${TEMPLATELANG} -d ${SLINE}/templates -o ${OUTPUT} -m ${LANGUAGE} -e ${RRLINE}; then
         echo "RENDER-DETAILS(language html): rendering failed"
-        exit -1
+	execution_strickness
     else
 	if [ ${PRIMELANGUAGE} == true ] ; then
 		cp ${OUTPUT} ${TLINE}/index.html
@@ -199,7 +206,7 @@ render_example_template() { # SLINE TLINE JSON
         echo "RENDER-DETAILS(example generator): node /app/exampletemplate-generator2.js -i ${MERGEDJSONLD} -o ${OUTPUT} -l ${LANGUAGE} -h /doc/${TYPE}/${BASENAME}"
         if ! node /app/exampletemplate-generator2.js -i ${MERGEDJSONLD} -o ${OUTPUT} -l ${LANGUAGE} -h /doc/${TYPE}/${BASENAME}; then
             echo "RENDER-DETAILS(example generator): rendering failed"
-            exit -1
+            execution_strickness
         else
             echo "RENDER-DETAILS(example generator): Files were rendered in ${OUTPUT}"
         fi
@@ -251,7 +258,7 @@ render_context() { # SLINE TLINE JSON
         echo "RENDER-DETAILS(context-language-aware): node /app/json-ld-generator2.js -d -l label -i ${MERGEDJSONLD} -o ${TLINE}/context/${OUTFILELANGUAGE} -m ${GOALLANGUAGE}"
         if ! node /app/json-ld-generator2.js -d -l label -i ${MERGEDJSONLD} -o ${TLINE}/context/${OUTFILELANGUAGE} -m ${GOALLANGUAGE}; then
             echo "RENDER-DETAILS(context-language-aware): See XXX for more details, Rendering failed"
-            exit -1
+            execution_strickness
         else
             echo "RENDER-DETAILS(context-language-aware): Rendering successfull, File saved to  ${TLINE}/context/${OUTFILELANGUAGE}"
         fi
@@ -289,7 +296,7 @@ render_shacl() {
         mkdir -p ${RLINE}/shacl
         if ! node /app/shacl-generator.js -i ${JSONI} -d ${DOMAIN} -o ${OUTFILE} 2>&1 | tee ${OUTREPORT}; then
             echo "RENDER-DETAILS: See ${OUTREPORT} for the details"
-            exit -1
+            execution_strickness
         fi
         prettyprint_jsonld ${OUTFILE}
         popd
@@ -329,7 +336,7 @@ render_shacl_languageaware() {
         mkdir -p ${RLINE}/shacl
         if ! node /app/shacl-generator2.js -i ${MERGEDJSONLD} -d ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE} 2>&1 | tee ${OUTREPORT}; then
             echo "RENDER-DETAILS(shacle-languageaware): See ${OUTREPORT} for the details"
-            exit -1
+            execution_strickness
         else
             echo "RENDER-DETAILS(shacle-languageaware): saved to ${OUTFILE}"
         fi
@@ -358,7 +365,7 @@ write_report() {
         echo "RENDER-DETAILS(mergefile): node /app/generate-translation-report.js -i ${TRANSLATIONFILE} -l ${LANGUAGE} -o ${REPORTFILE}"
         if ! node /app/generate-translation-report.js -i ${TRANSLATIONFILE} -l ${LANGUAGE} -o ${REPORTFILE}; then
             echo "RENDER-DETAILS: failed"
-            exit -1
+            execution_strickness
         else
             echo "RENDER-DETAILS: Report succesfully created and saved to: ${REPORTFILE}"
         fi
