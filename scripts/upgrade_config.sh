@@ -14,6 +14,10 @@ upgrade_config() {
 
     PRIMELANGUAGE=$(jq .primeLanguage ${CONFIGDIR}/config.json)
 
+
+    HASTRANSLATION=$(jq .[0].translation[0].language ${SLINE}/.names.json)
+    echo "${HASTRANSLATION}"
+
     TITLE=$(jq .[0].title ${SLINE}/.names.json)
     TEMPLATE=$(jq .[0].template ${SLINE}/.names.json)
     NAME=$(jq .[0].name ${SLINE}/.names.json)
@@ -32,8 +36,9 @@ upgrade_config() {
 	    "${TRANSLATIONOBJTEMPLATE}")
     echo $TRANSLATIONOBJ > /tmp/upgrade.json
 
-    jq -s '.[0][0] * .[1]' ${SLINE}/.names.json /tmp/upgrade.json > tmp/mergedupgrade.json
-    cp /tmp/mergedupgrade.json > ${SLINE}/.names.json
+    jq -s '.[0][0] * .[1]' ${SLINE}/.names.json /tmp/upgrade.json > /tmp/mergedupgrade.json
+    cat /tmp/mergedupgrade.json
+#    cp /tmp/mergedupgrade.json > ${SLINE}/.names.json
 
         
 
