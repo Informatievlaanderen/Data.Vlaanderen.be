@@ -385,27 +385,27 @@ cat ${CHECKOUTFILE} | while read line; do
                 render_html $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report/${line} ${PRIMELANGUAGE} true
 		for g in ${GOALLANGUAGE} 
 		do 
-                render_html $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report/${line} ${GOALLANGUAGE}
+                render_html $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report/${line} ${g}
 	        done
                 ;;
             shacl) # render_shacl $SLINE $TLINE $i $RLINE
                 render_shacl_languageaware $SLINE $TLINE $i $RLINE ${PRIMELANGUAGE}
 		for g in ${GOALLANGUAGE} 
 		do 
-                render_shacl_languageaware $SLINE $TLINE $i $RLINE ${GOALLANGUAGE}
+                render_shacl_languageaware $SLINE $TLINE $i $RLINE ${g}
 	        done
                 ;;
             context)
                 render_context $SLINE $TLINE $i $RLINE ${PRIMELANGUAGE}
 		for g in ${GOALLANGUAGE} 
 		do 
-                render_context $SLINE $TLINE $i $RLINE ${GOALLANGUAGE}
+                render_context $SLINE $TLINE $i $RLINE ${g}
 	        done
                 ;;
             multilingual)
 		for g in ${GOALLANGUAGE} 
 		do 
-                render_translationfiles ${PRIMELANGUAGE} ${GOALLANGUAGE} $i ${SLINE} ${TRLINE}
+                render_translationfiles ${PRIMELANGUAGE} ${g} $i ${SLINE} ${TRLINE}
 	        done
                 render_translationfiles ${PRIMELANGUAGE} ${PRIMELANGUAGE} $i ${SLINE} ${TRLINE}
                 ;;
@@ -413,21 +413,21 @@ cat ${CHECKOUTFILE} | while read line; do
                 render_merged_files $i ${PRIMELANGUAGE} ${SLINE} ${TRLINE} ${RLINE}
 		for g in ${GOALLANGUAGE} 
 	        do
-                render_merged_files $i ${GOALLANGUAGE} ${SLINE} ${TRLINE} ${RLINE}
+                render_merged_files $i ${g} ${SLINE} ${TRLINE} ${RLINE}
 	        done
                 ;;
             report)
                 write_report $i ${PRIMELANGUAGE} ${SLINE} ${TRLINE} ${RLINE}
 		for g in ${GOALLANGUAGE} 
 		do
-                write_report $i ${GOALLANGUAGE} ${SLINE} ${TRLINE} ${RLINE}
+                write_report $i ${g} ${SLINE} ${TRLINE} ${RLINE}
 	        done
                 ;;
             example)
                 render_example_template $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report/${line} ${PRIMELANGUAGE}
 		for g in ${GOALLANGUAGE} 
 		do
-                render_example_template $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report/${line} ${GOALLANGUAGE}
+                render_example_template $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report/${line} ${g}
 	        done
                 ;;
             *) echo "RENDER-DETAILS: ${DETAILS} not handled yet" ;;

@@ -10,7 +10,7 @@ CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 
 upgrade_config() {
     local SLINE=$1
-    echo "upgrade config for $LINE"
+    echo "upgrade config for $SLINE"
 
     PRIMELANGUAGE=$(jq -r ".primeLanguage" ${CONFIGDIR}/config.json)
 
