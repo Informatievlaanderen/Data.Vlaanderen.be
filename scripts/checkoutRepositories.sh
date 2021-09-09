@@ -93,7 +93,7 @@ then
       fi
       comhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
       echo "hashcode to add: ${comhash}"
-      echo ${row} | base64 --decode | jq --arg comhash "${comhash}" --arg toolchainhash "${toolchainhash}" --arg hostname $HOSTNAME'. + {documentcommit : $comhash, toolchaincommit: $toolchainhash, hostname: $hostname }' >.publication-point.json
+      echo ${row} | base64 --decode | jq --arg comhash "${comhash}" --arg toolchainhash "${toolchainhash}" --arg hostname "${HOSTNAME}" '. + {documentcommit : $comhash, toolchaincommit: $toolchainhash, hostname: $hostname }' > .publication-point.json
       cleanup_directory
       popd
 
