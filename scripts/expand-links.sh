@@ -67,7 +67,7 @@ then
 	echo ${TARGETSPEC}
 	if [ ${TARGETSPEC} == "true" ] ; then
    	   jq  --arg src ${TARGET} --arg tgt ${TARGET}/ns -r '.[] | if ( .urlref | startswith("/ns") ) then if (.prefix ) then @sh "mkdir -p \($tgt)/\(.prefix)" else empty end else empty end'  $LINKS | bash -e 
-	   PREFIX=$(echo ${i} | jq -r '.prefix'  )
+	   PREFIX=$(echo ${i} | jq -r '.prefix | values'  )
 	   cp_content_dir $i voc ns/${PREFIX}
 	fi
 
