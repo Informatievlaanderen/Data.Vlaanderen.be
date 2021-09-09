@@ -105,10 +105,15 @@ do
                 mkdir -p ${TLINE}/voc
                 make_jsonld $BASENAME $i ${SLINE}/selected_${PRIMELANGUAGE}.jsonld ${CONFIGDIR} ${PRIMELANGUAGE} ${RLINE} ${SLINE}
 		if [ ${RETURN} -gt 0 ] ; then
-                cp ${SLINE}/selected_${PRIMELANGUAGE}.jsonld ${TLINE}/voc/${BASENAME}_${PRIMELANGUAGE}.jsonld
+                     cp ${SLINE}/selected_${PRIMELANGUAGE}.jsonld ${TLINE}/voc/${BASENAME}_${PRIMELANGUAGE}.jsonld
+                     cp ${SLINE}/selected_${PRIMELANGUAGE}.jsonld ${TLINE}/voc/${BASENAME}.jsonld
 		fi
 
 
+		#
+		# do not execute the processing for other languages because RDF vocabularies are normally multilingual
+		# The current tool does not aggregate the different languages. This is a next step
+		#
 		for g in ${GOALLANGUAGE} 
 		do 
 			echo "render vocabulary for goal language ${g}"
