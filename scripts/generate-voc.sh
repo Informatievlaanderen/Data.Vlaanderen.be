@@ -6,8 +6,8 @@ CONFIGDIR=$3
 CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 
 #############################################################################################
-PRIMELANGUAGECONFIG=$(jq .primeLanguage ${CONFIGDIR}/config.json)
-GOALLANGUAGECONFIG=$(jq '.otherLanguages | @sh'  ${CONFIGDIR}/config.json)
+PRIMELANGUAGECONFIG=$(jq -r .primeLanguage ${CONFIGDIR}/config.json)
+GOALLANGUAGECONFIG=$(jq -r '.otherLanguages | @sh'  ${CONFIGDIR}/config.json)
 
 PRIMELANGUAGE=${4-${PRIMELANGUAGECONFIG}}
 GOALLANGUAGE=${5-${GOALLANGUAGECONFIG}}
@@ -19,7 +19,7 @@ is_vocabulary() {
     local RLINE=$1
     local SLINE=$2
     COMMANDJSONLD=$(echo '.[].type')
-    TYPE=${RLINE}/translation/$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
+    TYPE=$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
 
     if [ "${TYPE}" == "voc" ];  then
        return 0
@@ -38,15 +38,19 @@ make_jsonld() {
     local LANGUAGE=$5
     local RLINE=$6
     local SLINE=$7
+
+    RETURN=1
     mkdir -p /tmp/${FILE}
     COMMANDJSONLD=$(echo '.[].translation | .[] | select(.language | contains("'${LANGUAGE}'")) | .mergefile')
     MERGEDJSONLD=${RLINE}/translation/$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
     OUTPUT=${RLINE}/translation/voc_${LANGUAGE}.jsonld
 
+    if [ -f ${MERGEDJSONLD} ] ; then
     echo "RENDER-DETAILS(voc-languageaware): node /app/render-voc.js -i ${MERGEDJSONLD} -o ${OUTPUT} -l ${LANGUAGE}"
     if ! node /app/render-voc.js -i ${MERGEDJSONLD} -o ${OUTPUT} -l ${LANGUAGE}
     then
         echo "RENDER-DETAILS(voc-languageaware): See ${OUTREPORT} for the details"
+	RETURN=-1
         exit -1
     else
         echo "RENDER-DETAILS(voc-languageaware): saved to ${OUTPUT}"
@@ -69,6 +73,12 @@ make_jsonld() {
             fi
         fi
     fi
+    else
+       echo "RENDER-DETAILS(voc-languageaware): ERROR ${MERGEDJSONLD} has not been created in previous step"
+       echo "RENDER-DETAILS(voc-languageaware): continue with next specification"
+       RETURN=0
+    fi
+
 
 }
 #############################################################################################
@@ -91,15 +101,21 @@ do
                 OUTFILE=${BASENAME}.ttl
                 REPORT=${RLINE}/${BASENAME}.ttl-report
 
+		echo "render vocabulary for prime language ${PRIMELANGUAGE}"
                 mkdir -p ${TLINE}/voc
                 make_jsonld $BASENAME $i ${SLINE}/selected_${PRIMELANGUAGE}.jsonld ${CONFIGDIR} ${PRIMELANGUAGE} ${RLINE} ${SLINE}
+		if [ ${RETURN} -gt 0 ] ; 
                 cp ${SLINE}/selected_${PRIMELANGUAGE}.jsonld ${TLINE}/voc/${BASENAME}_${PRIMELANGUAGE}.jsonld
+		fi
 
 
 		for g in ${GOALLANGUAGE} 
 		do 
+			echo "render vocabulary for goal language ${g}"
                 	make_jsonld $BASENAME $i ${SLINE}/selected_${g}.jsonld ${CONFIGDIR} ${g} ${RLINE} ${SLINE} 
+			if [ ${RETURN} -gt 0 ] ; 
                 	cp ${SLINE}/selected_${g}.jsonld ${TLINE}/voc/${BASENAME}_${g}.jsonld
+			fi
 		done
                 fi
             done
