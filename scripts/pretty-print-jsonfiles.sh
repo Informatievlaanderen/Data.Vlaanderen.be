@@ -1,11 +1,15 @@
 #!/bin/bash
 
 WORKDIR=$1
-SRCDIR=${WORKDIR}/src
-JSONDIR=${WORKDIR}/json
+DIRS="${WORKDIR}/src ${WORKDIR}/json ${WORKDIR}/report"
 PID=$$
 
-( find ${SRCDIR} -name \*.jsonld -type f ; find ${JSONDIR} -name \*.jsonld -type f ) > /tmp/files.txt
+
+rm -rf /tmp/files.txt
+for i in ${DIRS} ; do
+( find ${i} -name \*.jsonld -type f) >> /tmp/files.txt
+done
+
 
 pushd /app
  cat /tmp/files.txt | while read line
