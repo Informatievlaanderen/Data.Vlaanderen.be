@@ -12,6 +12,7 @@ PRIMELANGUAGE=${4-${PRIMELANGUAGECONFIG}}
 GOALLANGUAGE=${5-${GOALLANGUAGECONFIG}}
 
 STRICT=$(jq -r .toolchain.strickness ${CONFIGDIR}/config.json)
+HOSTNAME=$(jq -r .hostname ${CONFIGDIR}/config.json)
 
 CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 export NODE_PATH=/app/node_modules
@@ -290,7 +291,7 @@ render_shacl() {
 
     if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
         echo "RENDER-DETAILS(shacl): node /app/shacl-generator.js -i ${JSONI} -o ${OUTFILE}"
-        DOMAIN="https://data.ai-proficiant.eu/shacl/${FILENAME}"
+        DOMAIN="${HOSTNAME}/shacl/${FILENAME}"
         pushd /app
         mkdir -p ${TLINE}/shacl
         mkdir -p ${RLINE}/shacl
@@ -330,7 +331,7 @@ render_shacl_languageaware() {
 
     if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
         echo "RENDER-DETAILS(shacl-languageaware): node /app/shacl-generator.js -i ${MERGEDJSONLD} -d ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE}"
-        DOMAIN="https://data.ai-proficiant.eu/shacl/${FILENAME}"
+        DOMAIN="${HOSTNAME}/shacl/${FILENAME}"
         pushd /app
         mkdir -p ${TLINE}/shacl
         mkdir -p ${RLINE}/shacl
