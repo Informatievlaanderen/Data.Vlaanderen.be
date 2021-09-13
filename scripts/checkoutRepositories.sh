@@ -2,6 +2,7 @@
 
 PUBCONFIG=$2
 ROOTDIR=$1
+CONFIGDIR=$3
 
 # some test calls
 #jq -r '.[] | @sh "echo \(.urlref)"' publication.config | bash -e
@@ -34,6 +35,8 @@ ROOTDIR=$1
 # month. And then the publication would only chekcout additonal
 # publicationpoints for that month. That would reduce the runtime
 # drastically.
+
+HOSTNAME=$(jq -r .hostname ${CONFIGDIR}/config.json)
 
 cleanup_directory() {
   rm -rf .git

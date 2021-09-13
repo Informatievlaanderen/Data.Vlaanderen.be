@@ -291,7 +291,7 @@ render_shacl() {
 
     if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
         echo "RENDER-DETAILS(shacl): node /app/shacl-generator.js -i ${JSONI} -o ${OUTFILE}"
-        DOMAIN="${HOSTNAME}/shacl/${FILENAME}"
+        DOMAIN="https://${HOSTNAME}/shacl/${FILENAME}"
         pushd /app
         mkdir -p ${TLINE}/shacl
         mkdir -p ${RLINE}/shacl
@@ -331,7 +331,7 @@ render_shacl_languageaware() {
 
     if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
         echo "RENDER-DETAILS(shacl-languageaware): node /app/shacl-generator.js -i ${MERGEDJSONLD} -d ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE}"
-        DOMAIN="${HOSTNAME}/shacl/${FILENAME}"
+        DOMAIN="https://${HOSTNAME}/shacl/${FILENAME}"
         pushd /app
         mkdir -p ${TLINE}/shacl
         mkdir -p ${RLINE}/shacl

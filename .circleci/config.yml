@@ -22,7 +22,7 @@ commands:
             equal: [ << pipeline.git.branch >>, <<parameters.production_branch>> ]
           steps:
             - run:
-                command: $PWD/scripts/checkoutRepositories.sh /tmp/workspace $PWD/config/publication.json
+                command: $PWD/scripts/checkoutRepositories.sh /tmp/workspace $PWD/config/publication.json $PWD/config
                 environment:
                   HOSTNAME: <<parameters.production_hostname>>
       - when:
@@ -30,7 +30,7 @@ commands:
             equal: [ << pipeline.git.branch >>,<<parameters.test_branch>> ]
           steps:
             - run:
-                command: $PWD/scripts/checkoutRepositories.sh /tmp/workspace $PWD/config/publication.json
+                command: $PWD/scripts/checkoutRepositories.sh /tmp/workspace $PWD/config/publication.json $PWD/config
                 environment:
                   HOSTNAME: <<parameters.test_hostname>>
       - unless:
@@ -40,7 +40,7 @@ commands:
               - equal: [ << pipeline.git.branch >>,<<parameters.production_branch>> ]
           steps:
             - run:
-                command: $PWD/scripts/checkoutRepositories.sh /tmp/workspace $PWD/config/publication.json
+                command: $PWD/scripts/checkoutRepositories.sh /tmp/workspace $PWD/config/publication.json $PWD/config
                 environment:
                   HOSTNAME: <<parameters.other_hostname>>
 jobs:
