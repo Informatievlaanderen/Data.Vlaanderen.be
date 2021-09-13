@@ -26,5 +26,6 @@ pushd /app
 	 exit 1
      fi
      mv $line.out $line
+     rm $line.out1
  done
 popd
