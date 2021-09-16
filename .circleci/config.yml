@@ -77,7 +77,7 @@ jobs:
       - run: mkdir -p workspace
       - run: ls -al workspace
       - run:
-          command: $PWD/scripts/findPublicationsToUpdate.sh /tmp/workspace $PWD/config/publication.json
+          command: $PWD/scripts/findPublicationsToUpdate.sh /tmp/workspace $PWD/config/publication.json $PWD/config
           environment:
             PRODUCTION_FOLDER: <<parameters.production_folder>>
             TEST_FOLDER: <<parameters.test_folder>>

@@ -1,7 +1,8 @@
 #!/bin/bash
 
-PUB_CONFIG=$2
 ROOT_DIR=$1
+PUB_CONFIG=$2
+CONFIGDIR=$3
 
 CONFIG_FOLDER=${PUB_CONFIG%/*}
 PUB_FILE=${PUB_CONFIG##*/}
@@ -28,6 +29,7 @@ if jq -e . $ROOT_DIR/commit.json; then
   onlyChangedPublicationFiles=true
 
   COMMIT=$(jq -r .commit $ROOT_DIR/commit.json)
+  PUBLICATIONPOINTSDIRS=$(jq -r '.publicationpoints | @sh'  ${CONFIGDIR}/config.json)
 
   listOfChanges=$(git diff --name-only --no-renames $COMMIT)
   echo "write change file"
@@ -37,6 +39,23 @@ if jq -e . $ROOT_DIR/commit.json; then
   mkdir -p tmp/prev/config/$OTHER_FOLDER tmp/prev/config/$TEST_FOLDER tmp/prev/config/$PRODUCTION_FOLDER
   mkdir -p tmp/next/config/$OTHER_FOLDER tmp/next/config/$TEST_FOLDER tmp/next/config/$PRODUCTION_FOLDER
   while read -r filename;  do
+#    if [[  $filename == "$CONFIG_FOLDER/$PUB_FILE" \
+#       || ($filename == $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE && ($CIRCLE_BRANCH == "$TEST_BRANCH" || $CIRCLE_BRANCH == "$PRODUCTION_BRANCH")) \
+#       || ($filename == $CONFIG_FOLDER/$TEST_FOLDER/*.$PUB_FILE && $CIRCLE_BRANCH == "$TEST_BRANCH") \
+#       || ($filename == $CONFIG_FOLDER/$OTHER_FOLDER/*.$PUB_FILE && ($CIRCLE_BRANCH != "$TEST_BRANCH" && $CIRCLE_BRANCH != "$PRODUCTION_BRANCH")) \
+#       ]] ; then
+    echo $filename
+    echo $CONFIGDIR
+    echo $CONFIG_FOLDER
+    filenameInConfig=${filename#"$CONFIGDIR"}
+    filenameInSelection=false
+    for $i in ${PUBLICATIONPOINTSDIRS} do
+	    if [ $filename =~ "${CONFIGDIR}/$i/.*" ] ; then 
+	     filenameInSelection = true
+	    fi
+    done
+    echo $filenameInSelection
+    
     if [[  $filename == "$CONFIG_FOLDER/$PUB_FILE" \
        || ($filename == $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE && ($CIRCLE_BRANCH == "$TEST_BRANCH" || $CIRCLE_BRANCH == "$PRODUCTION_BRANCH")) \
        || ($filename == $CONFIG_FOLDER/$TEST_FOLDER/*.$PUB_FILE && $CIRCLE_BRANCH == "$TEST_BRANCH") \
