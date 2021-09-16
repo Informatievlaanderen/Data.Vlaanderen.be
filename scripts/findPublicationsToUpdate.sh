@@ -30,14 +30,19 @@ if jq -e . $ROOT_DIR/commit.json; then
 
   COMMIT=$(jq -r .commit $ROOT_DIR/commit.json)
   PUBLICATIONPOINTSDIRS=$(jq -r '.publicationpoints | @sh'  ${CONFIGDIR}/config.json)
+  PUBLICATIONPOINTSDIRS=`echo ${PUBLICATIONPOINTSDIRS} | sed -e "s/'//g"`
 
   listOfChanges=$(git diff --name-only --no-renames $COMMIT)
   echo "write change file"
   echo $listOfChanges > changes.txt
 
-
+  for i in ${PUBLICATIONPOINTSDIRS} ; do
+         mkdir -p tmp/prev/config/$i
+         mkdir -p tmp/next/config/$i
+  done
   mkdir -p tmp/prev/config/$OTHER_FOLDER tmp/prev/config/$TEST_FOLDER tmp/prev/config/$PRODUCTION_FOLDER
   mkdir -p tmp/next/config/$OTHER_FOLDER tmp/next/config/$TEST_FOLDER tmp/next/config/$PRODUCTION_FOLDER
+
   while read -r filename;  do
 #    if [[  $filename == "$CONFIG_FOLDER/$PUB_FILE" \
 #       || ($filename == $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE && ($CIRCLE_BRANCH == "$TEST_BRANCH" || $CIRCLE_BRANCH == "$PRODUCTION_BRANCH")) \
@@ -47,19 +52,17 @@ if jq -e . $ROOT_DIR/commit.json; then
     echo $filename
     echo $CONFIGDIR
     echo $CONFIG_FOLDER
-    filenameInConfig=${filename#"$CONFIGDIR"}
     filenameInSelection=false
-    for $i in ${PUBLICATIONPOINTSDIRS} do
-	    if [ $filename =~ "${CONFIGDIR}/$i/.*" ] ; then 
-	     filenameInSelection = true
-	    fi
+    for i in ${PUBLICATIONPOINTSDIRS} ; do
+           if [[ $filename =~ ${CONFIGDIR}/$i/.*.${PUB_FILE} ]] ; then 
+            filenameInSelection=true
+        fi
     done
+    
     echo $filenameInSelection
     
     if [[  $filename == "$CONFIG_FOLDER/$PUB_FILE" \
-       || ($filename == $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE && ($CIRCLE_BRANCH == "$TEST_BRANCH" || $CIRCLE_BRANCH == "$PRODUCTION_BRANCH")) \
-       || ($filename == $CONFIG_FOLDER/$TEST_FOLDER/*.$PUB_FILE && $CIRCLE_BRANCH == "$TEST_BRANCH") \
-       || ($filename == $CONFIG_FOLDER/$OTHER_FOLDER/*.$PUB_FILE && ($CIRCLE_BRANCH != "$TEST_BRANCH" && $CIRCLE_BRANCH != "$PRODUCTION_BRANCH")) \
+       || $filenameInSelection == "true" \
        ]] ; then
       echo "The file $filename is added for publicationchanges"
       if git show $COMMIT:$filename &>/dev/null ; then
