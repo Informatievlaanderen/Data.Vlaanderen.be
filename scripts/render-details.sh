@@ -233,7 +233,7 @@ render_context() { # SLINE TLINE JSON
     local JSONI=$3
     local RLINE=$4
     local GOALLANGUAGE=$5
-    local PRIMELANGUAGE=$6
+    local PRIMELANGUAGE=${6-false}
 
     FILENAME=$(jq -r ".name" ${JSONI})
     OUTFILE=${FILENAME}.jsonld
@@ -314,8 +314,9 @@ render_shacl_languageaware() {
     local JSONI=$3
     local RLINE=$4
     local GOALLANGUAGE=$5
+    local PRIMELANGUAGE=${6-false}
 
-    FILENAME=$(jq -r ".name" ${JSONI})_${GOALLANGUAGE}
+    FILENAME=$(jq -r ".name" ${JSONI})
     COMMANDJSONLD=$(echo '.[].translation | .[] | select(.language | contains("'${GOALLANGUAGE}'")) | .mergefile')
     LANGUAGEFILENAMEJSONLD=$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
 
@@ -324,8 +325,8 @@ render_shacl_languageaware() {
     else 
 
     MERGEDJSONLD=${RLINE}/translation/${LANGUAGEFILENAMEJSONLD}
-    OUTFILE=${TLINE}/shacl/${FILENAME}-SHACL.jsonld
-    OUTREPORT=${RLINE}/shacl/${FILENAME}-SHACL.report
+    OUTFILE=${TLINE}/shacl/${FILENAME}-SHACL_${GOALLANGUAGE}.jsonld
+    OUTREPORT=${RLINE}/shacl/${FILENAME}-SHACL_${GOALLANGUAGE}.report
 
     BASENAME=$(basename ${JSONI} .jsonld)
 
@@ -334,17 +335,20 @@ render_shacl_languageaware() {
 
     if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
         echo "RENDER-DETAILS(shacl-languageaware): node /app/shacl-generator.js -i ${MERGEDJSONLD} -d ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE}"
-        DOMAIN="${HOSTNAME}/shacl/${FILENAME}"
+        DOMAIN="${HOSTNAME}/shacl/${FILENAME}-SHACL_${GOALLANGUAGE}"
         pushd /app
         mkdir -p ${TLINE}/shacl
         mkdir -p ${RLINE}/shacl
         if ! node /app/shacl-generator2.js -i ${MERGEDJSONLD} -d ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE} 2>&1 | tee ${OUTREPORT}; then
-            echo "RENDER-DETAILS(shacle-languageaware): See ${OUTREPORT} for the details"
+            echo "RENDER-DETAILS(shacl-languageaware): See ${OUTREPORT} for the details"
             execution_strickness
         else
-            echo "RENDER-DETAILS(shacle-languageaware): saved to ${OUTFILE}"
+            echo "RENDER-DETAILS(shacl-languageaware): saved to ${OUTFILE}"
         fi
         prettyprint_jsonld ${OUTFILE}
+	if [ ${PRIMELANGUAGE} == true ] ; then
+		cp ${OUTFILE} ${TLINE}/shacl/${FILENAME}-SHACL.jsonld
+	fi
         popd
     fi
     fi
