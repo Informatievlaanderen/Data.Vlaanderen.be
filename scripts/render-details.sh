@@ -233,9 +233,11 @@ render_context() { # SLINE TLINE JSON
     local JSONI=$3
     local RLINE=$4
     local GOALLANGUAGE=$5
+    local PRIMELANGUAGE=$6
 
     FILENAME=$(jq -r ".name" ${JSONI})
     OUTFILE=${FILENAME}.jsonld
+    OUTFILELANGUAGE=${FILENAME}_${GOALLANGUAGE}.jsonld
 
     BASENAME=$(basename ${JSONI} .jsonld)
     #    OUTFILE=${BASENAME}.jsonld
@@ -244,10 +246,9 @@ render_context() { # SLINE TLINE JSON
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
     if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
-        echo "RENDER-DETAILS(context): node /app/json-ld-generator.js -d -l label -i ${JSONI} -o ${TLINE}/context/${OUTFILE} "
+        echo "RENDER-DETAILS(context): node /app/json-ld-generator.js -d -l label -i ${JSONI} -o ${TLINE}/context/${OUTFILELANGUAGE} "
         pushd /app
         mkdir -p ${TLINE}/context
-        OUTFILELANGUAGE=${FILENAME}_${GOALLANGUAGE}.jsonld
         COMMANDJSONLD=$(echo '.[].translation | .[] | select(.language | contains("'${GOALLANGUAGE}'")) | .mergefile')
         LANGUAGEFILENAMEJSONLD=$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
 	if [ "${LANGUAGEFILENAMEJSONLD}" == "" ] ; then
@@ -264,8 +265,10 @@ render_context() { # SLINE TLINE JSON
             echo "RENDER-DETAILS(context-language-aware): Rendering successfull, File saved to  ${TLINE}/context/${OUTFILELANGUAGE}"
         fi
 
-        prettyprint_jsonld ${TLINE}/context/${OUTFILE}
         prettyprint_jsonld ${TLINE}/context/${OUTFILELANGUAGE}
+	if [ ${PRIMELANGUAGE} == true ] ; then
+		cp ${OUTFILELANGUAGE} ${OUTFILE}
+	fi
         popd
 	fi 
     fi
@@ -404,10 +407,10 @@ cat ${CHECKOUTFILE} | while read line; do
 	        done
                 ;;
             context)
-                render_context $SLINE $TLINE $i $RLINE ${PRIMELANGUAGE}
+                render_context $SLINE $TLINE $i $RLINE ${PRIMELANGUAGE} true
 		for g in ${GOALLANGUAGE} 
 		do 
-                render_context $SLINE $TLINE $i $RLINE ${g}
+                render_context $SLINE $TLINE $i $RLINE ${g} 
 	        done
                 ;;
             multilingual)
