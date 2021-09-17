@@ -404,7 +404,7 @@ cat ${CHECKOUTFILE} | while read line; do
 	        done
                 ;;
             shacl) # render_shacl $SLINE $TLINE $i $RLINE
-                render_shacl_languageaware $SLINE $TLINE $i $RLINE ${PRIMELANGUAGE}
+                render_shacl_languageaware $SLINE $TLINE $i $RLINE ${PRIMELANGUAGE} true
 		for g in ${GOALLANGUAGE} 
 		do 
                 render_shacl_languageaware $SLINE $TLINE $i $RLINE ${g}
