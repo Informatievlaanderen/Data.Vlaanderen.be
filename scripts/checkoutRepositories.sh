@@ -52,7 +52,10 @@ cleanup_directory() {
 
 git_download() {
      local GITTARGETDIR=$1
-     local GITTMPDIR=$2
+
+     REPO=$(_jq '.repository')
+     REPO=`echo ${REPO} | sed -e "s|https://||g" | sed -e "s|/|-|g"` 
+     GITTMPDIR="/tmp/github/${REPO}"
 
      if [ ! -d ${GITTMPDIR} ] ; then
         git clone $(_jq '.repository') ${GITTMPDIR}
@@ -64,10 +67,11 @@ git_download() {
         # branch could not be checked out for some reason
         echo "failed: $ROOTDIR/$MAIN/$RDIR $(_jq '.branchtag')" >>$ROOTDIR/failed.txt
      fi
-     cp -r ${GITTMPDIR} ${GITTARGETDIR}
+     cp -a ${GITTMPDIR} ${GITTARGETDIR}
 
      popd 
 }
+
 
 toolchainhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
 
@@ -96,9 +100,8 @@ then
       mkdir -p $ROOTDIR/$MAIN/$RDIR
       mkdir -p $ROOTDIR/target/$RDIR
       mkdir -p $ROOTDIR/report/$RDIR
-      mkdir -p /tmp/github/${MAIN}/${RDIR}
 
-      git_download $ROOTDIR/$MAIN/$RDIR /tmp/github/${MAIN}/${RDIR}
+      git_download $ROOTDIR/$MAIN/$RDIR 
 #      git clone $(_jq '.repository') $ROOTDIR/$MAIN/$RDIR
 #
 #      pushd $ROOTDIR/$MAIN/$RDIR
