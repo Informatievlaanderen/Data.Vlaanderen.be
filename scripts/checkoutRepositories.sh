@@ -67,7 +67,7 @@ git_download() {
         # branch could not be checked out for some reason
         echo "failed: $ROOTDIR/$MAIN/$RDIR $(_jq '.branchtag')" >>$ROOTDIR/failed.txt
      fi
-     cp -a ${GITTMPDIR} ${GITTARGETDIR}
+     cp -a ${GITTMPDIR}/. ${GITTARGETDIR}
 
      popd 
 }
