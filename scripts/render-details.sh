@@ -247,7 +247,6 @@ render_context() { # SLINE TLINE JSON
 
     if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
         echo "RENDER-DETAILS(context): node /app/json-ld-generator.js -d -l label -i ${JSONI} -o ${TLINE}/context/${OUTFILELANGUAGE} "
-        pushd /app
         mkdir -p ${TLINE}/context
         COMMANDJSONLD=$(echo '.[].translation | .[] | select(.language | contains("'${GOALLANGUAGE}'")) | .mergefile')
         LANGUAGEFILENAMEJSONLD=$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
@@ -267,9 +266,9 @@ render_context() { # SLINE TLINE JSON
 
         prettyprint_jsonld ${TLINE}/context/${OUTFILELANGUAGE}
 	if [ ${PRIMELANGUAGE} == true ] ; then
-		cp ${OUTFILELANGUAGE} ${OUTFILE}
+		cp ${TLINE}/context/${OUTFILELANGUAGE} ${TLINE}/context/${OUTFILE}
 	fi
-        popd
+
 	fi 
     fi
 }
