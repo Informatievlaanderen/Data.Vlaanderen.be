@@ -50,6 +50,25 @@ cleanup_directory() {
   fi
 }
 
+git_download() {
+     local GITTARGETDIR=$1
+     local GITTMPDIR=$2
+
+     if [ ! -d ${GITTMPDIR} ] ; then
+        git clone $(_jq '.repository') ${GITTMPDIR}
+     fi
+     pushd ${GITTMPDIR}
+
+     if ! git checkout $(_jq '.branchtag')
+     then
+        # branch could not be checked out for some reason
+        echo "failed: $ROOTDIR/$MAIN/$RDIR $(_jq '.branchtag')" >>$ROOTDIR/failed.txt
+     fi
+     cp -r ${GITTMPDIR} ${GITTARGETDIR}
+
+     popd 
+}
+
 toolchainhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
 
 # Process the publications.config file
@@ -77,14 +96,17 @@ then
       mkdir -p $ROOTDIR/$MAIN/$RDIR
       mkdir -p $ROOTDIR/target/$RDIR
       mkdir -p $ROOTDIR/report/$RDIR
-      git clone $(_jq '.repository') $ROOTDIR/$MAIN/$RDIR
+      mkdir -p /tmp/github/${MAIN}/${RDIR}
 
-      pushd $ROOTDIR/$MAIN/$RDIR
-      if ! git checkout $(_jq '.branchtag')
-      then
-        # branch could not be checked out for some reason
-        echo "failed: $ROOTDIR/$MAIN/$RDIR $(_jq '.branchtag')" >>$ROOTDIR/failed.txt
-      fi
+      git_download $ROOTDIR/$MAIN/$RDIR /tmp/github/${MAIN}/${RDIR}
+#      git clone $(_jq '.repository') $ROOTDIR/$MAIN/$RDIR
+#
+#      pushd $ROOTDIR/$MAIN/$RDIR
+#      if ! git checkout $(_jq '.branchtag')
+#      then
+#        # branch could not be checked out for some reason
+#        echo "failed: $ROOTDIR/$MAIN/$RDIR $(_jq '.branchtag')" >>$ROOTDIR/failed.txt
+#      fi
 
       pushd $ROOTDIR/$MAIN/$RDIR
 
