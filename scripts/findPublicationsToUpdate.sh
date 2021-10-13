@@ -130,6 +130,14 @@ else
     cp $CONFIG_FOLDER/$PUB_FILE tmp/all
     cp $CONFIG_FOLDER/$OTHER_FOLDER/*.$PUB_FILE tmp/all/$OTHER_FOLDER
   fi
+  echo "include all selected publication points" 
+  for i in ${PUBLICATIONPOINTSDIRS} ; do
+	  echo "try to copy all files with extension ${PUB_FILE}"
+      cp ${CONFIG_FOLDER}/$i/.*.${PUB_FILE}  tmp/all
+	  echo "try to copy file ${PUB_FILE}"
+      cp ${CONFIG_FOLDER}/$i/${PUB_FILE}  tmp/all
+  done
+  echo "errors are normal if the files of the above form are not present" 
   jq --slurp -S '[.[][]]' $( find tmp/all -type f ) | jq '[.[] | select( .disabled | not )]' | jq '.|=sort_by(.urlref)' > $ROOT_DIR/allPublications.json
   echo "false" > $ROOT_DIR/haschangedpublications.json
   cp ${PUB_CONFIG} $ROOT_DIR/publications.json.old
