@@ -56,6 +56,9 @@ if jq -e . $ROOT_DIR/commit.json; then
            if [[ $filename =~ ${GITROOT}/$i/.*.${PUB_FILE} ]] ; then 
             filenameInSelection=true
         fi
+           if [[ $filename =~ ${GITROOT}/$i/${PUB_FILE} ]] ; then 
+            filenameInSelection=true
+        fi
     done
     
     
