@@ -132,20 +132,20 @@ elif [[ $onlyChangedPublications == "true" ]]; then
   echo "process only added and updated publication points"
 else
   # assumes full rebuild
-  if [[ $CIRCLE_BRANCH == "$TEST_BRANCH" ]]; then
-    mkdir -p tmp/all/$PRODUCTION_FOLDER tmp/all/$TEST_FOLDER
-    cp $CONFIG_FOLDER/$PUB_FILE tmp/all/
-    cp $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE tmp/all/$PRODUCTION_FOLDER
-    cp $CONFIG_FOLDER/$TEST_FOLDER/*.$PUB_FILE tmp/all/$TEST_FOLDER
-  elif [[ $CIRCLE_BRANCH == "$PRODUCTION_BRANCH" ]]; then
-    mkdir -p tmp/all/$PRODUCTION_FOLDER
-    cp $CONFIG_FOLDER/$PUB_FILE tmp/all/
-    cp $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE tmp/all/$PRODUCTION_FOLDER
-  else
-    mkdir -p tmp/all/$OTHER_FOLDER
-    cp $CONFIG_FOLDER/$PUB_FILE tmp/all
-    cp $CONFIG_FOLDER/$OTHER_FOLDER/*.$PUB_FILE tmp/all/$OTHER_FOLDER
-  fi
+#  if [[ $CIRCLE_BRANCH == "$TEST_BRANCH" ]]; then
+#    mkdir -p tmp/all/$PRODUCTION_FOLDER tmp/all/$TEST_FOLDER
+#    cp $CONFIG_FOLDER/$PUB_FILE tmp/all/
+#    cp $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE tmp/all/$PRODUCTION_FOLDER
+#    cp $CONFIG_FOLDER/$TEST_FOLDER/*.$PUB_FILE tmp/all/$TEST_FOLDER
+#  elif [[ $CIRCLE_BRANCH == "$PRODUCTION_BRANCH" ]]; then
+#    mkdir -p tmp/all/$PRODUCTION_FOLDER
+#    cp $CONFIG_FOLDER/$PUB_FILE tmp/all/
+#    cp $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE tmp/all/$PRODUCTION_FOLDER
+#  else
+#    mkdir -p tmp/all/$OTHER_FOLDER
+#    cp $CONFIG_FOLDER/$PUB_FILE tmp/all
+#    cp $CONFIG_FOLDER/$OTHER_FOLDER/*.$PUB_FILE tmp/all/$OTHER_FOLDER
+#  fi
   echo "include all selected publication points" 
   for i in ${PUBLICATIONPOINTSDIRS} ; do
 	  echo "try to copy all files with extension ${PUB_FILE}"
