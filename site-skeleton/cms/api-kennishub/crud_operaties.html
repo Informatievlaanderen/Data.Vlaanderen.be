@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>API Kennishub</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui-corporate.css"
+    />
+
+    <link
+      rel="icon"
+      sizes="192x192"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/icon-highres-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-ipad-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-retina-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-ipad-retina-precomposed.png"
+    />
+
+    <meta
+      name="msapplication-square70x70logo"
+      content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-small.png"
+    />
+    <meta
+      name="msapplication-square150x150logo"
+      content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-medium.png"
+    />
+    <meta
+      name="msapplication-wide310x150logo"
+      content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-wide.png"
+    />
+    <meta
+      name="msapplication-square310x310logo"
+      content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-large.png"
+    />
+    <meta name="msapplication-TileColor" content="#FFE615" />
+    <!-- HTML icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <header
+      class="content-header content-header--small content-header--half-image u-spacer--large"
+    >
+      <div class="content-header__wrapper">
+        <picture class="content-header__bg">
+          <img
+            sizes="50vw"
+            src="//www.vlaanderen.be/sites/default/files/ip_acm/page_banner_wide_alt/header.jpg"
+            srcset="
+              //www.vlaanderen.be/sites/default/files/ip_acm/page_banner_mobile_alt/header.jpg  320w,
+              //www.vlaanderen.be/sites/default/files/ip_acm/page_banner_narrow/header.jpg     1024w,
+              //www.vlaanderen.be/sites/default/files/ip_acm/page_banner_wide_alt/header.jpg   1600w
+            "
+            alt=""
+            title=""
+          />
+        </picture>
+        <div class="layout layout--wide">
+          <div class="content-header__content">
+            <div class="content-header__logo-wrapper">
+              <a
+                href="../oslo-services.html"
+                class="content-header__entity-logo"
+              >
+                <span class="content-header__entity-logo__prefix"
+                  >OSLO-Tools</span
+                >
+                <span class="content-header__entity-logo__title"
+                  >API Kennishub</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="layout layout--wide">
+        <ul class="nav_bar">
+          <li>
+            <a class="button" href="./intro.html">Intro</a>
+          </li>
+          <li>
+            <a class="button" href="./generieke_hypermedia_api.html"
+              >Generieke Hypermedia API</a
+            >
+          </li>
+          <li><a class="button" href="./paginering.html">Paginering</a></li>
+          <li>
+            <a class="button" href="./crud_operaties.html">CRUD operaties</a>
+          </li>
+          <li>
+            <a class="button" href="./taal_selectie_ontdekking.html"
+              >Taal-selectie/ontdekking</a
+            >
+          </li>
+        </ul>
+        <h1 class="h1">CRUD operaties</h1>
+        <h2 class="h2">Introductie</h2>
+        <p>
+          CRUD of Create, Read, Update & Delete zijn de vier basisoperaties die
+          op resources kunnen worden uitgevoerd.
+        </p>
+        <br />
+        <ul class="bullet-list bullet-list--tag">
+          <li class="bullet-list__item">
+            Create: aanmaken van een nieuwe resource
+          </li>
+          <li class="bullet-list__item">
+            Read: opvragen van gegevens over een specifieke resource
+          </li>
+          <li class="bullet-list__item">
+            Update: wijzigen van gegevens over een specifieke resource
+          </li>
+          <li class="bullet-list__item">
+            Delete: verwijderen van een resource
+          </li>
+        </ul>
+        <br />
+        <p>
+          Deze sectie beschrijft een abstract algoritme dat een generieke client
+          toelaat deze basis operaties te herkennen die toegelaten zijn op een
+          bepaalde resource.
+        </p>
+        <h2 class="h2">Nakomingsniveaus</h2>
+        <p>
+          Zie ook:
+          <a
+            href="https://github.com/Informatievlaanderen/generieke-hypermedia-api#nakomingsniveaus"
+            >https://github.com/Informatievlaanderen/generieke-hypermedia-api#nakomingsniveaus</a
+          >
+        </p>
+        <h3 class="h3">HTTP</h3>
+        <p>
+          Een server MOET ondersteuning bieden voor één of meerdere HTTP verbs.
+          Welke HTTP verbs precies ondersteund worden voor een bepaalde resource
+          dient meegegeven te worden in de HTTP 'Allow' header.
+        </p>
+        <br />
+        <p>
+          Daarnaast MOET een API HTTP verbs gebruiken in lijn met
+          <a href="https://tools.ietf.org/html/rfc7231">RFC7231</a> en in het
+          <a href="https://tools.ietf.org/html/rfc5789">RFC5789</a> voor de
+          PATCH methode.
+        </p>
+        <br />
+        <p>
+          Onderstaande tabel geeft aan welke HTTP verbs ZOUDEN ondersteund
+          kunnen worden door een API (één of meerdere afhankelijk van de
+          functionaliteit aangeboden door de API). De operatie idempotentie MOET
+          voldaan worden.
+        </p>
+        <br />
+        <table>
+          <thead>
+            <tr>
+              <th>Methode</th>
+              <th>Omschrijving</th>
+              <th>Is idempotent</th>
+              <th>CRUD operatie</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GET</td>
+              <td>Geef de huidige waarde van een object.</td>
+              <td>True</td>
+              <td>Read</td>
+            </tr>
+            <tr>
+              <td>PUT</td>
+              <td>
+                Vervang een object of, wanneer van toepassing, creëer een nieuw
+                object.
+              </td>
+              <td>True</td>
+              <td>Update</td>
+            </tr>
+            <tr>
+              <td>DELETE</td>
+              <td>Delete een object</td>
+              <td>True</td>
+              <td>Delete</td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td>
+                Creëer een nieuw object gebaseerd op de data zoals voorzien in
+                de request body, of voer een commando uit.
+              </td>
+              <td>False</td>
+              <td>Create</td>
+            </tr>
+            <tr>
+              <td>HEAD</td>
+              <td>
+                Geef de header van een object voor een GET response terug.
+                Resources die de GET methode ondersteunen <em>MOGEN</em> ook de
+                HEAD methode ondersteunen.
+              </td>
+              <td>True</td>
+              <td>Read</td>
+            </tr>
+            <tr>
+              <td>PATCH</td>
+              <td>Voer een gedeeltelijke update uit op een object.</td>
+              <td>False</td>
+              <td>Update</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 class="h3">Semantisch</h3>
+        <p>
+          Een server die ondersteuning wil bieden voor Linked Data MOET
+          bijkomend volgende specificatie ondersteunen:
+        </p>
+        <br />
+        <ul class="bullet-list bullet-list--tag">
+          <li class="bullet-list__item">
+            <a href="http://www.hydra-cg.com/spec/latest/core/"
+              >Hydra Core Vocabulary</a
+            >
+            'Resources' en 'Operations'
+          </li>
+        </ul>
+        <br />
+        <p>
+          Ook hier geldt dat het gebruik van HTTP verbs in lijn moet zijn met
+          <a href="https://tools.ietf.org/html/rfc7231">RFC7231</a>.
+        </p>
+        <h2 class="h2">Code voorbeelden</h2>
+        <h3 class="h3">Linked Data Platform</h3>
+        <p>
+          De toegelaten operaties worden meegegeven in de HTTP Allow response
+          header.
+        </p>
+        <pre class="background">
+          <code>
+            GET /api/resource/1 HTTP/1.1
+            Host: example.org
+            Accept: application/ld+json
+          </code>
+        </pre>
+        <pre class="background">
+          <code>
+            HTTP/1.1 200 OK 
+            Content-Type: application/ld+json; charset=UTF-8
+            Link: &#x3C;http://www.w3.org/ns/ldp#Resource&#x3E;; rel=&#x22;type&#x22;
+            Allow: GET,PUT,DELETE
+          </code>
+        </pre>
+        <h3 class="h3">Hydra</h3>
+        <p>
+          De toegelaten operaties worden meegegeven in de response body via de
+          eigenschap
+          <a href="http://www.w3.org/ns/hydra/core#operation">hydra:operation</a
+          >. Verder kan, waar relevant, de verwachte input worden meegegevens
+          via de eigenschap
+          <a href="http://www.w3.org/ns/hydra/core#expects">hydra:expects</a>.
+        </p>
+        <pre class="background">
+          <code>
+            {
+              "@context": "http://www.w3.org/ns/hydra/context.jsonld",
+              "@id": "/api/resource/1",
+              "title": "Een voorbeeld resource",
+              "description": "Deze resource kan verwijderd worden met een HTTP DELETE request of aangepast worden met een HTTP PUT request",
+              "operation": [
+                {
+                  "@type": "Operation",
+                  "method": "GET"
+                },
+                {
+                  "@type": "Operation",
+                  "method": "PUT",
+                  "expects": "schema:Event"
+                }
+              ]
+            }
+          </code>
+        </pre>
+        <p>
+          De informatie die verwacht wordt als input door de API
+          (<strong>hydra:expects</strong>) kan verder gespecifieerd worden door
+          gebruik te maken van de
+          <a href="https://www.w3.org/TR/shacl/"
+            >Shapes Constraint Language (SHACL)</a
+          >:
+        </p>
+        <pre class="background">
+          <code>
+            {
+              "@context": {
+                "hydra": "http://www.w3.org/ns/hydra/context.jsonld",
+                "sh": "http://www.w3.org/ns/shacl#",
+                "schema": "https://schema.org/"
+              },
+              "@id": "/api/resource/1",
+              "operation": [
+                {
+                  "@type": "Operation",
+                  "method": "PUT",
+                  "expects": {
+                    "@id": "schema:Event",
+                    "sh:targetClass": "schema:Event",
+                    "sh:property": [
+                      {
+                         "sh:name": "eventName",
+                         "sh:description": "Een naam voor het event",
+                         "sh:path": "schema:eventName",
+                         "sh:minCount": "1",
+                         "sh:maxCount": "1"             
+                      }
+                    ]
+                  }
+                }
+              ]
+            }            
+          </code>
+        </pre>
+
+        <h2 class="h2">Algoritme voor herkennen van crud operaties</h2>
+        <p>
+          Onderstaande reeks stappen definieert een algoritme die door een
+          generieke client kan worden toegepast om CRUD operaties te herkennen.
+        </p>
+        <br />
+        <p>
+          Namespace prefix rdfs:
+          <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+            >http://www.w3.org/1999/02/22-rdf-syntax-ns#</a
+          >
+        </p>
+        <p>
+          Namespace prefix hydra:
+          <a href="http://www.w3.org/ns/hydra/core#"
+            >http://www.w3.org/ns/hydra/core#</a
+          >
+        </p>
+        <br />
+        <ul class="bullet-list bullet-list--tag">
+          <li class="bullet-list__item">
+            Als de ALLOW header van een Resource response een GET, PUT, DELETE,
+            POST, HEAD en/of PATCH methode bevat, voorzie in een generieke
+            afhandeling in lijn met
+            <a href="https://tools.ietf.org/html/rfc7231">RFC7231</a>.
+          </li>
+          <li class="bullet-list__item">
+            Anders, als de response header
+            <strong>application/ld+json</strong> als Content-Type bevat, gebruik
+            het
+            <a
+              href="https://json-ld.org/spec/FCGS/json-ld-api/20180607/#expansion-algorithms"
+              >JSON-LD 1.1 processing algoritme</a
+            >
+            om de response om te zetten in zijn geëxpandeerde vorm
+          </li>
+          <li class="bullet-list__item">
+            Als de response een object bevat met als attribuut
+            <strong>hydra:operation</strong>, gebruik het corresponderende
+            <strong>hydra:Operation</strong> object om te voorzien in een
+            generieke afhandeling in lijn met
+            <a href="https://tools.ietf.org/html/rfc7231">RFC7231</a>.
+          </li>
+          <li class="bullet-list__item">
+            Als de <strong>hydra:Operation</strong> een attribuut
+            <strong>hydra:expects</strong> bevat, voer een GET operatie uit op
+            de corresponderende resource om de lijst met ondersteunde attributen
+            (<strong>hydra:supportedProperty</strong>) voor een create of update
+            operatie te bekomen. Gebruik deze response om eventueel een
+            dynamisch input formulier op te stellen.
+          </li>
+        </ul>
+        <h2 class="h2">Herbruikbare library</h2>
+        <ul class="bullet-list bullet-list--tag">
+          <li class="bullet-list__item">
+            <a
+              href="https://github.com/Informatievlaanderen/generic-hypermedia-api-client"
+              >generic-hypermedia-api-client</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="next">
+        <a class="button" href="./taal_selectie_ontdekking.html"
+          >Volgende: Taal-selectie/ontdekking</a
+        >
+      </div>
+    </main>
+
+    <style>
+      .equal-height {
+        height: 100%;
+        justify-content: normal;
+      }
+
+      .nav_bar {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .nav_bar li {
+        display: inline-block;
+      }
+
+      h1 {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      h2 {
+        margin-top: 20px;
+      }
+
+      h3 {
+        margin-top: 15px;
+      }
+      .next {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 30px;
+      }
+
+      table {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      th {
+        padding: 10px;
+        border: 2px solid black;
+        border-collapse: collapse;
+        font-weight: bold;
+        background-color: lightblue;
+      }
+
+      td {
+        padding: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+      pre {
+        text-align: left;
+        overflow: auto;
+        font-weight: bold;
+        height: fit-content;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width: 70%;
+      }
+
+      pre.background {
+        background-color: #333;
+        height: auto;
+      }
+
+      code {
+        color: #4dd0e1;
+        font-family: "Inconsolata", "Monaco", "Consolas", "Andale Mono",
+          "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+      }
+    </style>
+
+    <script></script>
+  </body>
+</html>

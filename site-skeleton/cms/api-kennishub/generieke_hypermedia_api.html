@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>API Kennishub</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui-corporate.css"
+    />
+
+    <link
+      rel="icon"
+      sizes="192x192"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/icon-highres-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-ipad-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-retina-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-ipad-retina-precomposed.png"
+    />
+
+    <meta
+      name="msapplication-square70x70logo"
+      content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-small.png"
+    />
+    <meta
+      name="msapplication-square150x150logo"
+      content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-medium.png"
+    />
+    <meta
+      name="msapplication-wide310x150logo"
+      content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-wide.png"
+    />
+    <meta
+      name="msapplication-square310x310logo"
+      content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-large.png"
+    />
+    <meta name="msapplication-TileColor" content="#FFE615" />
+    <!-- HTML icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <header
+      class="content-header content-header--small content-header--half-image u-spacer--large"
+    >
+      <div class="content-header__wrapper">
+        <picture class="content-header__bg">
+          <img
+            sizes="50vw"
+            src="//www.vlaanderen.be/sites/default/files/ip_acm/page_banner_wide_alt/header.jpg"
+            srcset="
+              //www.vlaanderen.be/sites/default/files/ip_acm/page_banner_mobile_alt/header.jpg  320w,
+              //www.vlaanderen.be/sites/default/files/ip_acm/page_banner_narrow/header.jpg     1024w,
+              //www.vlaanderen.be/sites/default/files/ip_acm/page_banner_wide_alt/header.jpg   1600w
+            "
+            alt=""
+            title=""
+          />
+        </picture>
+        <div class="layout layout--wide">
+          <div class="content-header__content">
+            <div class="content-header__logo-wrapper">
+              <a
+                href="../oslo-services.html"
+                class="content-header__entity-logo"
+              >
+                <span class="content-header__entity-logo__prefix"
+                  >OSLO-Tools</span
+                >
+                <span class="content-header__entity-logo__title"
+                  >API Kennishub</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="layout layout--wide">
+        <ul class="nav_bar">
+          <li>
+            <a class="button" href="./intro.html">Intro</a>
+          </li>
+          <li>
+            <a class="button" href="./generieke_hypermedia_api.html"
+              >Generieke Hypermedia API</a
+            >
+          </li>
+          <li><a class="button" href="./paginering.html">Paginering</a></li>
+          <li>
+            <a class="button" href="./crud_operaties.html">CRUD operaties</a>
+          </li>
+          <li>
+            <a class="button" href="./taal_selectie_ontdekking.html"
+              >Taal-selectie/ontdekking</a
+            >
+          </li>
+        </ul>
+        <h1 class="h1">Generieke Hypermedia API</h1>
+        <h2 class="h2">Introductie</h2>
+        <p>
+          Met honderden lokale besturen en administraties die verschillende
+          producten of diensten leveren aan burgers en ondernemingen met behulp
+          van toepassingen van verschillende dienstenleveranciers is er naast
+          semantische interoperabiliteit van data ook nood aan
+          interoperabiliteit van API’s zelf, en de methoden en operaties die
+          gebruikt worden om de data die erdoor ontsloten wordt te bevragen en
+          bewerken.
+        </p>
+        <br />
+        <p>
+          Een Generieke Hypermedia API beschrijft in elke respons de verdere
+          stappen die vanaf dat punt kunnen worden genomen met behulp van
+          <a
+            href="https://martinfowler.com/articles/richardsonMaturityModel.html#level3"
+            >Hypermedia Controls</a
+          >. Een client kan vervolgens een generieke afhandeling voorzien voor
+          elk van deze bouwblokken. Op deze manier kan een strikte koppeling
+          tussen client en server vermeden worden.
+        </p>
+        <br />
+        <p>
+          Op welke bouwblokken we kunnen rekenen binnen Vlaanderen, wordt verder
+          uitgelegd in deze specificatie.
+        </p>
+        <h2 class="h2">Toepassingsgebied</h2>
+        <p>
+          Deze specificatie is van toepassing op alle API's die een RESTful
+          architectuur gebruiken. De afspraken per bouwblok zijn
+          applicatie-neutraal. In een applicatie-context is het noodzakelijk om
+          uit de verschillende bouwblokken en de ondersteunde standaarden per
+          bouwblok een coherente keuze te maken.
+        </p>
+        <h2 class="h2">Nakomingsniveaus</h2>
+        <p>
+          Momenteel zijn twee nakomingsniveaus voorzien voor deze standaard:
+          HTTP en Semantisch. Het HTTP nakomingsniveau veronderstelt dat alle
+          Hypermedia Controls meegegeven worden als onderdeel van de HTTP
+          request en response headers. Dit laat bestaande API's toe de
+          bouwblokken uit deze specificatie te ondersteunen zonder wijzigingen
+          door te voeren in de bestaande API payloads.
+        </p>
+        <br />
+        <p>
+          Voor alle nieuw te ontwikkelen API's wordt sterk aangeraden om het
+          semantisch nakomingsniveau te repecteren. Dit nakomingsniveau verwacht
+          dat alle hypermedia controls semantisch beschreven worden als
+          onderdeel van de API payload, gebruik makend van het Resource
+          Description Framework. Bijgevolg MOET elke API die ervoor kiest het
+          semantisch nakomingsniveau te implementeren één of meerdere Linked
+          Data serialisaties ondersteunen. De keuze voor een bepaalde
+          serialisatie is afhankelijk van de concrete toepassing. Onderstaande
+          tabel geeft een prioriteiten-lijst mee voor de implementatie van
+          content-negotiation:
+        </p>
+        <br />
+        <table>
+          <caption style="caption-side: bottom;">
+            *: RDF/XML staat laag op de voorkeurslijst omdat andere, modernere
+            serialisaties een betere mens-leesbaarheid bieden en omdat RDF/XML
+            niet goed samenwerkt met traditionele XML tooling zoals XSLT en XML
+            Schema.
+          </caption>
+          <thead>
+            <tr>
+              <th>q</th>
+              <th>Serialisatie</th>
+              <th>Linked Data?</th>
+              <th>Quads</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>application/ld+json</td>
+              <td>Ja</td>
+              <td>Ja</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>application/trig</td>
+              <td>Ja</td>
+              <td>Ja</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>application/n-quads</td>
+              <td>Ja</td>
+              <td>Ja</td>
+            </tr>
+            <tr>
+              <td>0.9</td>
+              <td>text/html</td>
+              <td>Kan (RDFa of JSON-LD snippets)</td>
+              <td>kan (JSON-LD snippets)</td>
+            </tr>
+            <tr>
+              <td>0.7</td>
+              <td>application/n-triples</td>
+              <td>Ja</td>
+              <td>Nee</td>
+            </tr>
+            <tr>
+              <td>0.7</td>
+              <td>text/turtle</td>
+              <td>Ja</td>
+              <td>Nee</td>
+            </tr>
+            <tr>
+              <td>0.5</td>
+              <td>application/rdf+xml*</td>
+              <td>Ja (weinig gebruikt)</td>
+              <td>Nee</td>
+            </tr>
+            <tr>
+              <td>0.4</td>
+              <td>non-linked data specificatie (json, xml, csv...)</td>
+              <td>Nee</td>
+              <td>Nee</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 class="h2">Bouwblokken</h2>
+        <p>
+          Een implementatie van deze specificatie is vrij om te kiezen welke
+          bouwblokken relevant zijn voor implementatie. Bijvoorbeeld indien een
+          API geen paginering functionaliteit aanbiedt, hoeft de bijhorende
+          bouwblok niet geïmplementeerd te worden om conform deze specificatie
+          te zijn.
+        </p>
+        <br />
+        <ul class="bullet-list bullet-list--tag">
+          <li class="bullet-list__item">
+            <a href="./paginering.html">Paginering</a>
+          </li>
+          <li class="bullet-list__item">
+            <a href="./crud_operaties.html">CRUD operaties</a>
+          </li>
+          <li class="bullet-list__item">
+            <a href="./taal_selectie_ontdekking.html"
+              >Taal-selectie/ontdekking</a
+            >
+          </li>
+        </ul>
+        <h2 class="h2">
+          Hypermedia controls buiten de scope van deze bouwblokken
+        </h2>
+        <p>
+          Voor hypermedia controls die niet gespecifieerd worden door één van
+          bovenstaande bouwblokken, MOET de betekenis gedefinieerd zijn in
+          <a href="https://tools.ietf.org/html/rfc5988"> RFC 5988</a> met
+          betrekking tot Web Linking of in een gedragen RDF vocabularium zoals
+          bijvoorbeeld
+          <a href="http://dublincore.org/documents/dcmi-terms/"
+            >Dublin Core Terms</a
+          >, <a href="https://schema.org/">Schema.org</a>...
+        </p>
+        <h2 class="h2">Terminologie</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Term</th>
+              <th align="center">Omschrijving</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>API</td>
+              <td align="center">
+                Een 'Application Programming Interface' is een set van methoden
+                dat de communicatie tussen verschillende software componenten
+                toelaat
+              </td>
+            </tr>
+            <tr>
+              <td>Client</td>
+              <td align="center">
+                Een persoon of machine die gebruik wil maken van een bepaalde
+                service, aangeboden door een server via een API. Een client
+                neemt het initiatief tot communicatie met de server.
+              </td>
+            </tr>
+            <tr>
+              <td>Hypermedia</td>
+              <td align="center">
+                Hypermedia wordt gebruikt als een medium en restrictie voor
+                API's Binnen de REST applicatie architectuur laat hypermedia toe
+                dat een client en server interageren louter op basis van de
+                hypermedia die dynamisch door de server wordt meegegeven in de
+                respons.
+              </td>
+            </tr>
+            <tr>
+              <td>Linked Data</td>
+              <td align="center">
+                Een methode voor het publiceren van gestructureerde manier op
+                een bevraagbare manier via onder meer inferentie en gebaseerd op
+                vocabularia. Linked Data verwijst typisch naar een collectie van
+                Semantic Web technologiën waaronder RDF, OWL, SKOS, SPARQL...
+              </td>
+            </tr>
+            <tr>
+              <td>RDF</td>
+              <td align="center">
+                Het Resource Description Framework is een canonisch model voor
+                data-uitwisseling op het Web, gepubliceerd als standaard door
+                het World Wide Web Consortium (W3C).
+              </td>
+            </tr>
+            <tr>
+              <td>Server</td>
+              <td align="center">
+                Biedt één of meerdere clients services aan die via een bepaalde
+                communicatieprotocol ter beschikking gesteld worden. Een server
+                beantwoord vragen van clients met een bepaalde respons.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 class="h2">Demo's</h2>
+        <ul class="bullet-list bullet-list--tag">
+          <li class="bullet-list__item">
+            <a
+              href="https://github.com/Informatievlaanderen/generic-hypermedia-api-client"
+              >Client side NodeJS demo-implementatie
+            </a>
+          </li>
+          <li class="bullet-list__item">
+            <a
+              href="https://github.com/Informatievlaanderen/generic-hypermedia-api-client-testserver"
+              >Server side NodeJS demo-implementatie
+            </a>
+          </li>
+        </ul>
+        <h2 class="h2">Discussieer mee:</h2>
+        <p>
+          Via de issue tracker kan je online mee discussiëren over wat in de
+          specificatie moet worden opgenomen:
+        </p>
+        <p>
+          <a
+            href="https://github.com/informatievlaanderen/generieke-hypermedia-api/issues"
+            >https://github.com/informatievlaanderen/generieke-hypermedia-api/issues</a
+          >
+        </p>
+        <br />
+      </div>
+
+      <div class="next">
+        <a class="button" href="./paginering.html">Volgende: Paginering</a>
+      </div>
+    </main>
+
+    <style>
+      .equal-height {
+        height: 100%;
+        justify-content: normal;
+      }
+
+      .nav_bar {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .nav_bar li {
+        display: inline-block;
+      }
+
+      h1 {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      h2 {
+        margin-top: 20px;
+      }
+      .next {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 30px;
+      }
+
+      table {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      th {
+        padding: 10px;
+        border: 2px solid black;
+        border-collapse: collapse;
+        font-weight: bold;
+        background-color: lightblue;
+      }
+
+      td {
+        padding: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+
+    <script></script>
+  </body>
+</html>
