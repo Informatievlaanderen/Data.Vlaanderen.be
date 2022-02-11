@@ -1,0 +1,560 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% set language = "en" %}
+{% set sortattr = "sort" %}
+
+<html xml:lang="en" lang="en" dir="ltr" typeof="bibo:Document " about="" property="dcterms:language" content="en" prefix="dcterms: http://purl.org/dc/terms/ bibo: http://purl.org/ontology/bibo/ schema: http://schema.org/ w3p: http://www.w3.org/2001/02pd/rec54#" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <title>{{ metadata.title }}</title>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui.css" />
+    <link rel="stylesheet" href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui-corporate.css" />
+    <link rel="stylesheet" href="https://dev.w3.org/2009/dap/ReSpec.js/css/respec.css" />
+
+    <link rel="icon" sizes="192x192" href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/icon-highres-precomposed.png" />
+    <link rel="apple-touch-icon" href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-precomposed.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-ipad-precomposed.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-retina-precomposed.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-ipad-retina-precomposed.png" />
+
+    <meta name="msapplication-square70x70logo" content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-small.png" />
+    <meta name="msapplication-square150x150logo" content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-medium.png" />
+    <meta name="msapplication-wide310x150logo" content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-wide.png" />
+    <meta name="msapplication-square310x310logo" content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-large.png" />
+    <meta name="msapplication-TileColor" content="#FFE615" />
+
+    <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
+  </head>
+  <body class="h-entry" role="document" id="respecDocument">
+    <div style="min-height:44px;;" id="vlaanderen-header">
+    <!-- insert your global header here -->
+    <script type="text/javascript" src="https://widgets.vlaanderen.be/widget/live/5ecf33a0a922428cb9d944c55362ed15"></script>
+    <!-- end global header-->
+    </div>
+    <div class="page">
+        <div class="layout layout--wide">
+            <div class="grid u-hr">
+                <div class="col--9-12 col--1-1--s">
+                    <div class="head" role="contentinfo" id="respecHeader">
+                    <h1 class="h1 title p-name"  property="dcterms:title" id="title">{{ metadata.title }}</h1>
+
+                    {% if metadata.prefix %}
+                    <h2 class="h2" id="subtitle" property="bibo:subtitle">Specification for <em>{{ metadata.prefix }}</em></h2>
+                    {% endif %}
+
+              <div class="head" role="status" id="status">
+              <dl>
+              <dt>Status</dt><dd><a href="{{metadata.status}}">{{metadata.status}}</a></dd>
+              <dt>Published at</dt><dd>{{metadata.issued}}</dd>
+              <dt>This version</dt><dd><a href="{{metadata.navigation.self}}">{{metadata.navigation.self}}</a></dd>
+              {% if metadata.navigation.next %}
+              <dt>Next version</dt><dd><a href="{{metadata.navigation.next}}">{{metadata.navigation.next}}</a></dd>
+              {% endif %}
+              {% if metadata.navigation.prev %}
+              <dt>Previous version</dt><dd><a href="{{metadata.navigation.prev}}">{{metadata.navigation.prev}}</a></dd>
+              {% endif %}
+              </dl>
+              </div>
+
+
+                        {% for role, contributors in contributors | groupby("role") %}
+                          {% if role == "A" %}
+                            {% set authors = contributors|sort(attribute='last_name') %}
+                        {% if authors %}
+                          <dt>Authors</dt>
+                          {% for author in authors %}
+                          <dd inlist="" rel="foaf:maker" class="p-author h-card vcard">
+                              <span typeof="foaf:Person">
+                              <span class="p-name fn" property="foaf:lastName">{{ author.last_name }}</span>,
+                              <span class="p-name fn" property="foaf:firstName">{{ author.first_name }}</span>
+                              {% if author.affiliation.website and author.affiliation.name %}
+                              - <a href="{{ author.affiliation.website }}" class="p-org org h-org h-card" rel="foaf:workplaceHomepage">{{ author.affiliation.name }}</a>
+                              {% elif author.affiliation.name %}
+                              - <span class="p-org org h-org h-card">{{ author.affiliation.name }}</span>
+                              {% endif %}
+                							{% if author.email %}
+                               - <span class="ed_mailto"><a href="mailto:{{ author.email }}" rel="foaf:mbox" class="u-email email">{{ author.email }}</a></span>
+                              {% endif %}
+                              </span>
+                          </dd>
+                          {% endfor %}
+                        {% endif %}
+                      {% elif role == "E" %}
+                        {% set editors = contributors|sort(attribute='last_name') %}
+                        {% if editors %}
+                          <dt>Editors</dt>
+                          {% for editor in editors %}
+                          <dd inlist="" rel="bibo:editor" class="p-author h-card vcard">
+                              <span typeof="foaf:Person">
+                              <span class="p-name fn" property="foaf:lastName">{{ editor.last_name }}</span>,
+                              <span class="p-name fn" property="foaf:firstName">{{ editor.first_name }}</span>
+                              {% if editor.affiliation.website and editor.affiliation.name %}
+                                 - <a href="{{ editor.affiliation.website }}" class="p-org org h-org h-card" rel="foaf:workplaceHomepage">{{ editor.affiliation.name }}</a>
+                              {% elif editor.affiliation.name %}
+                                 - <span class="p-org org h-org h-card">{{ editor.affiliation.name }}</span>
+                              {% endif %}
+                							{% if editor.email %}
+                                 - <span class="ed_mailto"><a href="mailto:{{ editor.email }}" rel="foaf:mbox" class="u-email email">{{ editor.email }}</a></span>
+                              {% endif %}
+                							</span>
+                          </dd>
+                        {% endfor %}
+                        {% endif %}
+                      {% elif role == "C" %}
+                        {% set pure_contributors = contributors|sort(attribute='last_name') %}
+                        {% if pure_contributors %}
+                        <dt>Contributors</dt>
+                          {% for contributor in pure_contributors %}
+                          <dd inlist="" rel="dcterms:contributor" class="p-author h-card vcard">
+                              <span typeof="foaf:Person">
+                              <span class="p-name fn" property="foaf:lastName">{{ contributor.last_name }}</span>,
+                              <span class="p-name fn" property="foaf:firstName">{{ contributor.first_name }}</span>
+                              {% if contributor.affiliation.website and contributor.affiliation.name %}
+                              - <a href="{{ contributor.affiliation.website }}" class="p-org org h-org h-card" rel="foaf:workplaceHomepage">{{ contributor.affiliation.name }}</a>
+                              {% elif contributor.affiliation.name %}
+                              - <span class="p-org org h-org h-card">{{ contributor.affiliation.name }}</span>
+                              {% endif %}
+                							{% if contributor.email %}
+                               - <span class="ed_mailto"><a href="mailto:{{ contributor.email }}" rel="foaf:mbox" class="u-email email">{{ contributor.email }}</a></span>
+                              {% endif %}
+							                </span>
+                            </dd>
+                            {% endfor %}
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </dl>
+                    </div>
+                </div>
+              <div class="head" role="metainfo" id="metainfo">
+              <dl>
+              <dt>Source</dt><dd><a href="{{metadata.repositoryurl}}">{{metadata.repositoryurl}}</a></dd>
+              <dt>Changelog</dt><dd><a href="{{metadata.changelogurl}}">{{metadata.changelogurl}}</a></dd>
+              <dt id="feedbackurl">Opmerkingen en feedback</dt><dd><a href="{{metadata.feedbackurl}}">{{metadata.feedbackurl}}</a></dd>
+              <dt>Registry of standards</dt><dd><a href="{{metadata.standaardregisterurl}}">{{metadata.standaardregisterurl}}</a></dd>
+
+              <dt>Dependencies</dt><dd>
+                {% for dep in metadata.dependencies %}
+		<a href="{{ dep.packageurl }}">{{ dep.packagelabel }}</a>
+                {% endfor %}
+		</dd>
+              </dl>
+              </div>
+             </div>
+                <!-- <p class="copyright">{{ metadata.rights }}</p> -->
+        </div>
+    </div>
+    <div id="main" itemprop="mainContentOfPage" role="main" tabindex="-1" class="main-content">
+        <div class="region region--no-space-top">
+            <div class="layout layout--wide">
+                <div class="grid">
+                    <div class="col--8-12 col--12-12--s">
+            <div class="region" id="introduction">
+              <div class="introduction typography">
+              {% block introduction %}
+                <p>This document describes a  <strong>vocabularium</strong>, for this case <strong>{{ metadata.title }}</strong>.
+		A vocabularium is a collection of reusable terms (classes and properties), whose meaning is given by a label and a definition.
+                  There are additional formal agreements available for the terms defined in this domain.
+                  The additional formal agreements can be found in external sources for external terms.
+                </p>
+                <p>This document describes a <strong>vocabulary</strong>; in this case <strong>{{ metadata.title }}</strong>.
+		A vocabulary is a collection of reusable terms, more precisely classes and properties, of which their semantics is fixed by means of a label and a definition.
+		For terms definied in this domain additional formal agreements may be defined.  The formal agremeents for external terms, reused in this domain, are adopted from that external source.  
+                </p>
+              {% endblock %}
+              </div>
+            </div>
+                        <div class="region region">
+                            <section id="abstract" class="introductory" property="dcterms:abstract" datatype="" typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter">
+                                <h2 class="h2" aria-level="1" role="heading" id="h2_abstract">Summary</h2>
+                                <div class="region region--no-space-top typography" id="summary"> 
+				{% block summary %}
+                                <p>
+				The {{ metadata.title }} vocabulary specifies classes and properties to describe the domain  {{ metadata.title | lower }}.
+                                </p>
+                                <p>
+                                {{ metadata.abstract[language] }}
+                                </p>
+                                {% endblock %}
+				</div>
+                            </section>
+                        </div>
+
+                        <div class="region region--no-space-top">
+                            <section class="introductory" id="sotd" typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter">
+                                <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">Status of this document</h2>
+                                <div class="region region--no-space-top typography" id="status"> 
+				{% block status %}
+                                <p><em>This section describes the status of this document at the point of publication. It is possible that, in the mean time, newer versions have been released.</em></p><br/>
+                                <p>A list of the most recent vocabularia can be found here: <a href="http://data.vlaanderen.be/ns">http://data.vlaanderen.be/ns</a></p><br/>
+                                <p>This document is an official specification of a vocabulary and provides a shared context of terms for some concepts. This specifcation serves to clarilfy the definition, usage, domain and range for the RDF terms within this domain. The terms defined in this vocabulary are persistent and as a consequence will not change except to further clarify the existing definition. Terms can be marked as deprecated and be replaced in newer versions of this specification.</p>
+                                {% if metadata.comment[language] %}
+                                <p>
+                                {{ metadata.comment[language] }}
+                                </p>
+                                {% endif %}
+                                {% endblock %}
+				</div>
+                            </section>
+                        </div>
+
+                        <div class="region region--no-space-top">
+                            <section typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter" id="license-and-liability">
+                                <h2 class="h2" id="licenseandliability" aria-level="1" role="heading"><span class="secno">1. </span>License</h2>
+                                {% block license %}
+              <p><span rel="dct:type" property="dct:title" href="http://purl.org/dc/dcmitype/Text" xmlns:dct="http://purl.org/dc/terms/">This specification</span> by <a rel="cc:attributionURL" property="cc:attributionName" href="http://vlaanderen.be/informatievlaanderen" xmlns:cc="http://creativecommons.org/ns#">Informatie Vlaanderen</a> has been published under the following license: <a href="{{ metadata.license }}" rel="license">Free reuse license v1.0 ("Modellicentie Gratis Hergebruik - v1.0")</a>.</p>
+                                {% endblock %}
+                            </section>
+                        </div>
+
+                        <div class="region region--no-space-top">
+                            <section typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter" id="conformance-statement">
+                                <h2 class="h2" id="conformance" aria-level="1" role="heading"><span class="secno">2. </span>Conformance</h2>
+                                {% block conformance %}
+                                <p>An exchange of data, in whatever way it occurs, conforms to this vocabulary by using the terminology (classes and properties) in a manner that is consistent with the semantics as they are described in the latest version of the specification (domain, range, definition and usage) and does not replace terms in this vocabulary with alternative terms from other vocabularies that cover the same context..</p>
+                                {% endblock %}
+                            </section>
+                        </div>
+
+                        <div class="region region--no-space-top">
+                            <section typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter" id="overview">
+
+                                <h2 class="h2" id="overview" aria-level="1" role="heading"><span class="secno">3. </span>Overzicht</h2>
+
+                                <div class="region region--no-space-top">
+                                    <p>This section lists all classes and properties of this vocabulary.</p>
+                                    <p>
+                                    {% if externalvocs %}
+                                    This vocabulary uses terms from the following vocabularia:
+                                    <ul>
+                                    {% for term in externalvocs |sort(attribute=sortattr) %}
+                                        <li><a href="{{ term.uri }}">{{ term.uri }}</a></li>
+                                    {% endfor %}
+                                    </ul>
+                                    {% endif %}
+                                    </p>
+                                    <br />
+                                </div>
+
+                                {% if ( ( classes | length) > 0 )%}
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" >Classes</h3>
+                                    <div class="grid">
+                                        <p>
+                                            |
+                                            {% for class in classes | sort(attribute=sortattr) %}
+                                            <a href="{{ class.uri  | replace(metadata.uri, '') }}" rel="class">{{ class.name}}</a> |
+                                            {% endfor %}
+                                        </p>
+                                    </div>
+                                </div>
+                                {% endif %}
+
+                                {% if ( ( properties | length ) > 0 ) %}
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3" >Properties</h3>
+                                    <div class="grid">
+                                        <p>
+                                            |
+                                            {% for prop in properties | sort(attribute=sortattr) %}
+                                            <a href="{{ prop.uri  | replace(metadata.uri, '')}}" rel="property">{{ prop.label[language] }}</a> |
+                                            {% endfor %}
+                                        </p>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </section>
+                        </div>
+
+                        <div class="region region--no-space-top">
+                            <section typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter" id="classes">
+
+                                <h2 class="h2" id="classes" aria-level="1" role="heading"><span class="secno">4. </span>Klassen</h2>
+                                {% if classes %}
+                                <div class="region region--no-space-top">
+                                    <p>This section defines each class in a formal manner.</p>
+                                </div>
+                                {% for class in classes | sort(attribute=sortattr) %}
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3"  id="{{ class.uri | replace(metadata.uri + '#', '') }}">Klasse <em>{{ class.label[language] }}</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Class</td>
+                                          </tr>
+<!-- The Naam of the property/class is not relevant as it is already in the title of the table
+                                          {% if class.name %}
+                                          <tr>
+                                            <th>Name</th>
+                                            <td><code>{{ class.label[language] }}</code></td>
+                                          </tr>
+                                          {% endif %}
+-->
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>{{ class.uri }}</code></td>
+                                          </tr>
+                                          {% if ( ( class.parents | length ) > 0)  %}
+										  <tr>
+                                            <th>Narrower definition for</th>
+											<td><ul>
+					      {% for parent in class.parents|sort %}
+                                              <li><code>{{ parent }}</code></li>
+											{% endfor %}
+                                            </ul></td>
+										  </tr>
+                                          {% endif %}
+                                          <tr>
+                                            <th>Definition</th>
+                                            <td>{{ class.description[language]}}</td>
+                                          </tr>
+                                          {% if class.usage[language] %}
+                                          <tr>
+                                            <th>
+                                              <p>Usage</p>
+                                            </th>
+                                            <td>{{ class.usage[language] }}</td>
+                                          </tr>
+                                          {% endif %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {% endfor %}
+                                {% else %}
+                                <div class="region region--no-space-top">
+                                    <p>There are no classes defined this vocabulary. It is possible that it reuses classes from related vocabularies.</p>
+                                </div>
+                                {% endif %}
+                            </section>
+                        </div>
+
+
+                        <div class="region region--no-space-top">
+                            <section typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter" id="properties">
+
+                                <h2 class="h2" id="properties" aria-level="1" role="heading"><span class="secno">5. </span>Properties</h2>
+
+                                {% if properties %}
+                                <div class="region region--no-space-top">
+                                    <p>This section formally defines each property.</p>
+                                </div>
+
+                                {% for property in properties | sort(attribute=sortattr) %}
+                                <div class="region region--no-space-top">
+                                    <h3 class="h3"  id="{{ property.uri | replace(metadata.uri + '#', '') }}">Property <em>{{  property.label[language] }}</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          <tr>
+                                            <th>Type</th>
+                                            <td>Property</td>
+                                          </tr>
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>{{ property.uri }}</code></td>
+                                          </tr>
+                                          {% if ( ( property.domain  | length ) > 0 )%} 
+                                          <tr>
+                                            <th>Domain</th>
+                                            <td><code>
+                                                {% for entity in property.domain %}
+                                                  {{ entity }} 
+                                                {% endfor %}
+                                            </code></td>
+                                          </tr>
+                                          {% endif %} 
+                                          {% if (( property.range  | length ) > 0)%}
+                                          <tr>
+                                            <th>Range</th>
+                                            <td><code>
+                                                {% for entity in property.range %}
+                                                  {{ entity }} 
+                                                {% endfor %}
+                                            </code></td>
+                                          </tr>
+                                          {% endif %}
+                                          {% if ( ( property.parents | length ) > 0 )  %}
+										                      <tr>
+                                            <th>Narrower of</th>
+											                      <td><ul>
+											                        {% for parent in property.parents|sort %}
+                                              <li><code>{{ parent }}</code></li>
+                        											{% endfor %}
+                                            </ul></td>
+										                      </tr>
+                                          {% endif %}
+                                          <tr>
+                                            <th>Definition</th>
+                                            <td>{{ property.description[language]}}</td>
+                                          </tr>
+                                          {% if property.usage[language] %}
+                                          <tr>
+                                            <th>Usage</th>
+                                            <td>{{ property.usage[language] }}</td>
+                                          </tr>
+                                          {% endif %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {% endfor %}
+                                {% else %}
+                                <div class="region region--no-space-top">
+                                    <p>There are no properties defined in this vocabulary. It is possible that this vocabulary uses properties defined by related vocabularia.</p>
+                                </div>
+                                {% endif %}
+                            </section>
+                        </div>
+                        <div class="region region--no-space-top">
+                            <section typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter" id="external">
+
+                                <h2 class="h2" id="externals" aria-level="1" role="heading"><span class="secno">6. </span>Externe terminology</h2>
+
+                        
+                                <div class="region region--no-space-top">
+                                    <p>This section lists the terms defined by other vocabularia that have relevance for this domain model with their labels and definitions.</p>
+                                </div>
+
+                                {% if external_terms %}
+                                {% for external in external_terms |sort(attribute=sortattr) %}
+                                <div class="region region--no-space-top">
+                                    <h3 class="h4" id="{{ external.name }}"><em>{{ external.label[language] }}</em></h3>
+                                    <table class="definition">
+                                        <tbody>
+                                          
+                                          <tr>
+                                            <th>URI</th>
+                                            <td><code>{{ external.uri }}</code></td>
+                                          </tr>
+					 {% if external.definition[language] %}
+                                          <tr>
+                                            <th>Definition</th>
+                                            <td>{{ external.description[language] }}</td>
+                                          </tr>
+                                          {% endif %}
+                                          {% if external.usage[language] %}
+                                          <tr>
+                                            <th>Usage</th>
+                                            <td>{{ external.usage[language] }}</td>
+                                          </tr>
+                                          {% endif %}
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {% endfor %}
+                                {% else %}
+                                <div class="region region--no-space-top">
+                                    <p>There are no external terms used in this vocabulary.</p>
+                                </div>
+                                {% endif %}
+
+                            </section>
+                        </div>
+                    </div>
+                    <div class="col--3-12 col--12-12--s col--4-12--m push--1-12 push--reset--m" id="sideNav">
+                        <nav class="side-navigation js-sticky" id="sideNav">
+                            <div class="side-navigation__content js-scrollspy">
+                                <div class="side-navigation__group">
+                                    <ul>
+                                        <li class="side-navigation__item">
+                                            <a href="#abstract">Summary</a>
+                                        </li>                                        
+                                        <li class="side-navigation__item">
+                                            <a href="#sotd">Status of this document</a>
+                                        </li>                                        
+                                        <li class="side-navigation__item">
+                                            <a href="#license-and-liability">1. License</a>
+                                        </li>                                       
+                                        <li class="side-navigation__item">
+                                            <a href="#conformance-statement">2. Conformane</a>
+                                        </li>                                       
+                                        <li class="side-navigation__item">
+                                            <a href="#overview">3. Overview</a>
+                                        </li>                                    
+                                        <li class="side-navigation__item">
+                                            <a href="#classes">4. Classes</a>
+                                        </li>                                    
+                                        <li class="side-navigation__item">
+                                            <a href="#properties">5. Properties</a>
+                                        </li>                                  
+                                        <li class="side-navigation__item side-navigation__item--parent">
+                                            <a href="#external" data-child="external">6. External terminology</a>                                       
+                                        </li>
+                                    </ul>
+                                </div>                                
+                            </div>
+                        </nav>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="vlaanderen-footer">
+        <!-- insert your Vlaanderen-footer-code here -->
+        <script type="text/javascript" src="https://widgets.vlaanderen.be/widget/live/d6d44414e7c242f396ab6da8f8da5198"></script>
+        <!-- End global footer-->
+    </div>
+
+    <script src="https://dij151upo6vad.cloudfront.net/2.latest/js/vlaanderen-ui.js"></script>
+
+    <style>
+      @media screen {  /* hide from IE3 */
+        a[href]:hover { background: #ffa }
+      }
+
+      table {
+            font-size:12px;
+            color:#333333;
+            border-width: 1px;
+            border-color: #666666;
+            border-collapse: collapse;
+            margin-top: 2em;
+            width: 100%;
+      }
+
+      table th {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #dedede;
+            width: 110px;
+      }
+
+      table td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #ffffff;
+      }
+
+      table tr:first-child {
+          font-weight:bold;
+      }
+
+      tr:nth-child(even) td     { background-color:#eee; }
+
+      dt, dd { margin-top: 0; margin-bottom: 0 } /* opera 3.50 */
+      dt { font-weight: bold }
+
+      pre, code { font-family: monospace } /* navigator 4 requires this */
+	  code { color: black }
+
+      em {
+            font-style: italic;
+      }
+
+      img {
+         width: 100%;
+      }
+      img.cc {
+         width: 88px;
+      }
+    </style>
+  </body>
+</html>
