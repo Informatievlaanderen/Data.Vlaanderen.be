@@ -148,8 +148,9 @@ else
 #  fi
   echo "include all selected publication points" 
   for i in ${PUBLICATIONPOINTSDIRS} ; do
+      mkdir -p tmp/all/$i
 	  echo "try to copy all files with extension ${PUB_FILE}"
-      cp ${CONFIG_FOLDER}/$i/.*.${PUB_FILE}  tmp/all
+      cp ${CONFIG_FOLDER}/$i/*.${PUB_FILE}  tmp/all
 	  echo "try to copy file ${PUB_FILE}"
       cp ${CONFIG_FOLDER}/$i/${PUB_FILE}  tmp/all
   done
