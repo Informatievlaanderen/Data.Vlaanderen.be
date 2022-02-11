@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "this script is deprecated, please use findPublicationsToUpdate.sh followed by checkoutRepositories.sh"
+
+
 PUBCONFIG=$2
 ROOTDIR=$1
 
@@ -7,7 +10,7 @@ ROOTDIR=$1
 #jq -r '.[] | @sh "echo \(.urlref)"' publication.config | bash -e
 #jq -r '.[] | @sh "./checkout-one.sh \(.)"' publication.config | bash -e
 
-# 
+#
 # create the directory layout which allows the ea-to-rdf & the
 # specgenerator to do there work:
 # * src/DIR: the git repository which contains the source
@@ -43,7 +46,7 @@ cleanup_directory() {
 	STR=".[] | select(.name == \"$(cat .names.txt)\") | [.]"
 	jq "${STR}" ${MAPPINGFILE} > .map.json
 	jq -r '.[] | @sh "find . -name \"*.eap\" !  -name \(.eap) -type f -exec rm -f {} + "' .map.json | bash -e
-        rm -rf .git 
+        rm -rf .git
     fi
 }
 
@@ -55,16 +58,16 @@ if [ ! -f "${PUBCONFIG}" ] ; then
     exit -1
 fi
 
-# determin the last changed files 
+# determin the last changed files
 mkdir -p $ROOTDIR
 curl -o $ROOTDIR/commit.json https://raw.githubusercontent.com/Informatievlaanderen/OSLO-Generated/$CIRCLE_BRANCH/report/commit.json
 sleep 5s
 jq . $ROOTDIR/commit.json
 if  [ $? -eq 0 ] ; then
-   COMMIT=`jq -r .commit $ROOTDIR/commit.json` 
+   COMMIT=`jq -r .commit $ROOTDIR/commit.json`
    listofchanges=$(git diff --name-only $COMMIT)
    echo $listofchanges > changes.txt
-   if [ "$listofchanges" == "config/publication.json" ] ; then 
+   if [ "$listofchanges" == "config/publication.json" ] ; then
        git show $COMMIT:config/publication.json > prev
        jq -s '.[0] - .[1]' config/publication.json prev > $ROOTDIR/changedpublications.json
        cat $ROOTDIR/changedpublications.json
@@ -72,19 +75,19 @@ if  [ $? -eq 0 ] ; then
        cp ${PUBCONFIG} $ROOTDIR/publications.json.old
 #       echo "false" > $ROOTDIR/haschangedpublications.json
        cp $ROOTDIR/changedpublications.json ${PUBCONFIG}
-      
-   else 
+
+   else
        cp ${PUBCONFIG} $ROOTDIR/changedpublications.json
        echo "false" > $ROOTDIR/haschangedpublications.json
-       echo "process all publication points";  
+       echo "process all publication points";
    fi
-   
-else 
+
+else
    # no previous commit
    # assumes full rebuild
    cp ${PUBCONFIG} $ROOTDIR/changedpublications.json
    echo "false" > $ROOTDIR/haschangedpublications.json
-   echo "process all publication points";  
+   echo "process all publication points";
 fi
 
 
@@ -98,10 +101,10 @@ then
 	_jq() {
 	    echo ${row} | base64 --decode | jq -r ${1}
 	}
-	
+
 	DISABLED=$(_jq '.disabled')
-        
-	if [ "$DISABLED" == "" ] || [ "$DISABLED" == "null" ] || [ "$DISABLED" == "false" ] ; then 
+
+	if [ "$DISABLED" == "" ] || [ "$DISABLED" == "null" ] || [ "$DISABLED" == "false" ] ; then
         # start non  disabled
 
 	FORM=$(_jq '.type')
@@ -111,7 +114,7 @@ then
 	else
 	    MAIN=src
 	fi
-	       
+
 	echo "start processing (repository): $(_jq '.repository') $(_jq '.urlref') $MAIN"
 
 	DIR=$(_jq '.urlref')
@@ -137,8 +140,8 @@ then
 	   fi
 	   comhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
 	   echo "hashcode to add: ${comhash}"
-	   echo ${row} | base64 --decode | jq --arg comhash "${comhash}" --arg toolchainhash "${toolchainhash}" '. + {documentcommit : $comhash, toolchaincommit: $toolchainhash, hostname: "https://test.data.vlaanderen.be" }' > .publication-point.json
-	   cleanup_directory 
+	   echo ${row} | base64 --decode | jq --arg comhash "${comhash}" --arg toolchainhash "${toolchainhash}" '. + {documentcommit : $comhash, toolchaincommit: $toolchainhash, hostname: "https://otl-test.data.vlaanderen.be" }' > .publication-point.json
+	   cleanup_directory
         popd
 
 	if [ "$MAIN" == "src" ]
@@ -160,12 +163,12 @@ then
              cp -r $ROOTDIR/$MAIN/$RDIR/$localdirectory/* /tmp/rawdir
              rm -rf $ROOTDIR/$MAIN/$RDIR/*
              cp -r /tmp/rawdir/* $ROOTDIR/$MAIN/$RDIR/
-            else 
+            else
              echo "no localdirectory defined, keep content as is"
             fi
         fi
         fi
-	
+
     done
 
 
@@ -181,5 +184,5 @@ then
     touch $ROOTDIR/rawcheckouts.txt
 else
     echo "problem in processing: ${PUBCONFIG}"
-    exit -1
+	exit -1
 fi

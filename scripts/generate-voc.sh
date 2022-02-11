@@ -5,29 +5,81 @@ SUBDIR=$2
 CONFIGDIR=$3
 CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 
+#############################################################################################
+PRIMELANGUAGECONFIG=$(jq -r .primeLanguage ${CONFIGDIR}/config.json)
+GOALLANGUAGECONFIG=$(jq -r '.otherLanguages | @sh'  ${CONFIGDIR}/config.json)
+
+PRIMELANGUAGE=${4-${PRIMELANGUAGECONFIG}}
+GOALLANGUAGE=${5-${GOALLANGUAGECONFIG}}
+
 echo "generate-voc: starting with $1 $2 $3"
 
 #############################################################################################
+is_vocabulary() {
+    local RLINE=$1
+    local SLINE=$2
+    COMMANDJSONLD=$(echo '.[].type')
+    TYPE=$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
+
+    if [ "${TYPE}" == "voc" ];  then
+       return 0
+    else 
+       return 1
+    fi
+
+}
+
+
 make_jsonld() {
-    local FILE=$1 
+    local FILE=$1
     local INPUT=$2
     local TARGET=$3
     local CONFIGDIR=$4
+    local LANGUAGE=$5
+    local RLINE=$6
+    local SLINE=$7
+
+    RETURN=1
     mkdir -p /tmp/${FILE}
-#/* TODO support subclass */
-    jq 'walk( if type == "object" and (.range | type) == "array" and (.range | length) > 0 then .range |= map(.uri)  else . end)' ${INPUT} > /tmp/${FILE}0.jsonld
-    jq 'walk( if type == "object" and (.domain | type) == "array" and (.domain | length) > 0 then .domain |= map(.uri)  else . end)' /tmp/${FILE}0.jsonld > /tmp/${FILE}1.jsonld
-    jq 'walk( if type == "object" and (.nl | length) > 0 and (.nl | sub(" ";"";"g") | length) == 0 then .nl |= ""  else . end)' /tmp/${FILE}1.jsonld > /tmp/${FILE}2.jsonld
-    jq 'walk( if type == "object" and (.usage| type) == "object" and (.usage.nl | length) == 0 then .usage |= {}  else . end)' /tmp/${FILE}2.jsonld > /tmp/${FILE}3.jsonld
-    jq 'walk( if type == "object" and (."foaf:mbox" | length) > 0 then ."foaf:mbox" |= "mailto:"+.  else . end)' /tmp/${FILE}3.jsonld > /tmp/${FILE}4.jsonld
+    COMMANDJSONLD=$(echo '.[].translation | .[] | select(.language | contains("'${LANGUAGE}'")) | .mergefile')
+    MERGEDJSONLD=${RLINE}/translation/$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
+    OUTPUT=${RLINE}/translation/voc_${LANGUAGE}.jsonld
+
+    if [ -f ${MERGEDJSONLD} ] ; then
+    echo "RENDER-DETAILS(voc-languageaware): node /app/render-voc.js -i ${MERGEDJSONLD} -o ${OUTPUT} -l ${LANGUAGE}"
+    if ! node /app/render-voc.js -i ${MERGEDJSONLD} -o ${OUTPUT} -l ${LANGUAGE}
+    then
+        echo "RENDER-DETAILS(voc-languageaware): See ${OUTREPORT} for the details"
+	RETURN=-1
+        exit -1
+    else
+        echo "RENDER-DETAILS(voc-languageaware): saved to ${OUTPUT}"
+        echo "RENDER-DETAILS(voc-languageaware): It will now be concatted and saved to ${TARGET}"
+
+         if [ -f ${CONFIGDIR}/ontology.defaults.json ]
+        then
+            if [ -f /tmp/${FILE}/ontology ]
+            then
+                jq -s '.[0] + .[1] + .[2] + .[3]' /tmp/${FILE}/ontology ${CONFIGDIR}/ontology.defaults.json ${OUTPUT} ${CONFIGDIR}/context >  ${TARGET}
+            else
+                jq -s '.[0] + .[1] + .[2]' ${CONFIGDIR}/ontology.defaults.json ${OUTPUT} ${CONFIGDIR}/context >  ${TARGET}
+            fi
+        else
+            if [ -f /tmp/${FILE}/ontology ]
+            then
+                jq -s '.[0] + .[1] + .[2]' /tmp/${FILE}/ontology ${OUTPUT} ${CONFIGDIR}/context >  ${TARGET}
+            else
+                jq -s '.[0] + .[1]' ${OUTPUT} ${CONFIGDIR}/context >  ${TARGET}
+            fi
+        fi
+    fi
+    else
+       echo "RENDER-DETAILS(voc-languageaware): ERROR ${MERGEDJSONLD} has not been created in previous step"
+       echo "RENDER-DETAILS(voc-languageaware): continue with next specification"
+       RETURN=0
+    fi
 
 
-    jq -S '.classes| map({"name" : .name, "description" : .description , "usage" : .usage, "@id" : ."@id", "@type" : ."@type", "parents" : .parents? }) |sort_by(."@id")' /tmp/${FILE}4.jsonld > /tmp/${FILE}/classes
-    jq -S '[ .externals[] | select(.extra.Scope != "NOTHING") ] | map({"name" : .name,  "@id" : ."@id", "@type" : "rdfs:Class" } ) |sort_by(."@id")' /tmp/${FILE}4.jsonld > /tmp/${FILE}/externalclasses
-    jq -S '.properties| map({"name" : .name, "description" : .description , "usage" : .usage, "@id" : ."@id", "@type" : ."@type", "domain" : .domain, "range" : .range, "generalization": .generalization? } )| sort_by(."@id")' /tmp/${FILE}3.jsonld > /tmp/${FILE}/properties
-    jq -S '[ .externalproperties[] | select(.extra.Scope != "NOTHING") ]  | map({"name" : .name,  "@id" : ."@id", "@type" : "rdf:Property" } ) | sort_by(."@id")' /tmp/${FILE}4.jsonld > /tmp/${FILE}/externalproperties
-    jq -S '{"@id" : ."@id", "@type" : ."@type", "label": .label, "title": .title?, "namespace": .namespace?, "authors" : .authors, "editors" : .editors, "contributors" : .contributors, "publication-state" : ."publication-state"?, "publication-date" : ."publication-date"?, "navigation" : .navigation?, "issued": .issued?, "license": .license?, "baseURI": .baseURI?, "baseURIabbrev": .baseURIabbrev?}' /tmp/${FILE}4.jsonld > /tmp/${FILE}/ontology
-    jq -s '.[0] + .[1] + { "classes": .[2], "properties": .[4], "externals": .[3], "externalproperties": .[5]} + .[6]' /tmp/${FILE}/ontology ${CONFIGDIR}/ontology.defaults.json /tmp/${FILE}/classes /tmp/${FILE}/externalclasses /tmp/${FILE}/properties /tmp/${FILE}/externalproperties ${CONFIGDIR}/context >  ${TARGET}
 }
 #############################################################################################
 
@@ -36,25 +88,41 @@ mkdir -p ${TARGETDIR}/html
 cat ${CHECKOUTFILE} | while read line
 do
     SLINE=${TARGETDIR}/src/${line}
-    TLINE=${TARGETDIR}/target/${line} 
-    RLINE=${TARGETDIR}/report/${line}   
+    TLINE=${TARGETDIR}/target/${line}
+    RLINE=${TARGETDIR}/report/${line}
     echo "Processing line: ${SLINE} => ${TLINE} ${RLINE}"
     if [ -d "${SLINE}" ]
     then
             for i in ${SLINE}/*.jsonld
             do
+		if is_vocabulary ${RLINE} ${SLINE} ;  then
                 echo "generate-voc: convert $i to RDF"
                 BASENAME=$(basename $i .jsonld)
                 OUTFILE=${BASENAME}.ttl
                 REPORT=${RLINE}/${BASENAME}.ttl-report
 
+		echo "render vocabulary for prime language ${PRIMELANGUAGE}"
                 mkdir -p ${TLINE}/voc
-                make_jsonld $BASENAME $i ${SLINE}/selected.jsonld ${CONFIGDIR} || exit 1
-                cp ${SLINE}/selected.jsonld ${TLINE}/voc/${BASENAME}.jsonld
-#                if ! rdf serialize --input-format jsonld --processingMode json-ld-1.1 ${SLINE}/selected.jsonld --output-format turtle -o ${TLINE}/voc/$BASENAME.ttl 2>&1 | tee ${REPORT}
-#                then
-#                    exit 1
-#                fi
+                make_jsonld $BASENAME $i ${SLINE}/selected_${PRIMELANGUAGE}.jsonld ${CONFIGDIR} ${PRIMELANGUAGE} ${RLINE} ${SLINE}
+		if [ ${RETURN} -gt 0 ] ; then
+                     cp ${SLINE}/selected_${PRIMELANGUAGE}.jsonld ${TLINE}/voc/${BASENAME}_${PRIMELANGUAGE}.jsonld
+                     cp ${SLINE}/selected_${PRIMELANGUAGE}.jsonld ${TLINE}/voc/${BASENAME}.jsonld
+		fi
+
+
+		#
+		# do not execute the processing for other languages because RDF vocabularies are normally multilingual
+		# The current tool does not aggregate the different languages. This is a next step
+		#
+		for g in ${GOALLANGUAGE} 
+		do 
+			echo "render vocabulary for goal language ${g}"
+                	make_jsonld $BASENAME $i ${SLINE}/selected_${g}.jsonld ${CONFIGDIR} ${g} ${RLINE} ${SLINE} 
+			if [ ${RETURN} -gt 0 ] ; then
+                	cp ${SLINE}/selected_${g}.jsonld ${TLINE}/voc/${BASENAME}_${g}.jsonld
+			fi
+		done
+                fi
             done
     else
 	    echo "Error: ${SLINE}"
