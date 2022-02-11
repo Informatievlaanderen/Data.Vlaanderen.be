@@ -2,6 +2,7 @@
 
 PUBCONFIG=$2
 ROOTDIR=$1
+CONFIGDIR=$3
 
 # some test calls
 #jq -r '.[] | @sh "echo \(.urlref)"' publication.config | bash -e
@@ -35,6 +36,8 @@ ROOTDIR=$1
 # publicationpoints for that month. That would reduce the runtime
 # drastically.
 
+HOSTNAME=$(jq -r .hostname ${CONFIGDIR}/config.json)
+
 cleanup_directory() {
   rm -rf .git
 
@@ -46,6 +49,29 @@ cleanup_directory() {
     jq -r '.[] | @sh "find . -name \"*.eap\" !  -name \(.eap) -type f -exec rm -f {} + "' .map.json | bash -e
   fi
 }
+
+git_download() {
+     local GITTARGETDIR=$1
+
+     REPO=$(_jq '.repository')
+     REPO=`echo ${REPO} | sed -e "s|https://||g" | sed -e "s|/|-|g"` 
+     GITTMPDIR="/tmp/github/${REPO}"
+
+     if [ ! -d ${GITTMPDIR} ] ; then
+        git clone $(_jq '.repository') ${GITTMPDIR}
+     fi
+     pushd ${GITTMPDIR}
+
+     if ! git checkout $(_jq '.branchtag')
+     then
+        # branch could not be checked out for some reason
+        echo "failed: $ROOTDIR/$MAIN/$RDIR $(_jq '.branchtag')" >>$ROOTDIR/failed.txt
+     fi
+     cp -a ${GITTMPDIR}/. ${GITTARGETDIR}
+
+     popd 
+}
+
 
 toolchainhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
 
@@ -74,14 +100,16 @@ then
       mkdir -p $ROOTDIR/$MAIN/$RDIR
       mkdir -p $ROOTDIR/target/$RDIR
       mkdir -p $ROOTDIR/report/$RDIR
-      git clone $(_jq '.repository') $ROOTDIR/$MAIN/$RDIR
 
-      pushd $ROOTDIR/$MAIN/$RDIR
-      if ! git checkout $(_jq '.branchtag')
-      then
-        # branch could not be checked out for some reason
-        echo "failed: $ROOTDIR/$MAIN/$RDIR $(_jq '.branchtag')" >>$ROOTDIR/failed.txt
-      fi
+      git_download $ROOTDIR/$MAIN/$RDIR 
+#      git clone $(_jq '.repository') $ROOTDIR/$MAIN/$RDIR
+#
+#      pushd $ROOTDIR/$MAIN/$RDIR
+#      if ! git checkout $(_jq '.branchtag')
+#      then
+#        # branch could not be checked out for some reason
+#        echo "failed: $ROOTDIR/$MAIN/$RDIR $(_jq '.branchtag')" >>$ROOTDIR/failed.txt
+#      fi
 
       pushd $ROOTDIR/$MAIN/$RDIR
 
@@ -93,7 +121,7 @@ then
       fi
       comhash=$(git log | grep commit | head -1 | cut -d " " -f 2)
       echo "hashcode to add: ${comhash}"
-      echo ${row} | base64 --decode | jq --arg comhash "${comhash}" --arg toolchainhash "${toolchainhash}" --arg hostname $HOSTNAME'. + {documentcommit : $comhash, toolchaincommit: $toolchainhash, hostname: $hostname }' >.publication-point.json
+      echo ${row} | base64 --decode | jq --arg comhash "${comhash}" --arg toolchainhash "${toolchainhash}" --arg hostname "${HOSTNAME}" '. + {documentcommit : $comhash, toolchaincommit: $toolchainhash, hostname: $hostname }' > .publication-point.json
       cleanup_directory
       popd
 

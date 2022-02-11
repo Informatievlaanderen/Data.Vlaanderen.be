@@ -1,12 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+{% set language = "nl" %}
+{% set sortattr = "sort_nl" %}
 
 <html xml:lang="nl" lang="nl" dir="ltr" typeof="bibo:Document " about="" property="dcterms:language" content="nl" prefix="dcterms: http://purl.org/dc/terms/ bibo: http://purl.org/ontology/bibo/ schema: http://schema.org/ w3p: http://www.w3.org/2001/02pd/rec54#" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-              {% set folder_name = title.lower().replace(' ', '-') %}
-  <title>{{ title }}</title>
+  {% set name = metadata.title|lower|replace(' ', '-') %} 
+  <title>{{ metadata.title }}</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -45,74 +46,77 @@
         <div class="layout layout--wide">
           <div class="grid u-hr">
             <div class="col--9-12 col--1-1--s">
-              <h1 class="h1">{{ title }}</h1>
+              <h1 class="h1">{{ metadata.title }}</h1>
               <div class="head" role="contentinfo" id="respecHeader">
                 <dl>
                   <dt>Laatste aanpassing</dt>
-                  <dd>{{ now.strftime("%Y-%m-%d") }}</dd>
-
-                  {% set authors = contributors|selectattr("role", "equalto", "A")|sort(attribute='last_name') %}
-                  {% if authors %}
-                  <dt>Auteurs</dt>
-                  {% for author in authors %}
-                  <dd inlist="" rel="foaf:maker" class="p-author h-card vcard">
-                    <span typeof="foaf:Person">
-                      <span class="p-name fn" property="foaf:lastName">{{ author['last_name'] }}</span>,
-                      <span class="p-name fn" property="foaf:firstName">{{ author['first_name'] }}</span>
-                      {%- if author['affiliation_website'] and author['affiliation_name'] %}
-                      - <a href="{{ author['affiliation_website'] }}" class="p-org org h-org h-card" rel="foaf:workplaceHomepage">{{ author['affiliation_name'] }}</a>
-                      {%- elif author['affiliation_name'] %}
-                      - <span class="p-org org h-org h-card">{{ author['affiliation_name'] }}</span>
-                      {%- endif %}
-                      {%- if author['email'] %}
-                      - <span class="ed_mailto"><a href="mailto:{{ author['email'] }}" rel="foaf:mbox" class="u-email email">{{ author['email'] }}</a></span>
-                      {%- endif %}
-                    </span>
-                  </dd>
-                  {% endfor %}
-                  {% endif %}
-
-                  {% set editors = contributors|selectattr("role", "equalto", "E")|sort(attribute='last_name') %}
-                  {% if editors %}
-                  <dt>Editors</dt>
-                  {% for editor in editors %}
-                  <dd inlist="" rel="bibo:editor" class="p-author h-card vcard">
-                    <span typeof="foaf:Person">
-                      <span class="p-name fn" property="foaf:lastName">{{ editor['last_name'] }}</span>,
-                      <span class="p-name fn" property="foaf:firstName">{{ editor['first_name'] }}</span>
-                      {%- if editor['affiliation_website'] and editor['affiliation_name'] %}
-                      - <a href="{{ editor['affiliation_website'] }}" class="p-org org h-org h-card" rel="foaf:workplaceHomepage">{{ editor['affiliation_name'] }}</a>
-                      {%- elif editor['affiliation_name'] %}
-                      - <span class="p-org org h-org h-card">{{ editor['affiliation_name'] }}</span>
-                      {%- endif %}
-                      {%- if editor['email'] %}
-                      - <span class="ed_mailto"><a href="mailto:{{ editor['email'] }}" rel="foaf:mbox" class="u-email email">{{ editor['email'] }}</a></span>
-                    {%- endif %}
-                    </span>
-                  </dd>
-                  {% endfor %}
-                  {% endif %}
-
-                  {% set pure_contributors = contributors|selectattr("role", "equalto", "C")|sort(attribute='last_name') %}
-                  {% if pure_contributors %}
-                  <dt>Medewerkers</dt>
-                  {% for contributor in pure_contributors %}
-                  <dd inlist="" rel="dcterms:contributor" class="p-author h-card vcard">
-                    <span typeof="foaf:Person">
-                      <span class="p-name fn" property="foaf:lastName">{{ contributor['last_name'] }}</span>,
-                      <span class="p-name fn" property="foaf:firstName">{{ contributor['first_name'] }}</span>
-                      {%- if contributor['affiliation_website'] and contributor['affiliation_name'] %}
-                      - <a href="{{ contributor['affiliation_website'] }}" class="p-org org h-org h-card" rel="foaf:workplaceHomepage">{{ contributor['affiliation_name'] }}</a>
-                      {%- elif contributor['affiliation_name'] %}
-                      - <span class="p-org org h-org h-card">{{ contributor['affiliation_name'] }}</span>
-                      {%- endif %}
-                      {%- if contributor['email'] %}
-                      - <span class="ed_mailto"><a href="mailto:{{ contributor['email'] }}" rel="foaf:mbox" class="u-email email">{{ contributor['email'] }}</a></span>
-                      {%- endif %}
-                    </span>
-                  </dd>
-                  {% endfor %}
-                  {% endif %}
+                  <dd>{{ metadata.modified }}</dd>
+                        {% for role, contributors in contributors | groupby("role") %}
+                          {% if role == "A" %}
+                            {% set authors = contributors|sort(attribute='last_name') %}
+                        {% if authors %}
+                          <dt>Auteurs</dt>
+                          {% for author in authors %}
+                          <dd inlist="" rel="foaf:maker" class="p-author h-card vcard">
+                              <span typeof="foaf:Person">
+                              <span class="p-name fn" property="foaf:lastName">{{ author.last_name }}</span>,
+                              <span class="p-name fn" property="foaf:firstName">{{ author.first_name }}</span>
+                              {% if author.affiliation.website and author.affiliation.name %}
+                              - <a href="{{ author.affiliation.website }}" class="p-org org h-org h-card" rel="foaf:workplaceHomepage">{{ author.affiliation.name }}</a>
+                              {% elif author.affiliation.name %}
+                              - <span class="p-org org h-org h-card">{{ author.affiliation.name }}</span>
+                              {% endif %}
+                							{% if author.email %}
+                               - <span class="ed_mailto"><a href="mailto:{{ author.email }}" rel="foaf:mbox" class="u-email email">{{ author.email }}</a></span>
+                              {% endif %}
+                              </span>
+                          </dd>
+                          {% endfor %}
+                        {% endif %}
+                      {% elif role == "E" %}
+                        {% set editors = contributors|sort(attribute='last_name') %}
+                        {% if editors %}
+                          <dt>Editors</dt>
+                          {% for editor in editors %}
+                          <dd inlist="" rel="bibo:editor" class="p-author h-card vcard">
+                              <span typeof="foaf:Person">
+                              <span class="p-name fn" property="foaf:lastName">{{ editor.last_name }}</span>,
+                              <span class="p-name fn" property="foaf:firstName">{{ editor.first_name }}</span>
+                              {% if editor.affiliation.website and editor.affiliation.name %}
+                                 - <a href="{{ editor.affiliation.website }}" class="p-org org h-org h-card" rel="foaf:workplaceHomepage">{{ editor.affiliation.name }}</a>
+                              {% elif editor.affiliation.name %}
+                                 - <span class="p-org org h-org h-card">{{ editor.affiliation.name }}</span>
+                              {% endif %}
+                							{% if editor.email %}
+                                 - <span class="ed_mailto"><a href="mailto:{{ editor.email }}" rel="foaf:mbox" class="u-email email">{{ editor.email }}</a></span>
+                              {% endif %}
+                							</span>
+                          </dd>
+                        {% endfor %}
+                        {% endif %}
+                      {% elif role == "C" %}
+                        {% set pure_contributors = contributors|sort(attribute='last_name') %}
+                        {% if pure_contributors %}
+                        <dt>Medewerkers</dt>
+                          {% for contributor in pure_contributors %}
+                          <dd inlist="" rel="dcterms:contributor" class="p-author h-card vcard">
+                              <span typeof="foaf:Person">
+                              <span class="p-name fn" property="foaf:lastName">{{ contributor.last_name }}</span>,
+                              <span class="p-name fn" property="foaf:firstName">{{ contributor.first_name }}</span>
+                              {% if contributor.affiliation.website and contributor.affiliation.name %}
+                              - <a href="{{ contributor.affiliation.website }}" class="p-org org h-org h-card" rel="foaf:workplaceHomepage">{{ contributor.affiliation.name }}</a>
+                              {% elif contributor.affiliation.name %}
+                              - <span class="p-org org h-org h-card">{{ contributor.affiliation.name }}</span>
+                              {% endif %}
+                							{% if contributor.email %}
+                               - <span class="ed_mailto"><a href="mailto:{{ contributor.email }}" rel="foaf:mbox" class="u-email email">{{ contributor.email }}</a></span>
+                              {% endif %}
+							                </span>
+                          </dd>
+                            {% endfor %}
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
                 </dl>
               </div>
             </div>
@@ -139,7 +143,10 @@
 
             <div class="region region--no-space-top typography" id="summary">
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">Samenvatting</h2>
-                {% block summary %}
+                {% block summary %} 
+                  {% if metadata.description %} 
+                    {{ metadata.description[language] }}
+                  {% endif %} 
                 {% endblock %}
             </div>
 
@@ -174,26 +181,24 @@
               <h2 class="h2">Overzicht</h2>
               <div class="grid">
                 <div class="col--9-12 col--1-1--s typography">
-                  {% set entities_pure = entities|selectattr("source_type", "equalto", "class")   |sort(attribute='label') %}
-                  {% set datatypes     = entities|selectattr("source_type", "equalto", "datatype")|sort(attribute='label') %}
-                  {% if entities_pure %}
+                  {% if ( ( classes | length > 0)   ) %}
                   <div class="region region--no-space-top">
                     <p>In dit document wordt correct gebruik van de volgende entiteiten toegelicht:
                       <br />
                       |
-                      {%- for entity in entities_pure %}
-                      <a href="#{{ entity['label'] }}">{{ entity['label'] }}</a> |
+                      {%- for class in classes |sort(attribute=sortattr) %}
+                      <a href="#{{ class.name }}">{{ class.label[language] }}</a> |
                       {%- endfor %}
                     </p>
                   </div>
                   {% endif %}
-                  {% if datatypes %}
+                  {% if ( ( datatypes | length ) > 0 ) %}
                   <div class="region region--no-space-top">
                     <p> In dit document worden de volgende datatypes toegelicht:
                       <br />
                       |
-                      {%- for dtype in datatypes %}
-                      <a href="#{{ dtype['label'] }}">{{ dtype['label'] }}</a> |
+                      {%- for datatype in datatypes |sort(attribute=sortattr) %}
+                      <a href="#{{ datatype.name }}">{{ datatype.label[language] }}</a> |
                       {%- endfor %}
                     </p>
                   </div>
@@ -201,35 +206,36 @@
                 </div>
               </div>
             </div>
+
             <div class="region region--no-space-top">
-              <a href="/cms/ap/{{ name }}/overview.jpg" target="_blank">
-                 <img src="/cms/ap/{{ name }}/overview.jpg" />
+              <a href="{{ documentroot }}/html/overview.jpg" target="_blank">
+                 <img src="{{ documentroot }}/html/overview.jpg" />
               </a>
             </div>
             <div class="region region--no-space-top">
               <h2 class="h2">Entiteiten</h2>
             </div>
-            {% for entity in entities_pure %}
-            <div class="region region--no-space-top">
-              <h3 class="h3" id="{{ entity['label'] }}"><a href="{{ entity['uri'] }}" data-toggle="tooltip" data-content="{{ entity['uri'] }}" data-placement="right">{{ entity['label'] }}</a></h3>
+            {% for entity in classes | sort(attribute=sortattr) %}
+              <div class="region region--no-space-top">
+              <h3 class="h3" id="{{ entity.name }}"><a href="{{ entity.uri }}" data-toggle="tooltip" data-content="{{ entity.uri }}" data-placement="right">{{ entity.label[language] }}</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>{{ entity['definition'] }}</dd>
-                    {% if entity['usage_note'] %}
-                    <dt>Gebruik</dt><dd>{{ entity['usage_note'] }}</dd>
+                    <dt>Beschrijving</dt><dd>{{ entity.description[language] }}</dd>
+                    {% if entity.usage[language] %}
+                    <dt>Gebruik</dt><dd>{{ entity.usage[language] }}</dd>
                     {% endif %}
                     <dt>Eigenschappen</dt>
-                    {% if entity['properties'] %}
+		    {% if ((entity.properties | length) > 0 ) %} 
                     <dd>Voor deze entiteit zijn de volgende eigenschappen gedefinieerd:
-                    {%- for prop in entity['properties'] | sort(attribute='label') %}
-                      <a href="#{{ (entity['label'] ~ ':' ~ prop['label']) | urlencode }}">{{ prop['label'] }}</a>{% if not loop.last %}, {% endif %}
+                    {%- for prop in entity['properties'] | sort(attribute=sortattr) %}
+                      <a href="#{{ (entity.name ~ ':' ~ prop.name) | urlencode }}">{{ prop.label[language] }}</a>{% if not loop.last %}, {% endif %}
                     {%- endfor %}.</dd>
                     {% else %}
                     <dd>Voor deze entiteit zijn geen eigenschappen gedefinieerd.</dd>
                     {% endif %}
                   </dl>
                 </div>
-                {% if entity['properties'] %}
+		{% if ((entity.properties | length) > 0 ) %} 
                 <div class="u-table-overflow">
                   <table class="data-table">
                     <thead>
@@ -244,18 +250,22 @@
                     </thead>
 
                     <tbody class="supertype">
-                    {% for prop in entity['properties'] | sort(attribute='label') %}
-                      <tr id="{{ (entity['label'] ~ ':' ~ prop['label']) | urlencode }}" typeof="rdfs:Property" resource="{{ prop['uri'] }}">
+                    {% for prop in entity['properties'] | sort(attribute=sortattr) %}
+                      <tr id="{{ (entity.name ~ ':' ~ prop.name) | urlencode }}" typeof="rdfs:Property" resource="{{ prop.uri }}">
                         <td>
                           <code property="rdfs:label">
-                            <a href="{{ prop['uri'] }}" data-toggle="tooltip" data-content="{{ prop['uri'] }}" data-placement="right">
-                            {{ prop['label'] }}</a>
+                            <a href="{{ prop.uri }}" data-toggle="tooltip" data-content="{{ prop.uri }}" data-placement="right">
+                            {{ prop.label[language] }}</a>
                           </code>
                         </td>
-                        <td><a href="{{ prop['range_uri'] }}" data-toggle="tooltip" data-content="{{ prop['range_uri'] }}" data-placement="right">{{ prop['range_label'] }}</a></td>
-                        <td>{{ prop['cardinality'] }}</td>
-                        <td property="rdfs:comment">{{ prop['definition'] }}</td>
-                        <td property="vann:usageNote">{{ prop['usage_note'] }}</td>
+                        <td>
+                          {% for range in prop.range %}
+			    <a href="{{ range['range_uri'] }}" data-toggle="tooltip" data-content="{{ range['range_uri'] }}" data-placement="right">{{ range['range_label'] }}</a>
+                          {% endfor %}
+                        </td>
+                        <td>{{ prop.cardinality }}</td>
+                        <td property="rdfs:comment">{{ prop.description[language] }}</td>
+                        <td property="vann:usageNote">{{ prop.usage[language] }}</td>
                         <td>{% if prop['codelist_uri'] %}<a href="{{ prop['codelist_uri'] }}">Link</a>{% endif %}</td>
                       </tr>
                     {% endfor %}
@@ -270,27 +280,27 @@
             <div class="region region--no-space-top">
               <h2 class="h2">Datatypes</h2>
             </div>
-            {% for entity in datatypes %}
+            {% for entity in datatypes | sort(attribute=sortattr)%}
             <div class="region region--no-space-top">
-              <h3 class="h3" id="{{ entity['label'] }}"><a href="{{ entity['uri'] }}" data-toggle="tooltip" data-content="{{ entity['uri'] }}" data-placement="right">{{ entity['label'] }}</a></h3>
+              <h3 class="h3" id="{{ entity.name }}"><a href="{{ entity.uri }}" data-toggle="tooltip" data-content="{{ entity.uri }}" data-placement="right">{{ entity.label[language] }}</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Beschrijving</dt><dd>{{ entity['definition'] }}</dd>
-                    {% if entity['usage_note'] %}
-                    <dt>Gebruik</dt><dd>{{ entity['usage_note'] }}</dd>
+                    <dt>Beschrijving</dt><dd>{{ entity.description[language] }}</dd>
+                    {% if entity.usage[language] %}
+                    <dt>Gebruik</dt><dd>{{ entity.usage[language] }}</dd>
                     {% endif %}
                     <dt>Eigenschappen</dt>
-                    {% if entity['properties'] %}
+		    {% if ((entity.properties | length) > 0 ) %} 
                     <dd>Voor dit datatype zijn de volgende eigenschappen gedefinieerd:
-                    {%- for prop in entity['properties'] | sort(attribute='label') %}
-                      <a href="#{{ (entity['label'] ~ ':' ~ prop['label']) | urlencode }}">{{ prop['label'] }}</a>{% if not loop.last %}, {% endif %}
+                    {%- for prop in entity['properties'] | sort(attribute=sortattr) %}
+                      <a href="#{{ (entity.name ~ ':' ~ prop.name) | urlencode }}">{{ prop.label[language] }}</a>{% if not loop.last %}, {% endif %}
                     {%- endfor %}.</dd>
                     {% else %}
                     <dd>Voor dit datatype zijn geen eigenschappen gedefinieerd.</dd>
                     {% endif %}
                   </dl>
                 </div>
-                {% if entity['properties'] %}
+		{% if ((entity.properties | length) > 0 ) %} 
                 <div class="u-table-overflow">
                   <table class="data-table">
                     <thead>
@@ -305,17 +315,21 @@
                     </thead>
 
                     <tbody class="supertype">
-                      {% for prop in entity['properties'] | sort(attribute='label') %}
-                      <tr id="{{ (entity['label'] ~ ':' ~ prop['label']) | urlencode }}" typeof="rdfs:Property" resource="{{ prop['uri'] }}">
+                      {% for prop in entity['properties'] | sort(attribute=sortattr) %}
+                      <tr id="{{ (entity.name ~ ':' ~ prop.name ) | urlencode }}" typeof="rdfs:Property" resource="{{ prop.uri }}">
                         <td>
                           <code property="rdfs:label">
-                            <a href="{{ prop['uri'] }}" data-toggle="tooltip" data-content="{{ prop['uri'] }}" data-placement="right">{{ prop['label'] }}</a>
+                            <a href="{{ prop.uri }}" data-toggle="tooltip" data-content="{{ prop.uri }}" data-placement="right">{{ prop.label[language] }}</a>
                           </code>
                         </td>
-                        <td><a href="{{ prop['range_uri'] }}" data-toggle="tooltip" data-content="{{ prop['range_uri'] }}" data-placement="right">{{ prop['range_label'] }}</a></td>
+                        <td>
+                          {% for range in prop.range %}
+			    <a href="{{ range['range_uri'] }}" data-toggle="tooltip" data-content="{{ range['range_uri'] }}" data-placement="right">{{ range['range_label'] }}</a>
+                          {% endfor %}
+                        </td>
                         <td>{{ prop['cardinality'] }}</td>
-                        <td property="rdfs:comment">{{ prop['definition'] }}</td>
-                        <td property="vann:usageNote">{{ prop['usage_note'] }}</td>
+                        <td property="rdfs:comment">{{ prop.description[language] }}</td>
+                        <td property="vann:usageNote">{{ prop.usage[language] }}</td>
                         <td>{% if prop['codelist_uri'] %}<a href="{{ prop['codelist_uri'] }}">Link</a>{% endif %}</td>
                       </tr>
                       {% endfor %}
@@ -329,7 +343,7 @@
             <div class="region region--no-space-top" id="jsonld">
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">JSON-LD context</h2>
                 {% block jsonld %}
-                <p>Een herbruikbare JSON-LD context definitie voor dit applicatieprofiel is terug te vinden op: <a href="http://data.vlaanderen.be/context/" target="_blank">http://data.vlaanderen.be/context/</a></p>
+                <p>Een herbruikbare JSON-LD context definitie voor dit applicatieprofiel is terug te vinden op: <a href="https://data.vlaanderen.be/context/" target="_blank">https://data.vlaanderen.be/context/</a></p>
                 {% endblock %}
             </div>
           </div>

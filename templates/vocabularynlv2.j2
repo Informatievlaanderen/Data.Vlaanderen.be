@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+{% set language = "nl" %}
+{% set sortattr = "sort_nl" %}
 <html xml:lang="nl" lang="nl" dir="ltr" typeof="bibo:Document " about="" property="dcterms:language" content="nl" prefix="dcterms: http://purl.org/dc/terms/ bibo: http://purl.org/ontology/bibo/ schema: http://schema.org/ w3p: http://www.w3.org/2001/02pd/rec54#" xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>{{ record['metadata_nl']['title'] }}</title>
+    <title>{{ metadata.title[language] }}</title>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,99 +37,99 @@
             <div class="grid u-hr">
                 <div class="col--9-12 col--1-1--s">
                     <div class="head" role="contentinfo" id="respecHeader">
-                    <h1 class="h1 title p-name"  property="dcterms:title" id="title">{{ record['metadata_nl']['title'] }}</h1>
-                    {% if record['metadata']['prefix'] %}
-                    <h2 class="h2" id="subtitle" property="bibo:subtitle">Specificatie van <em>{{ record['metadata']['prefix'] }}</em></h2>
+                    <h1 class="h1 title p-name"  property="dcterms:title" id="title">{{ metadata.title[language] }}</h1>
+                    {% if metadata.prefix %}
+                    <h2 class="h2" id="subtitle" property="bibo:subtitle">Specificatie van <em>{{ metadata.prefix }}</em></h2>
                     {% endif %}
-                    {% if record['metadata']['issued'] %}
-                    <h2 class="h2" content="{{ record['metadata']['issued'] }}" datatype="xsd:dateTime" property="dcterms:issued" id="draft-{{ record['metadata']['issued'] }}">Uitgegeven op <time datetime="{{ record['metadata']['issued'] }}" class="dt-published">{{ record['metadata']['issued'] }}</time></h2>
+                    {% if metadata.issued %}
+                    <h2 class="h2" content="{{ metadata.issued }}" datatype="xsd:dateTime" property="dcterms:issued" id="draft-{{ metadata.issued }}">Uitgegeven op <time datetime="{{ metadata.issued }}" class="dt-published">{{ metadata.issued }}</time></h2>
                     {% endif %}
                     <dl>
-                        {% if record['metadata']['modified'] %}
+                        {% if metadata.modified %}
                         <dt>Laatste aanpassing</dt>
 
-                        <dd>{{ record['metadata']['modified'] }}
+                        <dd>{{ metadata.modified }}
                         </dd>
                         {% endif %}
 
                         <dt>Laatste versie</dt>
 
-                        <dd><a href="{{ record['metadata']['uri'] }}">{{ record['metadata']['uri'] }}</a>
+                        <dd><a href="{{ metadata.uri }}">{{ metadata.uri }}</a>
                         </dd>
 
-						{% set authors = contributors|selectattr("role", "equalto", "A")|sort(attribute='last_name') %}
+                        {% for role, contributors in contributors | groupby("role") %}
+                          {% if role == "A" %}
+                            {% set authors = contributors|sort(attribute='last_name') %}
                         {% if authors %}
-                        <dt>Auteurs</dt>
-                        {% for author in authors %}
-                        <dd inlist="" rel="foaf:maker" class="p-author h-card vcard">
-                            <span typeof="foaf:Person">
-                            <span class="p-name fn" property="foaf:lastName">{{ author['last_name'] }}</span>,
-                            <span class="p-name fn" property="foaf:firstName">{{ author['first_name'] }}</span>
-                            {% if author['affiliation_website'] and author['affiliation_name'] %}
-                            - <a href="{{ author['affiliation_website'] }}" class="p-org org h-org h-card" rel="foaf:workplaceHomepage">{{ author['affiliation_name'] }}</a>
-                            {% elif author['affiliation_name'] %}
-                            - <span class="p-org org h-org h-card">{{ author['affiliation_name'] }}</span>
-                            {% endif %}
-							{% if author['email'] %}
-                             - <span class="ed_mailto"><a href="mailto:{{ author['email'] }}" rel="foaf:mbox" class="u-email email">{{ author['email'] }}</a></span>
-                            {% endif %}
-                            </span>
-                        </dd>
-                        {% endfor %}
+                          <dt>Auteurs</dt>
+                          {% for author in authors %}
+                          <dd inlist="" rel="foaf:maker" class="p-author h-card vcard">
+                              <span typeof="foaf:Person">
+                              <span class="p-name fn" property="foaf:lastName">{{ author.last_name }}</span>,
+                              <span class="p-name fn" property="foaf:firstName">{{ author.first_name }}</span>
+                              {% if author.affiliation.website and author.affiliation.name %}
+                              - <a href="{{ author.affiliation.website }}" class="p-org org h-org h-card" rel="foaf:workplaceHomepage">{{ author.affiliation.name }}</a>
+                              {% elif author.affiliation.name %}
+                              - <span class="p-org org h-org h-card">{{ author.affiliation.name }}</span>
+                              {% endif %}
+                							{% if author.email %}
+                               - <span class="ed_mailto"><a href="mailto:{{ author.email }}" rel="foaf:mbox" class="u-email email">{{ author.email }}</a></span>
+                              {% endif %}
+                              </span>
+                          </dd>
+                          {% endfor %}
                         {% endif %}
-
-						{% set editors = contributors|selectattr("role", "equalto", "E")|sort(attribute='last_name') %}
+                      {% elif role == "E" %}
+                        {% set editors = contributors|sort(attribute='last_name') %}
                         {% if editors %}
-                        <dt>Editors</dt>
-                        {% for editor in editors %}
-                        <dd inlist="" rel="bibo:editor" class="p-author h-card vcard">
-                            <span typeof="foaf:Person">
-                            <span class="p-name fn" property="foaf:lastName">{{ editor['last_name'] }}</span>,
-                            <span class="p-name fn" property="foaf:firstName">{{ editor['first_name'] }}</span>
-                            {% if editor['affiliation_website'] and editor['affiliation_name'] %}
-                            - <a href="{{ editor['affiliation_website'] }}" class="p-org org h-org h-card" rel="foaf:workplaceHomepage">{{ editor['affiliation_name'] }}</a>
-                            {% elif editor['affiliation_name'] %}
-                            - <span class="p-org org h-org h-card">{{ editor['affiliation_name'] }}</span>
-                            {% endif %}
-							{% if editor['email'] %}
-                             - <span class="ed_mailto"><a href="mailto:{{ editor['email'] }}" rel="foaf:mbox" class="u-email email">{{ editor['email'] }}</a></span>
-                            {% endif %}
-							</span>
-                        </dd>
+                          <dt>Editors</dt>
+                          {% for editor in editors %}
+                          <dd inlist="" rel="bibo:editor" class="p-author h-card vcard">
+                              <span typeof="foaf:Person">
+                              <span class="p-name fn" property="foaf:lastName">{{ editor.last_name }}</span>,
+                              <span class="p-name fn" property="foaf:firstName">{{ editor.first_name }}</span>
+                              {% if editor.affiliation.website and editor.affiliation.name %}
+                                 - <a href="{{ editor.affiliation.website }}" class="p-org org h-org h-card" rel="foaf:workplaceHomepage">{{ editor.affiliation.name }}</a>
+                              {% elif editor.affiliation.name %}
+                                 - <span class="p-org org h-org h-card">{{ editor.affiliation.name }}</span>
+                              {% endif %}
+                							{% if editor.email %}
+                                 - <span class="ed_mailto"><a href="mailto:{{ editor.email }}" rel="foaf:mbox" class="u-email email">{{ editor.email }}</a></span>
+                              {% endif %}
+                							</span>
+                          </dd>
                         {% endfor %}
                         {% endif %}
-
-						{% set pure_contributors = contributors|selectattr("role", "equalto", "C")|sort(attribute='last_name') %}
+                      {% elif role == "C" %}
+                        {% set pure_contributors = contributors|sort(attribute='last_name') %}
                         {% if pure_contributors %}
                         <dt>Medewerkers</dt>
-                        {% for contributor in pure_contributors %}
-                        <dd inlist="" rel="dcterms:contributor" class="p-author h-card vcard">
-                            <span typeof="foaf:Person">
-                            <span class="p-name fn" property="foaf:lastName">{{ contributor['last_name'] }}</span>,
-                            <span class="p-name fn" property="foaf:firstName">{{ contributor['first_name'] }}</span>
-                            {% if contributor['affiliation_website'] and contributor['affiliation_name'] %}
-                            - <a href="{{ contributor['affiliation_website'] }}" class="p-org org h-org h-card" rel="foaf:workplaceHomepage">{{ contributor['affiliation_name'] }}</a>
-                            {% elif contributor['affiliation_name'] %}
-                            - <span class="p-org org h-org h-card">{{ contributor['affiliation_name'] }}</span>
-                            {% endif %}
-							{% if contributor['email'] %}
-                             - <span class="ed_mailto"><a href="mailto:{{ contributor['email'] }}" rel="foaf:mbox" class="u-email email">{{ contributor['email'] }}</a></span>
-                            {% endif %}
-							</span>
-                        </dd>
-                        {% endfor %}
+                          {% for contributor in pure_contributors %}
+                          <dd inlist="" rel="dcterms:contributor" class="p-author h-card vcard">
+                              <span typeof="foaf:Person">
+                              <span class="p-name fn" property="foaf:lastName">{{ contributor.last_name }}</span>,
+                              <span class="p-name fn" property="foaf:firstName">{{ contributor.first_name }}</span>
+                              {% if contributor.affiliation.website and contributor.affiliation.name %}
+                              - <a href="{{ contributor.affiliation.website }}" class="p-org org h-org h-card" rel="foaf:workplaceHomepage">{{ contributor.affiliation.name }}</a>
+                              {% elif contributor.affiliation.name %}
+                              - <span class="p-org org h-org h-card">{{ contributor.affiliation.name }}</span>
+                              {% endif %}
+                							{% if contributor.email %}
+                               - <span class="ed_mailto"><a href="mailto:{{ contributor.email }}" rel="foaf:mbox" class="u-email email">{{ contributor.email }}</a></span>
+                              {% endif %}
+							                </span>
+                            </dd>
+                            {% endfor %}
+                          {% endif %}
                         {% endif %}
+                      {% endfor %}
                     </dl>
-
-                    <p class="copyright">{{ record['metadata']['rights'] }}</p>
-
-
                     </div>
                 </div>
+                <p class="copyright">{{ metadata.rights }}</p>
              </div>
         </div>
     </div>
-
     <div id="main" itemprop="mainContentOfPage" role="main" tabindex="-1" class="main-content">
         <div class="region region--no-space-top">
             <div class="layout layout--wide">
@@ -138,12 +139,12 @@
                             <section id="abstract" class="introductory" property="dcterms:abstract" datatype="" typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter">
                                 <h2 class="h2" aria-level="1" role="heading" id="h2_abstract">Samenvatting</h2>
                                 <div class="region region--no-space-top typography" id="summary"> 
-				{% block summary %}
+				                          {% block summary %}
                                 <p>
-                                Het {{ record['metadata_nl']['title'] }} vocabularium specificeert een aantal klassen en eigenschappen om een {{ record['metadata_nl']['title'].lower() }} te beschrijven.
+                                Het {{ metadata.title[language] }} vocabularium specificeert een aantal klassen en eigenschappen om een {{ metadata.title[language] | lower }} te beschrijven.
                                 </p>
                                 <p>
-                                {{ record['metadata_nl']['abstract'] }}
+                                {{ metadata.abstract[language] }}
                                 </p>
                                 {% endblock %}
 				</div>
@@ -158,13 +159,13 @@
                                 <p><em>Deze sectie beschrijft de status van dit document op het moment van publicatie. Het kan zijn dat er ondertussen al nieuwere versies zijn uitgebracht.</em></p><br/>
                                 <p>Een lijst van de recentste vocabularia is terug te vinden op <a href="http://data.vlaanderen.be/ns">http://data.vlaanderen.be/ns</a></p><br/>
                                 <p>Dit document is een offici&#235;le specificatie van een vocabularium en biedt een gedeeld begrippenkader voor bepaalde concepten. Deze specificatie dient om de definitie, gebruik, domein en bereik van de RDF termen binnen dit domein te verduidelijken. De termen gedefinieerd in dit vocabularium zijn persistent en zullen bijgevolg nooit verdwijnen, noch zullen de definities veranderen behalve dan om een bestaande definitie verder te verduidelijken. Termen kunnen echter wel als verouderd worden bestempeld en vervangen worden in nieuwere versies van deze specificatie.</p>
-                                {% if record['metadata_nl']['comment'] %}
+                                {% if metadata.comment[language] %}
                                 <p>
-                                {{ record['metadata_nl']['comment'] }}
+                                {{ metadata.comment[language] }}
                                 </p>
                                 {% endif %}
-                                {% if record['metadata']['mname'] %}
-                                <p>Feedback op deze specificatie kan gegeven worden via de <a href="{{ record['metadata']['mmbox'] }}">mailing lijst</a> of als een topic in onze <a href="https://github.com/Informatievlaanderen/OSLO-Public-Discussion">publieke reviewdiscussielijst</a>.</p>
+                                {% if metadata.mname %}
+                                <p>Feedback op deze specificatie kan gegeven worden via de <a href="{{ metadata.mmbox }}">mailing lijst</a> of als een topic in onze <a href="https://github.com/Informatievlaanderen/OSLO-Public-Discussion">publieke reviewdiscussielijst</a>.</p>
                                 {% endif %}
                                 {% endblock %}
 				</div>
@@ -197,46 +198,40 @@
                                 <div class="region region--no-space-top">
                                     <p>Deze sectie somt alle klassen en eigenschappen van het vocabularium op.</p>
                                     <p>
-                                    {% if record['parents'] %}
+                                    {% if externalvocs %}
                                     Dit vocabularium verwijst verder naar termen uit de volgende vocabularia:
-                                    {% set termen = record['parents']['list'].split(',') %}
                                     <ul>
-                                    {% for term in termen %}
-                                        <li><a href="{{ term }}">{{ term }}</a></li>
+                                    {% for term in externalvocs |sort %}
+                                        <li><a href="{{ term.uri }}">{{ term.uri }}</a></li>
                                     {% endfor %}
                                     </ul>
                                     {% endif %}
                                     </p>
                                     <br />
-                                    <p><a href="http://visualdataweb.de/webvowl/#iri={{ record['metadata']['uri'] }}.ttl">Verken het vocabularium</a></p>
                                 </div>
 
-                                {% if record['glance']['classes_nl'] %}
+                                {% if ( ( classes | length) > 0 )%}
                                 <div class="region region--no-space-top">
                                     <h3 class="h3" >Klassen</h3>
-                                    {% set classes = record['glance']['classes_nl'].split(",") %}
-                                    {% set class_uris = record['glance']['class_uris_nl'].split(",") %}
                                     <div class="grid">
                                         <p>
                                             |
                                             {% for class in classes %}
-                                            <a href="{{ class_uris[loop.index - 1]  | replace(record['metadata']['uri'], '') }}" rel="class">{{ class }}</a> |
+                                            <a href="{{ class.uri  | replace(metadata.uri, '') }}" rel="class">{{ class.name}}</a> |
                                             {% endfor %}
                                         </p>
                                     </div>
                                 </div>
                                 {% endif %}
 
-                                {% if record['glance']['properties_nl'] %}
+                                {% if ( ( properties | length ) > 0 ) %}
                                 <div class="region region--no-space-top">
                                     <h3 class="h3" >Eigenschappen</h3>
-                                    {% set props = record['glance']['properties_nl'].split(",") %}
-                                    {% set prop_uris = record['glance']['prop_uris_nl'].split(",") %}
                                     <div class="grid">
                                         <p>
                                             |
-                                            {% for prop in props %}
-                                            <a href="{{ prop_uris[loop.index - 1]  | replace(record['metadata']['uri'], '')}}" rel="property">{{ prop }}</a> |
+                                            {% for prop in properties %}
+                                            <a href="{{ prop.uri  | replace(metadata.uri, '')}}" rel="property">{{ prop.label[language] }}</a> |
                                             {% endfor %}
                                         </p>
                                     </div>
@@ -249,52 +244,49 @@
                             <section typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter" id="classes">
 
                                 <h2 class="h2" id="classes" aria-level="1" role="heading"><span class="secno">4. </span>Klassen</h2>
-                                {% if record['glance']['class_uris_nl'] %}
+                                {% if classes %}
                                 <div class="region region--no-space-top">
                                     <p>Deze sectie geeft een formele definitie aan elke klasse.</p>
                                 </div>
-                                {% set class_uris = record['glance']['class_uris_nl'].split(",") %}
-                                {% for class_uri in class_uris %}
-                                {% set klasse = record['class_nl:'+class_uri] %}
+                                {% for class in classes | sort(attribute=sortattr) %}
                                 <div class="region region--no-space-top">
-                                    <h3 class="h3"  id="{{ class_uri | replace(record['metadata']['uri'] + '#', '') }}">Klasse <em>{{ klasse['label'] }}</em></h3>
+                                    <h3 class="h3"  id="{{ class.uri | replace(metadata.uri + '#', '') }}">Klasse <em>{{ class.label[language] }}</em></h3>
                                     <table class="definition">
                                         <tbody>
                                           <tr>
                                             <th>Type</th>
                                             <td>Klasse</td>
                                           </tr>
-                                          {% if klasse['identifier'] %}
+                                          {% if class.name %}
                                           <tr>
                                             <th>Naam</th>
-                                            <td><code>{{ klasse['identifier'] }}</code></td>
+                                            <td><code>{{ class.label[language] }}</code></td>
                                           </tr>
                                           {% endif %}
                                           <tr>
                                             <th>URI</th>
-                                            <td><code>{{ class_uri }}</code></td>
+                                            <td><code>{{ class.uri }}</code></td>
                                           </tr>
-                                          {% if klasse['parents'] %}
+                                          {% if class.parents %}
 										  <tr>
                                             <th>Specialisatie van</th>
 											<td><ul>
-											{% set parents = klasse['parents'].split(",")|sort %}
-											{% for parent in parents %}
-                                              <li><code>{{ parent }}</code></li>
+											{% for parent in parents|sort %}
+                                              <li><code>PARENT{{ parent }}</code></li>
 											{% endfor %}
                                             </ul></td>
 										  </tr>
                                           {% endif %}
                                           <tr>
                                             <th>Definitie</th>
-                                            <td>{{ klasse['comment'] }}</td>
+                                            <td>{{ class.description[language]}}</td>
                                           </tr>
-                                          {% if klasse['usagenote'] %}
+                                          {% if class.usage[language] %}
                                           <tr>
                                             <th>
                                               <p>Gebruik</p>
                                             </th>
-                                            <td>{{ klasse['usagenote'] }}</td>
+                                            <td>{{ class.usage[language] }}</td>
                                           </tr>
                                           {% endif %}
                                         </tbody>
@@ -315,63 +307,62 @@
 
                                 <h2 class="h2" id="properties" aria-level="1" role="heading"><span class="secno">5. </span>Eigenschappen</h2>
 
-                                {% if record['glance']['prop_uris_nl'] %}
+                                {% if properties %}
                                 <div class="region region--no-space-top">
                                     <p>Deze sectie geeft een formele definitie aan elke eigenschap.</p>
                                 </div>
 
-                                {% set prop_uris = record['glance']['prop_uris_nl'].split(",") %}
-                                {% for prop_uri in prop_uris %}
-                                {% set eigenschap = record['property_nl:'+prop_uri] %}
+                                {% for property in properties | sort(attribute=sortattr) %}
                                 <div class="region region--no-space-top">
-                                    <h3 class="h3"  id="{{ prop_uri | replace(record['metadata']['uri'] + '#', '') }}">Eigenschap <em>{{  eigenschap['label'] }}</em></h3>
+                                    <h3 class="h3"  id="{{ property.uri | replace(metadata.uri + '#', '') }}">Eigenschap <em>{{  property.label[language] }}</em></h3>
                                     <table class="definition">
                                         <tbody>
                                           <tr>
                                             <th>Type</th>
                                             <td>Eigenschap</td>
                                           </tr>
-                                          {% if eigenschap['identifier'] %}
-                                          <tr>
-                                            <th>Naam</th>
-                                            <td><code>{{ eigenschap['identifier'] }}</code></td>
-                                          </tr>
-                                          {% endif %}
                                           <tr>
                                             <th>URI</th>
-                                            <td><code>{{ prop_uri }}</code></td>
+                                            <td><code>{{ property.uri }}</code></td>
                                           </tr>
-                                          {% if eigenschap['domain'] %}
+                                          {% if ( ( property.domain  | length ) > 0 )%} 
                                           <tr>
                                             <th>Domein</th>
-                                            <td><code>{{ eigenschap['domain'] }}</code></td>
+                                            <td><code>
+                                                {% for entity in property.domain %}
+                                                  {{ entity }} 
+                                                {% endfor %}
+                                            </code></td>
                                           </tr>
-                                          {% endif %}
-                                          {% if eigenschap['range'] %}
+                                          {% endif %} 
+                                          {% if (( property.range  | length ) > 0)%}
                                           <tr>
                                             <th>Bereik</th>
-                                            <td><code>{{ eigenschap['range'] }}</code></td>
+                                            <td><code>
+                                                {% for entity in property.range %}
+                                                  {{ entity }} 
+                                                {% endfor %}
+                                            </code></td>
                                           </tr>
                                           {% endif %}
-                                          {% if eigenschap['parents'] %}
-										  <tr>
+                                          {% if ( ( property.parents | length ) > 0 )  %}
+										                      <tr>
                                             <th>Specialisatie van</th>
-											<td><ul>
-											{% set parents = eigenschap['parents'].split(",")|sort %}
-											{% for parent in parents %}
+											                      <td><ul>
+											                        {% for parent in property.parents|sort %}
                                               <li><code>{{ parent }}</code></li>
-											{% endfor %}
+                        											{% endfor %}
                                             </ul></td>
-										  </tr>
+										                      </tr>
                                           {% endif %}
                                           <tr>
                                             <th>Definitie</th>
-                                            <td>{{ eigenschap['comment'] }}</td>
+                                            <td>{{ property.description[language] }}</td>
                                           </tr>
-                                          {% if eigenschap['usagenote'] %}
+                                          {% if property.usage[language] %}
                                           <tr>
                                             <th>Gebruik</th>
-                                            <td>{{ eigenschap['usagenote'] }}</td>
+                                            <td>{{ property.usage[language] }}</td>
                                           </tr>
                                           {% endif %}
                                         </tbody>
@@ -395,18 +386,16 @@
                                     <p>Deze sectie geeft een overzicht van terminologie uit andere vocabularia die relevant is voor dit domeinmodel samen met hun Nederlandstalige labels en definities.</p>
                                 </div>
 
-                                {% if record['glance']['ext_uris'] %}
-                                {% set ext_uris = record['glance']['ext_uris'].split(",") %}
-                                {% set externals = record['glance']['externals'].split(",") %}
-                                {% for ext_uri in ext_uris %}
+                                {% if external_terms %}
+                                {% for external in external_terms %}
                                 <div class="region region--no-space-top">
-                                    <h3 class="h4" id="#statuswijzigingObject"><em>{{ externals[loop.index - 1] }}</em></h3>
+                                    <h3 class="h4" id="#statuswijzigingObject"><em>{{ external.label[language] }}</em></h3>
                                     <table class="definition">
                                         <tbody>
                                           
                                           <tr>
                                             <th>URI</th>
-                                            <td><code>{{ ext_uri }}</code></td>
+                                            <td><code>{{ external.uri }}</code></td>
                                           </tr>
                                           
                                         </tbody>

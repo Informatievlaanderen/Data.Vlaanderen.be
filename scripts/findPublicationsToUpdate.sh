@@ -1,10 +1,13 @@
 #!/bin/bash
 
-PUB_CONFIG=$2
 ROOT_DIR=$1
+PUB_CONFIG=$2
+CIRCLEWORKDIR=$3 #set explicitly because CIRCLECI_WORKING_DIRECTORY is "~/project" 
 
 CONFIG_FOLDER=${PUB_CONFIG%/*}
 PUB_FILE=${PUB_CONFIG##*/}
+
+TOOLCHAINCONFIG=${CONFIG_FOLDER}/config.json
 
 #
 # merge the publication-configuration with the versions found in the branch specific one.
@@ -17,10 +20,21 @@ PUB_FILE=${PUB_CONFIG##*/}
 rm -rf $ROOT_DIR/*.txt
 rm -rf tmp
 
+#-------------------------------------------
+#
+test_json_file() {
+        jq . $1 > /dev/null
+        if [ "$?" -gt 0 ] ; then
+                echo "ERROR: incorrect JSON FILE: $1" 
+                exit 1
+        fi
+}
 
 # determine the last changed files
+# TOOLCHAIN_TOKEN is a PAT key configured in circleci as environment variable
 mkdir -p $ROOT_DIR
-curl -o $ROOT_DIR/commit.json https://raw.githubusercontent.com/Informatievlaanderen/OSLO-Generated/$CIRCLE_BRANCH/report/commit.json
+GENERATEDREPO=$(jq --arg bt "master" -r '.generatedrepository + {"filepath":"report/commit.json", "branchtag":"\($bt)"}' ${TOOLCHAINCONFIG})
+./scripts/downloadFileGithub.sh "${GENERATEDREPO}" ${ROOT_DIR}/commit.json ${TOOLCHAIN_TOKEN}
 sleep 5s
 
 if jq -e . $ROOT_DIR/commit.json; then
@@ -28,19 +42,41 @@ if jq -e . $ROOT_DIR/commit.json; then
   onlyChangedPublicationFiles=true
 
   COMMIT=$(jq -r .commit $ROOT_DIR/commit.json)
+  PUBLICATIONPOINTSDIRS=$(jq -r '.publicationpoints | @sh'  ${CONFIG_FOLDER}/config.json)
+  PUBLICATIONPOINTSDIRS=`echo ${PUBLICATIONPOINTSDIRS} | sed -e "s/'//g"`
 
   listOfChanges=$(git diff --name-only --no-renames $COMMIT)
   echo "write change file"
   echo $listOfChanges > changes.txt
 
-
+  for i in ${PUBLICATIONPOINTSDIRS} ; do
+         mkdir -p tmp/prev/config/$i
+         mkdir -p tmp/next/config/$i
+  done
   mkdir -p tmp/prev/config/$OTHER_FOLDER tmp/prev/config/$TEST_FOLDER tmp/prev/config/$PRODUCTION_FOLDER
   mkdir -p tmp/next/config/$OTHER_FOLDER tmp/next/config/$TEST_FOLDER tmp/next/config/$PRODUCTION_FOLDER
+
+  GITROOT=${CONFIG_FOLDER#${CIRCLEWORKDIR}}
+
   while read -r filename;  do
+#    if [[  $filename == "$CONFIG_FOLDER/$PUB_FILE" \
+#       || ($filename == $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE && ($CIRCLE_BRANCH == "$TEST_BRANCH" || $CIRCLE_BRANCH == "$PRODUCTION_BRANCH")) \
+#       || ($filename == $CONFIG_FOLDER/$TEST_FOLDER/*.$PUB_FILE && $CIRCLE_BRANCH == "$TEST_BRANCH") \
+#       || ($filename == $CONFIG_FOLDER/$OTHER_FOLDER/*.$PUB_FILE && ($CIRCLE_BRANCH != "$TEST_BRANCH" && $CIRCLE_BRANCH != "$PRODUCTION_BRANCH")) \
+#       ]] ; then
+    filenameInSelection=false
+    for i in ${PUBLICATIONPOINTSDIRS} ; do
+           if [[ $filename =~ ${GITROOT}/$i/.*.${PUB_FILE} ]] ; then 
+            filenameInSelection=true
+        fi
+           if [[ $filename =~ ${GITROOT}/$i/${PUB_FILE} ]] ; then 
+            filenameInSelection=true
+        fi
+    done
+    
+    
     if [[  $filename == "$CONFIG_FOLDER/$PUB_FILE" \
-       || ($filename == $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE && ($CIRCLE_BRANCH == "$TEST_BRANCH" || $CIRCLE_BRANCH == "$PRODUCTION_BRANCH")) \
-       || ($filename == $CONFIG_FOLDER/$TEST_FOLDER/*.$PUB_FILE && $CIRCLE_BRANCH == "$TEST_BRANCH") \
-       || ($filename == $CONFIG_FOLDER/$OTHER_FOLDER/*.$PUB_FILE && ($CIRCLE_BRANCH != "$TEST_BRANCH" && $CIRCLE_BRANCH != "$PRODUCTION_BRANCH")) \
+       || $filenameInSelection == "true" \
        ]] ; then
       echo "The file $filename is added for publicationchanges"
       if git show $COMMIT:$filename &>/dev/null ; then
@@ -110,7 +146,20 @@ else
     cp $CONFIG_FOLDER/$PUB_FILE tmp/all
     cp $CONFIG_FOLDER/$OTHER_FOLDER/*.$PUB_FILE tmp/all/$OTHER_FOLDER
   fi
+  echo "include all selected publication points" 
+  for i in ${PUBLICATIONPOINTSDIRS} ; do
+	  echo "try to copy all files with extension ${PUB_FILE}"
+      cp ${CONFIG_FOLDER}/$i/.*.${PUB_FILE}  tmp/all
+	  echo "try to copy file ${PUB_FILE}"
+      cp ${CONFIG_FOLDER}/$i/${PUB_FILE}  tmp/all
+  done
+  echo "errors are normal if the files of the above form are not present" 
   jq --slurp -S '[.[][]]' $( find tmp/all -type f ) | jq '[.[] | select( .disabled | not )]' | jq '.|=sort_by(.urlref)' > $ROOT_DIR/allPublications.json
+  if [ "$?" -gt 0 ] ; then
+          echo "ERROR: one of the publication.json files contains a parse error"
+          exit 1
+  fi
+  test_json_file ${ROOT_DIR}/allPublications.json
   echo "false" > $ROOT_DIR/haschangedpublications.json
   cp ${PUB_CONFIG} $ROOT_DIR/publications.json.old
   cp $ROOT_DIR/allPublications.json ${PUB_CONFIG}

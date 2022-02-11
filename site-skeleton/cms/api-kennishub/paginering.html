@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>API Kennishub</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui-corporate.css"
+    />
+
+    <link
+      rel="icon"
+      sizes="192x192"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/icon-highres-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-ipad-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-retina-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-ipad-retina-precomposed.png"
+    />
+
+    <meta
+      name="msapplication-square70x70logo"
+      content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-small.png"
+    />
+    <meta
+      name="msapplication-square150x150logo"
+      content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-medium.png"
+    />
+    <meta
+      name="msapplication-wide310x150logo"
+      content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-wide.png"
+    />
+    <meta
+      name="msapplication-square310x310logo"
+      content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-large.png"
+    />
+    <meta name="msapplication-TileColor" content="#FFE615" />
+    <!-- HTML icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <header
+      class="content-header content-header--small content-header--half-image u-spacer--large"
+    >
+      <div class="content-header__wrapper">
+        <picture class="content-header__bg">
+          <img
+            sizes="50vw"
+            src="//www.vlaanderen.be/sites/default/files/ip_acm/page_banner_wide_alt/header.jpg"
+            srcset="
+              //www.vlaanderen.be/sites/default/files/ip_acm/page_banner_mobile_alt/header.jpg  320w,
+              //www.vlaanderen.be/sites/default/files/ip_acm/page_banner_narrow/header.jpg     1024w,
+              //www.vlaanderen.be/sites/default/files/ip_acm/page_banner_wide_alt/header.jpg   1600w
+            "
+            alt=""
+            title=""
+          />
+        </picture>
+        <div class="layout layout--wide">
+          <div class="content-header__content">
+            <div class="content-header__logo-wrapper">
+              <a
+                href="../oslo-services.html"
+                class="content-header__entity-logo"
+              >
+                <span class="content-header__entity-logo__prefix"
+                  >OSLO-Tools</span
+                >
+                <span class="content-header__entity-logo__title"
+                  >API Kennishub</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="layout layout--wide">
+        <ul class="nav_bar">
+          <li>
+            <a class="button" href="./intro.html">Intro</a>
+          </li>
+          <li>
+            <a class="button" href="./generieke_hypermedia_api.html"
+              >Generieke Hypermedia API</a
+            >
+          </li>
+          <li><a class="button" href="./paginering.html">Paginering</a></li>
+          <li>
+            <a class="button" href="./crud_operaties.html">CRUD operaties</a>
+          </li>
+          <li>
+            <a class="button" href="./taal_selectie_ontdekking.html"
+              >Taal-selectie/ontdekking</a
+            >
+          </li>
+        </ul>
+        <h1 class="h1">Paginering</h1>
+        <h2 class="h2">Server-side paginering</h2>
+        <p>
+          Server-side paginering wordt gebruikt om datasets die ontsloten worden
+          via API's op te delen in kleinere result sets om zo een lagere
+          initiële laadtijd te bekomen voor afnemers. Deze specificatie
+          beschrijft een abstract algoritme dat een generieke client toelaat een
+          aantal methodes voor paginering te herkennen en gebruiken.
+        </p>
+        <br />
+        <p>
+          <strong>Opmerking:</strong>
+          deze specificatie doet geen uitspraken over de paginering strategie
+          van een server. Zo kunnen onder meer cursor-, offset- of pagina
+          gebaseerde paginering strategieën gebruikt worden.
+        </p>
+        <h2 class="h2">Nakomingsniveaus</h2>
+        <p>
+          Zie ook:
+          <a
+            href="https://github.com/Informatievlaanderen/generieke-hypermedia-api#nakomingsniveaus"
+            >https://github.com/Informatievlaanderen/generieke-hypermedia-api#nakomingsniveaus</a
+          >
+        </p>
+        <h3 class="h3">HTTP</h3>
+        <p>
+          Een server MOET ondersteuning bieden voor volgende methodes:
+        </p>
+        <ul class="bullet-list bullet-list--tag">
+          <li class="bullet-list__item">
+            <a href="https://tools.ietf.org/html/rfc5988"
+              >RFC 5988 - Web Linking</a
+            >
+          </li>
+        </ul>
+        <h3 class="h3">Semantisch</h3>
+        <p>
+          Een server die ondersteuning wil bieden voor Linked Data MOET
+          bijkomend volgende methodes ondersteunen:
+        </p>
+        <ul class="bullet-list bullet-list--tag">
+          <li class="bullet-list__item">
+            <a href="https://www.hydra-cg.com/spec/latest/core/"
+              >Hydra Core Vocabulary</a
+            >
+          </li>
+        </ul>
+        <br />
+        <p>
+          Daarnaast MAG een server volgende specificaties ondersteunen:
+        </p>
+        <ul class="bullet-list bullet-list--tag">
+          <li class="bullet-list__item">
+            <a href="http://stateless.co/hal_specification.html"
+              >Hypertext Application Language (HAL) Internet Draft</a
+            >
+          </li>
+          <li class="bullet-list__item">
+            <a href="http://jsonapi.org/format/#fetching-pagination"
+              >JSON API Pagination</a
+            >
+          </li>
+        </ul>
+        <br />
+        <p>
+          In dit laatste geval MOET de JSON payload geannoteerd te worden met
+          een JSON-LD context om de HAL of JSON API notatie voor paginering te
+          normaliseren naar de Hydra vocabulary. Onderstaande JSON-LD context is
+          gebaseerd op de JSON-LD 1.1 specificatie en laat toe hypermedia
+          controls voor paginering in HAL of JSON API te interpreteren volgens
+          de Hydra vocabulary.
+        </p>
+        <pre class="background">
+          <code>
+            {
+              "@context": {
+                 "hydra": "http://www.w3.org/ns/hydra/core#",
+                 "first": { "@id": "hydra:first", "@type": "@id" },
+                 "last": { "@id": "hydra:last", "@type": "@id" },
+                 "next": { "@id": "hydra:next", "@type": "@id" },
+                 "prev": { "@id": "hydra:previous", "@type": "@id" },
+                 "_links": "@nest",
+                 "links": "@nest", 
+                 "href": "@id",
+              }
+            }            
+          </code>
+        </pre>
+
+        <h2 class="h2"></h2>
+        <h3 class="h3">RFC 5988 - Web Linking</h3>
+        <p>De HTTP Link header bevat informatie voor paginering.</p>
+        <pre class="background">
+          <code>
+            Link: 	
+            <https://hostname/api/resource?page=4&limit=100>; rel="next",
+            <https://hostname/api/resource?page=50&limit=100>; rel="last",
+            <https://hostname/api/resource?page=1&limit=100>; rel="first",
+            <https://hostname/api/resource?page=2&limit=100>; rel="prev"
+          </code>
+        </pre>
+        <p>Volgende relaties worden ondersteund:</p>
+        <br />
+        <table>
+          <thead>
+            <tr>
+              <th>Naam</th>
+              <th align="center">Omschrijving</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>next</td>
+              <td align="center">
+                Link relatie voor de volgende pagina met resultaten
+              </td>
+            </tr>
+            <tr>
+              <td>last</td>
+              <td align="center">
+                Link relatie voor de laatste pagina met resultaten
+              </td>
+            </tr>
+            <tr>
+              <td>first</td>
+              <td align="center">
+                Link relatie voor de eerste pagina met resultaten
+              </td>
+            </tr>
+            <tr>
+              <td>prev</td>
+              <td align="center">
+                Link relatie voor de vorige pagina met resulaten
+              </td>
+            </tr>
+            <tr>
+              <td>previous</td>
+              <td align="center">Synoniem voor prev</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 class="h3">Hydra</h3>
+        <p>
+          De JSON(-LD) respons bevat informatie voor paginering op basis van het
+          Hydra vocabularium.
+        </p>
+        <pre class="background">
+          <code>
+            {
+              "@context": "http://www.w3.org/ns/hydra/context.jsonld",
+              "@id": "https://hostname/api/resource?page=3",
+              "@type": "PartialCollectionView",
+              "next": "/api/resource?page=4",
+              "last": "/api/resource?page=50",
+              "first": "/api/resource",
+              "previous": "/api/resource?page=2",
+              "totalItems": 2,
+              "member": [
+                  {
+                      "@id": "/api/resource/5"
+                  },
+                  {
+                      "@id": "/api/resource/6"
+                  }
+              ]
+            }            
+          </code>
+        </pre>
+        <h3 class="h3">HAL</h3>
+        <p>
+          De JSON of XML respons bevat informatie voor paginering in een
+          <strong>_links</strong> node.
+        </p>
+        <pre class="background">
+          <code>
+            {
+              "_links": {
+                  "self": {
+                      "href": "/api/resource?page=3"
+                  },
+                  "first": {
+                      "href": "/api/resource"
+                  },
+                  "prev": {
+                      "href": "/api/resource?page=2"
+                  },
+                  "next": {
+                      "href": "/api/resource?page=4"
+                  },
+                  "last": {
+                      "href": "/api/resource?page=5"
+                  }
+              },
+              "count": 2,
+              "total": 100,
+              "_embedded": [
+                {
+                  "_links": {
+                    "self": { "href": "/api/resource/5" }
+                  }
+                },
+                {
+                  "_links": {
+                    "self": { "href": "/api/resource/6" }
+                  }
+                }
+              ]
+          }          
+          </code>
+        </pre>
+        <h3 class="h3">JSON API</h3>
+        <p>
+          De JSON respons bevat informatie voor paginering in een
+          <strong>links</strong> node.
+        </p>
+        <pre class="background">
+          <code>
+            {
+              "links": {
+                  "self": "/api/resource?page=3",
+                  "first": "/api/resource",
+                  "prev": "/api/resource?page=2",
+                  "next": "/api/resource?page=4",
+                  "last": "/api/resource?page=5"
+              },
+              "meta": {
+                "total-pages": 100
+              },
+              "data": [
+                {
+                  "id": "/api/resource/5"
+                },
+                {
+                  "id": "/api/resource/6"
+                }
+              ]
+          }        
+          </code>
+        </pre>
+        <h2 class="h2">Client algoritme voor paginering</h2>
+        <p>
+          Onderstaande reeks stappen definieert een algoritme die door een
+          generieke client kan worden toegepast om gebruik te maken van
+          paginering.
+        </p>
+        <br />
+        <p>
+          Namespace prefix rdfs:
+          <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+            >http://www.w3.org/1999/02/22-rdf-syntax-ns#</a
+          >
+        </p>
+        <p>
+          Namespace prefix hydra:
+          <a href="http://www.w3.org/ns/hydra/core#"
+            >http://www.w3.org/ns/hydra/core#</a
+          >
+        </p>
+        <br />
+        <ul class="bullet-list bullet-list--tag">
+          <li class="bullet-list__item">
+            Als de Link headers van de response een
+            <strong>rel</strong> attribuut bevatten met <strong>next</strong>,
+            <strong>last</strong>, <strong>first</strong>,
+            <strong>previous</strong> of <strong>prev</strong>, gebruik de
+            correspondere links om de paginering te initialiseren.
+          </li>
+          <li class="bullet-list__item">
+            Anders, als de response header
+            <strong>application/ld+json</strong> als Content-Type bevat, gebruik
+            het
+            <a
+              href="https://json-ld.org/spec/FCGS/json-ld-api/20180607/#expansion-algorithms"
+              >JSON-LD 1.1 processing algoritme</a
+            >
+            om de response om te zetten in zijn geëxpandeerde vorm
+          </li>
+          <li class="bullet-list__item">
+            Als de response een object bevat met als attribuut
+            <strong>rdfs:type</strong> met de waarde
+            <strong>hydra:PartialCollectionView</strong>, gebruik de
+            <strong>hydra:next</strong>, <strong>hydra:last</strong>,
+            <strong>hydra:first</strong> of
+            <strong>hydra:previous</strong> attributen om de paginering te
+            initialiseren.
+          </li>
+        </ul>
+        <h2 class="h2">Herbruikbare library</h2>
+        <ul class="bullet-list bullet-list--tag">
+          <li class="bullet-list__item">
+            <a
+              href="https://github.com/Informatievlaanderen/generic-hypermedia-api-client"
+              >generic-hypermedia-api-client</a
+            >
+          </li>
+          <li class="bullet-list__item">
+            Voor clients:
+            <a href="https://github.com/pietercolpaert/extract-page-controls"
+              >https://github.com/pietercolpaert/extract-page-controls</a
+            >
+          </li>
+        </ul>
+        <h2 class="h2">TREE Hypermedia Specificatie</h2>
+        <p>
+          De TREE hypermedia specificatie stelt API-ontwikkelaars in staat om relaties te
+          definiëren tussen HTTP-bronnen. Een verzameling items kan worden
+          gefragmenteerd, en deze fragmenten kunnen onderling worden verbonden.
+          Het is een alternatief voor eendimensionale HTTP-paginering. In plaats
+          van te linken naar de volgende of vorige pagina, beschrijft de relatie
+          welke elementen kunnen worden gevonden door de link naar een andere
+          pagina te volgen. Er kunnen meerdere links worden opgegeven, waardoor
+          parallellisatie bij het doorlopen van de 'search space' mogelijk wordt.
+        </p>
+        <br/>
+        <p>
+          De TREE specificatie is de opvolger van Hydra en kan men hier vinden:
+          <a href="https://w3id.org/tree/specification">https://w3id.org/tree/specification</a>
+        </p>
+        <br/>
+      </div>
+      <div class="next">
+        <a class="button" href="./crud_operaties.html"
+          >Volgende: CRUD Operaties</a
+        >
+      </div>
+    </main>
+
+    <style>
+      .equal-height {
+        height: 100%;
+        justify-content: normal;
+      }
+
+      .nav_bar {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .nav_bar li {
+        display: inline-block;
+      }
+
+      h1 {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      h2 {
+        margin-top: 20px;
+      }
+
+      h3 {
+        margin-top: 15px;
+      }
+      .next {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 30px;
+      }
+
+      table {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      th {
+        padding: 10px;
+        border: 2px solid black;
+        border-collapse: collapse;
+        font-weight: bold;
+        background-color: lightblue;
+      }
+
+      td {
+        padding: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+      pre {
+        text-align: left;
+        overflow: auto;
+        font-weight: bold;
+        height: fit-content;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width: 70%;
+      }
+
+      pre.background {
+        background-color: #333;
+        height: auto;
+      }
+
+      code {
+        color: #4dd0e1;
+        font-family: "Inconsolata", "Monaco", "Consolas", "Andale Mono",
+          "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+      }
+    </style>
+
+    <script></script>
+  </body>
+</html>
