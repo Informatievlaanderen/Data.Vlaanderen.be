@@ -150,9 +150,9 @@ else
   for i in ${PUBLICATIONPOINTSDIRS} ; do
       mkdir -p tmp/all/$i
 	  echo "try to copy all files with extension ${PUB_FILE}"
-      cp ${CONFIG_FOLDER}/$i/*.${PUB_FILE}  tmp/all
+      cp ${CONFIG_FOLDER}/$i/*.${PUB_FILE}  tmp/all/$i
 	  echo "try to copy file ${PUB_FILE}"
-      cp ${CONFIG_FOLDER}/$i/${PUB_FILE}  tmp/all
+      cp ${CONFIG_FOLDER}/$i/${PUB_FILE}  tmp/all/$i
   done
   echo "errors are normal if the files of the above form are not present" 
   jq --slurp -S '[.[][]]' $( find tmp/all -type f ) | jq '[.[] | select( .disabled | not )]' | jq '.|=sort_by(.urlref)' > $ROOT_DIR/allPublications.json
