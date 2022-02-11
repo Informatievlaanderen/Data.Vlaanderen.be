@@ -33,7 +33,7 @@ test_json_file() {
 # determine the last changed files
 # TOOLCHAIN_TOKEN is a PAT key configured in circleci as environment variable
 mkdir -p $ROOT_DIR
-GENERATEDREPO=$(jq --arg bt "master" -r '.generatedrepository + {"filepath":"report/commit.json", "branchtag":"\($bt)"}' ${TOOLCHAINCONFIG})
+GENERATEDREPO=$(jq --arg bt "test" -r '.generatedrepository + {"filepath":"report/commit.json", "branchtag":"\($bt)"}' ${TOOLCHAINCONFIG})
 ./scripts/downloadFileGithub.sh "${GENERATEDREPO}" ${ROOT_DIR}/commit.json ${TOOLCHAIN_TOKEN}
 sleep 5s
 
