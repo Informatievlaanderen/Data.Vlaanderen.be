@@ -7,6 +7,8 @@ CIRCLEWORKDIR=$3 #set explicitly because CIRCLECI_WORKING_DIRECTORY is "~/projec
 CONFIG_FOLDER=${PUB_CONFIG%/*}
 PUB_FILE=${PUB_CONFIG##*/}
 
+TOOLCHAINCONFIG=${CONFIG_FOLDER}/config.json
+
 #
 # merge the publication-configuration with the versions found in the branch specific one.
 # For the test branch there is a special case that merges the production and test data together.
@@ -18,10 +20,21 @@ PUB_FILE=${PUB_CONFIG##*/}
 rm -rf $ROOT_DIR/*.txt
 rm -rf tmp
 
+#-------------------------------------------
+#
+test_json_file() {
+        jq . $1 > /dev/null
+        if [ "$?" -gt 0 ] ; then
+                echo "ERROR: incorrect JSON FILE: $1" 
+                exit 1
+        fi
+}
 
 # determine the last changed files
+# TOOLCHAIN_TOKEN is a PAT key configured in circleci as environment variable
 mkdir -p $ROOT_DIR
-curl -o $ROOT_DIR/commit.json https://raw.githubusercontent.com/Informatievlaanderen/OSLO-Generated/$CIRCLE_BRANCH/report/commit.json
+GENERATEDREPO=$(jq --arg bt "master" -r '.generatedrepository + {"filepath":"report/commit.json", "branchtag":"\($bt)"}' ${TOOLCHAINCONFIG})
+./scripts/downloadFileGithub.sh "${GENERATEDREPO}" ${ROOT_DIR}/commit.json ${TOOLCHAIN_TOKEN}
 sleep 5s
 
 if jq -e . $ROOT_DIR/commit.json; then
@@ -142,6 +155,11 @@ else
   done
   echo "errors are normal if the files of the above form are not present" 
   jq --slurp -S '[.[][]]' $( find tmp/all -type f ) | jq '[.[] | select( .disabled | not )]' | jq '.|=sort_by(.urlref)' > $ROOT_DIR/allPublications.json
+  if [ "$?" -gt 0 ] ; then
+          echo "ERROR: one of the publication.json files contains a parse error"
+          exit 1
+  fi
+  test_json_file ${ROOT_DIR}/allPublications.json
   echo "false" > $ROOT_DIR/haschangedpublications.json
   cp ${PUB_CONFIG} $ROOT_DIR/publications.json.old
   cp $ROOT_DIR/allPublications.json ${PUB_CONFIG}

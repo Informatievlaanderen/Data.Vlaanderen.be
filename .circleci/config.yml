@@ -72,16 +72,22 @@ jobs:
     environment:
       PRODUCTION_BRANCH: <<parameters.production_branch>>
       TEST_BRANCH: <<parameters.test_branch>>
+      PRODUCTION_FOLDER: <<parameters.production_folder>>
+      TEST_FOLDER: <<parameters.test_folder>>
+      OTHER_FOLDER: <<parameters.other_folder>>
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "84:ef:18:e6:4c:b3:fa:38:4e:d2:47:09:e9:be:0f:e6"
+      - run: 
+          name: update and add extra statements of updating the ssh config for each private ssh key
+          command: |
+            $PWD/scripts/update_sshconfig.sh private1
       - run: mkdir -p workspace
       - run: ls -al workspace
       - run:
-          command: $PWD/scripts/findPublicationsToUpdate.sh /tmp/workspace $PWD/config/publication.json $PWD/
-          environment:
-            PRODUCTION_FOLDER: <<parameters.production_folder>>
-            TEST_FOLDER: <<parameters.test_folder>>
-            OTHER_FOLDER: <<parameters.other_folder>>
+          command: $PWD/scripts/findPublicationsToUpdate.sh /tmp/workspace $PWD/config/publication.json $PWD/  $PWD/config
       - checkout-repositories:
           production_branch: <<parameters.production_branch>>
           test_branch: <<parameters.test_branch>>
@@ -469,7 +475,7 @@ jobs:
           workdir: /tmp/generated
           command: |
             git fetch origin
-            git checkout -b "${CIRCLE_BRANCH}" --track "origin/${CIRCLE_BRANCH}"
+            git checkout -b "${CIRCLE_BRANCH}" --track "origin/${CIRCLE_BRANCH}" || git checkout "${CIRCLE_BRANCH}"
             if [ "`cat /tmp/workspace/haschangedpublications.json`" == "false" ] ; then git rm -r --force * ; fi
       - run:
           name: Copy static assets
@@ -480,16 +486,16 @@ jobs:
           workdir: /tmp/workspace
           command: |
             mkdir -p /tmp/generated/report
-            if [ -d target ] ; then if [ ! "$(ls -A target)" ] ; then echo "directory target is empty" ; else cp -R target/* /tmp/generated ; fi fi
-            if [ -d report ] ; then if [ ! "$(ls -A report)" ] ; then echo "directory report is empty" ; else cp -R report/* /tmp/generated/report ; fi fi
-            if [ -d reporthtml ] ; then if [ ! "$(ls -A reporthtml)" ] ; then echo "directory reporthtml is empty" ; else cp -R reporthtml/* /tmp/generated/report ; fi fi
-            if [ -d json ] ; then if [ ! "$(ls -A json)" ] ; then echo "directory json is empty" ; else cp -R json/*   /tmp/generated/report ; fi fi
+            if [ -d target ] ; then if [ ! "$(ls -A target)" ] ; then echo "directory target is empty" ; else pushd target ; cp -r * /tmp/generated/ ; popd ; fi fi
+            if [ -d report ] ; then if [ ! "$(ls -A report)" ] ; then echo "directory report is empty" ; else cp -rT report /tmp/generated/report/ ; fi fi
+            if [ -d reporthtml ] ; then if [ ! "$(ls -A reporthtml)" ] ; then echo "directory reporthtml is empty" ; else cp -rT reporthtml /tmp/generated/report/ ; fi fi
+            if [ -d json ] ; then if [ ! "$(ls -A json)" ] ; then echo "directory json is empty" ; else cp -rT json /tmp/generated/report/ ; fi fi
       - run:
           name: List the files which have been created
           workdir: /tmp/generated
           command: |
             ls -al *
-            if [ -d report ] ; then ls -al report/* ; fi
+            if [ -d report ] ; then ls -al report/* || ls -al report ; fi
             find report
       - run:
           name: insert the commit
