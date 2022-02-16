@@ -2,7 +2,7 @@
 
 ROOT_DIR=$1
 PUB_CONFIG=$2
-CIRCLEWORKDIR=$3 #set explicitly because CIRCLECI_WORKING_DIRECTORY is "~/project" 
+CIRCLEWORKDIR=$3 #set explicitly because CIRCLECI_WORKING_DIRECTORY is "~/project"
 
 CONFIG_FOLDER=${PUB_CONFIG%/*}
 PUB_FILE=${PUB_CONFIG##*/}
@@ -25,7 +25,7 @@ rm -rf tmp
 test_json_file() {
         jq . $1 > /dev/null
         if [ "$?" -gt 0 ] ; then
-                echo "ERROR: incorrect JSON FILE: $1" 
+                echo "ERROR: incorrect JSON FILE: $1"
                 exit 1
         fi
 }
@@ -33,7 +33,7 @@ test_json_file() {
 # determine the last changed files
 # TOOLCHAIN_TOKEN is a PAT key configured in circleci as environment variable
 mkdir -p $ROOT_DIR
-GENERATEDREPO=$(jq --arg bt "master" -r '.generatedrepository + {"filepath":"report/commit.json", "branchtag":"\($bt)"}' ${TOOLCHAINCONFIG})
+GENERATEDREPO=$(jq --arg bt "multilangual-dev" -r '.generatedrepository + {"filepath":"report/commit.json", "branchtag":"\($bt)"}' ${TOOLCHAINCONFIG})
 ./scripts/downloadFileGithub.sh "${GENERATEDREPO}" ${ROOT_DIR}/commit.json ${TOOLCHAIN_TOKEN}
 sleep 5s
 
@@ -66,15 +66,15 @@ if jq -e . $ROOT_DIR/commit.json; then
 #       ]] ; then
     filenameInSelection=false
     for i in ${PUBLICATIONPOINTSDIRS} ; do
-           if [[ $filename =~ ${GITROOT}/$i/.*.${PUB_FILE} ]] ; then 
+           if [[ $filename =~ ${GITROOT}/$i/.*.${PUB_FILE} ]] ; then
             filenameInSelection=true
         fi
-           if [[ $filename =~ ${GITROOT}/$i/${PUB_FILE} ]] ; then 
+           if [[ $filename =~ ${GITROOT}/$i/${PUB_FILE} ]] ; then
             filenameInSelection=true
         fi
     done
-    
-    
+
+
     if [[  $filename == "$CONFIG_FOLDER/$PUB_FILE" \
        || $filenameInSelection == "true" \
        ]] ; then
@@ -132,28 +132,29 @@ elif [[ $onlyChangedPublications == "true" ]]; then
   echo "process only added and updated publication points"
 else
   # assumes full rebuild
-  if [[ $CIRCLE_BRANCH == "$TEST_BRANCH" ]]; then
-    mkdir -p tmp/all/$PRODUCTION_FOLDER tmp/all/$TEST_FOLDER
-    cp $CONFIG_FOLDER/$PUB_FILE tmp/all/
-    cp $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE tmp/all/$PRODUCTION_FOLDER
-    cp $CONFIG_FOLDER/$TEST_FOLDER/*.$PUB_FILE tmp/all/$TEST_FOLDER
-  elif [[ $CIRCLE_BRANCH == "$PRODUCTION_BRANCH" ]]; then
-    mkdir -p tmp/all/$PRODUCTION_FOLDER
-    cp $CONFIG_FOLDER/$PUB_FILE tmp/all/
-    cp $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE tmp/all/$PRODUCTION_FOLDER
-  else
-    mkdir -p tmp/all/$OTHER_FOLDER
-    cp $CONFIG_FOLDER/$PUB_FILE tmp/all
-    cp $CONFIG_FOLDER/$OTHER_FOLDER/*.$PUB_FILE tmp/all/$OTHER_FOLDER
-  fi
-  echo "include all selected publication points" 
+#  if [[ $CIRCLE_BRANCH == "$TEST_BRANCH" ]]; then
+#    mkdir -p tmp/all/$PRODUCTION_FOLDER tmp/all/$TEST_FOLDER
+#    cp $CONFIG_FOLDER/$PUB_FILE tmp/all/
+#    cp $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE tmp/all/$PRODUCTION_FOLDER
+#    cp $CONFIG_FOLDER/$TEST_FOLDER/*.$PUB_FILE tmp/all/$TEST_FOLDER
+#  elif [[ $CIRCLE_BRANCH == "$PRODUCTION_BRANCH" ]]; then
+#    mkdir -p tmp/all/$PRODUCTION_FOLDER
+#    cp $CONFIG_FOLDER/$PUB_FILE tmp/all/
+#    cp $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE tmp/all/$PRODUCTION_FOLDER
+#  else
+#    mkdir -p tmp/all/$OTHER_FOLDER
+#    cp $CONFIG_FOLDER/$PUB_FILE tmp/all
+#    cp $CONFIG_FOLDER/$OTHER_FOLDER/*.$PUB_FILE tmp/all/$OTHER_FOLDER
+#  fi
+  echo "include all selected publication points"
   for i in ${PUBLICATIONPOINTSDIRS} ; do
+      mkdir -p tmp/all/$i
 	  echo "try to copy all files with extension ${PUB_FILE}"
-      cp ${CONFIG_FOLDER}/$i/.*.${PUB_FILE}  tmp/all
+      cp ${CONFIG_FOLDER}/$i/*.${PUB_FILE}  tmp/all/$i
 	  echo "try to copy file ${PUB_FILE}"
-      cp ${CONFIG_FOLDER}/$i/${PUB_FILE}  tmp/all
+      cp ${CONFIG_FOLDER}/$i/${PUB_FILE}  tmp/all/$i
   done
-  echo "errors are normal if the files of the above form are not present" 
+  echo "errors are normal if the files of the above form are not present"
   jq --slurp -S '[.[][]]' $( find tmp/all -type f ) | jq '[.[] | select( .disabled | not )]' | jq '.|=sort_by(.urlref)' > $ROOT_DIR/allPublications.json
   if [ "$?" -gt 0 ] ; then
           echo "ERROR: one of the publication.json files contains a parse error"

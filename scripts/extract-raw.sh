@@ -29,6 +29,10 @@ copyall() {
     local TTDIR=${TARGETDIR}/report/${LINE}
     mkdir -p ${RDIR} ${TTDIR} ${TARGETDIR}/raw/${LINE}
     cp -vr ${TARGETDIR}/raw-input/${LINE}/* ${TARGETDIR}/raw/${LINE}
+    if [ -d ${TARGETDIR}/raw-input/report/${LINE} ]
+    then
+        cp -vr ${TARGETDIR}/raw-input/report/${LINE}/* ${TARGETDIR}/raw/report/${LINE}
+    fi
 }
 
 # do the conversions
