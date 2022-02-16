@@ -137,11 +137,8 @@ then
         localdirectory=$(_jq '.directory')
         if [[ "$localdirectory" != "null" ]]; then
           echo "only take the content of the directory $localdirectory"
-          rm -rf /tmp/rawdir
-          rm -rf /tmp/reportdir
-          mkdir -p /tmp/rawdir
-          mkdir -p /tmp/reportdir
-          echo  "$ROOTDIR/$MAIN/$RDIR/$localdirectory/"
+          rm -rf /tmp/rawdir /tmp/reportdir
+          mkdir -p /tmp/rawdir /tmp/reportdir
           cp -r $ROOTDIR/$MAIN/$RDIR/$localdirectory/* /tmp/rawdir
           if [ -d $ROOTDIR/$MAIN/$RDIR/report/$localdirectory/ ]
           then
