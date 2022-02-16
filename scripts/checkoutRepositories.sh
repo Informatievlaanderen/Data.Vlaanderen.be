@@ -54,7 +54,7 @@ git_download() {
      local GITTARGETDIR=$1
 
      REPO=$(_jq '.repository')
-     REPO=`echo ${REPO} | sed -e "s|https://||g" | sed -e "s|/|-|g"` 
+     REPO=`echo ${REPO} | sed -e "s|https://||g" | sed -e "s|/|-|g"`
      GITTMPDIR="/tmp/github/${REPO}"
 
      if [ ! -d ${GITTMPDIR} ] ; then
@@ -69,7 +69,7 @@ git_download() {
      fi
      cp -a ${GITTMPDIR}/. ${GITTARGETDIR}
 
-     popd 
+     popd
 }
 
 
@@ -101,7 +101,7 @@ then
       mkdir -p $ROOTDIR/target/$RDIR
       mkdir -p $ROOTDIR/report/$RDIR
 
-      git_download $ROOTDIR/$MAIN/$RDIR 
+      git_download $ROOTDIR/$MAIN/$RDIR
 #      git clone $(_jq '.repository') $ROOTDIR/$MAIN/$RDIR
 #
 #      pushd $ROOTDIR/$MAIN/$RDIR
@@ -138,10 +138,22 @@ then
         if [[ "$localdirectory" != "null" ]]; then
           echo "only take the content of the directory $localdirectory"
           rm -rf /tmp/rawdir
+          rm -rf /tmp/reportdir
           mkdir -p /tmp/rawdir
+          mkdir -p /tmp/reportdir
+          echo  "$ROOTDIR/$MAIN/$RDIR/$localdirectory/"
           cp -r $ROOTDIR/$MAIN/$RDIR/$localdirectory/* /tmp/rawdir
+          if [ -d $ROOTDIR/$MAIN/$RDIR/report/$localdirectory/ ]
+          then
+            cp -r $ROOTDIR/$MAIN/$RDIR/report/$localdirectory/* /tmp/reportdir
+          fi
           rm -rf $ROOTDIR/$MAIN/$RDIR/*
           cp -r /tmp/rawdir/* $ROOTDIR/$MAIN/$RDIR/
+          if [ "$(ls -A /tmp/reportdir)" ]
+          then
+            mkdir -p $ROOTDIR/$MAIN/report/$RDIR/
+            cp -r /tmp/reportdir/* $ROOTDIR/$MAIN/report/$RDIR/
+          fi
         else
           echo "no localdirectory defined, keep content as is"
         fi
