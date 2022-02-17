@@ -29,7 +29,7 @@ test_json_file() {
                 exit 1
         fi
 }
-fix
+
 PUBLICATIONPOINTSDIRS=$(jq -r '.publicationpoints | @sh'  ${CONFIG_FOLDER}/config.json)
 PUBLICATIONPOINTSDIRS=`echo ${PUBLICATIONPOINTSDIRS} | sed -e "s/'//g"`
 
