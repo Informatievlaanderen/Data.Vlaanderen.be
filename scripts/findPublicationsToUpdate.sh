@@ -2,7 +2,7 @@
 
 ROOT_DIR=$1
 PUB_CONFIG=$2
-CIRCLEWORKDIR=$3 #set explicitly because CIRCLECI_WORKING_DIRECTORY is "~/project" 
+CIRCLEWORKDIR=$3 #set explicitly because CIRCLECI_WORKING_DIRECTORY is "~/project"
 
 CONFIG_FOLDER=${PUB_CONFIG%/*}
 PUB_FILE=${PUB_CONFIG##*/}
@@ -25,25 +25,28 @@ rm -rf tmp
 test_json_file() {
         jq . $1 > /dev/null
         if [ "$?" -gt 0 ] ; then
-                echo "ERROR: incorrect JSON FILE: $1" 
+                echo "ERROR: incorrect JSON FILE: $1"
                 exit 1
         fi
 }
 
+PUBLICATIONPOINTSDIRS=$(jq -r '.publicationpoints | @sh'  ${CONFIG_FOLDER}/config.json)
+PUBLICATIONPOINTSDIRS=`echo ${PUBLICATIONPOINTSDIRS} | sed -e "s/'//g"`
+
 # determine the last changed files
 # TOOLCHAIN_TOKEN is a PAT key configured in circleci as environment variable
 mkdir -p $ROOT_DIR
-GENERATEDREPO=$(jq --arg bt "test" -r '.generatedrepository + {"filepath":"report/commit.json", "branchtag":"\($bt)"}' ${TOOLCHAINCONFIG})
+GENERATEDREPO=$(jq --arg bt "${CIRCLE_BRANCH}" -r '.generatedrepository + {"filepath":"report/commit.json", "branchtag":"\($bt)"}' ${TOOLCHAINCONFIG})
 ./scripts/downloadFileGithub.sh "${GENERATEDREPO}" ${ROOT_DIR}/commit.json ${TOOLCHAIN_TOKEN}
 sleep 5s
 
+# calculate changesRequireBuild false if only changes in publication files that are not used
+# calculate onlyChangedPublicationFiles false will trigger full rebuild
 if jq -e . $ROOT_DIR/commit.json; then
   changesRequireBuild=false
   onlyChangedPublicationFiles=true
 
   COMMIT=$(jq -r .commit $ROOT_DIR/commit.json)
-  PUBLICATIONPOINTSDIRS=$(jq -r '.publicationpoints | @sh'  ${CONFIG_FOLDER}/config.json)
-  PUBLICATIONPOINTSDIRS=`echo ${PUBLICATIONPOINTSDIRS} | sed -e "s/'//g"`
 
   listOfChanges=$(git diff --name-only --no-renames $COMMIT)
   echo "write change file"
@@ -53,8 +56,6 @@ if jq -e . $ROOT_DIR/commit.json; then
          mkdir -p tmp/prev/config/$i
          mkdir -p tmp/next/config/$i
   done
-  mkdir -p tmp/prev/config/$OTHER_FOLDER tmp/prev/config/$TEST_FOLDER tmp/prev/config/$PRODUCTION_FOLDER
-  mkdir -p tmp/next/config/$OTHER_FOLDER tmp/next/config/$TEST_FOLDER tmp/next/config/$PRODUCTION_FOLDER
 
   GITROOT=${CONFIG_FOLDER#${CIRCLEWORKDIR}}
 
@@ -66,15 +67,15 @@ if jq -e . $ROOT_DIR/commit.json; then
 #       ]] ; then
     filenameInSelection=false
     for i in ${PUBLICATIONPOINTSDIRS} ; do
-           if [[ $filename =~ ${GITROOT}/$i/.*.${PUB_FILE} ]] ; then 
+           if [[ $filename =~ ${GITROOT}/$i/.*.${PUB_FILE} ]] ; then
             filenameInSelection=true
         fi
-           if [[ $filename =~ ${GITROOT}/$i/${PUB_FILE} ]] ; then 
+           if [[ $filename =~ ${GITROOT}/$i/${PUB_FILE} ]] ; then
             filenameInSelection=true
         fi
     done
-    
-    
+
+
     if [[  $filename == "$CONFIG_FOLDER/$PUB_FILE" \
        || $filenameInSelection == "true" \
        ]] ; then
@@ -99,6 +100,7 @@ else
   onlyChangedPublicationFiles=false
 fi
 
+#as there are only changes in the publication files, check if there are parts that are deleted, which means a full rebuild or are it only additions
 if [[ $changesRequireBuild == "true" && $onlyChangedPublicationFiles == "true" ]]; then
   jq --slurp -S '[.[][]]' $(find tmp/next/config -type f) | jq '[.[] | select( .disabled | not )]' | jq '.|=sort_by(.urlref)' > tmp/next/publication.json
   jq --slurp -S '[.[][]]' $(find tmp/prev/config -type f) | jq '[.[] | select( .disabled | not )]' | jq '.|=sort_by(.urlref)' > tmp/prev/publication.json
@@ -131,22 +133,8 @@ elif [[ $onlyChangedPublications == "true" ]]; then
   cp tmp/addedOrChanged.json $ROOT_DIR/changedpublications.json
   echo "process only added and updated publication points"
 else
-  # assumes full rebuild
-#  if [[ $CIRCLE_BRANCH == "$TEST_BRANCH" ]]; then
-#    mkdir -p tmp/all/$PRODUCTION_FOLDER tmp/all/$TEST_FOLDER
-#    cp $CONFIG_FOLDER/$PUB_FILE tmp/all/
-#    cp $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE tmp/all/$PRODUCTION_FOLDER
-#    cp $CONFIG_FOLDER/$TEST_FOLDER/*.$PUB_FILE tmp/all/$TEST_FOLDER
-#  elif [[ $CIRCLE_BRANCH == "$PRODUCTION_BRANCH" ]]; then
-#    mkdir -p tmp/all/$PRODUCTION_FOLDER
-#    cp $CONFIG_FOLDER/$PUB_FILE tmp/all/
-#    cp $CONFIG_FOLDER/$PRODUCTION_FOLDER/*.$PUB_FILE tmp/all/$PRODUCTION_FOLDER
-#  else
-#    mkdir -p tmp/all/$OTHER_FOLDER
-#    cp $CONFIG_FOLDER/$PUB_FILE tmp/all
-#    cp $CONFIG_FOLDER/$OTHER_FOLDER/*.$PUB_FILE tmp/all/$OTHER_FOLDER
-#  fi
-  echo "include all selected publication points" 
+  echo "include all selected publication points"
+  mkdir -p tmp/all
   for i in ${PUBLICATIONPOINTSDIRS} ; do
       mkdir -p tmp/all/$i
 	  echo "try to copy all files with extension ${PUB_FILE}"
@@ -154,7 +142,7 @@ else
 	  echo "try to copy file ${PUB_FILE}"
       cp ${CONFIG_FOLDER}/$i/${PUB_FILE}  tmp/all/$i
   done
-  echo "errors are normal if the files of the above form are not present" 
+  echo "errors are normal if the files of the above form are not present"
   jq --slurp -S '[.[][]]' $( find tmp/all -type f ) | jq '[.[] | select( .disabled | not )]' | jq '.|=sort_by(.urlref)' > $ROOT_DIR/allPublications.json
   if [ "$?" -gt 0 ] ; then
           echo "ERROR: one of the publication.json files contains a parse error"
