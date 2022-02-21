@@ -89,6 +89,14 @@ if jq -e . $ROOT_DIR/commit.json; then
       changesRequireBuild=true
     elif [[ $filename == $CONFIG_FOLDER/*/*.$PUB_FILE ]]; then
       echo "The file $filename is skipped as it is not part of the current environment"
+    elif [[ $filename == $GITROOT/*/*.$PUB_FILE ]]; then
+      echo "The file $filename is skipped as it is not part of the current environment"
+    elif [[ $filename == $GITROOT/*.$PUB_FILE ]]; then
+      echo "The file $filename is skipped as it is not part of the current environment"
+    elif [[ $filename == $GITROOT/*/$PUB_FILE ]]; then
+      echo "The file $filename is skipped as it is not part of the current environment"
+    elif [[ $filename == $GITROOT/$PUB_FILE ]]; then
+      echo "The file $filename is skipped as it is not part of the current environment"
     else
       echo "The file $filename is not a publication, everything will need to be processed"
       changesRequireBuild=true

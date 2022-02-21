@@ -58,7 +58,7 @@ then
    jq -c '.[]' ${LINKS} | while read i; do
    
 	TARGETSPEC=$(echo ${i} | jq -r '.urlref | startswith("/doc/applicatieprofiel") '  )
-	echo ${TARGETSPEC}
+	# echo ${TARGETSPEC}
 	if [ ${TARGETSPEC} == "true" ] ; then
 	   cp_content_dir $i context context
 	   cp_content_dir $i shacl shacl
