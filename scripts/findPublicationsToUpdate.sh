@@ -30,6 +30,22 @@ test_json_file() {
         fi
 }
 
+
+# create a file with an empty list if the file does not exists or has an error 
+create_empty_list_json_file() {
+	if [ -f $1 ] ; then 
+		jq . $1 > /dev/null
+		if [ "$?" -gt 0 ] ; then
+			echo "ERROR: incorrect JSON FILE: $1"
+			exit 1
+		fi
+	else 
+	        echo "WARNING: generate file with empty list: $1"
+		echo "[]" > $1
+
+	fi
+}
+
 PUBLICATIONPOINTSDIRS=$(jq -r '.publicationpoints | @sh'  ${CONFIG_FOLDER}/config.json)
 PUBLICATIONPOINTSDIRS=`echo ${PUBLICATIONPOINTSDIRS} | sed -e "s/'//g"`
 
@@ -89,6 +105,14 @@ if jq -e . $ROOT_DIR/commit.json; then
       changesRequireBuild=true
     elif [[ $filename == $CONFIG_FOLDER/*/*.$PUB_FILE ]]; then
       echo "The file $filename is skipped as it is not part of the current environment"
+    elif [[ $filename == $GITROOT/*/*.$PUB_FILE ]]; then
+      echo "The file $filename is skipped as it is not part of the current environment"
+    elif [[ $filename == $GITROOT/*.$PUB_FILE ]]; then
+      echo "The file $filename is skipped as it is not part of the current environment"
+    elif [[ $filename == $GITROOT/*/$PUB_FILE ]]; then
+      echo "The file $filename is skipped as it is not part of the current environment"
+    elif [[ $filename == $GITROOT/$PUB_FILE ]]; then
+      echo "The file $filename is skipped as it is not part of the current environment"
     else
       echo "The file $filename is not a publication, everything will need to be processed"
       changesRequireBuild=true
@@ -102,8 +126,19 @@ fi
 
 #as there are only changes in the publication files, check if there are parts that are deleted, which means a full rebuild or are it only additions
 if [[ $changesRequireBuild == "true" && $onlyChangedPublicationFiles == "true" ]]; then
+
+	# ensure that all files at least exists with :q
+  create_empty_list_json_file tmp/next/publication.json
+  create_empty_list_json_file tmp/prev/publication.json
+  create_empty_list_json_file tmp/addedOrChanged.json
+  create_empty_list_json_file tmp/addedOrChangedUri.json
+  create_empty_list_json_file tmp/removedOrChanged.json
+  create_empty_list_json_file tmp/removedOrChangedUri.json
+
   jq --slurp -S '[.[][]]' $(find tmp/next/config -type f) | jq '[.[] | select( .disabled | not )]' | jq '.|=sort_by(.urlref)' > tmp/next/publication.json
   jq --slurp -S '[.[][]]' $(find tmp/prev/config -type f) | jq '[.[] | select( .disabled | not )]' | jq '.|=sort_by(.urlref)' > tmp/prev/publication.json
+
+
   jq -s '.[0] - .[1]' tmp/next/publication.json tmp/prev/publication.json > tmp/addedOrChanged.json
   jq -s '.[1] - .[0]' tmp/next/publication.json tmp/prev/publication.json > tmp/removedOrChanged.json
   jq ' [.[] | .urlref ]' tmp/addedOrChanged.json > tmp/addedOrChangedUri.json
