@@ -91,6 +91,8 @@ if jq -e . $ROOT_DIR/commit.json; then
         fi
     done
 
+    # a development option to reduce the number of full rebuilds
+    TRIGGERALL=$(jq -r .toolchain.triggerall ${TOOLCHAINCONFIG})
 
     if [[  $filename == "$CONFIG_FOLDER/$PUB_FILE" \
        || $filenameInSelection == "true" \
@@ -113,6 +115,8 @@ if jq -e . $ROOT_DIR/commit.json; then
       echo "The file $filename is skipped as it is not part of the current environment"
     elif [[ $filename == $GITROOT/$PUB_FILE ]]; then
       echo "The file $filename is skipped as it is not part of the current environment"
+    elif [[ ${TRIGGERALL} == "false" ]]; then
+      echo "WARNING: a full rebuild is switched off. This is an development mode only choice" 
     else
       echo "The file $filename is not a publication, everything will need to be processed"
       changesRequireBuild=true

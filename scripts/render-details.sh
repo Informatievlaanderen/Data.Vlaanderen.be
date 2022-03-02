@@ -192,7 +192,7 @@ render_example_template() { # SLINE TLINE JSON
     COMMANDTYPE=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
     TYPE=$(jq -r "${COMMANDTYPE}" ${SLINE}/.names.json)
 
-    OUTPUT=/tmp/workspace/examples/${BASENAME}
+    OUTPUT=/tmp/workspace/examples/${DROOT}
     mkdir -p ${OUTPUT}
     mkdir -p ${OUTPUT}/context
     touch ${OUTPUT}/.gitignore
