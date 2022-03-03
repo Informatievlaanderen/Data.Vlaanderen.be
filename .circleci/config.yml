@@ -80,14 +80,14 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "84:ef:18:e6:4c:b3:fa:38:4e:d2:47:09:e9:be:0f:e6"
-      - run: 
+      - run:
           name: update and add extra statements of updating the ssh config for each private ssh key
           command: |
             $PWD/scripts/update_sshconfig.sh private1
       - run: mkdir -p workspace
       - run: ls -al workspace
       - run:
-          command: $PWD/scripts/findPublicationsToUpdate.sh /tmp/workspace $PWD/config/publication.json $PWD/  $PWD/config
+          command: $PWD/scripts/findPublicationsToUpdate.sh /tmp/workspace $PWD/config/publication.json $PWD/
       - checkout-repositories:
           production_branch: <<parameters.production_branch>>
           test_branch: <<parameters.test_branch>>
@@ -179,7 +179,7 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run:
-          name: upgrade configs to this toolchain 
+          name: upgrade configs to this toolchain
           command: |
             mkdir -p /tmp/workspace/translation
             $PWD/scripts/upgrade_config.sh /tmp/workspace $PWD/config
@@ -465,7 +465,7 @@ jobs:
           fingerprints:
             - "84:ef:18:e6:4c:b3:fa:38:4e:d2:47:09:e9:be:0f:e6"
             - "f9:d4:ad:ce:f1:36:04:36:bc:eb:73:0b:29:53:3d:aa"
-      - run: 
+      - run:
           name: update and add extra statements of updating the ssh config for each private ssh key
           command: |
             $PWD/scripts/update_sshconfig.sh data.vlaanderen.be-generated
