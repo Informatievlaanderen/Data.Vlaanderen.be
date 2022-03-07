@@ -312,8 +312,9 @@ render_shacl_languageaware() {
     local TLINE=$2
     local JSONI=$3
     local RLINE=$4
-    local GOALLANGUAGE=$5
-    local PRIMELANGUAGE=${6-false}
+    local LINE=$5
+    local GOALLANGUAGE=$6
+    local PRIMELANGUAGE=${7-false}
 
     FILENAME=$(jq -r ".name" ${JSONI})
     COMMANDJSONLD=$(echo '.[].translation | .[] | select(.language | contains("'${GOALLANGUAGE}'")) | .mergefile')
@@ -333,12 +334,12 @@ render_shacl_languageaware() {
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
     if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
-        echo "RENDER-DETAILS(shacl-languageaware): node /app/shacl-generator.js -i ${MERGEDJSONLD} -d ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE}"
-        DOMAIN="${HOSTNAME}/shacl/${FILENAME}-SHACL_${GOALLANGUAGE}"
+        DOMAIN="${HOSTNAME}/${LINE}"
+        echo "RENDER-DETAILS(shacl-languageaware): node /app/shacl-generator.js -i ${MERGEDJSONLD} -m individual -c 'uniqueLanguages' -c 'nodekind' -d ${DOMAIN} -p ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE}"
         pushd /app
         mkdir -p ${TLINE}/shacl
         mkdir -p ${RLINE}/shacl
-        if ! node /app/shacl-generator2.js -i ${MERGEDJSONLD} -d ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE} 2>&1 | tee ${OUTREPORT}; then
+        if ! node /app/shacl-generator2.js -i ${MERGEDJSONLD} -m individual -c 'uniqueLanguages' -c 'nodekind' -d ${DOMAIN} -p ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE} 2>&1 | tee ${OUTREPORT}; then
             echo "RENDER-DETAILS(shacl-languageaware): See ${OUTREPORT} for the details"
             execution_strickness
         else
@@ -403,10 +404,10 @@ cat ${CHECKOUTFILE} | while read line; do
 	        done
                 ;;
             shacl) # render_shacl $SLINE $TLINE $i $RLINE
-                render_shacl_languageaware $SLINE $TLINE $i $RLINE ${PRIMELANGUAGE} true
+                render_shacl_languageaware $SLINE $TLINE $i $RLINE ${line} ${PRIMELANGUAGE} true
 		for g in ${GOALLANGUAGE} 
 		do 
-                render_shacl_languageaware $SLINE $TLINE $i $RLINE ${g}
+                render_shacl_languageaware $SLINE $TLINE $i $RLINE ${line} ${g}
 	        done
                 ;;
             context)
