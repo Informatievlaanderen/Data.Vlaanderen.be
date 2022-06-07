@@ -59,8 +59,8 @@ This has to be executed for each private repository.
   "publicationpoints" : ["dev"],        -- The directories from which the publication points are to be published
                                         -- For a suggested organisation and usage see below in the Editors section.
   "generatedrepository" : {             -- The target repository to which the toolchain will write its generated artifacts
-	  "organisation": "SEMICeu",                -- the organisation in github
-	  "repository" : "uri.semic.eu-generated",  -- the repository in the organisation
+	  "organisation": "GitHubOrganisation",                -- the organisation in github
+	  "repository" : "GeneratedRepository",  -- the repository in the organisation
 	  "private" : true                          -- whether or not the repository is private.
   },
   "toolchainversion" : "3",             -- The toolchain version that is deployed, only adapt in case of toolchain management
