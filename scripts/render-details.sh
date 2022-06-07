@@ -354,6 +354,53 @@ render_shacl_languageaware() {
     fi
 }
 
+render_xsd() { # SLINE TLINE JSON
+    echo "render_xsd: $1 $2 $3 $4 $5"
+    local SLINE=$1
+    local TLINE=$2
+    local JSONI=$3
+    local RLINE=$4
+    local GOALLANGUAGE=$5
+    local PRIMELANGUAGE=${6-false}
+
+    FILENAME=$(jq -r ".name" ${JSONI})
+    OUTFILE=${FILENAME}.xsd
+    OUTFILELANGUAGE=${FILENAME}_${GOALLANGUAGE}.xsd
+
+    BASENAME=$(basename ${JSONI} .jsonld)
+
+    COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
+    TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
+
+    XSDDOMAIN="https://data.europa.eu/m8g/xml/"
+
+    if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
+
+        mkdir -p ${TLINE}/xsd
+        COMMANDJSONLD=$(echo '.[].translation | .[] | select(.language | contains("'${GOALLANGUAGE}'")) | .mergefile')
+        LANGUAGEFILENAMEJSONLD=$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
+	if [ "${LANGUAGEFILENAMEJSONLD}" == "" ] ; then
+	    echo "configuration for language ${GOALLANGUAGE} not present. Ignore this language for ${SLINE}"
+        else 
+	
+        MERGEDJSONLD=${RLINE}/translation/${LANGUAGEFILENAMEJSONLD}
+
+        echo "RENDER-DETAILS(xsd): node /app/xsd-generator.js -d -l label -i ${MERGEDJSONLD} -o ${TLINE}/xsd/${OUTFILELANGUAGE} -m ${GOALLANGUAGE} -b ${XSDDOMAIN}"
+        if ! node /app/xsd-generator.js -d -l label -i ${MERGEDJSONLD} -o ${TLINE}/xsd/${OUTFILELANGUAGE} -m ${GOALLANGUAGE} -b ${XSDDOMAIN}; then
+            echo "RENDER-DETAILS(xsd): See XXX for more details, Rendering failed"
+            execution_strickness
+        else
+            echo "RENDER-DETAILS(xsd): Rendering successfull, File saved to  ${TLINE}/xsd/${OUTFILELANGUAGE}"
+        fi
+
+	if [ ${PRIMELANGUAGE} == true ] ; then
+		cp ${TLINE}/xsd/${OUTFILELANGUAGE} ${TLINE}/xsd/${OUTFILE}
+	fi
+
+	fi 
+    fi
+}
+
 write_report() {
     echo "Rendering the reportfiles of $1 with the json in $2 from $3 and to $4"
     local JSONI=$1
@@ -415,6 +462,13 @@ cat ${CHECKOUTFILE} | while read line; do
 		for g in ${GOALLANGUAGE} 
 		do 
                 render_context $SLINE $TLINE $i $RLINE ${g} 
+	        done
+                ;;
+            xsd)
+                render_xsd $SLINE $TLINE $i $RLINE ${PRIMELANGUAGE} true
+		for g in ${GOALLANGUAGE} 
+		do 
+                render_xsd $SLINE $TLINE $i $RLINE ${g} 
 	        done
                 ;;
             multilingual)

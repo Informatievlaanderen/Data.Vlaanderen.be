@@ -32,6 +32,7 @@ rm -f ${TMPDIR}/file.out
 checkHTTPcode () {
         # HTTP code must be between 200 and 300, otherwise script fails
    if  [ "$1" -lt "200" ] ||  [ "$1" -ge "300" ]  ; then
+	   echo "Download unsuccessful, possible new token should be inserted"
            exit 1
    fi
 }
