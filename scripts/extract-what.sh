@@ -1,10 +1,15 @@
 #!/bin/bash
 
-set -x
+# for debugging purposes
+#set -x
 
 extractwhat=$1
 TARGETDIR=/tmp/workspace
 CHECKOUTFILE=${TARGETDIR}/checkouts.txt
+
+# TODO: Docker container should include java in path
+PATH=$PATH:/usr/local/openjdk-8/bin
+
 
 #############################################################################################
 # extraction command functions
@@ -80,19 +85,35 @@ extract_stakeholder() {
 # main one being worked on
 extract_json() {
     local MAPPINGFILE=$1
-    cat $MAPPINGFILE
     local LINE=$2
     local TDIR=${TARGETDIR}/json
     local RDIR=${TARGETDIR}/report
     local TTDIR=${TARGETDIR}/report/${LINE}
     mkdir -p ${TDIR} ${RDIR} ${TTDIR} ${TARGETDIR}/target/${LINE}
     java -Xmx2g -jar /app/ea-2-rdf.jar jsonld -c ${MAPPINGFILE} -n $(cat .names.txt) &> ${TTDIR}/$(cat .names.txt).report
+
+#   exit code of java program is not reliable for detecting processing error
+#    if  [ $? -eq 0 ] ; then
+#   the content is also not reliable as it contains error when there are business errors
+#    if cat ${TTDIR}/$(cat .names.txt).report | grep "error" 
+#    then
+#       echo "extract_json: ERROR EA-to-RDF ended in an error"
+#       cat ${TTDIR}/$(cat .names.txt).report
+#       exit -1 ;
+#    fi
     if [ ! -f "$(cat .names.txt).jsonld" ]
     then
-	echo "extract_json: $(cat .names.txt).jsonld was not created"
-	cat  ${TTDIR}/$(cat .names.txt).report
-	exit -1;
+        echo "extract_json: $(cat .names.txt).jsonld was not created"
+        cat  ${TTDIR}/$(cat .names.txt).report
+        exit -1;
     fi
+    jq . $(cat .names.txt).jsonld &> /dev/null
+    if [ ! $? -eq 0 ] || [ ! -s  $(cat .names.txt).jsonld ]; then
+        echo "extract_json: ERROR EA-to-RDF ended in an error"
+        cat ${TTDIR}/$(cat .names.txt).report
+            exit -1 ;
+    fi
+
     cat .publication-point.json
     jq -s '.[0] + .[1][0] + .[2]' $(cat .names.txt).jsonld $MAPPINGFILE .publication-point.json > ${TTDIR}/all-$(cat .names.txt).jsonld ## the sum in jq overwrites the value for .contributors
     cp $(cat .names.txt).jsonld ${TTDIR}

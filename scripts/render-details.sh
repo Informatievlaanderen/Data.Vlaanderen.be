@@ -117,8 +117,8 @@ render_html() { # SLINE TLINE JSON
     BASENAME=$(basename ${JSONI} .jsonld)
     #    OUTFILE=${BASENAME}.html
     # precendence order: Theme repository > publication repository > tool repository
-    cp -n /app/views/* ${SLINE}/templates
     cp -n ${HOME}/project/templates/* ${SLINE}/templates
+    cp -n /app/views/* ${SLINE}/templates
     #cp -n ${HOME}/project/templates/icons/* ${SLINE}/templates/icons
     mkdir -p ${RLINE}
 
@@ -192,7 +192,7 @@ render_example_template() { # SLINE TLINE JSON
     COMMANDTYPE=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
     TYPE=$(jq -r "${COMMANDTYPE}" ${SLINE}/.names.json)
 
-    OUTPUT=/tmp/workspace/examples/${BASENAME}
+    OUTPUT=/tmp/workspace/examples/${DROOT}
     mkdir -p ${OUTPUT}
     mkdir -p ${OUTPUT}/context
     touch ${OUTPUT}/.gitignore
@@ -312,8 +312,9 @@ render_shacl_languageaware() {
     local TLINE=$2
     local JSONI=$3
     local RLINE=$4
-    local GOALLANGUAGE=$5
-    local PRIMELANGUAGE=${6-false}
+    local LINE=$5
+    local GOALLANGUAGE=$6
+    local PRIMELANGUAGE=${7-false}
 
     FILENAME=$(jq -r ".name" ${JSONI})
     COMMANDJSONLD=$(echo '.[].translation | .[] | select(.language | contains("'${GOALLANGUAGE}'")) | .mergefile')
@@ -350,6 +351,53 @@ render_shacl_languageaware() {
 	fi
         popd
     fi
+    fi
+}
+
+render_xsd() { # SLINE TLINE JSON
+    echo "render_xsd: $1 $2 $3 $4 $5"
+    local SLINE=$1
+    local TLINE=$2
+    local JSONI=$3
+    local RLINE=$4
+    local GOALLANGUAGE=$5
+    local PRIMELANGUAGE=${6-false}
+
+    FILENAME=$(jq -r ".name" ${JSONI})
+    OUTFILE=${FILENAME}.xsd
+    OUTFILELANGUAGE=${FILENAME}_${GOALLANGUAGE}.xsd
+
+    BASENAME=$(basename ${JSONI} .jsonld)
+
+    COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
+    TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
+
+    XSDDOMAIN="https://data.europa.eu/m8g/xml/"
+
+    if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
+
+        mkdir -p ${TLINE}/xsd
+        COMMANDJSONLD=$(echo '.[].translation | .[] | select(.language | contains("'${GOALLANGUAGE}'")) | .mergefile')
+        LANGUAGEFILENAMEJSONLD=$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
+	if [ "${LANGUAGEFILENAMEJSONLD}" == "" ] ; then
+	    echo "configuration for language ${GOALLANGUAGE} not present. Ignore this language for ${SLINE}"
+        else 
+	
+        MERGEDJSONLD=${RLINE}/translation/${LANGUAGEFILENAMEJSONLD}
+
+        echo "RENDER-DETAILS(xsd): node /app/xsd-generator.js -d -l label -i ${MERGEDJSONLD} -o ${TLINE}/xsd/${OUTFILELANGUAGE} -m ${GOALLANGUAGE} -b ${XSDDOMAIN}"
+        if ! node /app/xsd-generator.js -d -l label -i ${MERGEDJSONLD} -o ${TLINE}/xsd/${OUTFILELANGUAGE} -m ${GOALLANGUAGE} -b ${XSDDOMAIN}; then
+            echo "RENDER-DETAILS(xsd): See XXX for more details, Rendering failed"
+            execution_strickness
+        else
+            echo "RENDER-DETAILS(xsd): Rendering successfull, File saved to  ${TLINE}/xsd/${OUTFILELANGUAGE}"
+        fi
+
+	if [ ${PRIMELANGUAGE} == true ] ; then
+		cp ${TLINE}/xsd/${OUTFILELANGUAGE} ${TLINE}/xsd/${OUTFILE}
+	fi
+
+	fi 
     fi
 }
 
@@ -414,6 +462,13 @@ cat ${CHECKOUTFILE} | while read line; do
 		for g in ${GOALLANGUAGE} 
 		do 
                 render_context $SLINE $TLINE $i $RLINE ${g} 
+	        done
+                ;;
+            xsd)
+                render_xsd $SLINE $TLINE $i $RLINE ${PRIMELANGUAGE} true
+		for g in ${GOALLANGUAGE} 
+		do 
+                render_xsd $SLINE $TLINE $i $RLINE ${g} 
 	        done
                 ;;
             multilingual)

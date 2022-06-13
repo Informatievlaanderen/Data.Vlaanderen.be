@@ -44,8 +44,13 @@ upgrade_config() {
     AMOUNT=$(jq length ${SLINE}/.names.json)
 
     if [ ${AMOUNT} -eq 1 ] ; then
-    	jq -s '[.[0][0] * .[1]]' ${SLINE}/.names.json /tmp/upgrade.json > /tmp/mergedupgrade.json
-    	cp /tmp/mergedupgrade.json ${SLINE}/.names.json
+
+	if [ "$HASTRANSLATION" == "" ] || [ "$HASTRANSLATION" == "null" ] ;  then
+
+    	  jq -s '[.[0][0] * .[1]]' ${SLINE}/.names.json /tmp/upgrade.json > /tmp/mergedupgrade.json
+    	  cp /tmp/mergedupgrade.json ${SLINE}/.names.json
+
+	fi
 
     else 
 	   echo "ERROR only a list with a single matching value should be in the specification config"
