@@ -334,8 +334,8 @@ render_shacl_languageaware() {
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
     if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
-        echo "RENDER-DETAILS(shacl-languageaware): node /app/shacl-generator.js -i ${MERGEDJSONLD} -d ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE}"
-        DOMAIN="${HOSTNAME}/shacl/${FILENAME}-SHACL_${GOALLANGUAGE}"
+        DOMAIN="${HOSTNAME}/${LINE}"
+        echo "RENDER-DETAILS(shacl-languageaware): node /app/shacl-generator.js -i ${MERGEDJSONLD} -d ${DOMAIN} -p ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE}"
         pushd /app
         mkdir -p ${TLINE}/shacl
         mkdir -p ${RLINE}/shacl
@@ -451,10 +451,10 @@ cat ${CHECKOUTFILE} | while read line; do
 	        done
                 ;;
             shacl) # render_shacl $SLINE $TLINE $i $RLINE
-                render_shacl_languageaware $SLINE $TLINE $i $RLINE ${PRIMELANGUAGE} true
+                render_shacl_languageaware $SLINE $TLINE $i $RLINE ${line} ${PRIMELANGUAGE} true
 		for g in ${GOALLANGUAGE} 
 		do 
-                render_shacl_languageaware $SLINE $TLINE $i $RLINE ${g}
+                render_shacl_languageaware $SLINE $TLINE $i $RLINE ${line} ${g}
 	        done
                 ;;
             context)
