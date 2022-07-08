@@ -35,7 +35,7 @@ upgrade_config() {
 
 
     TRANSLATIONOBJ=$(jq -n \
-	    --arg jqlanguage "${PRIMELANGUAGE} " --arg jqtitle "${TITLE}" --arg jqtemplate ${TEMPLATE} \
+	    --arg jqlanguage "${PRIMELANGUAGE}" --arg jqtitle "${TITLE}" --arg jqtemplate ${TEMPLATE} \
 	    --arg jqtranslation $JQTRANSLATION --arg jqmergefile ${NAME}_${PRIMELANGUAGE}_merged.json \
 	    "${TRANSLATIONOBJTEMPLATE}")
     echo $TRANSLATIONOBJ > /tmp/upgrade.json
