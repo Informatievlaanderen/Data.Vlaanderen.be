@@ -49,6 +49,10 @@ upgrade_config() {
 
     	  jq -s '[.[0][0] * .[1]]' ${SLINE}/.names.json /tmp/upgrade.json > /tmp/mergedupgrade.json
     	  cp /tmp/mergedupgrade.json ${SLINE}/.names.json
+	  # also upgrate the aggegrated content
+	  AGGRFILE=${SLINE}/$(cat ${SLINE}/.names.txt).jsonld
+	  jq -s '.[0] + .[1][0] ' ${AGGRFILE} ${SLINE}/.names.json >  /tmp/aggr.json
+	  cp /tmp/aggr.json ${AGGRFILE}
 
 	fi
 

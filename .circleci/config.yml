@@ -118,11 +118,6 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run:
-          name: upgrade configs to this toolchain
-          command: |
-            mkdir -p /tmp/workspace/translation
-            $PWD/scripts/upgrade_config.sh /tmp/workspace $PWD/config
-      - run:
           name: Extract json details from UML diagram(s)
           command: $PWD/scripts/extract-what.sh jsonld
       - run:
