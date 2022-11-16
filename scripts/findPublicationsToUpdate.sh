@@ -29,7 +29,7 @@ makeVariationsOfMergedPublicationAndCheckValidity() {
       exit 1
     fi
   else
-    echo "WARN: no config fount in tmp/$folder/config, falling back to empty list"
+    echo "WARN: no config found in tmp/$folder/config, falling back to empty list"
     mkdir -p tmp/$folder
     echo "[]" >tmp/$folder/all.json
   fi
@@ -60,7 +60,7 @@ if jq -e . $ROOT_DIR/commit.json; then
 
   listOfChanges=$(git diff --name-only --no-renames $COMMIT)
   echo "write change file"
-  echo $listOfChanges >changes.txt
+  echo $listOfChanges > changes.txt
 
   for dir in ${PUBLICATIONPOINTSDIRS}; do
     mkdir -p tmp/prev/config/$dir
@@ -98,6 +98,7 @@ if jq -e . $ROOT_DIR/commit.json; then
       echo "The file $filename is skipped as it is not part of the current environment"
     elif [[ ${TRIGGERALL} == "false" ]]; then
       echo "WARNING: a full rebuild is switched off. This is an development mode only choice, changed file was: $filename"
+      onlyChangedPublicationFiles=false
     else
       echo "The file $filename is not a publication, everything will need to be processed"
       changesRequireBuild=true
@@ -123,7 +124,15 @@ if [[ $changesRequireBuild == "true" && $onlyChangedPublicationFiles == "true" ]
     onlyChangedPublications=true
   fi
 else
-  onlyChangedPublications=false
+  if [[ ${TRIGGERALL} == "false" ]]; then
+	echo "WARNING: a full rebuild is switched off. "
+	makeVariationsOfMergedPublicationAndCheckValidity next
+	makeVariationsOfMergedPublicationAndCheckValidity prev
+	onlyChangedPublications=true
+   else 
+	onlyChangedPublications=false
+  fi
+
 fi
 
 if [[ $changesRequireBuild == "false" ]]; then
