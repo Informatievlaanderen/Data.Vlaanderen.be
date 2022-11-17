@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Arg1 = the file containg the publication points to check their presence
+# Arg1 = the file containing the publication points to check their presence
 # Arg2 = absolute directory where the content of the publication points are located on disk, no trailing slash expected
 
 FILE=$1
