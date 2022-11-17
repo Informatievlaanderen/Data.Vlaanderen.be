@@ -505,6 +505,11 @@ jobs:
             if [ -d report ] ; then ls -al report/* || ls -al report ; fi
             find report
       - run:
+          name: check the existance of all publication points
+          command: |
+             $PWD/scripts/validate_publicationpoints.sh $PWD/config /tmp/generated false
+             #$PWD/scripts/validate_publicationpoints.sh $PWD/config /tmp/generated true # enable this line to make the test blocking
+      - run:
           name: insert the commit
           workdir: /tmp/generated
           command: |
