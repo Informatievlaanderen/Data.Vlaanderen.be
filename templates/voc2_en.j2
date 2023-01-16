@@ -133,7 +133,7 @@
               <dl>
               <dt>Source</dt><dd><a href="{{metadata.repositoryurl}}">{{metadata.repositoryurl}}</a></dd>
               <dt>Changelog</dt><dd><a href="{{metadata.changelogurl}}">{{metadata.changelogurl}}</a></dd>
-              <dt id="feedbackurl">Opmerkingen en feedback</dt><dd><a href="{{metadata.feedbackurl}}">{{metadata.feedbackurl}}</a></dd>
+              <dt id="feedbackurl">Comments and feedback</dt><dd><a href="{{metadata.feedbackurl}}">{{metadata.feedbackurl}}</a></dd>
               <dt>Registry of standards</dt><dd><a href="{{metadata.standaardregisterurl}}">{{metadata.standaardregisterurl}}</a></dd>
 
               <dt>Dependencies</dt><dd>
@@ -156,13 +156,9 @@
               <div class="introduction typography">
               {% block introduction %}
                 <p>This document describes a  <strong>vocabularium</strong>, for this case <strong>{{ metadata.title }}</strong>.
-		A vocabularium is a collection of reusable terms (classes and properties), whose meaning is given by a label and a definition.
+		A vocabulary is a collection of reusable terms (classes and properties), whose meaning is given by a label and a definition.
                   There are additional formal agreements available for the terms defined in this domain.
                   The additional formal agreements can be found in external sources for external terms.
-                </p>
-                <p>This document describes a <strong>vocabulary</strong>; in this case <strong>{{ metadata.title }}</strong>.
-		A vocabulary is a collection of reusable terms, more precisely classes and properties, of which their semantics is fixed by means of a label and a definition.
-		For terms definied in this domain additional formal agreements may be defined.  The formal agremeents for external terms, reused in this domain, are adopted from that external source.  
                 </p>
               {% endblock %}
               </div>
@@ -222,7 +218,7 @@
                         <div class="region region--no-space-top">
                             <section typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter" id="overview">
 
-                                <h2 class="h2" id="overview" aria-level="1" role="heading"><span class="secno">3. </span>Overzicht</h2>
+                                <h2 class="h2" id="overview" aria-level="1" role="heading"><span class="secno">3. </span>Overview</h2>
 
                                 <div class="region region--no-space-top">
                                     <p>This section lists all classes and properties of this vocabulary.</p>
@@ -246,7 +242,7 @@
                                         <p>
                                             |
                                             {% for class in classes | sort(attribute=sortattr) %}
-                                            <a href="{{ class.uri  | replace(metadata.uri, '') }}" rel="class">{{ class.name}}</a> |
+                                            <a href="{{ class.uri  | replace(metadata.uri, '') }}" rel="class">{{ class.label[language] }}</a> |
                                             {% endfor %}
                                         </p>
                                     </div>
@@ -272,7 +268,7 @@
                         <div class="region region--no-space-top">
                             <section typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter" id="classes">
 
-                                <h2 class="h2" id="classes" aria-level="1" role="heading"><span class="secno">4. </span>Klassen</h2>
+                                <h2 class="h2" id="classes" aria-level="1" role="heading"><span class="secno">4. </span>Classes</h2>
                                 {% if classes %}
                                 <div class="region region--no-space-top">
                                     <p>This section defines each class in a formal manner.</p>

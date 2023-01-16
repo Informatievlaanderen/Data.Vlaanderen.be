@@ -395,7 +395,8 @@ jobs:
             - target/
   render-voc-rdf:
     docker:
-      - image: circleci/ruby:2.6.5-stretch
+      #- image: circleci/ruby:2.6.5-stretch
+      - image: cimg/ruby:3.2
     steps:
       - checkout
       - attach_workspace:
@@ -504,6 +505,15 @@ jobs:
             ls -al *
             if [ -d report ] ; then ls -al report/* || ls -al report ; fi
             find report
+      - run:
+          name: check the existence of all publication points
+          command: |
+             $PWD/scripts/validate_publicationpoints.sh $PWD/config /tmp/generated false
+             #$PWD/scripts/validate_publicationpoints.sh $PWD/config /tmp/generated true # enable this line to make the test blocking
+      - run:
+          name: check the support of paths by a publication points
+          command: |
+             $PWD/scripts/remove_obsolete_publicationpoints.sh $PWD/config /tmp/generated false
       - run:
           name: insert the commit
           workdir: /tmp/generated
