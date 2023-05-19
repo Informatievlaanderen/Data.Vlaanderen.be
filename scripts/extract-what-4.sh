@@ -7,7 +7,7 @@ extractwhat=$1
 TARGETDIR=/tmp/workspace
 CHECKOUTFILE=${TARGETDIR}/checkouts.txt
 CONFIGDIR_DEFAULT=$( eval echo "${CIRCLE_WORKING_DIRECTORY}" )
-CONFIGDIR=${2:-$CONFIGDIR_DEFAULT}
+CONFIGDIR=${2:-$CONFIGDIR_DEFAULT/config}
 
 
 #############################################################################################
@@ -46,16 +46,20 @@ extract_json() {
     mkdir -p ${TDIR} ${RDIR} ${TTDIR} ${TARGETDIR}/target/${LINE}
 
     local OUTPUTFILE=$(cat .names.txt).jsonld
-    local DIAGRAM=$( jq .[].diagram .publication-point.json )
-    local UMLFILE=$( jq .[].eap .publication-point.json )
-    local SPECTYPE=$( jq .[].type .publication-point.json )
-    local URLREF=$( jq .[].urlref .publication-point.json )
+    local DIAGRAM=$( jq .[].diagram .names.json )
+    local UMLFILE=$( jq .[].eap .names.json )
+    local SPECTYPE=$( jq .[].type .names.json )
+    local URLREF=$( jq .urlref .publication-point.json )
     local HOSTNAME=$( jq .hostname  ${CONFIGDIR}/config.json )
-    
+    local DOMAIN=$( jq .domain  ${CONFIGDIR}/config.json )
+
+    SPECTYPE="ApplicationProfile"
 
     oslo-converter-ea --umlFile ${UMLFILE} --diagramName ${DIAGRAM} --outputFile ${OUTPUTFILE} \
-	         --specificationType ${SPECTYPE} --versionId ${URLREF} --baseURI ${HOSTNAME} \
-		 &> ${TTDIR}/$(cat .names.txt).report
+                 --specificationType ${SPECTYPE} --versionId ${URLREF} --baseUri ${DOMAIN} \
+                 --publicationEnvironment ${HOSTNAME} \
+                 &> ${TTDIR}/$(cat .names.txt).report
+
 
 
 #   exit code of java program is not reliable for detecting processing error
