@@ -103,6 +103,7 @@ extract_json() {
     ## overwrite the content with the aggregated version
     cp ${TTDIR}/all-$(cat .names.txt).jsonld  $(cat .names.txt).jsonld 
     cp ${REPORTFILE} ${RDIR}
+    ( echo "\n########################\n" ) >> ${RDIR}/ALL.report
     ( echo $PWD ; cat ${REPORTFILE} ) >> ${RDIR}/ALL.report
 }
 
