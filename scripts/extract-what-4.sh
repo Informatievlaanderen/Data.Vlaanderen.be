@@ -52,13 +52,16 @@ extract_json() {
     local URLREF=$( jq -r .urlref .publication-point.json )
     local HOSTNAME=$( jq -r .hostname  ${CONFIGDIR}/config.json )
     local DOMAIN=$( jq -r .domain  ${CONFIGDIR}/config.json )
+    local REPORTFILE=${TTDIR}/$(cat .names.txt).report
+
+    touch ${REPORTFILE}
 
     SPECTYPE="ApplicationProfile"
 
     oslo-converter-ea --umlFile ${UMLFILE} --diagramName ${DIAGRAM} --outputFile ${OUTPUTFILE} \
                  --specificationType ${SPECTYPE} --versionId ${URLREF} --baseUri ${DOMAIN} \
                  --publicationEnvironment ${HOSTNAME} \
-                 &> ${TTDIR}/$(cat .names.txt).report
+                 &> ${REPORTFILE}
 
 
 
@@ -71,27 +74,27 @@ extract_json() {
 #       cat ${TTDIR}/$(cat .names.txt).report
 #       exit -1 ;
 #    fi
-    if [ ! -f "$(cat .names.txt).jsonld" ]
+    if [ ! -f "${OUTPUTFILE}" ]
     then
-        echo "extract_json: $(cat .names.txt).jsonld was not created"
-        cat  ${TTDIR}/$(cat .names.txt).report
+        echo "extract_json: ${OUTPUTFILE} was not created"
+        cat  ${REPORTFILE}
 	echo "{}" > ${OUTPUTFILE}
         # exit -1;
     fi
-    jq . $(cat .names.txt).jsonld &> /dev/null
+    jq . ${OUTPUTFILE} &> /dev/null
     if [ ! $? -eq 0 ] || [ ! -s  $(cat .names.txt).jsonld ]; then
         echo "extract_json: ERROR UML extractor ended in an error"
-        cat ${TTDIR}/$(cat .names.txt).report
+        cat ${REPORTFILE}
         # exit -1 ;
     fi
 
     cat .publication-point.json
-    jq -s '.[0] + .[1][0] + .[2]' $(cat .names.txt).jsonld $MAPPINGFILE .publication-point.json > ${TTDIR}/all-$(cat .names.txt).jsonld ## the sum in jq overwrites the value for .contributors
-    cp $(cat .names.txt).jsonld ${TTDIR}
+    jq -s '.[0] + .[1][0] + .[2]' ${OUTPUTFILE} $MAPPINGFILE .publication-point.json > ${TTDIR}/all-$(cat .names.txt).jsonld ## the sum in jq overwrites the value for .contributors
+    cp ${OUTPUTFILE} ${TTDIR}
     ## overwrite the content with the aggregated version
     cp ${TTDIR}/all-$(cat .names.txt).jsonld  $(cat .names.txt).jsonld 
-    cp $(cat .names.txt).report ${RDIR}
-    ( echo $PWD ; cat ${TTDIR}/$(cat .names.txt).report ) >> ${RDIR}/ALL.report
+    cp ${REPORTFILE} ${RDIR}
+    ( echo $PWD ; cat ${REPORTFILE} ) >> ${RDIR}/ALL.report
 }
 
 #############################################################################################
