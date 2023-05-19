@@ -49,3 +49,8 @@
 - update_sshconfig.sh has a missing handling of the first argument
 
 
+# version 4.0.0
+- replace the uml convertion tool with a new javascript based version
+
+# TODO
+- in the scripts there is the env variable CWD used. Unclear what it could be.

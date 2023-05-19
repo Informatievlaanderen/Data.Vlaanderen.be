@@ -68,6 +68,40 @@ jobs:
             - tsv/
             - json/
             - src/
+  extract-jsonld-details-4:
+    docker:
+      - image: cimg/node:18.16.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: install software
+          command: npm install --global @oslo-flanders/ea-converter
+      - run:
+          name: Extract json details from UML diagram(s)
+          command: $PWD/scripts/extract-what-4.sh jsonld
+      - run:
+          name: Show the report (for debugging purposes)
+          command: |
+            if [ -d /tmp/workspace/report ] ; then cat /tmp/workspace/report/*.report ; fi
+      - run:
+          name: List the files which have been created
+          command: |
+            if [ -d /tmp/workspace/report ] ; then ls -al /tmp/workspace/report/* ; fi
+      - run:
+          name: Show the errors found (for debugging purposes)
+          command:
+            egrep " ERROR " /tmp/workspace/report/*.report || true
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - checkouts.txt
+            - links.txt
+            - report/
+            - tsv/
+            - json/
+            - src/
   validate-report:
     docker:
       - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-m1.1.1
@@ -488,6 +522,9 @@ workflows:
     jobs:
       - checkout
       - extract-jsonld-details:
+          requires:
+            - checkout
+      - extract-jsonld-details-4:
           requires:
             - checkout
       - normalise-jsonld:
