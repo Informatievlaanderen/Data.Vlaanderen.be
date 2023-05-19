@@ -80,7 +80,9 @@ jobs:
           command: sudo npm install --global @oslo-flanders/ea-converter
       - run:
           name: Extract json details from UML diagram(s)
-          command: $CIRCLE_WORKING_DIRECTORY/scripts/extract-what-4.sh jsonld
+          command: | 
+            export CIRCLEWKD=$( eval echo "${CIRCLE_WORKING_DIRECTORY}" )
+            ${CIRCLEWKD}/scripts/extract-what-4.sh jsonld
       - run:
           name: Show the report (for debugging purposes)
           command: |
