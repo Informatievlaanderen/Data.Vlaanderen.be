@@ -80,19 +80,20 @@ jobs:
           command: sudo npm install --global @oslo-flanders/ea-converter
       - run:
           name: Extract json details from UML diagram(s)
-          command: $PWD/scripts/extract-what-4.sh jsonld
+          command: $CIRCLE_WORKING_DIRECTORY/scripts/extract-what-4.sh jsonld
       - run:
           name: Show the report (for debugging purposes)
           command: |
-            if [ -d /tmp/workspace/report ] ; then cat /tmp/workspace/report/*.report ; fi
+            if [ -d /tmp/workspace/report4 ] ; then cat /tmp/workspace/report4/*.report ; fi
       - run:
           name: List the files which have been created
           command: |
-            if [ -d /tmp/workspace/report ] ; then ls -al /tmp/workspace/report/* ; fi
+            if [ -d /tmp/workspace/report4 ] ; then ls -al /tmp/workspace/report4/* ; fi
       - run:
           name: Show the errors found (for debugging purposes)
-          command:
-            egrep " ERROR " /tmp/workspace/report/*.report || true
+          command: |
+            egrep " ERROR " /tmp/workspace/report4/*.report || true
+            egrep " Error " /tmp/workspace/report4/*.report || true
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
