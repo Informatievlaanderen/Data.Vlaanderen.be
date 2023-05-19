@@ -1,12 +1,23 @@
 # Supporting private repositories
 
-## private repository 'Generated'
+## (private) repository 'Generated'
 The repository 'Generated' is the repository in which the toolchain will write the generated artifacts.
-If this repository is private, then one should create a deploy key as described in the documentation for github.com.
-The private key should be added to circleci config in the additional ssh keys having as hostname "github.com".
-The fingerprint of this private key should be placed in the .circleci/config in the create-artifact step configuration.
-This will insert that key into the create-artifact step.
-The public key should be installed as a deploy key with read/write rights on the 'Generated' repository in github. 
+The objective is that any commit in this (publication) repository will lead to a commit in the repository 'Generated'.
+To ensure that this commit can be pushed, a deploy key with write permissions must be created in the repository 'Generated'.
+How to do that, consult the GitHub documentation. 
+Since the commit is created and pushed from the CircleCI pipeline execution, one must configure the CircleCI project for this publication repository with the deploy key.
+
+In short the steps are:
+   - initialise an ssh key for the repository 'Generated' as deploy key
+   - use the public part to create a deploy key with write permission in the repository 'Generated'
+   - add the private part to the CircleCI project as an additional ssh key having as hostname "github.com".
+   - The fingerprint of this private key should be placed in the .circleci/config in the create-artifact step configuration.
+   
+
+The last step injects the private ssh key into the create-artefact step and enable to execute write operations to the repository 'Generated'.
+
+As this is fully deploy key based, the approach is agnostic to the visibility of the repository. It works for public and private repositories.
+
 
 ## private repository 'Thema'
 When a source repository is private, then a similar approach as for the private repository 'Generated' should be followed.
@@ -59,9 +70,11 @@ This has to be executed for each private repository.
   "publicationpoints" : ["dev"],        -- The directories from which the publication points are to be published
                                         -- For a suggested organisation and usage see below in the Editors section.
   "generatedrepository" : {             -- The target repository to which the toolchain will write its generated artifacts
-	  "organisation": "GitHubOrganisation",                -- the organisation in github
-	  "repository" : "GeneratedRepository",  -- the repository in the organisation
-	  "private" : true                          -- whether or not the repository is private.
+	  "organisation": "GitHubOrganisation",       -- the organisation in github
+	  "repository" : "GeneratedRepository",       -- the repository in the organisation
+	  "private" : true,                           -- whether or not the repository is private.
+	  "gitEmail" : "toolchain@dev.specs.org",     -- The email of the git user that commits the change to the generated repository. Example "info@data.specs.org" 
+	  "gitUser" : "toolchain"                     -- The user name of the git user that commits the change to the generated repository Example "Circle CI Builder"
   },
   "toolchainversion" : "3",             -- The toolchain version that is deployed, only adapt in case of toolchain management
   "toolchain" : {
@@ -72,6 +85,8 @@ This has to be executed for each private repository.
   }
 }
 ```
+
+The `gitEmail` and `gitUser` are needed to make the git client happy. They can be set to any value, as long there are technically sound. 
 
 # Editoral flow
 
