@@ -56,7 +56,16 @@ extract_json() {
 
     touch ${REPORTFILE}
 
-    SPECTYPE="ApplicationProfile"
+    case $SPECTYPE in
+	    ap) SPECTYPE="ApplicationProfile"
+		    ;;
+            voc) SPECTYPE="Vocabulary"
+		    ;;
+            oj) SPECTYPE="ApplicationProfile"
+		    ;;
+            *) echo "ERROR: ${SPECTYPE} not recognized"
+	       SPECTYPE="ApplicationProfile"	    
+    esac
 
     oslo-converter-ea --umlFile ${UMLFILE} --diagramName ${DIAGRAM} --outputFile ${OUTPUTFILE} \
                  --specificationType ${SPECTYPE} --versionId ${URLREF} --baseUri ${DOMAIN} \
