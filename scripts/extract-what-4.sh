@@ -68,7 +68,7 @@ extract_json() {
     esac
 
     oslo-converter-ea --umlFile ${UMLFILE} --diagramName ${DIAGRAM} --outputFile ${OUTPUTFILE} \
-                 --specificationType ${SPECTYPE} --versionId ${URLREF} --baseUri ${DOMAIN} \
+                 --specificationType ${SPECTYPE} --versionId ${URLREF} --baseUri https://${DOMAIN} \
                  --publicationEnvironment ${HOSTNAME} \
                  &> ${REPORTFILE}
 
