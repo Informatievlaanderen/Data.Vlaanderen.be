@@ -76,6 +76,10 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run:
+          name: touch a file
+          command: |
+            touch /tmp/workspace/report4/.ignore04
+      - run:
           name: install software
           command: sudo npm install --global @oslo-flanders/ea-converter
       - run:
