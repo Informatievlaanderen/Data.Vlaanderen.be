@@ -46,12 +46,12 @@ extract_json() {
     mkdir -p ${TDIR} ${RDIR} ${TTDIR} ${TARGETDIR}/target/${LINE}
 
     local OUTPUTFILE=$(cat .names.txt).jsonld
-    local DIAGRAM=$( jq .[].diagram .names.json )
-    local UMLFILE=$( jq .[].eap .names.json )
-    local SPECTYPE=$( jq .[].type .names.json )
-    local URLREF=$( jq .urlref .publication-point.json )
-    local HOSTNAME=$( jq .hostname  ${CONFIGDIR}/config.json )
-    local DOMAIN=$( jq .domain  ${CONFIGDIR}/config.json )
+    local DIAGRAM=$( jq -r .[].diagram .names.json )
+    local UMLFILE=$( jq -r .[].eap .names.json )
+    local SPECTYPE=$( jq -r .[].type .names.json )
+    local URLREF=$( jq -r .urlref .publication-point.json )
+    local HOSTNAME=$( jq -r .hostname  ${CONFIGDIR}/config.json )
+    local DOMAIN=$( jq -r .domain  ${CONFIGDIR}/config.json )
 
     SPECTYPE="ApplicationProfile"
 
@@ -79,7 +79,7 @@ extract_json() {
     fi
     jq . $(cat .names.txt).jsonld &> /dev/null
     if [ ! $? -eq 0 ] || [ ! -s  $(cat .names.txt).jsonld ]; then
-        echo "extract_json: ERROR EA-to-RDF ended in an error"
+        echo "extract_json: ERROR UML extractor ended in an error"
         cat ${TTDIR}/$(cat .names.txt).report
             exit -1 ;
     fi
