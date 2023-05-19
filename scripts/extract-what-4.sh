@@ -41,8 +41,8 @@ extract_json() {
     local MAPPINGFILE=$1
     local LINE=$2
     local TDIR=${TARGETDIR}/json
-    local RDIR=${TARGETDIR}/report
-    local TTDIR=${TARGETDIR}/report/${LINE}
+    local RDIR=${TARGETDIR}/report4
+    local TTDIR=${TARGETDIR}/report4/${LINE}
     mkdir -p ${TDIR} ${RDIR} ${TTDIR} ${TARGETDIR}/target/${LINE}
 
     local OUTPUTFILE=$(cat .names.txt).jsonld
@@ -75,13 +75,14 @@ extract_json() {
     then
         echo "extract_json: $(cat .names.txt).jsonld was not created"
         cat  ${TTDIR}/$(cat .names.txt).report
-        exit -1;
+	echo "{}" > ${OUTPUTFILE}
+        # exit -1;
     fi
     jq . $(cat .names.txt).jsonld &> /dev/null
     if [ ! $? -eq 0 ] || [ ! -s  $(cat .names.txt).jsonld ]; then
         echo "extract_json: ERROR UML extractor ended in an error"
         cat ${TTDIR}/$(cat .names.txt).report
-            exit -1 ;
+        # exit -1 ;
     fi
 
     cat .publication-point.json
