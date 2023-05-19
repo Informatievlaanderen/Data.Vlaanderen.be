@@ -91,11 +91,11 @@ jobs:
       - run:
           name: Show the report (for debugging purposes)
           command: |
-            if [ -d /tmp/workspace/report4 ] ; then cat /tmp/workspace/report4/*.report ; fi
+            if [ -d /tmp/workspace/report4 ] ; then cat /tmp/workspace/report4/*.report ; fi || true
       - run:
           name: List the files which have been created
           command: |
-            if [ -d /tmp/workspace/report4 ] ; then ls -al /tmp/workspace/report4/* ; fi
+            if [ -d /tmp/workspace/report4 ] ; then ls -al /tmp/workspace/report4/* ; fi || true
       - run:
           name: Show the errors found (for debugging purposes)
           command: |
