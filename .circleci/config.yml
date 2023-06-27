@@ -221,6 +221,38 @@ jobs:
           paths:
             - target/
             - reporthtml/
+  render-html-details-4:
+    docker:
+      - image: cimg/node:18.16.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: touch a file
+          command: |
+            mkdir -p /tmp/workspace/report4
+            touch /tmp/workspace/report4/.ignore04
+      - run:
+          name: install software
+          command: sudo npm install --global @oslo-flanders/html-respec-generator
+      - run:
+          name: Render HTML version of merged json file (a)
+          command: |
+            mkdir -p /tmp/workspace/target /tmp/workspace/reporthtml
+            export CIRCLEWKD=$( eval echo "${CIRCLE_WORKING_DIRECTORY}" )
+            ${CIRCLEWKD}/scripts/render-details4.sh /tmp/workspace html $PWD/config
+      - run:
+          name: copy the site-skeleton for the html
+          command: $PWD/scripts/copy_skeleton.sh
+      - run:
+          name: List the files which have been created
+          command: |
+            if [ -d /tmp/workspace/report4 ] ; then ls -al /tmp/workspace/report4/* ; fi || true
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - report4html/
   render-example-templates:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.3
