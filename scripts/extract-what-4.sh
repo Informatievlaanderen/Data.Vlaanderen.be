@@ -46,9 +46,9 @@ extract_json() {
     mkdir -p ${TDIR} ${RDIR} ${TTDIR} ${TARGETDIR}/target/${LINE}
 
     local OUTPUTFILE=$(cat .names.txt).jsonld
-    local DIAGRAM=$( jq -r .[].diagram .names.json )
-    local UMLFILE=$( jq -r .[].eap .names.json )
-    local SPECTYPE=$( jq -r .[].type .names.json )
+    local DIAGRAM=$( jq -r .[].diagram ${MAPPINGFILE} )
+    local UMLFILE=$( jq -r .[].eap ${MAPPINGFILE} )
+    local SPECTYPE=$( jq -r .[].type ${MAPPINGFILE} )
     local URLREF=$( jq -r .urlref .publication-point.json )
     local HOSTNAME=$( jq -r .hostname  ${CONFIGDIR}/config.json )
     local DOMAIN=$( jq -r .domain  ${CONFIGDIR}/config.json )
