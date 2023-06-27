@@ -125,7 +125,6 @@ render_html() { # SLINE TLINE JSON
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
-    pushd /app
     mkdir -p ${TLINE}/html
 
     OUTPUT=${TLINE}/index_${LANGUAGE}.html
@@ -138,6 +137,17 @@ render_html() { # SLINE TLINE JSON
     else 
 	
     MERGEDJSONLD=${RRLINE}/translation/${LANGUAGEFILENAMEJSONLD}
+
+     if [ -f ${MERGEDJSONLD} ] ; then
+            echo "translations integrated file found"
+     else
+            echo "defaulting to the primelanguage version"
+            local filename=$(cat ${SLINE}/.names.txt)
+            MERGEDJSONLD=${RRLINE}/all-${filename}.jsonld
+     fi
+ 
+     REPORTFILE=${RRLINE}/generator-respec.report
+
 
     echo "RENDER-DETAILS(language html): node /app/html-generator2.js -s ${TYPE} -i ${MERGEDJSONLD} -x ${RLINE}/html-nj_${LANGUAGE}.json -r /${DROOT} -t ${TEMPLATELANG} -d ${SLINE}/templates -o ${OUTPUT} -m ${LANGUAGE} -e ${RRLINE}"
 
@@ -153,10 +163,10 @@ render_html() { # SLINE TLINE JSON
 	       SPECTYPE="ApplicationProfile"	    
     esac
 
-        oslo-generator-respec ${UMLFILE} 
-	         --input ${MERGEDJSONLD}
+        oslo-generator-respec --input ${MERGEDJSONLD} \
 	         --output ${OUTPUT} \
                  --specificationType ${SPECTYPE} \
+		 --specificationName "Dummy Title" \
 		 --silent false \
 	         --language ${LANGUAGE} \
                  &> ${REPORTFILE}
@@ -173,7 +183,6 @@ render_html() { # SLINE TLINE JSON
 #    fi
 
 #    pretty_print_json ${RLINE}/html-nj_${LANGUAGE}.json
-    popd
     fi
 }
 
@@ -465,10 +474,10 @@ cat ${CHECKOUTFILE} | while read line; do
             html)
                 RLINE=${TARGETDIR}/reporthtml/${line}
                 mkdir -p ${RLINE}
-                render_html $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report/${line} ${PRIMELANGUAGE} true
+                render_html $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report4/${line} ${PRIMELANGUAGE} true
 		for g in ${GOALLANGUAGE} 
 		do 
-                render_html $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report/${line} ${g}
+                render_html $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report4/${line} ${g}
 	        done
                 ;;
             shacl) # render_shacl $SLINE $TLINE $i $RLINE
