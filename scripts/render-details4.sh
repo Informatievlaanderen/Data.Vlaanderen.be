@@ -102,6 +102,101 @@ render_translationfiles() {
     fi
 }
 
+render_rdf() { # SLINE TLINE JSON
+    echo "render_html: $1 $2 $3 $4 $5 $6 $7"
+    echo "render_html: $1 $2 $3 $4 $5"
+    local SLINE=$1
+    local TLINE=$2
+    local JSONI=$3
+    local RLINE=$4
+    local DROOT=$5
+    local RRLINE=$6
+    local LANGUAGE=$7
+    local PRIMELANGUAGE=${8-false}
+
+    # XXX temporary overwrite TLINE with RRLINE
+    TLINE=${RRLINE}
+
+    BASENAME=$(basename ${JSONI} .jsonld)
+    #    OUTFILE=${BASENAME}.html
+    # precendence order: Theme repository > publication repository > tool repository
+    # XXX TODO: reactivate
+#    cp -n ${HOME}/project/templates/* ${SLINE}/templates
+#    cp -n /app/views/* ${SLINE}/templates
+    #cp -n ${HOME}/project/templates/icons/* ${SLINE}/templates/icons
+    mkdir -p ${RLINE}
+
+
+
+    OUTPUTDIR=${TLINE}/voc/
+    mkdir -p ${OUTPUTDIR}
+
+    COMMANDTEMPLATELANG=$(echo '.[].translation | .[] | select(.language | contains("'${LANGUAGE}'")) | .template')
+    TEMPLATELANG=$(jq -r "${COMMANDTEMPLATELANG}" ${SLINE}/.names.json)
+    COMMANDJSONLD=$(echo '.[].translation | .[] | select(.language | contains("'${LANGUAGE}'")) | .mergefile')
+    LANGUAGEFILENAMEJSONLD=$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
+    if [ "${LANGUAGEFILENAMEJSONLD}" == "" ] ; then
+	    echo "configuration for language ${GOALLANGUAGE} not present. Ignore this language for ${SLINE}"
+    else 
+	
+    MERGEDJSONLD=${RRLINE}/translation/${LANGUAGEFILENAMEJSONLD}
+
+     if [ -f ${MERGEDJSONLD} ] ; then
+            echo "translations integrated file found"
+     else
+            echo "defaulting to the primelanguage version"
+            local filename=$(cat ${SLINE}/.names.txt)
+            MERGEDJSONLD=${RRLINE}/all-${filename}.jsonld
+     fi
+
+     COMMANDname=$(echo '.name')
+     VOCNAME=$(jq -r "${COMMANDname}" ${MERGEDJSONLD})
+
+     COMMANDtype=$(echo '.type')
+     TYPE=$(jq -r "${COMMANDtype}" ${MERGEDJSONLD})
+ 
+     REPORTFILE=${RRLINE}/generator-rdf.report
+
+   # XXX TODO create an iterator for each format  
+     OUTPUT=${OUTPUTDIR}/${VOCNAME}_${LANGUAGE}.ttl
+     OUTPUTFORMAT="text/turtle"
+
+    echo "RENDER-DETAILS(rdf): oslo-generator-rdf -s ${TYPE} -i ${MERGEDJSONLD} -x ${RLINE}/html-nj_${LANGUAGE}.json -r /${DROOT} -t ${TEMPLATELANG} -d ${SLINE}/templates -o ${OUTPUT} -m ${LANGUAGE} -e ${RRLINE}"
+
+
+    case $TYPE in
+	    ap) SPECTYPE="ApplicationProfile"
+		    ;;
+            voc) SPECTYPE="Vocabulary"
+		    ;;
+            oj) SPECTYPE="ApplicationProfile"
+		    ;;
+            *) echo "ERROR: ${SPECTYPE} not recognized"
+	       SPECTYPE="ApplicationProfile"	    
+    esac
+
+        oslo-generator-rdf --input ${MERGEDJSONLD} \
+	         --output ${OUTPUT} \
+                 --contentType ${OUTPUTFORMAT} \
+		 --silent false \
+	         --language ${LANGUAGE} \
+                 &> ${REPORTFILE}
+
+
+#    if ! node /app/html-generator2.js -s ${TYPE} -i ${MERGEDJSONLD} -x ${RLINE}/html-nj_${LANGUAGE}.json -r /${DROOT} -t ${TEMPLATELANG} -d ${SLINE}/templates -o ${OUTPUT} -m ${LANGUAGE} -e ${RRLINE}; then
+#        echo "RENDER-DETAILS(language html): rendering failed"
+#	execution_strickness
+#    else
+	if [ ${PRIMELANGUAGE} == true ] ; then
+		cp ${OUTPUT} ${OUTPUTDIR}/${VOCNAME}.ttl
+	fi
+        echo "RENDER-DETAILS(language html): File was rendered in ${OUTPUT}"
+#    fi
+
+    fi
+}
+
+
 render_html() { # SLINE TLINE JSON
     echo "render_html: $1 $2 $3 $4 $5 $6 $7"
     echo "render_html: $1 $2 $3 $4 $5"
@@ -482,6 +577,15 @@ cat ${CHECKOUTFILE} | while read line; do
 		for g in ${GOALLANGUAGE} 
 		do 
                 render_html $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report4/${line} ${g}
+	        done
+                ;;
+            rdf)
+                RLINE=${TARGETDIR}/reporthtml/${line}
+                mkdir -p ${RLINE}
+                render_rdf $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report4/${line} ${PRIMELANGUAGE} true
+		for g in ${GOALLANGUAGE} 
+		do 
+                render_rdf $SLINE $TLINE $i $RLINE ${line} ${TARGETDIR}/report4/${line} ${g}
 	        done
                 ;;
             shacl) # render_shacl $SLINE $TLINE $i $RLINE

@@ -256,6 +256,39 @@ jobs:
           paths:
             - report4html/
             - report4/
+  render-rdf-details-4:
+    docker:
+      - image: cimg/node:18.16.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: touch a file
+          command: |
+            mkdir -p /tmp/workspace/report4
+            touch /tmp/workspace/report4/.ignore04
+      - run:
+          name: install software
+          command: sudo npm install --global @oslo-flanders/rdf-vocabulary-generator
+      - run:
+          name: Render HTML version of merged json file (a)
+          command: |
+            mkdir -p /tmp/workspace/target /tmp/workspace/reporthtml
+            export CIRCLEWKD=$( eval echo "${CIRCLE_WORKING_DIRECTORY}" )
+            ${CIRCLEWKD}/scripts/render-details4.sh /tmp/workspace rdf ${CIRCLEWKD}/config
+      - run:
+          name: copy the site-skeleton for the html
+          command: $PWD/scripts/copy_skeleton.sh
+      - run:
+          name: List the files which have been created
+          command: |
+            if [ -d /tmp/workspace/report4 ] ; then ls -al /tmp/workspace/report4/* ; fi || true
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - report4html/
+            - report4/
   render-example-templates:
     docker:
       - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.3
@@ -581,9 +614,12 @@ workflows:
       - render-html-details:
           requires:
             - render-merged-jsonld
-      - render-html-details-4:
+      - render-rdf-details-4:
           requires:
             - extract-jsonld-details-4
+      - render-html-details-4:
+          requires:
+            - extract-rdf-details-4
       - render-voc-jsonld:
           requires:
             - render-merged-jsonld
