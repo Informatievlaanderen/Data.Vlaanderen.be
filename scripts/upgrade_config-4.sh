@@ -16,7 +16,7 @@ upgrade_config() {
 
 
     HASTRANSLATION=$(jq -r .[0].translation[0].language ${SLINE}/.names.json)
-    echo "${HASTRANSLATION}"
+    echo "${HASTRANSLATION}: if null then no translation is present and thus configuration will be updated."
 
     TITLE=$(jq -r .[0].title ${SLINE}/.names.json)
     TEMPLATE=$(jq -r .[0].template ${SLINE}/.names.json)
@@ -70,7 +70,6 @@ cat ${CHECKOUTFILE} | while read line; do
     RLINE=${TARGETDIR}/report/${line}
     TRLINE=${TARGETDIR}/translation/${line}
     if [ -d "${SLINE}" ]; then
-        echo "UPGRADE CONFIG: for specification ${SLINE} "
 	upgrade_config ${SLINE}
     else
         echo "Error: ${SLINE}"

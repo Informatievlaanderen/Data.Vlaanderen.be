@@ -114,8 +114,8 @@ render_html() { # SLINE TLINE JSON
     local LANGUAGE=$7
     local PRIMELANGUAGE=${8-false}
 
-    # XXX temporary overwrite TLINE with RLINE
-    TLINE=${RLINE}
+    # XXX temporary overwrite TLINE with RRLINE
+    TLINE=${RRLINE}
 
     BASENAME=$(basename ${JSONI} .jsonld)
     #    OUTFILE=${BASENAME}.html
