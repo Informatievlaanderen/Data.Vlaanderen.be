@@ -21,6 +21,8 @@ jobs:
           command: $PWD/scripts/findPublicationsToUpdate.sh /tmp/workspace $PWD/config/publication.json $PWD/
       - run: 
           command: $PWD/scripts/checkoutRepositories.sh /tmp/workspace $PWD/config/publication.json $PWD/config
+      -run:
+          command: $PWD/scripts/upgrade_config-4.sh /tmp/workspace $PWD/config
       - run: if [ -e /tmp/workspace/checkouts.txt ] ; then cat /tmp/workspace/checkouts.txt ; fi
       - run: if [ -e /tmp/workspace/rawcheckouts.txt ] ; then cat /tmp/workspace/rawcheckouts.txt ; fi
       - run: if [ -e /home/circleci/project/changes.txt ] ; then cat /home/circleci/project/changes.txt ; fi

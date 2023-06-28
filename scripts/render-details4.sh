@@ -114,9 +114,13 @@ render_html() { # SLINE TLINE JSON
     local LANGUAGE=$7
     local PRIMELANGUAGE=${8-false}
 
+    # XXX temporary overwrite TLINE with RLINE
+    TLINE=${RLINE}
+
     BASENAME=$(basename ${JSONI} .jsonld)
     #    OUTFILE=${BASENAME}.html
     # precendence order: Theme repository > publication repository > tool repository
+    # XXX TODO: reactivate
 #    cp -n ${HOME}/project/templates/* ${SLINE}/templates
 #    cp -n /app/views/* ${SLINE}/templates
     #cp -n ${HOME}/project/templates/icons/* ${SLINE}/templates/icons
