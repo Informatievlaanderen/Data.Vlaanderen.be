@@ -46,12 +46,13 @@ cleanup_directory() {
   if [[ -f ".names.txt" && -f $MAPPINGFILE ]]
   then
     STR=".[] | select(.name == \"$(cat .names.txt)\") | [.]"
-    jq "${STR}" ${MAPPINGFILE} >.map.json
-    jq -r '.[] | @sh "find . -name \"*.eap\" !  -name \(.eap) -type f -exec rm -f {} + "' .map.json | bash -e
-    SITE=`jq -r .[].site .map.json`
+    jq "${STR}" ${MAPPINGFILE} > .names.json
+    jq -r '.[] | @sh "find . -name \"*.eap\" !  -name \(.eap) -type f -exec rm -f {} + "' .names.json | bash -e
+    SITE=`jq -r .[].site .names.json`
     find ./site-skeleton -depth -type d ! -wholename "./site-skeleton"  ! -wholename "./${SITE}" -exec rm -rf {} + 
   fi
 }
+
 
 git_download() {
      local GITTARGETDIR=$1
