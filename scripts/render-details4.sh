@@ -103,8 +103,7 @@ render_translationfiles() {
 }
 
 render_rdf() { # SLINE TLINE JSON
-    echo "render_html: $1 $2 $3 $4 $5 $6 $7"
-    echo "render_html: $1 $2 $3 $4 $5"
+    echo "render_rdf: $1 $2 $3 $4 $5 $6 $7"
     local SLINE=$1
     local TLINE=$2
     local JSONI=$3
@@ -128,7 +127,7 @@ render_rdf() { # SLINE TLINE JSON
 
 
 
-    OUTPUTDIR=${TLINE}/voc/
+    OUTPUTDIR=${TLINE}/voc
     mkdir -p ${OUTPUTDIR}
 
     COMMANDTEMPLATELANG=$(echo '.[].translation | .[] | select(.language | contains("'${LANGUAGE}'")) | .template')
