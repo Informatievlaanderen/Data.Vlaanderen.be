@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <title>OSLO-Steps</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui.css" />
+  <link rel="stylesheet" href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui-corporate.css" />
+
+  <link rel="icon" sizes="192x192" href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/icon-highres-precomposed.png">
+  <link rel="apple-touch-icon" href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-precomposed.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-ipad-precomposed.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-retina-precomposed.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-ipad-retina-precomposed.png">
+
+  <meta name="msapplication-square70x70logo" content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-small.png" />
+  <meta name="msapplication-square150x150logo" content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-medium.png" />
+  <meta name="msapplication-wide310x150logo" content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-wide.png" />
+  <meta name="msapplication-square310x310logo" content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-large.png" />
+  <meta name="msapplication-TileColor" content="#FFE615" />
+  <script src="https://tni.widgets.burgerprofiel.dev-vlaanderen.be/api/v1/node_modules/@govflanders/vl-widget-polyfill/dist/index.js"></script>
+</head>
+
+<body>
+  <div style="min-height:44px;;" id="vlaanderen-header">
+    <!-- insert your global header here -->
+    <script src=https://tni.widgets.burgerprofiel.dev-vlaanderen.be/api/v1/widget/99790a73-9a6b-4927-94ad-5df8ae9adf78/embed></script>
+    <!-- end global header-->
+  </div>
+
+  <div class="layout layout--wide">
+        <ul class="nav_bar">
+            <li><a class="button" href="./intro.html">Intro</a></li>
+            <li><a class="button" href="./overview.html">OSLO-STEPS Overview</a></li>
+            <li><a class="button" href="./domain_model.html">Domain Model</a></li>
+            <li><a class="button" href="./linked_sources_overview.html">Linked Sources Overview</a></li>
+            <li><a class="button" href="./rdf_workflow_description.html">RDF Workflow Description</a></li>
+        </ul>
+
+        <h1 class="h1"> Description of simplified RDF workflow models for a selection of life events</h1>
+        <div class="h2_alinea">
+            <h2 class="h2">1. Introduction</h2>
+            <p>
+                We explain how the OSLO-STEPS descriptions and composition
+                methods -- introduced <a href="./linked_sources_overview.html">here</a> -- have been applied to and influenced by
+                the concrete use cases of the project. Specifically, how the concrete paths and steps
+                can be translated into the OSLO-STEPS format, which adjustments
+                we made to the Semantic Workflow Processor (SWP) to ensure scalability, and how we added user feedback to the SWP API.
+            </p>
+        </div>
+        <div class="h2_alinea">
+            <h2 class="h2">2. Translate Procedures into OSLO-STEPS</h2>
+            <p>
+                In the project we describe the use case “onboarding in a new municipality”. One part
+                of that use case is the declaration of the new address. As showcase, an existing
+                online form: <a href="https://eloket.antwerpen.be/nl/eloket/aangifte-adreswijziging-v3/">Change address Antwerp</a> is
+                manually translated into OSLO-STEPS. A snippet is found in Listing 1, 2, and 3,
+                where the OSLO-STEPS descriptions are split up in steps, states, and shapes.
+            </p>
+            <figure class="listing">
+                <pre class="background">
+                    <code>
+                        @prefix​ o-steps​ : &lt;​<a href="https://fast.ilabt.imec.be/ns/oslo-steps#">https://fast.ilabt.imec.be/ns/oslo-steps#</a>&gt;​ .
+                        @prefix​ xl​ : &lt;​<a href="http://www.w3.org/2008/05/skos-xl#">http://www.w3.org/2008/05/skos-xl#</a>&gt;​ .
+                        @prefix​ state​ : &lt;<a href="https://fast.ilabt.imec.be/api/v5/states#">https://fast.ilabt.imec.be/api/v5/states#</a>&gt;​ .
+                        @prefix​ step​ : &lt;​<a href="https://fast.ilabt.imec.be/api/v5/steps#">https://fast.ilabt.imec.be/api/v5/steps#</a>&gt;​ .
+
+                        <span class="code_comment"># Journey level steps: collect address changed data, and declare it</span>
+
+                        step​ :collectAddressChangeData a ​ o-steps​ :JourneyLevelStep ;
+                            o-steps​ :hasDescription [ ​ xl​ :literalForm ​ "Data adreswijziging"​ @nl​ ] ;
+                            o-steps​ :requiresState ​ o-steps​ :emptyState ;
+                            o-steps​ :producesState ​ state​ :citizenNationalNumber, ​ state​ :streetname,
+                                                                   state​ :postcode, ​ state​ :streetNumber, ​ [...] ​ ,
+                                                                   state​ :citizenEmailAddress .
+
+                        step​ :declareAddressChange a ​ o-steps​ :JourneyLevelStep ;
+                            o-steps​ :hasDescription [ ​ xl​ :literalForm ​ "Aangifte adreswijziging"​ @nl​ ] ;
+                            o-steps​ :requiresState ​ state​ :citizenNationalNumber, ​ state​ :streetname,
+                                                                 state​ :postcode, ​ state​ :streetNumber, ​ [...] ​ ,
+                                                                 state​ :citizenEmailAddress ;
+                            o-steps​ :producesState ​ state​ :addressChangeDeclared .
+
+                        <span class="code_comment"># Container level steps: provide personal data, new address, and contact info</span>
+
+                        step​ :providePersonalData a ​ o-steps​ :ContainerLevelStep ;
+                            o-steps​ :hasDescription [ ​ xl​ :literalForm ​ "Verstrek persoonlijke gegevens"​ @nl​ ] ;
+                            o-steps​ :requiresState ​ o-steps​ :emptyState ;
+                            o-steps​ :producesState ​ state​ :citizenNationalNumber .
+
+                            step​ :provideNewAddress a ​ o-steps​ :ContainerLevelStep ;
+                            o-steps​ :hasDescription [ ​ xl​ :literalForm ​ "Nieuw adres"​ @nl​ ] ;
+                            o-steps​ :requiresState ​ o-steps​ :emptyState ;
+                            o-steps​ :producesState ​ state​ :streetname, ​ state​ :postcode, ​ state​ :streetNumber.
+
+                        step​ :provideContactInfo a ​ o-steps​ :ContainerLevelStep ;
+                            o-steps​ :hasDescription [ ​ xl​ :literalForm ​ "Contactgegevens"​ @nl​ ] ;
+                            o-steps​ :requiresState ​ o-steps​ :emptyState ;
+                            o-steps​ :producesState ​ state​ :citizenEmailAddress .
+
+                        <span class="code_comment"># Component level steps: provide national number, street name, etc.</span>
+
+                        step​ :provideCitizenNationalNumberManually a ​ o-steps​ :ComponentLevelStep ;
+                            o-steps​ :hasDescription [ ​ xl​ :literalForm ​ "Rijksregister inwoner"​ @nl​ ] ;
+                            o-steps​ :requiresState ​ o-steps​ :emptyState ;
+                            o-steps​ :producesState ​ state​ :citizenNationalNumber .
+
+                        step​ :provideStreetName a ​ o-steps​ :ComponentLevelStep ;
+                            o-steps​ :hasDescription [ ​ xl​ :literalForm ​ "Straat"​ @nl​ ] ;
+                            o-steps​ :requiresState ​ o-steps​ :emptyState ;
+                            o-steps​ :producesState ​ state​ :streetname .
+
+                        step​ :providePostCode a ​ o-steps​ :ComponentLevelStep ;
+                            o-steps​ :hasDescription [ ​ xl​ :literalForm ​ "Postcode"​ @nl​ ] ;
+                            o-steps​ :requiresState ​ o-steps​ :emptyState ;
+                            o-steps​ :producesState ​ state​ :postcode .
+
+                        step​ :provideStreetNumber a ​ o-steps​ :ComponentLevelStep ;
+                            o-steps​ :hasDescription [ ​ xl​ :literalForm ​ "Huisnummer"​ @nl​ ] ;
+                            o-steps​ :requiresState ​ o-steps​ :emptyState ;
+                            o-steps​ :producesState ​ state​ :streetNumber .
+
+                        step​ :provideEmail a ​ o-steps​ :ComponentLevelStep ;
+                            o-steps​ :hasDescription [ ​ xl​ :literalForm ​ "e-mail"​ @nl​ ] ;
+                            o-steps​ :requiresState ​ o-steps​ :emptyState ;
+                            o-steps​ :producesState ​ state​ :citizenEmailAddress .
+                    </code>
+                </pre>
+                <figcaption>
+                    Listing 1: a snippet of OSLO-STEPS step descriptions for changing your address                \
+                </figcaption>
+            </figure>
+            <figure class="listing">
+                <pre class="background">
+                    <code>
+                        @prefix​ o-steps​ : &lt;​<a href="https://fast.ilabt.imec.be/ns/oslo-steps#">https://fast.ilabt.imec.be/ns/oslo-steps#</a>&gt;​ .
+                        @prefix​ xl​ : &lt;​<a href="http://www.w3.org/2008/05/skos-xl#">http://www.w3.org/2008/05/skos-xl#</a>&gt;​ .
+                        @prefix​ state​ : &lt;<a href="https://fast.ilabt.imec.be/api/v5/states#">https://fast.ilabt.imec.be/api/v5/states#</a>&gt;​ .
+                        @prefix​ step​ : &lt;​<a href="https://fast.ilabt.imec.be/api/v5/steps#">https://fast.ilabt.imec.be/api/v5/steps#</a>&gt;​ .
+
+                        state​ :citizenEmailAddress a ​ o-steps​ :State ;
+                            rdfs​ :label ​ "Inwoner email address"​ @nl​ ;
+                            o-steps​ :hasStateShape ​ shape​ :emailAddressShape .
+
+                        state​ :streetname a ​ o-steps​ :State ;
+                            rdfs​ :label ​ "Straat"​ @nl​ ;
+                            o-steps​ :hasStateShape ​ shape​ :citizenNewAddressStreetShape .
+
+                        state​ :postcode a ​ o-steps​ :State ;
+                            rdfs​ :label ​ "Postcode"​ @nl​ ;
+                            o-steps​ :hasStateShape ​ shape​ :citizenNewAddressPostCodeShape .
+
+                        state​ :streetNumber a ​ o-steps​ :State ;
+                            rdfs​ :label ​ "Huisnumer"​ @nl​ ;
+                            o-steps​ :hasStateShape ​ shape​ :citizenNewAddressStreetNumberShape .
+
+                        state​ :citizenNationalNumber a ​ o-steps​ :State;
+                            rdfs​ :label ​ "Inwoner Rijksregisternummer"​ @nl​ ;
+                            o-steps​ :hasStateShape ​ shape​ :nationalNumberBelgiumShape .
+                    </code>
+                </pre>
+                <figcaption>
+                    Listing 2: a snippet of OSLO-STEPS state descriptions for changing your address
+                </figcaption>
+            </figure>
+            <figure class="listing">
+                <pre class="background">
+                    <code>\
+                        @prefix​ o-steps​ : &lt;​<a href="https://fast.ilabt.imec.be/ns/oslo-steps#">https://fast.ilabt.imec.be/ns/oslo-steps#</a>&gt;​ .
+                        @prefix rdfs​ : &lt;<a href="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#</a>&gt;​ .
+                        @prefix ex​ : &lt;<a href="http://example.org/ns/example#">http://example.org/ns/example#</a>&gt;​ .
+                        @prefix locn​ : &lt;​<a href="http://www.w3.org/ns/locn#">http://www.w3.org/ns/locn#</a>&gt;​ .
+
+                        @prefix​ ​ shape​ : &lt;​<a href="https://fast.ilabt.imec.be/api/v5/shapes#">https://fast.ilabt.imec.be/api/v5/shapes#</a>&gt;​ .
+
+                        <span class="code_comment"># Shapes</span>
+                        <span class="code_comment">## E-mail</span>
+
+                        shape​ :emailAddressShape a ​ o-steps​ :StateShape ;
+                            rdfs​ :label ​ "A citizen's email"​ @en​ ;
+                            sh​ :targetClass ​ o-persoon​ :Inwoner ;
+                            sh​ :property ​ shape​ :emailPattern .
+
+                        shape​ :emailPattern a ​ sh​ :PropertyShape ;
+                            rdfs​ :label ​ "Valid email address"​ @en​ ;
+                            sh​ :path ​ schema​ :email ;
+                            sh​ :datatype ​ xsd​ :string ;
+                            sh​ :pattern ​ "^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$"​ ;
+                            sh​ :minCount ​ 1 ​ .
+
+                        <span class="code_comment">## Street name</span>
+
+                        shape​ :citizenNewAddressStreetShape a ​ o-steps​ :StateShape ;
+                            rdfs​ :label ​ "Street of new address"​ @en​ ;
+                            sh​ :targetClass ​ o-persoon​ :Inwoner ;
+                            sh​ :property ​ shape​ :newStreet .
+
+                        shape​ :newStreet a ​ sh​ :PropertyShape ;
+                            rdfs​ :label ​ "Street of new address"​ @en​ ;
+                            sh​ :path (​ ex​ :newAddress ​ locn​ :thoroughfare) ;
+                            sh​ :minLength ​ 2 ​ ; ​ sh​ :maxLength ​ 100​ ;
+                            sh​ :datatype ​ xsd​ :string ;
+                            sh​ :maxCount ​ 1 ​ ; ​ sh​ :minCount ​ 1 ​ .
+
+                        <span class="code_comment">## Postcode</span>
+
+                        shape​ :citizenNewAddressPostCodeShape a ​ o-steps​ :StateShape ;
+                            rdfs​ :label ​ "Postcode of new address"​ @en​ ;
+                            rdfs​ :comment ​ "Postcode of new address"​ @en​ ;
+                            sh​ :targetClass ​ o-persoon​ :Inwoner ;
+                            sh​ :property ​ shape​ :newPostcode .
+
+                        shape​ :newPostcode a ​ sh​ :PropertyShape ;
+                            rdfs​ :label ​ "Postcode of new address"​ @en​ ;
+                            rdfs​ :comment ​ "Postcode of new address"​ @en​ ;
+                            sh​ :path (​ ex​ :newAddress ​ locn​ :postCode) ;
+                            sh​ :minLength ​ 4 ​ ; ​ sh​ :maxLength ​ 4 ​ ;
+                            sh​ :datatype ​ xsd​ :string ;
+                            sh​ :maxCount ​ 1 ​ ; ​ sh​ :minCount ​ 1 ​ .
+
+                        <span class="code_comment">## Street number</span>
+
+                        shape​ :citizenNewAddressStreetNumberShape a ​ o-steps​ :StateShape ;
+                            rdfs​ :label ​ "Street number of new address"​ @en​ ;
+                            rdfs​ :comment ​ "Street number of new address"​ @en​ ;
+                            sh​ :targetClass ​ o-persoon​ :Inwoner ;
+                            sh​ :property ​ shape​ :newStreetnumber .
+
+                        shape​ :newStreetnumber a ​ sh​ :PropertyShape ;
+                            rdfs​ :label ​ "Street number of new address"​ @en​ ;
+                            rdfs​ :comment ​ "Street number of new address"​ @en​ ;
+                            sh​ :path (​ ex​ :newAddress &lt;​ https​ : ​ //data.vlaanderen.be/ns/adres#huisnummer&gt;​ ) ;
+                            sh​ :minLength ​ 1 ​ ; ​ sh​ :maxLength ​ 5 ​ ;
+                            sh​ :datatype ​ xsd​ :string ;
+                            sh​ :maxCount ​ 1 ​ ; ​ sh​ :minCount ​ 1 ​ .
+
+                        <span class="code_comment">## National number</span>
+
+                        shape​ :nationalNumberBelgiumShape a ​ o-steps​ :StateShape ;
+                            rdfs​ :label ​ "Householder national number"​ @en​ ;
+                            rdfs​ :comment ​ "User with valid Belgian national number"​ @en​ ;
+                            sh​ :targetClass ​ o-persoon​ :Inwoner ;
+                            sh​ :property ​ shape​ :nationalNumberPatternBelgium ;
+                            sh​ :property ​ shape​ :nationalNumberObliged .
+
+                        shape​ :nationalNumberObliged a ​ sh​ :PropertyShape ;
+                            rdfs​ :label ​ "Obliged national number"​ @en​ ;
+                            rdfs​ :comment ​ "There can be exactly one national number"​ @en​ ;
+                            sh​ :path ​ o-persoon​ :registratie ;
+                            sh​ :datatype ​ xsd​ :string ;
+                            sh​ :pattern ​ "^[0-9]{2}[.\\- ]{0,1}[0-9]{2}[.\\- ]{0,1}[0-9]{2}[.\\- ]{0,1}[0-9]{3}[.\\-]{0,1}[0-9]{2}$"​ ;
+                            sh​ :minCount ​ 1 ​ ; ​ sh​ :maxCount ​ 1 ​ .
+                    </code>
+                </pre>
+                <figcaption>
+                    Listing 3: a snippet of OSLO-STEPS shape descriptions for changing your address
+                </figcaption>
+            </figure>
+            <p>
+                To summarize: steps are grouped within three levels: journey level, container level,
+                and component level steps. Each step requires a set of states and produces a set of
+                states (Listing 1). Each state describes a piece of data, and is linked to a SHACL
+                shape (Listing 2). Each SHACL shape describes the constraints of a piece of data, to
+                make sure all data can be validated (Listing 3). More details are described in
+                the <a href="./domain_model.html">domain model</a>.
+            </p>
+            <div class="h3_alinea">
+                <h3 class="h3">2.1 Step Levels</h3>
+                <p>
+                    Steps can be described in different levels of
+                    granularity. As a result of our first tests, we introduced three levels: journey level,
+                    container level and component level. Journey level steps have subpaths containing
+                    container level steps, and container level steps have subpaths containing component
+                    level steps. In an initial version we only had very fine grained step descriptions which could then
+                    be combined. This solution turned out to be not very practical because of two
+                    reasons:
+                </p>
+                <ol class="bullet-list bullet-list--tag">
+                    <li class="bullet-list__item">
+                        <strong>User experience:</strong> when dealing with and composing workflows, we want to
+                        provide the user with different workflows or at least with the entire workflow
+                        the user is about to complete. If this results in very long workflows of very fine
+                        grained steps, it is difficult for the user to have an overview.
+                    </li>
+                    <li class="bullet-list__item">
+                        <strong>Performance:</strong> workflow composition by the SWP gets too complex to
+                        guarantee decent performance, especially when many steps are independent
+                        of each other. For example, if we have 6 input steps which all provide
+                        information for a seventh step which depends on it, the SWP internally takes
+                        maximally 6! = 720 alternative workflows into account. When we group these
+                        six input steps, e.g., into two groups of three, the SWP internally takes
+                        maximally 2! + 3! + 3! = 14 alternative workflows into account. Although this
+                        does not affect the total resulting number of workflows, it significantly affects
+                        performance.
+                    </li>
+                </ol>
+            </div>
+            <div class="h3_alinea">
+                <h3 class="h3">2.2 Translation process</h3>
+                <p>
+                    Listings 1, 2, and 3 were created manually based on the online form. A snippet of the
+                    form is visualized in Figure 1. Below, we show how we created the semantic
+                    descriptions based on the information given in the form: (i) identify the journey level
+                    steps, (ii) identify the component level steps and associated states, (iii) group
+                    accordingly, and (iv) complete the shapes. If the states and their associated shapes
+                    are known beforehand, 2.2.2 and 2.2.4 are partially completed.
+                </p>
+                <figure class="img">
+                    <img src="images/rdf_description_figure_1.jpg"/>
+                    <figcaption>
+                        Figure 1: a snippet of the online form
+                    </figcaption>
+                </figure>
+                <div class="h4_alinea">
+                    <h2 class="h4">2.2.1 Identify the journey level steps and goal state</h2>
+                    <p>
+                        Typically, a single online form can be viewed as a two-step process: filling in all the
+                        data, and submitting the data. That is why in Listing 1 there are two journey level
+                        steps: <strong>step:collectAddressChangeData</strong> and <strong>step:declareAddressChange</strong>.
+                        The first journey level step requires an o-steps:emptyState and the final journey
+                        level step produces your goal state: state:addressChangeDeclared.
+                    </p>
+                    <br/>
+                    <p>
+                        For ease of use by users, make sure you add a descriptive label via the construct
+                        <strong>o-steps:hasDescription [ xl:literalForm "[ENTER STEP LABEL
+                        HERE]"@nl ]</strong> to every step (not only the journey level steps) .
+                    </p>
+                    <br/>
+                    <p>
+                        If the intermediate data is processed and the online form would contain multiple
+                        sections, each section could be viewed as a journey level step. If it is not processed,
+                        each section of the form could also be seen as a container level step (see Section
+                        2.2.3)
+                    </p>
+                </div>
+                <div class="h4_alinea">
+                    <h2 class="h4">2.2.2 Identify and potentially reuse all component level steps and states</h2>
+                    <p>
+                        A component level step can be seen as the lowest level form or interaction element.
+                        Each such element is typically used to request data to fill in a specific state. In this
+                        section, we assume that the full list of states is not known yet, and thus, component
+                        level steps and states are typically identified concurrently. If the full list of states is
+                        known, you can proceed to Section 2.2.3 and apply it to component level steps.
+                    </p>
+                    <br/>
+                    <p>
+                        A state can be seen as a piece of data that we know about the user. To be
+                        future-proof, it is best practice to keep the individual states as fine-grained as
+                        possible. For example: split between first name and last name. Which granularity to
+                        choose depends on the use case (e.g., is it needed to split up the birth date in
+                        day/month/year or not), best practices in data modeling, and which ontologies are
+                        reused (Listing 2). In FAST, we have chosen to be maximally compliant with existing
+                        OSLO vocabularies, by reusing the OSLO vocabularies where possible. This is
+                        verifiable by inspecting the shapes (Listing 3): the <strong>sh:path</strong> properties for the
+                        constraints are mostly based on OSLO vocabularies.
+                    </p>
+                    <br/>
+                    <p>
+                        As a currently identified best practice, we identify each data element at its lowest
+                        granularity to be a component level step. For example, the “E-mailadres” form
+                        element translates into a <strong>step:provideEmail</strong> step, and produces the
+                        <strong>state:citizenEmailAddress</strong> state. As such, we can go over the entire online
+                        form to identify each individual form element and associate a step and which state it
+                        produces to it.
+                    </p>
+                    <br/>
+                    <p>
+                        Where feasible, existing steps should be reused as much as possible. It is highly
+                        likely that the <strong>step:provideEmail</strong> step and associated state will be reusable
+                        across forms. As such, it is beneficial to reuse this step and state.
+                    </p>
+                    <br/>
+                    <p>
+                        The aforementioned best practice of identifying each data element at its lowest
+                        granularity for steps is not a hard requirement: it is possible to, e.g., group the
+                        <strong>state:citizenFirstName</strong> and <strong>state:citizenLastName</strong> states into a single
+                        step:provideFullName step. More on grouping in Section 2.2.3
+
+                    </p>
+                </div>
+                <div class="h4_alinea">
+                    <h2 class="h4">2.2.3 Identify and potentially reuse grouped states into container level steps by filling in all required and produced states</h2>
+                    <p>
+                        In Listing 1, we chose to literally translate the grouping of the online form into the
+                        container level steps. For example, the <strong>step:provideNewAddress</strong> step produces
+                        <strong>state:streetname, state:postcode, state:streetNumber</strong> etc. By producing
+                        multiple states, you effectively group multiple states into a single step.
+                    </p>
+                    <br/>
+                    <p>
+                        This flexibility of grouping (on all levels) allows you to influence the UX, and e.g.,
+                        make changes for A/B testing. As such, optimal grouping and nesting of steps is
+                        subject to UX expertise.
+                    </p>
+                    <br/>
+                    <p>
+                        Similar to component level steps, existing container level steps should be reused as
+                        much as possible.
+                    </p>
+                </div>
+                <div class="h4_alinea">
+                    <h2 class="h4">2.2.4 Identify and potentially reuse shapes</h2>
+                    <p>
+                        Each state gets associated with two types of metadata: a human-readable label, and
+                        a link to a SHACL shape. When the full list of states is known, you can associate
+                        SHACL shapes to describe the format of the data elements. These SHACL shapes
+                        can be used to guide the UI generation, and validate the (submitted) data to make
+                        sure the Semantic Web application can correctly interpret and process the submitted
+                        data.
+                    </p>
+                    <br/>
+                    <p>
+                        In Listing 3, a set of SHACL shapes is described. For example, the
+                        <strong>shape:emailAddressShape</strong> shape specifies that each citizen description that is
+                        classified as a <strong>o-persoon:Inwoner</strong> should have at least one <strong>schema:email</strong> path of
+                        which the string matches a specific pattern. These SHACL shapes could be used to
+                        further detail the UX, e.g., by automatically deducting that entering the email address
+                        is required, and each entered email address is validated using the pattern.
+                    </p>
+                    <br/>
+                    <p>
+                        Similar to steps, existing shapes should be reused as much as possible.
+                    </p>
+                </div>
+            </div>
+            <div class="h2_alinea">
+                <h2 class="h2">3. SWP Adjustments</h2>
+                <p>
+                    By applying the SWP to the use case, we noticed a set of scalability issues which we
+                    resolved. Specifically, we introduced step levels (Section 3.1) and increased
+                    performance during step calculation (Section 3.2).
+                </p>
+                <div class="h3_alinea">
+                    <h3 class="h3">3.1 Goal generation for subpaths</h3>
+                    <p>
+                        Without step levels, the SWP creates paths that start from the initial (typically empty)
+                        state and end at the goal state in a single process. As this does not scale well and
+                        deteriorates user experience (see Section 2.1), we introduce step levels (journey,
+                        container, and component). As such, workflow composition becomes a multi-process
+                        system: as long as you are not dealing with component level steps, you first invoke
+                        the SWP to calculate the subpaths in a lower level. When starting with a journey level step,
+                        first you ask the subpath consisting of container level steps, then you ask
+                        the subpath consisting of component level steps.
+                    </p>
+                    <br/>
+                    <p>
+                        Calculating a subpath based on a higher-level step has following requirements.
+                    </p>
+                    <div class="h4_alinea">
+                        <h4 class="h4">3.1.1 Derive the subgoal for this subpath based on the step</h4>
+                        <p>
+                            The subgoal needs to be explicitly stated to ensure that the result of the subpath
+                            equals the result of the original step.
+                        </p>
+                    </div>
+                    <div class="h4_alinea">
+                        <h4 class="h4">3.1.2 Derive the input data structure for this specific subpath based on the previously executed steps</h4>
+                        <p>
+                            The input data structure needs to be derived to ensure that a valid subpath can be
+                            found without taking the previous steps into account. For example, if a container
+                            level step requires to know the personal information of a citizen before the address
+                            change can be requested, the structure of a citizen’s personal information needs to
+                            be derived based on the prior relevant container level steps. Without deriving this
+                            structure and using it as input for the subpath computation, the SWP cannot
+                            calculate any subpath because the required inputs are not discoverable.
+                        </p>
+                        <br/>
+                        <p>
+                            To make sure the subpaths are still optimal, the costs of each step are taken into
+                            account. Each step has costs of different types: these costs are the limit values for
+                            the goal. The SWP’s algorithm ensures that each step’s execution cost is within the
+                            described limits. For example, when a container level step has a cost of 200 for a
+                            specific cost type such as Duration, it is ensured that the sum of all subpath steps
+                            remains lower than 200. By reusing these costs when calculating the subpaths, we
+                            make sure each subpath’s execution cost is also within the limits of the original step.
+                        </p>
+                        <br/>
+                        <p>
+                            Once we additionally derived the subgoal and input data structure, the SWP can
+                            calculate the subpath for each step based on the preselected higher-level steps, the
+                            subgoal, the input data structure, and the user-specific profile information. This
+                            process is the same for subpath calculation of both journey and container level
+                            steps.
+                        </p>
+                    </div>
+                </div>
+                <div class="h3_alinea">
+                    <h3 class="h3">3.2 Performance</h3>
+                    <p>
+                        Due to use case testing, we introduced some general improvements for the
+                        performance: taking only relevant steps into account when calculating paths (Section
+                        3.2.1), ensuring each step only needs to be completed once (Section 3.2.2), ignoring
+                        permutations of independent steps (Section 3.2.3).
+                    </p>
+                    <div class="h4_alinea">
+                        <h4 class="h4">3.2.1 Preselection step</h4>
+                        <p>
+                            Based on the input data structure and step description, we can derive a subset of
+                            relevant steps before we calculate the actual path. For example, if we can derive that
+                            a procedure does not request any data about a citizen’s pets, we can ignore all steps that handle pet data.
+                            This lowers the number of steps that are taken into account
+                            during path calculation and lowers computation time for the SWP.
+                        </p>
+                        <br/>
+                        <p>
+                            This preselection step can also be used when calculating the subpaths. First, the
+                            steps are divided into journey, container, and component level steps, because when
+                            calculating a journey level subpath, you only need to take container level steps into
+                            account. Then, based on the derived input data structure, the divided steps can be
+                            further filtered to exclude steps that cannot handle the derived input data structure.
+                        </p>
+                    </div>
+                    <div class="h4_alinea">
+                        <h4 class="h4">3.2.2 Each step only once</h4>
+                        <p>
+                            To adhere to the Once-Only Principle (OOP), we modified the SWP in such a way
+                            that workflows include each step once at most. This is very helpful for the FAST use
+                            cases, as FAST’s use cases typically handle life events: data is modified because
+                            the environment is modified (e.g., moving between cities). In these types of use
+                            cases, each step only needs to be completed once. By making sure each step is
+                            only taken into account once, we lower the number of relevant steps for each path
+                            calculation and lower computation time for the SWP.
+                        </p>
+                        <br/>
+                        <p>
+                            This modification remains configurable, as there are other types of use cases where
+                            certain steps need to be completed multiple times.
+                        </p>
+                    </div>
+                    <div class="h4_alinea">
+                        <h4 class="h4">3.2.3 No permutations</h4>
+                        <p>
+                            When many steps are independent of each other and we solely rely on ordered lists
+                            of steps, many alternative workflows can be created, e.g., “fill in first name then last
+                            name” and “fill in last name then first name” are two different workflows, whereas “fill
+                            in first name and last name” is only one workflow. The combinatorial explosion
+                            decreases performance of the SWP, e.g., five independent steps result in 120
+                            alternative workflows.
+                        </p>
+                        <br/>
+                        <p>
+                            We modified the original path algorithm to derive which steps are independent of
+                            each other (i.e., when their required input states do not overlap), and if so, return
+                            these steps in an unordered instead of ordered list. As such, five independent steps
+                            result in a single workflow (or subpath). As such, we provide meaningful options
+                            whilst guaranteeing performance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="h2_alinea">
+                <h2 class="h2">4. API Enhancement: User Feedback</h2>
+                <p>
+                    It is important for the user (in our use case, the citizen) to see which data is used,
+                    especially when specific steps submit data to third parties. To improve user
+                    experience, we included support in the SWP. For each step, the user can now ask
+                    which concrete data is taken into account that will also be the data which is
+                    submitted to third parties. Specific documentation on this feedback loop is available
+                    at the <a href="https://fast.ilabt.imec.be/docs/server/0.9.0/#producing-info-used-by-a-step">SWP documentation</a>.
+                </p>
+            </div>
+            <div class="h2_alinea">
+                <h2 class="h2">5. Conclusion</h2>
+                <p>
+                    We discussed the application of a use case to the SWP. Specifically,
+                    Section 2 details some best practices on how to manually create well-structured
+                    OSLO-STEPS descriptions to be used by the SWP. Separate from the fact that the
+                    SWP successfully handled the given use cases, some general performance
+                    enhancements emerged.
+                </p>
+                <br/>
+                <p>
+                    First, the usage of step levels increases performance and user experiences, and
+                    allows for more advanced configuration of the UX. In this project, three levels of
+                    steps seemed sufficient and was implemented using a preprocessing step. However,
+                    when needed, more advanced nesting could be designed.
+                </p>
+                <br/>
+                <p>
+                    Second, it became clear that limiting the options greatly improves the performance of
+                    the SWP. We saw this when optimizing the performance: nesting the steps, filtering
+                    on only relevant steps, limiting each step to be executed only once, and disallowing
+                    permutations all greatly reduced the amount of (equivalent) workflow alternatives,
+                    and improved performance. As such, additional preprocessing steps to further filter
+                    the set of irrelevant options could be proven to be beneficial.
+                </p>
+                <br/>
+                <p>
+                    Moreover, these additional preprocessing steps are dependent on the OSLO-STEPS
+                    descriptions and thus need to be calculated each time the descriptions change,
+                    however, they are not dependent on the user information taken into account when
+                    calculating the (sub)paths. As such, these preprocessing steps need not influence
+                    the processing time when a user asks for a personalized workflow, as they can be
+                    implemented to only influence the update time when the OSLO-STEPS descriptions
+                    change.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="next">
+        <a class="button" href="./intro.html">Return to Intro</a>
+    </div>
+
+  <div id="vlaanderen-footer">
+    <!-- insert your Vlaanderen-footer-code here -->
+    <script src=https://tni.widgets.burgerprofiel.dev-vlaanderen.be/api/v1/widget/c0df3610-36b9-4113-a487-05dfed92c317/embed></script>
+    <!-- End global footer-->
+  </div>
+
+  <script src="https://dij151upo6vad.cloudfront.net/2.latest/js/vlaanderen-ui.js"></script>
+<style>
+
+    .equal-height {
+        height: 100%;
+        justify-content: normal;
+    }
+
+    .nav_bar {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .nav_bar li {
+        display: inline-block;
+    }
+
+    h1 {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .next {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+
+    figure.img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:  30px;
+        margin-bottom: 30px;
+        width: 50%;
+    }
+
+    figure.listing {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:  30px;
+        margin-bottom: 30px;
+        width: 70%;
+        text-align: center;
+    }
+
+    figcaption {
+        text-align: center;
+    }
+
+    h1 {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .h2_alinea {
+        margin-top: 20px;
+        margin-bottom: 5px;
+    }
+
+    .h3_alinea {
+        margin-top: 10px;
+    }
+
+    .h4_alinea {
+        margin-top: 10px;
+    }
+
+    .h4 {
+        margin-bottom: 5px;
+    }
+
+    .nav_bar {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .nav_bar li {
+        display: inline-block;
+    }
+
+    .next {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    pre {
+        text-align: left;
+        overflow: auto;
+        font-weight:bold;
+        height: fit-content;
+    }
+
+    pre.background {
+        background-color: #ECF0F1;
+        height:auto;
+    }
+
+    .code_comment {
+        color: #7ED956;
+    }
+
+</style>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+
+    function toggle(elementID) {
+        const element = document.getElementById(elementID);
+        if (element.classList.contains('js-accordion--open')) {
+            element.classList.remove('js-accordion--open');
+        } else {
+            element.classList.add('js-accordion--open');
+        }
+    }
+</script>
+
+</body>
+
+</html>
