@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <title>OSLO-Steps</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui.css" />
+  <link rel="stylesheet" href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui-corporate.css" />
+
+  <link rel="icon" sizes="192x192" href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/icon-highres-precomposed.png">
+  <link rel="apple-touch-icon" href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-precomposed.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-ipad-precomposed.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-retina-precomposed.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-ipad-retina-precomposed.png">
+
+  <meta name="msapplication-square70x70logo" content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-small.png" />
+  <meta name="msapplication-square150x150logo" content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-medium.png" />
+  <meta name="msapplication-wide310x150logo" content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-wide.png" />
+  <meta name="msapplication-square310x310logo" content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-large.png" />
+  <meta name="msapplication-TileColor" content="#FFE615" />
+  <script src="https://tni.widgets.burgerprofiel.dev-vlaanderen.be/api/v1/node_modules/@govflanders/vl-widget-polyfill/dist/index.js"></script>
+</head>
+
+<body>
+  <div style="min-height:44px;;" id="vlaanderen-header">
+    <!-- insert your global header here -->
+    <script src=https://tni.widgets.burgerprofiel.dev-vlaanderen.be/api/v1/widget/99790a73-9a6b-4927-94ad-5df8ae9adf78/embed></script>
+    <!-- end global header-->
+  </div>
+
+  <div class="layout layout--wide">
+        <ul class="nav_bar">
+            <li><a class="button" href="./intro.html">Intro</a></li>
+            <li><a class="button" href="./overview.html">OSLO-STEPS Overview</a></li>
+            <li><a class="button" href="./domain_model.html">Domain Model</a></li>
+            <li><a class="button" href="./linked_sources_overview.html">Linked Sources Overview</a></li>
+            <li><a class="button" href="./rdf_workflow_description.html">RDF Workflow Description</a></li>
+        </ul>
+
+        <h1 class="h1">OSLO-STEPS Domain Model</h1>
+        <div class="h2_alinea">
+            <h2 class="h2">Introduction</h2>
+            <p>
+                The FAST OSLO-STEPS project resulted in an RDF-based vocabulary,
+                which structure is illustrated in Figure 1, and which use is demonstrated in Listings 1-5.
+                Increase interoperability by reusing existing concepts, is one aim of initiatives like OSLO or
+                ISA². We achieved that by mostly reusing existing concepts of the CPSV-AP and CCCEV
+                vocabulary. Thus our model extends the existing models of public services and
+                criterion/evidence-based communication, with a user perspective expressed as a “step”
+                class.
+            </p>
+        </div>
+        <div class="h2_alinea">
+            <h2 class="h2">Domain Model</h2>
+            <figure class="img">
+                <img src="images/domain_model_figure_1.png"/>
+                <figcaption>
+                    Figure 1: Developed OSLO-STEPS vocabulary. The blue boxes represent newly defined
+                    classes, green boxes represent concepts from existing vocabularies, such as CPSV-AP and
+                    CCCEV.
+                </figcaption>
+            </figure>
+        </div>
+        <div class="h2_alinea">
+            <h2 class="h2">Example use</h2>
+            <p>
+                We will work through an example where OSLO-STEPS is used as a representation for waste collection in 
+                the municipality of Westerlo (see Figure 2). This form consists of several fields of different kinds which needs to be filled in by the citizen. 
+                Providing information for each of the input fields can be seen as the most fine granular steps. The kind of form and its complexity
+                serves as a representative example of steps for the FAST project.
+            </p>
+            <figure class="img">
+                <img src="images/domain_model_figure_2.png"/>
+                <figcaption>
+                    Figure 2: The form to request waste collection from the city of Westerlo. Different kinds of
+                    input with different constraints: (1) Free text fields, (2) A citizen’s national number as
+                    structured pattern of digits (3) Fixed set of choices, (4, 5) Alternative options.
+                </figcaption>
+            </figure>
+            <p>
+                In the following, we describe some challenges the form poses, and how that might influence
+                the OSLO-STEPS model. The form consists of different kind of inputs. Free text fields (Figure
+                2, (1)) are used to provide information regarding the applicant. From the perspective of
+                OSLO-STEPS, these kind of input fields don’t pose any particular challenge. In fact, existing
+                OSLO models already offer the possibility to express addresses or names.
+            </p>
+            <br/>
+            <p>
+                Structured input (Figure 2, (2)) is used to provide e.g. the national number of the citizen. Data
+                described using OSLO, is by definition structured. In case this structured input is provided
+                directly by the user via an user interface (UI), it needs to be checked whether the input
+                conforms to the stated constraints, e.g. a pattern of digits. However, state-of-the-art user
+                interfaces usually offer means to implement such constraint checking. Furthermore, existing
+                RDF-based languages, such as the W3C recommendation <a href="https://www.w3.org/TR/shacl/">SHACL</a>, can be used to
+                describe constraints on an RDF-based model like OSLO.
+            </p>
+            <br/>
+            <p>
+                Fixed set of choices (Figure 2, (3)) pose similar challenges such as the discussed structured
+                input.
+            </p>
+            <br/>
+            <p>
+                One of the biggest challenges are possible alternatives (Figure 2, (4)). Existing vocabularies
+                like <a href="https://joinup.ec.europa.eu/solution/core-criterion-and-core-evidence-vocabulary">CCCEV</a> offer the possibility to express alternative options. 
+                However, from the form itself it is not clear which combination of input fields is valid. It seems invalid, that biological
+                waste containers are requested, but at the same time it is indicated at (5) that no biological
+                waste container should be collected anymore. Yet this constraint is stated nowhere. Only
+                with human-reasoning someone could infer that option (5) should only be used together with
+                the alternative (4). Strictly speaking, that no biological waste container should be picked up,
+                because the applicant composts the waste by himself. Since such a constraint is stated
+                nowhere, subjectively inferring such knowledge remains uncertain.
+            </p>
+            <br/>
+            <div class="h3_alinea">
+                <figure class="listing">
+                    <h3 class="h3">Listing 1</h3>
+                    <pre class="background">
+                        <code>
+                            @prefix rdfs: &lt;<a href="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#</a>&gt; .
+                            @prefix xsd: &lt;<a href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</a>&gt; .
+                            @prefix westerlo: &lt;<a href="https://example.org/ns/westerlo#">https://example.org/ns/westerlo#</a>&gt; .
+                            @prefix p-plan: &lt;<a href="http://purl.org/net/p-plan#">http://purl.org/net/p-plan#</a>&gt; .
+                            @prefix oslo-steps: &lt;<a href="https://example.org/ns/oslo-steps#">https://example.org/ns/oslo-steps#</a>&gt; .
+
+                            <span class="code_comment"># Definition of data (each variable could be produced by multiple steps)</span>
+
+                            westerlo:variableGreenWasteContainer40LiterAmount a p-plan:Variable .
+                            westerlo:variableGreenWasteContainer120LiterAmount a p-plan:Variable .
+                            westerlo:variableGreenWasteContainerLockInfo a p-plan:Variable .
+                            westerlo:variableGreenWasteContainerOwnCompostInfo a p-plan:Variable .
+                            westerlo:variableGreenWasteContainerCollectionStopInfo a p-plan:Variable .
+
+                            <span class="code_comment"># Definition of steps which provide data</span>
+                            
+                            westerlo:provideGreenWasteContainer40LiterAmount a oslo-steps:Step ;
+                                rdfs:label &quot;Aantal 40 liter container(s)&quot;@nl ;
+                                rdfs:label &quot;Amount 40 liter container(s)&quot;@en .
+                                p-plan:hasOutputVar westerlo:variableGreenWasteContainer40LiterAmount .
+                            westerlo:provideGreenWasteContainer120LiterAmount a oslo-steps:Step ;
+                                rdfs:label &quot;Aantal 120 liter container(s)&quot;@nl ;
+                                rdfs:label &quot;Amount 120 liter container(s)&quot;@en .
+                                p-plan:hasOutputVar westerlo:variableGreenWasteContainer120LiterAmount .
+                            westerlo:provideGreenWasteContainerLockInfo a oslo-steps:Step ;
+                                rdfs:label &quot;Ik vraag een slot aan voor 35 euro per stuk bij plaatsing&quot;@nl ;
+                                rdfs:label &quot;I request a lock for 35 euro per piece on placement&quot;@en ;
+                                p-plan:hasOutputVar westerlo:variableGreenWasteContainerLockInfo .
+                            westerlo:provideGreenWasteContainerOwnCompostInfo a oslo-steps:Step ;
+                                rdfs:label &quot;Geen, want ik composteer mijn GFT zelf&quot;@nl ;
+                                rdfs:label &quot;None, because I compost my GFT on my own&quot;@en ;
+                                p-plan:hasOutputVar westerlo:variableGreenWasteContainerOwnCompostInfo .
+                            westerlo:provideGreenWasteContainerCollectionStopInfo a oslo-steps:Step ;
+                                rdfs:label &quot;Ophaling GFT-container door stopzetting&quot;@nl ;
+                                rdfs:label &quot;Stop collecting GFT-container&quot;@en ;
+                                p-plan:hasOutputVar westerlo:variableGreenWasteContainerCollectionStopInfo .
+                        </code>
+                    </pre>
+                    <figcaption>
+                        Listing 1: The OSLO-STEPS representation of steps providing data for one of the steps in the form shown in figure 2.
+                    </figcaption>
+                </figure>
+            </div>
+            </div>
+            <div class="h3_alinea">
+                <figure class="listing">
+                    <h3 class="h3">Listing 2</h3>
+                    <p>
+                        We demonstrate in listing 2 the definition of one of the steps from the form shown in figure 2,
+                        to illustrate the use of OSLO-STEPS. The shown step provides certain information, but also
+                        needs input data. This input data can be provided by steps which are shown in listing 1. This
+                        also implies a hierarchy of steps, expressed in the dependency of input data. Listing 4
+                        presents an alternative approach to represent needed input data for a step using the CCCEV vocabulary.
+                    </p>
+                    <pre class="background">
+                        <code>
+                            @prefix rdfs: &lt;<a href="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#</a>&gt; .
+                            @prefix xsd: &lt;<a href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</a>&gt; .
+                            @prefix westerlo: &lt;<a href="https://example.org/ns/westerlo#">https://example.org/ns/westerlo#</a>&gt; .
+                            @prefix p-plan: &lt;<a href="http://purl.org/net/p-plan#">http://purl.org/net/p-plan#</a>&gt; .
+                            @prefix oslo-steps: &lt;<a href="https://example.org/ns/oslo-steps#">https://example.org/ns/oslo-steps#</a>&gt; .
+                            
+                            <span class="code_comment"># Green GFT group 2: own compost</span>
+                            
+                            westerlo:provideGreenWasteContainerInfo a oslo-steps:Step ;
+                                rdfs:label &#x22;Groene GFT container(s)&#x22;@nl ;
+                                rdfs:label &#x22;Green GFT waste container(s)&#x22;@en ;
+                                rdfs:comment &#x22;Information regarding green waste container(s)&#x22;@en ;
+                                p-plan:hasInputVar
+                                    westerlo:greenWasteContainer40LiterAmount ,
+                                    westerlo:greenWasteContainer120LiterAmount ,
+                                    westerlo:greenWasteContainerLockInfo ,
+                                    westerlo:greenWasteContainerOwnCompostInfo ,
+                                    westerlo:greenWasteContainerStopCollectionInfo ;
+                                p-plan:hasOutputVar westerlo:greenWasteContainerInfo .
+                        </code>
+                    </pre>
+                    <figcaption>
+                        Listing 2: The OSLO-STEPS representation for one of the steps from the form shown in
+                        figure 2. Compared to listing 1, this step is on a higher hierarchy level. 
+                    </figcaption>
+                    <br/>
+                    <p>
+                        As discussed in a previous section, not all values respectively combination of values might
+                        be valid. One way to express valid combinations is illustrated using the CCCEV vocabulary
+                        as shown in listing 4. Valid values can be described using shapes, which
+                        can be used to automatically validate input data provided by the user. Additionally such
+                        shapes have the potential to communicate valid values to a UI component, which can render
+                        UI elements accordingly, and also provide a state-of-the-art user experience by highlighting
+                        invalid values while using the UI.
+                        Shapes may define target nodes to which they apply, which is used for automated validation.
+                        In our case shapes may target defined variables, which allows the shapes to validate each
+                        value provided by the user, which due to the model corresponds to these variables, see
+                        listing 5.
+                    </p>
+                </figure>
+            </div>
+            <div class="h3_alinea">
+                <figure class="listing">
+                    <h3 class="h3">Listing 3</h3>
+                    <pre class="background">
+                        <code>
+
+                            @prefix rdfs: &lt;<a href="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#</a>&gt; .
+                            @prefix xsd: &lt;<a href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</a>&gt; .
+                            @prefix westerlo: &lt;<a href="https://example.org/ns/westerlo#">https://example.org/ns/westerlo#</a>&gt; .
+                            @prefix p-plan: &lt;<a href="http://purl.org/net/p-plan#">http://purl.org/net/p-plan#</a>&gt; .
+                            @prefix oslo-steps: &lt;<a href="https://example.org/ns/oslo-steps#">https://example.org/ns/oslo-steps#</a>&gt; .
+
+                            @prefix app: &#x3C;<a href="https://example.org/ns/app#">https://example.org/ns/app#</a>&#x3E; .
+                            @prefix sh: &#x3C;<a href="http://www.w3.org/ns/shacl#">http://www.w3.org/ns/shacl#</a>&#x3E; .
+                            
+                            
+                            <span class="code_comment"># A shape defining valid values for a provided value, produced by a step</span>
+                            
+                            westerlo:greenWasteContainer40LiterConstraints a sh:NodeShape ;
+                                sh:targetNode westerlo:variableGreenWasteContainer40LiterAmount ;
+                                    sh:property [
+                                        sh:path (
+                                            [ sh:inversePath p-plan:correspondsToVariable ]
+                                            cccev:value
+                                        );
+                                        sh:in (0 1 2 3 ) ;
+                                ] .
+                        </code>
+                    </pre>
+                    <figcaption>
+                        Listing 3: A SHACL shape, describing valid values for variables which in our example can be
+                        provided by the first step of listing 1. The shape is targeting each executed step which
+                        creates values corresponding to this variable.
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="h3_alinea">
+                <figure class="listing">
+                    <h3 class="h3">Listing 4</h3>
+                    <pre class="background">
+                        <code>
+                            @prefix rdfs: &lt;<a href="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#</a>&gt; .
+                            @prefix xsd: &lt;<a href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</a>&gt; .
+                            @prefix westerlo: &lt;<a href="https://example.org/ns/westerlo#">https://example.org/ns/westerlo#</a>&gt; .
+                            @prefix app: &#x3C;<a href="https://example.org/ns/app#">https://example.org/ns/app#</a>&#x3E; .
+                            @prefix cccev: &#x3C;<a href="http://data.europa.eu/m8g">http://data.europa.eu/m8g</a>/&#x3E; .
+                            @prefix oslo-steps: &lt;<a href="https://example.org/ns/oslo-steps#">https://example.org/ns/oslo-steps#</a>&gt; .
+
+                            
+                            <span class="code_comment"># CRITERION: Green GFT (biological) waste container info</span>
+
+                            westerlo:criterionGreenWasteContainerInfo a cccev:Criterion ;
+                                rdfs:label "Groene GFT container(s)"@nl ;
+                                rdfs:label "Green GFT waste container(s)"@en ;
+                                rdfs:comment "Information regarding green waste container(s)"@en ;
+                                cccev:fulfilledBy
+                                    westerlo:greenWasteContainerGroup,
+                                    westerlo:greenWasteOwnGroup .
+                            
+                            <span class="code_comment"># Green GFT group 1: request container(s)</span>
+                            
+                            westerlo:greenWasteContainerGroup a cccev:RequirementGroup ;
+                                cccev:hasCriterionRequirement
+                                    westerlo:greenWasteContainer40Amount,
+                                    westerlo:greenWasteContainer120Amount,
+                                    westerlo:greenWasteContainerDelivery,
+                                    westerlo:greenWasteContainerLock,
+                                    westerlo:greenWasteOwnStopCollecting .
+                            
+                            westerlo:greenWasteContainer40Amount a cccev:CriterionRequirement ;
+                                rdfs:label "Aantal 40 liter container(s)"@nl ;
+                                rdfs:label "Amount 40 liter container(s)"@en ;
+                                cccev:expecteddatatype xsd:integer .
+                            
+                            westerlo:greenWasteContainer120Amount a cccev:CriterionRequirement ;
+                                rdfs:label "Aantal 120 liter container(s)"@nl ;
+                                rdfs:label "Amount 120 liter container(s)"@en ;
+                                cccev:expecteddatatype xsd:integer .
+                            
+                            westerlo:greenWasteContainerDelivery a cccev:CriterionRequirement ;
+                                rdfs:label "Container(s) leveren"@nl ;
+                                rdfs:label "Deliver container(s)"@en ;
+                                cccev:expecteddatatype xsd:boolean .
+                            
+                            westerlo:greenWasteContainerLock a cccev:CriterionRequirement ;
+                                rdfs:label "Ik vraag een slot aan voor 35 euro per stuk bij plaatsing"@nl ;
+                                rdfs:label "I request a lock for 35 euro per piece on placement"@en ;
+                                cccev:expecteddatatype xsd:boolean .
+                        </code>
+                    </pre>
+                    <figcaption>
+                        Listing 4: An alternative approach to express needed input of a step using the CCCEV
+                        vocabulary.
+                    </figcaption>
+                </figure>      
+            </div>
+            <div class="h3_alinea">\
+                <figure class="listing">
+                    <h3 class="h3">Listing 5</h3>
+                    <pre class="background">
+                        <code>
+
+                            @prefix rdfs: &lt;<a href="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#</a>&gt; .
+                            @prefix xsd: &lt;<a href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</a>&gt; .
+                            @prefix westerlo: &lt;<a href="https://example.org/ns/westerlo#">https://example.org/ns/westerlo#</a>&gt; .
+                            @prefix app: &#x3C;<a href="https://example.org/ns/app#">https://example.org/ns/app#</a>&#x3E; .
+                            @prefix cccev: &#x3C;<a href="http://data.europa.eu/m8g">http://data.europa.eu/m8g</a>/&#x3E; .
+                            @prefix oslo-steps: &lt;<a href="https://example.org/ns/oslo-steps#">https://example.org/ns/oslo-steps#</a>&gt; .
+                            @prefix p-plan: &lt;<a href="http://purl.org/net/p-plan#">http://purl.org/net/p-plan#</a>&gt; .
+                            @prefix frbr: &#x3C;<a href="http://purl.org/vocab/frbr/core#">http://purl.org/vocab/frbr/core#</a>&#x3E; .
+                            @prefix prov: &#x3C;<a href="http://www.w3.org/ns/prov#">http://www.w3.org/ns/prov#</a>&#x3E; .
+                            @prefix foaf: &#x3C;<a href="http://xmlns.com/foaf/0.1/">http://xmlns.com/foaf/0.1/</a>&#x3E; .
+                            
+                            <span class="code_comment"># The description of a user</span>
+                            app:me a foaf:Agent .
+
+                            <span class="code_comment"># The representation of an executed step (One 40 liter container)</span>
+
+                            app:responseGreenContainer40 a oslo-steps:ExecutedStep ;
+                                p-plan:correspondsToStep
+                                    westerlo:provideGreenWasteContainer40LiterAmount ;
+                                prov:generated app:dataGreenWasteContainer40 ;
+                                prov:wasAssociatedWith app:me ;
+                                prov:startedAtTime &#x22;2019-03-03T13:37:00Z&#x22;^^xsd:dateTime ;
+                                prov:endedAtTime &#x201C;2019-03-03T13:38:14Z&#x201D;^^xsd:dateTime .
+                            
+                            <span class="code_comment"># The value the user provided (which is targeted by the shape from figure 3)</span>
+                            
+                            app:dataGreenWasteContainer40 a prov:Entity, cccev:RequirementResponse ;
+                                p-plan:correspondsToVariable
+                                    westerlo:variableGreenWasteContainer40LiterAmount ;
+                                cccev:value 3 .
+                        </code>
+                    </pre>
+                    <figcaption>
+                        Listing 5: The representation of an executed step.
+                    </figcaption>
+                </figure>      
+            </div>
+        </div>
+    </div>
+    <div class="next">
+        <a class="button" href="./linked_sources_overview.html">Next: Linked Sources Overview</a>
+    </div>
+
+  <div id="vlaanderen-footer">
+    <!-- insert your Vlaanderen-footer-code here -->
+    <script src=https://tni.widgets.burgerprofiel.dev-vlaanderen.be/api/v1/widget/c0df3610-36b9-4113-a487-05dfed92c317/embed></script>
+    <!-- End global footer-->
+  </div>
+
+  <script src="https://dij151upo6vad.cloudfront.net/2.latest/js/vlaanderen-ui.js"></script>
+<style>
+
+    .equal-height {
+        height: 100%;
+        justify-content: normal;
+    }
+
+    figure.img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:  30px;
+        margin-bottom: 30px;
+        width: 50%;
+    }
+
+    figure.listing {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:  30px;
+        margin-bottom: 30px;
+        width: 70%;
+        text-align: center;
+    }
+
+    figcaption {
+        text-align: center;
+    }
+
+    h1 {
+        margin-top: 20px;
+        text-align: center;
+    } 
+
+    .h2_alinea {
+        margin-bottom: 10px;
+    }
+
+    .h3_alinea {
+        margin-bottom: 10px;
+    }
+
+    .nav_bar {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .nav_bar li {
+        display: inline-block;
+    }
+
+    .next {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    pre {
+        text-align: left;
+        overflow: auto;
+        font-weight:bold;
+        height: fit-content;
+    }
+
+    pre.background { 
+        background-color: #ECF0F1; 
+        height:auto;
+    }
+
+    .code_comment {
+        color: #7ED956;
+    }
+
+</style>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+
+    function toggle(elementID) {
+        const element = document.getElementById(elementID);
+        if (element.classList.contains('js-accordion--open')) {
+            element.classList.remove('js-accordion--open');
+        } else {
+            element.classList.add('js-accordion--open');
+        }
+    }
+</script>
+
+</body>
+
+</html>
