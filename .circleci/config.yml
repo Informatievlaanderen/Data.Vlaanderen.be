@@ -492,6 +492,10 @@ jobs:
           command: |
             cp -R site-skeleton/* /tmp/generated/
       - run:
+          name: deploy statistis 
+          command: |
+           $PWD/statistics/deploy.sh /tmp/generated
+      - run:
           name: Copy generated assets
           workdir: /tmp/workspace
           command: |
