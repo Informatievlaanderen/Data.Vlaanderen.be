@@ -68,7 +68,7 @@ jobs:
       production_hostname:
         type: string
     docker:
-      - image: cimg/python
+      - image: cimg/python:3.10
     environment:
       PRODUCTION_BRANCH: <<parameters.production_branch>>
       TEST_BRANCH: <<parameters.test_branch>>
@@ -434,7 +434,7 @@ jobs:
             - target/
   copy-raw:
     docker:
-      - image: cimg/python
+      - image: cimg/python:3.10
     steps:
       - checkout
       - attach_workspace:
