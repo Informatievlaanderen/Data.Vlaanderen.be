@@ -68,7 +68,7 @@ jobs:
       production_hostname:
         type: string
     docker:
-      - image: circleci/python
+      - image: cimg/python
     environment:
       PRODUCTION_BRANCH: <<parameters.production_branch>>
       TEST_BRANCH: <<parameters.test_branch>>
@@ -324,9 +324,7 @@ jobs:
             - report/
   convert-json-to-ttl:
     docker:
-            #- image: circleci/ruby:2.6.5-stretch
-      - image: circleci/ruby:3.0.2-buster
-        #      - image: cimg/ruby:3.0.2
+      - image: cimg/ruby:3.0.2
     steps:
       - checkout
       - attach_workspace:
@@ -352,7 +350,7 @@ jobs:
             - target/
   expand-links:
     docker:
-      - image: circleci/node:4.8.2
+      - image: cimg/node
     steps:
       - checkout
       - attach_workspace:
@@ -436,7 +434,7 @@ jobs:
             - target/
   copy-raw:
     docker:
-      - image: circleci/python
+      - image: cimg/python
     steps:
       - checkout
       - attach_workspace:
@@ -461,7 +459,7 @@ jobs:
       repository:
         type: string
     docker:
-      - image: circleci/node
+      - image: cimg/node
     steps:
       - checkout
       - attach_workspace:
