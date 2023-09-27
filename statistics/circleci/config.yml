@@ -1,0 +1,92 @@
+version: 2.1
+
+commands:
+jobs:
+  build-stats:
+    docker:
+      - image: cimg/node
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - add_ssh_keys:
+          fingerprints:
+            - "84:ef:18:e6:4c:b3:fa:38:4e:d2:47:09:e9:be:0f:e6"
+      - run:
+          name: copy statistics scripts
+          command: cp $PWD/statistics/* $PWD/report
+      - run:
+          name: build the statistics per specifications
+          command: |
+            pushd $PWD/report 
+            make allstats
+      - run:
+          name: build the statistics
+          command: |
+            pushd $PWD/report 
+            make aggr.stat
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - src/
+  create-artifact:
+    parameters:
+      repository:
+        type: string
+    docker:
+      - image: cimg/node
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - add_ssh_keys:
+          fingerprints:
+            - "84:ef:18:e6:4c:b3:fa:38:4e:d2:47:09:e9:be:0f:e6"
+            - "f9:d4:ad:ce:f1:36:04:36:bc:eb:73:0b:29:53:3d:aa"
+      - run:
+          name: Checkout target repo
+          workdir: /tmp
+          command: |
+            rm -rf statistics
+            git clone <<parameters.repository>> statistics
+      - run:
+          name: clean the statistics directory
+          workdir: /tmp/statistics
+          command: |
+            git fetch origin
+            git checkout -b "${CIRCLE_BRANCH}" --track "origin/${CIRCLE_BRANCH}" || git checkout "${CIRCLE_BRANCH}"
+            if [ "`cat /tmp/workspace/haschangedpublications.json`" == "false" ] ; then git rm -r --force * ; fi
+      - run:
+          name: Copy generated assets
+          workdir: /tmp/workspace
+          command: |
+            mkdir -p /tmp/statistics/report
+            if [ -d target ] ; then if [ ! "$(ls -A target)" ] ; then echo "directory target is empty" ; else pushd target ; cp -r * /tmp/statistics/ ; popd ; fi fi
+      - run:
+          name: insert the commit
+          workdir: /tmp/statistics
+          command: |
+            export TAG=`echo "${CIRCLE_SHA1}" | cut -c1-15`
+            echo "{\"commit\" : \"$TAG\"}" > report/commit.json
+      - run:
+          name: Push results to github
+          workdir: /tmp/statistics
+          command: |
+            git config user.email "oslo@kb.vlaanderen.be"
+            git config user.name "Circle CI Builder"
+            git add .
+            git status
+            git commit -m "Applying changes from commit ${CIRCLE_SHA1}" --allow-empty
+            export TAG=`echo "${CIRCLE_SHA1}" | cut -c1-15`
+            git tag "${TAG}"
+            git push --force origin "${CIRCLE_BRANCH}"
+            git push --tags
+workflows:
+  version: 2
+  generate_documentation:
+    jobs:
+      - build-stats:
+      - create-artifact:
+          repository: git@github.com:Informatievlaanderen/data.vlaanderen.be-statistics.git
+          requires:
+            - build-stats
