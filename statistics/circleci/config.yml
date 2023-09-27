@@ -4,14 +4,14 @@ commands:
 jobs:
   build-stats:
     docker:
-      - image: cimg/node
+      - image: cimg/node:18.18
     steps:
       - checkout
       - attach_workspace:
           at: /tmp/workspace
       - add_ssh_keys:
           fingerprints:
-            - "84:ef:18:e6:4c:b3:fa:38:4e:d2:47:09:e9:be:0f:e6"
+            - "9c:16:8f:4a:b7:2c:b4:c1:ec:b8:68:03:99:10:17:a8"
       - run:
           name: copy statistics scripts
           command: cp $PWD/statistics/* $PWD/report
@@ -34,15 +34,14 @@ jobs:
       repository:
         type: string
     docker:
-      - image: cimg/node
+      - image: cimg/node:18.18
     steps:
       - checkout
       - attach_workspace:
           at: /tmp/workspace
       - add_ssh_keys:
           fingerprints:
-            - "84:ef:18:e6:4c:b3:fa:38:4e:d2:47:09:e9:be:0f:e6"
-            - "f9:d4:ad:ce:f1:36:04:36:bc:eb:73:0b:29:53:3d:aa"
+            - "9c:16:8f:4a:b7:2c:b4:c1:ec:b8:68:03:99:10:17:a8"
       - run:
           name: Checkout target repo
           workdir: /tmp
