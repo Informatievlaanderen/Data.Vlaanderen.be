@@ -490,9 +490,12 @@ jobs:
           command: |
             cp -R site-skeleton/* /tmp/generated/
       - run:
-          name: deploy statistis 
+          name: deploy statistics 
           command: |
-           $PWD/statistics/deploy.sh /tmp/generated
+           export CIRCLEWKD=$( eval echo "${CIRCLE_WORKING_DIRECTORY}" )
+           pushd ${CIRCLEWKD}/statistics
+           ./deploy.sh /tmp/generated
+           popd
       - run:
           name: Copy generated assets
           workdir: /tmp/workspace
