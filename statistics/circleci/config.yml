@@ -1,6 +1,5 @@
 version: 2.1
 
-commands:
 jobs:
   build-stats:
     docker:
@@ -13,22 +12,27 @@ jobs:
           fingerprints:
             - "9c:16:8f:4a:b7:2c:b4:c1:ec:b8:68:03:99:10:17:a8"
       - run:
-          name: copy statistics scripts
-          command: cp $PWD/statistics/* $PWD/report
-      - run:
           name: build the statistics per specifications
           command: |
-            pushd $PWD/report 
+            export CIRCLEWKD=$( eval echo "${CIRCLE_WORKING_DIRECTORY}" )
+            pushd ${CIRCLEWKD}/report
             make allstats
       - run:
           name: build the statistics
           command: |
-            pushd $PWD/report 
+            export CIRCLEWKD=$( eval echo "${CIRCLE_WORKING_DIRECTORY}" )
+            pushd ${CIRCLEWKD}/report
             make aggr.stat
+      - run:
+          name: clean up
+          command: |
+            export CIRCLEWKD=$( eval echo "${CIRCLE_WORKING_DIRECTORY}" )
+            pushd ${CIRCLEWKD}/report
+            make finalize
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
-            - src/
+            - stats/
   create-artifact:
     parameters:
       repository:
@@ -54,13 +58,12 @@ jobs:
           command: |
             git fetch origin
             git checkout -b "${CIRCLE_BRANCH}" --track "origin/${CIRCLE_BRANCH}" || git checkout "${CIRCLE_BRANCH}"
-            if [ "`cat /tmp/workspace/haschangedpublications.json`" == "false" ] ; then git rm -r --force * ; fi
       - run:
           name: Copy generated assets
           workdir: /tmp/workspace
           command: |
             mkdir -p /tmp/statistics/report
-            if [ -d target ] ; then if [ ! "$(ls -A target)" ] ; then echo "directory target is empty" ; else pushd target ; cp -r * /tmp/statistics/ ; popd ; fi fi
+            if [ -d stats ] ; then if [ ! "$(ls -A stats )" ] ; then echo "directory stats is empty" ; else pushd stats ; cp -r * /tmp/statistics/ ; popd ; fi fi
       - run:
           name: insert the commit
           workdir: /tmp/statistics
@@ -84,7 +87,7 @@ workflows:
   version: 2
   generate_documentation:
     jobs:
-      - build-stats:
+      - build-stats
       - create-artifact:
           repository: git@github.com:Informatievlaanderen/data.vlaanderen.be-statistics.git
           requires:

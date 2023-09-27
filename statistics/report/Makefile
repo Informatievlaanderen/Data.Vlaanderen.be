@@ -1,4 +1,4 @@
-TARGETDIR:=../stts
+TARGETDIR:=/tmp/workspace/stats
 
 SPECIFICATIONS=$(shell find . -name *.jsonld  | grep all- )
 STATSPERSPECIFICATIONS=$(patsubst %.jsonld,${TARGETDIR}/%.stat,${SPECIFICATIONS})
