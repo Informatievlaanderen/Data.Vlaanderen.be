@@ -316,6 +316,9 @@ render_shacl_languageaware() {
     local GOALLANGUAGE=$6
     local PRIMELANGUAGE=${7-false}
 
+
+    SHACLPARAMETERS=$(jq -r .shaclvalidator.parameters ${CONFIGDIR}/config.json)
+
     FILENAME=$(jq -r ".name" ${JSONI})
     COMMANDJSONLD=$(echo '.[].translation | .[] | select(.language | contains("'${GOALLANGUAGE}'")) | .mergefile')
     LANGUAGEFILENAMEJSONLD=$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
@@ -335,11 +338,11 @@ render_shacl_languageaware() {
 
     if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
         DOMAIN="${HOSTNAME}/${LINE}"
-        echo "RENDER-DETAILS(shacl-languageaware): node /app/shacl-generator.js -i ${MERGEDJSONLD} -m individual -c 'uniqueLanguages' -c 'nodekind' -d ${DOMAIN} -p ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE}"
+        echo "RENDER-DETAILS(shacl-languageaware): node /app/shacl-generator.js -i ${MERGEDJSONLD} ${SHACLPARAMETERS} -d ${DOMAIN} -p ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE}"
         pushd /app
         mkdir -p ${TLINE}/shacl
         mkdir -p ${RLINE}/shacl
-        if ! node /app/shacl-generator2.js -i ${MERGEDJSONLD} -m individual -c 'uniqueLanguages' -c 'nodekind' -d ${DOMAIN} -p ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE} 2>&1 | tee ${OUTREPORT}; then
+        if ! node /app/shacl-generator2.js -i ${MERGEDJSONLD} ${SHACLPARAMETERS} -d ${DOMAIN} -p ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE} 2>&1 | tee ${OUTREPORT}; then
             echo "RENDER-DETAILS(shacl-languageaware): See ${OUTREPORT} for the details"
             execution_strickness
         else
