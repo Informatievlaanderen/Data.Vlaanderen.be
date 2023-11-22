@@ -26,7 +26,7 @@
 
 
 # arg1 the <CIRCLECIHOSTNAME> that should be updated
-
+${CIRCLECIHOSTNAME}=$1
 
 sed  -i -e "/Host ${CIRCLECIHOSTNAME}/a \ \ User git" ~/.ssh/config
 sed  -i -e "/Host ${CIRCLECIHOSTNAME}/a \ \ HostName github.com" ~/.ssh/config
