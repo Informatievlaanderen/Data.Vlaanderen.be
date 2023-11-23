@@ -23,6 +23,29 @@ execution_strickness() {
 	fi
 }
 
+generator_parameters() {
+    
+    local GENERATOR=$1
+    local JSONI=$2
+
+    #
+    # The toolchain can add specific parameters for the SHACL generation tool
+    # Priority rules are as follows:
+    #   1. publication point specific
+    #   2. generic configuration
+    #   3. otherwise empty string
+    #
+    COMMAND=$(echo '.'${GENERATOR}'.parameters' )
+    PARAMETERS=$(jq -r '.shaclgenerator.parameters' ${JSONI})
+    if [ "${PARAMETERS}" == "null"  ]  ; then 
+        PARAMETERS=$(jq -r '.shaclgenerator.parameters '  ${CONFIGDIR}/config.json)
+    fi 
+    if [ "${PARAMETERS}" == "null"  ] || [ -z "${PARAMETERS}" ]  ; then 
+        PARAMETERS=""
+    fi 
+}
+
+
 render_merged_files() {
     echo "Rendering the merged version of $1 with the json in $2 from $3 and to $4"
     local JSONI=$1
@@ -342,21 +365,23 @@ render_shacl_languageaware() {
     #   2. generic configuration
     #   3. otherwise empty string
     #
-    SHACLPARAMETERS=$(jq -r '.shaclvalidator.parameters' ${JSONI})
-    if [ "$SHACLPARAMETERS" == "null"  ]  ; then 
-        SHACLPARAMETERS=$(jq -r '.shaclvalidator.parameters '  ${CONFIGDIR}/config.json)
-    fi 
-    if [ "$SHACLPARAMETERS" == "null"  ] || [ -z "$SHACLPARAMETERS" ]  ; then 
-        SHACLPARAMETERS=""
-    fi 
+#    SHACLPARAMETERS=$(jq -r '.shaclgenerator.parameters' ${JSONI})
+#    if [ "$SHACLPARAMETERS" == "null"  ]  ; then 
+#        SHACLPARAMETERS=$(jq -r '.shaclgenerator.parameters '  ${CONFIGDIR}/config.json)
+#    fi 
+#    if [ "$SHACLPARAMETERS" == "null"  ] || [ -z "$SHACLPARAMETERS" ]  ; then 
+#        SHACLPARAMETERS=""
+#    fi 
+
+    generator_parameters shaclgenerator ${JSONI}
 
     if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
         DOMAIN="${HOSTNAME}/${LINE}"
-        echo "RENDER-DETAILS(shacl-languageaware): node /app/shacl-generator.js -i ${MERGEDJSONLD} ${SHACLPARAMETERS} -d ${DOMAIN} -p ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE}"
+        echo "RENDER-DETAILS(shacl-languageaware): node /app/shacl-generator.js -i ${MERGEDJSONLD} ${PARAMETERS} -d ${DOMAIN} -p ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE}"
         pushd /app
         mkdir -p ${TLINE}/shacl
         mkdir -p ${RLINE}/shacl
-        if ! node /app/shacl-generator2.js -i ${MERGEDJSONLD} ${SHACLPARAMETERS} -d ${DOMAIN} -p ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE} 2>&1 | tee ${OUTREPORT}; then
+        if ! node /app/shacl-generator2.js -i ${MERGEDJSONLD} ${PARAMETERS} -d ${DOMAIN} -p ${DOMAIN} -o ${OUTFILE} -l ${GOALLANGUAGE} 2>&1 | tee ${OUTREPORT}; then
             echo "RENDER-DETAILS(shacl-languageaware): See ${OUTREPORT} for the details"
             execution_strickness
         else
