@@ -317,7 +317,20 @@ render_shacl_languageaware() {
     local PRIMELANGUAGE=${7-false}
 
 
-    SHACLPARAMETERS=$(jq -r .shaclvalidator.parameters ${CONFIGDIR}/config.json)
+    #
+    # The toolchain can add specific parameters for the SHACL generation tool
+    # Priority rules are as follows:
+    #   1. publication point specific
+    #   2. generic configuration
+    #   3. otherwise empty string
+    #
+    SHACLPARAMETERS=$(jq -r '.shaclvalidator.parameters' ${SLINE}/.names.json)
+    if [ "$SHACLPARAMETERS" == "null"  ] || [ -z "$SHACLPARAMETERS" ]  ; then 
+        SHACLPARAMETERS=$(jq -r '.shaclvalidator.parameters '  ${CONFIGDIR}/config.json)
+    fi 
+    if [ "$SHACLPARAMETERS" == "null"  ] || [ -z "$SHACLPARAMETERS" ]  ; then 
+        SHACLPARAMETERS=""
+    fi 
 
     FILENAME=$(jq -r ".name" ${JSONI})
     COMMANDJSONLD=$(echo '.[].translation | .[] | select(.language | contains("'${GOALLANGUAGE}'")) | .mergefile')
