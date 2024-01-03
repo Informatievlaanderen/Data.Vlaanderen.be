@@ -268,8 +268,11 @@ render_context() { # SLINE TLINE JSON
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
+
+    generator_parameters contextgenerator ${JSONI}
+
     if [ ${TYPE} == "ap" ] || [ ${TYPE} == "oj" ]; then
-        echo "RENDER-DETAILS(context): node /app/json-ld-generator.js -d -l label -i ${JSONI} -o ${TLINE}/context/${OUTFILELANGUAGE} "
+        echo "RENDER-DETAILS(context): node /app/json-ld-generator.js ${PARAMETERS} -i ${JSONI} -o ${TLINE}/context/${OUTFILELANGUAGE} "
         mkdir -p ${TLINE}/context
         COMMANDJSONLD=$(echo '.[].translation | .[] | select(.language | contains("'${GOALLANGUAGE}'")) | .mergefile')
         LANGUAGEFILENAMEJSONLD=$(jq -r "${COMMANDJSONLD}" ${SLINE}/.names.json)
@@ -358,20 +361,6 @@ render_shacl_languageaware() {
     COMMAND=$(echo '.[]|select(.name | contains("'${BASENAME}'"))|.type')
     TYPE=$(jq -r "${COMMAND}" ${SLINE}/.names.json)
 
-    #
-    # The toolchain can add specific parameters for the SHACL generation tool
-    # Priority rules are as follows:
-    #   1. publication point specific
-    #   2. generic configuration
-    #   3. otherwise empty string
-    #
-#    SHACLPARAMETERS=$(jq -r '.shaclgenerator.parameters' ${JSONI})
-#    if [ "$SHACLPARAMETERS" == "null"  ]  ; then 
-#        SHACLPARAMETERS=$(jq -r '.shaclgenerator.parameters '  ${CONFIGDIR}/config.json)
-#    fi 
-#    if [ "$SHACLPARAMETERS" == "null"  ] || [ -z "$SHACLPARAMETERS" ]  ; then 
-#        SHACLPARAMETERS=""
-#    fi 
 
     generator_parameters shaclgenerator ${JSONI}
 
