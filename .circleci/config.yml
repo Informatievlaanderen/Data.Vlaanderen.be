@@ -401,7 +401,6 @@ jobs:
             $PWD/scripts/update_sshconfig.sh ${GENERATEDREPO}
       - run:
           name: Checkout target repo
-          workdir: /tmp
           command: |
             rm -rf /tmp/generated
             export REPO=$(jq -r .generatedrepository $PWD/config/config.json)
