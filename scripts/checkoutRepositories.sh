@@ -40,6 +40,7 @@ HOSTNAME=$(jq -r .hostname ${CONFIGDIR}/config.json)
 
 cleanup_directory() {
   rm -rf .git
+  rm -rf codelijsten 
 
   local MAPPINGFILE=`jq -r 'if (.filename | length) > 0 then .filename else @sh "config/eap-mapping.json"  end' .publication-point.json`
   if [[ -f ".names.txt" && -f $MAPPINGFILE ]]
@@ -47,6 +48,8 @@ cleanup_directory() {
     STR=".[] | select(.name == \"$(cat .names.txt)\") | [.]"
     jq "${STR}" ${MAPPINGFILE} >.map.json
     jq -r '.[] | @sh "find . -name \"*.eap\" !  -name \(.eap) -type f -exec rm -f {} + "' .map.json | bash -e
+    SITE=`jq -r .[].site .map.json`
+    find ./site-skeleton -depth -type d ! -wholename "./site-skeleton"  ! -wholename "./${SITE}" -exec rm -rf {} + 
   fi
 }
 

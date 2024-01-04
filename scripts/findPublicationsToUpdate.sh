@@ -123,6 +123,10 @@ if [[ $changesRequireBuild == "true" && $onlyChangedPublicationFiles == "true" ]
   else
     onlyChangedPublications=true
   fi
+  if [[ ${TRIGGERALL} == "false" ]]; then
+	echo "WARNING: a full rebuild is switched off. "
+    onlyChangedPublications=true
+  fi
 else
   if [[ ${TRIGGERALL} == "false" ]]; then
 	echo "WARNING: a full rebuild is switched off. "
