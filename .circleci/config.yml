@@ -161,7 +161,7 @@ jobs:
             - report/
   render-html-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.4
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.9
     steps:
       - checkout
       - attach_workspace:
@@ -392,7 +392,7 @@ jobs:
           at: /tmp/workspace
       - add_ssh_keys:
           fingerprints:
-            - "84:ef:18:e6:4c:b3:fa:38:4e:d2:47:09:e9:be:0f:e6"
+            - << parameters.generatedReporFingerprint >>
             - "f9:d4:ad:ce:f1:36:04:36:bc:eb:73:0b:29:53:3d:aa"
       - run:
           name: update and add extra statements of updating the ssh config for each private ssh key
