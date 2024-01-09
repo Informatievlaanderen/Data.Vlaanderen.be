@@ -3,6 +3,13 @@ version: 2.1
 commands:
 jobs:
   checkout:
+    parameters:
+      test_branch:
+        type: string
+        default: test
+      test_hostname:
+        type: string
+        default: https://test.data.vlaanderen.be
     docker:
       - image: cimg/node:18.16.0
     steps:
