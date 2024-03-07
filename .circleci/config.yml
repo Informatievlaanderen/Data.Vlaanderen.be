@@ -505,6 +505,9 @@ workflows:
       - render-shacl-details:
           requires:
             - render-merged-jsonld
+      - render-example-templates:
+          requires:
+            - render-merged-jsonld
       - convert-json-to-ttl:
           requires:
             - render-shacl-details
