@@ -13,6 +13,10 @@ git checkout HEAD^ ${INPUT}
 cp ${INPUT} ${OUTPUT}
 git checkout ${INPUT}
 
+# implementation notes
+#  - git checkout HEAD^ will report error when there was no previous commit 
+#    This is the case with this was the first commit of the specification
+
 
 
 

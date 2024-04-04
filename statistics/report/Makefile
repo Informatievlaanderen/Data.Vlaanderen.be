@@ -137,7 +137,5 @@ ${PREVDIR}/%.prev : %.jsonld
 allchanges: ${CHANGES}
 	mkdir -p ${LDESDIR}
 
-${LDESDIR}/%.changes : %.prev
+${LDESDIR}/%.changes : ${PREVDIR}/%.prev
 	./compare_intermediate.sh $< $(dir $@) $(notdir $@)
-
-
