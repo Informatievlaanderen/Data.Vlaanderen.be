@@ -115,3 +115,29 @@ clean:
 		do \
 		rm $${file} ;\
 	 done 
+
+#------------------------------------------------------------------------------#
+# calculate changes for LDES
+#------------------------------------------------------------------------------#
+
+PREVDIR:=/tmp/workspace/prev
+LDESDIR:=/tmp/workspace/ldes
+
+PREVSPECIFICATIONS=$(patsubst %.jsonld,${PREVDIR}/%.prev,${SPECIFICATIONS})
+CHANGES=$(patsubst %.jsonld,${LDESDIR}/%.changes,${SPECIFICATIONS})
+
+.PHONY: allprev
+allprev: ${PREVSPECIFICATIONS}
+	mkdir -p ${PREVDIR}
+
+${PREVDIR}/%.prev : %.jsonld
+	./checkout_prev.sh $< $(dir $@) $(notdir $@)
+
+.PHONY: allchanges
+allchanges: ${CHANGES}
+	mkdir -p ${LDESDIR}
+
+${LDESDIR}/%.changes : %.prev
+	./compare_intermediate.sh $< $(dir $@) $(notdir $@)
+
+

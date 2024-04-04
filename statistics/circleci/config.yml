@@ -33,6 +33,27 @@ jobs:
           root: /tmp/workspace
           paths:
             - stats/
+  build-changes:
+    docker:
+      - image: cimg/node:18.18
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - add_ssh_keys:
+          fingerprints:
+            - "9c:16:8f:4a:b7:2c:b4:c1:ec:b8:68:03:99:10:17:a8"
+      - run:
+          name: build the changes per specifications
+          command: |
+            export CIRCLEWKD=$( eval echo "${CIRCLE_WORKING_DIRECTORY}" )
+            pushd ${CIRCLEWKD}/report
+            make allprev
+            make allchanges
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - ldes/
   create-artifact:
     parameters:
       repository:
@@ -88,7 +109,10 @@ workflows:
   generate_documentation:
     jobs:
       - build-stats
+      - build-changes
       - create-artifact:
           repository: git@github.com:Informatievlaanderen/data.vlaanderen.be-statistics.git
           requires:
             - build-stats
+            - build-changes
+              

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+INPUT=$1
+OUTPUTDIR=$2
+OUTPUTFILE=$3
+
+OUTPUT=${OUTPUTDIR}${OUTPUTFILE}
+mkdir -p ${OUTPUTDIR}
+
+
+diff ${INPUT}.orig ${INPUT} > ${OUTPUT}
+
+
+
