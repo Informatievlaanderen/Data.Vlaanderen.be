@@ -1,80 +1,10 @@
 version: 2.1
 
 commands:
-  checkout-repositories:
-    description: "checkout the repositories and set correct publishing url"
-    parameters:
-      production_branch:
-        type: string
-        default: master
-      test_branch:
-        type: string
-        default: test
-      other_hostname:
-        type: string
-      test_hostname:
-        type: string
-      production_hostname:
-        type: string
-    steps:
-      - when:
-          condition:
-            equal: [ << pipeline.git.branch >>, <<parameters.production_branch>> ]
-          steps:
-            - run:
-                command: $PWD/scripts/checkoutRepositories.sh /tmp/workspace $PWD/config/publication.json $PWD/config
-                environment:
-                  HOSTNAME: <<parameters.production_hostname>>
-      - when:
-          condition:
-            equal: [ << pipeline.git.branch >>,<<parameters.test_branch>> ]
-          steps:
-            - run:
-                command: $PWD/scripts/checkoutRepositories.sh /tmp/workspace $PWD/config/publication.json $PWD/config
-                environment:
-                  HOSTNAME: <<parameters.test_hostname>>
-      - unless:
-          condition:
-            or:
-              - equal: [ << pipeline.git.branch >>,<<parameters.test_branch>> ]
-              - equal: [ << pipeline.git.branch >>,<<parameters.production_branch>> ]
-          steps:
-            - run:
-                command: $PWD/scripts/checkoutRepositories.sh /tmp/workspace $PWD/config/publication.json $PWD/config
-                environment:
-                  HOSTNAME: <<parameters.other_hostname>>
 jobs:
   checkout:
-    parameters:
-      production_branch:
-        type: string
-        default: master
-      test_branch:
-        type: string
-        default: test
-      production_folder:
-        type: string
-        default: production
-      test_folder:
-        type: string
-        default: test
-      other_folder:
-        type: string
-        default: dev
-      other_hostname:
-        type: string
-      test_hostname:
-        type: string
-      production_hostname:
-        type: string
     docker:
-      - image: circleci/python
-    environment:
-      PRODUCTION_BRANCH: <<parameters.production_branch>>
-      TEST_BRANCH: <<parameters.test_branch>>
-      PRODUCTION_FOLDER: <<parameters.production_folder>>
-      TEST_FOLDER: <<parameters.test_folder>>
-      OTHER_FOLDER: <<parameters.other_folder>>
+      - image: cimg/node:18.16.0
     steps:
       - checkout
       - add_ssh_keys:
@@ -88,12 +18,8 @@ jobs:
       - run: ls -al workspace
       - run:
           command: $PWD/scripts/findPublicationsToUpdate.sh /tmp/workspace $PWD/config/publication.json $PWD/
-      - checkout-repositories:
-          production_branch: <<parameters.production_branch>>
-          test_branch: <<parameters.test_branch>>
-          other_hostname: <<parameters.other_hostname>>
-          test_hostname: <<parameters.test_hostname>>
-          production_hostname: <<parameters.production_hostname>>
+      - run: 
+          command: $PWD/scripts/checkoutRepositories.sh /tmp/workspace $PWD/config/publication.json $PWD/config
       - run: if [ -e /tmp/workspace/checkouts.txt ] ; then cat /tmp/workspace/checkouts.txt ; fi
       - run: if [ -e /tmp/workspace/rawcheckouts.txt ] ; then cat /tmp/workspace/rawcheckouts.txt ; fi
       - run: if [ -e /home/circleci/project/changes.txt ] ; then cat /home/circleci/project/changes.txt ; fi
@@ -112,7 +38,7 @@ jobs:
             - raw-input/
   extract-jsonld-details:
     docker:
-      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-m1.1.1
+      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-m1.1.3
     steps:
       - checkout
       - attach_workspace:
@@ -143,7 +69,7 @@ jobs:
             - src/
   validate-report:
     docker:
-      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-m1.1.1
+      - image: informatievlaanderen/oslo-ea-to-rdf:json-ld-format-m1.1.3
     steps:
       - checkout
       - attach_workspace:
@@ -155,7 +81,7 @@ jobs:
             [ $( egrep " ERROR " /tmp/workspace/report/*.report | wc -l ) == 0 ] || exit 1
   normalise-jsonld:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.3
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.9
     steps:
       - checkout
       - attach_workspace:
@@ -173,7 +99,7 @@ jobs:
             - src/
   render-translation-json:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.3
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.9
     steps:
       - checkout
       - attach_workspace:
@@ -199,7 +125,7 @@ jobs:
             - src/
   validate-and-generate-translation-report:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.3
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.9
     steps:
       - checkout
       - attach_workspace:
@@ -215,7 +141,7 @@ jobs:
             [ $( egrep " WARNING " /tmp/workspace/report/translation/*.report | wc -l ) == 0 ] || exit 1
   render-merged-jsonld:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.3
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.9
     steps:
       - checkout
       - attach_workspace:
@@ -235,7 +161,7 @@ jobs:
             - report/
   render-html-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.4
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.9
     steps:
       - checkout
       - attach_workspace:
@@ -259,7 +185,7 @@ jobs:
             - reporthtml/
   render-example-templates:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.3
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.9
     steps:
       - checkout
       - attach_workspace:
@@ -279,7 +205,7 @@ jobs:
             - examples/
   render-context-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.3
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.9
     steps:
       - checkout
       - attach_workspace:
@@ -299,7 +225,7 @@ jobs:
             - target/
   render-shacl-details:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.3
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.9
     steps:
       - checkout
       - attach_workspace:
@@ -324,9 +250,7 @@ jobs:
             - report/
   convert-json-to-ttl:
     docker:
-            #- image: circleci/ruby:2.6.5-stretch
-      - image: circleci/ruby:3.0.2-buster
-        #      - image: cimg/ruby:3.0.2
+      - image: cimg/ruby:3.0.2
     steps:
       - checkout
       - attach_workspace:
@@ -338,6 +262,7 @@ jobs:
             mkdir -p /tmp/workspace/target
       - run:
           name: Convert -SHACL.jsonld file to -SHACL.ttl files
+          no_output_timeout: 30m
           command: |
             find /tmp/workspace/target -name \*-SHACL.jsonld -type f | $PWD/scripts/convert_to_any.sh turtle
       - run:
@@ -351,7 +276,7 @@ jobs:
             - target/
   expand-links:
     docker:
-      - image: circleci/node:4.8.2
+      - image: cimg/node:18.16.0
     steps:
       - checkout
       - attach_workspace:
@@ -371,7 +296,7 @@ jobs:
             - target/
   render-voc-jsonld:
     docker:
-      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.3
+      - image: informatievlaanderen/oslo-specification-generator:multilingual-dev-0.9
     steps:
       - checkout
       - attach_workspace:
@@ -395,8 +320,7 @@ jobs:
             - target/
   render-voc-rdf:
     docker:
-      #- image: circleci/ruby:2.6.5-stretch
-      - image: cimg/ruby:3.2
+      - image: cimg/ruby:3.0.2
     steps:
       - checkout
       - attach_workspace:
@@ -412,18 +336,22 @@ jobs:
             touch /tmp/workspace/target/.ignore12
       - run:
           name: Convert vocabulary to turtle
+          no_output_timeout: 30m
           command: |
             find /tmp/workspace/target/doc/vocabularium -name \*.jsonld -type f | $PWD/scripts/convert_to_any.sh turtle
       - run:
           name: Convert vocabulary to ntriples
+          no_output_timeout: 30m
           command: |
             find /tmp/workspace/target/doc/vocabularium -name \*.jsonld -type f | $PWD/scripts/convert_to_any.sh ntriples
       - run:
           name: Convert vocabulary to rdf/xml
+          no_output_timeout: 30m
           command: |
             find /tmp/workspace/target/doc/vocabularium -name \*.jsonld -type f | $PWD/scripts/convert_to_any.sh rdfxml
       - run:
           name: list results
+          no_output_timeout: 30m
           command: |
             if [ -d /tmp/workspace/voc ]; then ls /tmp/workspace/voc ; fi
       - persist_to_workspace:
@@ -432,7 +360,7 @@ jobs:
             - target/
   copy-raw:
     docker:
-      - image: circleci/python
+      - image: cimg/node:18.16.0
     steps:
       - checkout
       - attach_workspace:
@@ -454,28 +382,29 @@ jobs:
             - raw/
   create-artifact:
     parameters:
-      repository:
+      generatedReporFingerprint:
         type: string
     docker:
-      - image: circleci/node
+      - image: cimg/node:18.16.0
     steps:
       - checkout
       - attach_workspace:
           at: /tmp/workspace
       - add_ssh_keys:
           fingerprints:
-            - "84:ef:18:e6:4c:b3:fa:38:4e:d2:47:09:e9:be:0f:e6"
+            - << parameters.generatedReporFingerprint >>
             - "f9:d4:ad:ce:f1:36:04:36:bc:eb:73:0b:29:53:3d:aa"
       - run:
           name: update and add extra statements of updating the ssh config for each private ssh key
           command: |
-            $PWD/scripts/update_sshconfig.sh data.vlaanderen.be-generated
+            export GENERATEDREPO=$(jq -r .generatedrepository.repository $PWD/config/config.json)
+            $PWD/scripts/update_sshconfig.sh ${GENERATEDREPO}
       - run:
           name: Checkout target repo
-          workdir: /tmp
           command: |
-            rm -rf generated
-            git clone <<parameters.repository>> generated
+            rm -rf /tmp/generated
+            export REPO=$(jq -r .generatedrepository $PWD/config/config.json)
+            $PWD/scripts/checkoutRepoGithub.sh "${REPO}" /tmp/generated ${TOOLCHAIN_TOKEN}
       - run:
           name: clean the generated directory
           workdir: /tmp/generated
@@ -488,6 +417,13 @@ jobs:
           command: |
             cp -R site-skeleton/* /tmp/generated/
       - run:
+          name: deploy statistics 
+          command: |
+           export CIRCLEWKD=$( eval echo "${CIRCLE_WORKING_DIRECTORY}" )
+           pushd ${CIRCLEWKD}/statistics
+           ./deploy.sh /tmp/generated
+           popd
+      - run:
           name: Copy generated assets
           workdir: /tmp/workspace
           command: |
@@ -499,7 +435,7 @@ jobs:
             if [ -d translation ] ; then if [ ! "$(ls -A translation)" ] ; then echo "directory translation is empty" ; else cp -rT translation /tmp/generated/report/ ; fi fi
             if [ -d examples ] ; then if [ ! "$(ls -A examples)" ] ; then echo "directory examples is empty" ; else cp -rT examples /tmp/generated/examples/ ; fi fi
       - run:
-          name: List the files which have been created
+          name: check if all publication points are generated 
           workdir: /tmp/generated
           command: |
             ls -al *
@@ -524,8 +460,12 @@ jobs:
           name: Push results to github
           workdir: /tmp/generated
           command: |
-            git config user.email "oslo@kb.vlaanderen.be"
-            git config user.name "Circle CI Builder"
+            # expand the tilde first
+            export CIRCLEWKD=$( eval echo "${CIRCLE_WORKING_DIRECTORY}" )
+            export EMAIL=$(jq -r .generatedrepository.gitEmail $CIRCLEWKD/config/config.json)
+            export USER=$(jq -r .generatedrepository.gitUser $CIRCLEWKD/config/config.json)
+            git config user.email "${EMAIL}"
+            git config user.name "${USER}"
             git add .
             git status
             git commit -m "Applying changes from commit ${CIRCLE_SHA1}" --allow-empty
@@ -537,15 +477,7 @@ workflows:
   version: 2
   generate_documentation:
     jobs:
-      - checkout:
-          test_branch: test
-          production_branch: production
-          other_folder: dev
-          test_folder: test
-          production_folder: production
-          other_hostname: https://dev.data.vlaanderen.be
-          test_hostname: https://test.data.vlaanderen.be
-          production_hostname: https://data.vlaanderen.be
+      - checkout
       - extract-jsonld-details:
           requires:
             - checkout
@@ -597,6 +529,6 @@ workflows:
             - render-context-details
             - render-voc-rdf
       - create-artifact:
-          repository: git@data.vlaanderen.be-generated:Informatievlaanderen/data.vlaanderen.be-generated.git
+          generatedReporFingerprint: "84:ef:18:e6:4c:b3:fa:38:4e:d2:47:09:e9:be:0f:e6"
           requires:
             - expand-links

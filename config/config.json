@@ -1,20 +1,34 @@
 {
   "primeLanguage": "nl",
   "otherLanguages": [
-    "en", "de", "fr"
+    "en",
+    "de",
+    "fr"
   ],
   "hostname": "https://data.vlaanderen.be",
   "domain": "data.vlaanderen.be",
-  "publicationpoints" : ["production"],
-  "generatedrepository" : {
-	  "organisation": "informatievlaanderen",
-	  "repository" : "data.vlaanderen.be-generated",
-	  "private" : false
+  "publicationpoints": [
+    "production"
+  ],
+  "generatedrepository": {
+    "organisation": "informatievlaanderen",
+    "repository": "data.vlaanderen.be-generated",
+    "private": false,
+    "gitEmail": "oslo@kb.vlaanderen.be",
+    "gitUser": "Circle CI Builder"
   },
-  "toolchainversion" : "3.0.5",
-  "toolchain" : {
-	  "strickness" : "lazy",
-	  "version": 3,
-	  "triggerall" : false
+  "toolchainversion": "3.1.1",
+  "toolchain": {
+    "strickness": "lazy",
+    "version": 3,
+    "triggerall": false
+  },
+  "shaclgenerator": {
+    "parameters": "-m individual -c 'uniqueLanguages' -c 'nodeKind'",
+    "parameters-old": ""
+  },
+  "contextgenerator": {
+    "parameters": "-d -l label",
+    "parameters-new": "-c -l label"
   }
 }
