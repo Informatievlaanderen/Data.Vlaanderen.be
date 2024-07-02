@@ -16,7 +16,6 @@ upgrade_config() {
 
     echo "prime language is $PRIMELANGUAGE"
 
-
     HASTRANSLATION=$(jq -r .[0].translation[0].language ${SLINE}/.names.json)
     echo "${HASTRANSLATION}: if null then no translation is present and thus configuration will be updated."
 
@@ -32,35 +31,32 @@ upgrade_config() {
        "mergefile" : $jqmergefile
      }]}'
 
-    
     JQTRANSLATION="${NAME}_${PRIMELANGUAGE}.json"
 
-
     TRANSLATIONOBJ=$(jq -n \
-	    --arg jqlanguage "${PRIMELANGUAGE}" --arg jqtitle "${TITLE}" --arg jqtemplate ${TEMPLATE} \
-	    --arg jqtranslation $JQTRANSLATION --arg jqmergefile ${NAME}_${PRIMELANGUAGE}_merged.json \
-	    "${TRANSLATIONOBJTEMPLATE}")
-    echo $TRANSLATIONOBJ > /tmp/upgrade.json
+        --arg jqlanguage "${PRIMELANGUAGE}" --arg jqtitle "${TITLE}" --arg jqtemplate ${TEMPLATE} \
+        --arg jqtranslation $JQTRANSLATION --arg jqmergefile ${NAME}_${PRIMELANGUAGE}_merged.json \
+        "${TRANSLATIONOBJTEMPLATE}")
+    echo $TRANSLATIONOBJ >/tmp/upgrade.json
 
     # check for the amount of items in the .names.json
     AMOUNT=$(jq length ${SLINE}/.names.json)
 
-    if [ ${AMOUNT} -eq 1 ] ; then
+    echo "amount of items in the .names.json: $AMOUNT"
 
-	if [ "$HASTRANSLATION" == "" ] || [ "$HASTRANSLATION" == "null" ] ;  then
+    if [ ${AMOUNT} -eq 1 ]; then
 
-    	  jq -s '[.[0][0] * .[1]]' ${SLINE}/.names.json /tmp/upgrade.json > /tmp/mergedupgrade.json
-    	  cp /tmp/mergedupgrade.json ${SLINE}/.names.json
-	fi
+        if [ "$HASTRANSLATION" == "" ] || [ "$HASTRANSLATION" == "null" ]; then
 
-    else 
-	   echo "ERROR only a list with a single matching value should be in the specification config"
-	   cat ${SLINE}/.names.json
-	   exit -1
+            jq -s '[.[0][0] * .[1]]' ${SLINE}/.names.json /tmp/upgrade.json >/tmp/mergedupgrade.json
+            cp /tmp/mergedupgrade.json ${SLINE}/.names.json
+        fi
+
+    else
+        echo "ERROR only a list with a single matching value should be in the specification config"
+        cat ${SLINE}/.names.json
+        exit -1
     fi
-
-
-        
 
 }
 
@@ -72,7 +68,7 @@ cat ${CHECKOUTFILE} | while read line; do
     RLINE=${TARGETDIR}/report/${line}
     TRLINE=${TARGETDIR}/translation/${line}
     if [ -d "${SLINE}" ]; then
-	upgrade_config ${SLINE}
+        upgrade_config ${SLINE}
     else
         echo "Error: ${SLINE}"
     fi
