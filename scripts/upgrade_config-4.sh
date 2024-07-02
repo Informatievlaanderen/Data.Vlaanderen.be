@@ -23,6 +23,10 @@ upgrade_config() {
     TEMPLATE=$(jq -r .[0].template ${SLINE}/.names.json)
     NAME=$(jq -r .[0].name ${SLINE}/.names.json)
 
+    echo "title: $TITLE"
+    echo "template: $TEMPLATE"
+    echo "name: $NAME"
+
     TRANSLATIONOBJTEMPLATE='{"translation" : [{
        "language" : $jqlanguage,
        "title" : $jqtitle,
