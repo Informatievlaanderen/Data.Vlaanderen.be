@@ -14,6 +14,8 @@ upgrade_config() {
 
     PRIMELANGUAGE=$(jq -r ".primeLanguage" ${CONFIGDIR}/config.json)
 
+    echo "prime language is $PRIMELANGUAGE"
+
 
     HASTRANSLATION=$(jq -r .[0].translation[0].language ${SLINE}/.names.json)
     echo "${HASTRANSLATION}: if null then no translation is present and thus configuration will be updated."
