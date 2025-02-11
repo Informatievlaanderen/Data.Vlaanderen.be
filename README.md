@@ -1,5 +1,9 @@
 # Data.Vlaanderen.be
 
+## OUDE REPOSITORY
+
+Deze repository is sinds februari 2025 niet meer in gebruik en dient puur als historisch archief. Er werd een nieuwe publicatie-omgeving opgezet die sinds februari 2025 in dienst is. Deze is [hier](https://github.com/Informatievlaanderen/data.vlaanderen.be2) terug te vinden.
+
 Deze repository is een onderdeel van het initiatief **Open Standaarden voor Linkende Organisaties __(OSLO)__**.
 Meer informatie is terug te vinden op de [OSLO productpagina](https://overheid.vlaanderen.be/producten-diensten/OSLO2).
 
